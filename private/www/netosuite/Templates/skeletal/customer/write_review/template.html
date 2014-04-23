@@ -1,0 +1,17 @@
+<script type="text/javascript">
+function onload(){
+	setTimeout('product_redirect()', 5000);
+}
+function product_redirect(){
+    window.location = "[%URL type:'item' id:'[@SKU@]'%][%END URL%]";
+}
+</script>
+<div class="col-xs-12">
+	<h1 class="page-header">Your Review Has Been Posted!</h1>
+	<p class="lead">
+		Thank you for taking the time to write a review. Your review has been posted and if it meets our content posting terms and conditions it will appear on our website shortly.
+	</p>
+	<p>
+		<a class="btn btn-success btn-lg" href="[%URL type:'item' id:'[@SKU@]'%][%END URL%]">Click here to go back to [@model@]</a> <a class="btn btn-default btn-lg"  href="[%URL type:'home'%][%END URL%]">Click here to go to our home page</a>
+	</p>
+</div>

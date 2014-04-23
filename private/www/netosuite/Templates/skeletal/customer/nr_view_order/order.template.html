@@ -1,0 +1,31 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+<div class="page-header">
+<h1>View Order / Invoice</h1>
+</div>
+
+<script language="javascript" type="text/javascript">
+function print_invoice() {
+	var win = window.open('[%URL page:"account" type:"nr_print" fn:"invoice" id:"[@order_id@]" qs:"code=[@code@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+}
+</script>
+<div class="form-actions">
+<input type="button" class="btn pull-left" value="Print Order / Invoice" onClick="print_invoice()"> 
+<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+<div class="clear"></div>
+</div>
+
+<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

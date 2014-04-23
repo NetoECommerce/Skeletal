@@ -1,0 +1,190 @@
+/* Website
+===========================================================================================================*/
+
+/* Global
+-----------------------------------------------------------------------------------------------------------*/
+body-font-size:						Body Font Size
+body-font-family:					Body Font Family
+body-font-colour:					Body Font Colour
+body-background-image:				Body Background Image
+body-background-colour: 			Body Background Colour
+link-text-colour:					Link Text Colour
+link-text-hover-colour:				Link Text Hover State Colour
+
+breadcrumb-background-colour:		Breadcrumb Background Colour
+breadcrumb-text-colour:				Breadcrumb Text Colour
+breadcrumb-active-link-colour:		Breadcrumb Link Colour	
+
+
+/* Headings
+-----------------------------------------------------------------------------------------------------------*/
+
+headers-font-family:				Header Font Family
+headers-colour:						Header Text Colour
+header-1-font-size:					Header 1 Font Size (h1)
+header-2-font-size:					Header 2 Font Size (h2)
+header-3-font-size:					Header 3 Font Size (h3)
+header-4-font-size:					Header 4 Font Size (h4)
+header-5-font-size:					Header 5 Font Size (h5)
+
+/* Buttons
+-----------------------------------------------------------------------------------------------------------*/
+btn-default-text-colour:			Default Button Text Colour			
+btn-default-bg-colour:				Default Button Background Colour
+btn-default-border-colour:			Default Button Border Colour
+
+btn-default-text-colour-hover:		Default Button Text Colour Hover State			
+btn-default-bg-colour-hover:		Default Button Background Colour Hover State
+btn-default-border-colour-hover:	Default Button Border Colour Hover State
+
+btn-default-disabled-bg-colour:		Default Button Disabled Background Colour
+btn-default-disabled-border-colour:	Default Button Disabled Border Colour
+
+btn-primary-text-colour:			Primary Button Text Colour			
+btn-primary-bg-colour:				Primary Button Background Colour
+btn-primary-border-colour:			Primary Button Border Colour
+
+btn-primary-text-colour-hover:		Primary Button Text Colour Hover State			
+btn-primary-bg-colour-hover:		Primary Button Background Colour Hover State
+btn-primary-border-colour-hover:	Primary Button Border Colour Hover State
+
+btn-primary-disabled-bg-colour:		Primary Button Disabled Background Colour
+btn-primary-disabled-border-colour:	Primary Button Disabled Border Colour
+
+btn-warning-text-colour:			Warning Button Text Colour			
+btn-warning-bg-colour:				Warning Button Background Colour
+btn-warning-border-colour:			Warning Button Border Colour
+
+btn-warning-text-colour-hover:		Warning Button Text Colour Hover State			
+btn-warning-bg-colour-hover:		Warning Button Background Colour Hover State
+btn-warning-border-colour-hover:	Warning Button Border Colour Hover State
+
+btn-warning-disabled-bg-colour:		Warning Button Disabled Background Colour
+btn-warning-disabled-border-colour:	Warning Button Disabled Border Colour
+
+btn-success-text-colour:			Call to Action Button Text Colour			
+btn-success-bg-colour:				Call to Action Button Background Colour
+btn-success-border-colour:			Call to Action Button Border Colour
+
+btn-success-text-colour-hover:		Call to Action Button Text Colour Hover State			
+btn-success-bg-colour-hover:		Call to Action Button Background Colour Hover State
+btn-success-border-colour-hover:	Call to Action Button Border Colour Hover State
+
+btn-success-disabled-bg-colour:		Success Button Disabled Background Colour
+btn-success-disabled-border-colour:	Success Button Disabled Border Colour
+
+btn-danger-text-colour:				Danger Button Text Colour			
+btn-danger-bg-colour:				Danger Button Background Colour
+btn-danger-border-colour:			Danger Button Border Colour
+
+btn-danger-text-colour-hover:		Danger Button Text Colour Hover State			
+btn-danger-bg-colour-hover:			Danger Button Background Colour Hover State
+btn-danger-border-colour-hover:		Danger Button Border Colour Hover State
+
+btn-danger-disabled-bg-colour:		Danger Button Disabled Background Colour
+btn-danger-disabled-border-colour:	Danger Button Disabled Border Colour
+
+btn-info-text-colour:				Information Button Text Colour			
+btn-info-bg-colour:					Information Button Background Colour
+btn-info-border-colour:				Information Button Border Colour
+
+btn-info-text-colour-hover:			Information Button Text Colour Hover State			
+btn-info-bg-colour-hover:			Information Button Background Colour Hover State
+btn-info-border-colour-hover:		Information Button Border Colour Hover State
+
+btn-info-disabled-bg-colour:		Information Button Disabled Background Colour
+btn-info-disabled-border-colour:	Information Button Disabled Border Colour
+
+/* Labels and Tags 
+-----------------------------------------------------------------------------------------------------------*/
+
+label-default-bg:					Default Label/Tag Background Colour
+label-default-bg-hover:				Default Label/Tag  Background Colour Hover State
+
+label-primary-bg:					Primary Label/Tag  Background Colour
+label-primary-bg-hover:				Primary Label/Tag  Background Colour Hover State
+
+label-success-bg:					Success Label/Tag  Background Colour
+label-success-bg-hover:				Success Label/Tag  Background Colour Hover State
+
+label-info-bg:						Info Label/Tag  Background Colour
+label-info-bg-hover:				Info Label/Tag  Background Colour Hover State
+
+label-warning-bg:					Warning Label/Tag  Background Colour
+label-warning-bg-hover:				Warning Label/Tag  Background Colour Hover State
+
+label-danger-bg:					Danger Label/Tag  Background Colour
+label-danger-bg-hover:				Danger Label/Tag  Background Colour Hover State
+
+/* Navigation Bar 
+-----------------------------------------------------------------------------------------------------------*/
+
+
+navbar-default-bg-colour:			Navbar Background Colour
+navbar-default-border-colour:		Navbar Border Colour
+
+navbar-default-text-colour:			Navbar Text Colour
+navbar-default-text-colour-hover:	Navbar Text Colour Hover State
+
+navbar-default-link-colour:			Navbar Link Colour
+navbar-default-link-colour-hover:	Navbar Link Colour Hover State
+navbar-default-link-colour-active:	Navbar Link Colour Active State
+navbar-default-link-bg-active:		Navbar Link Background Active State
+
+
+/* Dropdown Menus 
+-----------------------------------------------------------------------------------------------------------*/
+
+dropdown-menu-bg:					Dropdown Menu Background Colour
+dropdown-menu-border-colour:		Dropdown Menu Border Colour
+dropdown-menu-divider-colour:		Dropdown Menu Divider Colour
+
+dropdown-menu-link-colour:			Dropdown Menu Link Colour
+dropdown-menu-link-colour-hover:	Dropdown Menu Link Colour Hover State
+dropdown-menu-link-bg-hover:		Dropdown Menu Link Background Colour Hover State
+
+dropdown-menu-link-colour-active:	Dropdown Menu Link Active State Colour
+dropdown-menu-link-bg-active:		Dropdown Menu Link Active State Background Colour
+
+dropdown-menu-open-tab-text:		Dropdown Menu Open Tab Text
+dropdown-menu-open-tab-bg:			Dropdown Menu Open Tab Background
+
+/* Pagination 
+-----------------------------------------------------------------------------------------------------------*/
+
+pagination-text-colour:				Pagination Text Colour
+pagination-border-colour:			Pagination Border Colour
+pagination-bg-colour:				Pagination Background Colour
+
+pagination-text-colour-hover:		Pagination Text Colour Hover State
+pagination-border-colour-hover:		Pagination Border Colour Hover State
+pagination-bg-colour-hover:			Pagination Background Colour Hover State
+
+pagination-text-colour-active:		Pagination Text Colour Active State
+pagination-border-colour-active:	Pagination Border Colour Active State
+pagination-bg-colour-active:		Pagination Background Colour Active State
+
+
+/* Wells and Panels 
+-----------------------------------------------------------------------------------------------------------*/
+
+
+well-bg:							Well Background Colour
+well-border-colour:					Well Border Colour
+
+panel-border-colour:				Panel Border Colour
+
+panel-header-text-colour:			Panel Header Text Colour
+panel-header-bg-colour:				Panel Header Background Colour
+panel-header-border-colour:			Panel Header Border Colour
+
+
+/* Other 
+-----------------------------------------------------------------------------------------------------------*/
+
+sale-colour:						Sale Text Colour
+
+
+
+
+

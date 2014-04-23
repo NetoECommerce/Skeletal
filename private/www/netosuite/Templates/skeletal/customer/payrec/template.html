@@ -1,0 +1,382 @@
+
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script language="javascript" type="text/javascript">
+function proc_pay() {
+	var f = document.itemForm;
+	var tmore = document.getElementById("total_more");
+	if(f && tmore) {
+		var r = f['amount_paid'];
+		var rv = parseFloat(r.value);
+		if(!isNaN(rv) && rv > 0) {
+			var tmorev = parseFloat(tmore.innerHTML);
+			if(!isNaN(tmorev) && tmorev == 0) {
+				var cdt = f['card_type'];
+				
+				if(cdt.selectedIndex > 0) {
+					var pn = cdt.options[cdt.selectedIndex].text;
+					var received = f['amount_paid'];
+					if(confirm('You are about to authorise [$moneysign$]'+received.value+' received from \''+pn+'\' to this user.\n'+
+						'\nDo you wish to continue?')) {
+						var s = document.getElementById('processing');
+						if(s) {
+							s.style.display='block';
+						}
+						f.submit();
+					}
+				} else {
+					alert('Please select a payment method.');
+				}
+			} else {
+				alert('You are [$moneysign$]'+tmore.innerHTML+' out of balance.');
+			}
+		} else {
+			alert('Please enter a payment amount.');
+		}
+				
+	}
+}
+
+function updAmt(chk) {
+	var f = document.itemForm;
+	var trec = document.getElementById("total_rec");
+	var tapp = document.getElementById("total_app");
+	var tmore = document.getElementById("total_more");
+	if(chk) {
+		if(chk.value != '') {
+			var amt = parseFloat(chk.value);
+			if(isNaN(amt) || amt <0) {
+				alert("Error: Invalid Amount Applied.");
+				chk.value='0';
+			} else {
+				amt = (Math.round(amt * 100) / 100);
+				chk.value=amt;
+			}
+		}
+	}
+	
+	if(f && trec && tapp && tmore) {
+		var r = f['amount_paid'];
+		if(r) {
+			var paid = 0;
+			if(r.value != '') {
+				paid = parseFloat(r.value);
+				if(isNaN(paid)) {
+					alert("Error: Invalid payment amount.");
+					r.value='0';
+					paid = 0;
+				} else {
+					paid = (Math.round(paid * 100) / 100);
+					r.value=paid;
+				}
+			}
+			
+			var tamt = 0;
+			var i=0; var obj=f['pay'+i];
+			while(obj) {
+				if(obj.value != '') {
+					var amt = parseFloat(obj.value);
+					if(isNaN(amt)) {
+						amt = 0;
+					} else {
+						amt = (Math.round(amt * 100) / 100);
+						tamt += amt;
+					}
+				}
+				i++; obj=f['pay'+i];
+			}
+			trec.innerHTML =  (Math.round(paid * 100) / 100);
+			tapp.innerHTML =  (Math.round(tamt * 100) / 100);
+			tmore.innerHTML = (Math.round((paid-tamt) * 100) / 100);
+		}
+	}
+}
+
+function appAmt(ind) {
+	var f = document.itemForm;	
+	if(f) {
+		var r = f['amount_paid'];
+		var chg = f['pay'+ind];
+		var own = document.getElementById('own'+ind);
+		
+		if(r && chg && own) {
+			var paid = 0;
+			if(r.value != '') {
+				paid = parseFloat(r.value);
+				if(isNaN(paid)) {
+					paid = 0;
+				} else {
+					paid = (Math.round(paid * 100) / 100);
+				}
+			}
+
+			var chgv = parseFloat(chg.value); 
+			if(isNaN(chgv)) { chgv=0; } else { chgv = (Math.round(chgv * 100) / 100); }
+			var ownv = parseFloat(own.value);
+			if(!isNaN(ownv)) {
+				ownv = (Math.round(ownv * 100) / 100);
+				
+				var tamt = 0;
+				var i=0; var obj=f['pay'+i];
+				while(obj) {
+					if(obj.value != '' && i != ind) {
+						var amt = parseFloat(obj.value);
+						if(isNaN(amt)) {
+							amt = 0;
+						} else {
+							amt = (Math.round(amt * 100) / 100);
+							tamt += amt;
+						}
+					}
+					i++; obj=f['pay'+i];
+				}
+				
+				var app = chgv;
+				var rem = paid-tamt;
+				if(rem < 0) { rem = 0; }
+				if(rem > 0) {
+					if(rem > ownv) {
+						app = ownv;
+					} else {
+						app = rem;
+					}
+				}
+				if(app != chgv) {
+					app = (Math.round(app * 100) / 100);
+					chg.value=app;
+					updAmt();
+				}
+			}
+		}
+	}
+}
+
+function clrAmt() {
+	var f = document.itemForm;
+	if(f) {
+		var i=0; var obj=f['amt'+i];
+		while(obj) {
+			obj.value='';
+			i++; obj=f['amt'+i];
+		}
+		updAmt();
+	}
+}
+
+function showPD() {
+	var f = document.itemForm;	
+	var obj = f['card_type'];
+	var pl = document.getElementById('payccpl');
+	if(obj && pl){
+		var val= obj.options[obj.selectedIndex].value;
+		pl.style.display = (val.indexOf(':cc')>0? '': 'none');
+	}
+}
+</script>
+<!--##[%END SITE_VALUE%]##-->
+
+<div class="col-xs-12">
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Pay Outstanding Orders and Invoices</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1>Pay Outstanding Orders &amp; Invoices</h1>
+</div>
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-danger">
+  <a class="close" data-dismiss="alert">×</a>
+  [@error@]
+</div>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'ne' value:''%]##-->
+<div class="alert alert-success">
+  <a class="close" data-dismiss="alert">×</a>
+  [@msg@]
+</div>
+<!--##[%END DATA%]##-->
+
+
+<div id="processing" style="display:none;" class="alert alert-danger">
+<h2>Payment Processing</h2>
+<h2>Please do not refresh or close this page</h2>
+<img src="[$imageurl$]/loading.gif" alt="Loading"/></div>
+
+
+
+<form action="[%URL page:'account' type:'payrec'%][%END URL%]" method="post" name="itemForm">
+	<input type="hidden" name="action" value="pay">
+	<input type="hidden" name="ts" value="[@ts@]">
+
+<h3>My Account Details</h3>
+<p><b>My Payment Terms</b> [%USER id:'terms'%][%END USER%]</p>
+<p><b>My Account Balance</b> <!--##[%format type:"currency"%]##-->[%USER id:'balance'%][%END USER%]<!--##[%END format%]##--><span class="text-muted">(Credit Limit: <!--##[%format type:"currency"%]##-->[%USER id:'credit_limit'%][%END USER%]<!--##[%END format%]##-->)</span></p>
+<p><b>My Available Credit</b> <!--##[%format type:"currency"%]##-->[%USER id:'credit'%][%END USER%]<!--##[%END format%]##--></p>
+<hr />
+<h3>Real-Time Payment Processor</h3>
+<p class="help-block">
+Enter your payment details and the amount you want to pay below. Then apply the payment to the invoices you want to pay until your <b>Out Of Balance</b> equals <b>0</b>. To finalise payment click on the <b>process payment</b> button at the bottom of the page.
+</p>
+<br />
+
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<label>Select Payment Method</label>
+<select class="form-control" name="card_type" onChange="showPD()">
+<option value=""></option>
+<!--##[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[$NO_BULK_PAY_SURCHARGE$]' %]
+[%PARAM *body%]##--> 
+<option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
+<!--##[%END PARAM%]
+[%END payment_methods%]##--> 
+</select>
+</div>
+</div> 
+ 
+ 
+<div style="display:none;" id="payccpl">
+
+<div class="row">
+<div class="col-xs-12 col-md-6">
+<hr>
+<div class="well">
+<div class="form-group">
+<label>Card Holder</label>
+<input class="form-control" type="text" name="card_holder" size="30" maxlength="40" value="">
+</div>
+
+<div class="form-group">
+<label>Card Number</label>
+<input class="form-control" type="text" name="card_number" size="16" maxlength="16" value="">
+<p class="help-block">(only digits)</p>
+</div>
+
+<div class="row">
+<div class="col-xs-12">
+<label>Card Expiration Date</label>
+</div>
+<div class="col-xs-6">
+
+<div class="form-group">
+<p class="help-block">Month</p>
+<select class="input-small form-control " name="card_exp_month">
+		<option value=""></option>
+<!--##[%months%][%PARAM *body%]##-->
+<option value="[@month@]">[@month@]</option>
+<!--##[%END PARAM%][%END months%]##-->
+	</select>
+	</div>
+	</div>
+	<div class="col-xs-6">
+<div class="form-group">
+<p class="help-block">Year</p>
+	<select class="input-small form-control" name="card_exp_year">
+	<option value=""></option>
+<!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
+<option value="[@year@]">[@year@]</option>
+<!--##[%END PARAM%][%END years%]##-->
+	</select>
+	</div>
+	</div>
+	
+		<div class="col-xs-4">
+	
+	<div class="form-group">
+	<label>Card CCID</label>
+	<input class="form-control" type="text"  name="card_ccid" size="5">
+	<p class="help-block">(3-4 digit security code)</p>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="row">
+<div class="col-xs-12 col-md-3">
+<label>Payment Amount ([$moneysign$])</label>
+<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
+</div>
+</div>
+<hr />
+<h3>Unpaid Orders</h3>
+
+<!--##[%thumb_list type:'orders' limit:'100'%]##-->
+<!--##[%PARAM filter_1%][%END PARAM%]##-->
+<!--##[%PARAM filter_2%]y[%END PARAM%]##-->
+<!--##[%PARAM *header%]##-->  
+<table class="table">
+<thead>	<tr> 
+		<th><b>Order ID</b></th>
+		<th><b>Invoiced Date</b></th>
+		<th><b>Payment Terms</b></th>
+		<th><b>Due Date</b></th>
+		<th><b>Total Due</b></th>
+		<th><b>Amount Owed</b></th>
+		<th colspan="2"><b>Amount Applied</b></th>
+	</tr>
+</thead>   
+<tbody>    
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *body%]##-->
+<tr> 
+	<td class="small" nowrap>[@order_id@]
+		<input type="hidden" name="oid[@count@]" value="[@order_id@]">
+		<input type="hidden" id="own[@count@]" value="[@amount_owed@]">
+		<input type="hidden" name="paid[@count@]" value="[@amount_paid@]">
+		<input type="hidden" name="total[@count@]" value="[@grand_total@]">
+	</td>
+	<td class="small" nowrap><!--##[%format type:'date' default:'-' format:'#d #k #Y'%]##-->[@date_invoiced@]<!--##[%END format%]##--></td>
+	<td class="small">[@terms@]</td>
+	<td class="small" nowrap><!--##[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%]##-->[@date_due@]<!--##[%END format%]##--></td>
+	<td class="small" nowrap><!--##[%format type:"currency"%]##-->[@grand_total@]<!--##[%END format%]##--></td>
+	<td class="small" nowrap><!--##[%format type:"currency"%]##-->[@amount_owed@]<!--##[%END format%]##--></td>
+	<td nowrap>[$moneysign$]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%END DATA%]" size="7" onChange="updAmt(this)"></td>
+	<td nowrap><input class="btn" type="button" value="Apply" onClick="appAmt([@count@])"></td>
+</tr>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *footer%]##-->
+ 	<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[$moneysign$]<span id="total_app">0.00</span></td></tr>
+	<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[$moneysign$]<span id="total_rec">0.00</span></td></tr>
+	<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[$moneysign$]<span id="total_more">0.00</span></td></tr>
+</tbody>
+</table>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM ifempty%]##-->
+No outstanding orders on this account. 
+<!--##[%END PARAM%]##-->
+<!--##[%END thumb_list%]##-->              
+
+<div class="clear"></div>
+
+<div class="form-actions">
+
+</div>
+
+<div class="row">
+			<div class="col-xs-12">
+				<hr>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-xs-12 col-md-3">
+			<input type="button" value="Reset" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%URL page:'account' type:'payrec'%][%END URL%]'"><br>
+
+			</div>
+			<div class="col-xs-12 col-md-3 col-md-offset-6">
+			
+				<input type="button" onclick="proc_pay()" value="Process Payment" class="btn btn-success btn-lg btn-block">
+			</div>
+		</div>
+		
+</form>
+
+<script type="text/javascript" language="javascript">showPD();updAmt();</script>
+
+</div>

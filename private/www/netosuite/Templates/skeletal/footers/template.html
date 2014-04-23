@@ -1,0 +1,212 @@
+	</div><!-- /.row -->
+</div><!-- /#main-content -->
+<div class="wrapper-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<hr />
+			</div>
+		</div><!-- /.row -->
+		<div class="row">
+			<div class="col-xs-12 col-sm-8">
+				<div class="row">
+					<!--##[%menu id:'web_footer'%]
+						[%param *level_1%]##-->
+							<div class="col-xs-12 col-sm-4">
+								<h4>[@name@]</h4>
+								<ul class="nav nav-pills nav-stacked">
+									[@next_level@]
+								</ul>
+							</div>
+						<!--##[%end param%]
+						[%param *level_2%]##-->
+							<li><a href="[@url@]">[@name@]</a></li>
+						<!--##[%end param%]
+					[%end menu%]##-->
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<h4>Stay In Touch</h4>
+				<p>Subscribe to our newsletter:</p>
+				<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]">
+					<input type="hidden" name="list_id" value="1">
+					<input type="hidden" name="opt_in" value="y">
+					<div class="input-group">
+						<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%end nohtml%]" placeholder="Email Address" required/>
+						<input name="inp-submit" type="hidden" value="y" />
+						<input name="inp-opt_in" type="hidden" value="y" />
+						<span class="input-group-btn">
+							<input class="btn btn-default" type="submit" value="Subscribe" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"/>
+						</span>
+					</div>
+				</form>
+				<ul class="list-inline list-social">
+					<li><a href="[%url type:'page' id:'contact_us'%][%end url%]" target="_blank"><i class="fa fa-envelope"></i></a></li>
+					<!--##[%if [@config:facebook_account_id@]%]##-->
+					<li><a href="[$facebook_account_id$]" target="_blank"><i class="fa fa-facebook-square text-facebook"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:twitter_account_id@]%]##-->
+					<li><a href="[$twitter_account_id$]" target="_blank"><i class="fa fa-twitter-square text-twitter"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:googleplus_account_id@]%]##-->
+					<li><a href="[$googleplus_account_id$]" target="_blank"><i class="fa fa-google-plus-square text-google-plus"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:youtube_account_id@]%]##-->
+					<li><a href="[$youtube_account_id$]" target="_blank"><i class="fa fa-youtube-square text-youtube"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:instagram_account_id@]%]##-->
+					<li><a href="[$instagram_account_id$]" target="_blank"><i class="fa fa-instagram text-instagram"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:pinterest_account_id@]%]##-->
+					<li><a href="[@config:pinterest_account_id@]" target="_blank"><i class="fa fa-pinterest-square text-pinterest"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:tumblr_account_id@]%]##-->
+					<li><a href="[@config:tumblr_account_id@]" target="_blank"><i class="fa fa-tumblr-square text-tumblr"></i></a></li>
+					<!--##[%end if%]##-->
+					<!--##[%if [@config:linkedin_account_id@]%]##-->
+					<li><a href="[@config:linkedin_account_id@]" target="_blank"><i class="fa fa-linkedin-square text-linkedin"></i></a></li>
+					<!--##[%end if%]##-->
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<hr />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-9 hidden-xs">
+				<!--##[%payment_methods%]
+					[%param header%]##-->
+						<ul class="list-inline">
+					<!--##[%end param%]
+					[%param *body%]##-->
+						<!--##[%data id:'name' if:'like' value:'American Express'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-americanexpress"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Visa'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-visa"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Master Card'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-mastercard"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Discover'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-discover"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Diners'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-diners"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Cheque'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-cheque"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Money Order'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-moneyorder"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'Direct Deposit'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-directdeposit"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'bpay'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-bpay"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+						<!--##[%data id:'name' if:'like' value:'paypal'%]##-->
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-paypal"></div>
+								</div>
+							</li>
+						<!--##[%end data%]##-->
+					<!--##[%end param%]
+					[%param *footer%]##-->
+						</ul>
+					<!--##[%end param%]
+				[%end payment_methods%]##-->
+			</div>
+			<div class="col-sm-3">
+				<address>
+					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
+					[%if [@config:company_abn@]%]<strong>ABN:</strong> [@config:company_abn@]<br>[%/ if%]
+					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
+					<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank">E-commerce Software</a> By Neto</p>
+				</address>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Required Neto Scripts - DO NOT REMOVE -->
+<script type="text/javascript" src="[$imageurl$]/js/util.js"></script>
+<script type="text/javascript" src="[%ntheme_asset%]js/jquery.min.js[%END ntheme_asset%]"></script>
+<script type="text/javascript" src="[%ntheme_asset%]plugins/fancybox/jquery.fancybox.pack.js[%END ntheme_asset%]"></script>
+<script type="text/javascript" src="[%NETO_JS id:'main'%][%END NETO_JS%]"></script>
+<script type="text/javascript" src="[%ntheme_asset%]js/bootstrap.min.js[%END ntheme_asset%]"></script>
+<script type="text/javascript" src="[%ntheme_asset%]js/custom.js[%END ntheme_asset%]"></script>
+<!-- Plugin Scripts -->
+<script type="text/javascript" src="[%ntheme_asset%]plugins/jquery_ui/js/jquery-ui-1.8.18.custom.min.js[%END ntheme_asset%]"></script>
+<!-- <script type="text/javascript" src="[%ntheme_asset%]plugins/jcarousel/js/jquery.jcarousel.min.js[%END ntheme_asset%]"></script> -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5282cbb6476f74a0" async></script>
+<!--##[%SITE_VALUE id:'footer_javascript' type:'load'%][%END SITE_VALUE%]##-->
+<!-- Analytics - DO NOT REMOVE -->
+<!--##[%load_template file:"trackingcode/VisitorTracking.html"%][%END load_template%]##-->
+<!-- IF ?npurpose=facebook Show scripts for facebook -->
+[%if [@form:npurpose@] eq 'facebook'%]
+	<style type="text/css">
+		body,html {
+			overflow: hidden;
+		}
+	</style>
+	<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+	<script>
+		FB.init({
+			appId : '[@config:facebook_app_id@]',
+			status : true,
+			cookie : true,
+			xfbml : true
+		});
+	</script>
+	<script type="text/javascript">
+		jQuery(window).load(function(){
+			FB.Canvas.setAutoGrow();
+		});
+		$(function(){
+			$.addFacebookNPurpose();
+		})
+	</script>
+[%/ if%]
+<!--##[%load_template file:"includes/npopup.template.html"%][%END load_template%]##-->
+</body>
+</html>

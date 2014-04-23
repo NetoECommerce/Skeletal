@@ -1,0 +1,66 @@
+<!--##[%DISPLAY_CHILD_PRODUCTS id:'[@SKU@]'%]
+	[%PARAM *header%]##-->
+        <hr />
+		<h4>Buying Options</h4>
+		<div id="multiitemadd">
+			<a name="child" id="child"></a>
+			<div id="buy-child-list">
+				<table class="table table-bordered" cellspacing="0"> 
+					<thead>
+						<tr>
+							<th width="1">Quantity</th>
+							<th width="72">Image</th>
+							<th>Name</th>
+							<th width="47">Price</th>
+						</tr>
+					</thead>
+					<tbody>			
+				<!--##[%END PARAM%]
+				[%PARAM *body%]##-->
+					<tr>
+						<td>
+							<!--##[%IF [@store_quantity@] > 0 AND ![@has_child@]%]##-->
+							<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+							<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]"> 
+							<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+							<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+							<!--##[%ELSE%]##-->	
+							<input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
+							<!--##[%END IF%]##-->	
+						</td>
+						<td>
+							<img border="0" rel="itmimg[@SKU@]" src="[@thumb@]" alt="[@name@]" width="50px" height="50px"/>
+						</td>
+						<td>
+							[@name@]
+							<!--##[%IF [@subtitle@]%]##-->
+							<div class="text-muted">[@subtitle@]</div>
+							<!--##[%END IF%]##--> 
+						</td>
+						<td>
+							<div class="child-price"><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></div>
+							<!--##[%IF [@extra@] or [@has_child@] %]##-->			
+							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
+							<!--##[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]##-->
+							<span class="label label-warning">Pre-Order</span>
+							<!--##[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]##-->
+							<span class="label label-success">In stock</span>
+							<!--##[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]##-->
+							<span class="label label-warning">Back Order</span>
+							<!--##[%ELSE%]##-->
+							<span class="label label-important">Sold Out</span>
+							<!--##[%END IF%]##-->
+						</td>
+					</tr>
+				<!--##[%END PARAM%]
+				[%PARAM *footer%]##-->
+					</tbody>
+				</table>
+			</div>				
+			<div class="cta-area">
+				<a href="#" onclick="javascript:if ($.checkValidQty()) { $.addMultipleCartItems('multiitemadd'); return false; }" rel="nofollow" class="multi-add btn btn-success"><i class="fa fa-shopping-cart"></i> Add Selected to Cart</a>
+				<span id="a2c_loading"></span>
+			</div>
+		</div>
+	<!--##[%END PARAM%]
+[%END DISPLAY_CHILD_PRODUCTS%]##-->

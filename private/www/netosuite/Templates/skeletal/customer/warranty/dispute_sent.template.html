@@ -1,0 +1,38 @@
+<div class="col-xs-12">
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Resolution Centre</a></li>
+</ul>
+
+
+<div class="page-header">
+<h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1>
+</div>
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
+<!--##[%END DATA%]##-->
+
+<script language="javascript" type="text/javascript">
+function cancalAction() {
+	window.location.href='[%URL page:"account" type:"warranty"%][%END URL%]';
+}
+</script>
+
+<p>Your <a href="[%URL page:'account' type:'warranty' id:'[@dispute_id@]'%][%END URL%]">dispute #[@dispute_id@]</a> has been sent to [$company_name$]. You can track the progress of your dispute at any time from within your account.</p>
+
+
+<div class="row btn-stack">	
+<div class="col-xs-12 col-md-3">
+<button type="button" value="Go Back To Start" class="btn btn-default btn-block" onClick="cancalAction()"> Create Another Dispute <i class="fa fa-refresh icon-white"></i></button>
+</div>
+
+<div class="col-xs-12 col-md-3 col-md-offset-6">
+<a class="btn btn-block btn-success" href="[$homeurl$]">Return Home</a>
+</div>
+
+</div>
+</div>
+
+</div>

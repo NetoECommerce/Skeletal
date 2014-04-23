@@ -1,0 +1,82 @@
+<script language="javascript" type="text/javascript" src="[$imageurl$]/js/CDate.js"></script>
+
+<div class="col-xs-12">
+	<ul class="breadcrumb">
+		<li><a href="[$home_url$]">Home</a></li>
+		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+		<li><a href="[%URL page:'account' type:'wishlist'%][%END URL%]">My Wish Lists</a></li>
+		<li><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%END URL%]"><!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##--></a></li>
+	</ul>
+	<h1>Edit My Wish List</h1>
+	<hr />
+	
+	<!--##[%DATA id:'msg' if:'eq' value:'LIST_UPDATED'%]##-->
+	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> Wish list has been updated. </div>
+	<!--##[%END DATA%]##-->
+	
+	<form NAME="wishlist_update" method="POST" action="[%URL page:'account' type:'wishlist' fn:'view'%][%END URL%]">
+		<input type="hidden" name="id" value="[@wishlist_id@]" />
+		<input type="hidden" name="proc" value="update" />
+		<div class="panel panel-default">
+		<div class="panel-heading"> <i class="fa fa-cog"></i> <!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##--> Settings </div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<div class="form-group">
+						<label>List Name</label>
+						<span class="label label-info">Created on 
+						<!--##[%FORMAT type:'date' default:'' format:'#d #k #Y (#H:#I)'%][@date_created@][%END FORMAT%]##-->. 
+						<!--##[%FORMAT type:'date' default:'' format:' Last reminder sent on #d #k #Y (#H:#I).'%][@date_reminder@][%END FORMAT%]##--> 
+						</span>
+						<input class="form-control" type="text" name="wh_name" value="[%NOHTML%][@wishlist_name@][%END NOHTML%]" maxlength="50" />
+						
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+				<label>&nbsp;</label>
+				<p><input type="submit" class="btn btn-success" name="submit" value="Save My List Settings" /></p>
+				</div>
+				
+				<div class="col-xs-12 col-md-6 hidden">
+				<div class="form-group">
+					<label>List Status</label>
+					<select class="form-control" name="wh_active">
+						<option value="y">Active</option>
+						<option value="n" [%DATA id:'wishlist_active' if:'eq' value:'n'%]selected[%END DATA%]>Inactive</option>
+					</select>
+				</div>
+				</div>
+				<div class="col-xs-12 col-md-6 hidden">
+					<label>Remind about this list every</label>
+					<input class="form-control" type="text" name="wh_reminder_inc_days" value="[%DATA id:'reminder_inc_days' if:'>' value:'0'%][@reminder_inc_days@][%END DATA%]" size="5" maxlength="5" />
+					<label>day(s) until this list expire on:</label>
+					<input type="text" class="form-control datepicker" id="wh_exp" name="wh_exp" value="[%FORMAT type:'date' default:'' format:'#d/#m/#Y'%][@date_expiry@][%END FORMAT%]" />
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>
+<h4><i class="fa fa-folder-open"></i> <!--##[%NOHTML%]##-->[@wishlist_name@] Content's<!--##[%END NOHTML%]##--></h4>
+<hr />
+
+<!--##[%thumb_list limit:'10000' type:'products' sortby:'wishlist' template:'clist' filter_wishlist:'[@wishlist_id@]'%]##--> 
+<!--##[%PARAM pgnum%][%FORM id:'pgquote'%][%END FORM%][%END PARAM%]##--> 
+<!--##[%PARAM header%]##-->
+<div class="thumb">
+	<ul class="thumbnails">
+		<!--##[%END PARAM%]##--> 
+		<!--##[%PARAM *footer%]##-->
+	</ul>
+</div>
+<div class="clear"></div>
+<!--##[%END PARAM%]##--> 
+<!--##[%PARAM ifempty%]##--> 
+You have no items in this wish list. 
+<!--##[%END PARAM%]##--> 
+<!--##[%END thumb_list%]##-->
+</div>
+
+<!--#Start Column Right# ##--> 
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##--> 
+<!--# End Column Right# ##-->

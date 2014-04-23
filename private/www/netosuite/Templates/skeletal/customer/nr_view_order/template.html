@@ -1,0 +1,30 @@
+<!--#Start Content# ##-->
+
+
+<!--##[%FORM id:'id' if:'ne' value:''%]##-->
+Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service.
+<!--##[%END FORM%]##-->
+<h1>Retrieve Order Details</h1>
+<form  method="post" action="[%URL page:'account' type:'nr_view_order'%][%END URL%]">
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td width="1%" nowrap><div align="right"><b>My E-mail Address is:</b></div></td>
+	<td nowrap="nowrap"><input type="text" name="email" value="[%nohtml%][@formemail@][%end nohtml%]" size="25"></td>
+</tr>
+<tr>
+<td width="1%" nowrap><div align="right"><b>Order ID:</b></div></td>
+	<td nowrap="nowrap"><input type="text" name="id" value="" size="25"></td>
+</tr> 
+<tr>
+<td width="1%" nowrap><div align="right"><b>Ship To Post Code:</b></div></td>
+	<td nowrap="nowrap"><input type="password" name="zip" value="" size="25"></td>
+</tr>
+<tr> 
+<td nowrap="nowrap">&nbsp;</td>
+<td nowrap="nowrap"><input name="submit" type="submit"  value="View"></td>
+</tr>
+</table> 
+</form>
+
+</div>
+<!--#End Content# ##-->

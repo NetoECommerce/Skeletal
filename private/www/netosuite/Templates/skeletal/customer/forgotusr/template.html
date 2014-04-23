@@ -1,0 +1,36 @@
+<div class="grid_12">
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1> Forgot Username?</h1>
+</div>
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error">
+  <a class="close" data-dismiss="alert">×</a>
+  [@error@]
+</div>
+<!--##[%END DATA%]##-->
+
+<p class="help-block"> Please enter your e-mail address below and we will send you your username by e-mail.</p>
+<br />
+
+
+<form method="POST" action="[%URL page:'account' type:'forgotusr'%][%END URL%]">
+<input type="hidden" name="fn" value="proc">
+<label>Email Address</label>
+<input name="email" size="30" value="">
+
+<div class="form-actions">
+<input type="submit" name="login" value="Send Me My Username" class="btn btn-success">
+</div>
+
+</form>
+
+</div>

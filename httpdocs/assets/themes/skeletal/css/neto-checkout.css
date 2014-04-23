@@ -1,0 +1,49 @@
+/***************** GENERAL STYLES **************/
+
+.paypal_button {background:#E9E9E9; padding:5px;}
+.ajaxloader { background: #CCC url(/assets/icons/ajax-loader.gif) no-repeat 50% 50%; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; opacity: .7; }
+
+
+#credit_apply_display {display: none;}
+#_cpy_login_pl_login {display:none;}
+#_cpy_login_pl_none {display:none;}
+#_cpy_login_pl_register {display:none;}
+#_cpy_checkout_pl {display:none;}
+#_cpy_checkout_pl {display:none;}
+#_cpy_login_pl {display:none;}
+
+._step {border-bottom:1px solid #EEE; padding-bottom:10px; padding-left:5px;}
+._step_no {font-weight:bold; font-size:21px; margin-bottom:5px;}
+._step_desc { color:#999; font-size:14px;}
+._terms {margin-top:10px;}
+.payment_options ul { margin:0px; padding:0px; list-style:none;}
+.payment_options li{ float:left; width:55px; height:32px; padding-top:5px; padding-bottom:5px;}
+._cpy_paydesc {display:none;}
+._cpy_plandesc { display:none;}
+._cpy_comment_pl { padding:5px; margin-bottom:5px; }
+._cpy_comment {display:none; }
+._cpy_vouchermsg {display:none; }
+._order_total {color:#090;}
+._cpy_balancedue {color:#090;}
+
+#_cpy_payment_pl { margin-bottom:8px;}
+#_cpy_plan_pl { margin-bottom:8px;}
+
+#_macart_pl table tr td select {margin-bottom:5px;}
+#_macart_pl table tr td {vertical-align:middle !important; padding:2px; padding-top:10px;}
+#_macart_pl table {margin-top:15px;}
+
+._sh_post_sel { background:#FFFFFF; border:1px solid #CCCCCC; padding:4px;}
+._sh_post_sel ul { list-style:none; margin:0px; padding:0px;}
+._sh_post_sel li { padding:2px;}
+input[readonly] {background:#EFEFEF; color:666;}
+
+._cpy_voucher {display:none; }
+
+._cpy_credit_table {display:none;}
+._cpy_credit_table TD { vertical-align:top;}
+._cpy_thirdparty_msg {display:none;}
+
+#_cpy_goback_pl {display:none;}
+
+

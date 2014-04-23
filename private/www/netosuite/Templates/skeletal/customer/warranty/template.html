@@ -1,0 +1,83 @@
+
+<div class="col-xs-12">
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Resolution Centre</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+
+<h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1>
+<p>Need to return an item, make a warranty claim or have been over 
+        charged for an order? Please open a dispute so that we can organise to 
+        have your problem resolved as quickly as possible.</p>
+      <p>Most disputes can be resolved through communication and it's best to contact 
+        us as soon as you recognise a potential problem. Once lodged 
+        you can also track the progress of your dispute online at any time. </p>
+<p>
+<a class="btn btn-success" href="[%URL page:'account' type:'warranty' fn:'create'%][%END URL%]"><i class="fa fa-plus icon-white"></i> Click Here To Start A New Dispute</a> 
+</p>
+
+<hr />
+<h3><i class="fa fa-folder-open"></i> Open Disputes</h3>
+<br />
+
+<!--##[%thumb_list type:'disputes' limit:'5'%]##-->
+<!--##[%PARAM filter_1%][%FORM id:'dispute'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM filter_2%][%FORM id:'dstatus'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM header%]##-->  
+
+<p>Below is list of all open disputes and their current status. To see past or closed disputes use the "show" filter below.</p>
+
+<table class="table table-striped table-bordered table-condensed">
+<thead>
+	<tr> 
+		<th>Dispute# / Status</th>
+		<th>Date</th>
+		<th>Type</th>
+		<th>Reason</th>
+		<th>Order ID</th>
+		<th>Filed On / Replied On</th>
+	</tr>
+    </thead>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *body%]##-->
+<tr> 
+	<td><a href="[%URL page:'account' type:'warranty' id:'[@dispute_id@]'%][%END URL%]">[@dispute_id@]</a> [@dispute_status@]
+<!--##[%DATA id:'response_repuired' if:'=' value:'1'%]##-->
+<p class="text-danger">Response Required</p>
+<!--##[%END DATA%]##--></td>
+	<td><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_disputed@]<!--##[%END format%]##--></td>
+	<td>[@dispute_type@]</td>
+	<td>[@dispute_reason@]</td>
+	<td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a></td>
+	<td><!--##[%format type:'date' default:'-' format:'#d #k #Y'%]##-->[@date_filed@]<!--##[%END format%]##--> / <!--##[%format type:'date' default:'-' format:'#d #k #Y'%]##-->[@company_reply@]<!--##[%END format%]##--></td>
+	
+</tr>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *footer%]##-->
+</table>
+
+<!--#Start Pagination# ##-->
+<div class="text-center">
+<ul class="pagination">
+<!--##[%paging limit:'3'%]
+[%PARAM *previous_page%]##--><li><a href="[@URL@]">Previous Page</a></li><!--##[%END PARAM%]
+[%PARAM *goback_pages%]##--><li><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *current_page%]##--><li class="active"><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *gonext_pages%]##--><li><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *next_page%]##--><li><a href="[@URL@]">Next Page</a></li><!--##[%END PARAM%]
+[%END paging%]##-->
+</ul>
+</div>
+<!--#End Pagination# ##-->
+
+ 
+              <!--##[%END PARAM%]##-->
+              <!--##[%PARAM ifempty%]##-->
+<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> No disputes have been raised on this account. </div>
+              <!--##[%END PARAM%]##-->
+              <!--##[%END thumb_list%]##-->              
+</div>        

@@ -1,0 +1,39 @@
+<!--#Start Content# ##-->
+
+
+
+<!--##[%FORM id:'id' if:'ne' value:''%]##-->
+<div class="alert alert-error">
+<a class="close" data-dismiss="alert">×</a>
+Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service.
+</div>
+<!--##[%END FORM%]##-->
+<div class="page-header">
+<h1>Retrieve Order Tracking Information</h1>
+</div>
+<p>
+For security reasons please enter some details related to your order so that we can provide tracking information.
+</p>
+<form  method="post" action="[%URL page:'account' type:'nr_track_order'%][%END URL%]">
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+<tr>
+<td width="1%" nowrap><div align="right"><b>Order E-mail Address:</b></div></td>
+	<td nowrap="nowrap"><input type="text" name="email" value="[%nohtml%][@formemail@][%end nohtml%]" size="25"></td>
+</tr>
+<tr>
+<td width="1%" nowrap><div align="right"><b>Order ID:</b></div></td>
+	<td nowrap="nowrap"><input type="text" name="id" value="" size="25"></td>
+</tr> 
+<tr>
+<td width="1%" nowrap><div align="right"><b>Order Ship To Post Code:</b></div></td>
+	<td nowrap="nowrap"><input type="password" name="zip" value="" size="25"></td>
+</tr>
+<tr> 
+<td nowrap="nowrap">&nbsp;</td>
+<td nowrap="nowrap"><input name="submit" class="btn" type="submit"  value="Track Order"></td>
+</tr>
+</table> 
+</form>
+
+</div>
+<!--#End Content# ##-->

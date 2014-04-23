@@ -1,0 +1,53 @@
+<!--##[%CACHE type:'gallery' id:'[@inventory_id@]'%]##-->
+<div class="wrapper-thumbnail col-xs-8 col-sm-6 col-md-4 col-lg-3">
+	<div class="thumbnail" itemscope itemtype="http://schema.org/Product">
+		<a href="[@URL@]" class="thumbnail-image">
+			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%NTHEME_ASSET%]img/default_product.gif[%END NTHEME_ASSET%][%end param%][%END asset_url%]" class="product-image" alt="[@model@]" rel="itmimg[@SKU@]">
+		</a>
+		<div class="caption">
+			<h3 itemprop="name"><a href="[@URL@]" title="[@model@]"><!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##--></a></h3>
+			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
+				<!--##[%IF [@inpromo@]%]##-->
+					<strong>Now</strong>
+					<span itemprop="price"><!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##--></span>
+				<!--##[%ELSE%]##-->
+					<span itemprop="price"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>
+				<!--##[%END IF%]##-->
+			</p>
+			<!--# BUYING OPTIONS # ##-->
+			<form class="form-inline buying-options">
+				<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+				<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+				<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+				<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="1" class="input-tiny">
+				<!--##[%IF [@extra@] or [@has_child@] %]##-->
+				<a href="[@URL@]" title="Buying Options" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Buying Options</a>
+				<!--##[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]##-->
+				<button type="button" title="Pre-Order Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
+				<!--##[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]##-->
+				<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+				<!--##[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]##-->
+				<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
+				<!--##[%ELSE%]##-->
+				<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
+				<!--##[%END IF%]##-->
+			</form>
+			<!--# END PRODUCT BUYING OPTIONS # ##-->
+		</div>
+		<div class="savings-container">
+			<!--##[%IF [@inpromo@]%]##-->
+				<span class="label label-danger">On Sale</span>
+			<!--##[%END IF%]##-->
+			<!--##[%IF [@save@] > 0 AND ![@has_child@] %]##-->
+				<span class="label label-warning">
+				<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##--> OFF</span>
+			<!--##[%END IF%]##-->
+			<!--##[%IF [@save@] > 0%]##-->
+				<span class="label label-default">RRP <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
+			<!--##[%END IF%]##-->
+		</div>
+	</div>
+</div>
+<!--##[%END CACHE%]##-->
+

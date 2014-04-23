@@ -1,0 +1,501 @@
+<link rel="stylesheet" type="text/css" href="[%NTHEME_ASSET%]css/neto-checkout.css[%END NTHEME_ASSET%]" media="all" />
+
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script type="text/javascript" src="[%NETO_JS id:'checkout'%][%END NETO_JS%]"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {	
+	$.checkout_Init({});
+});
+</script>
+<!--##[%END SITE_VALUE%]##-->
+
+
+<div class="span24">
+  <div class="page-header">
+    <h1>Secure Checkout <small>The information you enter here is encrypted</small></h1>
+  </div>
+  <!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##--> 
+</div>
+
+<!--##[%USER id:'username' if:'eq' value:''%]##-->
+ <div class="span16"> 
+ <div class="checkout_section" id="_cpy_login_pl">
+<!--##[%load_ajax_template id:'login' type:'cart' template:'login' preload:"1"%][%END load_ajax_template%]##--> 
+  </div></div>
+<!--##[%END USER%]##-->
+
+<div id="_cpy_goback_pl">
+<div class="span24">
+    <div class="_cpy_thirdparty_msg" ref="paypal">You are now being redirected to the PayPal website. Please wait...</div>
+    <div class="well">
+      <table width="100%" border="0" cellspacing="0" cellpadding="4">
+        <tr> 
+          <!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM *if_true%]##--> 
+          <!--##[%CONFIG id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%][%PARAM *if_true%]##-->
+          <td width="150px"><a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></td>
+          <td width="1%" nowrap="nowrap">- OR -</td>
+          <td>Complete the steps below for all other payment options</td>
+          <!--##[%END PARAM%][%PARAM *if_false%]##-->
+          <td>Continue to checkout below</td>
+          <!--##[%END PARAM%][%END CONFIG%]##--> 
+          <!--##[%END PARAM%][%PARAM *if_false%]##-->
+          <td><b><span class="text-danger">**IMPORTANT - YOUR PURCHASE IS NOT YET COMPLETE**</span><br />
+            Please confirm your billing and shipping details below and click the  &quot;Process Order&quot; button at the bottom of this page to complete your purchase.</b></td>
+          <!--##[%END PARAM%][%END DATA%]##--> 
+          <!--##[%USER id:'username' if:'eq' value:''%]##-->
+          <td align="right" nowrap="nowrap"><button id="_cpy_login_goback" class="btn" type="button"><i class="fa fa-chevron-left"></i>Go Back</button></td>
+          <!--##[%END USER%]##--> 
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<input type="hidden" id="_cpy_login_noreg" value="[@noreg@]"/>
+<div id="_cpy_checkout_pl">
+  <div class="span16">
+  <form class="form-horizontal" method="post" id="_cpy_checkout_form" action="[%URL page:'checkout'%][%END URL%]">
+    <input type="hidden" name="submited" id="submited" value="0" />
+    <input type="hidden" name="fn" value="finalize" />  
+    
+    
+    <div class="row">
+    
+		<div class="span4 alpha">
+			<div class="_step">
+			  <div class="_step_no"> Step 1. </div>
+			  <div class="_step_desc"> Billing Details </div>
+			</div>
+		</div>
+		<div class="span12 omega"> 
+	        
+	        <!--##[%USER id:'valid_email' if:'==' value:'0'%]##-->
+	        
+	        <div class="control-group">
+	          <label class="control-label" for="bill_email">Email Address *</label>
+	          <div class="controls">
+	            <input type="text" name="bill_email" id="bill_email" maxlength="50" value="[@email@]"/>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="confirm_email">Confirm Email Address*</label>
+	          <div class="controls">
+	            <input type="text" name="confirm_email" id="confirm_email" maxlength="50" value="[%NOHTML%][%FORM id:'confirm_email'%][%END FORM%][%END NOHTML%]" />
+	          </div>
+	        </div>
+	        <!--##[%END USER%]##-->
+	        
+	        <div class="control-group">
+	          <label class="control-label" for="bill_first_name">First Name *</label>
+	          <div class="controls">
+	            <input type="text" name="bill_first_name" id="bill_first_name" maxlength="50" value="[@bill_first_name@]">
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_last_name">Last Name *</label>
+	          <div class="controls">
+	            <input type="text" name="bill_last_name" id="bill_last_name" maxlength="50" value="[@bill_last_name@]">
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_company">Company</label>
+	          <div class="controls">
+	            <input type="text" name="bill_company" id="bill_company" maxlength="50" value="[@bill_company@]">
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_country">Country *</label>
+	          <div class="controls">
+	            <select name="bill_country" id="bill_country">
+	              <!--##[%countries%]
+		[%PARAM *body%]##-->
+	              <option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%END DATA%]>[@country_name@]</option>
+	              <!--##[%END PARAM%]
+		[%END countries%]##-->
+	            </select>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_street1">Address *</label>
+	          <div class="controls">
+	            <input type="text" name="bill_street1" id="bill_street1" maxlength="50" value="[@bill_street1@]" />
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_street2">&nbsp;</label>
+	          <div class="controls">
+	            <input type="text" name="bill_street2" id="bill_street2" maxlength="50" value="[@bill_street2@]" />
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_zip">Postal Code *</label>
+	          <div class="controls">
+	            <input class="input-small" type="text" name="bill_zip" id="bill_zip" value="[@bill_zip@]" maxlength="10" />
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_city">Suburb / City *</label>
+	          <div class="controls"> <span id="bill_selector"></span>
+	            <input type="text" name="bill_city" id="bill_city" value="[@bill_city@]" maxlength="50"/>
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_state">State *</label>
+	          <div class="controls"> <span id="bill_state_pl" style="display:none;"></span>
+	            <input  type="text" name="bill_state" id="bill_state" value="[@bill_state@]" size="50" maxlength="50" />
+	          </div>
+	        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="bill_phone">Phone Number</label>
+	          <div class="controls">
+	            <input type="text" name="bill_phone" id="bill_phone" maxlength="50" value="[@bill_phone@]" />
+	          </div>
+	        </div>
+		</div>
+		<div class="span16">
+			<hr />
+		</div>
+	</div>
+
+    <!-- End Billing Address -->
+   
+    <!-- Start Shipping Address -->
+
+    <div class="row">
+
+		<div class="span4">
+			<div class="_step">
+			  <div class="_step_no"> Step 2. </div>
+			  <div class="_step_desc"> Shipping Details </div>
+			</div>
+		</div>
+		<div class="span12 omega">
+			<div id="_macart_ovl">
+			  <div class="_shipping_choice">
+			    <div class="control-group">
+			      <label class="control-label">Ship Order To:</label>
+			      <div class="controls">
+			        <label class="checkbox">
+			          <input name="ship_mode" value="b" type="radio" [%DATA id:'ship_mode' if:'eq' value:'b'%]checked[%END DATA%]/>
+			          My billing address. </label>
+			        <label class="checkbox">
+			          <input name="ship_mode" value="s" type="radio" [%DATA id:'ship_mode' if:'eq' value:'s'%]checked[%END DATA%]/>
+			          A different address. </label>
+			        <!--##[%CONFIG id:'MULTI_ADDR_CHECKOUT' if:'==' value:'1'%]##-->
+			        <label class="checkbox">
+			          <input name="ship_mode" value="m" type="radio" [%DATA id:'ship_mode' if:'eq' value:'m'%]checked[%END DATA%]/>
+			          Multiple addresses. </label>
+			        <!--##[%END CONFIG%]##--> 
+			      </div>
+			    </div>
+			  </div>
+			  <div id="shladb_pl"> 
+			    
+			    <!--##[%USER id:'username' if:'ne' value:''%]##-->
+			    <div class="control-group">
+			      <label class="control-label" for="shladb_addr">Choose From Your Address Book</label>
+			      <div class="controls">
+			        <select id="shladb_addr">
+			          <option value=""></option>
+			          <!--##[%address_book%][%PARAM *body%]##-->
+			          <option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
+			          <!--##[%END PARAM%][%END address_book%]##-->
+			        </select>
+			      </div>
+			    </div>
+			    
+			    <!--##[%END USER%]##-->
+			    <div class="control-group">
+			      <label class="control-label" for="ship_first_name">First Name *</label>
+			      <div class="controls">
+			        <input type="text" name="ship_first_name" id="ship_first_name" maxlength="50" value="[@ship_first_name@]">
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_last_name">Last Name *</label>
+			      <div class="controls">
+			        <input type="text" name="ship_last_name" id="ship_last_name" maxlength="50" value="[@ship_last_name@]">
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_company">Company</label>
+			      <div class="controls">
+			        <input type="text" name="ship_company" id="ship_company" maxlength="50" value="[@ship_company@]">
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label  class="control-label" for="ship_country">Country *</label>
+			      <div class="controls">
+			        <select name="ship_country" id="ship_country">
+			          <!--##[%countries%]
+			[%PARAM *body%]##-->
+			          <option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
+			          <!--##[%END PARAM%]
+			[%END countries%]##-->
+			        </select>
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_street1">Address *</label>
+			      <div class="controls">
+			        <input type="text" name="ship_street1" id="ship_street1" maxlength="50" value="[@ship_street1@]" />
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_street2">&nbsp;</label>
+			      <div class="controls">
+			        <input type="text" name="ship_street2" id="ship_street2" maxlength="50" value="[@ship_street2@]" />
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_zip">Postal Code *</label>
+			      <div class="controls">
+			        <input class="input-small" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" maxlength="10" />
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_city">Suburb / City *</label>
+			      <div class="controls"> <span id="ship_selector"></span>
+			        <input type="text" name="ship_city" id="ship_city" value="[@ship_city@]" maxlength="50"/>
+			
+			
+			
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_state">State *</label>
+			      <div class="controls"> <span id="ship_state_pl" style="display:none;"></span>
+			        <input type="text" name="ship_state" id="ship_state" value="[@ship_state@]" size="50" maxlength="50" />
+			      </div>
+			    </div>
+			    <div class="control-group">
+			      <label class="control-label" for="ship_phone">Phone Number *</label>
+			      <div class="controls">
+			        <input type="text" name="ship_phone" id="ship_phone" maxlength="50" value="[@ship_phone@]" />
+			      </div>
+			    </div>
+			  </div>
+			  <div id="_macart_pl"></div>
+			</div>
+			
+			<!-- End Shipping Address -->
+			
+			<div id="checkout_shipping" class="checkout_items"> 
+			  
+			  <!--##[%load_ajax_template id:'shipping_options' type:'cart' template:'shipping_options' preload:"1"%][%END load_ajax_template%]##--> 
+			  
+			  <!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##--> 
+			  <!--##[%PARAM if_true%]##--> 
+			  <!--##[%END PARAM%]##--> 
+			  <!--##[%PARAM if_false%]##-->
+			  <input type="hidden" name="comment" value="" />
+			  <!--##[%END PARAM%]##--> 
+			  <!--##[%END DATA%]##--> 
+			  
+			  <!--##[%load_ajax_template id:'voucher_msg' type:'cart' template:'voucher_msg' preload:"1"%][%END load_ajax_template%]##--> 
+			  
+			  <!--##[%DATA id:'order_type' if:'eq' value:'sales'%]##--> 
+			  <!--##[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]##-->
+			  <div class="control-group">
+			    <label class="control-label" for="dropshipping"> Send invoice with goods?</label>
+			    <div class="controls">
+			      <label class="checkbox inline" for="dropshipping">
+			        <input type="radio" name="dropshipping" value="1" [%DATA id:'dropshipping' if:'=' value:'1'%]checked[%END DATA%] />
+			        No </label>
+			      <label class="checkbox inline" for="dropshipping">
+			        <input type="radio" name="dropshipping" value="0" [%DATA id:'dropshipping' if:'=' value:'0'%]checked[%END DATA%] />
+			        Yes </label>
+			    </div>
+			  </div>
+			  <!--##[%END CONFIG%]##--> 
+			  <!--##[%END DATA%]##--> 
+			  
+			  <!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
+			  <div class="control-group">
+			    <label class="control-label" for="customer_po">Buying this for work?</label>
+			    <div class="controls">
+			      <input type="text" name="customer_po" id="customer_po" maxlength="50" value="[@customer_po@]" placeholder="PO Number"  />
+			      <p class="help-block">Enter your purchase order number above</p>
+			    </div>
+			  </div>
+			  <!--##[%END DATA%]##--> 
+			</div>
+		</div>
+		<div class="span16">
+			<hr />
+		</div>
+	</div>
+	
+<!-- End Shipping Method -->
+<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->     
+
+	<div class="row">
+    <!-- Start Payment -->
+      <div class="span4 alpha">
+        <div class="_step">
+          <div class="_step_no"> Step 3. </div>
+          <div class="_step_desc"> Payment Details </div>
+        </div>
+      </div>
+    <div class="span12 omega">
+    <!--##[%payment_methods type:'[@order_type@]'%]
+[%PARAM header%]##-->
+    <div class="payment_options">
+      <ul>
+        <!--##[%END PARAM%][%PARAM *body%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/american_express.png" width="51" height="32" border="0" alt="American Express" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/visa.png" width="51" height="32" border="0" alt="Visa" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/mastercard.png" width="51" height="32" border="0" alt="Master Card" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Discover'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/discover.png" width="51" height="32" border="0" alt="Discover" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Diners'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/diners.png" width="51" height="32" border="0" alt="Diners" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/cheque.png" width="51" height="32" border="0" alt="Cheque" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/money_order.png" width="51" height="32" border="0" alt="Money Order" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/electronic_transfer.png" width="51" height="32" border="0" alt="Electronic Transfer" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/bpay.png" width="51" height="32" border="0" alt="Bpay" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%DATA id:'name' if:'like' value:'paypal'%]##-->
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/paypal.png" width="51" height="32" border="0" alt="Paypal" /></a></li>
+        <!--##[%END DATA%]##--> 
+        <!--##[%END PARAM%][%PARAM *footer%]##-->
+      </ul>
+    </div><br clear="all" />
+
+    <!--##[%END PARAM%]
+<!--##[%END payment_methods%]##--> 
+    
+    <!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
+[%PARAM *header%]##-->
+    <div>
+      <div id="_cpy_plan_pl"></div>
+      <!--##[%END PARAM%]
+[%PARAM *body%]##-->
+      <input id="_cpy_plan_id[@count@]" type="hidden" value="[@id@]"/>
+      <input id="_cpy_plan_name[@count@]" type="hidden" value="[@name@]"/>
+      <input id="_cpy_plan_rec[@count@]" type="hidden" value="[@repeat_payments_only@]"/>
+      <div ref="[@id@]" class="_cpy_plandesc">[@description@]</div>
+      <!--##[%END PARAM%]
+[%PARAM *footer%]##--> 
+    </div>
+    <!--##[%END PARAM%]
+[%END payment_plans%]##-->
+    <div>
+      <div id="_cpy_payment_pl"></div>
+      <!--##[%payment_methods type:'[@order_type@]' sortby:'sortorder,name'%]
+[%PARAM *body%]##-->
+      <input id="_cpy_payment_id[@count@]" type="hidden" value="[@id@]"/>
+      <input id="_cpy_payment_type[@count@]" type="hidden" value="[@payment_desc_type@]"/>
+      <input id="_cpy_payment_name[@count@]" type="hidden" value="[@name@]"/>
+      <input id="_cpy_payment_rec[@count@]" type="hidden" value="[@repeat_pay@]"/>
+      <input id="_cpy_payment_txt[@count@]" type="hidden" value="[%data id:'surcharge' if:'>' value:'0'%]([@surcharge@]% surcharge)[%END data%]"/>
+      <!--##[%END PARAM%]
+[%END payment_methods%]##-->
+      <input type="hidden" id="payment" name="payment" value="[@payment_method@]"/>
+      <input type="hidden" id="plan" name="plan" value="[@payment_plan@]" />
+    </div>
+    
+    <!--##[%load_ajax_template id:'redeem_vouchers' type:'cart' template:'redeem_vouchers' preload:"1"%][%END load_ajax_template%]##-->
+    
+    <p>
+    <h3>Balance Due: <span class="_cpy_balancedue"><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%end format%]##--></span></h3>
+    </p>
+    <input name="grand_total" id="grand_total" type="hidden" value="[%CART id:'grand_total'%][%END CART%]"/>
+    <div ref="card" class="_cpy_paydesc alert alert-info">
+      <label>Card Number</label>
+      <input type="text" name="card_number" maxlength="16" value="" />
+      <label>Card Holder's Name</label>
+      <input type="text"  name="card_holder" maxlength="40" value="" />
+      <label>Card Expiration Date</label>
+      <select class="input-small" id="card_exp_month" name="card_exp_month">
+        <option value=""></option>
+        <!--##[%months%][%PARAM *body%]##-->
+        <option class="input-small" value="[@month@]">[@month@]</option>
+        <!--##[%END PARAM%][%END months%]##-->
+      </select>
+      /
+      <select class="input-small" name="card_exp_year">
+        <option value=""></option>
+        <!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
+        <option value="[@year@]">[@year@]</option>
+        <!--##[%END PARAM%][%END years%]##-->
+      </select>
+      <label>Card Security Code</label>
+      <input type="text" name="card_ccid" class="input-small"/>
+      <span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+<!-- Start Fancybox explanation of CCV -->
+<div style="display:none;">
+<div id="ccv" style="width:600px;"> 
+For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the  <b>4 digits</b> on the FRONT above the end of your card number.
+</div>
+</div>
+</div>
+    <div ref="cheque" class="_cpy_paydesc alert alert-info"> The address to send your <span class="_cpy_payname">[@name@]</span> to will be provided after you confirm your order below. </div>
+    <div ref="bank" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
+    <div ref="bpay" class="_cpy_paydesc alert alert-info"> When you submit this page, you will be given a Bpay biller 
+      code and a reference number. Please quote the numbers and call your 
+      participating financial institution to make a payment from your 
+      cheque, savings or credit card account. </div>
+    <div ref="paypalexpress" class="_cpy_paydesc alert alert-info"> 
+      <!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM if_true%]##--> 
+      When you submit this page, you will be redirected to the PayPal website to continue your PayPal Express Checkout. 
+      <!--##[%END PARAM%][%PARAM if_false%]##--> 
+      When you submit this page, your paypal account or credit card will be debited. 
+      <!--##[%END PARAM%][%END DATA%]##--> 
+    </div>
+    <div ref="account" class="_cpy_paydesc alert alert-info"> Your [$company_name$] account will automatically be charged for the value of this order. </div>
+    <div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
+ 
+<!--##[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]##-->  
+<!-- Start Fancybox terms -->
+<div style="display:none;">
+<div id="termbox" style="width:600px;"> [%content_zone id:'terms'%][%end content_zone%] </div>
+</div>
+    <p>
+      <input type="hidden" name="agreement" value="y">
+      Agree To <a href="#termbox" id="terms">Terms &amp; Conditions?</a>
+      <input type="checkbox" name="agree" value="y" [%DATA id:'agree' if:'=' value:'1'%]checked[%END DATA%] />
+    </p>
+    <!--##[%END CONFIG%]##-->
+    <p class="form-actions">
+      <button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm &amp; Process Order </button>
+    </p>
+    <!-- End Payment -->
+</div>
+<!--##[%END DATA%]##--> 
+<!--##[%DATA id:'order_type' if:'eq' value:'quote'%]##--> 
+<p class="form-actions">
+<button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm &amp; Process Quote </button>
+</p>
+<!--##[%END DATA%]##--> 
+
+ </form>
+</div>
+</div>
+</div>
+
+<div class="span8"> 
+  <!--##[%load_ajax_template id:'cart_items' type:'cart' template:'cart_items' preload:"1"%][%END load_ajax_template%]##--> 
+  <!--##[%load_ajax_template id:'address' type:'cart' template:'address' preload:"0"%][%END load_ajax_template%]##--> <br />
+</div>
+
+
+
+<!--End Column Right --> 
+
+<!--##[%GA_FUNNEL%]/purchase/confirmation.html[%END GA_FUNNEL%]##--> 
+<!--##[%load_template file:'trackingcode/CheckoutTracking.html'%][%END load_template%]##--> 

@@ -1,0 +1,90 @@
+<!--##[%TRIM inner:'1'%][%PARAM body%]##-->
+<!--##[%show_message name:"update_error"%]##-->
+<!--##[%PARAM header%]##-->
+<center><div align="left" style="width:700px;" class="errorbox"><ul>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *body%]##--><li>
+
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_first_name' %]##-->Billing First name is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_last_name' %]##-->Billing Last name is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_street' %]##-->Billing Street Address is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_zip' %]##-->Billing Post Code is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_city' %]##-->Billing City is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_state' %]##-->Billing State is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_bill_phone' %]##-->Billing Phone is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_bill_phone' %]##-->Billing Phone is invalid.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_bill_fax' %]##-->Billing Fax is invalid.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_first_name' %]##-->First name is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_last_name' %]##-->Last name is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_street' %]##-->Street Address is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_zip' %]##-->Post Code is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_city' %]##-->City is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_state' %]##-->State is required.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'missing_ship_phone' %]##-->A valid phone number is required. Please enter one below.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_ship_phone' %]##-->Your phone number is invalid. Please change the number your entered below.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_ship_fax' %]##-->Your fax number is invalid. Please change the number your entered below.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_ship_country' %]##-->Sorry! We cannot ship products outside Australia. Please change your address to an Australian address.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'unknown_ship_zip' %]##-->The Post Code '[@ship_zip@]' does not exist in our database. If you continue to get this error please contact us.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'mismatch_ship_zip' %]##-->The Post Code '[@ship_zip@]' does not match your address '[@ship_city@]' '[@ship_state@]'.<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_shipping_method' %]##-->Shipping method is not valid.<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_payment_method' %]##-->Please select your payment method below before continuing.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'process_payment_fail' %]##-->Sorry, We cannot process your payment at the moment. Please try again later or call [$COMPANY_PHONE$] during business hours for assistant.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'cannot_process_payment#' %]##-->[@error@]<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'gateway_error' %]##-->Error processing your card. Please try again or change your payment method. [@error@]<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'creditcard_high_risk' %]##-->We are sorry, but your card could not be verified. Please try again or change your payment method. If you believe this is an error, please contact us.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'creditcard_oversea' %]##-->We are sorry, but your card could not be verified. Please try again or change your payment method. If you believe this is an error, please contact us.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'creditcard_declined' %]##-->We are sorry, but your card could not be verified. Please try again or change your payment method. If you believe this is an error, please contact us.<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'require_minimum_quantity#' %]##-->You must order minimum of [@min_qty@] [@name@] ([@SKU@]).<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'require_maximum_quantity#' %]##-->You can only order maximum of [@max_qty@] [@name@] ([@SKU@]).<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'require_quantity_multiplier#' %]##-->You must order [@multiplier_qty@] [@name@] ([@SKU@]) for one box. You are ordering [@qty@] [@name@].<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'quantity_not_enough#' %]##-->You must order minimum [@min_qty@] [@name@]. You are ordering [@qty@] [@name@].<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'quantity_not_in_range#' %]##-->You must order [@multiplier_qty@] [@name@] for one box. You are ordering [@qty@] [@name@].<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'too_many_products' %]##-->Too many products.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'item_not_found' %]##-->The following items are now unavailable or out of stock: '[@SKU@]'.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'item_no_stock' %]##-->Sorry. We don't have enough '[@SKU@]' in stock to fulfill your order. Please change the qty on order in your shopping cart to a lower number and click update. Then try to checkout again.<!--##[%END DATA%]##-->
+
+
+</li><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+</ul></div></center><br />
+<!--##[%END PARAM%][%END show_message%]##-->
+
+<!--##[%show_message name:"create_error"%]##-->
+<!--##[%PARAM header%]##-->
+<center><div align="left" style="width:700px;" class="errorbox"><ul>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *body%]##--><li>
+<!--##[%DATA id:'msg' if:'eq' value:'request_to_stop' %]##-->You are requesting to stop standing order #[@storder_id@].<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'not_active' %]##-->Standing order #[@storder_id@] is not active.<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'no_items' %]##-->Standing order #[@storder_id@] is empty.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'shipping_na' %]##-->No delivery method is available for standing order #[@storder_id@] is not active.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'price_changed' %]##-->[@grand_total1@] [@grand_total2@] We currently under going website maintenance, please call: [$company_phone$] (Mon-Fri 9am-5pm) or Email: [$company_email$] to place your order. Or please wait 10-15 minutes before trying again.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'cannot_create_order' %]##-->We currently under going website maintenance, please call: [$company_phone$] (Mon-Fri 9am-5pm) or Email: [$company_email$] to place your order. Or please wait 10-15 minutes before trying again.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'processing_order' %]##-->Your order is being processed. This may take a few minutes. If you experience difficulties placing your order please call: [$company_phone$] or Email: [$company_email$]<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'page_refreshed' %]##-->Your order is being processed. This may take a few minutes. If you experience difficulties placing your order please call: [$company_phone$] or Email: [$company_email$]<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'not_enough_credit' %]##-->We are sorry, but your account credit could not be verified. Please check your current account credit and try again. If you believe this is an error, please contact us<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'invalid_payment_method' %]##-->Please select your payment method below before continuing.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'over_payment_max' %]##-->We are sorry, you can only use [@name@] for orders less than <!--##[%FORMAT type:'currency'%]##-->[@max@]<!--##[%END FORMAT%]##-->.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'process_payment_fail' %]##-->Sorry, We cannot process your payment at the moment. Please try again later or call [$COMPANY_PHONE$] during business hours for assistant.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'cannot_process_payment#' %]##-->[@error@]<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'gateway_error' %]##-->Error processing your card. Please try again or change your payment method. [@error@]<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'msg' if:'eq' value:'creditcard_high_risk' %]##-->We are sorry, but your card could not be verified. Please try again or change your payment method. If you believe this is an error, please contact us.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'creditcard_oversea' %]##-->We are sorry, but your card could not be verified. Please try again or change your payment method. If you believe this is an error, please contact us.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'creditcard_declined' %]##-->We are sorry, but your card could not be verified. Please try again or change your payment method. If you believe this is an error, please contact us.<!--##[%END DATA%]##-->
+
+
+</li><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+</ul></div></center><br />
+<!--##[%END PARAM%][%END show_message%]##-->
+<!--##[%END PARAM%][%END TRIM%]##-->

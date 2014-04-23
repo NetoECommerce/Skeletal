@@ -1,0 +1,89 @@
+.jcarousel-container {
+  background:transparent;
+}
+
+.jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-clip-horizontal {
+	margin-right:55px;
+	margin-left:55px;
+}
+
+.jcarousel-clip {
+    overflow: hidden;
+}
+
+.jcarousel-clip .thumbnail {
+	-webkit-box-shadow:none;
+	   -moz-box-shadow:none;
+	     -o-box-shadow:none;
+	     	box-shadow:none;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-next-horizontal {
+    position: absolute;
+    top: 125px;
+    right: 7px;
+    width: 25px;
+    height: 45px;
+    cursor: pointer;
+    background: transparent url('../images/next-horizontal.png') no-repeat 0 0;
+}
+
+.jcarousel-direction-rtl .jcarousel-next-horizontal {
+    left: 5px;
+    right: auto;
+    background-image: url('../images/prev-horizontal.png');
+}
+
+.jcarousel-next-horizontal:hover,
+.jcarousel-next-horizontal:active,
+.jcarousel-next-horizontal:focus {
+    background-position: 0 -60px;
+}
+
+
+.jcarousel-next-disabled-horizontal,
+.jcarousel-next-disabled-horizontal:hover,
+.jcarousel-next-disabled-horizontal:focus,
+.jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -84px 0;
+}
+
+.jcarousel-prev-horizontal {
+    position: absolute;
+    top: 125px;
+    left: 23px;
+    width: 25px;
+    height: 45px;
+	margin-left:-5px;
+    cursor: pointer;
+    background: transparent url('../images/prev-horizontal.png') no-repeat 0 0;
+}
+
+.jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    right: auto;
+    left: 5px;
+    background-image: url(../images/next-horizontal.png);
+}
+
+.jcarousel-prev-horizontal:hover, 
+.jcarousel-prev-horizontal:active, 
+.jcarousel-prev-horizontal:focus {
+     background-position: 0 -60px;
+}
+
+
+.jcarousel-prev-disabled-horizontal,
+.jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -84px 0;
+}

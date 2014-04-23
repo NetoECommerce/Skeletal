@@ -1,0 +1,84 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+ 
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Standing Orders</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<h1>Standing Orders</h1>
+
+
+					<form method="get" action="[%URL page:'account' type:'standing_orders'%][%END URL%]" class="form-inline">
+					 <b> Search For Standing Orders By Order ID, Invoice # or Your PO # : </b>
+							<input type="text" name="ord" value="[%nohtml%][%FORM id:'ord'%][%END FORM%][%END nohtml%]" size="10">
+						&nbsp;<br /><br />
+
+
+						<b>Status:</b> <select name="sts">
+							<option value="">Show All</option>
+							<option value="y" [%FORM id:'sts' if:'eq' value:'y'%]selected[%END FORM%]>Active</option>
+							<option value="n" [%FORM id:'sts' if:'eq' value:'n'%]selected[%END FORM%]>Inactive</option>
+						</select>
+						&nbsp;
+						<button type="submit" class="btn"><i class="fa fa-search"></i> Search Standing Orders</button>
+					</form>
+<hr />
+<!--##[%thumb_list type:'standing_orders' limit:'20'%]##-->
+<!--##[%PARAM filter_1%][%FORM id:'ord'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM filter_2%][%FORM id:'sts'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM header%]##-->
+
+				<table width="100%" class="table table-striped table-bordered table-condensed">
+               		<thead>
+					<tr> 
+						<th>Standing Order ID</th>
+						<th>Date Placed</th>
+						<th>Current Status</th>
+						<th>Date Started</th>
+						<th>Amount On Order</th>
+						<th>Next Delivery</th>
+						<th>Date Fulfilled</th>
+						<th>&nbsp;</th>
+					</tr>
+                    </thead>
+					<!--##[%END PARAM%]##-->
+					<!--##[%PARAM *body%]##-->
+					<tr> 
+						<td><a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">[@storder_id@]</a></td>
+						<td class="small"><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_placed@]<!--##[%END format%]##--></td>
+						<td class="small" nowrap>[@order_status@]<!--##[%DATA id:'request_to_stop' if:'=' value:'1'%]##--><br /><span class="small text-danger">Requesting To Stop</span><!--##[%END DATA%]##--></td>
+						<td class="small"><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_start@]<!--##[%END format%]##--></td>
+						<td class="small"><!--##[%format type:"currency"%]##-->[@grand_total@]<!--##[%END format%]##--></td>
+						<td class="small"><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_next@]<!--##[%END format%]##--></td>
+						<td class="small"><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_fulfilled@]<!--##[%END format%]##--></td>
+						<td class="small" nowrap><a class="small" href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=send_order'%][%END URL%]">Send Order Now</a> |
+						 <a class="small" href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_items'%][%END URL%]">Edit Order</a></td>
+					</tr>
+					<!--##[%END PARAM%]##-->
+					<!--##[%PARAM *footer%]##-->
+				</table>
+<table cellpadding="2" cellspacing="0" border="0">
+<tr><!--##[%paging limit:'3'%]
+[%PARAM *previous_page%]##--><td>&nbsp;</td><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]"><img border="0" src="[$imageurl$]/template/back_page.gif"></a></td><!--##[%END PARAM%]
+[%PARAM *goback_pages%]##--><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]">[@PAGE@]</a></td><td>&nbsp;</td><!--##[%END PARAM%]
+[%PARAM *current_page%]##--><td nowrap style="background:#FFF; padding:4px 10px 4px 10px;"><b>[@PAGE@]</b></td><!--##[%END PARAM%]
+[%PARAM *gonext_pages%]##--><td>&nbsp;</td><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]">[@PAGE@]</a></td><!--##[%END PARAM%]
+[%PARAM *next_page%]##--><td>&nbsp;</td><td><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]"><img border="0" src="[$imageurl$]/template/next_page.gif"></a></td><!--##[%END PARAM%]
+[%END paging%]##--></tr>
+
+	<!--##[%END PARAM%]##-->
+	<!--##[%PARAM ifempty%]##-->
+<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>No Standing Orders Found.</div>
+				<!--##[%END PARAM%]##-->
+				<!--##[%END thumb_list%]##-->
+		 </td>
+	</tr>
+</table>
+
+</div>

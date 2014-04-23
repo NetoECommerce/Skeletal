@@ -1,0 +1,260 @@
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {	
+	$.storeLocator_Init({});
+});
+</script> 
+<!--##[%END SITE_VALUE%]##-->
+
+<!-- Start Column Left -->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!-- End Column Left -->
+
+<!--##[%breadcrumb%]
+[%param *header%]##-->
+<ul class="breadcrumb">
+    <li><a href="[$home_url$]">Home</a></li>
+    <!--##[%end param%] [%param *body%]##--> 
+    <li><a href="[@url@]">[@name@]</a></li>
+    <!--##[%END param%] 
+    [%param *body_current%]##-->
+    <li>[@name@]</li>
+    <!--##[%END param%] 
+    [%param *footer%]##-->
+</ul>
+<!--##[%end param%]
+[%end breadcrumb%]##-->
+
+
+
+	<h1>[@content_name@]</h1>
+ 
+    <p class="text-muted">
+    <!--##[%IF [@content_author@]%]##-->
+    Author: [@content_author@] &nbsp;
+    <!--##[%END IF%]##-->
+    <!--##[%IF [@date_posted@] != 0000-00-00 00:00:00%]##--> 
+    Date Posted:<!--##[%FORMAT type:'date'%]##-->[@date_posted@]<!--##[%END FORMAT%]##-->&nbsp;
+    <!--##[%END IF%]##--> 
+    </p>
+    
+    <img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[$imageurl$]/pixel.gif'%][%END ASSET_URL%]" class="pull-right"/>
+    <img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[$imageurl$]/pixel.gif'%][%END ASSET_URL%]"  class="pull-right"/>
+    
+    <p>
+    [@content_short_description1@]
+    [@content_short_description2@]
+    [@content_short_description3@]
+    </p>
+    
+    <p>
+    [%parse%]
+		[@content_description1@]
+		[@content_description2@]
+		[@content_description3@]
+    [%/ parse%]
+    </p>
+         
+
+<div style="width:100%; overflow:hidden;">
+
+	<form>
+	<div class="form-group">
+			<label>Your Post Code or City</label>
+			<input type="text" id="geo_zip" class="form-control" value="[%NOHTML%][%SESSION id:'ship_zip'%][%END SESSION%][%END NOHTML%]"/>
+	</div>		
+		<div class="form-group">
+        <label>Your Country</label>
+				<select id="geo_country" class="form-control">
+				<!--##[%countries%]
+					[%PARAM *body%]##-->
+						<option value="[@country_code@]" [%SESSION id:'ship_country' if:'eq' value:'[@ship_country@]'%]selected[%END SESSION%]>[@country_name@]</option>
+					<!--##[%END PARAM%]
+				[%END countries%]##-->
+				</select>
+         </div>       
+		
+
+		
+		<div class="form-group">
+			<label>Show Stores/Stockists Within</label>
+			<select id="geo_radius" class="form-control">
+				<option value="1">1 Kilometers</option>
+				<option value="2.5">2.5 Kilometers</option>
+				<option value="5">5 Kilometers</option>
+				<option value="15">15 Kilometers</option>
+				<option value="25" selected>25 Kilometers</option>
+				<option value="50">50 Kilometers</option>
+				<option value="75">75 Kilometers</option>
+				<option value="100">100 Kilometers</option>
+				<option value="200">200 Kilometers</option>
+			</select>
+        </div>
+        <div class="form-group">
+        <button id="geo_search" class="btn btn-default" type="button">Find Stores </button>
+        </div>
+	</form>
+	
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" id="map-table">
+		<tr>
+			<td id="geo_map_pl" valign="top" width="250px">
+				<div id="geo_list"></div>
+			</td>
+			<td valign="top">
+				<div id="geo_map"></div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<!--##[%THUMB_LIST type:'content' content_type:'' template:'' limit:'20'%]
+[%PARAM *header%]##-->
+
+<!--##[%END PARAM%][%PARAM FOOTER%]##-->
+
+<!--#Start Pagination# ##-->
+    <ul class="pagination">
+        <!--##[%paging limit:'3'%]
+[%PARAM *previous_page%]##--><li><a href="[@URL@]">Previous Page</a></li><!--##[%END PARAM%]
+[%PARAM *goback_pages%]##--><li><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *current_page%]##--><li class="active"><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *gonext_pages%]##--><li><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *next_page%]##--><li><a href="[@URL@]">Next Page</a></li><!--##[%END PARAM%]
+[%END paging%]##-->
+    </ul>
+<!--#End Pagination# ##-->
+
+<!--##[%END PARAM%][%END THUMB_LIST%]##-->
+
+<!--##[%THUMB_LIST type:'products' template:'' limit:'[$related_limit$]'%]
+[%PARAM *header%]##-->
+<div class="clear-fix"></div>
+<h3>Related Products</h3>
+<div class="row">
+<!--##[%END PARAM%][%PARAM FOOTER%]##-->
+</div>
+<!--##[%END PARAM%][%END THUMB_LIST%]##--> 
+
+
+
+
+<!--##[%IF [@content_allow_reviews@]%]##-->
+<div class="wrapper-share-button">
+			<a class="addthis_button btn btn-default btn-xs" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=xa-5282cbb6476f74a0" target="_blank">
+				<strong>Share: </strong>
+				<i class="fa fa-facebook-square text-facebook"></i> 
+				<i class="fa fa-twitter-square text-twitter"></i> 
+				<i class="fa fa-google-plus-square text-google-plus"></i> 
+				<i class="fa fa-pinterest-square text-pinterest"></i> 
+				<i class="fa fa-tumblr-square text-tumblr"></i>
+			</a>
+</div>
+<a id="comments"></a><hr /> 
+<!--##[%THUMB_LIST type:'content_reviews' limit:'5'%]
+						[%PARAM filter_1%][@CONTENT_ID@][%END PARAM%]
+						[%PARAM *header%]##-->
+                        <h3>Comments ([@reviews@])</h3>
+                        <!--##[%END PARAM%][%PARAM *body%]##-->
+						<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+							<blockquote>
+								<h4 itemprop="name"><i>[%NOHTML%][@title@][%END NOHTML%]</i></h4>
+								<div>
+									<strong>[%if [@user:bill_first_name@]%]By: <span itemprop="author">[@user:bill_first_name@]</span> on [%/ if%]<meta itemprop="datePublished" content="<!--##[%FORMAT type:'date'%]##-->[@insert_date@]<!--##[%END FORMAT%]##-->"><!--##[%FORMAT type:'date'%]##-->[@insert_date@]<!--##[%END FORMAT%]##--></strong>
+								</div>
+									<span itemprop="description">[%NOHTML%][@review@][%END NOHTML%]</span>
+                                   [%IF [@review_response@]%]
+                                   <br /><br />
+                                     <blockquote>
+                                    <span class="review_response text-muted"><strong><i>[$website_name$] Response</i></strong><br /> [%NOHTML%][@review_response@][%END NOHTML%]</span>
+                                    </blockquote>
+                                   [%/IF%] 
+							</blockquote> <hr />  
+						</div>    
+                        
+						<!--##[%END PARAM%]
+						[%PARAM *footer%]##-->
+						
+						<!--##[%END PARAM%]
+						[%PARAM *ifempty%]##--> 
+						<!--##[%END PARAM%]
+					[%END THUMB_LIST%]##--> 
+ 
+ <h3>Leave a comment</h3>
+ 
+<form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%END URL%]">
+<fieldset>
+	<input type="hidden" name="fn" value="confirm">
+	<input type="hidden" name="item" value="[@content_id@]">
+    <input type="hidden" name="checked_terms_and_conditions" value="1">
+    <input type="hidden" name="rating_value" id="rating_value" value="5"/>
+        
+   <div class="form-group">
+   <label for="review_title">Title For Comment</label>
+   <input class="form-control" type="text" name="review_title" id="review_title" value="[%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]" required/>
+  </div>
+  
+   <div class="form-group">
+   <label for="review_text">Your Comment</label>
+  <textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]</textarea>
+  </div>
+  
+<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
+<div class="form-group">
+<label for="customername">Your Name</label>
+<input class="form-control" type="text" name="customername" id="customername" value="[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]" required/>
+</div>
+
+<div class="form-group">
+<label for="emailaddress">Your Email Address</label>
+<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]" required/>
+</div>
+<!--##[%END USER%]##-->
+
+<p>  
+<button type="submit" class="btn btn-success" />Post Comment</button>
+</p>
+
+<p class="text-muted">Comments have to be approved before showing up</p>
+
+</fieldset>
+</form>
+<!--##[%/IF%]##-->
+
+<!-- Start Column Right -->
+</div><!-- /.span19 -->
+<!-- End Column Right -->
+
+
+
+<!--#
+
+The following data tags can be used on this page:
+
+content_id: [@content_id@]
+content_type_id: [@content_type_id@]
+parent_content_id: [@parent_content_id@]
+content_level: [@content_level@]
+content_node_id: [@content_node_id@]
+content_last_id: [@content_last_id@]
+content_name: [@content_name@]
+content_ref: [@content_ref@]
+content_module: [@content_module@]
+content_author: [@content_author@]
+content_short_description1: [@content_short_description1@]
+content_short_description2: [@content_short_description2@]
+content_short_description3: [@content_short_description3@]
+content_fullpath: [@content_fullpath@]
+content_description1: [@content_description1@]
+content_description2: [@content_description2@]
+content_description3: [@content_description3@]
+content_keywords: [@content_keywords@]
+templatehead: [@templatehead@]
+templatebody: [@templatebody@]
+templatefoot: [@templatefoot@]
+templatethumb: [@templatethumb@]
+date_posted: [@date_posted@]
+
+# ##-->

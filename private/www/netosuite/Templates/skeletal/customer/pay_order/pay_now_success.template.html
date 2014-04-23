@@ -1,0 +1,47 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1>Thank You!</h1>
+</div>
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error">
+  <a class="close" data-dismiss="alert">×</a>
+  [@error@]
+</div>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'ne' value:''%]##-->
+<div class="alert alert-success">
+  <a class="close" data-dismiss="alert">×</a>
+  [@msg@]
+</div>
+<!--##[%END DATA%]##-->
+
+
+<p>
+Your payment order has been processed.
+</p>
+
+<script language="javascript" type="text/javascript">
+function print_invoice() {
+	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+}
+</script>
+
+<input type="button" value="Print Invoice" class="btn" onClick="print_invoice()">
+
+<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
+
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

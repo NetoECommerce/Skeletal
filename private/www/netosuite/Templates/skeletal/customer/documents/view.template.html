@@ -1,0 +1,47 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+ 
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account' type:'documents'%][%END URL%]">Files</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1>My Files</h1>
+</div>
+
+
+<!--##[%customer_filelist id:'[@username@]'%]
+[%PARAM *header%]##-->
+<table class="table table-bordered table-striped">
+<thead>
+    <tr>
+      <th>File Name</th>
+      <th>Download</th>
+    </tr>
+</thead>
+<tbody>
+<!--##[%END PARAM%]
+[%PARAM *body%]##-->
+	<tr> 
+	<td nowrap>[@filename@]</td>
+	<td nowrap><a href="[@uri@]"><button type="button" class="btn" title="Download"><i class="fa fa-folder-open"></i> Download</button></a></td>
+ </tr>
+<!--##[%END PARAM%]
+[%PARAM *footer%]##-->
+</tbody>
+</table>
+<!--##[%END PARAM%]
+[%PARAM *ifempty%]##-->
+We do not have any files stored on your account. 
+<!--##[%END PARAM%]
+[%END customer_filelist%]##-->
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

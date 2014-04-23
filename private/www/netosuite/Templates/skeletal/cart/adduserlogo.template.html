@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
+<head>
+
+<!-- Meta Data -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="author" content="Neto E-commerce Solutions www.neto.com.au" />
+<meta name="google-site-verification" content=""/>
+
+<script type="text/javascript" language="javascript">
+function remlogo() { 
+	document.getElementById('dellogo').value = 1;
+	document.adduserlogo.submit();
+}
+</script>
+
+<title></title>
+
+<!-- Template Style Sheets -->
+
+<link rel="stylesheet" type="text/css" href="/assets/template/css/layout.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/assets/template/css/styles.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/assets/neto_checkout/styles.css" media="all" /> 
+
+</head>
+<body>
+
+<form method="post" name="adduserlogo" id="_adduser_form" enctype="multipart/form-data" action="[%URL page:'checkout'%][%END URL%]">
+<input type="hidden" name="fn" id="fn" value="adduserlogo" />
+<input type="hidden" name="templatehead" value="empty" />
+<input type="hidden" name="templatefoot" value="empty" />
+<input type="hidden" name="dellogo" id="dellogo" value="0" />
+
+<!-- Start company logo -->
+<div class="checkout_section">
+<div class="grid_3">
+<div class="step_number">4</div>
+<div class="step_header">Company<br />Logo</div>
+</div>
+<div class="col-xs-6">
+<div id="company_logo">
+	<div style="float:left; margin-right:15px;">
+	<img id="comp_logo_img" src="[%asset_url type:'user' id:'[@username@]' default:'[$imageurl$]/pixel.gif'%][%END asset_url%]?[$current_timestamp$]"><br> 
+  <a href="#" onClick="javascript:remlogo(); return false;">- Remove this logo</a>
+  
+</div>
+   <input style="float:left;" type="file" name="logo"><br>
+   <input style="float:left;" type="submit" name="submit "value="Add Logo" />
+</div>
+</div>
+<div class="clear"></div>
+</div>
+</form>
+<!-- end company logo -->
+
+</body>
+</html>

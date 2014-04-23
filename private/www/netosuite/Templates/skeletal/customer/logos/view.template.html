@@ -1,0 +1,79 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+	$.extend({
+		submit_form: function() {
+			if ($('#upld_logo').val() == '') {
+				$.fancybox("Please select your company logo.", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
+			}
+			else {
+				$('#updatelogo').submit();
+			}
+		}	
+	});	
+	
+	$('.upload_btn').click(function(e){
+			$.submit_form();	
+	});	
+	
+	$('.card_btn').click(function(e){
+		$('#updatecard').submit();
+	});	
+		
+});
+	
+</script>
+
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+ 
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1>Manage Logo</h1>
+</div>
+
+
+<form enctype="multipart/form-data" method="POST" name="updatelogo" id="updatelogo" action="[%URL page:'account' type:'logos'%][%END URL%]">
+<div class="selcardpl">
+</div>
+<div class="float_left"><div class="selcardpl">
+<img id="cusref1example" src="[$imageurl$]/na.gif" title="Example" />
+</div>
+</div>
+<div class="float_left logo-block">
+<h3>Upload your logo file here</h3>
+<div class="float_left">
+<table cellpadding="0" cellspacing="2" border="0">
+<tr><td align="center">
+<img id="upld_logo_img" width="100px" src="[%asset_url type:'user' id:'[@username@]' default:'[$imageurl$]/na.gif'%][%END asset_url%]?[%RANDOM_NUMBER timestamp:'1'%][%END RANDOM_NUMBER%]" />
+</td></tr>
+</table>
+</div>
+<div class="float_left choose-file">
+<input type="file" name="upld_logo" id="upld_logo" /><br>
+<input class="upload_btn" type="button" class="btn" value="Upload Logo" /><br />
+<p class="helper-text">
+We accept GIF, JPG and PNG formats.<br />
+Maximum file size is 5MB.
+</p>
+</div>
+<input type="hidden" name="upld_logo_sku" value="COMPANY_LOGO">
+<input type="hidden" id="upld_logo_qty" name="upld_logo_qty" value="0">
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+
+</form>
+
+
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

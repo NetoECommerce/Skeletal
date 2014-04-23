@@ -1,0 +1,140 @@
+<script language="javascript" type="text/javascript">
+function goBack() {
+	window.location.href='[%URL page:"account" type:"warranty"%][%END URL%]';
+}
+function closeDispute() {
+	var f = document.disputeForm;
+	if(f && confirm('You are about to close this dispute.\nDo you wish to continue?')) {
+		f['closedispute'].value = 'y';
+		f.submit();
+	}
+}
+function sendMessage() {
+	var f = document.disputeForm;
+	if(f) {
+		f['closedispute'].value = '';
+		f.submit();
+	}
+}
+</script>
+
+<div class="col-xs-12">
+
+<ul class="breadcrumb">
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Resolution Centre</a></li>
+</ul>
+
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
+<!--##[%END DATA%]##-->
+
+<h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1>
+<hr />
+
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
+<!--##[%END DATA%]##-->
+
+<h2>View dispute #[@dispute_id@]</h2>
+<p>From here you can read the <a href="#latest">latest messages</a> related to
+this dispute or <a href="#new">post a new message</a>.</p>
+
+
+<form name="disputeForm" action="[%URL page:'account' type:'warranty' %][%END URL%]" method="post">
+	<input type="hidden" name="id" value="[@dispute_id@]">
+	<input type="hidden" name="action" value="proc">
+	<input type="hidden" name="closedispute" value="">
+<!--##[%show_dispute id:'[@dispute_id@]'%][%PARAM *header%]##-->
+<!--##[%show_order id:'[@order_id@]'%][%PARAM *header%]##-->
+<p>
+<b>Order #:</b> <a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a><br />
+<!--##[%DATA id:'customer_po' if:'ne' value:''%]##--><b>PO#:</b> <!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><br /><!--##[%END DATA%]##-->
+<b>Shipped To:</b> <!--##[%NOHTML%]##-->[@bill_first_name@] [@bill_last_name@]<!--##[%END NOHTML%]##--><br />
+<b>Date Placed:</b> <!--##[%format type:"date"%]##-->[@date_placed@]<!--##[%END format%]##--><br />
+<b>Order Status:</b> <!--##[%NOHTML%]##-->[@order_status@]<!--##[%END NOHTML%]##-->
+</p>
+<!--##[%END PARAM%][%END show_order%]##-->
+<p>
+<b>Dispute #:</b> [@dispute_id@]<br />
+<b>Dispute Type:</b> [@dispute_type@]<br />
+<b>Dispute Reason:</b> [@dispute_reason@]<br />
+<b>Dispute Status:</b> [@dispute_status@]
+<!--##[%DATA id:'response_repuired' if:'=' value:'1'%]##-->
+<span class="tiny red">(Response Required)</span>
+<!--##[%END DATA%]##--><br />
+<b>Disputed On:</b> <!--##[%format type:"date"%]##-->[@date_disputed@]<!--##[%END format%]##--><br />
+<!--##[%DATA id:'dispute_filed' if:'==' value:'1'%]##-->
+<b>Filed On:</b> <!--##[%format type:"date" default:'-'%]##-->[@date_filed@]<!--##[%END format%]##-->
+<!--##[%END DATA%]##-->
+</p>
+<p>
+<b>Contact Email:</b> <!--##[%NOHTML%]##-->[@email@]<!--##[%END NOHTML%]##--><br />
+<b>Contact Phone:</b> <!--##[%NOHTML%]##-->[@phone@]<!--##[%END NOHTML%]##-->
+</p>
+<!--##[%DATA id:'total_items' if:'>' value:'0'%]##-->
+<hr size="1"/>
+<p><b>Item(s) for this dispute:</b></p>
+<table class="table table-striped table-bordered table-condensed">
+<thead>
+<tr >
+	<th>Qty</th>
+	<th>Item</th>
+	<th>Description</th>
+</tr>
+</thead>
+<!--##[%END DATA%]##-->
+<!--##[%END PARAM%][%PARAM *body%]##-->
+<tr >
+  <td nowrap>[@qty@]</td>
+  <td><a href="[%url type:'item' id:'[@SKU@]'%][%END url%]"><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></a></td>
+  <td><a href="[%url type:'item' id:'[@SKU@]'%][%END url%]">[@model@] <i>[@extra@]</i></a></td>
+</tr>
+<!--##[%END PARAM%][%PARAM *footer%]##-->
+<!--##[%DATA id:'total_items' if:'>' value:'0'%]##-->
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'dispute_closed' if:'==' value:'0'%]##-->
+<hr size="1"/>
+<a name="new"></a><b>Send Message:</b><br />
+<table border="0" cellspacing="0" cellpadding="4">
+<tr><td><textarea name="message" class="input-xxlarge" rows="5"><!--##[%NOHTML%]##-->[@message@]<!--##[%END NOHTML%]##--></textarea></td></tr>
+<tr><td>
+<button type="button" class="btn btn-success pull-right" onclick="sendMessage()">Send Message <i class="fa fa-envelope icon-white"></i> </button>
+</td></tr>
+</table>
+<!--##[%END DATA%]##-->
+<div class="form-actions">
+<button name="button" type="button" class="btn pull-left" onClick="goBack()" ><i class="fa fa-chevron-left"></i> Back To Resolution Centre</button>
+<!--##[%DATA id:'dispute_closed' if:'==' value:'0'%]##-->
+<button type="button" class="btn btn-danger pull-right" onclick="closeDispute()">Close This Dispute <i class="fa fa-remove icon-white"></i></button>
+</div>
+<!--##[%END DATA%]##-->
+<!--##[%END PARAM%]##-->
+<!--##[%END show_dispute%]##-->
+</form><br />
+
+<hr />
+<a name="latest"></a><b>Message History:</b><br />
+<!--##[%dispute_messages id:'[@dispute_id@]'%][%PARAM *header%]##-->
+<div class="msglist">
+<!--##[%END PARAM%][%PARAM *body%]##-->
+<table cellpadding="2" cellspacing="2" border="0" width="100%" class="msg[@send_to@]">
+	<tr ><td>
+<b>From:</b> [@from_name@] &nbsp; &nbsp;
+<b>To:</b> [@to_name@] &nbsp; &nbsp;
+<b>Date Sent</b>: <!--##[%format type:"date" format:'#d #k #Y (#H:#I)'%]##-->[@date_sent@]<!--##[%END format%]##-->
+	</td></tr>
+	<tr><td>[@message@]</td></tr>
+</table>
+<br>
+<!--##[%END PARAM%][%PARAM *footer%]##-->
+</div>
+<!--##[%END PARAM%][%END dispute_messages%]##-->
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

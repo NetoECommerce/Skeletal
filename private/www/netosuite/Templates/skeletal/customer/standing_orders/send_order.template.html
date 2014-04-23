@@ -1,0 +1,274 @@
+<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
+<script type="text/javascript" language="javascript">
+function ctinst() {
+	var obj = document.getElementById('comment');
+	var ct = document.getElementById('ct');
+	if(obj && ct) {
+		var left = 255-obj.value.length;
+		if(left > 0) {
+			ct.color= "#333333";
+			ct.innerHTML = '<b>'+left+'</b> Characters Left.';
+		} else {
+			obj.value = obj.value.substring(0,255);
+			ct.color= "#CC0000";
+			ct.innerHTML = '<b>0</b> Characters Left.';
+		}
+	}
+}
+
+function procorder() { var obj = document.ProcOrder.submited; if(obj.value=='1') { alert('Please wait. Your order is being processed.'); return false;} else {obj.value = '1'; return true;} }
+
+function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){obj.style.display=(chk?'':'none');} }
+</script>
+<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
+	<tr><td><div class="checkout_box_header">Standing Order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
+	<tr><td>
+<table cellpadding="4" cellspacing="0" border="0">
+	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+		<tr><td><b><span class="text-danger" size="+3">[@order_status@]</span></b></td></tr>
+<!--##[%DATA id:'request_to_stop' if:'=' value:'1'%]
+	[%PARAM if_true%]##-->
+		<tr><td><b><span class="text-danger">Resquesting To Stop</span></b></td></tr>
+<!--##[%END PARAM%][%END DATA%]##-->
+		<tr><td>
+		</td></tr>
+				</table></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="50%" valign="top" class="small">
+<table border="0" cellpadding="3" cellspacing="0">
+	<tr><td>Next Delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Total Orders</td><td><!--##[%format type:'number'%]##-->[@total_orders_created@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Total Spent</td><td><!--##[%format type:'currency'%]##-->[@total_money_spent@]<!--##[%END format%]##--></td></tr>
+<!--##[%DATA id:'fulfilled' if:'=' value:'1'%]##-->
+	<tr><td>Date Fulfilled</td><td><!--##[%format type:'date'%]##-->[@date_fulfilled@]<!--##[%END format%]##--></td></tr>
+<!--##[%END DATA%]##-->
+</table>
+	</td></tr>
+</table></td></tr>
+</table>
+<div class="spacer"></div>
+<table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr><td colspan="2" class="checkout_box_header">Confirm Order Address</td></tr>
+  <tr> 
+    <td width="50%" valign="top"><b>Order Billing Address:</b><br>
+			[@bill_first_name@] [@bill_last_name@] [@bill_company@]<br>
+      [@bill_street1@] [@bill_street2@]<br> [@bill_city@], [@bill_state_name@] 
+      [@bill_zip@]<br> [@bill_country_name@]<br>
+			Contact Numbers: [@bill_phone@]<br>
+      <br>
+			<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_bill_addr&previous=[@current_action@]'%][%END URL%]">Change Order Billing Address</a></td>
+    <td width="50%" valign="top"><b>Order Shipping Address:</b><br>
+			[@ship_first_name@] [@ship_last_name@] [@ship_company@]<br>
+      [@ship_street1@] [@ship_street2@]<br> [@ship_city@], [@ship_state_name@] 
+      [@ship_zip@]<br> [@ship_country_name@]<br>
+			Contact Numbers: [@ship_phone@]<br>
+      <br>
+			<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_ship_addr&previous=[@current_action@]'%][%END URL%]">Change Order Shipping Address</a></td>
+  </tr>
+</table>
+<div class="spacer"></div>
+<form method="post" name="ProcOrder" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]" onSubmit="return procorder();">
+<input type="hidden" name="action" value="[@current_action@]">
+<input type="hidden" name="submited" value="0">
+<input type="hidden" name="fn" value="finalize">
+<!--##[%standing_order_items id:'[@storder_id@]'%]
+[%PARAM *header%]##-->
+<table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
+  <tr><td>
+<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
+<table cellpadding="4" cellspacing="4" border="0" width="100%"> 
+	<tr><td class="small">Purchase order # <b>[@customer_po@]</b></td></tr>
+</table>
+<!--##[%END DATA%]##-->
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+	<tr>
+		<td width="100px" class="header" nowrap>SKU</td>
+		<td width="99%" class="header" nowrap>Product</td>
+		<td width="50px" class="header" nowrap>Qty</td>
+		<td width="75px" class="header" nowrap>Price</td>
+		<td width="75px" class="header" nowrap>Discounts</td>
+		<td width="100px" class="header" nowrap>Subtotal</td>
+	</tr>
+<!--##[%END PARAM%]
+[%PARAM *body%]##-->
+<tr>
+	<td>[@SKU@]</td>
+	<td>[@model@] <i>[@extra@]</i>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+	<td>[@qty@]</td>
+	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
+	<td align="center"><!--##[%DATA id:'discount_percent' if:'>' value:'0' %]##--><!--##[%format type:'percent'%]##-->-[@discount_percent@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
+	<td><!--##[%format type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
+</tr>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *footer%]##-->
+	<tr><td colspan="4">&nbsp;</td>
+		<td class="store_total" nowrap>Sub Total</td>
+		<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></td></tr>
+<!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
+[%PARAM if_true%]##-->
+<tr><td class="shitem0"  colspan="4"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+	<td class="store_total" nowrap>Delivery Cost</td>
+	<td class="store_total" nowrap>N/A</td></tr>
+<!--##[%END PARAM%]
+[%PARAM if_false%]##-->
+<tr><td class="shitem0"  colspan="4"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+	<td class="store_total" nowrap>Delivery Cost</td>
+	<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
+<!--##[%END PARAM%]
+[%END DATA%]##-->
+<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
+	<tr><td class="header" colspan="6">Special Pricing Arrangements / Discounts</td></tr>
+	<tr><td colspan="5">[@couponcode@]</td>
+		<td>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></td></tr>
+	<tr><td class="shitem0" colspan="4">&nbsp;</td>
+		<td class="store_total" nowrap>Sub Total</td>
+		<td class="store_total" nowrap>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></td></tr>
+<!--##[%END DATA%]##-->
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><b>Order Subtotal</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%DATA id:'shipping_method_id' if:'ne' value:'' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Total Shipping</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Total Discount</b></td>
+		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'surcharge_total' if:'>' value:'0' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Surcharge</b> (<!--##[%format type:'percent' dc:'2'%]##-->[@surcharge_percent@]<!--##[%END format%]##-->)</td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'=' value:'1' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Order Total</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%DATA id:'credit_apply' if:'>' value:'0' %]##-->
+	<tr><td colspan="2" style="border-bottom: 2px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Apply Credit</b> <input type="checkbox" name="apply_credit" value="[@credit_apply@]" onClick="shBalance(this.checked)"></td>
+		<td align="right"><span class="text-danger"><b>-<!--##[%format type:'currency'%]##-->[@credit_apply@]<!--##[%END format%]##--></b></span></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr id="balance" style="display:none;"><td><b>Balance Due</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@owed_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+</table></td></tr>
+</table></td></tr>
+</table>
+<input type="hidden" name="grand_total" value="[@grand_total@]"/>
+<div class="spacer"></div>
+<table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr><td colspan="2" class="checkout_box_header">Special Delivery Instructions</td></tr>
+  <tr><td>
+<textarea rows="3" style="width:100%;" id="comment" name="comment" wrap="soft" onChange="ctinst()" onKeyPress="ctinst()" onBlur="ctinst()">[@ship_comment@]</textarea>
+<span size="1" id="ct">&nbsp;</span>
+<script type="text/javascript" language="javascript">ctinst();</script>
+	</td></tr>
+</table>
+<div class="spacer"></div>
+<table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr><td colspan="2" class="checkout_box_header">Make Payment</td></tr>
+  <tr><td>
+<!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
+<!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order</td></tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%END DATA%]##-->
+<!--##[%payment_methods id:'[@payment_method@]'%]
+[%PARAM *body%]##-->
+	<!--##[%DATA id:'charge_type' if:'eq' value:'cc'%]
+	[%PARAM if_true%]##-->
+<p>Your chosen payment method is: <b>Credit Card</b> &nbsp; <a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_payment&previous=[@current_action@]'%][%END URL%]">Change Order Payment Method</a></p>
+<table cellpadding="0" cellspacing="2" border="0">
+<tr><td>Credit Card Type</td><td>[@name@]</td></tr>
+<tr><td>Card Number</td><td nowrap>[@card_number@]</td></tr>
+<tr><td>Card Holder's Name</td><td nowrap>[@card_holder@]</td></tr>
+<tr><td>Card Expiration Date</td><td nowrap>[@card_exp_month@]/[@card_exp_year@]</td></tr>
+</table><br>
+	<!--##[%END PARAM%]
+	[%PARAM if_false%]##-->
+<p>Your chosen payment method is: <b>[@name@]</b> &nbsp; <a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_payment&previous=[@current_action@]'%][%END URL%]">Change Order Payment Method</a></p>
+		<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
+<img src="[$imageurl$]/cart/paymentmethods/cheque.gif" width="60" height="32"><br>
+<br>
+Please send your cheque to:<br><br>
+<b>[$company_name$]<br>
+[$COMPANY_POADDR$]</b><br><br> 
+Your order will not be processed until we receive your cheque.<br>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
+<img src="[$imageurl$]/cart/paymentmethods/money_order.gif" width="60" height="32"><br>
+<br>
+Please send your money order to:<br> <br>
+<b>[$company_name$]<br>
+[$COMPANY_POADDR$]</b><br><br> 
+Your order will not be processed until we receive your money order.<br>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
+<img src="[$imageurl$]/cart/paymentmethods/electronic_transfer.gif" width="60" height="32"><br>
+After submitting this page please pay the total order value into the following account:<br>
+<br>
+[$COMPANY_BANK_NAME$]<br>
+Name: [$COMPANY_BANK_ACC$]<br>
+BSB: [$COMPANY_BANK_BSB$]<br>
+Ac/no: [$COMPANY_BANK_NUM$]<br>
+<br>
+Please leave your order number as reference. Your order will not be processed until payment is received.<br>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'name' if:'like' value:'BPAY'%]##-->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+	<tr><td width="1%" valign="top" rowspan="2"><img src="[$imageurl$]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
+		<td width="99%"><b>Telephone &amp; Internet Banking - BPAY</b></td></tr>
+	<tr><td valign="top">When you submit this page, you will be given a biller 
+		code and a reference number. Please quote the numbers and call your 
+		participating financial institution to make a payment from your 
+		cheque, savings or credit card account. Once we receive notification 
+		of your BPAY payment, your order will be processed.</td>
+</tr></table><br>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'name' if:'like' value:'PayPal'%]##-->
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+<tr>
+	<td width="1%" valign="top"><img src="[$imageurl$]/cart/paymentmethods/paypal.gif" width="60" height="38"></td>
+	<td width="99%" valign="top">When you submit this page, you will be 
+		sent to the paypal site where you can enter your e-mail address 
+		for your paypal account. Once we receive notification of your paypal 
+		payment, your order will be processed.</td>
+</tr>
+</table><br>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
+<b>Your chosen payment method is [$company_name$] Account </b><br>
+Your [$company_name$] account will automatically be charged for the value of this order.
+		<!--##[%END DATA%]##-->
+	<!--##[%END PARAM%]
+	[%END DATA%]##-->
+<!--##[%END PARAM%]
+[%END payment_methods%]##--></td></tr>
+</table>
+<div class="spacer"></div>
+<!--##[%END PARAM%]##-->
+<!--##[%END standing_order_items%]##-->
+<center>
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a>&nbsp; 
+    <input type="image" alt="Confirm Send Order Now" src="[$imageurl$]/template/cart/confirm.gif">
+    <br>
+    Your order will be processed when the above confirmation button is clicked... 
+  </center>
+</form>

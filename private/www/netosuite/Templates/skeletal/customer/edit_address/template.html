@@ -1,0 +1,308 @@
+<div class="col-xs-12">
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Edit Your Address Book</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+<div class="page-header">
+<h1>Add or Edit Address Book Entry</h1>
+</div>
+
+<!--##[%TRIM inner:'1'%][%PARAM body%]##-->
+	<!--##[%show_message name:"update_error"%]##-->
+	<!--##[%PARAM header%]##-->
+<div class="errorbox"><ul>
+	<!--##[%END PARAM%]##-->
+	<!--##[%PARAM *body%]##--><li>
+
+	</li><!--##[%END PARAM%]##-->
+	<!--##[%PARAM footer%]##-->
+	</ul></div><br>
+	<!--##[%END PARAM%][%END show_message%]##-->
+<!--##[%END PARAM%][%END TRIM%]##-->
+	
+<!--##[%TRIM inner:'1'%][%PARAM body%]##-->
+	<!--##[%show_message name:"edit_msg"%]##-->
+	<!--##[%PARAM header%]##-->
+	<div class="successbox"><ul>
+	<!--##[%END PARAM%]##-->
+	<!--##[%PARAM *body%]##--><li>
+		<!--##[%DATA id:'msg' if:'eq' value:'updated' %]##-->Your address '[@ship_title@]' has been updated.<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'msg' if:'eq' value:'deleted' %]##-->Your address '[@ship_title@]' has been deleted.<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'msg' if:'eq' value:'created' %]##-->Your address '[@ship_title@]' has been created.<!--##[%END DATA%]##-->
+	</li><!--##[%END PARAM%]##-->
+	<!--##[%PARAM footer%]##-->
+	</ul></div><br>
+	<!--##[%END PARAM%][%END show_message%]##-->
+<!--##[%END PARAM%][%END TRIM%]##-->
+
+<p class="help-block">
+You can use the Address Book tool to create and save multiple 
+ship-to addresses. You can then choose your appropriate address for each order you place at checkout.
+</p>
+
+
+<form class="well" method="POST" name="shipping" action="[%URL page:'account' type:'edit_address'%][%END URL%]">
+<label class="lead">Add a new address or edit an existing address</label>
+<select class="form-control input-lg" type="text" name="addr_id" id="addr_id">
+<option value="">Add or Edit</option>
+<option value="n">Add New Entry</option>
+<!--##[%address_book%]
+[%PARAM *body%]##-->
+<!--##[%DATA id:'id' if:'ne' value:'b'%]##-->
+<option value="[@id@]" [%FORM id:'addr_id' if:'eq' value:'[@id@]'%]selected[%END FORM%]>[@ship_title@] ([@ship_zip@])</option>
+<!--##[%END DATA%]##-->
+<!--##[%END PARAM%] 
+[%END address_book%]##-->
+</select>
+</form>
+
+<form method="POST" name="itemForm" action="[%URL page:'account' type:'edit_address'%][%END URL%]">
+<input name="update" type="hidden" value="update">
+<input type="hidden" name="addr_id" value="[@id@]">
+
+<h2>Address Details</h2>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+
+<div class="form-group">
+<label for="ship_title">Address Title </label>
+<span class="small text-danger">Required</span>
+<span class="help-block">(eg: Work Address)</span>
+<input class="form-control" type="text" name="ship_title" id="ship_title" size="50" maxlength="50" value="[@ship_title@]">
+</div>
+
+<div class="form-group">
+<label for="ship_first_name">First Name</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_first_name" id="ship_first_name" size="50" maxlength="50" value="[@ship_first_name@]">
+</div>
+
+
+<div class="form-group">
+<label for="ship_last_name">Last Name</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_last_name" id="ship_last_name" size="50" maxlength="50" value="[@ship_last_name@]">
+</div>
+
+
+<div class="form-group">
+<label for="ship_company">Company</label>
+<input class="form-control" type="text" name="ship_company" id="ship_company" size="50" maxlength="50" value="[@ship_company@]">
+</div>
+</div>
+<div class="col-xs-12 col-md-6">
+
+<div class="form-group">
+<label for="ship_street1">Address</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_street1" id="ship_street1" size="50" maxlength="50" value="[@ship_street1@]"><br>
+<input class="form-control" type="text" name="ship_street2" id="ship_street2" size="50" maxlength="50" value="[@ship_street2@]">
+</div>
+
+<div class="row">
+<div class="col-xs-12 col-md-6">
+
+<div class="form-group">
+<label for="ship_zip">Zip Code / Postal Code</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" size="50" maxlength="10" onChange="updloca('ship')" onKeyUp="updloca('ship')">
+</div>
+
+</div>
+<div class="col-xs-12 col-md-6">
+
+<div class="form-group">
+<label for="ship_zip">Suburb Selector</label>
+<span class="small text-danger">Required</span>
+<div id="suburb_diship">&nbsp;</div>
+<div style="display:none;" id="suburb_mgship">&nbsp;</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6">
+
+<div class="form-group">
+<label for="ship_city">City</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_city" id="ship_city" readonly value="[@ship_city@]" size="50" maxlength="50">
+</div>
+</div>
+
+<div class="col-xs-12 col-md-6">
+
+<div class="form-group">
+<label for="ship_city">State</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_state" id="ship_state" readonly value="[@ship_state@]" size="50" maxlength="50">
+</div>
+</div>
+</div>
+
+<div class="form-group">
+<label for="ship_city">Country</label>
+<span class="small text-danger">Required</span>
+<select class="form-control" name="ship_country" id="ship_country" size="1" onChange="updloca('ship')">
+<!--##[%countries%]
+[%PARAM *body%]##--><option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option><!--##[%END PARAM%]
+[%END countries%]##-->
+</select>
+</div>	
+
+<div class="form-group">
+<label for="ship_phone">Phone Number</label>
+<span class="small text-danger">Required</span>
+<input class="form-control" type="text" name="ship_phone" id="ship_phone" size="50" maxlength="50" value="[@ship_phone@]">
+</div>
+
+
+
+<div class="form-group">
+<label for="ship_phone">Save as My Default Address</label>
+<input name="defaddr" type="checkbox" value="1"  [%USER id:'addr_id' if:'==' value:'[@id@]'%]checked[%END USER%]>
+</div>
+</div>
+
+</div>
+
+<div class="row">
+<div class="col-xs-12 col-md-2">
+<input type="button" name="delete" class="btn btn-danger btn-lg btn-block" value="Delete Address" id="delete_button" onClick="javascript:$.del_addressbook_entry()"><br>
+</div>
+<div class="col-xs-12 col-md-2 col-md-offset-8">
+<input type="button" name="submit" class="btn btn-success btn-lg btn-block" value="Save Address" id="save_button" onClick="javascript:$.add_addressbook_entry()">
+</div>     
+</div>     
+</form>
+
+<!--#Do not edit below this line# ##-->
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$.addressbook_select();
+});
+
+var httpReq ={};
+
+function onload(){
+	checkDeleteButton();
+}
+
+function updloca(oid) {
+	var f = document.itemForm;
+	var msg = document.getElementById('suburb_mg'+oid);
+	var dis = document.getElementById('suburb_di'+oid);
+	var sel = document.getElementById('suburb_sl'+oid);
+
+	var zip = f[oid+'_zip'];
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	var country = f[oid+'_country'];
+	
+	msg.innerHTML = '<i>Loading...</i>'
+	msg.style.display = '';
+	dis.style.display = 'none';
+	
+	if(country.options[country.selectedIndex].value != '[$SELECTORCOUNTRY$]') {
+		msg.innerHTML = '<i>Please enter your city and state below.</i>';
+		city.readOnly = state.readOnly = false;
+		city.style.color = state.style.color = '#000000';
+	} else {
+		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
+		
+		city.readOnly = state.readOnly = true;
+		city.style.color = state.style.color = '#666666';
+		if( zip.value == '' ) {
+			msg.innerHTML = '<i>Please enter your postal code above.</i>';
+		} else {
+			var url = '[$secure_home_url$]/do/get_locate?zip='+escape(zip.value);
+			httpReq[oid] = ajax_XMLHttpRequest();
+			if(!httpReq[oid]) {
+				msg.innerHTML = '<i>Error. Please contact our customer support: [$COMPANY_EMAIL$]</i>';
+			} else {
+				httpReq[oid].onreadystatechange = function() {
+					if(httpReq[oid].readyState == 4 && httpReq[oid].status == 200) {
+						var data = httpReq[oid].responseText.split('\n');
+						sub_ldsel(oid,data);
+					}
+				};
+				httpReq[oid].open("GET",url,true);
+				httpReq[oid].send(null);
+			}
+		}
+	}
+}
+
+function sub_ldsel(oid,data) {
+	var f = document.itemForm;
+	var dis = document.getElementById('suburb_di'+oid);
+	var msg = document.getElementById('suburb_mg'+oid);
+	
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	
+	var count = 0;
+	if(data.length > 0) {
+		var option = '<option value="">-- Select Suburb --</option>';
+		var sel_value = city.value.toUpperCase()+' - '+state.value;
+		for(var i=0; i<data.length; i++) {
+			if(data[i] != '') {
+				option += '<option value="'+data[i]+'"'+(data[i] == sel_value? ' selected':'')+'>'+data[i]+'</option>';
+				count++;
+			}
+		}
+	}
+	if(count <= 0) {
+		msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
+		dis.style.display = 'none';
+		msg.style.display = '';
+	} else {
+		dis.innerHTML = '<select class="form-control" id="suburb_sl'+oid+'" onChange="sub_sel(\''+oid+'\')">'+option+'</select>';
+		msg.style.display = 'none';
+		dis.style.display = '';
+
+		sub_sel(oid);
+	}
+}
+
+function sub_sel(oid) {
+	var f = document.itemForm;
+	var sel = document.getElementById('suburb_sl'+oid);
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	if(sel) {
+		if(sel.selectedIndex > 0) {
+			var sp = sel.options[sel.selectedIndex].value.split(' - ');
+			if( sp.length > 1 ) {
+				state.value = sp[sp.length-1];
+				city.value = (sp.slice(0,sp.length-1)).join(' - ');
+			}
+		}
+	}
+}
+
+function deleteCurrentAddress(){
+	var confirm_delete = confirm("Do you want to delete this address book entry?");
+	if (confirm_delete){	
+		document.itemForm.update.value = "delete";
+		document.itemForm.submit();
+	}
+}
+
+function checkDeleteButton(){
+	if (document.getElementById('addr_id').selectedIndex == 0){
+		document.getElementById('delete_button').disabled = "true";
+	}	
+}
+
+</script>
+
+<script language="javascript" type="text/javascript">
+	updloca('ship');
+</script>
+<!--##[%END SITE_VALUE%]##-->
+
+</div>

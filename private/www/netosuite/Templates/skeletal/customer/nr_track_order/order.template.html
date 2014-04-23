@@ -1,0 +1,119 @@
+<script language="javascript" type="text/javascript">
+function print_invoice() {
+	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+}
+</script>
+
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+
+
+<!--##[%show_order id:'[@order_id@]'%][%PARAM *header%]##-->
+<div class="page-header">
+<h1>Track Order #<!--##[%NOHTML%]##-->[@order_id@]<!--##[%END NOHTML%]##--></h1>
+</div>
+
+
+<div class="row">
+<div class="grid_4">
+<strong>Status:</strong> <span class="label label-success">[@order_status@]</span>
+<h4><!--##[%NOHTML%]##-->Order #[@order_id@]<!--##[%END NOHTML%]##--></h4>
+<!--##[%DATA id:'customer_po' if:'ne' value:''%]##--><h4>PO # <!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--></h4><!--##[%END DATA%]##-->
+<h5>Date Placed: <!--##[%format type:"date" format:"#D/#M/#Y"%]##-->[@date_placed@]<!--##[%END format%]##--></h5>
+        <!--##[%DATA id:'if_invoiced' if:'=' value:'1'%]##-->
+<h5>Date Invoiced: <!--##[%format type:"date" format:"#D/#M/#Y"%]##-->[@date_invoiced@]<!--##[%END format%]##--></h5>
+        <!--##[%END DATA%]##-->
+        <!--##[%DATA id:'order_status' if:'like' value:'Completed'%]##-->
+<h5>Date Completed: <!--##[%format type:"date" format:"#D/#M/#Y"%]##-->[@date_updated@]<!--##[%END format%]##--></h5>
+        <!--##[%END DATA%]##-->
+</div>
+<div class="grid_4">
+<h4>Ship To:</h4>
+<!--##[%NOHTML%]##-->
+            [@ship_first_name@] [@ship_last_name@]
+            <!--##[%END NOHTML%]##-->
+            <br />
+            <!--##[%DATA id:'ship_company' if:'ne' value:''%]##-->
+            <!--##[%NOHTML%]##-->
+            [@ship_company@]
+            <!--##[%END NOHTML%]##-->
+            <br />
+            <!--##[%END DATA%]##-->
+            <!--##[%NOHTML%]##-->
+            [@ship_street1@]
+            <!--##[%END NOHTML%]##-->
+            <br />
+            <!--##[%DATA id:'ship_street2' if:'ne' value:''%]##-->
+            <!--##[%NOHTML%]##-->
+            [@ship_street2@]
+            <!--##[%END NOHTML%]##-->
+            <br />
+            <!--##[%END DATA%]##-->
+            <!--##[%NOHTML%]##-->
+            [@ship_city@], [@ship_state_name@] [@ship_zip@]
+            <!--##[%END NOHTML%]##-->
+            <br />
+            <!--##[%NOHTML%]##-->
+            [@ship_country_name@]
+            <!--##[%END NOHTML%]##-->
+            <br />
+            Tel:
+            <!--##[%NOHTML%]##-->
+            [@ship_phone@]
+            <!--##[%END NOHTML%]##-->
+</div>
+</div>
+<hr />
+
+<table class="table table-bordered table-striped">
+<thead>
+    <tr>
+                  <th>Image</th>
+                  <th>Qty</th>
+                  <th>Description</th>
+                  <th>Shipping Details</th>
+    </tr>
+</thead>
+<tbody>
+    <!--##[%END PARAM%][%PARAM *body%]##-->
+    <tr>
+      <td><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL'%][%END asset_url%]" alt="[@model@]" width="50px"  height="50px"></td>
+      <td>[@qty@]</td>
+      <td>[@model@]<i>[@extra@]</i>
+				<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+        <!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+        <!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##-->
+        <!--##[%FORMAT type:'date' default:''%][%PARAM *format%]##--><br><b>Deliver On</b> #D/#M/#Y (#G:#I#a)<!--##[%END PARAM%][@date_delivery@][%END FORMAT%]##--></td>
+      <td nowrap>
+<!--##[%DATA id:'ship_method' if:'ne' value:'' %]##--><span class="label">[@ship_method@]</span><br /><!--##[%END DATA%]##-->
+        <!--##[%DATA id:'ship_tracking' if:'ne' value:'' %]##-->
+        Tracking #[@ship_tracking@]<br />
+        <!--##[%END DATA%]##-->
+     	 <!--##[%DATA id:'ship_tracking' if:'eq' value:'' %]##-->
+Tracking not yet available     	 <!--##[%END DATA%]##-->
+        <!--##[%DATA id:'tracking_url' if:'ne' value:'' %]##--> 
+        <a href="[@tracking_url@]" target="_blank" class="btn btn-small">Track Online <i class="fa fa-share"></i></a>
+        <!--##[%END DATA%]##-->
+        <!--##[%DATA id:'tracking_url' if:'eq' value:'' %]##--> 
+&nbsp;        <!--##[%END DATA%]##--></td>
+      </tr> 
+      </tbody>
+      </table>
+    <!--##[%END PARAM%][%PARAM *footer%]##--> 
+  <!--##[%END PARAM%][%END show_order%]##-->
+
+
+<!--#End Content# ##-->
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

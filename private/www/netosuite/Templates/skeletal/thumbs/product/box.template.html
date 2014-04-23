@@ -1,0 +1,39 @@
+<!--##[%CACHE type:'box' id:'[@inventory_id@]'%]##-->
+<li class="list-group-item thumbnail-box">
+	<div class="row">
+		<div class="col-sm-12 col-md-5">
+			<a href="[@URL@]" title="[@model@]">
+				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%NTHEME_ASSET%]img/default_product.gif[%END NTHEME_ASSET%][%end param%][%END asset_url%]" class="product-image" width="100%" alt="[@model@]" rel="itmimg[@SKU@]">
+			</a>
+			<!--##[%IF [@inpromo@]%]##-->
+			<div class="savings-container"><span class="label label-danger">On Sale</span></div>
+			<!--##[%END IF%]##-->
+		</div>
+		<div class="col-sm-12 col-md-7">
+			<h5 class="title">
+				<a href="[@URL@]">
+					<!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##-->
+				</a>
+			</h5>
+			<p class="price">
+				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
+				<!--##[%IF [@inpromo@]%]##-->
+					<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##--> 
+				<!--##[%ELSE%]##--> 
+					<span itemprop="price"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>	
+				<!--##[%END IF%]##-->
+			
+				<!--##[%IF [@save@] > 0 AND ![@has_child@]%]##-->
+						<span class="small text-danger">
+							<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##--> OFF
+						</span>
+				<!--##[%END IF%]##-->
+				<!--##[%IF [@save@] > 0%]##-->
+					<span class="small text-muted">RRP <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
+				<!--##[%END IF%]##-->
+			</p>		   
+			
+		</div>
+	</div>
+</li>
+<!--##[%END CACHE%]##-->

@@ -1,0 +1,157 @@
+<!--##[%show_message severity:'msg' type:'discount'%][%PARAM header%]##-->
+
+<!--##[%END PARAM%][%PARAM *body%]##--><div class="alert alert-success"><a class="close" data-dismiss="alert">x</a>[@info_msg@]</div><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+
+<!--##[%END PARAM%][%END show_message%]##-->
+<!--##[%show_message severity:'error' type:'discount'%][%PARAM header%]##-->
+
+<!--##[%END PARAM%][%PARAM *body%]##--><div class="alert alert-danger"><a class="close" data-dismiss="alert">x</a>[@info_msg@]</div><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+
+<!--##[%END PARAM%][%END show_message%]##-->
+<!--##[%show_message severity:'warn' type:'discount'%][%PARAM header%]##-->
+
+<!--##[%END PARAM%][%PARAM *body%]##--><div class="alert alert-warning"><a class="close" data-dismiss="alert">x</a>[@info_msg@]</div><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+
+<!--##[%END PARAM%][%END show_message%]##-->
+
+
+<div class="well">
+<h4>
+Apply Coupon / Promo Code
+</h4>
+
+<br />
+<div class="form-group">
+<input class="form-control" type="text" name="addcpn" id="addcpn"/> 
+</div>
+<button type="button" class="btn btn-default btn-block" id="_cpy_add_coupon">Apply Coupon Code</button>
+<!--##[%active_coupons%]##-->
+	<!--##[%PARAM header%]##-->
+	<table class="table">
+    <tr><th colspan="4">Active Discounts</th></tr>
+	<!--##[%END PARAM%]
+	[%PARAM *body%]##-->
+	<tr><td>[@code@]</td><td>[@title@]</td>
+	<td nowrap="nowrap"><!--##[%format type:'currency'%]##-->[@discount@]<!--##[%END format%]##--></td>	<td align="center"><a class="_cpy_remove_coupon close" ref="[@code@]" href="javascript:void(0);">&times;</a></td>
+    </tr>
+	<!--##[%END PARAM%]
+	[%PARAM footer%]##-->
+	</table>
+	<!--##[%END PARAM%]
+[%END active_coupons%]##-->
+
+</div>
+
+<!--##[%cart_vouchers%]##-->
+	<!--##[%PARAM header%]##-->
+<div class="well">
+<h4>
+Rewards Earned 
+</h4>
+
+<table cellpadding="4" cellspacing="0" width="100%" border="0">
+<!--##[%END PARAM%]
+<!--##[%PARAM *body%]##-->
+	<tr><td valign="top" width="90%"><strong>[@vprogram_title@]</strong><br />
+	[@vprogram_subtitle@]</td>
+	<td valign="top" nowrap="nowrap">
+<!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
+	<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
+<!--##[%END PARAM%][%PARAM if_false%]##-->
+	<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
+<!--##[%END PARAM%][%END DATA%]##-->
+	</td></tr>
+<!--##[%END PARAM%]
+<!--##[%PARAM footer%]##-->
+</table>
+
+</div>
+	<!--##[%END PARAM%]
+[%END cart_vouchers%]##-->
+
+<!--##[%cart_addresses ship_mode:'[@ship_mode@]'%][%PARAM *body%]##-->
+<!--##[%cart_items ship_mode:'[@ship_mode@]' addr_id:'[@addr_id@]'%]
+[%PARAM header%]##-->
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+   	 <th colspan="3">Order Summary - 
+<!--##[%NOHTML%]##-->[@ship_title@]<!--##[%END NOHTML%]##-->   
+<small><!--##[%NOHTML%]##--><!--##[%TRIM%]##-->[@ship_state@] [@ship_zip@]<!--##[%END TRIM%]##--><!--##[%END NOHTML%]##--></small>
+    </th>
+	</tr>
+  </thead>
+<tbody>
+	<!--##[%END PARAM%]
+	[%PARAM *body%]##-->
+	<tr>
+	<td valign="top" width="1%" nowrap>[@qty@]</td>
+	<td>[@model@] <i>[@extra@]</i>
+	
+	<!--##[%DATA id:'has_components' if:'==' value:'1'%]##-->
+<!--##[%CART_ITEM_COMPONENTS counter:'[@counter@]'%]##-->
+    <!--##[%PARAM header%]##-->
+	<ul>
+    <!--##[%END PARAM%][%PARAM *body%]##-->
+<li>[@qty@] x [@model@]</li>
+    <!--##[%END PARAM%][%PARAM footer%]##-->
+	</ul>
+    <!--##[%END PARAM%]##-->
+<!--##[%END CART_ITEM_COMPONENTS%]##-->
+<!--##[%END DATA%]##-->
+	
+	 </td>
+	<td width="11%" align="right" valign="top" nowrap="nowrap"><!--##[%format type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
+	</tr>
+	<!--##[%END PARAM%]##-->
+	<!--##[%PARAM *footer%]##-->
+	<tr><td nowrap="nowrap" colspan="2"> <strong>Order Subtotal</strong></td>
+	<td align="right"><strong>
+		<!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></strong></td></tr>
+
+		<!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
+			<tr><td nowrap="nowrap" colspan="2"><strong>Total Shipping </strong> </td>
+			<td align="right"><strong>
+			<span id="rcpt_shipping">
+			<!--##[%format type:'currency'%]##-->
+				[@shipping_total@]
+			<!--##[%END format%]##--></span></strong></td></tr>
+		<!--##[%END DATA%]##-->
+		
+		<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
+			<tr><td colspan="2"><strong>Total Discount</strong></td>
+			<td align="right"><strong>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></strong></td></tr>
+		<!--##[%END DATA%]##-->
+		
+		<!--##[%DATA id:'surcharge_total' if:'>' value:'0' %]##-->
+			<tr><td colspan="2" nowrap="nowrap"><strong>Surcharge</strong> (
+			<!--##[%format type:'percent' dc:'2'%]##-->[@surcharge_percent@]<!--##[%END format%]##-->)</td>
+			<td align="right"><strong><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></strong></td></tr>
+		<!--##[%END DATA%]##-->
+		
+		<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
+			<tr><td colspan="2"><strong>GST
+			<!--##[%DATA id:'tax_inc' if:'=' value:'1' %]##--> 
+				Inc.
+			<!--##[%END DATA%]##--></strong></td>		
+		<td align="right"><strong>
+		<span id="rcpt_gst"><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></span></strong></td></tr>
+		<!--##[%END DATA%]##-->
+
+		<tr><td colspan="2" nowrap><span class="_order_total"><strong>Order Total</strong></span></td>
+		<td align="right"><span class="_order_total"><strong> 
+		<span id="rcpt_order_total"><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></span></strong></span></td>
+		</tr>
+        </tbody>
+		</table>
+
+<!--##[%END PARAM%]##-->
+<!--##[%END cart_items%]##-->
+<!--##[%END PARAM%][%END cart_addresses%]##-->
+
+<a class="btn btn-default btn-block" href="[%url page:'checkout'%][%END url%]" title="Edit Order" rel="no-follow"><i class="fa fa-pencil"></i> Edit Order</a>
+
+<input id="new_grand_total" type="hidden" value="[%CART id:'grand_total'%][%END CART%]"/>

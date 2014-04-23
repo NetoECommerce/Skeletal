@@ -1,0 +1,265 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+
+<h1>Wholesale Registration Form</h1>
+<p>
+If you already have an account with us, please login at the <a href="[%url page:'account' type:'login'%][%END url%]">login page</a>.
+</p>
+
+<!--##[%TRIM inner:'1'%][%PARAM body%]##-->
+<!--##[%show_message severity:'error'%][%PARAM header%]##-->
+
+<!--##[%END PARAM%][%PARAM *body%]##-->
+	<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>[@info_msg@]</div><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+
+<!--##[%END PARAM%][%END show_message%]##-->
+<!--##[%END PARAM%][%END TRIM%]##-->
+
+
+<form  name="adduser" id="adduser" method="POST" action="[%url page:'account' type:'wholesaleregister'%][%END url%]">
+<!--##[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]##-->
+<input type="hidden" name="fn" value="proc">
+<input type="hidden" name="redirect" value="[@redirect@]">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+          <td valign="top"> <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td><h3>Your Future Login Details</h3></td>
+                </tr>
+                <tr>
+                  <td><table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+                      <tr>
+                        <td width="31%">Username<span style="color:red;">*</span></td>
+                        <td width="69%"><input type="text"  name="reg_username" size="20" maxlength="15" value="[%nohtml%][%FORM id:'reg_username'%][%END FORM%][%end nohtml%]">
+                          <span size="1">(used for future access to your account)</span></td>
+                      </tr>
+                      <tr>
+                        <td width="31%">Email Address<span style="color:red;">*</span></td>
+                        <td width="69%"><input type="text" name="reg_email" size="35" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]">
+                          <span size="1">(order receipts &amp; invoices will be
+                          sent here)</span></td>
+                      </tr>
+                      <tr>
+                        <td>Password<span style="color:red;">*</span></td>
+                        <td><input type="password"  name="reg_password" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]"></td>
+                      </tr>
+                      <tr>
+                        <td>Confirm Password<span style="color:red;">*</span></td>
+                        <td><input type="password"  name="reg_password2" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]"></td>
+                      </tr>
+                    </table></td>
+                </tr>
+
+              </table>
+          <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td><h3>Company Information</h3></td>
+                </tr>
+
+                <tr>
+                  <td><table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+                      <tr>
+                        <td width="31%">First Name<span style="color:red;">*</span></td>
+                        <td width="69%"><input type="text" name="reg_bill_first_name" size="50" value="[%nohtml%][%FORM id:'reg_bill_first_name'%][%END FORM%][%end nohtml%]" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>Last Name<span style="color:red;">*</span></td>
+                        <td><input type="text" name="reg_bill_last_name" size="50" value="[%nohtml%][%FORM id:'reg_bill_last_name'%][%END FORM%][%end nohtml%]" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>Company Name<span style="color:red;">*</span></td>
+                        <td><input type="text" name="reg_bill_company" size="50" value="[%nohtml%][%FORM id:'reg_bill_company'%][%END FORM%][%end nohtml%]" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>Address<span style="color:red;">*</span></td>
+                        <td><input type="text" name="reg_bill_street1" size="50" value="[%nohtml%][%FORM id:'reg_bill_street1'%][%END FORM%][%end nohtml%]" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="text" name="reg_bill_street2" size="50" value="[%nohtml%][%FORM id:'reg_bill_street2'%][%END FORM%][%end nohtml%]" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>Post Code<span style="color:red;">*</span></td>
+                        <td><input type="text" name="reg_bill_zip" value="[%nohtml%][%FORM id:'reg_bill_zip'%][%END FORM%][%end nohtml%]" size="50" maxlength="10"></td>
+                      </tr>
+                      <tr>
+                        <td>Suburb<span style="color:red;">*</span></td>
+                        <td><input type="text" name="reg_bill_city" size="50" value="[%nohtml%][%FORM id:'reg_bill_city'%][%END FORM%][%end nohtml%]" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>State<span style="color:red;">*</span></td>
+                        <td><input type="text" name="reg_bill_state" value="[%nohtml%][%FORM id:'reg_bill_state'%][%END FORM%][%end nohtml%]" size="50" maxlength="50"></td>
+                      </tr>
+                      <tr>
+                        <td>Country<span style="color:red;">*</span></td>
+                        <td><select name="reg_bill_country">
+<!--##[%countries sortby:'sortorder,name' %]
+[%PARAM *body%]##--><option value="[@country_code@]" [%FORM id:'reg_bill_country' if:'eq' value:'[@country_code@]'%]selected[%END FORM%]>[@country_name@]</option><!--##[%END PARAM%]
+[%END countries%]##-->
+                          </select></td>
+                      </tr>
+                      <tr>
+                        <td>ABN / ACN</td>
+                        <td><input type="text" name="reg_usercustom2" size="50" value="[%nohtml%][%FORM id:'reg_usercustom2'%][%END FORM%][%end nohtml%]"></td>
+                      </tr>
+                      <tr>
+                        <td>Web Site URL</td>
+                        <td><input type="text" name="reg_usercustom3" size="50" value="[%nohtml%][%FORM id:'reg_usercustom3'%][%END FORM%][%end nohtml%]"></td>
+                      </tr>
+                    </table></td>
+                </tr>
+
+            </table>
+              <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td><h3>Contact Information</h3></td>
+                </tr>
+
+                <tr>
+                  <td><table width="100%" border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+                      <tr>
+                        <td width="31%">Phone Number<span style="color:red;">*</span></td>
+                        <td width="69%"><input type="text" name="reg_phone" size="35" value="[%nohtml%][%FORM id:'reg_phone'%][%END FORM%][%end nohtml%]"></td>
+                      </tr>
+                      <tr>
+                        <td>Fax Number</td>
+                        <td><input type="text" name="reg_fax" size="35" value="[%nohtml%][%FORM id:'reg_fax'%][%END FORM%][%end nohtml%]"></td>
+                      </tr>
+                    </table></td>
+                </tr>
+
+              </table>
+
+
+
+<!--##[%EXTRA_CUSTOMER_FIELDS%]
+[%PARAM *header%]##-->
+<table width="100%" height="38" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2"><h3>Other Details</h3></td>
+<!--##[%END PARAM%]
+[%PARAM *integer_option%]##-->
+<tr>
+<td><label>[@field_name@]</label></td>
+<td>
+<input type="text" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+</td>
+</tr>
+<!--##[%END PARAM%]
+[%PARAM *text_option%]##-->
+<tr>
+<td>
+<label>[@field_name@]</label>
+</td>
+<td>
+<input type="text" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+</td>
+</tr>
+<!--##[%END PARAM%]
+[%PARAM *short_text_option%]##-->
+<tr><td>
+<label>[@field_name@]</label>
+</td>
+<td>
+<input type="text" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+</td>
+</tr>
+<!--##[%END PARAM%]
+[%PARAM *descimal_option%]##-->
+<tr>
+<td>
+<label>[@field_name@]</label>
+</td>
+<td>
+<input type="text" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+</td>
+</tr>
+<!--##[%END PARAM%]
+[%PARAM *boolean_option%]##-->
+<tr>
+<td>
+<label>[@field_name@]</label>
+</td>
+<td>
+<input type="checkbox" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%]>
+</td>
+</tr>
+<!--##[%END PARAM%]
+[%PARAM *date_option%]##-->
+<tr><td>
+<label>[@field_name@]</label>
+</td>
+<td>
+<input class="datepicker" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+</td></tr>
+<!--##[%END PARAM%]
+[%PARAM *selection_header%]##-->
+<tr>
+<td>
+<label>[@field_name@]</label>
+</td>
+<td>
+<select name = "[@field_id@]" >
+	<!--##[%END PARAM%]
+[%PARAM *selection_body%]##-->
+<option value="[@option_value@]">[@option_value@]</option>
+<!--##[%END PARAM%]
+[%PARAM *selection_footer%]##-->
+</select>
+</td>
+</tr>
+<!--##[%END PARAM%]
+[%PARAM *footer%]##-->
+<!--##[%END PARAM%]
+[%END EXTRA_CUSTOMER_FIELDS%]##-->
+
+            </table>
+            <table width="100%" height="38" border="0" cellpadding="0" cellspacing="0">
+
+              <tr>
+                <td><h3>&nbsp;Terms &amp; Conditions Of Trade</h3>
+                  <table cellpadding="6" cellspacing="0" border="0" width="100%">
+                    <tr>
+                      <td><div style="width:100%; border:1px solid #CCCCCC; height: 150px; overflow:scroll; text-align:left; padding:10px;">
+                          <div align="left">
+                            [%content_zone id:'terms'%][%end content_zone%]
+                          </div>
+                        </div></td>
+                    </tr>
+                    <tr>
+                      <td>
+                      <p>
+                      <input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>  Subscribe to the [$company_name$] newsletter.
+                      </p>
+                      <p>
+                          <input type="checkbox" name="agree" value="y">
+                          I agree to the [$company_name$] terms of trade.
+                        </p></td>
+                    </tr>
+                  </table></td>
+              </tr>
+
+            </table>
+
+            </td>
+          </tr>
+        </table>
+<table width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td height="24" colspan="2">
+      <input type="submit" class="btn" value="Click Here to Register">
+              </td>
+   </tr>
+</table>
+<br>
+</form>
+
+</div>
+<!--##[%GA_FUNNEL%]/wholesaleregister/form.html[%END GA_FUNNEL%]##-->
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

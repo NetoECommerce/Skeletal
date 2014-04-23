@@ -1,0 +1,72 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+ <!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1>Approve Quotes</h1>
+</div>
+
+<!-- Search Quotes
+<form method="get" action="[%URL page:'account' type:'search_orders'%][%END URL%]">
+<label>Invoice/Quote #</label>
+<input type="text" name="ord" value="[%nohtml%][%FORM id:'ord'%][%END FORM%][%END nohtml%]"/>
+<label>Email</label>
+<input type="text" name="email" value="[%nohtml%][%FORM id:'email'%][%END FORM%][%END nohtml%]" />	
+<input type="submit" value="Search" class="btn">
+</form>
+-->
+
+
+<!--##[%thumb_list limit:'10' type:'quotes'+%]##-->
+<!--##[%PARAM filter_1%][%FORM id:'ord'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM filter_2%][%END PARAM%]##-->
+<!--##[%PARAM filter_3%][%FORM id:'email'%][%END FORM%][%END PARAM%]##-->
+<!--##[%PARAM filter_4%]y[%END PARAM%]##-->
+<!--##[%PARAM header%]##-->
+<table class="table table-bordered table-striped" cellpadding="2" cellspacing="0" width="100%" border="0">
+<thead>
+    <tr>
+    <th>Quote ID</th>
+    <th>Date Quoted</th>
+    <th>Email Of Quote Recipient</th>
+    <th>Approve</th>
+    <th>Dismiss</th>
+    </tr>
+</thead>
+<tbody>
+  <!--##[%END PARAM%]##-->
+  <!--##[%PARAM *body%]##-->
+  <tr> 
+    <td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]' qs:'filter_1=[@email@]'%][%END URL%]">[@order_id@]</a></td>
+    <td><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_placed@]<!--##[%END format%]##--></td>
+    <td>[@email@]</td>
+  	<td><button class="btn btn-success" onclick="location.href='[%URL page:'account' type:'approve_quote' qs:'action=approve&order_email=[@email@]' id:'[@order_id@]'%][%END URL%]'">Approve Quote</button>
+ </td>
+ <td>
+    <button class="btn btn-danger" onclick="location.href='[%URL page:'account' type:'approve_quote' qs:'action=dismiss&order_email=[@email@]' id:'[@order_id@]'%][%END URL%]'">Dismiss Quote</button>
+  	</td>
+  </tr>
+  <!--##[%END PARAM%]##-->
+  <!--##[%PARAM *footer%]##-->
+  </tbody>
+</table>
+<br style="clear:both;">
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM ifempty%]##-->
+No quotes found. 1
+<!--##[%END PARAM%]##-->
+<!--##[%END thumb_list%]##-->
+
+
+
+
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
+<!--# End Column Right# ##-->

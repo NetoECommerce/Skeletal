@@ -1,0 +1,161 @@
+<style>
+.component-var-opt.component-config-input {margin-bottom:5px;}
+.components-thumbnail, .components-thumbnail .caption {padding:0px;}
+#main-image.component-var-thumb {width:100%;}
+.components-thumbnail {border:none;}
+</style>
+
+		<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+				<script type="text/javascript" language="javascript">
+				$(document).ready(function() {
+					$.kit_variationInit({});
+				});
+				</script>
+			<!--##[%END SITE_VALUE%]##-->
+			
+<!--# Combo Products # ##--> 
+		<div class="component selector">
+				<!--##[%DATA id:'has_components' if:'==' value:'1'%][%PARAM *if_true%]##-->
+					<!--##[%ITEM_KITTING id:'[@SKU@]' variation_kitting:1%]##-->
+					<!--##[%PARAM header%]##-->
+					<!--##[%END PARAM%][%PARAM *group_header%]##-->
+					<input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
+					<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
+					<input class="input-tiny btn-large" id="qty[@rndm@][@SKU@]" name="qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2" type="hidden">
+					<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
+					<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@QTY@]">
+						<div class="row">
+					    <div class="col-xs-12">
+							<div class="panel panel-default">
+  								<div class="panel-heading">
+    								<h3 class="panel-title">[@assemble_group_fullname@]</h3>
+  								</div>
+  							<div class="panel-body">
+    				
+
+                       
+					<!--##[%END PARAM%][%PARAM *body%]##-->
+					
+					
+					
+					<!--##[%DATA id:'has_variation' if:'==' value:'0'%][%PARAM *if_true%]##-->
+					<div class="col-xs-12 col-md-4 wrapper-components-thumbnail">
+					<input type="checkbox" id="[@sku@]a" class="selectitemcheck" checked>
+					
+					<div class="components-thumbnail thumbnail component[@group_count@]">
+					<img class="component-var-thumb" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]" alt="[@model@]" border="0" id="main-image">
+					<label for="[@sku@]a" class="remove-component"><i class="fa fa-times-circle"></i></label>
+					<label for="[@sku@]a"><span class="btn btn-success btn-block add-component-button"><i class="fa fa-plus-circle"></i>&nbsp;Add to Bundle</span>
+					
+					</label>
+					<div class="caption">
+					<h4 class="title"><!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##--></h4>
+					
+					<p class="price">
+					<!--##[%data id:'has_child' if:'=' value:'1' %]##-->
+						From
+					<!--##[%end data%]##-->
+					
+					<!--##[%data  id:'inpromo' if:'ne' value:'0' %]
+						[%param if_false%]##--> 
+							<!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##-->	
+					  <!--##[%end param%]
+					  [%param if_true%]##-->
+						<b> Now </b>
+						<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##-->	  
+					  <!--##[%end param%]
+					[%end data%]##-->   
+					
+					</p>
+					
+					<input type="number"  min="[@min_assemble@]" max="[@max_assemble@]" id="productkitting[@rndm@][@kitting_sku@][@component_count@]"  
+							[%DATA id:'fixed_assemble' if:'==' value:'1'%]readonly[%END DATA%] 
+							value="[@qty@]" ref="[@sku@]"
+							class="component-config-input form-control [%DATA id:'fixed_assemble' if:'==' value:'1'%]readonly[%END DATA%]" 
+							size="3">
+							
+					</div>
+					</div>
+					</div>
+					<!--##[%END PARAM%][%PARAM *if_false%]##-->
+					<!--##[%DATA id:'variation_available' if:'>' value:'0'%][%PARAM *if_true%]##-->
+					<div class="col-xs-12 col-md-4 wrapper-components-thumbnail">
+					<input type="checkbox" onClick="Toggle();$('#productkitting[@rndm@][@kitting_sku@][@component_count@]').val(0);" id="[@sku@]a" class="selectitemcheck" checked>
+					<div class="components-thumbnail thumbnail component[@group_count@]">
+
+						<!--##[%list_item_variations id:'[@current_sku@]'%][%PARAM header%]##-->
+						
+					<img class="component-var-thumb" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]" alt="[@model@]" border="0" id="main-image">
+					<label  for="[@sku@]a" class="remove-component"><i class="fa fa-times-circle"></i></label>
+					
+					<label  for="[@sku@]a"><span class="btn btn-success btn-block add-component-button"><i class="fa fa-plus-circle"></i>&nbsp;Add to Bundle</span>
+					</label>
+					<div class="caption">
+					<h4 class="title">
+					<!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->
+					
+					[@name@]<!--##[%END FORMAT%]##-->
+					</h4>
+					
+					<p class="price">
+					<!--##[%data id:'has_child' if:'=' value:'1' %]##-->
+						From
+					<!--##[%end data%]##-->
+					
+					<!--##[%data  id:'inpromo' if:'ne' value:'0' %]
+						[%param if_false%]##--> 
+							<!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##-->	
+					  <!--##[%end param%]
+					  [%param if_true%]##-->
+						<b> Now </b>
+						<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##-->	  
+					  <!--##[%end param%]
+					[%end data%]##-->   
+					
+					</p><!--/.price-->
+						<!--##[%END PARAM%][%PARAM *variation_header%]##-->
+					<select class="component-var-opt form-control component-config-input" component-id="[@component_count@]" ref="[@specific_id@]">
+					<option value="" disabled selected>[@specific_name@]</option>
+						<!--##[%END PARAM%][%PARAM *variation_body%]##-->
+					<option value="[@value_id@]">[@value_name@]  <!--##[%IF ![@variation_qty@]%]##-->(Out of Stock)<!--##[%/IF%]##--></option>
+						<!--##[%END PARAM%][%PARAM *variation_footer%]##-->
+					</select>
+						<!--##[%END PARAM%][%PARAM footer%]##--> 
+						<!--##[%END PARAM%][%END list_item_variations%]##-->
+						
+							<input type="number" min="0" id="productkitting[@rndm@][@kitting_sku@][@component_count@]"  
+								[%DATA id:'fixed_assemble' if:'==' value:'1'%]readonly[%END DATA%] 
+								value="[@qty@]" ref="[@current_sku@]"
+								component-id="[@component_count@]" component-sku="[@SKU@]"
+								class="component-var-sku form-control component-config-input [%DATA id:'fixed_assemble' if:'==' value:'1'%]readonly[%END DATA%]" 
+								size="3">
+						<!--/.input-prepend-->
+					</div><!--/.caption-->
+					</div><!--/.components-thumbnail .thumbnail-->
+					</div>
+					<!--##[%END PARAM%][%END DATA%]##-->
+					<!--##[%END PARAM%][%END DATA%]##-->
+					
+					
+						<!--##[%END PARAM%][%PARAM *group_footer%]##-->
+						</div>
+					</div>
+				</div>
+			</div>
+						<!--##[%END PARAM%][%PARAM *footer%]##-->
+						<!--##[%END PARAM%]##-->
+								<!--##[%END ITEM_KITTING%]##-->
+								<!--##[%END PARAM%][%END DATA%]##-->
+		</div><!--/.component-selector-->
+<div class="row">
+<div class="col-xs-12 col-md-5">
+<!--##[%data id:'preorder' if:'=' value:'0' %]##--> 
+						<!--##[%data id:'store_quantity' if:'>=' value:'1' %]##-->
+							<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to Cart</button>
+						<!--##[%end data%]##--> 
+					<!--##[%end data%]##--> 
+					<!--##[%data id:'preorder' if:'=' value:'1' %]##-->
+						<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-Order Now</button>
+				<!--##[%end data%]##-->
+</div>
+</div>				

@@ -1,0 +1,160 @@
+<div class="col-xs-12"> 
+	<script language="javascript" type="text/javascript">
+function showPD() {
+	var f = document.itemForm;	
+	var obj = f['card_type'];
+	var pl = document.getElementById('payccpl');
+	if(obj && pl){
+		var val= obj.options[obj.selectedIndex].value;
+		pl.style.display = (val.indexOf(':cc')>0? '': 'none');
+	}
+}
+
+function proc_pay() {
+	var f = document.itemForm;
+	if(f) {
+		var r = f['amount_paid'];
+		var rv = parseFloat(r.value);
+		if(!isNaN(rv) && rv > 0) {
+			var cdt = f['card_type'];
+			
+			if(cdt.selectedIndex > 0) {
+				var pn = cdt.options[cdt.selectedIndex].text;
+				var received = f['amount_paid'];
+				if(confirm('You are about to authorise [$moneysign$]'+received.value+' received from \''+pn+'\' to this order.\n'+
+					'\nDo you wish to continue?')) {
+					var s = document.getElementById('processing');
+					if(s) {
+						s.style.display='block';
+					}
+					f.submit();
+				}
+			} else {
+				alert('Please select a payment method.');
+			}
+		} else {
+			alert('Please enter a payment amount.');
+		}		
+	}
+}
+</script> 
+	
+	<!--# Start Breadcrumb# ##-->
+	<ul class="breadcrumb">
+		<li><a href="[$home_url$]">Home</a></li>
+		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+	</ul>
+	<!--# End Breadcrumb# ##-->
+	
+	<div class="page-header">
+		<h1>Pay Now</h1>
+	</div>
+	
+	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+	<div class="alert alert-error"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
+	<!--##[%END DATA%]##--> 
+	<!--##[%DATA id:'msg' if:'ne' value:''%]##-->
+	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>
+	<!--##[%END DATA%]##-->
+	
+	<form action="[%URL page:'account' type:'pay_order'%][%END URL%]" method="post" name="itemForm">
+		<input type="hidden" name="id" value="[@order_id@]">
+		<input type="hidden" name="order_email" value="[@order_email@]">
+		<input type="hidden" name="fn" value="confirm">
+		<input type="hidden" name="action" value="paynow">
+		<input type="hidden" name="grand_total" value="[@grand_total@]">
+		<input type="hidden" name="paid_total" value="[@paid_total@]">
+		<h3>Pay By Credit Card</h3>
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<div class="form-group">
+					<label>Select your payment method</label>
+					<select class="form-control" name="card_type" onChange="showPD()">
+						<option value=""></option>
+						<!--##[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[$NO_BULK_PAY_SURCHARGE$]' %]
+[%PARAM *body%]##-->
+						<option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
+						<!--##[%END PARAM%]
+[%END payment_methods%]##-->
+					</select>
+				</div>
+			
+				</div>
+			
+			<div class="col-xs-12 col-md-6 col-md-offset-2">
+				<div id="payccpl">
+				<div class="well">
+					<div class="row">
+						<div class="col-xs-12">
+						<div class="form-group">
+							<label>Card Holder</label>
+							<input placeholder="John Smith" class="form-control" name="card_holder" size="30" maxlength="40" value="">
+						</div>
+						</div>
+						<div class="col-xs-12">
+						<div class="form-group">
+							<label>Card Number</label>
+							<input placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control" name="card_number" size="16" maxlength="16" value="">
+							<p class="help-text">(only digits)</p>
+						</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label>Card Expiration Date</label>
+						</div>
+						<div class="col-xs-12 col-md-4">
+						<label>Month</label>
+							<select name="card_exp_month" class="form-control">
+								<option value=""></option>
+								<!--##[%months%][%PARAM *body%]##-->
+								<option value="[@month@]">[@month@]</option>
+								<!--##[%END PARAM%][%END months%]##-->
+							</select>
+						</div>
+						<div class="col-xs-12 col-md-4">
+						<label>Year</label>
+							<select name="card_exp_year" class="form-control">
+								<option value=""></option>
+								<!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
+								<option value="[@year@]">[@year@]</option>
+								<!--##[%END PARAM%][%END years%]##-->
+							</select>
+						</div>
+						<div class="col-xs-12 col-md-4">
+					
+							<label>Card CCID</label>
+							<input name="card_ccid" size="5" class="form-control">
+							<p class="help-text">(3-4 digit security code)</p>
+						
+						</div>
+						
+						
+						</div>
+						</div>
+				
+					</div>
+					<div class="form-group">
+					<label>Enter Amount You Want To Pay Now</label>
+					<input placeholder="[$moneysign$]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
+				</div>
+				<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="Process Credit Card Payment">
+			</div>
+		
+				</div>
+			</div>
+		</div>
+		
+	</form>
+	<hr>
+	<script type="text/javascript" language="javascript">showPD();</script>
+	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> Payment Processing.<br />
+		Please do not refresh or close this page.<br />
+		<img src="[$imageurl$]/loading.gif" alt="Loading"/></div>
+	
+	<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##--> 
+	
+	<!--#End Content# ##--> 
+	
+</div>

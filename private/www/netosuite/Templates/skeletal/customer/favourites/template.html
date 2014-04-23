@@ -1,0 +1,46 @@
+<div class="col-xs-12">
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Re-Order</a></li>
+</ul>
+<div class="page-header">
+<h1>Reorder Your Favourite Items</h1>
+<!--##[%THUMB_LIST type:'favourites' template:'' limit:'28'%]
+[%PARAM *header%]##-->
+<p>
+Thanks for checking back [@bill_first_name@]. We've made it even easier for you to order from us.  Use this quick list to access all the items you have purchased from us in the past for quick reordering!
+</p>
+</div>
+<!--#Start Pagination# ##-->
+<div class="text-center">
+<ul class="pagination">
+<!--##[%paging limit:'3'%]
+[%PARAM *previous_page%]##--><li><a href="[@URL@]">Previous Page</a></li><!--##[%END PARAM%]
+[%PARAM *goback_pages%]##--><li><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *current_page%]##--><li class="active"><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *gonext_pages%]##--><li><a href="[@URL@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *next_page%]##--><li><a href="[@URL@]">Next Page</a></li><!--##[%END PARAM%]
+[%END paging%]##-->
+</ul>
+</div>
+
+<div class="row">
+<!--##[%END PARAM%]
+[%PARAM *footer%]##-->
+</div>
+
+
+
+<!--#End Pagination# ##-->
+<!--##[%END PARAM%]
+[%PARAM *ifempty%]##-->
+
+<p>
+It appears that you have not purchased from 
+this website before. Once you have made some purchases from this website, come back to this 
+page for a quick listing of all your past purchases for easy reordering!</p>
+<!--##[%END PARAM%]
+[%END thumb_list%]##-->
+
+</div>

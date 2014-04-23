@@ -1,0 +1,60 @@
+<!-- Start Column Left -->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!-- End Column Left -->
+
+
+<script type="text/javascript" language="javascript">
+function back_to_write_review(){
+	document.preview_review.fn.value = "write";
+	document.preview_review.submit();
+	
+}
+
+function check_terms_and_conditions(){
+		if (document.getElementById("checkbox_confirm_terms_and_conditions").checked){
+			document.preview_review.checked_terms_and_conditions.value = "1";
+		}
+		else{
+			document.preview_review.checked_terms_and_conditions.value = "0";
+		}
+}
+</script>
+
+<form name="preview_review" method="post" action="[%URL page:'account' type:'write_contentreview'%][%END URL%]">
+	<input type="hidden" name="fn" value="confirm">
+	<input type="hidden" name="item" value="[%NOHTML%][%FORM id:'item'%][%END FORM%][%END NOHTML%]">
+	<input type="hidden" name="review_text" value="[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]">
+	<input type="hidden" name="rating_value" value="[%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%]">
+	<input type="hidden" name="review_title" value="[%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]">
+	<input type="hidden" name="checked_terms_and_conditions" value="0">
+
+<div class="page-header">
+<h1> Preview Comment </h1>
+</div>
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error">
+<a class="close" data-dismiss="alert">×</a>
+[@error@]
+</div>
+<!--##[%END DATA%]##-->	
+
+
+	<div id="review_details">
+		<h3> [%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]</h3>
+		
+		<b>Comment:</b> <br/>
+		[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]
+		<br/><br />
+I have read and agree to this websites terms of use: <input type="checkbox" id="checkbox_confirm_terms_and_conditions" onchange="check_terms_and_conditions();"/>
+	</div>
+<br/>
+
+<div class="form-actions">
+<input type="button" value="Go Back" class="btn btn-danger pull-left" onclick="back_to_write_review();"/> &nbsp; <input type="submit" class="btn btn-success pull-right" value="Post My Comment">
+</div>
+</form>
+
+<!-- Start Column Right -->
+</div><!-- /.span19 -->
+<!-- End Column Right -->

@@ -1,0 +1,60 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+<div class="page-header">
+<h1>Write a comment</h1>
+</div>
+
+
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error">
+<a class="close" data-dismiss="alert">×</a>
+[@error@]
+</div>
+<!--##[%END DATA%]##-->	
+
+<div class="well">			
+<p><!--##[%format type:'text' rmhtml:'1' trim:'LE2R' maxlength:'400'%]##-->[@blog_content@]<!--##[%END FORMAT%]##-->...</p>
+</div>
+
+
+<form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%END URL%]">
+<fieldset>
+	<input type="hidden" name="fn" value="confirm">
+	<input type="hidden" name="item" value="[@content_id@]">
+    <input type="hidden" name="checked_terms_and_conditions" value="1">
+    <input type="hidden" name="rating_value" id="rating_value" value="5"/>
+        
+   <div class="form-group">
+   <label for="review_title">Title For Comment</label>
+   <input class="form-control" type="text" name="review_title" id="review_title" value="[%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]" required/>
+  </div>
+  
+   <div class="form-group">
+   <label for="review_text">Your Comment</label>
+  <textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]</textarea>
+  </div>
+  
+<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
+<div class="form-group">
+<label for="customername">Your Name</label>
+<input class="form-control" type="text" name="customername" id="customername" value="[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]" required/>
+</div>
+
+<div class="form-group">
+<label for="emailaddress">Your Email Address</label>
+<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]" required/>
+</div>
+<!--##[%END USER%]##-->
+
+<p>  
+<button type="submit" class="btn btn-success" />Post Comment</button>
+</p>
+
+<p class="text-muted">Comments have to be approved before showing up</p>
+
+</fieldset>
+</form>
+
+</div>

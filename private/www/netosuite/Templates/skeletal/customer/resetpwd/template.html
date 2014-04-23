@@ -1,0 +1,33 @@
+
+
+<div class="grid_24">
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1> Create Account Password </h1>
+</div>
+
+
+<p>So that you can shop faster in the future, print and track past orders, please create an account password below.</p>
+
+<form method="POST" action="[%URL page:'account' type:'resetpwd'%][%END URL%]">
+<input type="hidden" name="fn" value="proc">
+<input type="hidden" name="id" value="[@logincode@]">
+<p><b>Password:</b><br />
+<input name="new_pass" type="password" size="30" value="">
+</p>
+<p><b>Confirm Password:</b><br />
+<input name="confirm_new_pass" type="password" size="30" value="">
+</p>
+<p>
+<input type="submit" value="Save Changes" class="btn"/>
+</p>
+</form>
+
+</div>

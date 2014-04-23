@@ -1,0 +1,59 @@
+<!-- Start Column Left -->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!-- End Column Left -->
+
+<!--##[%breadcrumb%]
+[%param *header%]##-->
+<ul class="breadcrumb">
+    <li><a href="[$home_url$]">Home</a></li>
+    <!--##[%end param%] [%param *body%]##--> 
+    <li><a href="[@url@]">[@name@]</a></li>
+    <!--##[%END param%] 
+    [%param *body_current%]##-->
+    <li>[@name@]</li>
+    <!--##[%END param%] 
+    [%param *footer%]##-->
+</ul>
+<!--##[%end param%]
+[%end breadcrumb%]##-->
+
+<div class="span12">
+<h1><!--##[%NOHTML%]##-->[@stloc_name@]<!--##[%END NOHTML%]##--></h1>
+
+<p><!--##[%FORMAT type:'text' nohtml:1 addbr:1%]##-->[@description@]<!--##[%END FORMAT%]##--></p> 
+</div>
+
+
+	<div class="span2">
+		<!--##[%THUMBNAILS id:'[@stloc_id@]' type:'storeloc'%]##-->
+			<!--##[%PARAM *body%]##-->
+					<div class="lifted-shadow store-logo">
+						<img src="[@thumb_image@]" border="0" width="90">
+					</div>
+			<!--##[%END PARAM%]##-->
+		<!--##[%END THUMBNAILS%]##-->
+	</div>
+	<div class="span5">
+		<h4>Address</h4>
+		<p>
+		<!--##[%NOHTML%]##-->[@stloc_street1@]<!--##[%END NOHTML%]##--><br />
+		<!--##[%NOHTML%]##-->[@stloc_street2@]<!--##[%END NOHTML%]##--><br />
+		<!--##[%NOHTML%]##-->[@stloc_city@], [@stloc_state@] [@stloc_zip@]<!--##[%END NOHTML%]##-->
+		<!--##[%NOHTML%]##-->[@stloc_country@]<!--##[%END NOHTML%]##-->
+		</p>
+	</div>
+	
+	<div class="span5">	
+		<h4>Contact Details</h4>
+		<p>
+		Contact Phone Number: <!--##[%NOHTML%]##-->[@stloc_phone@]<!--##[%END NOHTML%]##--><Br />
+		Contact Fax Number: <!--##[%NOHTML%]##-->[@stloc_fax@]<!--##[%END NOHTML%]##--><Br />
+		Contact Email: <!--##[%NOHTML%]##-->[@stloc_email@]<!--##[%END NOHTML%]##--><Br />
+		</p>
+	</div>
+</div> 
+
+<!-- Start Column Right -->
+</div><!-- /.span19 -->
+<!-- End Column Right -->
+

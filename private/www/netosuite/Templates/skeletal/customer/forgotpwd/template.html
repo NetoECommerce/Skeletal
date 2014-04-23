@@ -1,0 +1,31 @@
+<div class="col-xs-12">
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
+	<li><a href="[$home_url$]">Home</a></li>
+	<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##-->
+<div class="page-header">
+	<h1> Forgot Password? </h1>
+</div>
+<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+<div class="alert alert-error"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
+<!--##[%END DATA%]##-->
+<form method="post" action="[%URL page:'account' type:'forgotpwd'%][%END URL%]">
+	<input type="hidden" name="fn" value="proc" />
+	<div class="row">
+		<div class="col-xs-12 col-md-4"> <br>
+			<p> Please enter your e-mail address and we will send you a new password by e-mail. </p>
+		</div>
+		<div class="col-xs-12 col-md-4">
+			<label>Email Address</label>
+			<input class="form-control" name="email" size="30" value="" />
+		</div>
+		<div class="col-xs-12 col-md-4">
+			<div class="form-actions"> <br>
+				<button type="submit" class="btn btn-lg btn-block btn-success" name="login"/>
+				<i class="fa fa-envelope"></i> Send Me A New Password</div>
+		</div>
+	</div>
+</form>
+</div>

@@ -1,0 +1,173 @@
+
+
+<div class="well">
+<h3>
+<input type="radio" name="_cpy_login_type" value="register" [%FORM id:'login_username' if:'eq' value:''%]checked[%END FORM%]/> I am a New Customer <small>Create your free account today!</small>
+</h3>
+
+<div id="_cpy_login_pl_register">
+<p>
+<form class="form-horizontal" id="_cpy_register_form" method="post" action="[%URL page:'account' type:'register'%][%END URL%]">
+<fieldset>
+
+
+<input type="hidden" name="redirect" value="checkout">
+<input name="fn" type="hidden" value="proc">
+<input type="hidden" name="order_type" value="[@order_type@]">
+
+<div class="control-group">
+<label class="control-label" for="reg_username">Username *</label>
+<div class="controls">
+<input type="text" name="reg_username" id="reg_username" value="[%nohtml%][%FORM id:'reg_username'%][%END FORM%][%end nohtml%]" maxlength="20" placeholder="eg: johnsmith">
+<p class="help-block">No spaces or special characters</p></div>
+</div>
+
+<div class="control-group">
+<label class="control-label" for="reg_email">E-mail Address *</label>
+<div class="controls">
+<input type="email" id="reg_email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]" placeholder="eg: johnsmith@email.com">
+<p class="help-block">Invoices &amp; order updates will be sent to this address</p></div>
+</div>
+
+<div class="control-group">
+<label class="control-label" for="reg_password">Password *</label>
+<div class="controls">
+<input type="password" id="reg_password" name="reg_password" value="">
+</div></div>
+
+<div class="control-group">
+<label class="control-label" for="reg_password2">Confirm Password *</label>
+<div class="controls">
+<input type="password" id="reg_password2" name="reg_password2" value="">
+</div></div>
+
+
+
+<!--##[%EXTRA_CUSTOMER_FIELDS%]
+[%PARAM *integer_option%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<input type="text" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+</div>
+</div>
+<!--##[%END PARAM%]
+[%PARAM *text_option%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<input type="text" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+</div>
+</div>
+<!--##[%END PARAM%]
+[%PARAM *short_text_option%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<input type="text" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+</div>
+</div>
+<!--##[%END PARAM%]
+[%PARAM *descimal_option%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<input type="text" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+</div>
+</div>
+<!--##[%END PARAM%]
+[%PARAM *boolean_option%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%]>
+</div>
+</div>
+<!--##[%END PARAM%][%PARAM *date_option%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<input class="datepicker" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+</div></div>
+<!--##[%END PARAM%][%PARAM *selection_header%]##-->
+<div class="control-group">
+<label class="control-label" for="[@field_id@]">[@field_name@]</label>
+<div class="controls">
+<select id="[@field_id@]" name="[@field_id@]" >
+	<!--##[%END PARAM%][%PARAM *selection_body%]##-->
+	<option value="[@option_value@]">[@option_value@]</option>
+	<!--##[%END PARAM%][%PARAM *selection_footer%]##-->
+	</select>
+</div></div>
+<!--##[%END PARAM%]
+[%END EXTRA_CUSTOMER_FIELDS%]##--> 
+
+<div class="control-group">
+<label class="control-label" for="regoptin">&nbsp;</label>
+<div class="controls">
+<label class="checkbox">
+<input name="regoptin" type="checkbox" value="Y" checked data-message="You can unsubscribe at any time."/> Subscribe to newsletter
+</label>
+<p class="help-block">You can unsubscribe from our newsletter at any time</p></div>
+</div>
+
+</fieldset>
+</form>
+</p>
+</div>
+</div>
+
+<div class="well">
+<h3>
+<input type="radio" name="_cpy_login_type" value="login" [%FORM id:'login_username' if:'ne' value:''%]checked[%END FORM%]/> I am a Returning Customer <small>Click here to login to your account.</small>
+</h3>
+
+<div id="_cpy_login_pl_login">
+<p>
+<form class="form-horizontal" id="_cpy_login_form" method="post" action="[%URL page:'account' type:'login'%][%END URL%]">
+<input type="hidden" name="redirect" value="checkout">
+<input type="hidden" name="order_type" value="[@order_type@]">
+<fieldset>
+
+<div class="control-group">
+<label class="control-label" for="username">My Username or <br />
+E-mail Address is</label>
+<div class="controls">
+<input type="text" id="username" name="username" value="[%nohtml%][%FORM id:'login_username'%][%END FORM%][%end nohtml%]">
+<p class="help-block"><a href="[%URL page:'account' type:'forgotusr'%][%END URL%]">Forgot Your Username?</a> </p>
+</div></div>
+
+<div class="control-group">
+<label class="control-label" for="password">My Password is</label>
+<div class="controls">
+<input type="password" id="password" name="password" value="">
+<p class="help-block"> <a href="[%URL page:'account' type:'forgotpwd'%][%END URL%]">Forgot Your Password?</a></p>
+</div></div>
+
+</fieldset>
+</form>
+</p>
+</div></div>
+
+
+
+<!--##[%CONFIG id:'ALLOW_NOREG_CHECKOUT' if:'==' value:'1'%]##-->
+
+<div class="well">
+<h3>
+<input type="radio" name="_cpy_login_type" value="none"/> Guest Checkout <small>Click here to use guest checkout.</small>
+</h3>
+<div id="_cpy_login_pl_none">
+<p>We recommend creating an account for a faster shopping experience in the future however if you would prefer not to create an account select this option to use our guest checkout option.</p>
+</div></div>
+<!--##[%END CONFIG%]##-->
+
+
+
+<div class="pull-right">
+<p>
+<button id="_cpy_login_confirm" class="btn btn-success btn-large" type="button">Continue Checkout</button>
+</p>
+</div> 
+
+

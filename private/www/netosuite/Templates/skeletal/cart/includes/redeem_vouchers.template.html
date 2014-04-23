@@ -1,0 +1,67 @@
+<!--##[%show_message severity:'error' type:'voucher'%][%PARAM header%]##-->
+<!--##[%END PARAM%][%PARAM *body%]##--><div class="alert alert-danger"><a class="close" data-dismiss="alert">x</a>[@info_msg@]</div><!--##[%END PARAM%]##-->
+<!--##[%PARAM footer%]##-->
+<!--##[%END PARAM%][%END show_message%]##-->
+<hr>
+<div class="_cpy_voucher_pl">
+<p><a class="_cpy_vouchershow btn btn-default btn-block" href="javascript:void(0);">+</a></p>
+<div class="_cpy_voucher well">
+<label>Voucher Code</label>
+<input class="form-control" type="text" name="addvoucher" id="addvoucher" size="35" />
+<label>Secret Code</label>
+<input class="form-control" type="text" id="_cpy_vsecret_mask" size="35" />
+<input type="hidden" name="vsecret" id="vsecret" />
+<hr>
+<input type="button" class="btn btn-primary btn-block" id="_cpy_redeem_voucher" value="Redeem Voucher">
+</div>
+</div>
+
+<br/>
+<table class="_cpy_credit_table table table-bordered" cellpadding="2" cellspacing="0" width="100%" border="0">
+<tr>
+<td colspan="4" class="header"><b>The Following Credit Is Available On Your Account:</b></td>
+</tr>
+<tr>
+<td width="80%" nowrap><i>Description</i></td>
+<td nowrap><i>Balance Available</i></td>
+<td nowrap colspan="2"><i>Apply Credit To This Order</i></td>
+</tr>
+<!--##[%active_vouchers%]
+[%PARAM *body%]##-->
+<tr>
+	<td width="90%"><b>[@vprogram_title@]</b><br />
+	<!--##[%DATA id:'vprogram_subtitle' if:'ne' value:''%]##-->[@vprogram_subtitle@]<br /><!--##[%END DATA%]##-->
+	<span class="small">([@voucher_code@])</span>
+</td>
+	<td nowrap><a class="_cpy_crapplyall" ref="[@count@]" href="javascript:void(0);">
+		<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
+	</a><!--##[%DATA id:'voucher_once' if:'eq' value:'y'%]##-->*<!--##[%END DATA%]##-->
+
+<!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
+ (<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##--> pts)
+<!--##[%END DATA%]##-->
+
+	</td>
+<td nowrap>
+<input type="hidden"  placeholder="[$moneysign$]" name="vapplyid[@count@]" id="vapplyid[@count@]" value="[@voucher_id@]"/>
+<input type="text" class="form-control" value="[@apply_amount@]" name="vcredit[@count@]" id="vcredit[@count@]" size="8"/>
+<!-- <input type="hidden" id="_cpy_vhmultiplier[@count@]" value="[@vprogram_multiplier@]"/> -->
+<input type="hidden" id="_cpy_vhbalance[@count@]" name="_cpy_vhbalance[@count@]" value="[@voucher_balance@]"/>
+	</td>
+	<td nowrap><a class="_cpy_crapplyallbtn btn btn-default" ref="[@count@]" href="javascript:void(0);">Apply</a></td>
+</tr>
+<!--##[%DATA id:'voucher_once' if:'eq' value:'y'%]##--><tr><td colspan="3"><span class="small"><b>NOTE:</b> This voucher can only be used once. Any unused credit will not be available for future use.</span></td></tr><!--##[%END DATA%]##-->
+<!--##[%END PARAM%]
+[%END active_vouchers%]##-->
+<!--##[%user id:'credit' if:'>' value:'0' %]##-->
+	<tr>
+		<td><b>Account Credit</b></td>
+		<td nowrap><a class="_cpy_crapplyall" ref="cr" href="javascript:void(0);">
+<!--##[%format type:'currency'%]##-->[%USER id:'credit'%][%END USER%]<!--##[%end format%]##-->
+</a></td>
+		<td nowrap><input placeholder="[$moneysign$]" type="text" class="form-control" name="apply_credit" id="apply_credit" size="8"/><input type="hidden" id="_cpy_crbalance" value="[%USER id:'credit'%][%END USER%]"/>
+		</td><td nowrap><a class="_cpy_crapplyallbtn btn btn-default" ref="cr" href="javascript:void(0);">Apply</a></td>
+	</tr>
+<!--##[%end user%]##-->
+</table>
+

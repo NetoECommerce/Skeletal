@@ -1,0 +1,211 @@
+<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
+<script type="text/javascript" language="javascript">
+function rmcart (id) { var obj = document.getElementById(id); if(obj) { obj.value="0"; } document.SetItems.submit(); }
+
+function saveChanges() {
+	if(confirm("Confirm Changes?")) {
+		document.SetItems['fn'].value = 'confirm';
+		document.SetItems.submit();
+	}
+}
+
+function updateChanges() {
+	document.SetItems.submit();
+}
+
+function addItem(ctr) {
+	var fm = document.AddItems;
+	var addqty = document.getElementById('addqty'+ctr);
+	var addsku = document.getElementById('addsku'+ctr);
+	if(fm && addqty && addsku) {
+		var qty = fm['qty0'];
+		var sku = fm['sku0'];
+		if(qty && sku) {
+			qty.value = addqty.value;
+			sku.value = addsku.value;
+			fm.submit();
+		}
+	}
+}
+</script>
+<form method="post" name="SetItems" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
+<input type="hidden" name="action" value="[@current_action@]">
+<input type="hidden" name="fn" value="update">
+<!--##[%standing_order_items id:'[@storder_id@]' show_cart:'1'%]
+[%PARAM *header%]##-->
+<table  class="checkout_box" width="100%" border="0" align="center" cellpadding="6px" cellspacing="0">
+	<tr><td><div class="checkout_box_header">Standing Order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
+	<tr><td>
+<table cellpadding="4" cellspacing="0" border="0">
+	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+		<tr><td><b><span class="text-danger">[@order_status@]</span></b></td></tr>
+<!--##[%DATA id:'request_to_stop' if:'=' value:'1'%]
+	[%PARAM if_true%]##-->
+		<tr><td><b><span class="text-danger">Resquesting To Stop</span></b></td></tr>
+<!--##[%END PARAM%][%END DATA%]##-->
+		<tr><td>
+		</td></tr>
+				</table></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="50%" valign="top" class="small">
+<table border="0" cellpadding="3" cellspacing="0">
+	<tr><td>Next Delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Total Orders</td><td><!--##[%format type:'number'%]##-->[@total_orders_created@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Total Spent</td><td><!--##[%format type:'currency'%]##-->[@total_money_spent@]<!--##[%END format%]##--></td></tr>
+<!--##[%DATA id:'fulfilled' if:'=' value:'1'%]##-->
+	<tr><td>Date Fulfilled</td><td><!--##[%format type:'date'%]##-->[@date_fulfilled@]<!--##[%END format%]##--></td></tr>
+<!--##[%END DATA%]##-->
+</table>
+	</td></tr>
+</table></td></tr>
+</table>
+<div class="spacer"></div>
+<table width="100%" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr><td colspan="2" class="checkout_box_header">Your Current Items On Order</td></tr>
+  <tr><td>
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+	<tr>
+		<td width="50px" class="header" nowrap>Product</td>
+		<td width="99%" class="header" nowrap>&nbsp;</td>
+		<td width="50px" class="header" nowrap>Qty</td>
+      <td width="12" class="header" nowrap>&nbsp;</td>
+		<td width="75px" class="header" nowrap>Price</td>
+		<td width="75px" class="header" nowrap>Discounts</td>
+		<td width="100px" class="header" nowrap>Subtotal</td>
+	</tr>
+<!--##[%END PARAM%]
+[%PARAM *body%]##-->
+<tr>
+	<td><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></td>
+	<td>[@model@] <i>[@extra@]</i>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+	<td><input name="line[@count@]" type="hidden" value="[@counter@]"><input name="sku[@count@]" type="hidden" value="[@SKU@]">
+<!--##[%DATA id:'editable' if:'eq' value:'y' %][%PARAM if_true%]##-->
+	<input id="qty[@count@]" type="text" name="qty[@count@]" value="[@qty@]" size="3">
+<!--##[%END PARAM%][%PARAM if_false%]##-->
+	[@qty@]
+<!--##[%END PARAM%][%END DATA%]##-->
+	</td>
+  <td>
+<!--##[%DATA id:'editable' if:'eq' value:'y' %][%PARAM if_true%]##-->
+<a href="javascript:rmcart('qty[@count@]');"><img src="[$imageurl$]/icons/cross.png" alt="remove item from cart" border="0"></a>
+<!--##[%END PARAM%][%PARAM if_false%]##-->
+&nbsp;
+<!--##[%END PARAM%][%END DATA%]##-->
+	</td>
+	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
+	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
+	<td><!--##[%format type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
+</tr>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *footer%]##-->
+<!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
+[%PARAM if_true%]##-->
+<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+	<td class="store_total" nowrap>Delivery Cost</td>
+	<td class="store_total" nowrap>N/A</td></tr>
+<!--##[%END PARAM%]
+[%PARAM if_false%]##-->
+<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+	<td class="store_total" nowrap>Delivery Cost</td>
+	<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
+<!--##[%END PARAM%]
+[%END DATA%]##-->
+<!--##[%DATA id:'couponcode' if:'ne' value:'' %]##-->
+	<tr><td class="header" colspan="7">Special Pricing Arrangements / Discounts</td></tr>
+	<tr><td class="shitem0" colspan="7">[@couponcode@]</td></tr>
+	<tr><td class="shitem0" colspan="7">Special pricing arrangements / discounts will be calculated at time of order.</td></tr>
+<!--##[%END DATA%]##-->
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><b>Order Subtotal</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Total Shipping</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Total Discount</b></td>
+		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td><b>Order Total</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
+	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+</table></td></tr>
+</table></td></tr>
+</table>
+<div class="spacer"></div>
+<!--##[%END PARAM%]##-->
+<!--##[%END standing_order_items%]##-->
+</form>
+<form method="post" name="AddItems" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
+<input type="hidden" name="action" value="update_items">
+<input type="hidden" name="fn" value="add">
+<input type="hidden" name="qty0" value="">
+<input type="hidden" name="sku0" value="">
+</form>
+<table width="100%" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr><td colspan="2" class="checkout_box_header">Add Items</td></tr>
+  <tr><td>
+<!--##[%THUMB_LIST type:'storder_products' limit:'100'%]
+[%PARAM filter_itemgroup%][@itemgroups@][%END PARAM%]
+[%PARAM group_id%][@usr_group@][%END PARAM%]
+[%PARAM *header%]##-->
+<div class="infobox" style="overflow:auto; height:150px;"><table width="100%" cellspacing="0" cellpadding="4">
+<!--##[%END PARAM%]
+
+[%PARAM *body%]##-->
+<tr>
+    <td width="50"><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL'%][%END asset_url%]" alt="[@model@]" width="50px"  height="50px"></td>
+  <td>
+	<span class="capsule_thumb_name">[@model@]<br /></span>
+	<!--##[%data id:'subtitle' if:'ne' value:''%]##-->
+	<span class="capsule_thumb_subtitle">[@subtitle@]</span><br />
+	<!--##[%end data%]##-->
+   <!--##[%data id:'misc3' if:'ne' value:''%]##--> <b>Strength:</b> [@misc3@] <!--##[%end data%]##--><!--##[%data id:'misc15' if:'ne' value:''%]##-->&nbsp;&nbsp;<b>Main Characteristics:</b> [@misc15@] <!--##[%end data%]##-->
+</td> <!--
+         <td nowrap="nowrap">
+      [%data id:'misc14' if:'eq' value:'Single'%] <br /><img src="[$imageurl$]/images/size_single.gif" width="115" height="24" alt="Single" /> [%END data%]
+[%data id:'misc14' if:'eq' value:'Double'%] <br /><img src="[$imageurl$]/images/size_double.gif" width="115" height="24" alt="Single" /> [%END data%]
+        </td> -->
+              <td nowrap>
+      <span class="capsule_thumb_price"> <!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##--> ea </span><br />
+      [@misc1@] per capsule
+      </td>
+<td align="center" nowrap>
+        <span class="capsule_thumb_qty">Order Qty:</span><br /><input type="text"  id="addqty[@count@]" value="" class="capsule_thumb_qty_input" size="3"><input type="hidden" id="addsku[@count@]" value="[@SKU@]">
+</td>
+                      <td nowrap="nowrap"><br />
+<input name="Update" type="button" value="Add Item" onclick="addItem([@count@])"/>
+      </td>
+  </tr>
+  <tr><td colspan="5"><div id="dotted_line"></div></td></tr>
+<!--##[%END PARAM%]
+
+[%PARAM *footer%]##-->
+</table></div>
+<!--##[%END PARAM%]
+[%PARAM *ifempty%]##-->
+No Products are available.
+<!--##[%END PARAM%]
+[%END THUMB_LIST%]##-->
+	</td></tr>
+</table>
+<div class="spacer"></div>
+<center>
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a> &nbsp; 
+    <input type="image" alt="Update Changes" src="" onclick="updateChanges();"> &nbsp;
+    <input type="image" alt="Save Changes" src="[$imageurl$]/template/cart/confirm.gif" onclick="saveChanges();">
+</center>

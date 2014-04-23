@@ -1,0 +1,118 @@
+<div class="col-xs-12">
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="#">Resolution Centre</a></li>
+</ul>
+
+
+	<div class="page-header">
+		<h1>Resolution Centre</h1>
+		<h2>Step 3 - Raise dispute against order #[@order_id@]</h2>
+	</div>
+	
+	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+	<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
+	<!--##[%END DATA%]##--> 
+	
+	<script language="javascript" type="text/javascript">
+function goBack() {
+	var f = document.disputeForm;
+	f['step'].value = 'reason';
+	f.submit();
+}
+function cancalAction() {
+	window.location.href='[%URL page:"account" type:"warranty"%][%END URL%]';
+}
+function showOrder() {
+	var obj = document.getElementById('dispute_line');
+	var lnpl = document.getElementById('linepl');
+	if(obj){
+		lnpl.style.display = (obj.checked?'':'none');
+	}
+}
+</script>
+	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create' %][%END URL%]" method="post">
+		<input type="hidden" name="step" value="proc">
+		<input type="hidden" name="type" value="[%NOHTML%][@type@][%END NOHTML%]">
+		<input type="hidden" name="reason" value="[%NOHTML%][@reason@][%END NOHTML%]">
+		<input type="hidden" name="order" value="[%NOHTML%][@order_id@][%END NOHTML%]">
+		<h3>Order <a target="_blank" href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a></h3>
+		<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
+		<p><b>PO#:</b> <!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--></p>
+		<!--##[%END DATA%]##-->
+		<p><b>Shipped To:</b> <!--##[%NOHTML%]##-->[@bill_first_name@] [@bill_last_name@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Date Placed:</b> <!--##[%format type:"date"%]##-->[@date_placed@]<!--##[%END format%]##--></p>
+		<p><b>Order Status:</b> <!--##[%NOHTML%]##-->[@order_status@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Contact Email:</b> <!--##[%NOHTML%]##-->[@email@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Contact Phone:</b> <!--##[%NOHTML%]##-->[@phone@]<!--##[%END NOHTML%]##--></p>
+		<hr/>
+		<h4>Which items from the list below would you like to dispute?</h4>
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<div class="well">
+					<div class="radio">
+						<label>
+							<input type="radio" name="dispute" id="dispute_order" value="order" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'order'%]checked[%END DATA%]/>
+							Dispute The Entire Order </label>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6">
+				<div class="well">
+					<div class="radio">
+						<label>
+							<input type="radio" name="dispute" id="dispute_line" value="line" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'line'%]checked[%END DATA%]/>
+							Dispute Selected Item(s) </label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="linepl" style="display:none;"> 
+			<!--##[%show_order id:'[@order_id@]'%][%PARAM *header%]##-->
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr >
+						<th>Qty</th>
+						<th>Item</th>
+						<th>Price</th>
+						<th>Discount</th>
+						<th>Subtotal</th>
+					</tr>
+				</thead>
+				<!--##[%END PARAM%][%PARAM *body%]##-->
+				<tr>
+					<td><input type="text" name="qty[@counter@]" value="" class="form-control" >
+						of [@qty@]</td>
+					<td><a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%END url%]"><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></a> <a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%END url%]">[@model@] <i>[@extra@]</i></a> 
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>FREE*</b><!--##[%END DATA%]##--> 
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##--> 
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+					<td><!--##[%FORMAT type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
+					<td><!--##[%format type:'currency'%]##-->[@discount@]<!--##[%END format%]##--></td>
+					<td><!--##[%FORMAT type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
+				</tr>
+				<!--##[%END PARAM%][%PARAM *footer%]##-->
+			</table>
+			<!--##[%END PARAM%]##--> 
+			<!--##[%END show_order%]##--> 
+		</div>
+		<hr/>
+		<h4>Detailed Explanation Of Problem</h4>
+		<p>[@dispute_type_title@] <i class="fa fa-arrow-right"></i> [@dispute_reason@]</p>
+		<textarea  class="form-control" name="message" rows="5"><!--##[%NOHTML%]##-->[@message@]<!--##[%END NOHTML%]##--></textarea>
+		<hr>
+		<div class="row btn-stack">
+			<div class="col-xs-12 col-md-3">
+				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="Cancel"> <i class="fa fa-remove icon-white"></i> Cancel </button>
+			</div>
+			<div class="col-xs-12 col-md-3 col-md-offset-3">
+				<button name="button" type="button" onClick="goBack()" class="btn btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
+			</div>
+			<div class="col-xs-12 col-md-3">
+				<button type="submit" class="btn btn-success btn-block" >Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>
+			</div>
+		</div>
+	</form>
+	<script language="javascript" type="text/javascript">showOrder();</script> 
+</div>

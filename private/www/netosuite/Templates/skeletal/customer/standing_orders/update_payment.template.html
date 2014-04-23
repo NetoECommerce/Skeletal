@@ -1,0 +1,159 @@
+<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
+<script type="text/javascript" language="javascript">
+function selectPayment() {
+	var i=0;
+	var obj = document.getElementById('payment'+i);
+	var chk = -1;
+	while(obj && chk>=0) {
+		if(obj.checked) {
+			chk = i;
+		}
+		i++; obj = document.getElementById('plan'+i);
+	}
+	
+	if(chk>=0) {
+		var chr = document.getElementById('charge'+i);
+		var detailcc = document.getElementById('pdetail_cc');
+		if(chr.value == 'cc') {
+			detailcc.style.display = '';
+		} else {
+			detailcc.style.display = 'none';
+		}
+	}
+}
+</script>
+<form method="post" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
+<input type="hidden" name="action" value="[@current_action@]">
+<input type="hidden" name="previous" value="[@previous_action@]">
+<input type="hidden" name="fn" value="confirm">
+<table class="checkout_box" width="600px" cellpadding="6px" cellspacing="0" border="0" align="center">
+    <tr>
+    <td class="checkout_box_header">How Would You Like To Pay For This Order?</td>
+  </tr>
+<!--##[%payment_methods sortby:'sortorder,name' repeat_only:'1'%]
+[%PARAM *body%]##-->
+<tr id="pay_name[@count@]"><td><input type="radio" name="payment" id="payment[@count@]" value="[@id@]" [%DATA id:'id' if:'=' value:'[@payment_method@]'%]checked[%END DATA%] onclick="selectPayment()"> <b>[@name@]</b></td></tr>
+<tr id="pay_desc[@count@]"><td valign="top">
+<input type="hidden" id="charge[@count@]" value="[@charge_type@]">
+<!--##[%DATA id:'name' if:'like' value:'Paypal'%]##-->
+<table border="0" cellpadding="3" cellspacing="0">
+<tr><td><img src="[$imageurl$]/cart/paymentmethods/paypal.gif" width="60" height="38"></td>
+	<td>The safer, easier way to pay. If you select to pay via PayPal, we'll send you to PayPal's website to complete payment. You will have the opportunity to pay with Visa, Mastercard or your Paypal account balance.</td></tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
+<table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td><img src="[$imageurl$]/cart/paymentmethods/visa.gif" width="60" height="32"></td>
+      <td>Pay by Visa Card on our secure site. Your card will be processed by 
+        the [$COMPANY_BANK_NAME$]. </td>
+  </tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
+<table border="0" cellpadding="3" cellspacing="0">
+<tr>
+<td><img src="[$imageurl$]/cart/paymentmethods/mastercard.gif" width="60" height="32"></td>
+<td>Pay by Master Card on our secure site. Your card will be processed by 
+the [$COMPANY_BANK_NAME$]. </td>
+</tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
+<table border="0" cellpadding="3" cellspacing="0">
+<tr>
+<td><img src="[$imageurl$]/cart/paymentmethods/american_express.gif" width="60" height="32"></td>
+<td>Pay by American Express on our secure site. Your card will be processed by 
+the [$COMPANY_BANK_NAME$]. </td>
+</tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
+  <table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td><img src="[$imageurl$]/cart/paymentmethods/electronic_transfer.gif" width="60" height="32"></td>
+      <td>If you select to pay via Electronic Transfer or Direct Bank Deposit, we'll provide you with 
+        account details to send payment to. Payment is required within 5 weekdays. 
+        For the fastest possible delivery, we recommend payment via credit card. </td>
+  </tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
+ <table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td><img src="[$imageurl$]/cart/paymentmethods/money_order.gif" width="60" height="32"></td>
+      <td>If you select to pay via Australia Post Money Order, we'll provide you 
+        with an address to send payment to. Payment is required within 5 weekdays. 
+        For the fastest possible delivery, we recommend payment via credit card 
+        or PayPal due to bank processing times. </td>
+  </tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
+  <table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td><img src="[$imageurl$]/cart/paymentmethods/account.gif" width="60" height="32"></td>
+      <td>Your [$company_name$] account will be charged for this order based on the payment terms you have previously organised with us. </td>
+  </tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
+<table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td><img src="[$imageurl$]/cart/paymentmethods/cheque.gif" width="60" height="32"></td>
+      <td>If you select to pay via Cheque we'll provide you with an address to 
+        send your cheque to.</td>
+  </tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'name' if:'like' value:'BPAY'%]##-->
+<table border="0" cellpadding="3" cellspacing="0">
+    <tr>
+      <td><img src="[$imageurl$]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
+      <td>If you select to pay via BPAY, we'll provide you with a BPAY biller code and reference number to pay via phone or internet banking. Payment is required within 5 weekdays. For the fastest possible delivery, we recommend payment via credit card or PayPal due to bank processing times.</td>
+  </tr>
+</table>
+<!--##[%END DATA%]##-->
+</td></tr>
+<!--##[%END PARAM%]##-->
+<!--##[%END payment_methods%]##-->
+</table>
+<div class="spacer"></div>
+<table id="pdetail_cc" class="checkout_box" width="600px" cellpadding="6px" cellspacing="0" border="0" align="center">
+    <tr>
+    <td class="checkout_box_header">Your Payment Detail</td>
+  </tr>
+	<tr><td>
+<table cellpadding="0" cellspacing="2" border="0">
+<tr><td>Card Number</td>
+	<td class="small" nowrap><input name="card_number" size="16" maxlength="16" value=""> (only digits)</td></tr>
+<tr><td>Card Holder's Name</td>
+<td nowrap><input name="card_holder" size="30" maxlength="40" value=""></td>
+<td rowspan="4" nowrap><img src="[$imageurl$]/cart/what_is_cvv.gif" width="226" height="77"></td></tr>
+<tr><td>Card Expiration Date</td><td nowrap>
+<select id="card_exp_month" name="card_exp_month">
+<option value=""></option>
+		<!--##[%months%][%PARAM *body%]##-->
+<option value="[@month@]">[@month@]</option>
+		<!--##[%END PARAM%][%END months%]##-->
+</select>
+/
+<select name="card_exp_year">
+<option value=""></option>
+		<!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
+<option value="[@year@]">[@year@]</option>
+		<!--##[%END PARAM%][%END years%]##-->
+</select></td></tr>
+<tr><td>Card Security Code (CCV):</td><td class="small" nowrap><input name="card_ccid" size="5"> (3 digit code)</td></tr>
+</table>
+	</td></tr>
+</table>
+<div class="spacer"></div>
+<center>
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a> &nbsp; 
+    <input type="image" alt="Save Changes" src="[$imageurl$]/template/cart/confirm.gif">
+</center>
+</form>
+<script type="text/javascript" language="javascript">
+selectPayment();
+</script>

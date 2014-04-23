@@ -1,0 +1,48 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+
+<!--# Start Breadcrumb# ##--> 
+<ul class="breadcrumb"> 
+<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+</ul>
+<!--# End Breadcrumb# ##--> 
+
+<div class="page-header">
+<h1>Vouchers &amp; Rewards</h1>
+</div>
+
+
+<!--##[%active_vouchers%]
+[%PARAM *header%]##-->
+<table class="table table-bordered table-striped" cellpadding="2" cellspacing="0" width="100%" border="0">
+<thead>
+    <tr>
+      <th>Description</th>
+      <th>Balance</th>
+    </tr>
+</thead>
+<tbody>
+<!--##[%END PARAM%][%PARAM *body%]##-->
+<tr>
+	<td width="90%"><b>[@vprogram_title@]</b><br />
+	<!--##[%DATA id:'vprogram_subtitle' if:'ne' value:''%]##-->[@vprogram_subtitle@]<br /><!--##[%END DATA%]##-->([@voucher_code@])</td>
+	<td nowrap>
+		<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
+
+<!--##[%DATA id:'show_points' if:'==' value:'1'%]##-->
+ (<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##--> pts)
+<!--##[%END DATA%]##-->
+
+	</td>
+</tr>
+<!--##[%END PARAM%][%PARAM *footer%]##-->
+</table>
+<!--##[%END PARAM%][%PARAM ifempty%]##-->
+No vouchers or rewards are available.
+<!--##[%END PARAM%]
+[%END active_vouchers%]##-->
+
+</div>

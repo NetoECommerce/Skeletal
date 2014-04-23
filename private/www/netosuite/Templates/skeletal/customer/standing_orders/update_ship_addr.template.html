@@ -1,0 +1,215 @@
+<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
+<script type="text/javascript" language="javascript">
+var httpReq ={};
+
+function updloca(oid) {
+	var f = document.itemForm;
+	var msg = document.getElementById('suburb_mg'+oid);
+	var dis = document.getElementById('suburb_di'+oid);
+	var sel = document.getElementById('suburb_sl'+oid);
+
+	var zip = f[oid+'_zip'];
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	var country = f[oid+'_country'];
+	
+	
+	msg.innerHTML = '<i>Loading...</i>'
+	msg.style.display = '';
+	dis.style.display = 'none';
+	
+	if(country.options[country.selectedIndex].value != '[$SELECTORCOUNTRY$]') {
+		msg.innerHTML = '<i>Please enter your city and state below.</i>';
+		city.readOnly = state.readOnly = false;
+		city.style.color = state.style.color = '#000000';
+	} else {
+		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
+		
+		city.readOnly = state.readOnly = true;
+		city.style.color = state.style.color = '#666666';
+		if( zip.value == '' ) {
+			msg.innerHTML = '<i>Please enter your postal code above.</i>';
+		} else {
+			var url = '[$secure_home_url$]/do/get_locate?zip='+escape(zip.value);
+			httpReq[oid] = ajax_XMLHttpRequest();
+			if(!httpReq[oid]) {
+				msg.innerHTML = '<i>Error. Please contact our customer support: [$COMPANY_EMAIL$]</i>';
+			} else {
+				httpReq[oid].onreadystatechange = function() {
+					if(httpReq[oid].readyState == 4 && httpReq[oid].status == 200) {
+						var data = httpReq[oid].responseText.split('\n');
+						sub_ldsel(oid,data);
+					}
+				};
+				httpReq[oid].open("GET",url,true);
+				httpReq[oid].send(null);
+			}
+		}
+	}
+}
+
+function sub_ldsel(oid,data) {
+	var f = document.itemForm;
+	var dis = document.getElementById('suburb_di'+oid);
+	var msg = document.getElementById('suburb_mg'+oid);
+	
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	
+	var count = 0;
+	if(data.length > 0) {
+		var option = '<option value="">-- Select Suburb --</option>';
+		var sel_value = city.value.toUpperCase()+' - '+state.value;
+		for(var i=0; i<data.length; i++) {
+			if(data[i] != '') {
+				option += '<option value="'+data[i]+'"'+(data[i] == sel_value? ' selected':'')+'>'+data[i]+'</option>';
+				count++;
+			}
+		}
+	}
+	if(count <= 0) {
+		msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
+		dis.style.display = 'none';
+		msg.style.display = '';
+	} else {
+		dis.innerHTML = '<select id="suburb_sl'+oid+'" onChange="sub_sel(\''+oid+'\')">'+option+'</select>';
+		msg.style.display = 'none';
+		dis.style.display = '';
+
+		sub_sel(oid);
+	}
+}
+
+function sub_sel(oid) {
+	var f = document.itemForm;
+	var sel = document.getElementById('suburb_sl'+oid);
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	if(sel) {
+		if(sel.selectedIndex > 0) {
+			var sp = sel.options[sel.selectedIndex].value.split(' - ');
+			if( sp.length > 1 ) {
+				state.value = sp[sp.length-1];
+				city.value = (sp.slice(0,sp.length-1)).join(' - ');
+			}
+		}
+	}
+}
+
+function chaddr() {
+	var obj = document.getElementById('ship_address_sel');
+	if(obj.selectedIndex>0){
+		document.AddrBook.ship_address.value=obj.options[obj.selectedIndex].value;
+		document.AddrBook.submit();
+	}
+}
+</script>
+<form method="post" name="AddrBook" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
+	<input type="hidden" name="action" value="[@current_action@]">
+	<input type="hidden" name="previous" value="[@previous_action@]">
+	<input type="hidden" name="fn" value="ship_address">
+	<input type="hidden" name="ship_address" value="">
+</form>
+<form method="post" name="itemForm" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
+<input type="hidden" name="action" value="[@current_action@]">
+<input type="hidden" name="previous" value="[@previous_action@]">
+<input type="hidden" name="fn" value="shipping">
+<table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
+  <tr> 
+      <td class="checkout_box_header">Purchase Order Number</td>
+  </tr>
+  <tr>
+    <td class="small_text">Buying this for your work or business? Enter your purchase order number below.</td>
+  </tr>
+  <tr> 
+    <td nowrap><b>Purchase Order #</b> &nbsp; <input name="customer_po" size="50" maxlength="50" value="[@customer_po@]"></td>
+  </tr>
+</table>
+<div class="spacer"></div>
+	<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
+    <tr>
+    <td class="checkout_box_header">Confirm Your Ship To Address</td>
+  </tr>
+  <tr>
+    <td>
+<table cellpadding="4" cellspacing="0" border="0">
+          <tr> 
+            
+          <td><strong>Choose From Your Address Book</strong></td>
+            <td><select type="text" id="ship_address_sel">
+                <option value=""></option>
+<!--##[%address_book%]
+[%PARAM *body%]##-->
+<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
+<!--##[%END PARAM%] 
+[%END address_book%]##--> </select> <input type="button" value="Select" onClick="chaddr()"></td>
+          </tr>
+        </table>
+        <table cellpadding="4" cellspacing="0" border="0">
+          <tr>
+            <td><b>First Name</b></td>
+            <td><input name="ship_first_name" size="50" maxlength="50" value="[@ship_first_name@]"></td>
+          </tr>
+          <tr>
+            <td><b>Last Name</b></td>
+            <td><input name="ship_last_name" size="50" maxlength="50" value="[@ship_last_name@]"></td>
+          </tr>
+          <tr>
+            
+      <td><strong>Company</strong></td>
+            <td><input name="ship_company" size="50" maxlength="50" value="[@ship_company@]"></td>
+          </tr>
+          <tr>
+            
+      <td><strong>Address</strong></td>
+            <td><input name="ship_street1" size="50" maxlength="50" value="[@ship_street1@]"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input name="ship_street2" size="50" maxlength="50" value="[@ship_street2@]"></td>
+          </tr>
+          <tr>
+            
+      <td nowrap><strong>Postal Code</strong></td>
+            <td><input name="ship_zip"  value="[@ship_zip@]" size="50" maxlength="10" onChange="updloca('ship')" onKeyUp="updloca('ship')"></td>
+          </tr>
+          <tr>
+            
+      <td valign="top"><strong>Suburb Selector</strong></td>
+            <td valign="top" nowrap><div id="suburb_diship">&nbsp;</div>
+              <div style="display:none;" id="suburb_mgship">&nbsp;</div></td>
+          </tr>
+          <tr>
+            
+      <td><strong>City</strong></td>
+            <td><input type="text" name="ship_city" readonly="1" style="color:#666666;" value="[@ship_city@]" size="50" maxlength="50"></td>
+          </tr>
+          <tr>
+            
+      <td><strong>State</strong></td>
+            <td><input type="text" name="ship_state" readonly="1" style="color:#666666;" value="[@ship_state@]" size="50" maxlength="50"></td>
+          </tr>
+          <tr>
+            
+      <td><strong>Country</strong></td>
+            <td><select name="ship_country" size="1" onChange="updloca('ship')">
+<!--##[%countries%]
+[%PARAM *body%][%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]##--><option value="[@country_code@]" selected>[@country_name@]</option><!--##[%END DATA%][%END PARAM%]
+[%END countries%]##-->
+              </select></td>
+          </tr>
+          <tr>
+            
+      <td><strong>Phone Number</strong></td>
+            <td><input name="ship_phone" size="50" maxlength="50" value="[@ship_phone@]"></td>
+          </tr>
+        </table></td>
+  </tr>
+</table>
+<div class="spacer"></div>
+<center>
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a> &nbsp; 
+    <input type="image" alt="Continue" src="[$imageurl$]/template/cart/continue.gif">
+</center>
+</form>
+<script language="javascript" type="text/javascript">updloca('ship');</script>

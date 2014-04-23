@@ -1,0 +1,18 @@
+<div class="notification">
+	<!--##[%DATA id:'error' if:'ne' value:'' %]##-->
+	<div class="alert alert-error">[@ERROR@]</div>
+	<!--##[%END DATA%]##-->
+	<div class="page-header">
+		<h2>Send me an email notification when [%FORM id:'model'%][%END FORM%] is back in stock.</h2>
+	</div>
+
+	<label>Your Name</label>
+	<input name="from_name" id="from_name" type="text" class="input-medium" value="[%NOHTML%][@FROM_NAME@][%END NOHTML%]" >
+	<label>Your Email Address</label>
+	<input name="from" id="from" type="email" class="input-medium" value="[%NOHTML%][@FROM@][%END NOHTML%]" >
+	<br />
+	<div class="form-actions">
+		<input class="btn btn-success pull-right" type="button" value="Save My Details" onClick="javascript:$.addNotifyBackInStock('[%FORM id:'item'%][%END FORM%]', '');$.fancybox.close();">&nbsp;
+		<input class="btn btn-danger pull-left" type="button" onClick="$.fancybox.close();" value="Cancel">
+	</div>
+</div>

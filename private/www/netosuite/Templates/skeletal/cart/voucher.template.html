@@ -1,0 +1,230 @@
+<div class="col-sm-12">
+
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function() {
+$.extend({
+copy_values : function (id) {
+var arr = ['sender','name','email','msg', 'rdate'];
+
+for(var i=0; i<arr.length; i++) {
+var fval = $('[name="voucher_'+arr[i]+id+'"]').val();
+$('[name^="voucher_'+arr[i]+'"]').each(function () {
+var mid = $(this).attr('name');
+mid = mid.replace('voucher_'+arr[i], '');
+
+if(arr[i] == 'rdate') {
+	var txt = mid.replace(/^\d+/, '');
+	fval = $('[name="voucher_'+arr[i]+id+txt+'"]').val();
+	
+	mid = mid.replace(/_.+$/, '');
+	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
+	if(id != mid) {
+		$(this).val(fval);
+	}
+	
+} else {
+	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
+	if(id != mid) {
+		$(this).val(fval);
+	}
+}
+
+});
+}
+},
+
+check_vouchers : function () {
+var okay =true;
+
+var arr = ['sender','name','email','msg'];
+
+for(var i=0; i<arr.length; i++) {
+$('[name^="voucher_'+arr[i]+'"]').each(function () {
+var mid = $(this).attr('name');
+var fval = $(this).val();
+fval = fval.replace(/^\s+|\s+$/, '');
+$(this).val(fval);
+$.update_text_count($(this));
+
+var err = false;
+if(fval == '') {
+	$('.sherror[ref="'+mid+'"]').show();
+	okay = false;
+	err = true;
+} else {
+	$('.sherror[ref="'+mid+'"]').hide();
+}
+
+if(!err && arr[i] == 'email') {
+	if(!$.validate_email(fval)) {
+		$('.sherror[ref="invalid_'+mid+'"]').show();
+		okay = false;
+		err = true;
+	} else {
+		$('.sherror[ref="invalid_'+mid+'"]').hide();
+	}
+} else {
+	$('.sherror[ref="invalid_'+mid+'"]').hide();
+}
+
+});
+}
+
+return okay;
+
+},
+
+sumbit_form : function () {
+var okay = $.check_vouchers();
+
+if(okay) { $('#upsellcartform').submit(); }
+else {
+$.fancybox("Please complete all the required fields indicated with a *", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
+}
+}
+
+});
+
+$('.submit_btn').click(function(e){
+$.sumbit_form();
+});			
+
+$('.copy_btn').click(function(e){
+$.copy_values($(this).attr('ref'));	
+});
+
+$.init_text_count('inputtext');
+});
+
+</script>
+<!--##[%END SITE_VALUE%]##-->
+
+<style type="text/css">
+.copy_btn {}
+.inputtext{ }
+.inputtext_count { display:none; font-size:8px;}
+.submit_btn {}
+.sherror { color: #CC0000; font-size:8px; display:none;}
+INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
+</style>
+
+<!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
+
+<form method="post" enctype="multipart/form-data" action="[%URL page:'checkout'%][%END URL%]" id="upsellcartform">
+<input type="hidden" name="fn" id="fn" value="payment" />
+<input type="hidden" name="voucher" value="y" />
+
+<h1>Personalise Your Gift Vouchers</h1>
+<div>Gift vouchers will be sent to your specified recipients by email.</div>
+<div id="productoptions">
+<!--##[%cart_vouchers type:'voucher'%]##-->
+<!--##[%PARAM *body%]##-->
+<hr />
+<div>
+<a name="voucher[@reward_id@]"></a>
+<h4>#[@item_count@] &nbsp; [@vprogram_title@] - 
+<!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
+<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
+<!--##[%END PARAM%][%PARAM if_false%]##-->
+<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
+<!--##[%END PARAM%][%END DATA%]##-->
+</h4>
+
+<div class="form-group row">
+<div class="col-sm-6">
+Sender Name<span class="text-danger">*</span>
+<p class="muted">The name of the person sending the voucher</p>
+</div>
+<div class="col-sm-6">
+<input type="text" class="form-control" name="voucher_sender[@reward_id@]" value="[%NOHTML%][@sender_name@][%END NOHTML%]">
+<span class="sherror" ref="voucher_sender[@reward_id@]">* Required</span>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-sm-6">
+Recipient Name<span class="text-danger">*</span>
+<p class="muted">The name of the person receiving the voucher</p>
+</div>
+<div class="col-sm-6">
+<input type="text" class="form-control" name="voucher_name[@reward_id@]" value="[%NOHTML%][@recipient_name@][%END NOHTML%]">
+<span class="sherror" ref="voucher_name[@reward_id@]">* Required</span>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-sm-6">Recipient Email<span class="text-danger">*</span>
+<p class="muted">The e-voucher will be sent to this email address</p>
+</div>
+<div class="col-sm-6">
+<input type="text" class="form-control" name="voucher_email[@reward_id@]" value="[%NOHTML%][@recipient_email@][%END NOHTML%]">
+<span class="sherror" ref="voucher_email[@reward_id@]">* Required</span>
+<span class="sherror" ref="invalid_voucher_email[@reward_id@]">* Invalid</span>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-sm-6">Send Voucher On This Date &amp; Time: <p class="muted">Leave blank to send ASAP or select a date and time</p></div>
+<div class="btn-stack">
+<div class="col-sm-2 col-xs-12">
+<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%END NOHTML%]" placeholder="Select Date">
+</div>
+<div class="col-sm-2 col-xs-12">
+<select class="form-control" name="voucher_rdate[@reward_id@]_hr">
+<option value=""></option>
+<option value="1" [%DATA id:'required_date_12hr' if:'=' value:'1'%]selected[%END DATA%]>1</option>
+<option value="2" [%DATA id:'required_date_12hr' if:'=' value:'2'%]selected[%END DATA%]>2</option>
+<option value="3" [%DATA id:'required_date_12hr' if:'=' value:'3'%]selected[%END DATA%]>3</option>
+<option value="4" [%DATA id:'required_date_12hr' if:'=' value:'4'%]selected[%END DATA%]>4</option>
+<option value="5" [%DATA id:'required_date_12hr' if:'=' value:'5'%]selected[%END DATA%]>5</option>
+<option value="6" [%DATA id:'required_date_12hr' if:'=' value:'6'%]selected[%END DATA%]>6</option>
+<option value="7" [%DATA id:'required_date_12hr' if:'=' value:'7'%]selected[%END DATA%]>7</option>
+<option value="8" [%DATA id:'required_date_12hr' if:'=' value:'8'%]selected[%END DATA%]>8</option>
+<option value="9" [%DATA id:'required_date_12hr' if:'=' value:'9'%]selected[%END DATA%]>9</option>
+<option value="10" [%DATA id:'required_date_12hr' if:'=' value:'10'%]selected[%END DATA%]>10</option>
+<option value="11" [%DATA id:'required_date_12hr' if:'=' value:'11'%]selected[%END DATA%]>11</option>
+<option value="12" [%DATA id:'required_date_12hr' if:'=' value:'12'%]selected[%END DATA%]>12</option>
+</select>
+</div>
+<div class="col-sm-2 col-xs-12">
+<select class="form-control" name="voucher_rdate[@reward_id@]_am">
+<option value=""></option>
+<option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%END DATA%]>am</option>
+<option value="pm" [%DATA id:'required_date_am' if:'eq' value:'pm'%]selected[%END DATA%]>pm</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="form-group row">
+<div class="col-sm-6">Gift Voucher Message<span class="text-danger">*</span><p class="muted">The message that appears on the gift voucher email</p></div>
+<div class="col-sm-6">
+<textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft"><!--##[%NOHTML%][@gift_message@][%END NOHTML%]##--></textarea>
+<div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[$VOUCHER_MSG_LENGTH$]">[$VOUCHER_MSG_LENGTH$]</span> Character(s) Left</div>
+<span class="sherror" ref="voucher_msg[@reward_id@]">*Required</span>
+</div>
+</div>
+
+<!--##[%DATA id:'count' if:'eq' value:'0'%]##-->
+<!--<div><a href="javascript:void(0);" class="copy_btn btn" ref="[@reward_id@]">Copy details from this voucher to all vouchers</a><br>
+</div>-->
+<!--##[%END DATA%]##-->
+</div>
+<br clear="all">
+</div>
+
+<!--##[%END PARAM%]
+[%END cart_vouchers%]##-->	
+</div>
+
+<div class="col-xs-12">
+<input class="submit_btn btn btn-success btn-large pull-right" type="button" value="Continue To Checkout"/>
+</div>
+</form>
+
+<br />
+
+<!--##[%GA_FUNNEL%]/purchase/voucher.html[%END GA_FUNNEL%]##-->
+

@@ -1,0 +1,337 @@
+
+<div class="col-xs-12">
+	<script language="javascript" type="text/javascript">
+function print_invoice() {
+	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+}
+</script>
+
+	<!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
+
+	<div class="alert alert-success">Congratulations - Your Order Has Been Confirmed!</div>
+</div>
+<div class="col-xs-12">
+<div class="row">
+	<div class="col-xs-12 col-md-4">
+
+		<!--##[%show_order id:'[@order_id@]'%]
+[%PARAM *header%]##-->
+
+		<h3>Your Order ID</h3>
+		<h2 class="text-danger">[@order_id@]</h2>
+
+		<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
+		<p><a class="btn btn-default" href="[%URL page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%END URL%]"><i class="fa fa-print"></i> Print Receipt</a></p>
+		<!--##[%END PARAM%][%PARAM if_false%]##-->
+		<p>
+			<button type="button" value="Print Receipt" onClick="print_invoice()" class="btn btn-default"><i class="fa fa-print"></i> Print Receipt</button>
+		</p>
+		<!--##[%END PARAM%][%END USER%]##-->
+
+	</div>
+	<div class="col-xs-12 col-md-8">
+
+		<!--##[%USER id:'username' if:'eq' value:''%]##-->
+		<h3>Activate Your [$company_name$] Account</h3>
+		<p> So that you can shop faster in the future and track past orders we have automatically generated a [$company_name$] account for you. </p>
+		<p> Click on the button below to activate this account and create an account password. Activation details have also been sent to your email address. </p>
+		<p> <a href="[%URL page:'account' type:'resetpwd' id:'[@logincode@]'%][%END URL%]" class="btn btn-success"> Activate Account and Create Password </a> </p>
+		<p> <strong>Note:</strong> Activating your [$company_name$] account is optional. </p>
+		<!--##[%END USER%]##-->
+
+		<!--##[%USER id:'username' if:'ne' value:''%]##-->
+		<h3>Order Tracking:</h3>
+		<p>You will be updated by e-mail as to your orders progress.</p>
+		<p>To track the progress of your order online please go to <a href="[%URL page:'account'%][%END URL%]">your
+			account</a> and select the order you wish to track.</p>
+		<!--##[%END USER%]##-->
+		<p>
+			<!-- AddThis Button BEGIN -->
+
+		<h3>Help Spread The Word:</h3>
+		<br />
+		<div class="addthis_toolbox addthis_default_style" addthis:url="[$home_url$]" addthis:title="[$company_name$]"> <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> <a class="addthis_counter addthis_pill_style"></a> </div>
+		<script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f6e8c00311460e7"></script>
+		<!-- AddThis Button END -->
+		</p>
+	</div>
+</div>
+<div class="row">
+<div class="col-xs-12">
+<hr />
+<div class="panel panel-default">
+<div class="panel-heading">
+	<h3 class="panel-title">Payment Instructions</h3>
+</div>
+<div class="panel-body">
+	<!--##[%payment_methods id:'[@payment_method@]'%]
+[%PARAM *body%]##-->
+	<h4>Your chosen payment method is [@name@]</h4>
+	<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-americanexpress"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Your American Express Card has already been processed.</h4>
+		</div>
+	</div>
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
+
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-visa"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Your Visa Card has already been processed.</h4>
+		</div>
+	</div>
+
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-mastercard"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Your Master Card has already been processed.</h4>
+		</div>
+	</div>
+
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Discover'%]##-->
+
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-discover"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Your credit card has already been processed.</h4>
+		</div>
+	</div>
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
+
+		<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-cheque"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Please send your Cheque to :</h4>
+			<p>[$company_name$]</p>
+			<p>[$COMPANY_POADDR$]</p>
+			<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
+		</div>
+	</div>
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
+
+
+		<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-moneyorder"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Please send your money order to :</h4>
+			<p>[$company_name$]</p>
+			<p>[$COMPANY_POADDR$]</p>
+			<p>Please include your full name and order number so that we can easily locate your order.</p>
+		</div>
+	</div>
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Direct Deposit'%]##-->
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-directdeposit"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Please deposit your total order amount to :</h4>
+
+			<h5>[$COMPANY_BANK_NAME$]</h5>
+			<p><b>Name:</b> [$COMPANY_BANK_ACC$]</p>
+			<p><b>BSB: </b>[$COMPANY_BANK_BSB$]</p>
+			<p><b>Ac/no:</b>[$COMPANY_BANK_NUM$]</p>
+
+			<p>Please leave your order number or last name as a payment reference.</p>
+			<p>Once you have deposited the full amount, please email [$company_email$] with your order number to confirm your payment.</p>
+
+		</div>
+	</div>
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-bpay"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Biller Code: [$BPAY_BILLER_CODE$]<br>
+			Ref: [@bpay_crn@]</h4>
+			<h5>Telephone &amp; Internet Banking - BPAY</h5>
+			<p>Contact your bank, credit union or building sociey to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
+		</div>
+	</div>
+
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'PayPal'%]##-->
+
+	<div class="media">
+		<div class="payment-icon-container pull-left">
+			<div class="payment-icon payment-icon-paypal"></div>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">Your Paypal payment has been processed. No further action is required by you at this stage.</h4>
+		</div>
+	</div>
+
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
+	<h3>[$company_name$] Account </h3>
+	<!--##[%END DATA%]##-->
+	<!--##[%END PARAM%]
+[%PARAM *ifempty%]##-->
+	<h3>No Payment method has been selected.</h3>
+	<!--##[%END PARAM%]
+[%END payment_methods%]##-->
+
+	<!-- End Content -->
+
+
+<!--##[%DATA id:'ship_comment' if:'ne' value:''%]##-->
+	<h4>Special Delivery Instructions For These Items:</h4>
+	<p>[@ship_comment@]</p>
+
+	<!--##[%END DATA%]##-->
+	<!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
+	<!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
+
+<p>Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order </p>
+	<!--##[%END DATA%]##-->
+	<!--##[%END DATA%]##-->
+
+
+
+</div>
+</div>
+	</div>
+	<div class="col-xs-12">
+	<h2>Order Summary</h2>
+	<table class="table table-striped table-bordered table-condensed">
+		<tr>
+			<th>Qty x SKU</th>
+			<th>Product</th>
+			<th>Price</th>
+			<th>Subtotal</th>
+		</tr>
+		<!--##[%END PARAM%]
+[%PARAM *body%]##-->
+		<tr>
+			<td>[@qty@]x [@SKU@]</td>
+			<td>[@model@] <i>[@extra@]</i>
+				<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <!--##[%END DATA%]##-->
+				<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+				<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+			<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--> <!--##[%DATA id:'discount' if:'>' value:'0' %]##-->( Discount - <!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--> )<!--##[%END DATA%]##--></td>
+
+			<td><!--##[%format type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
+		</tr>
+		<!--##[%END PARAM%]##-->
+		<!--##[%PARAM *footer%]##-->
+		<!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
+[%PARAM if_false%]##-->
+		<!--##[%DATA id:'shipping_quote' if:'=' value:'1' %]
+	[%PARAM if_true%]##-->
+		<tr>
+			<td colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
+			<td nowrap>P.O.A.</td>
+		</tr>
+		<!--##[%END PARAM%]
+	[%PARAM if_false%]##-->
+		<tr>
+			<td colspan="2"><b>Delivery Method:</b> [@shipping_method@]</td>
+			<td><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--><!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--> ( Discount - <!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--> )<!--##[%END DATA%]##--></td>
+			<td><!--##[%format type:'currency'%]##-->[@shipping_price@]<!--##[%END format%]##--></td>
+		</tr>
+		<!--##[%END PARAM%]
+	<!--##[%END DATA%]##-->
+		<!--##[%END PARAM%]
+[%END DATA%]##-->
+		<!--##[%DATA id:'couponcode' if:'ne' value:'' %]##-->
+		<tr>
+			<td class="checkout_box_header" colspan="4">Special Pricing Arrangements / Discounts</td>
+		</tr>
+		<tr>
+			<td class="shitem0" colspan="4">[@couponcode@]</td>
+		</tr>
+		<!--##[%END DATA%]##-->
+	</table>
+	</div>
+	<div class="col-xs-12 col-md-4 col-md-offset-8">
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td><b>Order Subtotal</b></td>
+			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
+		<tr>
+			<td><b>Total Shipping</b></td>
+			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
+		<tr>
+			<td><b>Total Discount</b></td>
+			<td style="text-align:right;"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'surcharge_total' if:'>' value:'0' %]##-->
+		<tr>
+			<td><b>Surcharge</b> (<!--##[%format type:'percent' dc:'2'%]##-->[@surcharge_percent@]<!--##[%END format%]##-->)</td>
+			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%END DATA%]##-->
+		<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
+		<tr>
+			<td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
+			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%END DATA%]##-->
+		<tr>
+			<td style="border-top: 1px solid #CCCCCC;"><b>Order Total</b></td>
+			<td style="text-align:right; border-top: 1px solid #CCCCCC;"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%DATA id:'credit_apply' if:'>' value:'0' %]##-->
+		<tr>
+			<td style=" border-top: 2px solid #CCCCCC; border-bottom: 1px solid #CCCCCC;"><b>Amount Paid</b></td>
+			<td style="text-align:right; border-top: 1px solid #CCCCCC;"><span style="color:red;"><b>-<!--##[%format type:'currency'%]##-->[@amount_paid@]<!--##[%END format%]##--></b></span></td>
+		</tr>
+		<tr id="balance" style="display:none;">
+			<td><b>Balance Due</b></td>
+			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@owed_total@]<!--##[%END format%]##--></b></td>
+		</tr>
+		<!--##[%END DATA%]##-->
+	</table>
+	</div>
+	<!--##[%END PARAM%]##-->
+	<!--##[%END show_order%]##-->
+
+	<!--##[%GA_FUNNEL%]/purchase/invoice.html[%END GA_FUNNEL%]##-->
+	<!--##[%load_template file:"trackingcode/PurchaseTracking.html"%][%END load_template%]##-->
+
+
+</div>

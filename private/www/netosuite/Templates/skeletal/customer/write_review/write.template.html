@@ -1,0 +1,89 @@
+<script type="text/javascript" language="javascript">
+	function onload(){
+		if (parseInt([%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%]) > 0 && parseInt([%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%]) <= 5){
+			document.getElementById("rating_select").selectedIndex = parseInt([%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%])-1;
+		}
+		else{ 
+			document.getElementById("rating_select").selectedIndex = 4;
+		}
+		changeSelectRating();
+	}
+	function changeSelectRating(){
+		var currently_selected = document.getElementById("rating_select").selectedIndex+1;
+		for (a = 1; a <= 5; a++){
+			if (a <= currently_selected){
+				document.getElementById("rating_stars_" + a).className = "fa fa-star fa-3x";
+			}
+			else{
+				document.getElementById("rating_stars_" + a).className = "fa fa-star-o fa-3x";
+			}
+		}
+		document.getElementById("rating_value").value = currently_selected;
+	}
+</script>
+<div class="col-xs-12">
+	<h1 class="page-header">Review [@model@]</h1>
+	<p class="lead">
+		Thank you for writing a review. By sharing your thoughts, you help website visitors make a better purchasing decision. In addition, your feedback helps us to improve our products and service.
+	</p>
+	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+	<div class="alert alert-error">
+		<a class="close" data-dismiss="alert">×</a>
+		[@error@]
+	</div>
+	<!--##[%END DATA%]##-->	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Product Review</h3>
+		</div>
+		<div class="panel-body">
+			<form name="edit_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
+				<input type="hidden" name="fn" value="preview">
+				<input type="hidden" name="item" value="[%NOHTML%][%FORM id:'item'%][%END FORM%][%END NOHTML%]">
+				<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
+				<div class="form-group">
+					<label>Enter your name:</label>
+					<input size="70" type="text" name="customername" id="customername" value="[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]" />
+				</div>
+				<div class="form-group">
+					<label>Enter your e-mail address:</label>
+					<input size="70" type="text" name="emailaddress" id="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]" />
+				</div>
+				<!--##[%END USER%]##-->
+				<div class="form-group">
+					<label>Title For Review</label>
+					<input type="text" name="review_title" class="form-control" value="[%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]"/>
+				</div>
+				<div class="form-group">
+					<label>Review</label>
+					<textarea name="review_text" style="width:100%" class="form-control">[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]</textarea>
+					<span id="rating_status"></span>
+					<span id="rating_saved"></span>
+				</div>
+				<div id="rating_select_options">
+					<div class="form-group">
+						<label>Pick a star rating for this product</label>
+						<input type="hidden" name="rating_value" id="rating_value" value="5"/>
+						<select id="rating_select" class="form-control hidden" onchange="changeSelectRating();">
+							<option value="1">Very Bad</option>
+							<option value="2">Bad</option>
+							<option value="3">Average</option>
+							<option value="4">Good</option>
+							<option value="5" selected>Very Good</option>
+						</select>
+						<div id="rating_stars"><br />
+							<i id="rating_stars_1" class="fa fa-star fa-3x" src="[$imageurl$]/stars/star_on.gif" onclick="document.getElementById('rating_select').selectedIndex = 0;changeSelectRating();" onmouseover="this.style.cursor='hand';"></i>
+							<i id="rating_stars_2" class="fa fa-star fa-3x" src="[$imageurl$]/stars/star_on.gif" onclick="document.getElementById('rating_select').selectedIndex = 1;changeSelectRating();" onmouseover="this.style.cursor='hand';"></i>
+							<i id="rating_stars_3" class="fa fa-star fa-3x" src="[$imageurl$]/stars/star_on.gif" onclick="document.getElementById('rating_select').selectedIndex = 2;changeSelectRating();" onmouseover="this.style.cursor='hand';"></i>
+							<i id="rating_stars_4" class="fa fa-star fa-3x" src="[$imageurl$]/stars/star_on.gif" onclick="document.getElementById('rating_select').selectedIndex = 3;changeSelectRating();" onmouseover="this.style.cursor='hand';"></i>
+							<i id="rating_stars_5" class="fa fa-star fa-3x" src="[$imageurl$]/stars/star_on.gif" onclick="document.getElementById('rating_select').selectedIndex = 4;changeSelectRating();" onmouseover="this.style.cursor='hand';"></i>
+						</div>
+					</div>
+				</div>
+				<p>
+					<input class="btn btn-success btn-lg" type="submit" value="Preview"/> 
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
