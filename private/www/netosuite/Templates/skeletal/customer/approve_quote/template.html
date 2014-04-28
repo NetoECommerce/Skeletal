@@ -1,24 +1,17 @@
-<!--#Start Column Left# ##-->
-<!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
-<!--# End Column Left# ##-->
-
- <!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
+<div class="col-xs-12">
+<ul class="breadcrumb">
 <li><a href="[$home_url$]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
 
-<div class="page-header">
 <h1>Approve Quotes</h1>
-</div>
 
 <!-- Search Quotes
 <form method="get" action="[%URL page:'account' type:'search_orders'%][%END URL%]">
 <label>Invoice/Quote #</label>
 <input type="text" name="ord" value="[%nohtml%][%FORM id:'ord'%][%END FORM%][%END nohtml%]"/>
 <label>Email</label>
-<input type="text" name="email" value="[%nohtml%][%FORM id:'email'%][%END FORM%][%END nohtml%]" />	
+<input type="text" name="email" value="[%nohtml%][%FORM id:'email'%][%END FORM%][%END nohtml%]" />
 <input type="submit" value="Search" class="btn">
 </form>
 -->
@@ -43,7 +36,7 @@
 <tbody>
   <!--##[%END PARAM%]##-->
   <!--##[%PARAM *body%]##-->
-  <tr> 
+  <tr>
     <td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]' qs:'filter_1=[@email@]'%][%END URL%]">[@order_id@]</a></td>
     <td><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_placed@]<!--##[%END format%]##--></td>
     <td>[@email@]</td>
@@ -63,10 +56,4 @@
 No quotes found. 1
 <!--##[%END PARAM%]##-->
 <!--##[%END thumb_list%]##-->
-
-
-
-
-<!--#Start Column Right# ##-->
-<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
-<!--# End Column Right# ##-->
+</div>
