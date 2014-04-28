@@ -4,7 +4,7 @@
 	[%PARAM *header%]##-->
 		<ul class="breadcrumb">
 			<li>
-				<a href="[$home_url$]">Home</a>
+				<a href="[@config:home_url@]">Home</a>
 			</li>
 	<!--##[%END PARAM%]
 	[%PARAM *body%]##-->
@@ -107,8 +107,8 @@
 	</div>
 	<!--##[%IF [@total_results@] > [$thumb_limit$]%]##-->
 		<div class="row">
-			<div class="col-xs-12">	
-				<hr /> 
+			<div class="col-xs-12">
+				<hr />
 				<div class="text-center">
 					<ul class="pagination">
 						<!--##[%paging limit:'3'%]
@@ -120,7 +120,7 @@
 						[%END paging%]##-->
 					</ul>
 				</div>
-				<hr /> 
+				<hr />
 			</div>
 		</div>
 	<!--##[%END IF%] ##-->
