@@ -10,6 +10,7 @@
 					},
 					'onReady' : function () {
 						$('.addtocart').button("reset");
+						$('.zoom').zoom();
 					},
 				}
 			});
@@ -18,7 +19,7 @@
 	<script type="text/javascript" src="[%NTHEME_ASSET%]plugins/zoom/jquery.zoom-min.js[%END NTHEME_ASSET%]"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){
-			$('.zoom').zoom({url: '[%asset_url type:'product' id:'[@SKU@]' thumb:'full'%][%END asset_url%]'});
+			$('.zoom').zoom();
 		});
 	</script>
 <!--##[%END SITE_VALUE%]##-->
