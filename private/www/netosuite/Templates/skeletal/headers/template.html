@@ -80,7 +80,7 @@
 						[%cache type:'menu' id:'header-content-menu'%]
 							<!--##[%menu id:'web_header'%]
 								[%param *level_1%]##-->
-									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]" [%data id:'next_level' if:'ne' value:''%]class="dropdown-toggle nuhover" data-toggle="dropdown"[%end data%]>[@name@] <!--##[%data id:'next_level' if:'ne' value:''%]##--><span class="caret"></span><!--##[%end data%]##--></a>
+									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]" [%data id:'next_level' if:'ne' value:''%]class="dropdown-toggle"[%end data%]>[@name@] <!--##[%data id:'next_level' if:'ne' value:''%]##--><span class="caret"></span><!--##[%end data%]##--></a>
 										<!--##[%data id:'next_level' if:'ne' value:''%]##-->
 											<ul class="dropdown-menu">
 												[@next_level@]
@@ -89,7 +89,7 @@
 									</li>
 									<!--##[%end param%]
 								[%param *level_2%]##-->
-									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]" class="nuhover dropdown-toggle" data-toggle="dropdown">[@name@]</a>
+									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
 										<!--##[%data id:'next_level' if:'ne' value:''%]##-->
 											<ul class="dropdown-menu dropdown-menu-horizontal">
 												[@next_level@]
