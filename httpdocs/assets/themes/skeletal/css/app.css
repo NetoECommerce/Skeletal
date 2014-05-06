@@ -7202,9 +7202,6 @@ td.visible-print {
 .fa-try:before {
   content: "\f195";
 }
-.well {
-  margin-bottom: 10px;
-}
 .logo {
   max-width: 100%;
 }
@@ -7344,29 +7341,6 @@ a.wishlist_toggle:hover {
 }
 .thumbnail {
   position: relative;
-}
-.well hr {
-  border-top-color: rgba(0, 0, 0, 0.1);
-  border-bottom-color: rgba(255, 255, 255, 0.3);
-}
-.thumbnail-box hr {
-  margin: 10px 0;
-}
-.thumbnails > li.thumbnail-box {
-  margin-bottom: 5px;
-  margin-top: 10px;
-}
-.thumbnail-box .caption .title {
-  margin: 0px;
-  overflow: hidden;
-  font-size: 12px;
-  height: 3.4em;
-}
-.thumbnail-box .buying-options {
-  margin-bottom: 5px;
-}
-.thumbnail-box .wishlist {
-  margin: 0px;
 }
 .thumbnail .wishlist-horz {
   margin-top: 8px;
