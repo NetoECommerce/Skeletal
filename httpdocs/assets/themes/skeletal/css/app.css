@@ -1,8 +1,7 @@
 /*!
- * Skeletal v5.1.1
+ * Skeletal v2.1.0
  *
- * Copyright 2013 Neto E-commerce Solutions
- * Designed and built by CART BREWERY.
+ * Copyright 2014 Neto E-commerce Solutions
  */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
@@ -8572,8 +8571,10 @@ h4 {
     display: inline;
   }
 }
-.dropdown-hover:hover > .dropdown-menu {
-  display: block;
+@media (min-width: 768px) {
+  .dropdown-hover:hover > .dropdown-menu {
+    display: block;
+  }
 }
 .jcarousel-container {
   background: transparent;
