@@ -216,17 +216,3 @@ $.extend({
 		});
 	}
 });
-// Activate hover dropdowns after pageload complete
-// document.onreadystatechange = function () {
-// 	if (document.readyState == "interactive") {
-// 		$(".dropdown-hover").hover(function(){
-// 			$(this).toggleClass("open");
-// 		});
-// 	}
-// }
-// $(".dropdown-hover").hover(function(){
-// 	$(this).find('.dropdown-toggle').first().dropdown('toggle');
-// });
-$(".dropdown-hover").hover(function(){
-	$(this).toggleClass("open");
-});
