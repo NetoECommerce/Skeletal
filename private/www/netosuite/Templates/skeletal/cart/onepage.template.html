@@ -2,7 +2,7 @@
 <!--##[%SITE_VALUE id:'footer_javascript'%]##-->
 <script type="text/javascript" src="[%NETO_JS id:'checkout'%][%END NETO_JS%]"></script>
 <script type="text/javascript" language="javascript">
-$(document).ready(function() {	
+$(document).ready(function() {
 	$.checkout_Init({});
 });
 </script>
@@ -10,10 +10,10 @@ $(document).ready(function() {
 
 <div class="col-xs-12">
 	<div class="page-header">
-    
+
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="masterpass"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the MasterPass website to checkout.</div>
-            
+
     <div class="row">
       <div class="col-md-6">
         <h1>Secure Checkout</h1>
@@ -26,7 +26,7 @@ $(document).ready(function() {
 					<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
 				[%/ if%]
 			<!--##[%END IF%]##-->
-		
+
 			<!--##[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]##-->
 				<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
 					<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
@@ -35,11 +35,11 @@ $(document).ready(function() {
 		<!--##[%END IF%]##-->
    	 </h1>
       </div>
-    </div>    
+    </div>
 	</div>
-    
+
 <!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
-	
+
 <!--##[%IF [@processor_account@] ne '' %]##-->
 <div class="alert alert-warning">
 	<strong>Important! Your order is not yet complete.</strong>
@@ -59,10 +59,10 @@ $(document).ready(function() {
 </div>
 
 </div>
-<!--##[%END USER%]##--> 
-  
-<!--##[%END IF%]##-->    
-    
+<!--##[%END USER%]##-->
+
+<!--##[%END IF%]##-->
+
 </div>
 <div class="col-xs-12 col-md-8">
 	<hr>
@@ -77,10 +77,10 @@ $(document).ready(function() {
 						<div class="_step_desc"> Billing Details </div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-sm-8"> 
-					
+				<div class="col-xs-12 col-sm-8">
+
 					<!--##[%USER id:'valid_email' if:'==' value:'0'%]##-->
-					
+
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_email">
 						Email Address
@@ -100,7 +100,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<!--##[%END USER%]##-->
-					
+
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_first_name">
 						First Name
@@ -195,7 +195,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- End Billing Address -->
 			<hr />
 			<!-- Start Shipping Address -->
@@ -215,32 +215,32 @@ $(document).ready(function() {
 																	<div class="radio">
 										<label>
 											<input name="ship_mode" value="b" type="radio" [%DATA id:'ship_mode' if:'eq' value:'b'%]checked[%END DATA%]/>
-											My billing address 
+											My billing address
 										</label>
 									</div>
-								
+
 																	<div class="radio">
 										<label >
 											<input name="ship_mode" value="s" type="radio" [%DATA id:'ship_mode' if:'eq' value:'s'%]checked[%END DATA%]/>
 											A different address
 										</label>
 									</div>
-								
+
 									<!--##[%CONFIG id:'MULTI_ADDR_CHECKOUT' if:'==' value:'1'%]##-->
-								
+
 									<div class="radio">
 										<label>
 											<input name="ship_mode" value="m" type="radio" [%DATA id:'ship_mode' if:'eq' value:'m'%]checked[%END DATA%]/>
 											Multiple addresses
 										</label>
 										</div>
-								
-									<!--##[%END CONFIG%]##--> 
+
+									<!--##[%END CONFIG%]##-->
 								</div>
 							</div>
 						</div>
-						<div id="shladb_pl"> 
-							
+						<div id="shladb_pl">
+
 							<!--##[%USER id:'username' if:'ne' value:''%]##-->
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="shladb_addr">Choose From Your Address Book</label>
@@ -253,7 +253,7 @@ $(document).ready(function() {
 									</select>
 								</div>
 							</div>
-							
+
 							<!--##[%END USER%]##-->
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="ship_first_name">First Name <div class="small text-danger">Required</div></label>
@@ -323,24 +323,24 @@ $(document).ready(function() {
 						</div>
 						<div id="_macart_pl"></div>
 					</div>
-					
+
 					<!-- End Shipping Address -->
-					
-					<div id="checkout_shipping" class="checkout_items"> 
-						
-						<!--##[%load_ajax_template id:'shipping_options' type:'cart' template:'shipping_options' preload:"1"%][%END load_ajax_template%]##--> 
-						
-						<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##--> 
-						<!--##[%PARAM if_true%]##--> 
-						<!--##[%END PARAM%]##--> 
+
+					<div id="checkout_shipping" class="checkout_items">
+
+						<!--##[%load_ajax_template id:'shipping_options' type:'cart' template:'shipping_options' preload:"1"%][%END load_ajax_template%]##-->
+
+						<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
+						<!--##[%PARAM if_true%]##-->
+						<!--##[%END PARAM%]##-->
 						<!--##[%PARAM if_false%]##-->
 						<input type="hidden" name="comment" value="" />
-						<!--##[%END PARAM%]##--> 
-						<!--##[%END DATA%]##--> 
-						
-						<!--##[%load_ajax_template id:'voucher_msg' type:'cart' template:'voucher_msg' preload:"1"%][%END load_ajax_template%]##--> 
-						
-						<!--##[%DATA id:'order_type' if:'eq' value:'sales'%]##--> 
+						<!--##[%END PARAM%]##-->
+						<!--##[%END DATA%]##-->
+
+						<!--##[%load_ajax_template id:'voucher_msg' type:'cart' template:'voucher_msg' preload:"1"%][%END load_ajax_template%]##-->
+
+						<!--##[%DATA id:'order_type' if:'eq' value:'sales'%]##-->
 						<!--##[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]##-->
 						<div class="form-group">
 							<label class="control-label col-xs-12 col-sm-4" for="dropshipping"> Send invoice with goods?</label>
@@ -357,9 +357,9 @@ $(document).ready(function() {
 									</div>
 							</div>
 						</div>
-						<!--##[%END CONFIG%]##--> 
-						<!--##[%END DATA%]##--> 
-						
+						<!--##[%END CONFIG%]##-->
+						<!--##[%END DATA%]##-->
+
 						<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
 						<div class="form-group">
 							<label class="control-label col-xs-12 col-sm-4" for="customer_po">Buying this for work?</label>
@@ -368,106 +368,106 @@ $(document).ready(function() {
 								<p class="help-block">Enter your purchase order number above</p>
 							</div>
 						</div>
-						<!--##[%END DATA%]##--> 
+						<!--##[%END DATA%]##-->
 					</div>
 				</div>
 			</div>
 			<hr />
 			<div class="row">
-			
-			<!-- End Shipping Method --> 
-			<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##--> 
+
+			<!-- End Shipping Method -->
+			<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
 			<!-- Start Payment -->
-			
+
 			<div class="col-xs-12 col-sm-4">
 				<div class="_step">
 					<div class="_step_no"> Step 3. </div>
 					<div class="_step_desc"> Payment Details </div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-8"> 
-				
+			<div class="col-xs-12 col-sm-8">
+
 				<!--##[%payment_methods type:'[@order_type@]'%]
 			[%PARAM header%]##-->
 				<span class="hidden-md hidden-lg"><br></span>
 				<ul class="list-inline">
-					<!--##[%END PARAM%][%PARAM *body%]##--> 
+					<!--##[%END PARAM%][%PARAM *body%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-americanexpress"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-visa"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-mastercard"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Discover'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-discover"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Diners'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-diners"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-cheque"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-moneyorder"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'Direct Deposit'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-directdeposit"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-bpay"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'name' if:'like' value:'paypal'%]##-->
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-paypal"></div>
 						</div>
 						</a></li>
-					<!--##[%END DATA%]##--> 
+					<!--##[%END DATA%]##-->
 					<!--##[%END PARAM%][%PARAM *footer%]##-->
 				</ul>
-				
+
 				<!--##[%END PARAM%]
-			<!--##[%END payment_methods%]##--> 
-				
+			<!--##[%END payment_methods%]##-->
+
 				<!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 			[%PARAM *header%]##-->
 				<div>
@@ -479,7 +479,7 @@ $(document).ready(function() {
 					<input id="_cpy_plan_rec[@count@]" type="hidden" value="[@repeat_payments_only@]"/>
 					<div ref="[@id@]" class="_cpy_plandesc">[@description@]</div>
 					<!--##[%END PARAM%]
-			[%PARAM *footer%]##--> 
+			[%PARAM *footer%]##-->
 				</div>
 				<!--##[%END PARAM%]
 			[%END payment_plans%]##-->
@@ -499,11 +499,11 @@ $(document).ready(function() {
               <input type="hidden" id="plan" name="plan" value="1" />
               <!-- End For Payment Plan Selection -->
 				</div>
-				
+
 				<!--##[%load_ajax_template id:'redeem_vouchers' type:'cart' template:'redeem_vouchers' preload:"1"%][%END load_ajax_template%]##-->
-				
+
 				<p>
-				
+
 				<h3>Balance Due: <span class="_cpy_balancedue"><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%end format%]##--></span></h3>
 				</p>
 				<input name="grand_total" id="grand_total" type="hidden" value="[%CART id:'grand_total'%][%END CART%]"/>
@@ -555,24 +555,25 @@ $(document).ready(function() {
 					<div style="display:none;">
 						<div id="ccv" style="width:600px;"> For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>
 					</div>
+					<div class="clear"></div>
 				</div>
 				<div ref="cheque" class="_cpy_paydesc alert alert-info"> The address to send your <span class="_cpy_payname">[@name@]</span> to will be provided after you confirm your order below. </div>
 				<div ref="bank" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
-				<div ref="bpay" class="_cpy_paydesc alert alert-info"> When you submit this page, you will be given a Bpay biller 
-					code and a reference number. Please quote the numbers and call your 
-					participating financial institution to make a payment from your 
+				<div ref="bpay" class="_cpy_paydesc alert alert-info"> When you submit this page, you will be given a Bpay biller
+					code and a reference number. Please quote the numbers and call your
+					participating financial institution to make a payment from your
 					cheque, savings or credit card account. </div>
-				<div ref="paypalexpress" class="_cpy_paydesc alert alert-info"> 
-					<!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM if_true%]##--> 
-					When you submit this page, you will be redirected to the PayPal website to continue your PayPal Express Checkout. 
-					<!--##[%END PARAM%][%PARAM if_false%]##--> 
-					When you submit this page, your paypal account or credit card will be debited. 
-					<!--##[%END PARAM%][%END DATA%]##--> 
+				<div ref="paypalexpress" class="_cpy_paydesc alert alert-info">
+					<!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM if_true%]##-->
+					When you submit this page, you will be redirected to the PayPal website to continue your PayPal Express Checkout.
+					<!--##[%END PARAM%][%PARAM if_false%]##-->
+					When you submit this page, your paypal account or credit card will be debited.
+					<!--##[%END PARAM%][%END DATA%]##-->
 				</div>
 				<div ref="account" class="_cpy_paydesc alert alert-info"> Your [$company_name$] account will automatically be charged for the value of this order. </div>
 				<div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
-				
-				<!--##[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]##--> 
+
+				<!--##[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]##-->
 				<!-- Start Fancybox terms -->
 				<div class="hidden">
 					<div id="termbox" class="panel">
@@ -590,26 +591,26 @@ $(document).ready(function() {
 				<p class="form-actions">
 					<button type="submit" class="btn btn-success btn-lg btn-block">Confirm &amp; Process Order <i class="fa fa-chevron-right icon-white"></i></button>
 				</p>
-				<!-- End Payment --> 
+				<!-- End Payment -->
 			</div>
-			<!--##[%END DATA%]##--> 
+			<!--##[%END DATA%]##-->
 			<!--##[%DATA id:'order_type' if:'eq' value:'quote'%]##-->
 			<p class="form-actions">
 				<button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm &amp; Process Quote <i class="fa fa-chevron-right icon-white"></i></button>
 			</p>
 			<!--##[%END DATA%]##-->
-			
+
 		</form>
 	</div>
 </div>
 </div>
-<div class="col-xs-12 col-md-4"> 
+<div class="col-xs-12 col-md-4">
 <hr />
-	<!--##[%load_ajax_template id:'cart_items' type:'cart' template:'cart_items' preload:"1"%][%END load_ajax_template%]##--> 
+	<!--##[%load_ajax_template id:'cart_items' type:'cart' template:'cart_items' preload:"1"%][%END load_ajax_template%]##-->
 	<!--##[%load_ajax_template id:'address' type:'cart' template:'address' preload:"0"%][%END load_ajax_template%]##-->
-</div><!--End Column Right --> 
+</div><!--End Column Right -->
 
 
 
-<!--##[%GA_FUNNEL%]/purchase/confirmation.html[%END GA_FUNNEL%]##--> 
-<!--##[%load_template file:'trackingcode/CheckoutTracking.html'%][%END load_template%]##--> 
+<!--##[%GA_FUNNEL%]/purchase/confirmation.html[%END GA_FUNNEL%]##-->
+<!--##[%load_template file:'trackingcode/CheckoutTracking.html'%][%END load_template%]##-->
