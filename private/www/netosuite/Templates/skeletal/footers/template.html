@@ -182,31 +182,6 @@
 <!--##[%SITE_VALUE id:'footer_javascript' type:'load'%][%END SITE_VALUE%]##-->
 <!-- Analytics - DO NOT REMOVE -->
 <!--##[%load_template file:"trackingcode/VisitorTracking.html"%][%END load_template%]##-->
-<!-- IF ?npurpose=facebook Show scripts for facebook -->
-[%if [@form:npurpose@] eq 'facebook'%]
-	<style type="text/css">
-		body,html {
-			overflow: hidden;
-		}
-	</style>
-	<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
-	<script>
-		FB.init({
-			appId : '[@config:facebook_app_id@]',
-			status : true,
-			cookie : true,
-			xfbml : true
-		});
-	</script>
-	<script type="text/javascript">
-		jQuery(window).load(function(){
-			FB.Canvas.setAutoGrow();
-		});
-		$(function(){
-			$.addFacebookNPurpose();
-		})
-	</script>
-[%/ if%]
 <!--##[%load_template file:"includes/npopup.template.html"%][%END load_template%]##-->
 </body>
 </html>

@@ -14,7 +14,6 @@
 <link rel="canonical" href="[@config:canonical_url@]"/>
 <link rel="shortcut icon" href="[@config:homeurl@]/assets/favicon_logo.png"/>
 <link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%end ntheme_asset%]" media="all"/>
-[%if [@form:npurpose@] eq 'facebook'%]<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/facebook.css[%end ntheme_asset%]" media="all"/>[%/ if%]
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%end ntheme_asset%]" media="all"/>
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]plugins/fancybox/jquery.fancybox.css[%end ntheme_asset%]"/>
 <!--[if lte IE 8]>
@@ -49,7 +48,6 @@
 				<a href="[%url page:'checkout' type:'cart'%][%end url%]" class="btn btn-default" id="cartcontentsheader">
 					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count"><!--##[%format type:'number' dp:'0'%][%CART id:'total_items'%][%end CART%][%end format%]##--></span> Items
 				</a>
-				[%if [@form:npurpose@] ne 'facebook'%]
 				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li class="box" id="neto-dropdown">
@@ -57,7 +55,6 @@
 						<div class="footer"></div>
 					</li>
 				</ul>
-				[%/ if%]
 			</div>
 		</div>
 	</div>
