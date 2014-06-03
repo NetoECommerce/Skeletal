@@ -3,7 +3,7 @@
 		if (parseInt([%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%]) > 0 && parseInt([%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%]) <= 5){
 			document.getElementById("rating_select").selectedIndex = parseInt([%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%])-1;
 		}
-		else{ 
+		else{
 			document.getElementById("rating_select").selectedIndex = 4;
 		}
 		changeSelectRating();
@@ -31,7 +31,7 @@
 		<a class="close" data-dismiss="alert">×</a>
 		[@error@]
 	</div>
-	<!--##[%END DATA%]##-->	
+	<!--##[%END DATA%]##-->
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Product Review</h3>
@@ -43,11 +43,11 @@
 				<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
 				<div class="form-group">
 					<label>Enter your name:</label>
-					<input size="70" type="text" name="customername" id="customername" value="[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]" />
+					<input size="70" type="text" name="customername" class="form-control" id="customername" value="[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]" />
 				</div>
 				<div class="form-group">
 					<label>Enter your e-mail address:</label>
-					<input size="70" type="text" name="emailaddress" id="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]" />
+					<input size="70" type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]" />
 				</div>
 				<!--##[%END USER%]##-->
 				<div class="form-group">
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 				<p>
-					<input class="btn btn-success btn-lg" type="submit" value="Preview"/> 
+					<input class="btn btn-success btn-lg" type="submit" value="Preview"/>
 				</p>
 			</form>
 		</div>
