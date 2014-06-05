@@ -1,6 +1,6 @@
 <div id="[@count@]" class="item [%DATA id:'count' if:'==' value:'0'%]active[%END DATA%]">
 	<a href="[@url@]" target="[@target@]">
-		<img src="[$HOME_URL$][%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%NTHEME_ASSET%]img/default_product.gif[%END NTHEME_ASSET%][%end param%][%END asset_url%]" class="home-banner-item" alt="[@headline@]" border="0" >
+		<img src="[@config:secure_home_url@][%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%NTHEME_ASSET%]img/default_product.gif[%END NTHEME_ASSET%][%end param%][%END asset_url%]" class="home-banner-item" alt="[@headline@]" border="0" >
 	</a>
 </div>
 <!--##[%SITE_VALUE id:'counter'%]##-->
