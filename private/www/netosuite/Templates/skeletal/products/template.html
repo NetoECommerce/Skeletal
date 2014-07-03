@@ -22,6 +22,14 @@
 			$('.zoom').zoom();
 		});
 	</script>
+	<script type="text/javascript" src="[%NTHEME_ASSET%]plugins/jcountdown/jquery.jcountdown.min.js[%END NTHEME_ASSET%]"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sale-end").countdown({
+				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%END format%]"
+			});
+		});
+	</script>
 <!--##[%END SITE_VALUE%]##-->
 <!--##[%CACHE type:'display' id:'[@inventory_id@]'%]##-->
 <div class="col-xs-12">
