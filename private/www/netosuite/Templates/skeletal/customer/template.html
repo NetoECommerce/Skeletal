@@ -8,7 +8,7 @@
 
 	<div class="page-header">
 		<h1>Account Summary</h1>
-		<p><strong>Welcome [@bill_first_name@] [@bill_last_name@] <!--##[%data id:'bill_company' if:'ne' value:''%]##--> - [@bill_company@]<!--##[%END data%]##--></strong></p>
+		<p><strong>Welcome [@bill_first_name@] [@bill_last_name@] <!--##[%data id:'bill_company' if:'ne' value:''%]##--> - [@bill_company@]<!--##[%END data%]##--></strong> (<a href="[%url page:'account' type:'logout'%][%end url%]">log out</a>)</p>
 		<!--##[%USER id:'credit_limit' if:'>' value:'0'%]##-->
 		<p>Credit Limit:<b> <!--##[%format type:"currency"%]##-->[@credit_limit@]<!--##[%END format%]##--></b></p>
 		<!--##[%END USER%]##-->
