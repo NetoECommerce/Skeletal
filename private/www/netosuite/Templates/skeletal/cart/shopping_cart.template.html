@@ -3,7 +3,7 @@
 		<h1>Shopping Cart</h1>
 	</div>
 	<!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
-	<div class="row btn-stack">
+	<div class="row btn-stack"> 
 		<!--##[%CONFIG id:'ALLOW_USER_QUOTE' if:'==' value:'1'%]##-->
 		<div class="col-xs-12 col-md-3">
 			<button class="btn btn-default btn-block" type="button" onclick="window.location='[%URL page:'checkout' fn:'quote'%][%END URL%]';" title="Create Quote From Cart"><i class="fa fa-list-alt"></i> Create Quote From Cart</button>
@@ -22,7 +22,6 @@
 		<table class="table table-striped table-bordered table-condensed">
 			<tr>
 				<th class="checkout_table_header">Item</th>
-				<th class="checkout_table_header">Description</th>
 				<th class="checkout_table_header">Qty</th>
 				<th class="checkout_table_header">Price</th>
 				<th class="checkout_table_header visible-md visible-lg">Discount</th>
@@ -31,8 +30,14 @@
 			<!--##[%END PARAM%]
 [%PARAM *body%]##-->
 			<tr>
-				<td><a href="[@url@]"><img class="cart-thumb" width="50" height="50" src="[@thumb@]"/></a></td>
-				<td><a href="[@url@]">[@model@] <i>[@extra@]</i></a>
+				
+				<td>
+				<div class="row">
+				<div class="col-xs-12 col-sm-3">
+				<a href="[@url@]"><img class="cart-thumb img-responsive" src="[@thumb@]"/></a>
+				</div>
+				<div class="col-xs-12 col-sm-9">
+				<a href="[@url@]">[@model@] <i>[@extra@]</i></a>
 					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp;<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
 					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##-->
@@ -51,22 +56,27 @@
 						<!--##[%END PARAM%][%PARAM *footer%]##-->
 					</ul>
 					<input type="hidden" name="components[@count@]" value="[@total_components@]">
-					<!--##[%END PARAM%]##-->
-					<!--##[%END CART_ITEM_COMPONENTS%]##-->
-					<!--##[%END DATA%]##--></td>
+					<!--##[%END PARAM%]##--> 
+					<!--##[%END CART_ITEM_COMPONENTS%]##--> 
+					<!--##[%END DATA%]##-->
+					</div>
+				</div>
+					</td>
 				<td><input name="line[@count@]" type="hidden" value="[@counter@]" />
+				<div class="row">
 					<div class="col-xs-12 col-md-4">
 					<p><input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control" /></p>
 					</div>
 					<div class="col-xs-12 col-md-4">
-					<p class="visible-md visible-lg"><a class="btn btn-block btn-default" href="javascript:document.checkout.submit();"><i class="fa fa-refresh"></i> Update</a></p>
-					<p class="visible-xs visible-sm"><a class="btn btn-block btn-default" href="javascript:document.checkout.submit();"><i class="fa fa-refresh"></i></a></p>
+					<p class="hidden-xs hidden-sm hidden-xs"><a class="btn btn-block btn-default" href="javascript:document.checkout.submit();"><i class="fa fa-refresh"></i> Update</a></p>
+					<p class="hidden-md hidden-lg hidden-xs"><a class="btn btn-block btn-default" href="javascript:document.checkout.submit();"><i class="fa fa-refresh"></i></a></p>
 					</div>
 					<div class="col-xs-12 col-md-4">
-					<p class="visible-md visible-lg"><a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i> Remove</a></p>
-					<p class="visible-xs visible-sm"><a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a></p>
+					<p class="hidden-xs hidden-sm hidden-xs"><a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i> Remove</a></p>
+					<p class="hidden-md hidden-lg hidden-xs"><a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a></p>
 					</div>
-					</td>
+					</div>
+				</td>
 				<td><!--##[%FORMAT type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 				<td class="visible-md visible-lg" align="center"><!--##[%DATA id:'discount_percent' if:'>' value:'0' %]##--><!--##[%format type:'percent'%]##-->-[@discount_percent@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
 				<td><!--##[%FORMAT type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
@@ -78,25 +88,27 @@
 					<br />
 					<!--##[%free_gifts id:'[@SKU@]'%]
 [%PARAM *header%]##-->
-					<div class="row">
+					<ul class="thumbnails">
 						<!--##[%END PARAM%][%PARAM *body%]##-->
-						<div class="col-md-3">
-							<div class="thumbnail">
-									<a href="[%url type:'item ' id:'[@SKU@]'%][%END url%]" class="thumbnail-image">
-										<img width="120" height="120" src="[@thumb@]" alt="[@model@]" />
-									</a>
-								<div class="caption"> <a href="[%URL type:'item' id:'[@SKU@]'%][%END URL%]"><!--##[%format type:'text' maxlength:'70' rmhtml:'1'%]##-->[@model@]...<!--##[%END FORMAT%]##--></a>
-									<p><a class="btn btn-success btn-block"href="[%URL page:'checkout' qs:'sku=[@SKU@]&gift=[@counter@]'%][%END URL%]">Add to Cart</a> </p>
+						<li class="span5">
+							<div class="thumbnail" style="height:200px;">
+								<div class="image">
+									<center>
+										<a href="[%url type:'item ' id:'[@SKU@]'%][%END url%]"><img width="120" height="120" src="[@thumb@]" alt="[@model@]" /></a>
+									</center>
 								</div>
+								<div class="title"> <a href="[%URL type:'item' id:'[@SKU@]'%][%END URL%]"><!--##[%format type:'text' maxlength:'70' rmhtml:'1'%]##-->[@model@]...<!--##[%END FORMAT%]##--></a></div>
+								<br />
+								<p> <a class="btn btn-success btn-large"href="[%URL page:'checkout' qs:'sku=[@SKU@]&gift=[@counter@]'%][%END URL%]">Add to Cart</a> </p>
 							</div>
-						</div>
+						</li>
 						<!--##[%END PARAM%]
 	  [%PARAM *footer%]##-->
-					</div>
-
+					</ul>
+					
 					<!--##[%END PARAM%][%END free_gifts%]##--></td>
 			</tr>
-			<!--##[%END DATA%]##-->
+			<!--##[%END DATA%]##--> 
 			<!--##[%END PARAM%]
 [%PARAM *footer%]##-->
 		</table>
@@ -164,23 +176,23 @@
 						<input type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%DATA id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%END DATA%]>
 						<label for="[@id@]">[@shipping_method@]</label> (<!--##[%DATA id:'shipping_quote' if:'=' value:'1' %]
 	[%PARAM if_true%]##-->P.O.A.<!--##[%END PARAM%]
-	[%PARAM if_false%]##-->
+	[%PARAM if_false%]##--> 
 						<!--##[%DATA id:'cost' if:'=' value:'0' %]
-		[%PARAM if_true%]##-->
+		[%PARAM if_true%]##--> 
 						<!--##[%DATA id:'na' if:'=' value:'0' %]
 [%PARAM if_true%]##-->FREE<!--##[%END PARAM%]
 [%PARAM if_false%]##-->N/A<!--##[%END PARAM%]
-[%END DATA%]##-->
+[%END DATA%]##--> 
 						<!--##[%END PARAM%]
-		[%PARAM if_false%]##-->
-						<!--##[%format type:"currency"%]##-->[@cost@]<!--##[%END format%]##-->
+		[%PARAM if_false%]##--> 
+						<!--##[%format type:"currency"%]##-->[@cost@]<!--##[%END format%]##--> 
 						<!--##[%END PARAM%]
-	[%END DATA%]##-->
+	[%END DATA%]##--> 
 						<!--##[%END PARAM%]
-[%END DATA%]##-->)
-						<!--##[%DATA id:'delivery_time' if:'>' value:'0' %]##-->
-						- ETA: [@delivery_time@] day(s)
-						<!--##[%END DATA%]##-->
+[%END DATA%]##-->) 
+						<!--##[%DATA id:'delivery_time' if:'>' value:'0' %]##--> 
+						- ETA: [@delivery_time@] day(s) 
+						<!--##[%END DATA%]##--> 
 						<br />
 						<div class="small">[@shipping_description@]</div>
 						<br />
@@ -199,7 +211,7 @@
 				</td>
 				</tr>
 			<!--##[%END PARAM%]
-[%END shipping_methods%]##-->
+[%END shipping_methods%]##--> 
 			<!--##[%active_coupons%]
 	[%PARAM *header%]##-->
 			<tr>
@@ -213,13 +225,13 @@
 				<td class="text-right">-<!--##[%format type:'currency'%]##-->[@discount@]<!--##[%END format%]##--></td>
 			</tr>
 			<!--##[%END PARAM%]
-	[%END active_coupons%]##-->
+	[%END active_coupons%]##--> 
 			<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
 			<tr>
 				<td>Discount Total</td>
 				<td class="text-right">-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></td>
 			</tr>
-			<!--##[%END DATA%]##-->
+			<!--##[%END DATA%]##--> 
 			<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
 			<tr>
 				<td>GST<!--##[%DATA id:'tax_inc' if:'=' value:'1' %]##--> Inc.<!--##[%END DATA%]##--></td>
@@ -250,9 +262,9 @@
 							[%PARAM *footer%]##-->
 						</select>
 							<!--##[%END PARAM%]
-							[%END payment_plans%]##-->
+							[%END payment_plans%]##--> 
 						<div class="col-xs-12 col-md-6 text-center">
-						<!--##[%CONFIG id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%]##-->
+						<!--##[%CONFIG id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%]##--> 
 							[%if [@form:npurpose@] ne 'facebook'%]
 								<p><a href="javascript:document.paypal.submit()"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></p>
 								<div class="clear"></div>
@@ -263,9 +275,9 @@
 						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%URL page:'checkout' fn:'payment'%][%END URL%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout Now</button>
 						</div>
 			</div>
-					</form>
-		<!--##[%END PARAM%]##-->
-		<!--##[%END cart_items%]##-->
+					</form>			
+		<!--##[%END PARAM%]##--> 
+		<!--##[%END cart_items%]##--> 
 	</div>
 </div>
 </div>
@@ -282,7 +294,7 @@
 		[%PARAM footer%]##-->
 		</div>
 		<!--##[%END PARAM%]
-		[%PARAM ifempty%]##-->
+		[%PARAM ifempty%]##--> 
 		<!--##[%top_sellers template:'' category:'0' limit:'5'%]
 		[%PARAM header%]##-->
 		<h3>Checkout These Top Sellers</h3>
@@ -292,15 +304,15 @@
 		[%PARAM footer%]##-->
 		</div>
 		<!--##[%END PARAM%]
-		[%PARAM ifempty%]##-->
+		[%PARAM ifempty%]##--> 
 		<!--##[%END PARAM%]
-		[%END top_sellers%]##-->
+		[%END top_sellers%]##--> 
 		<!--##[%END PARAM%]
-		[%END UPSELL_PRODUCTS%]##-->
+		[%END UPSELL_PRODUCTS%]##--> 
 	</div>
 </div>
-<!-- Do not edit below this line-->
+<!-- Do not edit below this line--> 
 <script type="text/javascript" language="javascript">
 function rmcart (id) { var obj = document.getElementById(id); if(obj) { obj.value="0"; document.checkout.submit(); } }
-</script>
+</script> 
 <!--##[%GA_FUNNEL%]/purchase/shopping_cart.html[%END GA_FUNNEL%]##-->
