@@ -470,17 +470,25 @@ $(document).ready(function() {
 
 				<!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 			[%PARAM *header%]##-->
-				<div>
+				<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Select your payment plan</h4>
+				</div>
+				<div class="panel-body">
 					<div id="_cpy_plan_pl"></div>
+					<hr>
 					<!--##[%END PARAM%]
 			[%PARAM *body%]##-->
 					<input id="_cpy_plan_id[@count@]" type="hidden" value="[@id@]"/>
 					<input id="_cpy_plan_name[@count@]" type="hidden" value="[@name@]"/>
+					<input id="_cpy_plan_upfront[@count@]" type="hidden" value="[@upfront_ratio@]"/>
 					<input id="_cpy_plan_rec[@count@]" type="hidden" value="[@repeat_payments_only@]"/>
-					<div ref="[@id@]" class="_cpy_plandesc">[@description@]</div>
+					<div ref="[@id@]" class="_cpy_plandesc"><p>[@description@]</p></div>
 					<!--##[%END PARAM%]
 			[%PARAM *footer%]##-->
 				</div>
+				</div>
+				
 				<!--##[%END PARAM%]
 			[%END payment_plans%]##-->
 				<div>

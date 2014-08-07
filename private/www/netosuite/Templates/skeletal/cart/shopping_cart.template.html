@@ -241,6 +241,11 @@
 						<input type="hidden" name="payment" value="6"/>
 						<!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 							[%PARAM *header%]##-->
+							<div class="panel panel-default">
+							<div class="panel-heading">
+							<h4 class="panel-title">Select your payment plan</h4>
+							</div>
+							<div class="panel-body">
 						<select class="form-control" name="plan">
 							<option value="">Select your payment plan</option>
 							<!--##[%END PARAM%]
@@ -249,6 +254,8 @@
 							<!--##[%END PARAM%]
 							[%PARAM *footer%]##-->
 						</select>
+						</div>
+						</div>
 							<!--##[%END PARAM%]
 							[%END payment_plans%]##-->
 						<div class="col-xs-12 col-md-6 text-center">
