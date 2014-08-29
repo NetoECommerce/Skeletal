@@ -41,7 +41,7 @@ Feel free to submit issues and pull-requests. Please indent with tabs.
 
 ## Testing
 
-We have a testing guide located [here](/NetoECommerce/Skeletal/blob/master/testing.md).
+We have a testing guide located [here](/testing.md).
 
 ## Creators
 
