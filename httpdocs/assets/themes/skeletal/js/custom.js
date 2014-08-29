@@ -35,7 +35,7 @@
 			// This renders the instant search results - edit design of ajax results here
 			$.initSearchField({
 				'result_header'		: '<ul class="nav nav-list">',
-				'result_body'		: '<li><a href="javascript:void(0);" search-keyword="##model##"><img border="0" src="##thumb##" width="36" height="36"/><span class="title">##model##</span></a></li>',
+				'result_body'		: '<li><a href="javascript:void(0);" search-keyword="##keyword##"><img border="0" src="##thumb##" width="36" height="36"/><span class="title">##model##</span></a></li>',
 				'result_footer'		: '</ul>',
 				'category_header'	: '<ul class="nav nav-list">',
 				'category_body'		: '<li><a href="##url##"><span class="thumb"><img border="0" src="##thumb##" width="36" height="36"/></span><span class="title">##fullname##</span> <span class="label label-default">##typename##</span></a></li>',
