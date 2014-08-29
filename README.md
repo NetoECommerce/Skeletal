@@ -39,6 +39,10 @@ If you are comfortable with LESS, you're best off developing in you're own less 
 
 Feel free to submit issues and pull-requests. Please indent with tabs.
 
+## Testing
+
+We have a testing guide located [here](NetoECommerce/Skeletal/blob/master/testing.md)
+
 ## Creators
 
 Skeletal was created by the design and development teams at [Neto E-commerce Solutions](http://neto.com.au).
