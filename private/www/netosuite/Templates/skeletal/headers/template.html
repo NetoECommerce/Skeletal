@@ -32,12 +32,12 @@
 		</div>
 		<div class="hidden-xs col-sm-4">
 			<div class="header-search">
-				<form class="form-inline" name="productsearch" method="get" action="/">
+				<form name="productsearch" method="get" action="/">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
-						<input class="form-control ajax_search" value="<!--##[%nohtml%][%filter ID:'keywords'%][%end filter%][%end nohtml%]##-->" id="name_search" autocomplete="off" name="kw" type="search"/>
+						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="text"/>
 						<span class="input-group-btn">
-							<button type="submit" value="Search" class="btn btn-loads btn-default" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"><i class="fa fa-search"></i></button>
+							<button type="submit" value="Search" class="btn btn-default"><i class="fa fa-search"></i></button>
 						</span>
 					</div>
 				</form>
@@ -110,7 +110,7 @@
 					<form class="navbar-form visible-xs" name="productsearch" method="get" action="/">
 						<input type="hidden" name="rf" value="kw" />
 						<div class="input-group">
-							<input class="form-control ajax_search" value="<!--##[%nohtml%][%filter ID:'keywords'%][%end filter%][%end nohtml%]##-->" autocomplete="off" name="kw" type="search"/>
+							<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%/nohtml%]" autocomplete="off" name="kw" type="text"/>
 							<span class="input-group-btn">
 								<button type="submit" value="Search" class="btn btn-loads btn-default" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"><i class="fa fa-search"></i></button>
 							</span>
