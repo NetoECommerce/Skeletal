@@ -154,7 +154,7 @@
 					<input type="text" name="input" id="zip" value="[%SESSION id:'ship_zip'%][%END SESSION%]" size="5" class="form-control" placeholder="Post Code">
 				</div>
 				<div class="col-xs-12 col-md-3">
-					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh"></i> Calculate</button>
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh"></i> Calculate</button>
 				</div>
 			</div>
 			<!--##[%SESSION id:'ship_zip' if:'ne' value:''%]##-->
