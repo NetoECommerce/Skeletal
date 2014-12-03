@@ -9,7 +9,7 @@
     Date Posted: <!--##[%FORMAT type:'date'%]##-->[@date_posted@]<!--##[%END FORMAT%]##--> &nbsp;
     <!--##[%END IF%]##-->
         </p>
-		<p class="clearfix">[%format type:'text' maxlength:'700'%][@content_description1@][%END format%]...</p>
+		<p class="clearfix">[@content_short_description2@]</p>
         <p>
         <!--##[%IF [@content_allow_reviews@] and [@reviews@] > 0%]##--><a href="[@URL@]#comments">Comment</a> <span class="text-muted">([@reviews@])</span><!--##[%END IF%]##-->
         <div class="wrapper-share-button">
