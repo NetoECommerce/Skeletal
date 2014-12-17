@@ -148,9 +148,12 @@
 						<div class="clear"></div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
-								<label class="checkbox">Subscribe To Newsletter
-									<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time." [? print ($VAR::FORM{regoptin} eq 'Y' ? qq~checked~ : '') ?]/>
-								</label>
+								<div class="checkbox">
+									<label>
+										<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time." [? print ($VAR::FORM{regoptin} eq 'Y' ? qq~checked~ : '') ?]/>
+										Subscribe To Newsletter
+									</label>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-12">
@@ -165,5 +168,4 @@
 		</div>
 	</div>
 </div>
-
 <!--##[%GA_FUNNEL%]/user/login.html[%END GA_FUNNEL%]##-->

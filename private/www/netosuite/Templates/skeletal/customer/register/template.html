@@ -2,7 +2,6 @@
 	<div class="page-header">
 		<h1>My Account</h1>
 	</div>
-
 	<!--##[%TRIM inner:'1'%]
 		[%PARAM body%]##-->
 	<!--##[%show_message severity:'error'%]
@@ -147,9 +146,12 @@
 						<div class="clear"></div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
-								<label class="checkbox">Subscribe To Newsletter
-									<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time." [? print ($VAR::FORM{regoptin} eq 'Y' ? qq~checked~ : '') ?]/>
-								</label>
+								<div class="checkbox">
+									<label>
+										<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time." [? print ($VAR::FORM{regoptin} eq 'Y' ? qq~checked~ : '') ?]/>
+										Subscribe To Newsletter
+									</label>
+								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-12">
