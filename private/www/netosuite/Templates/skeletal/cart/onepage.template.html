@@ -7,45 +7,35 @@ $(document).ready(function() {
 });
 </script>
 <!--##[%END SITE_VALUE%]##-->
-
 <div class="col-xs-12">
-	<div class="page-header">
-
+<div class="page-header">
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="masterpass"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the MasterPass website to checkout.</div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <h1>Secure Checkout</h1>
-      </div>
-      <div class="col-md-6 text-right">
-      <h1>
-         <!--##[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]##-->
-			<!--##[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]##-->
-				[%if [@form:npurpose@] ne 'facebook'%]
-					<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
-				[%/ if%]
-			<!--##[%END IF%]##-->
-
-			<!--##[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]##-->
-				<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
-					<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
-				</a>
-			<!--##[%END IF%]##-->
-		<!--##[%END IF%]##-->
-   	 </h1>
-      </div>
-    </div>
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Secure Checkout</h1>
+		</div>
+		<div class="col-md-6 text-right">
+			<h1>
+				[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+					[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
+						<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
+					[%END IF%]
+					[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+						<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
+							<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
+						</a>
+					[%END IF%]
+				[%END IF%]
+			</h1>
+		</div>
 	</div>
-
-<!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
-
+</div>
+[%load_template file:"cart/cart.error.html"/%]
 <!--##[%IF [@processor_account@] ne '' %]##-->
 <div class="alert alert-warning">
 	<strong>Important! Your order is not yet complete.</strong>
-     <p>
-     Please confirm your billing and shipping details below and click the  &quot;Confirm &amp; Process Order&quot; button at the bottom of this page to complete your purchase.
-     </p>
+	<p>Please confirm your billing and shipping details below and click the  &quot;Confirm &amp; Process Order&quot; button at the bottom of this page to complete your purchase.</p>
 </div>
 <!--##[%END IF%]##-->
 
@@ -466,8 +456,7 @@ $(document).ready(function() {
 				</ul>
 
 				<!--##[%END PARAM%]
-			<!--##[%END payment_methods%]##-->
-
+				[%END payment_methods%]##-->
 				<!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 			[%PARAM *header%]##-->
 				<div class="panel panel-default">
@@ -488,7 +477,7 @@ $(document).ready(function() {
 			[%PARAM *footer%]##-->
 				</div>
 				</div>
-				
+
 				<!--##[%END PARAM%]
 			[%END payment_plans%]##-->
 				<div>
@@ -503,9 +492,9 @@ $(document).ready(function() {
 					<!--##[%END PARAM%]
 			[%END payment_methods%]##-->
 					<input type="hidden" id="payment" name="payment" value="[@payment_method@]"/>
-		      <!-- For Payment Plan Selection - Rental Orders -->
-              <input type="hidden" id="plan" name="plan" value="1" />
-              <!-- End For Payment Plan Selection -->
+					<!-- For Payment Plan Selection - Rental Orders -->
+						<input type="hidden" id="plan" name="plan" value="1" />
+						<!-- End For Payment Plan Selection -->
 				</div>
 
 				<!--##[%load_ajax_template id:'redeem_vouchers' type:'cart' template:'redeem_vouchers' preload:"1"%][%END load_ajax_template%]##-->
@@ -516,6 +505,7 @@ $(document).ready(function() {
 				</p>
 				<input name="grand_total" id="grand_total" type="hidden" value="[%CART id:'grand_total'%][%END CART%]"/>
 				<div ref="card" class="_cpy_paydesc alert alert-info">
+					<!--##[%IF [@processor_type@] eq ''%]##-->
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label for="card_number">Card Number</label>
@@ -537,17 +527,17 @@ $(document).ready(function() {
 								<div class="col-xs-6">
 									<select class="form-control col-xs-6"  id="card_exp_month" name="card_exp_month">
 										<option value=""></option>
-										<!--##[%months%][%PARAM *body%]##-->
+										[%months%][%PARAM *body%]
 										<option class="input-small" value="[@month@]">[@month@]</option>
-										<!--##[%END PARAM%][%END months%]##-->
+										[%END PARAM%][%END months%]
 									</select>
 								</div>
 								<div class="col-xs-6">
 									<select class="form-control"  name="card_exp_year">
 										<option value=""></option>
-										<!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
+										[%years from:'+0' to:'+10'%][%PARAM *body%]
 										<option value="[@year@]">[@year@]</option>
-										<!--##[%END PARAM%][%END years%]##-->
+										[%END PARAM%][%END years%]
 									</select>
 								</div>
 							</div>
@@ -557,8 +547,38 @@ $(document).ready(function() {
 						<div class="form-group">
 							<label>Card Security Code</label>
 							<input type="text" name="card_ccid" class="form-control" />
-							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span> </div>
+							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+						</div>
 					</div>
+					<!--##[%ELSE%]##-->
+					<!--##[%IF [@processor_type@] eq 'masterpass'%]##-->
+					<div><img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"></div>
+					<!--##[%ELSE%]##-->
+					[@processor_type@]
+					<!--##[%END IF%]##-->
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label>Card Type</label>
+							<p class="form-control-static">[@processor_card_brand@]</p>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label>Card Number</label>
+							<p class="form-control-static">[@processor_card_number@] <a href="[%URL page:'checkout' fn:'3rdparty' qs:'payproc=&payclr=y'%][%END URL%]">(Change card)</a></p>
+						</div>
+					</div>
+					<!--##[%IF [@processor_require_cvv@] eq 'y'%]##-->
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label>Enter your [@processor_card_brand@] CCV</label>
+							<input type="text" name="card_ccid" class="form-control" />
+							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<!--##[%END IF%]##-->
+					<!--##[%END IF%]##-->
 					<!-- Start Fancybox explanation of CCV -->
 					<div style="display:none;">
 						<div id="ccv" style="width:600px;"> For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>

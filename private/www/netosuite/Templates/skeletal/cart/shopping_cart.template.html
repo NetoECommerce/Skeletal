@@ -264,6 +264,11 @@
 								<p><a href="javascript:document.paypal.submit()"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></p>
 								<div class="clear"></div>
 							[%/ if%]
+							[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+							<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
+								<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
+							</a>
+							[%END IF%]
 						<!--##[%END CONFIG%]##-->
 						</div>
 						<div class="col-xs-12 col-md-6 text-center">
