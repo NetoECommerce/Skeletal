@@ -217,6 +217,7 @@
 					<li>
 						<a href="#specifications" data-toggle="tab">Specifications</a>
 					</li>
+					[%if [@config:show_product_reviews@]%]
 					<li>
 						<a class="reviews" href="#reviews" data-toggle="tab">
 							Reviews
@@ -232,6 +233,7 @@
 
 						</a>
 					</li>
+					[%/if%]
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="description">
@@ -355,6 +357,7 @@
 							[@warranty@]
 						</div>
 					<!--##[%END IF%]##-->
+					[%if [@config:show_product_reviews@]%]
 					<div class="tab-pane" id="reviews">
 					<!--##[%THUMB_LIST type:'product_reviews' limit:'5'%]
 						[%PARAM filter_1%][@SKU@][%END PARAM%]
@@ -363,7 +366,7 @@
 							<blockquote>
 								<h4 itemprop="name">[%NOHTML%][@title@][%END NOHTML%]</h4>
 								<div>
-									<strong>[%if [@bill_first_name@]%]By: <span itemprop="author">[@bill_first_name@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%END FORMAT%]"><!--##[%FORMAT type:'date'%]##-->[@insert_date@]<!--##[%END FORMAT%]##--></strong>
+									<strong>[%if [@bill_first_name@]%]By: <span itemprop="author">[@bill_first_name@]</span> on [%/if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%END FORMAT%]"><!--##[%FORMAT type:'date'%]##-->[@insert_date@]<!--##[%END FORMAT%]##--></strong>
 								</div>
 								<span itemprop="description">[%NOHTML%][@review@][%END NOHTML%]</span><br />
 								<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
@@ -400,6 +403,7 @@
 						<!--##[%END PARAM%]
 					[%END DATA%]##-->
 					</div><!--/.tab-pane-->
+					[%/if%]
 				</div><!--/.tab-content-->
 			</div><!--/.tabbable-->
 			<!--##[%UPSELL_PRODUCTS id:'[@SKU@]' limit:'[$upsell_limit$]' template:'' show_all:'1'%]

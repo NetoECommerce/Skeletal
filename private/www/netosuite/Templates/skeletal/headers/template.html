@@ -126,7 +126,9 @@
 								[%/ if%]
 								<li><a href="[%url page:'account' type:'payrec'%][%end url%]">Pay Invoices</a></li>
 								<li><a href="[%url page:'account' type:'favourites'%][%end url%]">Favourites</a></li>
+								[%if [@config:show_wishlist@]%]
 								<li><a href="[%url page:'account' type:'wishlist'%][%end url%]">Wishlists</a></li>
+								[%/if%]
 								<li><a href="[%url page:'account' type:'warranty'%][%end url%]">Resolution Centre</a></li>
 								<li><a href="[%url page:'account' type:'edit_account'%][%end url%]">Edit My Details</a></li>
 								<li><a href="[%url page:'account' type:'edit_address'%][%end url%]">Edit My Address Book</a></li>

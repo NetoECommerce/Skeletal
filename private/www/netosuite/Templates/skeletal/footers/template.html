@@ -27,6 +27,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-4">
 				<h4>Stay In Touch</h4>
+				[%if [@config:show_newsletter_subscribe@]%]
 				<p>Subscribe to our newsletter:</p>
 				<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]">
 					<input type="hidden" name="list_id" value="1">
@@ -40,6 +41,7 @@
 						</span>
 					</div>
 				</form>
+				[%/if%]
 				<ul class="list-inline list-social">
 					<li><a href="[%url type:'page' id:'contact_us'%][%end url%]" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					<!--##[%if [@config:facebook_account_id@]%]##-->

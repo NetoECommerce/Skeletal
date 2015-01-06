@@ -83,11 +83,13 @@
 	<p class="text-muted small">View or print any outstanding quotes.</p>
 	</a> <br>
 </div>
+[%if [@config:show_wishlist@]%]
 <div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%URL page:'account' type:'wishlist'%][%END URL%]">
 	<p><i class="fa fa-star"></i> My Wishlists</p>
 	<p class="text-muted small">View, create or edit your wishlist(s)</p>
 	</a> <br>
 </div>
+[%/if%]
 <div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block" href="[%URL page:'account' type:'warranty'%][%END URL%]">
 	<p><i class="fa fa-info-circle"></i> Resolution Centre</b></p>
 	<p class="text-muted small">Problems with a product or order?</p>
@@ -368,7 +370,7 @@
 <!--##[%END PARAM%][%PARAM *footer%]##-->
 <!--##[%END PARAM%][%END thumb_list%]##-->
 </div>
-
+[%if [@config:show_wishlist@]%]
 <div class="col-xs-12">
 <hr />
 <h3>My Wishlists</h3>
@@ -440,4 +442,5 @@
 	</form>
 
 </div>
+[%/if%]
 </div>
