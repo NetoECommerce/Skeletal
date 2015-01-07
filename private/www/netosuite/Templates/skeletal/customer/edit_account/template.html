@@ -1,6 +1,6 @@
 
-<div class="col-xs-12"> 
-	
+<div class="col-xs-12">
+
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
 		<li><a href="[$home_url$]">Home</a></li>
@@ -8,19 +8,19 @@
 		<li><a href="#">Edit My Account</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
-	
-	
+
+
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%END URL%]">
 	<div class="page-header">
 		<h1>Edit Your [$company_name$] Account Details</h1>
-		<!-- This block will give them a description on what fields are missing --> 
+		<!-- This block will give them a description on what fields are missing -->
 		<!--##[%DATA id:'updated' if:'=' value:'0'%]##-->
 		<p>Please complete all the required fields below before continuing.</p>
-		<!--##[%END DATA%]##--> 
+		<!--##[%END DATA%]##-->
 	</div>
-		
-		
-		<!--##[%SITE_VALUE id:'footer_javascript'%]##--> 
+
+
+		<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
 		<script language="javascript" type="text/javascript">
 var httpReq = null;
 var httpReq2 = null;
@@ -43,8 +43,8 @@ function checkPostCode(ta) {
 	var id ='';
 	var zip_id = 'bill_zip';
 	var country_id = 'bill_country';
-	if(ta && ta=='sh') { 
-		id = '_'+ta; 
+	if(ta && ta=='sh') {
+		id = '_'+ta;
 		zip_id = 'ship_zip';
 		country_id = 'ship_country';
 	}
@@ -62,8 +62,8 @@ function getlocation(ta) {
 	var state_id = 'bill_state';
 	var zip_id = 'bill_zip';
 	var country_id = 'bill_country';
-	if(ta && ta=='sh') { 
-		id = '_'+ta; 
+	if(ta && ta=='sh') {
+		id = '_'+ta;
 		city_id = 'ship_city';
 		state_id = 'ship_state';
 		zip_id = 'ship_zip';
@@ -80,7 +80,7 @@ function getlocation(ta) {
 	var state = document.UPDATEINFO.elements[state_id];
 	var state_in = document.getElementById('state_in'+id);
 	var sel = document.getElementById('suburb_sl'+id);
-	
+
 	if(!zip.cvalue || zip.value!=zip.cvalue) {
 		zip.cvalue = zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
 		msg.innerHTML = '<i>Loading...</i>';
@@ -103,7 +103,7 @@ function getlocation(ta) {
 					httpReq = getXMLHttpRequest();
 					req = httpReq;
 				}
-				
+
 				if(!req) {
 					msg.innerHTML = '<i>Error. Please contact our customer support: sales.com.au</i>';
 				} else {
@@ -129,8 +129,8 @@ function selectSuburb(ta) {
 	var id ='';
 	var city_id = 'bill_city';
 	var state_id = 'bill_state';
-	if(ta && ta=='sh') { 
-		id = '_'+ta; 
+	if(ta && ta=='sh') {
+		id = '_'+ta;
 		city_id = 'ship_city';
 		state_id = 'ship_state';
 	}
@@ -155,15 +155,15 @@ function setSuburbSl(data, ta) {
 	var id ='';
 	var city_id = 'bill_city';
 	var state_id = 'bill_state';
-	if(ta && ta=='sh') { 
-		id = '_'+ta; 
+	if(ta && ta=='sh') {
+		id = '_'+ta;
 		city_id = 'ship_city';
 		state_id = 'ship_state';
 	}
-	
+
 	var dis = document.getElementById('suburb_di'+id);
 	var msg = document.getElementById('suburb_mg'+id);
-	
+
 	var count = 0;
 	if(data.length > 0) {
 		var option = '<option value="">Select Suburb</option>';
@@ -177,7 +177,7 @@ function setSuburbSl(data, ta) {
 			}
 		}
 	}
-	
+
 	if(count <= 0) {
 		msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
 		dis.style.display = 'none';
@@ -191,13 +191,13 @@ function setSuburbSl(data, ta) {
 	}
 
 }
+getlocation();
+</script>
+		<!--##[%END SITE_VALUE%]##-->
 
-</script> 
-		<!--##[%END SITE_VALUE%]##--> 
-		
 		<!--##[%DATA id:'error' if:'ne' value:''%]##-->
 		<div class="alert alert-danger">
-			[@error@]			
+			[@error@]
 		</div>
 		<!--##[%END DATA%]##-->
 		<div class="row">
@@ -241,7 +241,7 @@ function setSuburbSl(data, ta) {
 					<span class="small text-danger">Required</span>
 					<input class="form-control" type="text" name="bill_zip" id="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
 				</div>
-				<div class="form-group">
+				<div class="form-group n-wrapper-form-control">
 					<label for="suburb_sl">Suburb Selector </label>
 					<span class="small text-danger">Required</span>
 					<div id="suburb_di">
@@ -250,17 +250,9 @@ function setSuburbSl(data, ta) {
 						</select>
 					</div>
 					<div style="display:none;" id="suburb_mg">&nbsp;</div>
-				</div>
-				<div class="form-group">
-					<label for="city_in">Suburb </label>
-					<span class="small text-danger">Required</span>
-					<input class="form-control" type="text" id="city_in" value="[@bill_city@]" maxlength="50" onChange="document.UPDATEINFO.bill_city.value=this.value">
+					<input type="hidden" id="state_in" value="[@bill_state@]" maxlength="50" onChange="document.UPDATEINFO.bill_state.value=this.value">
+					<input type="hidden" id="city_in" value="[@bill_city@]" maxlength="50" onChange="document.UPDATEINFO.bill_city.value=this.value">
 					<input type="hidden" name="bill_city" value="[@bill_city@]">
-				</div>
-				<div class="form-group">
-					<label for="state_in">State </label>
-					<span class="small text-danger">Required</span>
-					<input class="form-control" type="text" id="state_in" value="[@bill_state@]" size="50" maxlength="50" onChange="document.UPDATEINFO.bill_state.value=this.value">
 					<input type="hidden" name="bill_state" value="[@bill_state@]">
 				</div>
 				<div class="form-group">
@@ -319,15 +311,15 @@ function setSuburbSl(data, ta) {
 				<label>Dropshipping Company Logo (Will be displayed on header of packing slips, labels etc)</label>
 				<img src="[%asset_url type:'user' id:'[@username@]' default:'[$imageurl$]/pixel.gif'%][%END asset_url%]?[$current_timestamp$]"><br>
 				<input type="file" name="logo">
-				<p class="help-block">(Instructions: Click browse to search 
-					your local computer for your company logo. Your logo 
-					should be in .JPG or .GIF format. When you are finished 
-					click the &quot;save changes I have made&quot; button 
+				<p class="help-block">(Instructions: Click browse to search
+					your local computer for your company logo. Your logo
+					should be in .JPG or .GIF format. When you are finished
+					click the &quot;save changes I have made&quot; button
 					at the bottom of this page.)</p>
 				<label>Delete logo?</label>
 				<input type="checkbox" name="dellogo" value="1">
 			</div>
-			<!--##[%END CONFIG%]##--> 
+			<!--##[%END CONFIG%]##-->
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
@@ -339,8 +331,5 @@ function setSuburbSl(data, ta) {
 			</div>
 		</div>
 	</form>
-	<script language="javascript" type="text/javascript">
-	getlocation();
-</script> 
 </div>
 </div>
