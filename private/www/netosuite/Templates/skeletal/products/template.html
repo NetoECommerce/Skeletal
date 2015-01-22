@@ -134,14 +134,12 @@
 			<!--##[%IF [@has_variation@] || ![@has_child@] AND ![@has_components@]%]##-->
 				<!--##[%load_ajax_template id:'_buying_options' type:'item' template:'buying_options' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y' %][%END load_ajax_template%]##-->
 			<!--##[%END IF%]##-->
+			<!--##[%IF [@has_components@]%]##-->
+			<hr>
+				<h2>Customise Your Purchase</h2>
+				<!--##[%load_template file:"products/includes/components.template.html"%][%END load_template%]##-->
 
-			           <!--##[%IF [@has_components@]%]##-->
-				   <hr>
-				   <h2>Customise Your Purchase</h2>
-
-				   <!--##[%load_template file:"products/includes/components.template.html"%][%END load_template%]##-->
-
-			        <!--##[%END IF%]##-->
+				<!--##[%END IF%]##-->
 
 
 		</div>
@@ -230,7 +228,6 @@
 								[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
 								<i class="fa fa-star-o"></i>
 							[%/ WHILE%]
-
 						</a>
 					</li>
 					[%/if%]
@@ -359,10 +356,17 @@
 					<!--##[%END IF%]##-->
 					[%if [@config:show_product_reviews@]%]
 					<div class="tab-pane" id="reviews">
+						<div class="lead" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+							<span itemprop="itemreviewed">SKINFRESH Shower Gel 400ml</span> has a rating of
+							<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
+								<span itemprop="average">[@rating@]</span>/<span itemprop="best">5</span> based on <span itemprop="votes">[@reviews@]</span> reviews.
+							</span>
+						</div>
 					<!--##[%THUMB_LIST type:'product_reviews' limit:'5'%]
 						[%PARAM filter_1%][@SKU@][%END PARAM%]
 						[%PARAM *body%]##-->
 						<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+							<meta itemprop="itemReviewed" content="[@name@]">
 							<blockquote>
 								<h4 itemprop="name">[%NOHTML%][@title@][%END NOHTML%]</h4>
 								<div>
