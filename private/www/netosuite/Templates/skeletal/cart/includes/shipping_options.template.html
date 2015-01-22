@@ -56,8 +56,16 @@
 		<hr>
 			<label>Delivery Instructions</label>
 			<textarea name="comment[@addr_id@]" id="comment[@addr_id@]" rows="3" class="form-control" wrap="soft"><!--##[%NOHTML%]##-->[@ship_comment@]<!--##[%END NOHTML%]##--></textarea>
-			<p class="help-block" id="_cpy_comment_ct[@addr_id@]">&nbsp;</p>
-
+			<div class="row">
+				<div class="col-md-6">
+					[%if [@username@] eq '' || [@username@] eq 'noreg' %]
+					<div class="checkbox"><label><input type="checkbox" name="user_order_comment_fld" value="comment[@addr_id@]"> Save for future orders</label></div>
+					[%end if%]
+				</div>
+				<div class="col-md-6">
+					<p class="help-block" id="_cpy_comment_ct[@addr_id@]">&nbsp;</p>
+				</div>
+			</div>
 			<!--##[%CONFIG id:'CHECKOUT_SHOW_DELIVERYDATE' if:'eq' value:'1'%]##-->
 			<hr>
 			<h4>Select Your Preferred Delivery Date</h4>
