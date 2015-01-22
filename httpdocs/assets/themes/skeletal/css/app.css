@@ -8804,6 +8804,12 @@ ul.imagelist li .imagethumb {
 .wrapper-category-image img {
   width: 100%;
 }
+@supports (object-fit: contain) {
+  .wrapper-category-image img {
+    object-fit: contain;
+    height: 160px;
+  }
+}
 .list-group-item h4 {
   margin: 0;
   font-size: 16px;
