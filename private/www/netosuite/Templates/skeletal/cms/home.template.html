@@ -1,6 +1,6 @@
 <!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
 	[%if [@config:show_home_ads@]%]
-		<!--##[%ADVERT type:'banner' template:'carousel' limit:'10' ad_group:''%]
+		<!--##[%ADVERT type:'text' template:'carousel' limit:'10' ad_group:''%]
 			[%PARAM *header%]##-->
 				<div id="myCarouselBanner" class="carousel slide">
 					<!-- Indicators -->
@@ -25,18 +25,6 @@
 				<a class="neto-placeholder neto-placeholder-rotator btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" href="[$home_url$]/_cpanel?item=adw&page=view&id=New&plan_id=4">
 					Click to add a banner<br/>
 				</a>
-			<!--##[%END PARAM%]
-		[%END ADVERT%]##-->
-		<!--##[%ADVERT type:'text' template:'text' limit:'10' ad_group:''%]
-			[%PARAM *header%]##-->
-				<div class="row wrapper-ad-units">
-			<!--##[%END PARAM%]
-			[%PARAM *footer%]##-->
-				</div>
-			<!--##[%END PARAM%]
-			[%PARAM *ifempty%]##-->
-			<!-- Text adds appear here if populated via CMS -->
-	        <br />
 			<!--##[%END PARAM%]
 		[%END ADVERT%]##-->
 	[%/if%]
