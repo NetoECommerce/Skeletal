@@ -141,7 +141,7 @@
 									<p id="price-range-text" class="price_range"></p>
 								<!--##[%/PARAM%]
 							[%/DATA%]##-->
-							<form id="pricesearch" method="get" action="[$current_url$]">
+							<form id="pricesearch" method="get" action="[@config:current_url@]">
 								<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
 								<input  name="pr" type="hidden" value="">
 								<input type="submit" value="Filter By Price" class="btn btn-default btn-xs" />
@@ -213,7 +213,7 @@
 	[%/CATEGORYMENU%]##-->
 	<!--##[%/CACHE%]##-->
 	<!--##[%CONFIG id:'phistory_limit' if:'ne' value:'0'%]##-->
-		<!--##[%PRODUCT_HISTORY limit:'[$phistory_limit$]' template:'box'%]
+		<!--##[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%PARAM header%]##-->
 				<div class="panel panel-default hidden-xs">
 					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">Browsing History</h3></div>

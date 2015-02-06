@@ -36,7 +36,7 @@
 </p>
 	[@content_description1@]
 <hr/>
-<!--##[%THUMB_LIST type:'products' limit:'[$THUMB_LIMIT$]'%]
+<!--##[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
 	[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%END VIEWBY%][%END PARAM%]
 	[%PARAM *header%]##-->
 	<div class="row sort_container">
@@ -48,7 +48,7 @@
 					f.submit();
 				}
 			</script>
-			<form method="get" name="viewForm" action="[$CURRENT_URL$]" class="hidden">
+			<form method="get" name="viewForm" action="[@config:CURRENT_URL@]" class="hidden">
 				<input name="rf" type="hidden" value="[%FILTER_CODE%][%END FILTER_CODE%]">
 				<input name="viewby" type="hidden" value=""/>
 			</form>
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		<div class="col-xs-8 col-sm-5 col-md-4">
-			<form method="get" class="form-horizontal" action="[$CURRENT_URL$]">
+			<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 				<input name="rf" type="hidden" value="[%FILTER_CODE%][%END FILTER_CODE%]">
 				<div class="form-group">
 					<label class="control-label col-xs-2">Sort</label>
@@ -105,7 +105,7 @@
 		[%PARAM *footer%]##-->
 		</div>
 	</div>
-	<!--##[%IF [@total_results@] > [$thumb_limit$]%]##-->
+	<!--##[%IF [@total_results@] > [@config:thumb_limit@]%]##-->
 		<div class="row">
 			<div class="col-xs-12">
 				<hr />

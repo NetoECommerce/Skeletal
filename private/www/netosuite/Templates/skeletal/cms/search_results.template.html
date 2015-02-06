@@ -4,7 +4,7 @@
 	[%PARAM *header%]##-->
 		<ul class="breadcrumb">
 			<li>
-				<a href="[$home_url$]">Home</a>
+				<a href="[@config:home_url@]">Home</a>
 			</li>
 	<!--##[%END PARAM%]
 	[%PARAM *body%]##-->
@@ -46,7 +46,7 @@
 	[@description@]
 <!--##[%END FILTER%]##-->
 <!--##[%FILTER ID:'keywords' if:'ne' value:' '%]##-->
-<!--##[%THUMB_LIST type:'products' limit:'[$THUMB_LIMIT$]'%]
+<!--##[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
 [%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%END VIEWBY%][%END PARAM%]
 [%PARAM *header%]##-->
 <hr/>
@@ -59,7 +59,7 @@
 				f.submit();
 			}
 		</script>
-		<form method="get" name="viewForm" action="[$CURRENT_URL$]" class="hidden">
+		<form method="get" name="viewForm" action="[@config:CURRENT_URL@]" class="hidden">
 			<input name="rf" type="hidden" value="[%FILTER_CODE%][%END FILTER_CODE%]" >
 			<input name="viewby" type="hidden" value="" />
 		</form>
@@ -76,7 +76,7 @@
 		<div class="btn-text"><strong>[@total_results@]</strong> Products Found</div>
 	</div>
 	<div class="col-xs-8 col-sm-5 col-md-4">
-		<form method="get" class="form-horizontal" action="[$CURRENT_URL$]">
+		<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 		<input name="rf" type="hidden" value="[%FILTER_CODE%][%END FILTER_CODE%]" >
 			<div class="form-group">
 				<label class="control-label col-xs-2">Sort</label>
@@ -121,7 +121,7 @@
 </div>
 
 
-<!--##[%IF [@total_results@] > [$thumb_limit$]%]##-->
+<!--##[%IF [@total_results@] > [@config:thumb_limit@]%]##-->
 <div class="row">
 	<div class="col-xs-12">
 	<hr />
@@ -164,7 +164,7 @@
 
 <!--#Content Results# ##-->
 <!--##[%FILTER ID:'keywords' if:'ne' value:''%]##-->
-<!--##[%THUMB_LIST type:'content' content_type:'' template:'' filter_category:'' pgnum:'1' limit:'[$related_limit$]'%]
+<!--##[%THUMB_LIST type:'content' content_type:'' template:'' filter_category:'' pgnum:'1' limit:'[@config:related_limit@]'%]
 [%PARAM *header%]##-->
 <h2>[@total_results@] Other Results for '<!--##[%NOHTML%][%FILTER ID:'keywords'%][%END FILTER%][%END NOHTML%]##-->'</h2>
 <!--##[%END PARAM%]

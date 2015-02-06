@@ -19,7 +19,7 @@ $(document).ready(function() {
 			<h1>
 				[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
 					[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
-						<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
+						<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
 					[%END IF%]
 					[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
 						<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
@@ -598,7 +598,7 @@ $(document).ready(function() {
 					When you submit this page, your paypal account or credit card will be debited.
 					<!--##[%END PARAM%][%END DATA%]##-->
 				</div>
-				<div ref="account" class="_cpy_paydesc alert alert-info"> Your [$company_name$] account will automatically be charged for the value of this order. </div>
+				<div ref="account" class="_cpy_paydesc alert alert-info"> Your [@config:company_name@] account will automatically be charged for the value of this order. </div>
 				<div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
 
 				<!--##[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]##-->

@@ -15,7 +15,7 @@ $(document).ready(function() {
 <!--##[%breadcrumb%]
 [%param *header%]##-->
 <ul class="breadcrumb">
-    <li><a href="[$home_url$]">Home</a></li>
+    <li><a href="[@config:home_url@]">Home</a></li>
     <!--##[%end param%] [%param *body%]##--> 
     <li><a href="[@url@]">[@name@]</a></li>
     <!--##[%END param%] 
@@ -40,8 +40,8 @@ $(document).ready(function() {
     <!--##[%END IF%]##--> 
     </p>
     
-    <img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[$imageurl$]/pixel.gif'%][%END ASSET_URL%]" class="pull-right"/>
-    <img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[$imageurl$]/pixel.gif'%][%END ASSET_URL%]"  class="pull-right"/>
+    <img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]" class="pull-right"/>
+    <img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]"  class="pull-right"/>
     
     <p>
     [@content_short_description1@]
@@ -129,7 +129,7 @@ $(document).ready(function() {
 
 <!--##[%END PARAM%][%END THUMB_LIST%]##-->
 
-<!--##[%THUMB_LIST type:'products' template:'' limit:'[$related_limit$]'%]
+<!--##[%THUMB_LIST type:'products' template:'' limit:'[@config:related_limit@]'%]
 [%PARAM *header%]##-->
 <div class="clear-fix"></div>
 <h3>Related Products</h3>
@@ -168,7 +168,7 @@ $(document).ready(function() {
                                    [%IF [@review_response@]%]
                                    <br /><br />
                                      <blockquote>
-                                    <span class="review_response text-muted"><strong><i>[$website_name$] Response</i></strong><br /> [%NOHTML%][@review_response@][%END NOHTML%]</span>
+                                    <span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%NOHTML%][@review_response@][%END NOHTML%]</span>
                                     </blockquote>
                                    [%/IF%] 
 							</blockquote> <hr />  

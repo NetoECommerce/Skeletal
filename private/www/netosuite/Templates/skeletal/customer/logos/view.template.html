@@ -30,7 +30,7 @@ $(document).ready(function() {
 
 <!--# Start Breadcrumb# ##--> 
 <ul class="breadcrumb"> 
-<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[@config:home_url@]">Home</a></li>
 <li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 </ul>
 <!--# End Breadcrumb# ##--> 
@@ -44,7 +44,7 @@ $(document).ready(function() {
 <div class="selcardpl">
 </div>
 <div class="float_left"><div class="selcardpl">
-<img id="cusref1example" src="[$imageurl$]/na.gif" title="Example" />
+<img id="cusref1example" src="[@config:imageurl@]/na.gif" title="Example" />
 </div>
 </div>
 <div class="float_left logo-block">
@@ -52,7 +52,7 @@ $(document).ready(function() {
 <div class="float_left">
 <table cellpadding="0" cellspacing="2" border="0">
 <tr><td align="center">
-<img id="upld_logo_img" width="100px" src="[%asset_url type:'user' id:'[@username@]' default:'[$imageurl$]/na.gif'%][%END asset_url%]?[%RANDOM_NUMBER timestamp:'1'%][%END RANDOM_NUMBER%]" />
+<img id="upld_logo_img" width="100px" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:imageurl@]/na.gif'%][%END asset_url%]?[%RANDOM_NUMBER timestamp:'1'%][%END RANDOM_NUMBER%]" />
 </td></tr>
 </table>
 </div>

@@ -30,7 +30,7 @@
 <!--##[%DATA id:'msg' if:'eq' value:'invalid_shipping_method' %]##-->Shipping method is not valid.<!--##[%END DATA%]##-->
 
 <!--##[%DATA id:'msg' if:'eq' value:'invalid_payment_method' %]##-->Please select your payment method below before continuing.<!--##[%END DATA%]##-->
-<!--##[%DATA id:'msg' if:'eq' value:'process_payment_fail' %]##-->Sorry, We cannot process your payment at the moment. Please try again later or call [$COMPANY_PHONE$] during business hours for assistant.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'process_payment_fail' %]##-->Sorry, We cannot process your payment at the moment. Please try again later or call [@config:COMPANY_PHONE@] during business hours for assistant.<!--##[%END DATA%]##-->
 <!--##[%DATA id:'msg' if:'eq' value:'cannot_process_payment#' %]##-->[@error@]<!--##[%END DATA%]##-->
 
 <!--##[%DATA id:'msg' if:'eq' value:'gateway_error' %]##-->Error processing your card. Please try again or change your payment method. [@error@]<!--##[%END DATA%]##-->
@@ -65,15 +65,15 @@
 
 <!--##[%DATA id:'msg' if:'eq' value:'no_items' %]##-->Standing order #[@storder_id@] is empty.<!--##[%END DATA%]##-->
 <!--##[%DATA id:'msg' if:'eq' value:'shipping_na' %]##-->No delivery method is available for standing order #[@storder_id@] is not active.<!--##[%END DATA%]##-->
-<!--##[%DATA id:'msg' if:'eq' value:'price_changed' %]##-->[@grand_total1@] [@grand_total2@] We currently under going website maintenance, please call: [$company_phone$] (Mon-Fri 9am-5pm) or Email: [$company_email$] to place your order. Or please wait 10-15 minutes before trying again.<!--##[%END DATA%]##-->
-<!--##[%DATA id:'msg' if:'eq' value:'cannot_create_order' %]##-->We currently under going website maintenance, please call: [$company_phone$] (Mon-Fri 9am-5pm) or Email: [$company_email$] to place your order. Or please wait 10-15 minutes before trying again.<!--##[%END DATA%]##-->
-<!--##[%DATA id:'msg' if:'eq' value:'processing_order' %]##-->Your order is being processed. This may take a few minutes. If you experience difficulties placing your order please call: [$company_phone$] or Email: [$company_email$]<!--##[%END DATA%]##-->
-<!--##[%DATA id:'msg' if:'eq' value:'page_refreshed' %]##-->Your order is being processed. This may take a few minutes. If you experience difficulties placing your order please call: [$company_phone$] or Email: [$company_email$]<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'price_changed' %]##-->[@grand_total1@] [@grand_total2@] We currently under going website maintenance, please call: [@config:company_phone@] (Mon-Fri 9am-5pm) or Email: [@config:company_email@] to place your order. Or please wait 10-15 minutes before trying again.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'cannot_create_order' %]##-->We currently under going website maintenance, please call: [@config:company_phone@] (Mon-Fri 9am-5pm) or Email: [@config:company_email@] to place your order. Or please wait 10-15 minutes before trying again.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'processing_order' %]##-->Your order is being processed. This may take a few minutes. If you experience difficulties placing your order please call: [@config:company_phone@] or Email: [@config:company_email@]<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'page_refreshed' %]##-->Your order is being processed. This may take a few minutes. If you experience difficulties placing your order please call: [@config:company_phone@] or Email: [@config:company_email@]<!--##[%END DATA%]##-->
 
 <!--##[%DATA id:'msg' if:'eq' value:'not_enough_credit' %]##-->We are sorry, but your account credit could not be verified. Please check your current account credit and try again. If you believe this is an error, please contact us<!--##[%END DATA%]##-->
 <!--##[%DATA id:'msg' if:'eq' value:'invalid_payment_method' %]##-->Please select your payment method below before continuing.<!--##[%END DATA%]##-->
 <!--##[%DATA id:'msg' if:'eq' value:'over_payment_max' %]##-->We are sorry, you can only use [@name@] for orders less than <!--##[%FORMAT type:'currency'%]##-->[@max@]<!--##[%END FORMAT%]##-->.<!--##[%END DATA%]##-->
-<!--##[%DATA id:'msg' if:'eq' value:'process_payment_fail' %]##-->Sorry, We cannot process your payment at the moment. Please try again later or call [$COMPANY_PHONE$] during business hours for assistant.<!--##[%END DATA%]##-->
+<!--##[%DATA id:'msg' if:'eq' value:'process_payment_fail' %]##-->Sorry, We cannot process your payment at the moment. Please try again later or call [@config:COMPANY_PHONE@] during business hours for assistant.<!--##[%END DATA%]##-->
 <!--##[%DATA id:'msg' if:'eq' value:'cannot_process_payment#' %]##-->[@error@]<!--##[%END DATA%]##-->
 
 <!--##[%DATA id:'msg' if:'eq' value:'gateway_error' %]##-->Error processing your card. Please try again or change your payment method. [@error@]<!--##[%END DATA%]##-->

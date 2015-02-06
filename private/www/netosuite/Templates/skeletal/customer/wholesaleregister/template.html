@@ -221,11 +221,11 @@
 		[%content_zone id:'wholesale_terms'%][%end content_zone%]
 	</div>
 	<p>
-		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>  Subscribe to the [$company_name$] newsletter.
+		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>  Subscribe to the [@config:company_name@] newsletter.
 	</p>
 	<p>
 		<input type="checkbox" name="agree" value="y">
-		I agree to the [$company_name$] terms of trade.
+		I agree to the [@config:company_name@] terms of trade.
 	</p>
 </div>
 

@@ -202,7 +202,7 @@ Recipient Name<span class="text-danger">*</span>
 <div class="col-sm-6">Gift Voucher Message<span class="text-danger">*</span><p class="muted">The message that appears on the gift voucher email</p></div>
 <div class="col-sm-6">
 <textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft"><!--##[%NOHTML%][@gift_message@][%END NOHTML%]##--></textarea>
-<div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[$VOUCHER_MSG_LENGTH$]">[$VOUCHER_MSG_LENGTH$]</span> Character(s) Left</div>
+<div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> Character(s) Left</div>
 <span class="sherror" ref="voucher_msg[@reward_id@]">*Required</span>
 </div>
 </div>

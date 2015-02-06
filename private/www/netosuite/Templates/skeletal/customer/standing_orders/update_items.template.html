@@ -46,7 +46,7 @@ function addItem(ctr) {
 		<tr><td>
 		</td></tr>
 				</table></td>
-	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small">
 <table border="0" cellpadding="3" cellspacing="0">
 	<tr><td>Next Delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
@@ -78,9 +78,9 @@ function addItem(ctr) {
 <tr>
 	<td><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td><input name="line[@count@]" type="hidden" value="[@counter@]"><input name="sku[@count@]" type="hidden" value="[@SKU@]">
 <!--##[%DATA id:'editable' if:'eq' value:'y' %][%PARAM if_true%]##-->
 	<input id="qty[@count@]" type="text" name="qty[@count@]" value="[@qty@]" size="3">
@@ -90,7 +90,7 @@ function addItem(ctr) {
 	</td>
   <td>
 <!--##[%DATA id:'editable' if:'eq' value:'y' %][%PARAM if_true%]##-->
-<a href="javascript:rmcart('qty[@count@]');"><img src="[$imageurl$]/icons/cross.png" alt="remove item from cart" border="0"></a>
+<a href="javascript:rmcart('qty[@count@]');"><img src="[@config:imageurl@]/icons/cross.png" alt="remove item from cart" border="0"></a>
 <!--##[%END PARAM%][%PARAM if_false%]##-->
 &nbsp;
 <!--##[%END PARAM%][%END DATA%]##-->
@@ -120,29 +120,29 @@ function addItem(ctr) {
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Shipping</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Discount</b></td>
 		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Order Total</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 </table></td></tr>
 </table></td></tr>
 </table>
@@ -177,8 +177,8 @@ function addItem(ctr) {
    <!--##[%data id:'misc3' if:'ne' value:''%]##--> <b>Strength:</b> [@misc3@] <!--##[%end data%]##--><!--##[%data id:'misc15' if:'ne' value:''%]##-->&nbsp;&nbsp;<b>Main Characteristics:</b> [@misc15@] <!--##[%end data%]##-->
 </td> <!--
          <td nowrap="nowrap">
-      [%data id:'misc14' if:'eq' value:'Single'%] <br /><img src="[$imageurl$]/images/size_single.gif" width="115" height="24" alt="Single" /> [%END data%]
-[%data id:'misc14' if:'eq' value:'Double'%] <br /><img src="[$imageurl$]/images/size_double.gif" width="115" height="24" alt="Single" /> [%END data%]
+      [%data id:'misc14' if:'eq' value:'Single'%] <br /><img src="[@config:imageurl@]/images/size_single.gif" width="115" height="24" alt="Single" /> [%END data%]
+[%data id:'misc14' if:'eq' value:'Double'%] <br /><img src="[@config:imageurl@]/images/size_double.gif" width="115" height="24" alt="Single" /> [%END data%]
         </td> -->
               <td nowrap>
       <span class="capsule_thumb_price"> <!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##--> ea </span><br />
@@ -205,7 +205,7 @@ No Products are available.
 </table>
 <div class="spacer"></div>
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a> &nbsp; 
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
     <input type="image" alt="Update Changes" src="" onclick="updateChanges();"> &nbsp;
-    <input type="image" alt="Save Changes" src="[$imageurl$]/template/cart/confirm.gif" onclick="saveChanges();">
+    <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif" onclick="saveChanges();">
 </center>

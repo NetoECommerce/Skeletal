@@ -8,7 +8,7 @@ function print_invoice() {
 	
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
-		<li><a href="[$home_url$]">Home</a></li>
+		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##--> 
@@ -79,9 +79,9 @@ function print_invoice() {
 			<!--##[%END PARAM%][%PARAM *body%]##-->
 			<tr>
 				<td><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL'%][%END asset_url%]" alt="[@model@]" width="50px"  height="50px"> &nbsp; [@qty@] x [@model@]<i>[@extra@]</i> 
-					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##--> 
-					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##--> 
-					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--> 
+					<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##--> 
+					<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##--> 
+					<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--> 
 					<!--##[%FORMAT type:'date' default:''%][%PARAM *format%]##--><br>
 					<b>Deliver On</b> #D/#M/#Y (#G:#I#a)<!--##[%END PARAM%][@date_delivery@][%END FORMAT%]##--></td>
 				<td><!--##[%DATA id:'ship_method' if:'ne' value:'' %]##--><span class="label label-default">[@ship_method@]</span><br />

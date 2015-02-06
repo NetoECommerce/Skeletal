@@ -1,7 +1,7 @@
 <div class="col-xs-12">
 <!--# Start Breadcrumb# ##--> 
 <ul class="breadcrumb"> 
-<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Edit Your Address Book</a></li>
 </ul>
@@ -206,7 +206,7 @@ function updloca(oid) {
 	msg.style.display = '';
 	dis.style.display = 'none';
 	
-	if(country.options[country.selectedIndex].value != '[$SELECTORCOUNTRY$]') {
+	if(country.options[country.selectedIndex].value != '[@config:SELECTORCOUNTRY@]') {
 		msg.innerHTML = '<i>Please enter your city and state below.</i>';
 		city.readOnly = state.readOnly = false;
 		city.style.color = state.style.color = '#000000';
@@ -218,10 +218,10 @@ function updloca(oid) {
 		if( zip.value == '' ) {
 			msg.innerHTML = '<i>Please enter your postal code above.</i>';
 		} else {
-			var url = '[$secure_home_url$]/do/get_locate?zip='+escape(zip.value);
+			var url = '[@config:secure_home_url@]/do/get_locate?zip='+escape(zip.value);
 			httpReq[oid] = ajax_XMLHttpRequest();
 			if(!httpReq[oid]) {
-				msg.innerHTML = '<i>Error. Please contact our customer support: [$COMPANY_EMAIL$]</i>';
+				msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
 			} else {
 				httpReq[oid].onreadystatechange = function() {
 					if(httpReq[oid].readyState == 4 && httpReq[oid].status == 200) {

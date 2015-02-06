@@ -66,19 +66,19 @@ of your order online please go to <a href="[%URL page:'account' type:'nr_track_o
 <p>Your chosen payment method is: <b>[@name@]</b></p>
 	<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/icons/american_express.png"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/icons/american_express.png"></td>
 <td>Your American Express Card has already been processed.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/icons/visa.png"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/icons/visa.png"></td>
 <td>Your Visa Card has already been processed.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/icons/mastercard.png"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/icons/mastercard.png"></td>
 <td>Your Master Card has already been processed.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
@@ -87,46 +87,46 @@ Your credit card has already been processed.<br>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/icons/cheque.png"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/icons/cheque.png"></td>
 <td>Please send your Cheque to: <br>
   <br>
-<b>[$company_name$]</b> <br>
-<b>[$COMPANY_POADDR$]</b>. <br>
+<b>[@config:company_name@]</b> <br>
+<b>[@config:COMPANY_POADDR@]</b>. <br>
 Please include your full name and order number so that we can easily locate your order for fast processing.</td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/icons/money_order.png"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/icons/money_order.png"></td>
 <td>Please send your money order to: <br>
     <br>
-<b>[$company_name$]</b> <br>
-<b>[$COMPANY_POADDR$]</b>. <br>
+<b>[@config:company_name@]</b> <br>
+<b>[@config:COMPANY_POADDR@]</b>. <br>
 Please include your full name and order number so that we can easily locate your order.</td>
 </tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Direct Deposit'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/icons/electronic_transfer.png"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/icons/electronic_transfer.png"></td>
 <td>Please deposit your total order amount to:<br>
-<b>[$COMPANY_BANK_NAME$]</b><br>
-<b>Name:</b> [$COMPANY_BANK_ACC$]<br>
-<b>BSB: </b>[$COMPANY_BANK_BSB$]<br>
-<b>Ac/no:</b>[$COMPANY_BANK_NUM$]<br>
+<b>[@config:COMPANY_BANK_NAME@]</b><br>
+<b>Name:</b> [@config:COMPANY_BANK_ACC@]<br>
+<b>BSB: </b>[@config:COMPANY_BANK_BSB@]<br>
+<b>Ac/no:</b>[@config:COMPANY_BANK_NUM@]<br>
 <br>
 Please leave your order number or last name as a payment reference.<br>
 <br>
-Once you have deposited the full amount, please email [$company_email$] with your order number to confirm your payment.<br></td></tr>
+Once you have deposited the full amount, please email [@config:company_email@] with your order number to confirm your payment.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
 <table cellpadding="4" cellspacing="0" border="0">
   <tr>
 <td><table cellpadding="0" cellspacing="4" border="0"><tr>
-<td valign="top"><img src="[$imageurl$]/BPAY.gif"></td>
+<td valign="top"><img src="[@config:imageurl@]/BPAY.gif"></td>
 <td style="border: 1px solid #000000; font-weight:bold; font-size: 15px; padding: 4px 4px 4px 4px;">
-Biller Code: [$BPAY_BILLER_CODE$]<br>
+Biller Code: [@config:BPAY_BILLER_CODE@]<br>
 Ref: [@bpay_crn@]</td></tr></table></td></tr>
 <tr><td colspan="2"><span style="font-weight:bold; font-size: 13px;">Telephone & Internet Banking - BPAY</span><br>
 Contact your bank, credit union or building sociey to make this payment from your
@@ -136,7 +136,7 @@ cheque, savings or credit card account. More info: <a href="http://www.bpay.com.
 	<!--##[%DATA id:'name' if:'like' value:'PayPal'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
 <tr><td valign="top">
-<img src="[$imageurl$]/icons/paypal.png">
+<img src="[@config:imageurl@]/icons/paypal.png">
 </td>
 <td valign="top">
 Your Paypal payment has been processed. No further action is required by you at this stage.
@@ -145,7 +145,7 @@ Your Paypal payment has been processed. No further action is required by you at 
 
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
-[$company_name$] Account
+[@config:company_name@] Account
 	<!--##[%END DATA%]##-->
 <!--##[%END PARAM%]
 [%PARAM *ifempty%]##-->
@@ -185,9 +185,9 @@ No Payment method has been selected.<br>
 <tr>
 	<td>[@SKU@]</td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td>[@qty@]</td>
 	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>

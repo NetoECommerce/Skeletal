@@ -79,9 +79,9 @@ Quote Summary
 <tr>
 	<td>[@SKU@]</td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td>[@qty@]</td>
 	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
@@ -111,7 +111,7 @@ Quote Summary
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Quote Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>

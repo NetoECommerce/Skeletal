@@ -1,7 +1,7 @@
 <div class="col-xs-12">
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
-		<li><a href="[$home_url$]">Home</a></li>
+		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
@@ -193,7 +193,7 @@
 		</div>
 		<div class="clear"></div>
 
-	<!--##[%DATA ID:'total_results' if:'>' value:'[$thumb_limit$]'%][%PARAM *if_true%]##-->
+	<!--##[%DATA ID:'total_results' if:'>' value:'[@config:thumb_limit@]'%][%PARAM *if_true%]##-->
 	<!--#Start Pagination# ##-->
 	<div class="text-center">
 		<ul class="pagination">
@@ -264,7 +264,7 @@
 		</tbody>
 	</table>
 
-	<!--##[%DATA ID:'total_results' if:'>' value:'[$thumb_limit$]'%][%PARAM *if_true%]##-->
+	<!--##[%DATA ID:'total_results' if:'>' value:'[@config:thumb_limit@]'%][%PARAM *if_true%]##-->
 	<!--#Start Pagination# ##-->
 	<div class="pagination pagination-centered">
 		<ul>
@@ -338,7 +338,7 @@
 	</tbody>
 </table>
 
-<!--##[%DATA ID:'total_results' if:'>' value:'[$thumb_limit$]'%][%PARAM *if_true%]##-->
+<!--##[%DATA ID:'total_results' if:'>' value:'[@config:thumb_limit@]'%][%PARAM *if_true%]##-->
 <!--#Start Pagination# ##-->
 <div class="pagination pagination-centered">
 	<ul>

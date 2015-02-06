@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 <ul class="breadcrumb"> 
-<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Resolution Centre</a></li>
 </ul>
@@ -85,9 +85,9 @@ function showOrder() {
 					<td><input type="text" name="qty[@counter@]" value="" class="form-control" >
 						of [@qty@]</td>
 					<td><a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%END url%]"><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></a> <a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%END url%]">[@model@] <i>[@extra@]</i></a> 
-						<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>FREE*</b><!--##[%END DATA%]##--> 
-						<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##--> 
-						<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>FREE*</b><!--##[%END DATA%]##--> 
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##--> 
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 					<td><!--##[%FORMAT type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 					<td><!--##[%format type:'currency'%]##-->[@discount@]<!--##[%END format%]##--></td>
 					<td><!--##[%FORMAT type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>

@@ -33,7 +33,7 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 		<tr><td>
 		</td></tr>
 				</table></td>
-	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small">
 <table border="0" cellpadding="3" cellspacing="0">
 	<tr><td>Next Delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
@@ -95,9 +95,9 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 <tr>
 	<td>[@SKU@]</td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td>[@qty@]</td>
 	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 	<td align="center"><!--##[%DATA id:'discount_percent' if:'>' value:'0' %]##--><!--##[%format type:'percent'%]##-->-[@discount_percent@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
@@ -130,42 +130,42 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'shipping_method_id' if:'ne' value:'' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Shipping</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Discount</b></td>
 		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'surcharge_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Surcharge</b> (<!--##[%format type:'percent' dc:'2'%]##-->[@surcharge_percent@]<!--##[%END format%]##-->)</td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'=' value:'1' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Order Total</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'credit_apply' if:'>' value:'0' %]##-->
-	<tr><td colspan="2" style="border-bottom: 2px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 2px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Apply Credit</b> <input type="checkbox" name="apply_credit" value="[@credit_apply@]" onClick="shBalance(this.checked)"></td>
 		<td align="right"><span class="text-danger"><b>-<!--##[%format type:'currency'%]##-->[@credit_apply@]<!--##[%END format%]##--></b></span></td></tr>
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr id="balance" style="display:none;"><td><b>Balance Due</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@owed_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 </table></td></tr>
 </table></td></tr>
 </table>
@@ -205,35 +205,35 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 	[%PARAM if_false%]##-->
 <p>Your chosen payment method is: <b>[@name@]</b> &nbsp; <a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_payment&previous=[@current_action@]'%][%END URL%]">Change Order Payment Method</a></p>
 		<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
-<img src="[$imageurl$]/cart/paymentmethods/cheque.gif" width="60" height="32"><br>
+<img src="[@config:imageurl@]/cart/paymentmethods/cheque.gif" width="60" height="32"><br>
 <br>
 Please send your cheque to:<br><br>
-<b>[$company_name$]<br>
-[$COMPANY_POADDR$]</b><br><br> 
+<b>[@config:company_name@]<br>
+[@config:COMPANY_POADDR@]</b><br><br> 
 Your order will not be processed until we receive your cheque.<br>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
-<img src="[$imageurl$]/cart/paymentmethods/money_order.gif" width="60" height="32"><br>
+<img src="[@config:imageurl@]/cart/paymentmethods/money_order.gif" width="60" height="32"><br>
 <br>
 Please send your money order to:<br> <br>
-<b>[$company_name$]<br>
-[$COMPANY_POADDR$]</b><br><br> 
+<b>[@config:company_name@]<br>
+[@config:COMPANY_POADDR@]</b><br><br> 
 Your order will not be processed until we receive your money order.<br>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
-<img src="[$imageurl$]/cart/paymentmethods/electronic_transfer.gif" width="60" height="32"><br>
+<img src="[@config:imageurl@]/cart/paymentmethods/electronic_transfer.gif" width="60" height="32"><br>
 After submitting this page please pay the total order value into the following account:<br>
 <br>
-[$COMPANY_BANK_NAME$]<br>
-Name: [$COMPANY_BANK_ACC$]<br>
-BSB: [$COMPANY_BANK_BSB$]<br>
-Ac/no: [$COMPANY_BANK_NUM$]<br>
+[@config:COMPANY_BANK_NAME@]<br>
+Name: [@config:COMPANY_BANK_ACC@]<br>
+BSB: [@config:COMPANY_BANK_BSB@]<br>
+Ac/no: [@config:COMPANY_BANK_NUM@]<br>
 <br>
 Please leave your order number as reference. Your order will not be processed until payment is received.<br>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'name' if:'like' value:'BPAY'%]##-->
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
-	<tr><td width="1%" valign="top" rowspan="2"><img src="[$imageurl$]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
+	<tr><td width="1%" valign="top" rowspan="2"><img src="[@config:imageurl@]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
 		<td width="99%"><b>Telephone &amp; Internet Banking - BPAY</b></td></tr>
 	<tr><td valign="top">When you submit this page, you will be given a biller 
 		code and a reference number. Please quote the numbers and call your 
@@ -245,7 +245,7 @@ Please leave your order number as reference. Your order will not be processed un
 		<!--##[%DATA id:'name' if:'like' value:'PayPal'%]##-->
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 <tr>
-	<td width="1%" valign="top"><img src="[$imageurl$]/cart/paymentmethods/paypal.gif" width="60" height="38"></td>
+	<td width="1%" valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/paypal.gif" width="60" height="38"></td>
 	<td width="99%" valign="top">When you submit this page, you will be 
 		sent to the paypal site where you can enter your e-mail address 
 		for your paypal account. Once we receive notification of your paypal 
@@ -254,8 +254,8 @@ Please leave your order number as reference. Your order will not be processed un
 </table><br>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
-<b>Your chosen payment method is [$company_name$] Account </b><br>
-Your [$company_name$] account will automatically be charged for the value of this order.
+<b>Your chosen payment method is [@config:company_name@] Account </b><br>
+Your [@config:company_name@] account will automatically be charged for the value of this order.
 		<!--##[%END DATA%]##-->
 	<!--##[%END PARAM%]
 	[%END DATA%]##-->
@@ -266,8 +266,8 @@ Your [$company_name$] account will automatically be charged for the value of thi
 <!--##[%END PARAM%]##-->
 <!--##[%END standing_order_items%]##-->
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a>&nbsp; 
-    <input type="image" alt="Confirm Send Order Now" src="[$imageurl$]/template/cart/confirm.gif">
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a>&nbsp; 
+    <input type="image" alt="Confirm Send Order Now" src="[@config:imageurl@]/template/cart/confirm.gif">
     <br>
     Your order will be processed when the above confirmation button is clicked... 
   </center>

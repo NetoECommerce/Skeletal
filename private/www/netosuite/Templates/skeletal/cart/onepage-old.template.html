@@ -32,7 +32,7 @@ $(document).ready(function() {
         <tr> 
           <!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM *if_true%]##--> 
           <!--##[%CONFIG id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%][%PARAM *if_true%]##-->
-          <td width="150px"><a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></td>
+          <td width="150px"><a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></td>
           <td width="1%" nowrap="nowrap">- OR -</td>
           <td>Complete the steps below for all other payment options</td>
           <!--##[%END PARAM%][%PARAM *if_false%]##-->
@@ -343,34 +343,34 @@ $(document).ready(function() {
       <ul>
         <!--##[%END PARAM%][%PARAM *body%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/american_express.png" width="51" height="32" border="0" alt="American Express" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/american_express.png" width="51" height="32" border="0" alt="American Express" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/visa.png" width="51" height="32" border="0" alt="Visa" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/visa.png" width="51" height="32" border="0" alt="Visa" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/mastercard.png" width="51" height="32" border="0" alt="Master Card" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/mastercard.png" width="51" height="32" border="0" alt="Master Card" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Discover'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/discover.png" width="51" height="32" border="0" alt="Discover" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/discover.png" width="51" height="32" border="0" alt="Discover" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Diners'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/diners.png" width="51" height="32" border="0" alt="Diners" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/diners.png" width="51" height="32" border="0" alt="Diners" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/cheque.png" width="51" height="32" border="0" alt="Cheque" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/cheque.png" width="51" height="32" border="0" alt="Cheque" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/money_order.png" width="51" height="32" border="0" alt="Money Order" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/money_order.png" width="51" height="32" border="0" alt="Money Order" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/electronic_transfer.png" width="51" height="32" border="0" alt="Electronic Transfer" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/electronic_transfer.png" width="51" height="32" border="0" alt="Electronic Transfer" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/bpay.png" width="51" height="32" border="0" alt="Bpay" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/bpay.png" width="51" height="32" border="0" alt="Bpay" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%DATA id:'name' if:'like' value:'paypal'%]##-->
-        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[$imageurl$]/icons/paypal.png" width="51" height="32" border="0" alt="Paypal" /></a></li>
+        <li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);"><img src="[@config:imageurl@]/icons/paypal.png" width="51" height="32" border="0" alt="Paypal" /></a></li>
         <!--##[%END DATA%]##--> 
         <!--##[%END PARAM%][%PARAM *footer%]##-->
       </ul>
@@ -457,7 +457,7 @@ For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security
       When you submit this page, your paypal account or credit card will be debited. 
       <!--##[%END PARAM%][%END DATA%]##--> 
     </div>
-    <div ref="account" class="_cpy_paydesc alert alert-info"> Your [$company_name$] account will automatically be charged for the value of this order. </div>
+    <div ref="account" class="_cpy_paydesc alert alert-info"> Your [@config:company_name@] account will automatically be charged for the value of this order. </div>
     <div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
  
 <!--##[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]##-->  

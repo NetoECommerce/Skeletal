@@ -15,7 +15,7 @@ function proc_pay() {
 				if(cdt.selectedIndex > 0) {
 					var pn = cdt.options[cdt.selectedIndex].text;
 					var received = f['amount_paid'];
-					if(confirm('You are about to authorise [$moneysign$]'+received.value+' received from \''+pn+'\' to this user.\n'+
+					if(confirm('You are about to authorise [@config:moneysign@]'+received.value+' received from \''+pn+'\' to this user.\n'+
 						'\nDo you wish to continue?')) {
 						var s = document.getElementById('processing');
 						if(s) {
@@ -27,7 +27,7 @@ function proc_pay() {
 					alert('Please select a payment method.');
 				}
 			} else {
-				alert('You are [$moneysign$]'+tmore.innerHTML+' out of balance.');
+				alert('You are [@config:moneysign@]'+tmore.innerHTML+' out of balance.');
 			}
 		} else {
 			alert('Please enter a payment amount.');
@@ -178,7 +178,7 @@ function showPD() {
 
 <!--# Start Breadcrumb# ##--> 
 <ul class="breadcrumb"> 
-<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Pay Outstanding Orders and Invoices</a></li>
 </ul>
@@ -205,7 +205,7 @@ function showPD() {
 <div id="processing" style="display:none;" class="alert alert-danger">
 <h2>Payment Processing</h2>
 <h2>Please do not refresh or close this page</h2>
-<img src="[$imageurl$]/loading.gif" alt="Loading"/></div>
+<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 
 
 
@@ -229,7 +229,7 @@ Enter your payment details and the amount you want to pay below. Then apply the 
 <label>Select Payment Method</label>
 <select class="form-control" name="card_type" onChange="showPD()">
 <option value=""></option>
-<!--##[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[$NO_BULK_PAY_SURCHARGE$]' %]
+<!--##[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
 [%PARAM *body%]##--> 
 <option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
 <!--##[%END PARAM%]
@@ -300,7 +300,7 @@ Enter your payment details and the amount you want to pay below. Then apply the 
 <hr>
 <div class="row">
 <div class="col-xs-12 col-md-3">
-<label>Payment Amount ([$moneysign$])</label>
+<label>Payment Amount ([@config:moneysign@])</label>
 <input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
 </div>
 </div>
@@ -337,14 +337,14 @@ Enter your payment details and the amount you want to pay below. Then apply the 
 	<td class="small" nowrap><!--##[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%]##-->[@date_due@]<!--##[%END format%]##--></td>
 	<td class="small" nowrap><!--##[%format type:"currency"%]##-->[@grand_total@]<!--##[%END format%]##--></td>
 	<td class="small" nowrap><!--##[%format type:"currency"%]##-->[@amount_owed@]<!--##[%END format%]##--></td>
-	<td nowrap>[$moneysign$]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%END DATA%]" size="7" onChange="updAmt(this)"></td>
+	<td nowrap>[@config:moneysign@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%END DATA%]" size="7" onChange="updAmt(this)"></td>
 	<td nowrap><input class="btn" type="button" value="Apply" onClick="appAmt([@count@])"></td>
 </tr>
 <!--##[%END PARAM%]##-->
 <!--##[%PARAM *footer%]##-->
- 	<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[$moneysign$]<span id="total_app">0.00</span></td></tr>
-	<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[$moneysign$]<span id="total_rec">0.00</span></td></tr>
-	<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[$moneysign$]<span id="total_more">0.00</span></td></tr>
+ 	<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
+	<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
+	<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
 </tbody>
 </table>
 <!--##[%END PARAM%]##-->

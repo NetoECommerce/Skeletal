@@ -21,7 +21,7 @@ function proc_pay() {
 			if(cdt.selectedIndex > 0) {
 				var pn = cdt.options[cdt.selectedIndex].text;
 				var received = f['amount_paid'];
-				if(confirm('You are about to authorise [$moneysign$]'+received.value+' received from \''+pn+'\' to this order.\n'+
+				if(confirm('You are about to authorise [@config:moneysign@]'+received.value+' received from \''+pn+'\' to this order.\n'+
 					'\nDo you wish to continue?')) {
 					var s = document.getElementById('processing');
 					if(s) {
@@ -41,7 +41,7 @@ function proc_pay() {
 	
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
-		<li><a href="[$home_url$]">Home</a></li>
+		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
@@ -71,7 +71,7 @@ function proc_pay() {
 					<label>Select your payment method</label>
 					<select class="form-control" name="card_type" onChange="showPD()">
 						<option value=""></option>
-						<!--##[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[$NO_BULK_PAY_SURCHARGE$]' %]
+						<!--##[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
 [%PARAM *body%]##-->
 						<option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
 						<!--##[%END PARAM%]
@@ -137,7 +137,7 @@ function proc_pay() {
 					</div>
 					<div class="form-group">
 					<label>Enter Amount You Want To Pay Now</label>
-					<input placeholder="[$moneysign$]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
+					<input placeholder="[@config:moneysign@]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
 				</div>
 				<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="Process Credit Card Payment">
 			</div>
@@ -151,7 +151,7 @@ function proc_pay() {
 	<script type="text/javascript" language="javascript">showPD();</script>
 	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> Payment Processing.<br />
 		Please do not refresh or close this page.<br />
-		<img src="[$imageurl$]/loading.gif" alt="Loading"/></div>
+		<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 	
 	<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##--> 
 	

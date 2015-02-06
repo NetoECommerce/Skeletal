@@ -16,7 +16,7 @@
 		[@bill_phone@]<br />
 		<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_bill_addr'%][%END URL%]">Change Order Billing Address</a></td></tr>
 				</table></td>
-	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small"><b>Order Shipping Address:</b><br />
 	  [@ship_first_name@] [@ship_last_name@]<br>
 <!--##[%DATA id:'ship_company' if:'ne' value:''%]##-->[@ship_company@]<br><!--##[%END DATA%]##-->
@@ -56,7 +56,7 @@
 		<tr><td>
 		</td></tr>
 				</table></td>
-	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small">
 <table border="0" cellpadding="3" cellspacing="0">
 	<tr><td>Next Delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
@@ -87,9 +87,9 @@
 	<td>[@qty@]</td>
 	<td><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 </tr>
 	<!--##[%END PARAM%]##-->
 	<!--##[%PARAM *footer%]##-->
@@ -130,9 +130,9 @@
 <tr>
 	<td>[@SKU@]</td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td>[@qty@]</td>
 	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
@@ -163,29 +163,29 @@
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Shipping</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Discount</b></td>
 		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Order Total</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 </table></td></tr>
 </table></td></tr>
 </table>
@@ -198,19 +198,19 @@
 <p>Your chosen payment method is: <b>[@name@]</b> &nbsp; <a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_payment'%][%END URL%]">Change Order Payment Method</a></p>
 	<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/american_express.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/american_express.gif"></td>
 <td>Your American Express Card will be processed automatically.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/visa.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/visa.gif"></td>
 <td>Your Visa Card will be processed automatically.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/mastercard.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/mastercard.gif"></td>
 <td>Your Master Card will be processed automatically.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
@@ -232,7 +232,7 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <div class="spacer"></div>
 <center>
 
-<a href="[%URL page:'account' type:'standing_orders'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a> &nbsp; 
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=send_order'%][%END URL%]"><img alt="Send Order Now" src="[$imageurl$]/template/cart/confirm.gif"></a>
+<a href="[%URL page:'account' type:'standing_orders'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=send_order'%][%END URL%]"><img alt="Send Order Now" src="[@config:imageurl@]/template/cart/confirm.gif"></a>
 </center>
 

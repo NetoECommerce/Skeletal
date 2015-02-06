@@ -33,9 +33,9 @@
 			<tr>
 				<td><a href="[@url@]"><img class="cart-thumb" width="50" height="50" src="[@thumb@]"/></a></td>
 				<td><a href="[@url@]">[@model@] <i>[@extra@]</i></a>
-					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp;<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-					<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##-->
+					<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp;<!--##[%END DATA%]##-->
+					<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+					<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##-->
 					<!--##[%data id:'preorder' if:'=' value:'1' %]##--><br />
 					<b>Pre-order - Released <!--##[%format type:'date'%]##-->[@arrival_date@]<!--##[%END format%]##--></b><!--##[%END DATA%]##-->
 					<!--##[%DATA id:'has_components' if:'==' value:'1'%]##-->
@@ -105,7 +105,7 @@
 </div>
 <div class="row btn-stack">
 	<div class="col-xs-12 col-md-3">
-		<button type="button" onclick="window.location='[%last_visited default:'[$homeurl$]'%][%END last_visited%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class=" icon-chevron-left"></i> Continue Shopping</button>
+		<button type="button" onclick="window.location='[%last_visited default:'[@config:homeurl@]'%][%END last_visited%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class=" icon-chevron-left"></i> Continue Shopping</button>
 	</div>
 	<div class="col-xs-12 col-md-3 col-md-offset-6">
 		<button type="button" class="btn btn-default btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh"></i> Update My Changes</button>
@@ -209,7 +209,7 @@
 			<!--##[%END PARAM%]
 	[%PARAM *body%]##-->
 			<tr>
-				<td >[@code@] [@title@] <a href="[%URL page:'checkout' qs:'rmcpn=[@code@]'%][%END URL%]"><img alt="Remove Coupon [@code@]" src="[$imageurl$]/icons/cross.png"></a></td>
+				<td >[@code@] [@title@] <a href="[%URL page:'checkout' qs:'rmcpn=[@code@]'%][%END URL%]"><img alt="Remove Coupon [@code@]" src="[@config:imageurl@]/icons/cross.png"></a></td>
 				<td class="text-right">-<!--##[%format type:'currency'%]##-->[@discount@]<!--##[%END format%]##--></td>
 			</tr>
 			<!--##[%END PARAM%]
@@ -261,7 +261,7 @@
 						<div class="col-xs-12 col-md-6 text-center">
 						<!--##[%CONFIG id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%]##-->
 							[%if [@form:npurpose@] ne 'facebook'%]
-								<p><a href="javascript:document.paypal.submit()"><img src="[$imageurl$]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></p>
+								<p><a href="javascript:document.paypal.submit()"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a></p>
 								<div class="clear"></div>
 							[%/ if%]
 							[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]

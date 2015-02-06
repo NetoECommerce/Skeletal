@@ -5,7 +5,7 @@
 
 <!--# Start Breadcrumb# ##--> 
 <ul class="breadcrumb"> 
-<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Standing Orders</a></li>
 </ul>
@@ -65,11 +65,11 @@
 				</table>
 <table cellpadding="2" cellspacing="0" border="0">
 <tr><!--##[%paging limit:'3'%]
-[%PARAM *previous_page%]##--><td>&nbsp;</td><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]"><img border="0" src="[$imageurl$]/template/back_page.gif"></a></td><!--##[%END PARAM%]
+[%PARAM *previous_page%]##--><td>&nbsp;</td><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]"><img border="0" src="[@config:imageurl@]/template/back_page.gif"></a></td><!--##[%END PARAM%]
 [%PARAM *goback_pages%]##--><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]">[@PAGE@]</a></td><td>&nbsp;</td><!--##[%END PARAM%]
 [%PARAM *current_page%]##--><td nowrap style="background:#FFF; padding:4px 10px 4px 10px;"><b>[@PAGE@]</b></td><!--##[%END PARAM%]
 [%PARAM *gonext_pages%]##--><td>&nbsp;</td><td nowrap><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]">[@PAGE@]</a></td><!--##[%END PARAM%]
-[%PARAM *next_page%]##--><td>&nbsp;</td><td><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]"><img border="0" src="[$imageurl$]/template/next_page.gif"></a></td><!--##[%END PARAM%]
+[%PARAM *next_page%]##--><td>&nbsp;</td><td><a href="[@URL@]&ord=[%url_encode%][%FORM id:'ord'%][%END FORM%][%END url_encode%]"><img border="0" src="[@config:imageurl@]/template/next_page.gif"></a></td><!--##[%END PARAM%]
 [%END paging%]##--></tr>
 
 	<!--##[%END PARAM%]##-->

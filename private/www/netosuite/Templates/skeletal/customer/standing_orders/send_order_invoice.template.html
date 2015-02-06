@@ -21,7 +21,7 @@ as to your orders progress. To track the progress
 of your order online please go to <a href="[%URL page:'account'%][%END URL%]">your 
 account</a> and select the order you want to track.</p></td></tr>
 				</table></td>
-	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[$imageurl$]/pixel.gif" alt="" width="10px" height="1px"></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small"><strong>Order Shipping Address:</strong><br />
 	  [@ship_first_name@] [@ship_last_name@]<br>
 <!--##[%DATA id:'ship_company' if:'ne' value:''%]##-->[@ship_company@]<br><!--##[%END DATA%]##-->
@@ -41,19 +41,19 @@ account</a> and select the order you want to track.</p></td></tr>
 <p>Your chosen payment method is: <b>[@name@]</b></p>
 	<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/american_express.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/american_express.gif"></td>
 <td>Your American Express Card has already been processed.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/visa.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/visa.gif"></td>
 <td>Your Visa Card has already been processed.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/mastercard.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/mastercard.gif"></td>
 <td>Your Master Card has already been processed.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
@@ -62,45 +62,45 @@ Your credit card has already been processed.<br>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/cheque.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/cheque.gif"></td>
 <td><strong>PLEASE NOTE! </strong><br>
 YOUR ORDER WILL NOT BE PROCESSED UNTIL WE RECEIVE YOUR BANK CHEQUE. PLEASE SEND YOUR CHEQUE TO:<br><br>
-<b>[$company_name$]</b> <br>
-<b>[$COMPANY_POADDR$]</b>. <br>
+<b>[@config:company_name@]</b> <br>
+<b>[@config:COMPANY_POADDR@]</b>. <br>
 Please include your full name and order number so that we can easily locate your order for fast processing.</td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/money_order.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/money_order.gif"></td>
 <td><strong>PLEASE NOTE! </strong><br>
 YOUR ORDER WILL NOT BE PROCESSED UNTIL WE RECEIVE YOUR MONEY ORDER. PLEASE SEND YOUR MONEY ORDER TO:<br><br>
-<b>[$company_name$]</b> <br>
-<b>[$COMPANY_POADDR$]</b>. <br>
+<b>[@config:company_name@]</b> <br>
+<b>[@config:COMPANY_POADDR@]</b>. <br>
 Please include your full name and order number so that we can easily locate your order for fast processing.</td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/electronic_transfer.gif"></td>
+<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/electronic_transfer.gif"></td>
 <td><strong>PLEASE NOTE!</strong><br>
 YOUR ORDER WILL NOT BE PROCESSED UNTIL WE RECEIVE YOUR DEPOSIT. Please deposit your total order amount to:<br>
-<b>[$COMPANY_BANK_NAME$]</b><br>
-<b>Name:</b> [$COMPANY_BANK_ACC$]<br>
-<b>BSB: </b>[$COMPANY_BANK_BSB$]<br>
-<b>Ac/no:</b>[$COMPANY_BANK_NUM$]<br>
+<b>[@config:COMPANY_BANK_NAME@]</b><br>
+<b>Name:</b> [@config:COMPANY_BANK_ACC@]<br>
+<b>BSB: </b>[@config:COMPANY_BANK_BSB@]<br>
+<b>Ac/no:</b>[@config:COMPANY_BANK_NUM@]<br>
 <br>
 PLEASE leave your order number or last name as a payment reference.<br>
 <br>
-Once you have deposited the full amount, please email [$company_email$] with your order number to confirm your payment.<br></td></tr>
+Once you have deposited the full amount, please email [@config:company_email@] with your order number to confirm your payment.<br></td></tr>
 </table>	
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
 <table align="center" cellpadding="0" cellspacing="4" border="0"><tr>
 <td><table cellpadding="0" cellspacing="4" border="0"><tr>
-<td valign="top"><img src="[$imageurl$]/BPAY.gif"></td>
+<td valign="top"><img src="[@config:imageurl@]/BPAY.gif"></td>
 <td style="border: 1px solid #000000; span-weight:bold; font-size: 15px; padding: 4px 4px 4px 4px;">
-Biller Code: [$BPAY_BILLER_CODE$]<br>
+Biller Code: [@config:BPAY_BILLER_CODE@]<br>
 Ref: [@bpay_crn@]</td></tr></table></td></tr>
 <tr><td colspan="2"><span style="font-weight:bold; font-size: 13px;">Telephone & Internet Banking - BPAY</span><br>
 Contact your bank, credit union or building sociey to make this payment from your
@@ -110,13 +110,13 @@ cheque, savings or credit card account. More info: <a href="http://www.bpay.com.
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'PayPal'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-	<tr><td valign="top"><img src="[$imageurl$]/cart/paymentmethods/paypal.gif"></td>
+	<tr><td valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/paypal.gif"></td>
 		<td><strong>PLEASE NOTE!</strong><br />
 YOUR ORDER WILL NOT BE PROCESSED UNTIL WE RECEIVE YOUR PAYPAL PAYMENT.<br></td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
-[$company_name$] Account
+[@config:company_name@] Account
 	<!--##[%END DATA%]##-->
 <!--##[%END PARAM%]
 [%PARAM *ifempty%]##-->
@@ -154,9 +154,9 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <tr>
 	<td>[@SKU@]</td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td>[@qty@]</td>
 	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
@@ -186,42 +186,42 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Shipping</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Discount</b></td>
 		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'surcharge_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Surcharge</b> (<!--##[%format type:'percent' dc:'2'%]##-->[@surcharge_percent@]<!--##[%END format%]##-->)</td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Order Total</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'credit_apply' if:'>' value:'0' %]##-->
-	<tr><td colspan="2" style="border-bottom: 2px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 2px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Amount Paid</b></td>
 		<td align="right"><span class="text-danger"><b>-<!--##[%format type:'currency'%]##-->[@amount_paid@]<!--##[%END format%]##--></b></span></td></tr>
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr id="balance" style="display:none;"><td><b>Balance Due</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@owed_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 </table></td></tr>
 </table></td></tr>
 </table>
@@ -261,9 +261,9 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <tr>
 	<td>[@SKU@]</td>
 	<td>[@model@] <i>[@extra@]</i>
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_RENTAL_ID$]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_EBAY_ID$]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[$AFF_FREE_ID$]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
 	<td>[@qty@]</td>
 	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
@@ -294,29 +294,29 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[$imageurl$]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Shipping</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Total Discount</b></td>
 		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
-	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 	<tr><td><b>Order Total</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
-	<tr><td colspan="2"><img src="[$imageurl$]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
+	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 </table></td></tr>
 </table></td></tr>
 </table>
@@ -328,5 +328,5 @@ NO PAYMENT METHOD IS SELECTED!<br>
 </table>
 <div class="spacer"></div>
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]"><img alt="Go Back" src="[$imageurl$]/template/cart/back.gif"></a>
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a>
 </center>

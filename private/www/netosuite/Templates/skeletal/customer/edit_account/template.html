@@ -3,7 +3,7 @@
 
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
-		<li><a href="[$home_url$]">Home</a></li>
+		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 		<li><a href="#">Edit My Account</a></li>
 	</ul>
@@ -12,7 +12,7 @@
 
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%END URL%]">
 	<div class="page-header">
-		<h1>Edit Your [$company_name$] Account Details</h1>
+		<h1>Edit Your [@config:company_name@] Account Details</h1>
 		<!-- This block will give them a description on what fields are missing -->
 		<!--##[%DATA id:'updated' if:'=' value:'0'%]##-->
 		<p>Please complete all the required fields below before continuing.</p>
@@ -309,7 +309,7 @@ getlocation();
 				<p class="help-block">(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)</p>
 				<hr>
 				<label>Dropshipping Company Logo (Will be displayed on header of packing slips, labels etc)</label>
-				<img src="[%asset_url type:'user' id:'[@username@]' default:'[$imageurl$]/pixel.gif'%][%END asset_url%]?[$current_timestamp$]"><br>
+				<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:imageurl@]/pixel.gif'%][%END asset_url%]?[@config:current_timestamp@]"><br>
 				<input type="file" name="logo">
 				<p class="help-block">(Instructions: Click browse to search
 					your local computer for your company logo. Your logo

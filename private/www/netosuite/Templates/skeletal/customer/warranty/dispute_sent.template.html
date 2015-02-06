@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 <ul class="breadcrumb"> 
-<li><a href="[$home_url$]">Home</a></li>
+<li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Resolution Centre</a></li>
 </ul>
@@ -20,7 +20,7 @@ function cancalAction() {
 }
 </script>
 
-<p>Your <a href="[%URL page:'account' type:'warranty' id:'[@dispute_id@]'%][%END URL%]">dispute #[@dispute_id@]</a> has been sent to [$company_name$]. You can track the progress of your dispute at any time from within your account.</p>
+<p>Your <a href="[%URL page:'account' type:'warranty' id:'[@dispute_id@]'%][%END URL%]">dispute #[@dispute_id@]</a> has been sent to [@config:company_name@]. You can track the progress of your dispute at any time from within your account.</p>
 
 
 <div class="row btn-stack">	
@@ -29,7 +29,7 @@ function cancalAction() {
 </div>
 
 <div class="col-xs-12 col-md-3 col-md-offset-6">
-<a class="btn btn-block btn-success" href="[$homeurl$]">Return Home</a>
+<a class="btn btn-block btn-success" href="[@config:homeurl@]">Return Home</a>
 </div>
 
 </div>
