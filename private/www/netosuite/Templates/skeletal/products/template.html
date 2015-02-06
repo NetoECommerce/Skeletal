@@ -382,6 +382,12 @@
 									<i class="fa fa-star-o"></i>
 								[%/ WHILE%]
 								([@score@])
+								[%IF [@review_response@]%]
+									<br /><br />
+									<blockquote>
+										<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%NOHTML%][@review_response@][%/NOHTML%]</span>
+									</blockquote>
+								[%/IF%]
 							</blockquote>
 						</div>
 						[%/PARAM%]
