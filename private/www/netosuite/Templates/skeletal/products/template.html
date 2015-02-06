@@ -389,16 +389,13 @@
 						[%/PARAM%]
 					[%/THUMB_LIST%]
 					[%if [@reviews@] > 0%]
-						[%PARAM if_true%]
-							<p>
-								<a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a>
-							</p>
-						[%/PARAM%]
-						[%PARAM if_false%]
-							<h4>Be The First To Review This Product!</h4>
-							<p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
-							<p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a></p>
-						[%/PARAM%]
+						<p>
+							<a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a>
+						</p>
+					[%else%]
+						<h4>Be The First To Review This Product!</h4>
+						<p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
+						<p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a></p>
 					[%/if%]
 					</div><!--/.tab-pane-->
 					[%/if%]
