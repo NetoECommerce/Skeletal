@@ -355,12 +355,14 @@
 					<!--##[%END IF%]##-->
 					[%if [@config:show_product_reviews@]%]
 					<div class="tab-pane" id="reviews">
-						<div class="lead" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
-							<span itemprop="itemreviewed">[@name@]</span> has a rating of
-							<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
-								<span itemprop="average">[@rating@]</span>/<span itemprop="best">5</span> based on <span itemprop="votes">[@reviews@]</span> reviews.
-							</span>
-						</div>
+						[%if [@reviews@] > 0%]
+							<div class="lead" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+								<span itemprop="itemreviewed">[@name@]</span> has a rating of
+								<span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
+									<span itemprop="average">[@rating@]</span>/<span itemprop="best">5</span> based on <span itemprop="votes">[@reviews@]</span> reviews.
+								</span>
+							</div>
+						[%/if%]
 					<!--##[%THUMB_LIST type:'product_reviews' limit:'5'%]
 						[%PARAM filter_1%][@SKU@][%END PARAM%]
 						[%PARAM *body%]##-->
