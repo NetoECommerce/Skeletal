@@ -1,18 +1,15 @@
-<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+[%load_template file:"includes/sidebar.template.html"/%]
 	[%if [@config:show_home_ads@]%]
-		<!--##[%ADVERT type:'text' template:'carousel' limit:'10' ad_group:''%]
-			[%PARAM *header%]##-->
+		[%ADVERT type:'text' template:'carousel' limit:'10' ad_group:''%]
+			[%PARAM *header%]
 				<div id="myCarouselBanner" class="carousel slide">
-					<!-- Indicators -->
 					<ol class="carousel-indicators">
-						<!--##[%SITE_VALUE id:'counter' type:'load'%][%END SITE_VALUE%]##-->
+						[%SITE_VALUE id:'counter' type:'load'%][%END SITE_VALUE%]
 					</ol>
-					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
-			<!--##[%END PARAM%]
-			[%PARAM *footer%]##-->
+			[%END PARAM%]
+			[%PARAM *footer%]
 					</div>
-					<!-- Controls -->
 					<a class="left carousel-control" href="#myCarouselBanner" data-slide="prev">
 						<span class="fa fa-chevron-left"></span>
 					</a>
@@ -20,36 +17,36 @@
 						<span class="fa fa-chevron-right"></span>
 					</a>
 				</div>
-			<!--##[%END PARAM%]
-			[%PARAM *ifempty%]##-->
+			[%END PARAM%]
+			[%PARAM *ifempty%]
 				<a class="neto-placeholder neto-placeholder-rotator btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" href="[$home_url$]/_cpanel?item=adw&page=view&id=New&plan_id=4">
 					Click to add a banner<br/>
 				</a>
-			<!--##[%END PARAM%]
-		[%END ADVERT%]##-->
+			[%END PARAM%]
+		[%END ADVERT%]
 	[%/if%]
 	<hr>
 	<div id="homepage-content">[@page_content@]</div>
 	[%if [@config:show_home_ads@]%]
-		<!--##[%ADVERT type:'product' limit:'8' template:'' ad_group:''%]
-			[%PARAM *header%]##-->
+		[%ADVERT type:'product' limit:'8' template:'' ad_group:''%]
+			[%PARAM *header%]
 				<hr />
 				<div class="row">
-			<!--##[%END PARAM%]##-->
-			<!--##[%PARAM footer%]##-->
+			[%END PARAM%]
+			[%PARAM footer%]
 				</div>
-			<!--##[%END PARAM%]
-			[%PARAM *ifempty%]##-->
-				<!--##[%RANDOM_PRODUCTS category:'0' template:'' limit:'8'%]
-					[%PARAM *header%]##-->
+			[%END PARAM%]
+			[%PARAM *ifempty%]
+				[%RANDOM_PRODUCTS category:'0' template:'' limit:'8'%]
+					[%PARAM *header%]
 						<hr />
 						<div class="row">
-					<!--##[%END PARAM%]
-					[%PARAM *footer%]##-->
+					[%END PARAM%]
+					[%PARAM *footer%]
 						</div>
-					<!--##[%END PARAM%]
-				[%END RANDOM_PRODUCTS%]##-->
-			<!--##[%END PARAM%]
-		[%END ADVERT%]##-->
+					[%END PARAM%]
+				[%END RANDOM_PRODUCTS%]
+			[%END PARAM%]
+		[%END ADVERT%]
 	[%/if%]
 </div>
