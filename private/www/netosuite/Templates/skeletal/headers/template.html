@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="keywords" content="[%url_info name:'meta_keywords'%][%end url_info%]"/>
-<meta name="description" content="[%url_info name:'meta_description'%][%end url_info%]"/>
+<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
+<meta name="description" content="[%url_info name:'meta_description'/%]"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta itemprop="currency" content="AUD">
-<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][%asset_url type:'product' id:'[@SKU@]' thumb:'full'%][%end asset_url%][%ELSEIF [@config:current_page_type@] eq 'content'%][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%end ASSET_url%][%ELSE%]/assets/website_logo.png[%end if%]"/>
-<meta property="og:title" content="[%url_info name:'page_title'%][%end url_info%]"/>
+<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%]/assets/website_logo.png[%/if%]"/>
+<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
 <meta property="og:site_name" content="[@config:website_name@] "/>
 [@config:GOOGLE_VERIFICATION_CODE@]
-<title>[%url_info name:'page_title'%][%end url_info%]</title>
+<title>[%url_info name:'page_title'/%]</title>
 <link rel="canonical" href="[@config:canonical_url@]"/>
 <link rel="shortcut icon" href="[@config:homeurl@]/assets/favicon_logo.png"/>
-<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%end ntheme_asset%]" media="all"/>
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%end ntheme_asset%]" media="all"/>
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]plugins/fancybox/jquery.fancybox.css[%end ntheme_asset%]"/>
+<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="//cdn.neto.com.au/assets/neto-cdn/font-awesome/4.3.0/css/font-awesome.min.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="//cdn.neto.com.au/assets/neto-cdn/fancybox/2.1.5/jquery.fancybox.css"/>
 <!--[if lte IE 8]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
-<!--##[%tracking_code type:'Declaration'%][%end tracking_code%]##-->
+[%tracking_code type:'Declaration'/%]
 </head>
-<body id="n_[@config:current_page_type@]" class="[@CONFIG:TEMPLATELANG@]">
+<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <div class="container wrapper-header">
 	<div class="row row-padded">
 		<div class="col-xs-12 col-sm-4 wrapper-logo">
@@ -35,7 +36,7 @@
 				<form name="productsearch" method="get" action="/">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
-						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="text"/>
+						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="text"/>
 						<span class="input-group-btn">
 							<button type="submit" value="Search" class="btn btn-default"><i class="fa fa-search"></i></button>
 						</span>
@@ -45,8 +46,8 @@
 		</div>
 		<div class="hidden-xs col-sm-4 text-right">
 			<div id="header-cart" class="btn-group">
-				<a href="[%url page:'checkout' type:'cart'%][%end url%]" class="btn btn-default" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count"><!--##[%format type:'number' dp:'0'%][%CART id:'total_items'%][%end CART%][%end format%]##--></span> Items
+				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
+					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
 				</a>
 				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -67,8 +68,8 @@
 						Menu</a></li>
 						<li><a href="/products"><span class="icon"><i class="fa fa-gift"></i></span><br>
 						Products</a></li>
-						<li><a href="[%url page:'checkout' type:'cart'%][%end url%]"><span class="icon"><i class="fa fa-shopping-cart"></i></span><br>
-						Cart (<span rel="a2c_item_count"><!--##[%format type:'number' dp:'0'%][%CART id:'total_items'%][%end CART%][%end format%]##--></span>)</a></li>
+						<li><a href="[%url page:'checkout' type:'cart'/%]"><span class="icon"><i class="fa fa-shopping-cart"></i></span><br>
+						Cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)</a></li>
 						<li><a href="/_myacct/"><span class="icon"><i class="fa fa-user"></i></span><br>
 						Account</a></li>
 					</ul>
@@ -76,73 +77,70 @@
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
 					<ul class="nav navbar-nav">
 						[%cache type:'menu' id:'header-content-menu'%]
-							<!--##[%menu id:'web_header'%]
-								[%param *level_1%]##-->
-									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]" [%data id:'next_level' if:'ne' value:''%]class="dropdown-toggle"[%end data%]>[@name@] <!--##[%data id:'next_level' if:'ne' value:''%]##--><span class="caret"></span><!--##[%end data%]##--></a>
-										<!--##[%data id:'next_level' if:'ne' value:''%]##-->
+							[%menu id:'web_header'%]
+								[%param *level_1%]
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]" [%if [@next_level@]%]class="dropdown-toggle"[%/if%]>[@name@] [%if [@next_level@]%]<span class="caret"></span>[%/if%]</a>
+										[%if [@next_level@]%]
 											<ul class="dropdown-menu">
 												[@next_level@]
 											</ul>
-										<!--##[%end data%]##-->
+										[%/if%]
 									</li>
-									<!--##[%end param%]
-								[%param *level_2%]##-->
-									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
-										<!--##[%data id:'next_level' if:'ne' value:''%]##-->
+									[%/param%]
+								[%param *level_2%]
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
+										[%if [@next_level@]%]
 											<ul class="dropdown-menu dropdown-menu-horizontal">
 												[@next_level@]
 											</ul>
-										<!--##[%end data%]##-->
+										[%/if%]
 									</li>
-									<!--##[%end param%]
-								[%param *level_3%]##-->
-									<li class="[%data id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%end data%]"> <a href="[@url@]">[@name@]</a>
-										<!--##[%data id:'next_level' if:'ne' value:''%]##-->
+									[%/param%]
+								[%param *level_3%]
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]">[@name@]</a>
+										[%if [@next_level@]%]
 											<ul class="dropdown-menu dropdown-menu-horizontal">
 												[@next_level@]
 											</ul>
-										<!--##[%end data%]##-->
+										[%/if%]
 									</li>
-								<!--##[%end param%]
-							[%end menu%]##-->
+								[%/param%]
+							[%/menu%]
 						[%/ cache%]
 					</ul>
 					<form class="navbar-form visible-xs" name="productsearch" method="get" action="/">
 						<input type="hidden" name="rf" value="kw" />
 						<div class="input-group">
-							<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%end filter%][%/nohtml%]" autocomplete="off" name="kw" type="text"/>
+							<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" autocomplete="off" name="kw" type="text"/>
 							<span class="input-group-btn">
 								<button type="submit" value="Search" class="btn btn-loads btn-default" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"><i class="fa fa-search"></i></button>
 							</span>
 						</div>
 					</form>
 					<ul class="nav navbar-nav navbar-right hidden-xs">
-						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'%][%end url%]" [%data id:'next_level' if:'ne' value:''%]class="dropdown-toggle" data-toggle="dropdown"[%end data%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">[%if [@user:bill_first_name@]%][@user:bill_first_name@]'s[%else%]My[%/ if%]&nbsp;Account</span> <span class="caret"></span></a>
+						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">[%if [@user:bill_first_name@]%][@user:bill_first_name@]'s[%else%]My[%/ if%]&nbsp;Account</span> <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
-								<li><a href="[%url page:'account'%][%end url%]">Account Home</a></li>
-								<li><a href="[%url page:'account'%][%end url%]#orders">Orders</a></li>
+								<li><a href="[%url page:'account'/%]">Account Home</a></li>
+								<li><a href="[%url page:'account'/%]#orders">Orders</a></li>
 								[%if [@config:allow_user_quote@]%]
-								<li><a href="[%url page:'account'%][%end url%]#quotes">Quotes</a></li>
+								<li><a href="[%url page:'account'/%]#quotes">Quotes</a></li>
 								[%/ if%]
-								<li><a href="[%url page:'account' type:'payrec'%][%end url%]">Pay Invoices</a></li>
-								<li><a href="[%url page:'account' type:'favourites'%][%end url%]">Favourites</a></li>
+								<li><a href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
+								<li><a href="[%url page:'account' type:'favourites'/%]">Favourites</a></li>
 								[%if [@config:show_wishlist@]%]
-								<li><a href="[%url page:'account' type:'wishlist'%][%end url%]">Wishlists</a></li>
+								<li><a href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
 								[%/if%]
-								<li><a href="[%url page:'account' type:'warranty'%][%end url%]">Resolution Centre</a></li>
-								<li><a href="[%url page:'account' type:'edit_account'%][%end url%]">Edit My Details</a></li>
-								<li><a href="[%url page:'account' type:'edit_address'%][%end url%]">Edit My Address Book</a></li>
+								<li><a href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
+								<li><a href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
+								<li><a href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
 								<li class="divider"></li>
-								<!--##[%user id:'username' if:'ne' value:''%]
-									[%param if_true%]##-->
-										<li> <a href="[%url page:'account' type:'edit_pwd'%][%end url%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
-										<li> <a href="[%url page:'account' type:'logout'%][%end url%]"><i class="fa fa-off"></i> Log Out</a> </li>
-									<!--##[%end param%]
-									[%param if_false%]##-->
-										<li> <a href="[%url page:'account' type:'login'%][%end url%]" title="Login">Login</a> </li>
-										<li> <a href="[%url page:'account' type:'register'%][%end url%]" title="Register">Register</a> </li>
-									<!--##[%end param%]
-								[%end user%]##-->
+								[%if [@user:username@]%]
+									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
+									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log Out</a> </li>
+								[%else%]
+									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
+									<li> <a href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
+								[%/if%]
 							</ul>
 						</li>
 					</ul>

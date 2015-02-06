@@ -4,15 +4,20 @@
 		<!--##[%IF [@subtitle@]%]##-->
 		<h3 class="text-muted">[@subtitle@]</h3>
 		<!--##[%END IF%]##-->
-		<div class="wrapper-share-button">
-			<a class="addthis_button btn btn-default btn-xs" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=xa-5282cbb6476f74a0" target="_blank">
-				<strong>Share: </strong>
-				<i class="fa fa-facebook-square text-facebook"></i>
+		<div class="dropdown">
+			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+				Share: <i class="fa fa-facebook-square text-facebook"></i>
 				<i class="fa fa-twitter-square text-twitter"></i>
-				<i class="fa fa-google-plus-square text-google-plus"></i>
 				<i class="fa fa-pinterest-square text-pinterest"></i>
-				<i class="fa fa-tumblr-square text-tumblr"></i>
-			</a>
+				<i class="fa fa-google-plus-square text-google-plus"></i>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>
+			</ul>
 		</div>
 	</div>
 	<!--##[%IF ![@has_child@] || [@has_variation@]%]##-->

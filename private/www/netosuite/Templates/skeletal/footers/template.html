@@ -1,5 +1,5 @@
 	</div>
-</div><!-- /#main-content -->
+</div>
 <div class="wrapper-footer">
 	<div class="container">
 		<div class="row">
@@ -28,19 +28,19 @@
 			<div class="col-xs-12 col-sm-4">
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
-				<p>Subscribe to our newsletter:</p>
-				<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]">
-					<input type="hidden" name="list_id" value="1">
-					<input type="hidden" name="opt_in" value="y">
-					<div class="input-group">
-						<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required/>
-						<input name="inp-submit" type="hidden" value="y" />
-						<input name="inp-opt_in" type="hidden" value="y" />
-						<span class="input-group-btn">
-							<input class="btn btn-default" type="submit" value="Subscribe" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"/>
-						</span>
-					</div>
-				</form>
+					<p>Subscribe to our newsletter:</p>
+					<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]">
+						<input type="hidden" name="list_id" value="1">
+						<input type="hidden" name="opt_in" value="y">
+						<div class="input-group">
+							<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required/>
+							<input name="inp-submit" type="hidden" value="y" />
+							<input name="inp-opt_in" type="hidden" value="y" />
+							<span class="input-group-btn">
+								<input class="btn btn-default" type="submit" value="Subscribe" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"/>
+							</span>
+						</div>
+					</form>
 				[%/if%]
 				<ul class="list-inline list-social">
 					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank"><i class="fa fa-envelope"></i></a></li>
@@ -171,14 +171,12 @@
 	</div>
 </div>
 <!-- Required Neto Scripts - DO NOT REMOVE -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="[%ntheme_asset%]plugins/fancybox/jquery.fancybox.pack.js[%/ntheme_asset%]"></script>
+<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 [%NETO_JS html:'1' id:'main' /%]
-<script type="text/javascript" src="[%ntheme_asset%]js/bootstrap.min.js[%/ntheme_asset%]"></script>
+<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/bootstrap/3.2.0/bootstrap.min.js"></script>
 <script type="text/javascript" src="[%ntheme_asset%]js/custom.js[%/ntheme_asset%]"></script>
-<!-- Plugin Scripts -->
-<script type="text/javascript" src="[%ntheme_asset%]plugins/jquery_ui/js/jquery-ui-1.8.18.custom.min.js[%/ntheme_asset%]"></script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5282cbb6476f74a0" async></script>
+<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jquery_ui/1.11.1/js/jquery-ui-1.8.18.custom.min.js"></script>
 [%SITE_VALUE id:'footer_javascript' type:'load'/%]
 <!-- Analytics -->
 [%load_template file:"trackingcode/VisitorTracking.html"/%]
