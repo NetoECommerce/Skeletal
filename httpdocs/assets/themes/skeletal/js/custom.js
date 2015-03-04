@@ -19,13 +19,6 @@
 				'image_rel': 'itmimg'
 			});
 
-			$("a.notify_popup").unbind();
-				$("a.notify_popup").fancybox({
-				'transitionIn'  :   'elastic',
-				'transitionOut' :   'elastic',
-				'padding': 0
-			});
-
 			$(".disp_ajax_templ").unbind();
 			$(".disp_ajax_templ").change(function() {
 				var sku = $(this).val();
@@ -110,12 +103,6 @@ $(document).ready(function() {
 		'height': 650
 	});
 
-	// Quick View Popup From Item Thumbnails
-	$(".quickview").fancybox({
-		'width' : 850,
-		'height': 650
-	});
-
 	// Jquery Ui Date Picker
 	$(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
 	$.initPageFuncs();
@@ -131,13 +118,6 @@ $(".btn-loads").click(function(){
 	setTimeout(function(){
 		$(pendingbutton).button("reset");
 	},3000);
-});
-
-// Out of Stock Notification
-$(document).ready(function() {
-	$(".notifymodalactivate").fancybox({
-		'type': 'inline', // tell the script to create an iframe
-	});
 });
 
 // Fancybox
