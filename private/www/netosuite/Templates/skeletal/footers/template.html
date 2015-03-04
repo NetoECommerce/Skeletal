@@ -172,11 +172,12 @@
 </div>
 <!-- Required Neto Scripts - DO NOT REMOVE -->
 <script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+[%cdn_asset html:'1' type:'js' library:'jquery' version:'1.8.3'%]jquery.min.js[%/cdn_asset%]
+[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
 [%NETO_JS html:'1' id:'main' /%]
-<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/bootstrap/3.2.0/bootstrap.min.js"></script>
+[%cdn_asset html:'1' type:'js' library:'bootstrap' version:'3.2.0'%]bootstrap.min.js[%/cdn_asset%]
 <script type="text/javascript" src="[%ntheme_asset%]js/custom.js[%/ntheme_asset%]"></script>
-<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jquery_ui/1.11.1/js/jquery-ui-1.8.18.custom.min.js"></script>
+[%cdn_asset html:'1' type:'js' library:'jquery_ui' version:'1.11.1'%]js/jquery-ui-1.8.18.custom.min.js[%/cdn_asset%]
 [%SITE_VALUE id:'footer_javascript' type:'load'/%]
 <!-- Analytics -->
 [%load_template file:"includes/npopup.template.html"/%]
