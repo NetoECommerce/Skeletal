@@ -25,7 +25,7 @@ Copy the following ``skeletal`` folders to the same location on the server:
 
 ## Documentation
 
-Documentation for designers and developers can be found [here](http://docs.neto.com.au/designer-docs).
+Documentation for designers and developers can be found [here](http://docs.neto.com.au/designer-documentation).
 
 As Skeletal is built almost entirely upon Bootstrap 3, the [Bootstrap documentation](http://getbootstrap.com) is perhaps the most valuable source of documentation for a web designer who isn't looking to build complex functionality.
 
