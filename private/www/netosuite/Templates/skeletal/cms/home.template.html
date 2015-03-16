@@ -1,52 +1,52 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 	[%if [@config:show_home_ads@]%]
-		[%ADVERT type:'text' template:'carousel' limit:'10' ad_group:''%]
-			[%PARAM *header%]
-				<div id="myCarouselBanner" class="carousel slide">
+		[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
+			[%param *header%]
+				<div id="homepageCarousel" class="carousel slide">
 					<ol class="carousel-indicators">
-						[%SITE_VALUE id:'counter' type:'load'%][%END SITE_VALUE%]
+						[%site_value id:'counter' type:'load'/%]
 					</ol>
 					<div class="carousel-inner">
-			[%END PARAM%]
-			[%PARAM *footer%]
+			[%/param%]
+			[%param *footer%]
 					</div>
-					<a class="left carousel-control" href="#myCarouselBanner" data-slide="prev">
+					<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
 						<span class="fa fa-chevron-left"></span>
 					</a>
-					<a class="right carousel-control" href="#myCarouselBanner" data-slide="next">
+					<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
 						<span class="fa fa-chevron-right"></span>
 					</a>
 				</div>
-			[%END PARAM%]
-			[%PARAM *ifempty%]
+			[%/param%]
+			[%param *ifempty%]
 				<a class="neto-placeholder neto-placeholder-rotator btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" href="[@config:home_url@]/_cpanel?item=adw&page=view&id=New&plan_id=4">
 					Click to add a banner<br/>
 				</a>
-			[%END PARAM%]
-		[%END ADVERT%]
+			[%/param%]
+		[%/advert%]
 	[%/if%]
 	<hr>
 	<div id="homepage-content">[@page_content@]</div>
 	[%if [@config:show_home_ads@]%]
-		[%ADVERT type:'product' limit:'8' template:'' ad_group:''%]
-			[%PARAM *header%]
+		[%advert type:'product' limit:'8' template:'' ad_group:''%]
+			[%param *header%]
 				<hr />
 				<div class="row">
-			[%END PARAM%]
-			[%PARAM footer%]
+			[%/param%]
+			[%param footer%]
 				</div>
-			[%END PARAM%]
-			[%PARAM *ifempty%]
-				[%RANDOM_PRODUCTS category:'0' template:'' limit:'8'%]
-					[%PARAM *header%]
+			[%/param%]
+			[%param *ifempty%]
+				[%random_products category:'0' template:'' limit:'8'%]
+					[%param *header%]
 						<hr />
 						<div class="row">
-					[%END PARAM%]
-					[%PARAM *footer%]
+					[%/param%]
+					[%param *footer%]
 						</div>
-					[%END PARAM%]
-				[%END RANDOM_PRODUCTS%]
-			[%END PARAM%]
-		[%END ADVERT%]
+					[%/param%]
+				[%/random_products%]
+			[%/param%]
+		[%/advert%]
 	[%/if%]
 </div>
