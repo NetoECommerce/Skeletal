@@ -1,15 +1,15 @@
-<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+[%load_template file:'cms/includes/sidebar.template.html'/%]
 <!--##[%breadcrumb%]
 	[%param *header%]##-->
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<!--##[%end param%]
-		[%param *body%]##--> 
+		[%param *body%]##-->
 		<li><a href="[@url@]">[@name@]</a></li>
-		<!--##[%END param%] 
+		<!--##[%END param%]
 		[%param *body_current%]##-->
 		<li>[@name@]</li>
-		<!--##[%END param%] 
+		<!--##[%END param%]
 		[%param *footer%]##-->
 	</ul>
 	<!--##[%end param%]
@@ -17,11 +17,11 @@
 <h1>[@content_name@]</h1>
 <p class="muted">
 	<!--##[%IF [@content_author@]%]##-->
-		Author: [@content_author@] 
+		Author: [@content_author@]
 	<!--##[%END IF%]##-->
-	<!--##[%IF [@date_posted@] != 0000-00-00 00:00:00%]##--> 
+	<!--##[%IF [@date_posted@] != 0000-00-00 00:00:00%]##-->
 		Date Posted:<!--##[%FORMAT type:'date'%]##-->[@date_posted@]<!--##[%END FORMAT%]##-->
-	<!--##[%END IF%]##--> 
+	<!--##[%END IF%]##-->
 </p>
 <img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]" class="pull-right"/>
 <img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]"  class="pull-right"/>
@@ -55,7 +55,7 @@
 	[%PARAM footer%]##-->
 		</div>
 	<!--##[%END PARAM%]
-[%END CATEGORYMENU%]##-->  
+[%END CATEGORYMENU%]##-->
 <!--#Start Column Right# ##-->
 </div>
 <!--# End Column Right# ##-->
