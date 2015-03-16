@@ -1,4 +1,4 @@
-<div id="[@count@]" class="item [%DATA id:'count' if:'==' value:'0'%]active[%/DATA%]">
+<div id="[@count@]" class="item [%if [@count@] eq '0'%]active[%/if%]">
 	<a href="[@url@]" target="[@target@]">
 		<img src="[@config:secure_home_url@][%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%NTHEME_ASSET%]img/default_product.gif[%/NTHEME_ASSET%][%end param%][%/asset_url%]" class="home-banner-item" alt="[@headline@]" border="0" >
 		[%if [@headline@] or [@description@]%]
