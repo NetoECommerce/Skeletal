@@ -5,7 +5,6 @@
 <meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
 <meta name="description" content="[%url_info name:'meta_description'/%]"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta itemprop="currency" content="AUD">
 <meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%]/assets/website_logo.png[%/if%]"/>
 <meta property="og:title" content="[%url_info name:'page_title'/%]"/>
 <meta property="og:site_name" content="[@config:website_name@] "/>
