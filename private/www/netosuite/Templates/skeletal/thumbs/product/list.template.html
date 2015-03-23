@@ -14,6 +14,7 @@
 				</div>
 				<div class="col-xs-3 text-right">
 					<p class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 						<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
 						<!--##[%IF [@inpromo@]%]##-->
 							<strong>Now</strong> <span class="text-success"><!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##--></span>
