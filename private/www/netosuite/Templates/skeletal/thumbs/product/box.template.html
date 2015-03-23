@@ -15,7 +15,8 @@
 					<!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##-->
 				</a>
 			</h5>
-			<p class="price">
+			<p class="price" itemprop="offers">
+			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
 				<!--##[%IF [@inpromo@]%]##-->
 					<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##--> 
