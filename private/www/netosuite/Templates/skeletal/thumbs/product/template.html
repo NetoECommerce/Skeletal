@@ -14,6 +14,7 @@
 				<!--##[%ELSE%]##-->
 					<span itemprop="price"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>
 				<!--##[%END IF%]##-->
+				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			</p>
 			<!--# BUYING OPTIONS # ##-->
 			<form class="form-inline buying-options">
