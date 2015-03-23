@@ -22,6 +22,7 @@
 	</div>
 	<!--##[%IF ![@has_child@] || [@has_variation@]%]##-->
 		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing col-sm-4">
+			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			<!--##[%IF ![@inpromo@]%]##-->
 				<div class="productprice productpricetext" itemprop="price">
 					<!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##-->
