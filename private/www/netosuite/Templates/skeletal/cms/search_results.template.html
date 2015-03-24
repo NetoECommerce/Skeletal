@@ -46,8 +46,6 @@
 			[%filter id:'keywords' if:'ne' value:''%][%nohtml%][%filter id:'keywords'/%][%/nohtml%][%/filter%]
 		[%/if%]
 	</h1>
-	[@brand_description@]
-	[@description@]
 [%/filter%]
 [%filter id:'keywords' if:'ne' value:''%]
 	[%thumb_list type:'products' limit:'[@config:THUMB_LIMIT@]'%]
@@ -131,12 +129,7 @@
 		[%param *ifempty%]
 			<div class="row">
 				<div class="col-xs-12">
-					[%filter id:'keywords' if:'ne' value:''%]
 						<p>Search was unable to find any product results for '[%nohtml%][%filter id:'keywords'%][%/filter%][%/nohtml%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
-					[%/filter%]
-					[%filter id:'keywords' if:'eq' value:''%]
-						<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
-					[%/filter%]
 					<hr />
 				</div>
 			</div>
@@ -151,6 +144,4 @@
 	[%/filter%]
 </div>
 [%/filter%]
-[@content_description2@]
-[@content_description3@]
 </div>
