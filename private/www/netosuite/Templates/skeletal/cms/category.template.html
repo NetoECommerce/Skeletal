@@ -29,12 +29,14 @@
 		<!--##[%FILTER ID:'keywords' if:'ne' value:''%]##--><!--##[%NOHTML%][%FILTER ID:'keywords'%][%END FILTER%][%END NOHTML%]##--><!--##[%END FILTER%]##-->
 	<!--##[%END IF%]##-->
 </h1>
-<p>
-	[@content_short_description1@]
-	[@content_short_description2@]
-	[@content_short_description3@]
-</p>
+[%IF [@current_page@] == 1%]
+	<p>
+		[@content_short_description1@]
+		[@content_short_description2@]
+		[@content_short_description3@]
+	</p>
 	[@content_description1@]
+[%/IF%]
 <hr/>
 <!--##[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
 	[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%END VIEWBY%][%END PARAM%]
