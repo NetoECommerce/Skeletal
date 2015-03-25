@@ -35,49 +35,47 @@
 		[@content_description2@]
 		[@content_description3@]
 	</p>
-	<div style="width:100%; overflow:hidden;">
-		<form>
-			<div class="form-group">
-				<label>Your Post Code or City</label>
-				<input type="text" id="geo_zip" class="form-control" value="[%NOHTML%][%SESSION id:'ship_zip'%][%/SESSION%][%/NOHTML%]"/>
-			</div>
-			<div class="form-group">
-				<label>Your Country</label>
-				<select id="geo_country" class="form-control">
-					[%countries%]
-						[%PARAM *body%]
-							<option value="[@country_code@]" [%SESSION id:'ship_country' if:'eq' value:'[@ship_country@]'%]selected[%/SESSION%]>[@country_name@]</option>
-						[%/PARAM%]
-					[%/countries%]
-				</select>
-			</div>
-			<div class="form-group">
-				<label>Show Stores/Stockists Within</label>
-				<select id="geo_radius" class="form-control">
-					<option value="1">1 Kilometers</option>
-					<option value="2.5">2.5 Kilometers</option>
-					<option value="5">5 Kilometers</option>
-					<option value="15">15 Kilometers</option>
-					<option value="25" selected>25 Kilometers</option>
-					<option value="50">50 Kilometers</option>
-					<option value="75">75 Kilometers</option>
-					<option value="100">100 Kilometers</option>
-					<option value="200">200 Kilometers</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<button id="geo_search" class="btn btn-default" type="button">Find Stores </button>
-			</div>
-		</form>
-		<table width="100%" cellpadding="0" cellspacing="0" border="0" id="map-table">
-			<tr>
-				<td id="geo_map_pl" valign="top" width="250px">
-					<div id="geo_list"></div>
-				</td>
-				<td valign="top">
-					<div id="geo_map"></div>
-				</td>
-			</tr>
-		</table>
-	</div>
+	<form>
+		<div class="form-group">
+			<label>Your Post Code or City</label>
+			<input type="text" id="geo_zip" class="form-control" placeholder="4000" value=""/>
+		</div>
+		<div class="form-group">
+			<label>Your Country</label>
+			<select id="geo_country" class="form-control">
+				[%countries%]
+					[%PARAM *body%]
+						<option value="[@country_code@]" [%if [@country_code@] eq 'AU'%]selected[%/if%]>[@country_name@]</option>
+					[%/PARAM%]
+				[%/countries%]
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Show Stores/Stockists Within</label>
+			<select id="geo_radius" class="form-control">
+				<option value="1">1 Kilometers</option>
+				<option value="2.5">2.5 Kilometers</option>
+				<option value="5">5 Kilometers</option>
+				<option value="15">15 Kilometers</option>
+				<option value="25" selected>25 Kilometers</option>
+				<option value="50">50 Kilometers</option>
+				<option value="75">75 Kilometers</option>
+				<option value="100">100 Kilometers</option>
+				<option value="200">200 Kilometers</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<button id="geo_search" class="btn btn-default" type="button">Find Stores </button>
+		</div>
+	</form>
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" id="map-table">
+		<tr>
+			<td id="geo_map_pl" valign="top" width="250px">
+				<div id="geo_list"></div>
+			</td>
+			<td valign="top">
+				<div id="geo_map"></div>
+			</td>
+		</tr>
+	</table>
 </div>
