@@ -6182,6 +6182,7 @@ button.close {
 }
 .logo {
   max-width: 100%;
+  margin-top: 10px;
 }
 .header-search,
 #header-cart {
@@ -6978,6 +6979,15 @@ ul.imagelist li .imagethumb {
   font-weight: bold;
   text-transform: uppercase;
 }
+@media (max-width: 335px) {
+  .nMobileNav > li {
+    display: none;
+  }
+  .nMobileNav > li:first-child {
+    display: block;
+    width: 100%;
+  }
+}
 .home-banner-item {
   width: 100%;
 }
@@ -7534,8 +7544,8 @@ h4 {
   .dropdown-hover:hover > .dropdown-menu {
     display: block;
   }
-}
-.wrapper-header > .row:first-child {
-  display: flex;
-  align-items: center;
+  .wrapper-header > .row:first-child {
+    display: flex;
+    align-items: center;
+  }
 }

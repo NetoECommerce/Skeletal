@@ -4,6 +4,7 @@
 // Header
 .logo {
 	max-width: 100%;
+	margin-top: 10px;
 }
 .header-search, #header-cart {
 	margin-top: 20px;
@@ -739,9 +740,19 @@ ul.imagelist li .imagethumb { text-align:center; height: 100px; }
 }
 
 .nav-header {
-padding: 10px 15px;
-font-weight: bold;
-text-transform: uppercase;
+	padding: 10px 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+@media (max-width: 335px) {
+	.nMobileNav > li {
+		display: none;
+		&:first-child {
+			display: block;
+			width: 100%;
+		}
+	}
 }
 
 .home-banner-item {
@@ -1336,8 +1347,8 @@ blockquote h1,h2,h3,h4 {
 	.dropdown-hover:hover>.dropdown-menu {
 		display: block
 	}
-}
-.wrapper-header > .row:first-child {
-	display: flex;
-	align-items: center;
+	.wrapper-header > .row:first-child {
+		display: flex;
+		align-items: center;
+	}
 }

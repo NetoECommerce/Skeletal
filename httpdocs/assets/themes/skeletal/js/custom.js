@@ -140,3 +140,8 @@ $(".js-social-share").on("click", function(e) {
 	e.preventDefault();
 	windowPopup($(this).attr("href"), 500, 300);
 });
+
+$('.nToggleMenu').click(function(){
+	var toggleTarget = $(this).attr('data-target')
+	$(toggleTarget).slideToggle();
+});
