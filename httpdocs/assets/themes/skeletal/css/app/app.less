@@ -1184,7 +1184,7 @@ input[type="search"] {
 	-webkit-appearance: none;
 }
 
-// Fixing issues with inputs. 
+// Fixing issues with inputs.
 .n-wrapper-form-control select,#map_select select {
 	.form-control;
 }
@@ -1358,5 +1358,39 @@ blockquote h1,h2,h3,h4 {
 	.wrapper-header > .row:first-child {
 		display: flex;
 		align-items: center;
+	}
+}
+.table-cart tbody tr td {
+	vertical-align: middle;
+}
+.table-cart .row > div {
+	display: inline-block;
+}
+.table-cart .img-column {
+	max-width: 50px;
+	min-width: 25px
+}
+.table-cart .img-column img {
+	min-width: 30px;
+}
+.table-cart .options-column {
+	max-width: 150px;
+}
+.btn-paypal {
+	color: #222;
+	background-color: #ffc439;
+	border-color: #efb01c;
+}
+.btn-paypal i.fa.fa-coloured-paypal {
+	background-image:url('//cdn.neto.com.au/assets/neto-cdn/skeletal/2.2.0/paymenticons.svg');
+	background-size:60px;
+	width:60px;
+	height:16px;
+	background-position:0px 0px;
+	vertical-align:middle;
+}
+@media (max-width: 768px) {
+	.table-cart .options-column .col-xs-12 {
+		padding: 0px;
 	}
 }
