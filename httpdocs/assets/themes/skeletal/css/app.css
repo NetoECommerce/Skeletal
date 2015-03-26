@@ -7354,7 +7354,8 @@ td.radio h4 {
 input[type="search"] {
   -webkit-appearance: none;
 }
-.n-wrapper-form-control select {
+.n-wrapper-form-control select,
+#map_select select {
   display: block;
   width: 100%;
   height: 34px;
@@ -7372,31 +7373,45 @@ input[type="search"] {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.n-wrapper-form-control select:focus {
+.n-wrapper-form-control select:focus,
+#map_select select:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
-.n-wrapper-form-control select::-moz-placeholder {
+.n-wrapper-form-control select::-moz-placeholder,
+#map_select select::-moz-placeholder {
   color: #777777;
   opacity: 1;
 }
-.n-wrapper-form-control select:-ms-input-placeholder {
+.n-wrapper-form-control select:-ms-input-placeholder,
+#map_select select:-ms-input-placeholder {
   color: #777777;
 }
-.n-wrapper-form-control select::-webkit-input-placeholder {
+.n-wrapper-form-control select::-webkit-input-placeholder,
+#map_select select::-webkit-input-placeholder {
   color: #777777;
 }
 .n-wrapper-form-control select[disabled],
+#map_select select[disabled],
 .n-wrapper-form-control select[readonly],
-fieldset[disabled] .n-wrapper-form-control select {
+#map_select select[readonly],
+fieldset[disabled] .n-wrapper-form-control select,
+fieldset[disabled] #map_select select {
   cursor: not-allowed;
   background-color: #eeeeee;
   opacity: 1;
 }
-textarea.n-wrapper-form-control select {
+textarea.n-wrapper-form-control select,
+textarea#map_select select {
   height: auto;
+}
+#js_pickup_location #map_canvas {
+  max-width: 100%;
+}
+#map_select + #map_canvas {
+  margin-top: 15px;
 }
 .modal-row {
   margin: 0 !important;
