@@ -1,13 +1,12 @@
 <link rel="stylesheet" type="text/css" href="[%NTHEME_ASSET%]css/neto-checkout.css[%END NTHEME_ASSET%]" media="all" />
-[%SITE_VALUE id:'footer_javascript'%]
-	<script type="text/javascript" src="[%NETO_JS id:'checkout'/%]"></script>
-	<script type="text/javascript" language="javascript">
-		$(document).ready(function() {
-			$.checkout_Init({});
-		});
-	</script>
-	[%js_pickup_location/%]
-[%END SITE_VALUE%]
+<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
+<script type="text/javascript" src="[%NETO_JS id:'checkout'%][%END NETO_JS%]"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+	$.checkout_Init({});
+});
+</script>
+<!--##[%END SITE_VALUE%]##-->
 <div class="col-xs-12">
 <div class="page-header">
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
@@ -175,10 +174,10 @@
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_phone">
 						Phone Number
-						[%if [@CONFIG:CHECKOUT_IGNORE_SHIPPHONE@]%]
+						[%IF [@CONFIG:CHECKOUT_IGNORE_SHIPPHONE@]%]
 						[%else%]
 						<div class="small text-danger">Required</div>
-						[%/if%]
+						[%end IF%]
 						</label>
 						<div class="col-xs-12 col-sm-8">
 							<input class="form-control" type="tel" name="bill_phone" id="bill_phone" maxlength="50" value="[@bill_phone@]" />
@@ -186,7 +185,10 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- End Billing Address -->
 			<hr />
+			<!-- Start Shipping Address -->
 			<div class="row">
 				<div class="col-xs-12 col-sm-4">
 					<div class="_step">
@@ -200,53 +202,49 @@
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4">Ship Order To </label>
 								<div class="col-xs-12 col-sm-8">
-									<div class="radio">
+																	<div class="radio">
 										<label>
 											<input name="ship_mode" value="b" type="radio" [%DATA id:'ship_mode' if:'eq' value:'b'%]checked[%END DATA%]/>
 											My billing address
 										</label>
 									</div>
-									<div class="radio">
+
+																	<div class="radio">
 										<label >
 											<input name="ship_mode" value="s" type="radio" [%DATA id:'ship_mode' if:'eq' value:'s'%]checked[%END DATA%]/>
 											A different address
 										</label>
 									</div>
-									[%if [@config:multi_addr_checkout@] eq '1'%]
-										<div class="radio">
-											<label>
-												<input name="ship_mode" value="m" type="radio" [%DATA id:'ship_mode' if:'eq' value:'m'%]checked[%END DATA%]/>
-												Multiple addresses
-											</label>
+
+									<!--##[%CONFIG id:'MULTI_ADDR_CHECKOUT' if:'==' value:'1'%]##-->
+
+									<div class="radio">
+										<label>
+											<input name="ship_mode" value="m" type="radio" [%DATA id:'ship_mode' if:'eq' value:'m'%]checked[%END DATA%]/>
+											Multiple addresses
+										</label>
 										</div>
-									[%/if%]
-									[%if [@config:pickup_warehouse_result_limit@] > '0'%]
-										<div id="_pickup_option" class="radio">
-											<label>
-												<input name="ship_mode" value="p" type="radio" [%DATA id:'ship_mode' if:'eq' value:'p'%]checked[%END DATA%]/>
-												Pickup Location
-											</label>
-										</div>
-									[%/if%]
+
+									<!--##[%END CONFIG%]##-->
 								</div>
 							</div>
 						</div>
 						<div id="shladb_pl">
-							[%if [@user:username@]%]
+
+							<!--##[%USER id:'username' if:'ne' value:''%]##-->
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="shladb_addr">Choose From Your Address Book</label>
 								<div class="col-xs-12 col-sm-8">
 									<select class="form-control" id="shladb_addr">
 										<option value=""></option>
-										[%address_book%]
-											[%param *body%]
-												<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
-											[%/param%]
-										[%/address_book%]
+										<!--##[%address_book%][%PARAM *body%]##-->
+										<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
+										<!--##[%END PARAM%][%END address_book%]##-->
 									</select>
 								</div>
 							</div>
-							[%/if%]
+
+							<!--##[%END USER%]##-->
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="ship_first_name">First Name <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
@@ -269,11 +267,11 @@
 								<label  class="control-label col-xs-12 col-sm-4" for="ship_country">Country <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
 									<select  class="form-control"  name="ship_country" id="ship_country">
-										[%countries%]
-											[%PARAM *body%]
-												<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
-											[%/PARAM%]
-										[%/countries%]
+										<!--##[%countries%]
+										[%PARAM *body%]##-->
+										<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
+										<!--##[%END PARAM%]
+										[%END countries%]##-->
 									</select>
 								</div>
 							</div>
@@ -319,62 +317,58 @@
 					<!-- End Shipping Address -->
 
 					<div id="checkout_shipping" class="checkout_items">
-						[%load_ajax_template id:'shipping_options' type:'cart' template:'shipping_options' preload:"1"/%]
-						[%if [@order_type@] eq 'quote'%]
-							<input type="hidden" name="comment" value="" />
-						[%/if%]
-						[%load_ajax_template id:'voucher_msg' type:'cart' template:'voucher_msg' preload:"1"/%]
-						<div id="_pickup_pl" class="hidden">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title"><i class="fa fa-map-marker"></i> Select a Pickup Location</h3>
-								</div>
-								<div class="panel-body">
-									<div id="js_pickup_location">
-										<input type="hidden" name="pickup_location" id="pickup_location" value="">
-										<div id="map_select"></div>
-										<div id="map_canvas" style="width:500px; height:500px"></div>
+
+						<!--##[%load_ajax_template id:'shipping_options' type:'cart' template:'shipping_options' preload:"1"%][%END load_ajax_template%]##-->
+
+						<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
+						<!--##[%PARAM if_true%]##-->
+						<!--##[%END PARAM%]##-->
+						<!--##[%PARAM if_false%]##-->
+						<input type="hidden" name="comment" value="" />
+						<!--##[%END PARAM%]##-->
+						<!--##[%END DATA%]##-->
+
+						<!--##[%load_ajax_template id:'voucher_msg' type:'cart' template:'voucher_msg' preload:"1"%][%END load_ajax_template%]##-->
+
+						<!--##[%DATA id:'order_type' if:'eq' value:'sales'%]##-->
+						<!--##[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]##-->
+						<div class="form-group">
+							<label class="control-label col-xs-12 col-sm-4" for="dropshipping"> Send invoice with goods?</label>
+							<div class="col-xs-12 col-sm-8">
+							<div class="radio">
+								<label>
+									<input type="radio" name="dropshipping" value="1" [%DATA id:'dropshipping' if:'=' value:'1'%]checked[%END DATA%] />
+									No </label>
 									</div>
-									<div id="js_pickup_error" class="hidden">
-										[@config:pickup_error@]
+									<div class="radio">
+								<label>
+									<input type="radio" name="dropshipping" value="0" [%DATA id:'dropshipping' if:'=' value:'0'%]checked[%END DATA%] />
+									Yes </label>
 									</div>
-								</div>
 							</div>
 						</div>
-						[%if [@order_type@] eq 'sales'%]
-							[%if [@config:ALLOW_DROPSHIP_CHECKOUT@] eq '1'%]
-								<div class="form-group">
-									<label class="control-label col-xs-12 col-sm-4" for="dropshipping"> Send invoice with goods?</label>
-									<div class="col-xs-12 col-sm-8">
-									<div class="radio">
-										<label>
-											<input type="radio" name="dropshipping" value="1" [%DATA id:'dropshipping' if:'=' value:'1'%]checked[%END DATA%] />
-											No </label>
-											</div>
-											<div class="radio">
-										<label>
-											<input type="radio" name="dropshipping" value="0" [%DATA id:'dropshipping' if:'=' value:'0'%]checked[%END DATA%] />
-											Yes </label>
-											</div>
-									</div>
-								</div>
-							[%/if%]
-						[%/if%]
-						[%if [@order_type ne 'quote'%]
-							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="customer_po">Buying this for work?</label>
-								<div class="col-xs-12 col-sm-8">
-									<input class="form-control" type="text" name="customer_po" id="customer_po" maxlength="50" value="[@customer_po@]" placeholder="PO Number"  />
-									<p class="help-block">Enter your purchase order number above</p>
-								</div>
+						<!--##[%END CONFIG%]##-->
+						<!--##[%END DATA%]##-->
+
+						<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
+						<div class="form-group">
+							<label class="control-label col-xs-12 col-sm-4" for="customer_po">Buying this for work?</label>
+							<div class="col-xs-12 col-sm-8">
+								<input class="form-control" type="text" name="customer_po" id="customer_po" maxlength="50" value="[@customer_po@]" placeholder="PO Number"  />
+								<p class="help-block">Enter your purchase order number above</p>
 							</div>
-						[%/if%]
+						</div>
+						<!--##[%END DATA%]##-->
 					</div>
 				</div>
 			</div>
 			<hr />
 			<div class="row">
-			[%if [@order_type@] ne 'quote'%]
+
+			<!-- End Shipping Method -->
+			<!--##[%DATA id:'order_type' if:'ne' value:'quote'%]##-->
+			<!-- Start Payment -->
+
 			<div class="col-xs-12 col-sm-4">
 				<div class="_step">
 					<div class="_step_no"> Step 3. </div>
@@ -382,6 +376,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-8">
+
 				<!--##[%payment_methods type:'[@order_type@]'%]
 			[%PARAM header%]##-->
 				<span class="hidden-md hidden-lg"><br></span>
@@ -573,17 +568,18 @@
 							<p class="form-control-static">[@processor_card_number@] <a href="[%URL page:'checkout' fn:'3rdparty' qs:'payproc=&payclr=y'%][%END URL%]">(Change card)</a></p>
 						</div>
 					</div>
-					[%IF [@processor_require_cvv@] eq 'y'%]
-						<div class="col-xs-12">
-							<div class="form-group">
-								<label>Enter your [@processor_card_brand@] CCV</label>
-								<input type="text" name="card_ccid" class="form-control" />
-								<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
-							</div>
+					<!--##[%IF [@processor_require_cvv@] eq 'y'%]##-->
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label>Enter your [@processor_card_brand@] CCV</label>
+							<input type="text" name="card_ccid" class="form-control" />
+							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
 						</div>
-						<div class="clear"></div>
-					[%END IF%]
+					</div>
+					<div class="clear"></div>
 					<!--##[%END IF%]##-->
+					<!--##[%END IF%]##-->
+					<!-- Start Fancybox explanation of CCV -->
 					<div style="display:none;">
 						<div id="ccv" style="width:600px;"> For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>
 					</div>
@@ -605,30 +601,32 @@
 				<div ref="account" class="_cpy_paydesc alert alert-info"> Your [@config:company_name@] account will automatically be charged for the value of this order. </div>
 				<div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
 
-				[%if [@config:CHECKOUT_REQ_AGREE_TERMS@] eq'1'%]
-					<div class="hidden">
-						<div id="termbox" class="panel">
-							<div class="panel-body">
-								[%content_zone id:'terms'%][%end content_zone%]
-							</div>
+				<!--##[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]##-->
+				<!-- Start Fancybox terms -->
+				<div class="hidden">
+					<div id="termbox" class="panel">
+						<div class="panel-body">
+							[%content_zone id:'terms'%][%end content_zone%]
 						</div>
 					</div>
-					<p>
-						<input type="hidden" name="agreement" value="y">
-						Agree To <a href="#termbox" class="notify_popup" id="terms">Terms &amp; Conditions?</a>
-						<input type="checkbox" name="agree" value="y" class="terms_box" [%DATA id:'agree' if:'=' value:'1'%]checked[%END DATA%] required/>
-					</p>
-				[%/if%]
+				</div>
+				<p>
+					<input type="hidden" name="agreement" value="y">
+					Agree To <a href="#termbox" class="notify_popup" id="terms">Terms &amp; Conditions?</a>
+					<input type="checkbox" name="agree" value="y" class="terms_box" [%DATA id:'agree' if:'=' value:'1'%]checked[%END DATA%] required/>
+				</p>
+				<!--##[%END CONFIG%]##-->
 				<p class="form-actions">
 					<button type="submit" class="btn btn-success btn-lg btn-block">Confirm &amp; Process Order <i class="fa fa-chevron-right icon-white"></i></button>
 				</p>
+				<!-- End Payment -->
 			</div>
-			[%/if%]
-			[%if [@order_type@] eq 'quote'%]
-				<p class="form-actions">
-					<button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm &amp; Process Quote <i class="fa fa-chevron-right icon-white"></i></button>
-				</p>
-			[%/if%]
+			<!--##[%END DATA%]##-->
+			<!--##[%DATA id:'order_type' if:'eq' value:'quote'%]##-->
+			<p class="form-actions">
+				<button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm &amp; Process Quote <i class="fa fa-chevron-right icon-white"></i></button>
+			</p>
+			<!--##[%END DATA%]##-->
 
 		</form>
 	</div>
