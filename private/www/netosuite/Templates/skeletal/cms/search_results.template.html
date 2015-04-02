@@ -134,13 +134,6 @@
 					</div>
 				[%/PARAM%]
 			[%/THUMB_LIST%]
-			[%FILTER ID:'keywords' if:'ne' value:''%]
-				[%THUMB_LIST type:'content' content_type:'' template:'' filter_category:'' pgnum:'1' limit:'[@config:related_limit@]'%]
-					[%PARAM *header%]
-						<h2>[@total_results@] Other Results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]'</h2>
-					[%/PARAM%]
-				[%/THUMB_LIST%]
-			[%/FILTER%]
 		</div>
 	[%/FILTER%]
 </div>
