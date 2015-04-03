@@ -6,7 +6,7 @@ Skeletal is the development theme for Neto. It is the base framework that contai
 
 ## Installation
 
-To install Skeletal you simply need to copy two folders onto your Neto system. You will need FTP access to your Neto website, which you can request here. 
+To install Skeletal you simply need to copy two folders onto your Neto system. You will need FTP access to your Neto website, which you can request [here](http://docs.neto.com.au/designer-documentati/tips-tricks/how-to-connect-to-neto-via-ftp/). 
 
 Copy the following ``skeletal`` folders to the same location on the server:
 
