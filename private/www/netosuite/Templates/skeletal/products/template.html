@@ -13,6 +13,9 @@
 					},
 				}
 			});
+			[%if [@has_components@]%]
+				$.kit_variationInit({});
+			[%/if%]
 		});
 	</script>
 	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jcountdown/1.4/jquery.jcountdown.min.js"></script>

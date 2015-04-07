@@ -6905,6 +6905,19 @@ ul.imagelist li .imagethumb {
   position: absolute;
   left: -9999px;
 }
+.component-var-opt.component-config-input {
+  margin-bottom: 5px;
+}
+.components-thumbnail,
+.components-thumbnail .caption {
+  padding: 0px;
+}
+#main-image.component-var-thumb {
+  width: 100%;
+}
+.components-thumbnail {
+  border: none;
+}
 .selectitemcheck + .thumbnail {
   opacity: 0.8;
   border-color: #efefef;
