@@ -1,9 +1,23 @@
-<div class="row">
-	<div itemscope itemtype="http:schema.org/Product" class="wrapper-product-title col-sm-8">
+<div itemscope itemtype="http://schema.org/Product" class="row">
+	<div class="wrapper-product-title col-sm-8">
 		<h1 itemprop="name">[@name@]</h1>
-		<!--##[%IF [@subtitle@]%]##-->
+		[%if [@subtitle@]%]
 		<h3 class="text-muted">[@subtitle@]</h3>
-		<!--##[%END IF%]##-->
+		[%/if%]
+		[%if [@reviews@] > 0%]
+			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+				[%set [@data:ratings-count@] = 1 /%]
+				[%while [@data:ratings-count@] <= [@data:rating@]%]
+					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+					<i class="fa fa-star"></i>
+				[%/ while%]
+				[%while [@data:ratings-count@] <= 5%]
+					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+					<i class="fa fa-star-o"></i>
+				[%/while%]
+				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> reviews.
+			</span>
+		[%/if%]
 		<div class="dropdown">
 			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 				Share: <i class="fa fa-facebook-square text-facebook"></i>
@@ -20,59 +34,59 @@
 			</ul>
 		</div>
 	</div>
-	<!--##[%IF ![@has_child@] || [@has_variation@]%]##-->
+	[%if ![@has_child@] || [@has_variation@]%]
 		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing col-sm-4">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-			<!--##[%IF ![@inpromo@]%]##-->
+			[%if ![@inpromo@]%]
 				<div class="productprice productpricetext" itemprop="price">
-					<!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##-->
+					[%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
-				<!--##[%IF [@save@] > 0%]##-->
+				[%if [@save@] > 0%]
 					<div class="productrrp text-muted">
-						RRP <!--##[%FORMAT type:'currency'%]##-->[@retail@]<!--##[%END FORMAT%]##-->
+						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 					<div class="productsave">
-						SAVE <!--##[%format type:'currency'%]##--> [@save_price@] <!--##[%END format%]##-->  (<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##-->)
+						SAVE [%format type:'currency'%] [@save_price@] [%/format%]  ([%format type:'percent'%][@save@][%/format%])
 					</div>
-				<!--##[%END IF%]##-->
-			<!--##[%ELSE%]##-->
+				[%/if%]
+			[%else%]
 				<div class="productwasprice">
-					WAS <!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##-->
+					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
-				<!--##[%IF [@save@] > 0%]##-->
+				[%if [@save@] > 0%]
 					<div class="productrrp muted">
-						RRP <!--##[%FORMAT type:'currency'%]##-->[@retail@]<!--##[%END FORMAT%]##-->
+						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
-				<!--##[%END IF%]##-->
+				[%/if%]
 				<div class="productpromo">
-					NOW <!--##[%FORMAT type:'currency'%]##-->[@promo_price@]<!--##[%END FORMAT%]##-->
+					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
-				<!--##[%IF [@save@] > 0%]##-->
+				[%if [@save@] > 0%]
 					<div class="productsave">
-						SAVE <!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##-->!
+						SAVE [%format type:'percent'%][@save@][%/format%]!
 					</div>
-				<!--##[%END IF%]##-->
+				[%/if%]
 				<div class="productsavetext">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
 				<div class="time-text">
-					<!--##[%format type:'date' format:' #H:#I #a, #d #K #Y'%]##-->[@promo_end@]<!--##[%END format%]##-->
+					[%format type:'date' format:' #H:#I #a, #d #K #Y'%][@promo_end@][%/format%]
 				</div>
-			<!--##[%END IF%]##-->
-			<!--##[%IF [@store_quantity@] > 0 AND [@preorder@] %]##-->
-				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released <!--##[%format type:'date'%]##-->[@arrival_date@]<!--##[%END format%]##--></span>
-			<!--##[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]##-->
+			[%/if%]
+			[%if [@store_quantity@] > 0 AND [@preorder@] %]
+				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
+			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
 				<span itemprop="availability" content="in_stock" class="label label-success">In Stock</span>
-			<!--##[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]##-->
+			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out -  Backorder Available</span>
-			<!--##[%ELSE%]##-->
+			[%else%]
 				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out</span>
-			<!--##[%END IF%]##-->
-			<!--##[%IF [@availability_description@]%]##-->
+			[%/if%]
+			[%if [@availability_description@]%]
 				<div class="availability_description">
 					[@availability_description@]
 				</div>
-			<!--##[%END IF%]##-->
+			[%/if%]
 		</div>
-	<!--##[%END IF%]##-->
+	[%/if%]
 </div>
