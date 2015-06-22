@@ -59,7 +59,7 @@
 						<label>[@name@]</label>
 					</td>
 					<td>
-						<textarea name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea>
+						<textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea>
 					</td>
 				</tr>
 			[%END PARAM%]
