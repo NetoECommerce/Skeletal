@@ -1,0 +1,17 @@
+<div class="text-center">
+	<p><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+	<p>Please wait while we verify your payment details</p>
+	<input class="hidden" id="order-token" type="text" value="[@token_id@]">
+	<p><button class="btn btn-primary" type="button" onclick="afterPay()">Click here if you are not redirected within 60 seconds</button></p>
+</div>
+<script src="[@js_url@]"></script>
+<script>
+	function afterPay() {
+		var orderToken = document.getElementById("order-token").value;
+		AfterPay.init({redirectOnly:true, relativeCallbackURL: "[@return_url@]"});
+		AfterPay.show({token: orderToken});
+	}
+	window.onload = function(){
+		afterPay()
+	};
+</script>
