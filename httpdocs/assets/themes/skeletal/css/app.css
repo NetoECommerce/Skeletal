@@ -7596,3 +7596,7 @@ h4 {
     padding: 0px;
   }
 }
+[name="google_conversion_frame"] {
+  pointer-events: none;
+  position: absolute;
+}
