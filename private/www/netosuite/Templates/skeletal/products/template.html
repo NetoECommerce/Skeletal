@@ -85,12 +85,9 @@
 									<span class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
 										<a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
 											[%if [@value_image@]%]
-												[%PARAM *if%]
 													<img src="[@value_image@]" alt="[@value_name@]">
-												[%/PARAM%]
-												[%PARAM *else%]
+												[%else%]
 													[@value_name@]
-												[%/PARAM%]
 											[%/if%]
 										</a>
 									</span>
