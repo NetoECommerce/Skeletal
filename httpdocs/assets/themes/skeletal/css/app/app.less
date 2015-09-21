@@ -1238,21 +1238,21 @@ blockquote h1,h2,h3,h4 {
 		align-items: center;
 	}
 }
-.table-cart tbody tr td {
-	vertical-align: middle;
-}
-.table-cart .row > div {
-	display: inline-block;
-}
-.table-cart .img-column {
-	max-width: 50px;
-	min-width: 25px
-}
-.table-cart .img-column img {
-	min-width: 30px;
-}
-.table-cart .options-column {
-	max-width: 150px;
+.cartTable {
+	tbody tr td {
+		vertical-align: middle;
+	}
+	.row > div {
+		display: inline-block;
+	}
+	@media (min-width: @screen-sm-min) {
+		.cartTable--heading-quantity,
+		.cartTable--heading-price,
+		.cartTable--heading-remove,
+		.cartTable--column-image {
+			width: 100px;
+		}
+	}
 }
 .btn-paypal {
 	color: #222;

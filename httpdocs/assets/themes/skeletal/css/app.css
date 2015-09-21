@@ -7444,21 +7444,19 @@ h4 {
     align-items: center;
   }
 }
-.table-cart tbody tr td {
+.cartTable tbody tr td {
   vertical-align: middle;
 }
-.table-cart .row > div {
+.cartTable .row > div {
   display: inline-block;
 }
-.table-cart .img-column {
-  max-width: 50px;
-  min-width: 25px;
-}
-.table-cart .img-column img {
-  min-width: 30px;
-}
-.table-cart .options-column {
-  max-width: 150px;
+@media (min-width: 768px) {
+  .cartTable .cartTable--heading-quantity,
+  .cartTable .cartTable--heading-price,
+  .cartTable .cartTable--heading-remove,
+  .cartTable .cartTable--column-image {
+    width: 100px;
+  }
 }
 .btn-paypal {
   color: #222;
