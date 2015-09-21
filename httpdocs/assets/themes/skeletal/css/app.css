@@ -6890,7 +6890,7 @@ ul.imagelist li .imagethumb {
   font-weight: bold;
   text-transform: uppercase;
 }
-@media (max-width: 335px) {
+@media (max-width: 319px) {
   .nMobileNav > li {
     display: none;
   }
