@@ -92,7 +92,7 @@
 			</div>
 			<div class="clear"></div>
 			[%/if%]
-			[%if ![@hide_authority_to_leave@]%]
+			[%if ![@config:hide_authority_to_leave@]%]
 				<p>
 					Authority to leave parcel if receiver not available?
 					<input type="radio" name="signature_off[@addr_id@]" value="n" [%if [@ship_signature@] eq 'y'%]checked[%/if%] />
