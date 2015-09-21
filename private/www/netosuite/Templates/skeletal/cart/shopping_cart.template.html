@@ -195,27 +195,11 @@
 						[%/param%]
 						[%param *body%]
 							<div class="form-group">
-							<label class="btn btn-block btn-default text-left" for="[@id@]">
+							<label class="label-block" for="[@id@]">
 
 								<input class="pull-left" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
 
-								<h4>&nbsp;[@shipping_method@] -
-								<strong>
-								[%if [@shipping_quote@]%]
-									P.O.A
-								[%else%]
-									[%if [@cost@] == 0%]
-										[%if [@na@] == 0%]
-											<em>Free</em>
-										[%else%]
-											Not Applicable
-										[%/if%]
-									[%else%]
-										[%format type:'currency'%][@cost@][%/format%]
-									[%/if%]
-								[%/if%]
-								</strong>
-								</h4>
+								<h4>&nbsp;[@shipping_method@] - [%if [@shipping_quote@]%] P.O.A [%else%] [%if [@cost@] == 0%] [%if [@na@] == 0%] Free [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%/if%] </h4>
 
 								[%if [@delivery_time@] > 1%]
 								<p>Estimated arrival of [@delivery_time@] [%format type:'number' tl_unit:'day' tl_plural:'days'%][@delivery_time@][%/format%]</p>

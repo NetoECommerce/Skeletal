@@ -7480,6 +7480,9 @@ h4 {
   pointer-events: none;
   position: absolute;
 }
+.label-block {
+  display: block;
+}
 .paypal_button {
   background: #E9E9E9;
   padding: 5px;
