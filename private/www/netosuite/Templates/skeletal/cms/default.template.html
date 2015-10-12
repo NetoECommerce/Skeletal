@@ -23,8 +23,8 @@
 		Date Posted:[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]&nbsp;
 	[%/IF%]
 </p>
-<img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%/ASSET_URL%]" class="pull-right"/>
-<img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%/ASSET_URL%]"  class="pull-right"/>
+<img src="[%asset_url type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]" class="pull-right"/>
+<img src="[%asset_url type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]"  class="pull-right"/>
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	<p>
 		[@content_short_description1@]
@@ -85,15 +85,15 @@
 	[%param *body%]
 		<div itemprop="review" itemscope itemtype="http://schema.org/Review">
 			<blockquote>
-				<h4 itemprop="name"><i>[%NOHTML%][@title@][%/NOHTML%]</i></h4>
+				<h4 itemprop="name"><i>[%nohtml%][@title@][%/nohtml%]</i></h4>
 				<div>
-					<strong>[%if [@bill_first_name@]%]By: <span itemprop="author">[@bill_first_name@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
+					<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
 				</div>
-				<span itemprop="description">[%NOHTML%][@review@][%/NOHTML%]</span>
+				<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span>
 				[%IF [@review_response@]%]
 					<br /><br />
 					<blockquote>
-						<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%NOHTML%][@review_response@][%/NOHTML%]</span>
+						<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
 					</blockquote>
 				[%/IF%]
 			</blockquote> <hr />
@@ -109,22 +109,24 @@
 		<input type="hidden" name="rating_value" id="rating_value" value="5"/>
 		<div class="form-group">
 			<label for="review_title">Title For Comment</label>
-			<input class="form-control" type="text" name="review_title" id="review_title" value="[%NOHTML%][%FORM id:'review_title'%][%/FORM%][%/NOHTML%]" required/>
+			<input class="form-control" type="text" name="review_title" id="review_title" value="[%nohtml%][@form:review_title@][%/nohtml%]" required/>
 		</div>
 		<div class="form-group">
 			<label for="review_text">Your Comment</label>
-			<textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%NOHTML%][%FORM id:'review_text'%][%/FORM%][%/NOHTML%]</textarea>
+			<textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
 		</div>
-		[%if ![@user:username@]%]
-			<div class="form-group">
-				<label for="customername">Your Name</label>
-				<input class="form-control" type="text" name="customername" id="customername" value="[%NOHTML%][%FORM id:'customername'%][%/FORM%][%/NOHTML%]" required/>
-			</div>
-			<div class="form-group">
-				<label for="emailaddress">Your Email Address</label>
-				<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%/FORM%][%/NOHTML%]" required/>
-			</div>
-		[%/if%]
+		[%ajax_loader%]
+			[%if ![@user:username@] or [@user:username@] eq 'noreg'%]
+				<div class="form-group">
+					<label for="customername">Your Name</label>
+					<input class="form-control" type="text" name="customername" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" required/>
+				</div>
+				<div class="form-group">
+					<label for="emailaddress">Your Email Address</label>
+					<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" required/>
+				</div>
+			[%/if%]
+		[%/ajax_loader%]
 		<p>
 			<button type="submit" class="btn btn-success" />Post Comment</button>
 		</p>
