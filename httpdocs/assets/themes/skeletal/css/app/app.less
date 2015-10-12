@@ -83,18 +83,22 @@
 		padding:5px;
 		margin-bottom:10px;
 		.image {
-			width:70px;
+			width: 20%em;
 			float:left;
-			height:60px;
+			height: 3em;
 			img {
-				width:60px;
-				height:60px;
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				width: auto;
 			}
 		}
 		.description {
-			width:290px;
 			float:left;
-			padding-top:15px;
+			width: 75%;
+			height: 3em;
+			line-height: 3em;
+			overflow: hidden;
 		}
 	}
 	.footer {
@@ -731,9 +735,6 @@ ul.imagelist li .imagethumb { text-align:center; height: 100px; }
 	.wrapper-logo {
 		text-align: center;
 	}
-	.npopup-btn-close {
-		display: none !important;
-	}
 	.npopup {
 		.footer.modal-footer {
 			.left,.right {
@@ -1212,6 +1213,7 @@ blockquote h1,h2,h3,h4 {
 @media (max-width: @screen-xs-max) {
 	.npopup {
 		width: auto !important;
+		max-width: 80%;
 	}
 	.npopup-continue,.npopup-checkout,.npopup-view {
 		.btn-block;

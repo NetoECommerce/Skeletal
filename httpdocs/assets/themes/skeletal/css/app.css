@@ -6252,18 +6252,22 @@ button.close {
   margin-bottom: 10px;
 }
 .successaddmessage .body .image {
-  width: 70px;
+  width: 20%em;
   float: left;
-  height: 60px;
+  height: 3em;
 }
 .successaddmessage .body .image img {
-  width: 60px;
-  height: 60px;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
 }
 .successaddmessage .body .description {
-  width: 290px;
   float: left;
-  padding-top: 15px;
+  width: 75%;
+  height: 3em;
+  line-height: 3em;
+  overflow: hidden;
 }
 .successaddmessage .footer {
   margin-bottom: 5px;
@@ -6967,9 +6971,6 @@ ul.imagelist li .imagethumb {
   .wrapper-logo {
     text-align: center;
   }
-  .npopup-btn-close {
-    display: none !important;
-  }
   .npopup .footer.modal-footer .left,
   .npopup .footer.modal-footer .right {
     width: auto;
@@ -7413,6 +7414,7 @@ h4 {
 @media (max-width: 767px) {
   .npopup {
     width: auto !important;
+    max-width: 80%;
   }
   .npopup-continue,
   .npopup-checkout,
