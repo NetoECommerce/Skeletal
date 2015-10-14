@@ -16,7 +16,7 @@
 		</ul>
 	[%/PARAM%]
 [%/breadcrumb%]
-<h1>
+<h1 class="page-header">
 	[%url_info name:'page_heading' if:'eq' value:''%]
 		[%PARAM if_true%]
 			[@content_name@]
@@ -30,16 +30,53 @@
 	[%/IF%]
 </h1>
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
-	<p>
-		[@content_short_description1@]
-		[@content_short_description2@]
-		[@content_short_description3@]
-	</p>
-	[@content_description1@]
-	[@content_description2@]
-	[@content_description3@]
+	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
+		[%param *header%]
+			<div id="homepageCarousel" class="carousel slide">
+				[%if [@total_showing@] > 1%]
+					<ol class="carousel-indicators">
+						[%site_value id:'counter' type:'load'/%]
+					</ol>
+				[%/if%]
+				<div class="carousel-inner">
+		[%/param%]
+		[%param *footer%]
+				</div>
+				[%if [@total_showing@] > 1%]
+					<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
+						<span class="fa fa-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
+						<span class="fa fa-chevron-right"></span>
+					</a>
+				[%/if%]
+			</div>
+			<hr>
+		[%/param%]
+		[%param *ifempty%]
+		[%/param%]
+	[%/advert%]
+	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
+		[%param *header%]
+			<div class="row">
+		[%/param%]
+		[%param footer%]
+			</div>
+			<hr>
+		[%/param%]
+	[%/advert%]
+	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
+		<p>
+			[@content_short_description1@]
+			[@content_short_description2@]
+			[@content_short_description3@]
+		</p>
+		[@content_description1@]
+		[@content_description2@]
+		[@content_description3@]
+		<hr>
+	[%/if%]
 [%/if%]
-<hr/>
 [%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
 	[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
 	[%PARAM *header%]

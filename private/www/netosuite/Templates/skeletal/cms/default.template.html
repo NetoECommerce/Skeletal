@@ -14,7 +14,7 @@
 		</ul>
 	[%/param%]
 [%/breadcrumb%]
-<h1>[@content_name@]</h1>
+<h1 class="page-header">[@content_name@]</h1>
 <p class="text-muted">
 	[%IF [@content_author@]%]
 		Author: [@content_author@] &nbsp;
@@ -25,6 +25,41 @@
 </p>
 <img src="[%asset_url type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]" class="pull-right"/>
 <img src="[%asset_url type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]"  class="pull-right"/>
+[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
+	[%param *header%]
+		<div id="homepageCarousel" class="carousel slide">
+			[%if [@total_showing@] > 1%]
+				<ol class="carousel-indicators">
+					[%site_value id:'counter' type:'load'/%]
+				</ol>
+			[%/if%]
+			<div class="carousel-inner">
+	[%/param%]
+	[%param *footer%]
+			</div>
+			[%if [@total_showing@] > 1%]
+				<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
+					<span class="fa fa-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
+					<span class="fa fa-chevron-right"></span>
+				</a>
+			[%/if%]
+		</div>
+		<hr>
+	[%/param%]
+	[%param *ifempty%]
+	[%/param%]
+[%/advert%]
+[%advert type:'product' limit:'8' template:'' ad_group:''%]
+	[%param *header%]
+		<div class="row">
+	[%/param%]
+	[%param footer%]
+		</div>
+		<hr>
+	[%/param%]
+[%/advert%]
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	<p>
 		[@content_short_description1@]
@@ -52,8 +87,7 @@
 [%/thumb_list%]
 [%thumb_list type:'products' template:'' limit:'[@config:related_limit@]'%]
 	[%param header%]
-		<div class="clear-fix"></div>
-		<h3>Related Products</h3>
+		<hr>
 		<div class="row">
 	[%/param%]
 	[%param footer%]
