@@ -152,18 +152,14 @@
 			<p>
 				  <a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a>
 				  <span class="label pull-right
-					[%if [@order_status@] eq 'On Hold' or [@order_status@] eq 'Backorder Approved' or [@order_status@] eq 'New Backorder'%]
-							label-warning
-						[%elseif [@order_status@] eq 'Pick' or [@order_status@] eq 'Pack'%]
-							label-info
-						[%elseif [@order_status@] eq 'New'%]
-							label-primary
-						[%elseif [@order_status@] eq 'Dispatched'%]
-							label-success
-						[%elseif [@order_status@] eq 'Cancelled'%]
-							label-danger
-					[%/if%]
-				  ">[@order_status@] [%if [@refund_status@]%]([@refund_status@])[%/if%]</span>
+				  <!--##[%DATA id:'order_status' if:'eq' value:'On Hold'%]##-->label-warning<!--##[%END DATA%]##-->
+				  <!--##[%DATA id:'order_status' if:'eq' value:'Pick'%]##-->label-info<!--##[%END DATA%]##-->
+				  <!--##[%DATA id:'order_status' if:'eq' value:'New'%]##-->label-primary<!--##[%END DATA%]##-->
+				  <!--##[%DATA id:'order_status' if:'eq' value:'Backorder Approved'%]##-->label-warning<!--##[%END DATA%]##-->
+				  <!--##[%DATA id:'order_status' if:'eq' value:'New Backorder'%]##-->label-warning<!--##[%END DATA%]##-->
+				  <!--##[%DATA id:'order_status' if:'eq' value:'Pack'%]##-->label-info<!--##[%END DATA%]##-->
+				  <!--##[%DATA id:'order_status' if:'eq' value:'Dispatched'%]##-->label-success<!--##[%END DATA%]##-->
+				  ">[@order_status@]<!--##[%DATA id:'refund_status' if:'ne' value:''%]##--> ([@refund_status@])<!--##[%END DATA%]##--></span>
 				  </p>
 
 				  <hr>
