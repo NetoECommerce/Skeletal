@@ -50,7 +50,7 @@
 							<h3 class="panel-title">Payment Instructions</h3>
 						</div>
 						<div class="panel-body">
-							[%payment_methods id:'[@payment_method@]'%]
+							[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
 								[%param *body%]
 									<h4>Your chosen payment method is [@name@]</h4>
 									[%if [@name@] like 'American Express'%]
