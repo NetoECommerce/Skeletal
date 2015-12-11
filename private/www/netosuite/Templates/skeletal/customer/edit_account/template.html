@@ -260,7 +260,7 @@ getlocation();
 					<span class="small text-danger">Required</span>
 					<select class="form-control" name="card_type" id="card_type">
 						<option value="">Select Payment Type</option>
-						<!--##[%payment_methods sortby:'sortorder,name' %]
+						<!--##[%payment_methods sortby:'sortorder,name' ignore_balance:'1' %]
 [%PARAM *body%]##-->
 						<option value="[@id@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
 						<!--##[%END PARAM%]
