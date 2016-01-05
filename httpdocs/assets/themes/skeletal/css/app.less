@@ -1,5 +1,5 @@
 // Bootstrap
-@import "bootstrap/bootstrap.less";
+@import "../../../../../node_modules/bootstrap/less/bootstrap.less";
 
 // Header
 .logo {
@@ -752,7 +752,12 @@ ul.imagelist li .imagethumb { text-align:center; height: 100px; }
 		}
 	}
 }
-
+// I don't like https://github.com/twbs/bootstrap/commit/e88fa909916ab8aa6e35a99b11f025470a4a067f
+@media (min-width: @grid-float-breakpoint) {
+	.navbar-right {
+		margin-right: 0;
+	}
+}
 .thumbnail .product-image {
 	width: 100%;
 }

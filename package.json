@@ -19,5 +19,8 @@
   "devDependencies": {
     "gulp": "~3.9.0",
     "gulp-less": "~3.0.3"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6"
   }
 }
