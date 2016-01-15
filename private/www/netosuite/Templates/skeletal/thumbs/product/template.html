@@ -8,7 +8,7 @@
 			<h3 itemprop="name"><a href="[@URL@]" title="[@model@]"><!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##--></a></h3>
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 				[%if [@inpromo@]%]
-					<strong>Now [%if [@has_child@]%]from&nbps;[%/if%]</strong>
+					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
 					<span itemprop="price">[%format type:'currency'%][@promo_price@][%/format%]</span>
 				[%else%]
 					[%if [@has_child@]%]From&nbsp;[%/if%]
