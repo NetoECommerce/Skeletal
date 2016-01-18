@@ -10,10 +10,6 @@ gulp.task('less', function () {
 	.pipe(gulp.dest('./httpdocs/assets/themes/'));
 });
 
-gulp.task('watch-less', function(){
-	// What to watch
-	gulp.watch('./httpdocs/assets/themes/*/css/**/*.less', function(){
-		// What to run
-		gulp.run('less');
-	});
+gulp.task('default', function () {
+	gulp.watch('./httpdocs/assets/themes/*/css/**/*.less', ['less']);
 });
