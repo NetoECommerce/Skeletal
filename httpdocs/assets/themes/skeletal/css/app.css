@@ -8195,3 +8195,6 @@ input[readonly] {
 #_cpy_goback_pl {
   display: none;
 }
+.btn .fa {
+  pointer-events:none;
+}
