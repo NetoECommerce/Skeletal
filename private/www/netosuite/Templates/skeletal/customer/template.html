@@ -150,8 +150,8 @@
 			<div class="well">
 
 			<p>
-				  <a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a>
-				  <span class="label pull-right
+				<a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a>
+				<span class="label pull-right
 					[%if [@order_status@] eq 'On Hold' or [@order_status@] eq 'Backorder Approved' or [@order_status@] eq 'New Backorder'%]
 							label-warning
 						[%elseif [@order_status@] eq 'Pick' or [@order_status@] eq 'Pack'%]
@@ -163,27 +163,27 @@
 						[%elseif [@order_status@] eq 'Cancelled'%]
 							label-danger
 					[%/if%]
-				  ">[@order_status@] [%if [@refund_status@]%]([@refund_status@])[%/if%]</span>
-				  </p>
+				">[@order_status@] [%if [@refund_status@]%]([@refund_status@])[%/if%]</span>
+				</p>
 
-				  <hr>
-
-				  <p>Date Placed <b><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_placed@]<!--##[%END format%]##--></b></p>
-				  <p>Date Due <b><!--##[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%]##-->[@date_due@]<!--##[%END format%]##--></b></p>
-				<p>Amount Owed <b><!--##[%format type:"currency"%]##-->[@amount_owed@]<!--##[%END format%]##--></b>
-				<!--##[%DATA id:'amount_owed' if:'<' value:'0'%]##--><span class="label label-success">Paid in Full</span><!--##[%END DATA%]##--></p>
-
+				<hr>
+				<div class="account-order-card">
+					<p>Date Placed <b><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_placed@]<!--##[%END format%]##--></b></p>
+					[%if [@order_status@] ne 'Cancelled'%]<p>Date Due <b><!--##[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%]##-->[@date_due@]<!--##[%END format%]##--></b></p>[%/if%]
+					<p>Amount Owed <b><!--##[%format type:"currency"%]##-->[@amount_owed@]<!--##[%END format%]##--></b>
+					<!--##[%DATA id:'amount_owed' if:'<' value:'0'%]##--><span class="label label-success">Paid in Full</span><!--##[%END DATA%]##--></p>
+				</div>
 				<div class="row btn-stack">
 
 				<div class="col-xs-12 col-md-4">
 				<button type="button" class="btn btn-block btn-info" onclick="window.location='[%URL page:'account' type:'track_order' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-road icon-white"></i> Track</button>
 				</div>
 
-					<!--##[%DATA id:'amount_owed' if:'>' value:'0'%]##-->
+				[%if [@amount_owed@] > 0 and [@order_status@] ne 'Cancelled'%]
 					<div class="col-xs-12 col-md-4">
-					<button class="btn btn-block btn-success" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay</button>
+						<button class="btn btn-block btn-success" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay</button>
 					</div>
-					<!--##[%END DATA%]##-->
+				[%/if%]
 
 
 					<div class="col-xs-12 col-md-4">
