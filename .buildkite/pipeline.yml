@@ -1,0 +1,6 @@
+---
+  - type: "waiter"
+
+  - name: "Upload common theme pipeline"
+    command: "curl https://gist.githubusercontent.com/brandonsheppard/19d3936746ea2eb5f22d/raw | buildkite-agent pipeline upload"
+

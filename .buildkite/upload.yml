@@ -1,0 +1,8 @@
+---
+steps:
+  - type: "waiter"
+
+  - name: "Upload theme"
+    command: "/opt/bin/upload themerepotest"
+    agents:
+      queue: design
