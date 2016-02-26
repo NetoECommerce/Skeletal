@@ -1,4 +1,4 @@
-# Skeletal
+<img width="407" src="http://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
 
 Skeletal is the development theme for Neto. This theme contains all of our supported front-end features, so we build all new custom websites and themes with Skeletal as the starting point. Skeletal is built on Bootstrap 3.
 
