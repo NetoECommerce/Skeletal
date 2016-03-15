@@ -71,3 +71,36 @@ Neto has a feature that lets users search through a database of stockists and se
 Neto let's users add products to a wishlist so they can purchase them at a later date.
 - Add product to a wish list
 - Remove product from a wish list
+
+
+----
+
+## Function
+
+- $.formatCurrency(num)  - Formats param num to be correct dollar format e.g. $4.00
+ - Can change the symbol by changing var NETOCurrencySymbol to different string.
+        
+- $.escape_reserved(text) - Replaces space with escapes e.g '\ '       
+
+- $.is_empty - Can only return true or not defined
+- $.isEmpty(text) - Boolean if param text is null - only works with strings
+- $.trimSpace(text) - Calls $.trim(text) which trims white space at the start and end of param text
+- $.toInt(n [,def]) - Change n into an interger 
+- $.toFloat(n[,def]) - If n is a number it returns it, if its a string it strips out spaces and '$'
+- $.toText(n[,def]) - Returns n into a string, if null/undefined make it an empty string
+- $.timestamp() - Current time
+- $.randID() - random 5 numbers
+- $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g 
+ - $.randString(4, "hey") = "ehhe" 
+
+- $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
+- $.nShowActivity() / $.nHideActivity() - Places over an overlay
+- $.nClosePopupBox() - Closes any popup boxes that are currently open
+
+- $.postcode_selectorInit(param) - can adjust params e.g. 
+ - 'items_returned', 'max_height', 'closetimer_secs', 'check_street', 'showparam'
+ 
+ - $.addNotifyBackInStock(sku, opts) - 
+ - $.addNotifyContent(content_id, opts) - 
+ - $.storeLocator_Init() - 
+ - $.geoGoToLocation(country, address) - 
