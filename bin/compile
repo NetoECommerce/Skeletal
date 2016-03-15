@@ -8,14 +8,16 @@ rm -rf $DIST
 mkdir $DIST
 
 # Determine the theme list dynamically
-cd "./private/www/netosuite/Templates"
+cd "./"
 
-MAINTHEME="$(ls -1)"
-cd "${MAINTHEME}"
+MAINTHEME="$(basename $PWD)"
+
+cd "./templates"
+
 THEMES="$(ls -1 *-netothemeinfo.txt | sed s/-netothemeinfo.txt//)"
 
 # Back to root
-cd "../../../../../"
+cd "../"
 
 echo "Compiling '${MAINTHEME}' themes"
 
@@ -24,12 +26,14 @@ for theme in $THEMES; do
 
 	# Create theme folder
 	mkdir "${DIST}/${theme}"
+	mkdir "${DIST}/${theme}/_assets"
 
 	# Copy Templates
-	cp -r "./private/www/netosuite/templates/${MAINTHEME}/" "${DIST}/${theme}"
+	cp -r "./templates/" "${DIST}/${theme}/"
 
 	# Copy Assets
-	cp -r "./httpdocs/assets/themes/${MAINTHEME}" "${DIST}/${theme}/_assets/"
+	cp -r "./js" "${DIST}/${theme}/_assets"
+	cp -r "./css" "${DIST}/${theme}/_assets"
 
 	# Rename theme stylesheet to style.css
 	mv "${DIST}/${theme}/_assets/css/${theme}-style.css" "${DIST}/${theme}/_assets/css/style.css"
