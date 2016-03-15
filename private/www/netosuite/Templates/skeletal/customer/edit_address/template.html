@@ -218,7 +218,13 @@ function updloca(oid) {
 	msg.style.display = '';
 	dis.style.display = 'none';
 
-	if(country.options[country.selectedIndex].value != '[@config:SELECTORCOUNTRY@]') {
+	if(country.options[country.selectedIndex] == null){
+		theCountry = 'AU'
+	} else {
+		theCountry = country.options[country.selectedIndex].value
+	}
+
+	if(theCountry != '[@config:SELECTORCOUNTRY@]') {
 		msg.innerHTML = '<i>Please enter your city and state below.</i>';
 		city.readOnly = state.readOnly = false;
 		city.style.color = state.style.color = '#000000';
