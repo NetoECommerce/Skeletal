@@ -78,7 +78,7 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 ## Function
 
 /* ADDRESS BOOK */
-- $.add_addressbook_entry
+- $.add_addressbook_entry()
 - $.del_addressbook_entry()
 - $.addressbook_select(param)
 
@@ -146,12 +146,9 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 - $.toText(n[,def]) - Returns n into a string, if null/undefined make it an empty string
 - $.timestamp() - Current time
 - $.randID() - random 5 numbers
-- $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g
- - $.randString(4, "hey") = "ehhe" 
+- $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
 
 - $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
-- 
-
 
 - $.nShowActivity() / $.nHideActivity() - Places over an overlay
 - $.nClosePopupBox() - Closes any popup boxes that are currently open
@@ -159,7 +156,7 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 - $.postcode_selectorInit(param) - can adjust params e.g. 
  - 'items_returned', 'max_height', 'closetimer_secs', 'check_street', 'showparam'
  
- - $.addNotifyBackInStock(sku, opts) - 
+ - $.addNotifyBackInStock(sku, opts) 
  - $.addNotifyContent(content_id, opts) - 
  - $.storeLocator_Init() - 
  - $.geoGoToLocation(country, address) - 
