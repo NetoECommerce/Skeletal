@@ -77,23 +77,82 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 
 ## Function
 
+/* ADDRESS BOOK */
+- $.add_addressbook_entry
+- $.del_addressbook_entry()
+- $.addressbook_select(param)
+
+
+/* AJAX ADD TO CART */
+- $.addToCartDefaults(nofancybox)
+- $.addToCartInit(param)
+- $.getAddToCartParam()
+- $.addChildCartItem()
+- $.addCartItem(skuo, qtyo, fns)
+- $.addMultipleCartItems(id)
+- $.removeCartItem(ind, fns)
+- $.buildCartItem(data)
+
+/* AJAX SEARCH */
+- $.initSearchField(opts)
+
+/* LOAD TEMPLATE */
+- $.load_ajax_template(id, input, fns)
+
+/* COMPATIBILITY LIST */
+- $.compatListInit(param)
+- $.getCompatListParam()
+- $.setCompatMatch(l, s)
+- $.buildCompatList(s, u)
+
+/* ENDLESS SCROLL FUNCTIONS */
+- $.endlessScroll_Init(param)
+- $.endlessScroll_loadPage(pgnum)
+- $.endlessScroll_updatePaging()
+
+/* UTIL FUNCTIONS */
+- $.isMobileView() {
+- $.isFacebookView()
+- $.isFacebookPurpose()
+- $.addFacebookNView()
+- $.addFacebookNPurpose()
+- $.addNPurpose(npur)
+- $.isJQVersion(cmp,vertxt)
+- $.setCurrencySymbol(symb)
+- $.formatNumber(num, param)
 - $.formatCurrency(num)  - Formats param num to be correct dollar format e.g. $4.00
  - Can change the symbol by changing var NETOCurrencySymbol to different string.
-        
+- $.create_netosd_data(data, sp)
+- $.create_netosd_data_rc(data, vids, sp)
+- $.parse_netosd_data(data, sp)
+- $.parse_netosd_data_rc(data, vds, sp)
+- $.js_var_dump(data, html, ind, vds)
+- $.get_ajax_data(data)
+- $.do_ajax(module, qs, syn, fns)
+- $.soap_input_opt(rdata, def, vds)
+- $.soap_input_opt(rdata, def, vds)
+- $.preload_images(images)
+- $.show_tooltip(obj, txt, setting, ubary)
+- $.show_overlay(obj, id, html, setting)
+- $.bgFrame()
+- $.parse_ntemplate(text, data)
 - $.escape_reserved(text) - Replaces space with escapes e.g '\ '       
-
-- $.is_empty - Can only return true or not defined
+- $.is_empty(text) - Can only return true or not defined
 - $.isEmpty(text) - Boolean if param text is null - only works with strings
 - $.trimSpace(text) - Calls $.trim(text) which trims white space at the start and end of param text
+- $.isTrue(t)
 - $.toInt(n [,def]) - Change n into an interger 
 - $.toFloat(n[,def]) - If n is a number it returns it, if its a string it strips out spaces and '$'
 - $.toText(n[,def]) - Returns n into a string, if null/undefined make it an empty string
 - $.timestamp() - Current time
 - $.randID() - random 5 numbers
-- $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g 
+- $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g
  - $.randString(4, "hey") = "ehhe" 
 
 - $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
+- 
+
+
 - $.nShowActivity() / $.nHideActivity() - Places over an overlay
 - $.nClosePopupBox() - Closes any popup boxes that are currently open
 
