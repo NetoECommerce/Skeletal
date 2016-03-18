@@ -149,13 +149,44 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 - $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
 
 - $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
+- $.show_div_loading(div) 
+- $.remove_div_loading(div)
+- $.init_text_count(classname)
+- $.update_text_count(cur)
+- $.validate_email(email)
 
+
+/* POPUP BOX FUNCTIONS */
+
+- $.overlay(opt)
+- $.get_center_pos()
+- $.move_center(anime)
 - $.nShowActivity() / $.nHideActivity() - Places over an overlay
+- $.nHideActivity()
+- $.nPopupBoxRescroll(bo)
+- $.nPopupBoxReposition(bo, opt)
+- $.nPopupBox(m, opt) 
 - $.nClosePopupBox() - Closes any popup boxes that are currently open
+- $.isChecked(obj)
+- $.setChecked(obj, val)
+
+/* COMMON FUNCTIONS */
+
+
+/* POST CODE SELECTOR */
 
 - $.postcode_selectorInit(param) - can adjust params e.g. 
  - 'items_returned', 'max_height', 'closetimer_secs', 'check_street', 'showparam'
- 
+
+- $.load_city_selector(id) 
+- $.postcode_pl_close(id)
+- $.postcode_change_country(id)
+- $.postcode_lookup(id, typ, flk)
+- $.setPSTRValue(id, city, state, zip, keyword, esp)
+- $.getPSTRCache(id)
+
+/* BACK IN STOCK NOTIFICATION */
+
  - $.addNotifyBackInStock(sku, opts) 
  - $.addNotifyContent(content_id, opts) - 
  - $.storeLocator_Init() - 
