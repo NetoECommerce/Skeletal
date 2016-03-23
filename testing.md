@@ -177,7 +177,6 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 
 - $.postcode_selectorInit(param) - can adjust params e.g. 
  - 'items_returned', 'max_height', 'closetimer_secs', 'check_street', 'showparam'
-
 - $.load_city_selector(id) 
 - $.postcode_pl_close(id)
 - $.postcode_change_country(id)
@@ -188,7 +187,7 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 /* BACK IN STOCK NOTIFICATION */
 
  - $.addNotifyBackInStock(sku, opts) 
- - $.addNotifyContent(content_id, opts) - 
+ - $.addNotifyContent(content_id, opts)
 
  /* STORE LOCATION FUNCTIONS */
 
