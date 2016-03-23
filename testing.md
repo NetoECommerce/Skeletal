@@ -189,5 +189,37 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 
  - $.addNotifyBackInStock(sku, opts) 
  - $.addNotifyContent(content_id, opts) - 
- - $.storeLocator_Init() - 
+
+ /* STORE LOCATION FUNCTIONS */
+
+ - $.storeLocator_Init(param) - 
  - $.geoGoToLocation(country, address) - 
+ - $.geoSearchStores(country, zip, address)
+ - $.geoCleartMarkers()
+ - $.geoSetLocation(res, opts)
+ - $.geoStartSearch()
+ - $.geoCreateMarker(mkopts, data, ctr)
+ - $.geoCustAddMarker(lat, lng, name)
+ - $.geoHighLightMarker(id)
+ - $.geoSelectLocation(ind)
+ - $.getStoreLocatorCache(id)
+ 
+/* PRODUCT VARIATIONS */
+
+- $.product_variationInit(param)
+- $.productVariationSelected(spid, valid)
+- $.getITMVARCache()
+- $.kit_variationInit(param)
+- $.kitVariationSelected(compid, csid)
+- $.getKITVARCache()
+
+/* WISHLIST FUNCTIONS */
+
+- $.addToWishList(param)
+- $.toggleAddNew()
+- $.closePopup(sku, newwishlist)
+- $.btnLdFn(sku)
+
+/* ONREADY */
+
+- 
