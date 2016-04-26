@@ -7645,7 +7645,7 @@ ul.imagelist li .imagethumb {
 .payment-icon-mastercard {
   margin-top: -3px;
   height: 36px;
-  background-position: 0px -131px;
+  background-position: 0px -130px;
 }
 .payment-icon-visa {
   margin-top: 6px;
@@ -7654,7 +7654,7 @@ ul.imagelist li .imagethumb {
 }
 .payment-icon-diners {
   margin-top: 7px;
-  height: 16px;
+  height: 15px;
   background-position: 0px -196px;
 }
 .payment-icon-discover {
