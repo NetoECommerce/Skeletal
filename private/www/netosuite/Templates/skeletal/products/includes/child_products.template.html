@@ -19,7 +19,7 @@
 				[%PARAM *body%]##-->
 					<tr>
 						<td>
-							<!--##[%IF [@store_quantity@] > 0 AND ![@has_child@] or [@CONFIG:ALLOW_NOSTOCK_CHECKOUT@] and [@store_quantity@] < 1%]##-->
+							<!--##[%IF [@store_quantity@] > 0 AND ![@has_child@] or [@CONFIG:ALLOW_NOSTOCK_CHECKOUT@] or [@preorder@]%]##-->
 							<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
 							<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]"> 
 							<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
