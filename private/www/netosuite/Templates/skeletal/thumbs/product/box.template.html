@@ -21,7 +21,7 @@
 				<!--##[%IF [@inpromo@]%]##-->
 					<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##-->
 				<!--##[%ELSE%]##-->
-					<span itemprop="price"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>
+					<span itemprop="price" content="[@store_price@]"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>
 				<!--##[%END IF%]##-->
 
 				<!--##[%IF [@save@] > 0 AND ![@has_child@]%]##-->
