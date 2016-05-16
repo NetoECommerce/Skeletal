@@ -9,10 +9,10 @@
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 				[%if [@inpromo@]%]
 					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
-					<span itemprop="price">[%format type:'currency'%][@promo_price@][%/format%]</span>
+					<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 				[%else%]
 					[%if [@has_child@]%]From&nbsp;[%/if%]
-					<span itemprop="price">[%format type:'currency'%][@store_price@][%/format%]</span>
+					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 				[%/if%]
 				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			</p>
