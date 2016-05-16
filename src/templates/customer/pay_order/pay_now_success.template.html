@@ -1,0 +1,29 @@
+<div class="col-xs-12">
+	<ul class="breadcrumb">
+		<li><a href="[@config:home_url@]">Home</a></li>
+		<li><a href="[%URL page:'account'/%]">My Account</a></li>
+	</ul>
+	<div class="page-header">
+		<h1>Thank You!</h1>
+	</div>
+	[%if [@error@]%]
+		<div class="alert alert-danger">
+			<a class="close" data-dismiss="alert">×</a>
+			[@error@]
+		</div>
+	[%/if%]
+	[%if [@msg@]%]
+		<div class="alert alert-success">
+			<a class="close" data-dismiss="alert">×</a>
+			[@msg@]
+		</div>
+	[%/if%]
+	<p>Your payment order has been processed.</p>
+	<script language="javascript" type="text/javascript">
+		function print_invoice() {
+			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"/%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+		}
+	</script>
+	<input type="button" value="Print Invoice" class="btn" onClick="print_invoice()">
+	[%print_order id:'[@order_id@]'/%]
+</div>

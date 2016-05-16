@@ -1,0 +1,15 @@
+type
+website
+----------
+name
+Skeletal
+----------
+version
+5
+----------
+install_description
+<p>This is our base template. All great things start from here!</p><p>Primarly intended as a starting point for third-party developers, this theme is also pretty great if you want a simple site.</p>
+----------
+description
+<h1>Skeletal</h1>
+<p>This is our base template. All great things start from here!</p><p>Primarly intended as a starting point for third-party developers, this theme is also pretty great if you want a simple site.</p>

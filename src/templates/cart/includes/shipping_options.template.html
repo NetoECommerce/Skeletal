@@ -1,0 +1,108 @@
+[%cart_addresses ship_mode:'[@ship_mode@]'%]
+[%PARAM *body%]
+<div class="well">
+	<h4>Shipping Options For [%NOHTML%][@ship_title@][%/NOHTML%]
+		[%NOHTML%][%TRIM%][@ship_state@][@ship_zip@][%/TRIM%][%/NOHTML%]</h4>
+		<hr>
+	[%shipping_methods ship_mode:'[@ship_mode@]' addr_id:'[@addr_id@]'%]
+	[%PARAM header%]
+	<table width="100%" cellpadding="4" cellspacing="0" border="0">
+		[%/PARAM%]
+	[%PARAM *body%]
+		<tr class="ship-[@id@]">
+			<td class="radio">
+			<label>
+			<input type="radio" name="ship[@addr_id@]" value="[@id@]" [%DATA id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%/DATA%] />
+				<input type="hidden" id="delivery_time[@addr_id@]_[@id@]" value="[@delivery_time@]" />
+				<input type="hidden" id="delivery_days[@addr_id@]_[@id@]" value="[@delivery_days@]" />
+				<input type="hidden" id="delivery_on[@addr_id@]_[@id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y'%][@delivery_date@][%/FORMAT%]" />
+				<input type="hidden" id="delivery_exc[@addr_id@]_[@id@]" value="[@exclude_delivery_days@]" />
+				<input type="hidden" id="delivery_only[@addr_id@]_[@id@]" value="[@only_delivery_days@]" />
+				<h4>
+				[%DATA id:'shipping_quote' if:'=' value:'1'%]
+					[%PARAM if_true%]P.O.A.[%/PARAM%]
+		[%PARAM if_false%]
+				[%DATA id:'cost' if:'=' value:'0' %]
+			[%PARAM if_true%]
+				[%DATA id:'na' if:'=' value:'0' %]
+				[%PARAM if_true%]FREE[%/PARAM%]
+				[%PARAM if_false%]N/A[%/PARAM%]
+			[%/DATA%]
+				[%/PARAM%]
+			[%PARAM if_false%]
+				[%format type:"currency"%][@cost@][%/format%]
+				[%/PARAM%]
+		[%/DATA%]
+				[%/PARAM%]
+	[%/DATA%] - [@shipping_method@] </h4></label>
+	<p class="help-block">[@shipping_description@]</p>
+	</td>
+		</tr>
+		[%/PARAM%]
+	[%PARAM footer%]
+	</table>
+	[%/PARAM%]
+	[%PARAM ifempty%]
+	Please enter your post code above to see available shipping options. No Shipping methods are available for the selected location.
+	<input type="hidden" name="ship[@addr_id@]" value="" />
+	[%/PARAM%]
+[%/shipping_methods%]
+	<div class="_cpy_comment_pl">
+		<div class="_cpy_comment" ref="[@addr_id@]">
+		<hr>
+			<label>Delivery Instructions</label>
+			<textarea name="comment[@addr_id@]" id="comment[@addr_id@]" rows="3" class="form-control" wrap="soft">[%NOHTML%][@ship_comment@][%/NOHTML%]</textarea>
+			<div class="row">
+				<div class="col-md-6">
+					[%if [@username@] eq '' || [@username@] eq 'noreg' %]
+					<div class="checkbox"><label><input type="checkbox" name="user_order_comment_fld" value="comment[@addr_id@]"> Save for future orders</label></div>
+					[%end if%]
+				</div>
+				<div class="col-md-6">
+					<p class="help-block" id="_cpy_comment_ct[@addr_id@]">&nbsp;</p>
+				</div>
+			</div>
+			[%if [@config:checkout_show_deliverydate@]%]
+			<hr>
+			<h4>Select Your Preferred Delivery Date</h4>
+			<div class="row">
+			<div class="col-xs-12 col-lg-7">
+			<div class="_delivery_picker">
+				<div id="delivery_picker[@addr_id@]"></div>
+				&nbsp; </div>
+			</div>
+			<div class="col-xs-12 col-lg-5">
+			<div class="_delivery_select">
+				<label>Your selected date</label>
+					<input type="text" class="form-control" readonly id="delivery_date[@addr_id@]" name="delivery_date[@addr_id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y' default:''%][@order_delivery_date@][%/FORMAT%]" placeholder="Select Date" />
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" id="add_reminder[@addr_id@]" name="add_reminder[@addr_id@]" value="y" [%DATA id:'add_reminder' if:'eq' value:'y'%]checked[%/DATA%]>
+							<span class="small"><b>Set future reminder for this event?</b></span>
+						</label>
+					</div>
+				<div id="reminder_panel[@addr_id@]">
+				<hr>
+				<label>Event Name</label>
+				<input type="text"  class="form-control" id="reminder_title[@addr_id@]" name="reminder_title[@addr_id@]" value="[%NOHTML%][@reminder_title@][%/NOHTML%]" maxlength="50" size="25" placeholder="e.g. Dad's Birthday">
+					<p class="help-block small">Please note that you will be reminded via email 2 week prior to the event.</p>
+					</div>
+			</div>
+			</div>
+			</div>
+			<div class="clear"></div>
+			[%/if%]
+			[%if ![@config:hide_authority_to_leave@]%]
+				<p>
+					Authority to leave parcel if receiver not available?
+					<input type="radio" name="signature_off[@addr_id@]" value="n" [%if [@ship_signature@] eq 'y'%]checked[%/if%] />
+					No &nbsp;
+					<input type="radio" name="signature_off[@addr_id@]" value="y" [%if [@ship_signature@] eq 'n'%]checked[%/if%] />
+					Yes
+				</p>
+			[%/if%]
+
+		</div>
+	</div>
+</div>
+[%/param%][%/cart_addresses%]

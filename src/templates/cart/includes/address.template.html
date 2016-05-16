@@ -1,0 +1,91 @@
+<div id="ladb_pl col-xs-12">
+	[%USER id:'username' if:'ne' value:''%]
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Choose From Your Address Book</label>
+		<div class="col-xs-12 col-sm-8">
+			<select id="ladb_addr" class="form-control">
+				<option value=""></option>
+				[%address_book%]
+					[%PARAM *body%]
+						<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
+					[%END PARAM%]
+				[%END address_book%]
+			</select>
+		</div>
+	</div>
+	[%END USER%]
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">First Name<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<input type="text" id="_addr_first_name" class="form-control" maxlength="50" value="[@ship_first_name@]">
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Last Name<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<input type="text" id="_addr_last_name" class="form-control" maxlength="50" value="[@ship_last_name@]">
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Company</label>
+		<div class="col-xs-12 col-sm-8"><input type="text" id="_addr_company" class="form-control" maxlength="50" value="[@ship_company@]"></div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Country<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<select id="_addr_country" class="form-control">
+				[%countries%]
+					[%PARAM *body%]
+						<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
+					[%END PARAM%]
+				[%END countries%]
+			</select>
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Address<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<input type="text" id="_addr_street1" class="form-control" maxlength="50" value="[@ship_street1@]" />
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-4">
+			<input type="text" id="_addr_street2" class="form-control" maxlength="50" value="[@ship_street2@]" />
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Postal Code<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<input type="text" id="_addr_zip" class="form-control" value="[@ship_zip@]" maxlength="10" />
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Suburb / City<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<div class="n-wrapper-form-control">
+				<span id="_addr_selector"></span>
+			</div>
+			<input type="text" id="_addr_city" value="[@ship_city@]" class="form-control" maxlength="50"/>
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">State<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<div class="n-wrapper-form-control">
+				<div id="_addr_state_pl" style="display:none;"></div>
+			</div>
+			<input type="text" id="_addr_state" value="[@ship_state@]" size="50" maxlength="50" />
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<label class="control-label col-xs-12 col-sm-4">Phone Number<div class="small text-danger">Required</div></label>
+		<div class="col-xs-12 col-sm-8">
+			<input type="text" id="_addr_phone" class="form-control" maxlength="50" value="[@ship_phone@]" />
+		</div>
+	</div>
+	<div class="form-group row modal-row">
+		<div class="col-xs-12">
+			<input id="_addr_save" class="btn btn-success btn-block" type="button" value="Save Address"/>
+		</div>
+	</div>
+</div>

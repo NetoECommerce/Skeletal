@@ -1,0 +1,147 @@
+<!--#Start Column Left# ##-->
+<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
+<!--# End Column Left# ##-->
+
+<script language="javascript" type="text/javascript">
+function print_invoice() {
+	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+}
+</script>
+
+<table class="checkout_box" border="0" width="100%" cellpadding="6" cellspacing="0">
+<tr class="checkout_box_header"><td>
+Congratulations - Your Quote Has Been Confirmed!
+</td></tr>
+	<tr><td>
+<!--##[%show_order id:'[@order_id@]'%]
+[%PARAM *header%]##-->
+<table cellpadding="4" cellspacing="0" border="0">
+	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+		<tr><td><b>Your Quote ID:<br />
+<span class="text-danger">[@order_id@]</span></b></td></tr>
+		<tr><td><br />		  
+<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
+Your quote information will be sent to [@email@].
+<!--##[%END PARAM%][%PARAM if_false%]##-->
+<input type="button" value="Print Quote" class="btn" onClick="print_invoice()">
+<!--##[%END PARAM%][%END USER%]##-->
+		</td></tr>
+		<tr><td><p><b><br />
+<!--##[%USER id:'username' if:'ne' value:''%]##-->
+		  Quote Tracking:</b> To track the progress 
+of your quote online please go to <a href="[%URL page:'account'%][%END URL%]">your 
+account</a> and select the quote you want to track.
+<!--##[%END USER%]##-->
+</p></td></tr>
+				</table></td>
+	<td width="10px" style="border-left:1px dotted #CCCCCC;">&nbsp;</td>
+	<td width="50%" valign="top"><b>Shipping Address:</b><br />
+	  [@ship_first_name@] [@ship_last_name@]<br>
+<!--##[%DATA id:'ship_company' if:'ne' value:''%]##-->[@ship_company@]<br><!--##[%END DATA%]##-->
+		[@ship_street1@]<br>
+<!--##[%DATA id:'ship_street2' if:'ne' value:''%]##-->[@ship_street2@]<br><!--##[%END DATA%]##-->
+		[@ship_city@], [@ship_state_name@] [@ship_zip@]<br>
+		[@ship_country_name@]<br>
+		[@ship_phone@]</td></tr>
+</table></td></tr>
+</table>
+
+<br style="clear:both;">
+
+<table class="table table-striped table-bordered table-condensed" border="0" width="100%" cellpadding="6" cellspacing="0">
+<tr class="checkout_box_header"><th>
+Quote Summary
+</th></tr>
+  <tr><td>
+	<!--##[%DATA id:'ship_comment' if:'ne' value:''%]##-->
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+	<tr><td class="small"><b>Special Delivery Instructions For These Items:</b><br>[@ship_comment@]</td></tr>
+</table>
+	<!--##[%END DATA%]##-->
+<!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
+<!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>  from time of order</td></tr>
+</table>
+<!--##[%END DATA%]##-->
+<!--##[%END DATA%]##-->
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+	<tr>
+		<td width="100px" class="checkout_table_header" nowrap>SKU</td>
+		<td width="99%" class="checkout_table_header" nowrap>Product</td>
+		<td width="50px" class="checkout_table_header" nowrap>Qty</td>
+		<td width="75px" class="checkout_table_header" nowrap>Price</td>
+		<td width="75px" class="checkout_table_header" nowrap>Discounts</td>
+		<td width="100px" class="checkout_table_header" nowrap>Subtotal</td>
+	</tr>
+<!--##[%END PARAM%]
+[%PARAM *body%]##-->
+<tr>
+	<td>[@SKU@]</td>
+	<td>[@model@] <i>[@extra@]</i>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+	<td>[@qty@]</td>
+	<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
+	<td><!--##[%DATA id:'discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--><!--##[%END DATA%]##--></td>
+	<td><!--##[%format type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
+</tr>
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM *footer%]##-->
+<!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
+[%PARAM if_false%]##-->
+<!--##[%DATA id:'shipping_quote' if:'=' value:'1' %]
+	[%PARAM if_true%]##-->
+<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@]</td>
+	<td class="shitem0" nowrap>P.O.A.</td></tr>
+	<!--##[%END PARAM%]
+	[%PARAM if_false%]##-->
+<tr><td class="shitem0"  colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
+	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td>
+	<td class="shitem0" nowrap><!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--><!--##[%END DATA%]##-->&nbsp;</td>
+	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_price@]<!--##[%END format%]##--></td></tr>
+	<!--##[%END PARAM%]
+	<!--##[%END DATA%]##-->
+<!--##[%END PARAM%]
+[%END DATA%]##-->
+<!--##[%DATA id:'couponcode' if:'ne' value:'' %]##-->
+	<tr><td class="checkout_box_header" colspan="6">Special Pricing Arrangements / Discounts</td></tr>
+	<tr><td class="shitem0" colspan="6">[@couponcode@]</td></tr>
+<!--##[%END DATA%]##-->
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
+  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><b>Quote Subtotal</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
+	<tr><td><b>Total Shipping</b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
+	<tr><td><b>Total Discount</b></td>
+		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'surcharge_total' if:'>' value:'0' %]##-->
+	<tr><td><b>Surcharge</b> (<!--##[%format type:'percent' dc:'2'%]##-->[@surcharge_percent@]<!--##[%END format%]##-->)</td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
+	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
+		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
+<!--##[%END DATA%]##-->
+	<tr><td style="border-top: 1px solid #CCCCCC;"><b>Quote Total</b></td>
+		<td align="right" style="border-top: 1px solid #CCCCCC;"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
+</table></td></tr>
+</table></td></tr>
+</table>
+<!--##[%END PARAM%]##-->
+<!--##[%END show_order%]##-->
+</td>
+</td>
+  </tr>
+</table>
+<!--##[%GA_FUNNEL%]/purchase/quote_invoice.html[%END GA_FUNNEL%]##-->
+
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
+<meta name="description" content="[%url_info name:'meta_description'/%]"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:homeurl@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:homeurl@]/assets/website_logo.png[%/if%]"/>
+<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
+<meta property="og:site_name" content="[@config:website_name@] "/>
+[@config:GOOGLE_VERIFICATION_CODE@]
+<title>[%url_info name:'page_title'/%]</title>
+<link rel="canonical" href="[@config:canonical_url@]"/>
+<link rel="shortcut icon" href="[@config:homeurl@]/assets/favicon_logo.png"/>
+<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
+[%cdn_asset html:'1' type:'css' domain:'maxcdn.bootstrapcdn.com' library:'font-awesome' version:'4.4.0'%]css/font-awesome.min.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
+<!--[if lte IE 8]>
+	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
+<![endif]-->
+[%tracking_code type:'Declaration'/%]
+</head>
+<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
+<div class="container wrapper-header">
+	<div class="row row-padded">
+		<div class="col-xs-12 col-sm-4 wrapper-logo">
+			<a href="[@config:homeurl@]" title="[@config:company_name@]">
+				<img class="logo" src="[@config:imageurl@]/website_logo.png" alt="[@config:company_name@]"/>
+			</a>
+		</div>
+	</div>
+</div>
+<div id="main-content" class="container" role="main">
+	<div class="row">

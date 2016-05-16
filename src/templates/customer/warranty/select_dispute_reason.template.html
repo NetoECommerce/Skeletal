@@ -1,0 +1,93 @@
+[%site_value id:'footer_javascript'%]
+	<script language="javascript" type="text/javascript">
+		function goBack() {
+			var f = document.disputeForm;
+			f['step'].value = 'type';
+			f.submit();
+		}
+		function cancalAction() {
+			window.location.href='[%URL page:"account" type:"warranty"%][%/URL%]';
+		}
+		function selOrder(obj) {
+			var sel = document.disputeForm['order'];
+			if(sel && obj.selectedIndex > 0) {
+				sel.value = obj.options[obj.selectedIndex].value;
+			}
+		}
+	</script>
+[%/site_value%]
+<div class="col-xs-12">
+	<ul class="breadcrumb">
+		<li><a href="[@config:home_url@]">Home</a></li>
+		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
+		<li><a href="#">Resolution Centre</a></li>
+	</ul>
+	<div class="page-header">
+		<h1>Resolution Centre</h1>
+		<h2>Step 2 - What type of dispute is this?</h2>
+	</div>
+	[%if [@error@]%]
+		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
+	[%/if%]
+	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create'/%]" method="post">
+		<input type="hidden" name="step" value="order">
+		<input type="hidden" name="type" value="[%NOHTML%][@type@][%/NOHTML%]">
+		[%dispute_reasons type:'[@type@]'%]
+			[%PARAM header%]
+			<div class="row">
+			[%/PARAM%]
+			[%PARAM *body%]
+				<div class="col-xs-12 col-md-6">
+					<div class="well">
+						<div class="radio">
+							<label for="[@dispute_reason_id@]">
+								<h4><input type="radio" name="reason" value="[@dispute_reason_id@]" id="[@dispute_reason_id@]"  [%DATA id:'reason' if:'eq' value:'[@dispute_reason_id@]'%]checked[%/DATA%] > [@dispute_reason@]</h4>
+								<p>[@description@]</p>
+							</label>
+						</div>
+					</div>
+				</div>
+			[%/PARAM%]
+			[%PARAM *footer%]
+			</div>
+			[%/PARAM%]
+		[%/dispute_reasons%]
+		<hr>
+		<h3>Select an Order ID</h3>
+		<div class="row btn-stack">
+			<div class="col-xs-12 col-md-4">
+				<input type="text" name="order" class="hidden" value="[@order@]" size="15"/>
+				[%thumb_list type:'orders' limit:'30'%]
+					[%param header%]
+						<select class="form-control" onchange="selOrder(this)">
+						<option value="">Select Recent Order</option>
+					[%/param%]
+					[%param *body%]
+						<option value="[@order_id@]">[@order_id@] [%if [@customer_po@]%] (PO# [@customer_po@])[%/if%]</option>
+					[%/param%]
+					[%param *footer%]
+						</select>
+					[%/param%]
+					[%param *ifempty%]
+						<div class="alert alert-danger"> No orders have been placed on this account. </div>
+					[%/param%]
+				[%/thumb_list%]
+			</div>
+			<div class="col-xs-12 col-md-5">
+				<a class="btn btn-block btn-default" href="[%url page:account/%]" target="_blank">Click here to view a list of your past order ID's</a>
+			</div>
+		</div>
+		<hr>
+		<div class="row btn-stack">
+			<div class="col-xs-12 col-md-3">
+				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="Cancel"> <i class="fa fa-remove icon-white"></i> Cancel </button>
+			</div>
+			<div class="col-xs-12 col-md-3 col-md-offset-3">
+				<button name="button" type="button" onClick="goBack()" class="btn btn-default btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
+			</div>
+			<div class="col-xs-12 col-md-3">
+				<button type="submit" class="btn btn-success btn-block" >Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,40 @@
+<!--#Start Content# ##-->
+<div class="col-xs-12"> 
+		<!--##[%FORM id:'id' if:'ne' value:''%]##-->
+	<div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service. </div>
+	<!--##[%END FORM%]##-->
+	<div class="page-header">
+		<h1>Retrieve Order Tracking Information</h1>
+	</div>
+	<p> For security reasons please enter some details related to your order so that we can provide tracking information. </p>
+	<hr>
+	<form  method="post" action="[%URL page:'account' type:'nr_track_order'%][%END URL%]">
+		<div class="row">
+			<div class="col-xs-12 col-sm-3">
+				<div class="form-group">
+					<label>Order E-mail Address</label>
+					<input class="form-control" type="text" name="email" value="[%nohtml%][@formemail@][%end nohtml%]" size="25">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+				<div class="form-group">
+					<label>Order ID</label>
+					<input class="form-control" type="text" name="id" value="" size="25">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+				<div class="form-group">
+					<label>Order Ship Postcode</label>
+					<input class="form-control" type="password" name="zip" value="" size="25">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+				<div class="form-group">
+					<label>&nbsp;</label>
+					<input name="submit" class="btn btn-primary btn-block" type="submit"  value="Track Order">
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<!--#End Content# ##--> 

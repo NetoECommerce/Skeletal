@@ -1,0 +1,25 @@
+<div class="col-xs-12">
+	<ul class="breadcrumb">
+		<li><a href="[@config:home_url@]">Home</a></li>
+		<li><a href="[%url page:'account'/%]">My Account</a></li>
+	</ul>
+	<div class="page-header">
+		<h1>Create Account Password</h1>
+	</div>
+	<p>So that you can shop faster in the future, print and track past orders, please create an account password below.</p>
+</div>
+<div class="col-xs-12 col-sm-6">
+	<form method="POST" action="[%url page:'account' type:'resetpwd'/%]">
+		<input type="hidden" name="fn" value="proc">
+		<input type="hidden" name="id" value="[@logincode@]">
+		<div class="form-group">
+			<label for="">Password:</label>
+			<input name="new_pass" type="password" class="form-control" value="">
+		</div>
+		<div class="form-group">
+			<label for="">Confirm Password:</label>
+			<input name="confirm_new_pass" type="password" class="form-control" value="">
+		</div>
+		<input type="submit" value="Save Changes" class="btn btn-success"/>
+	</form>
+</div>

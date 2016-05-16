@@ -1,0 +1,15 @@
+<div id="[@count@]" class="item [%if [@count@] eq '0'%]active[%/if%]">
+	<a href="[@url@]" target="[@target@]">
+		<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="home-banner-item" alt="[@headline@]" border="0" >
+		[%if [@headline@] or [@description@] or [@linktext@]%]
+			<div class="carousel-caption">
+				[%if [@headline@]%]<h3>[@headline@]</h3>[%/if%]
+				[%if [@description@]%]<p>[@description@]</p>[%/if%]
+				[%if [@linktext@]%]<p><span class="btn btn-primary btn-lg">[@linktext@]</span></p>[%/if%]
+			</div>
+		[%/if%]
+	</a>
+</div>
+[%SITE_VALUE id:'counter'%]
+<li data-target="#homepageCarousel" data-slide-to="[@count@]" [%if [@count@] eq '0'%]class="active"[%/if%]></li>
+[%/SITE_VALUE%]

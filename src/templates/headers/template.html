@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
+<meta name="description" content="[%url_info name:'meta_description'/%]"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:homeurl@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:homeurl@]/assets/website_logo.png[%/if%]"/>
+<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
+<meta property="og:site_name" content="[@config:website_name@]"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="[@config:canonical_url@]"/>
+<meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
+[@config:GOOGLE_VERIFICATION_CODE@]
+<title>[%url_info name:'page_title'/%]</title>
+<link rel="canonical" href="[@config:canonical_url@]"/>
+<link rel="shortcut icon" href="/assets/favicon_logo.png"/>
+<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
+<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
+[%cdn_asset html:'1' type:'css' domain:'maxcdn.bootstrapcdn.com' library:'font-awesome' version:'4.4.0'%]css/font-awesome.min.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
+<!--[if lte IE 8]>
+	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
+<![endif]-->
+[%tracking_code type:'Declaration'/%]
+</head>
+<body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
+<div class="container wrapper-header">
+	<div class="row row-padded">
+		<div class="col-xs-12 col-sm-4 wrapper-logo">
+			<a href="[@config:homeurl@]" title="[@config:company_name@]">
+				<img class="logo" src="[@config:imageurl@]/website_logo.png" alt="[@config:company_name@]"/>
+			</a>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="header-search">
+				<form name="productsearch" method="get" action="/">
+					<input type="hidden" name="rf" value="kw"/>
+					<div class="input-group">
+						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="text"/>
+						<span class="input-group-btn">
+							<button type="submit" value="Search" class="btn btn-default"><i class="fa fa-search"></i></button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="hidden-xs col-sm-4 text-right">
+			<div id="header-cart" class="btn-group">
+				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
+					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+				</a>
+				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li class="box" id="neto-dropdown">
+						<div class="body padding" id="cartcontents"></div>
+						<div class="footer"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="navbar navbar-default">
+				<div class="navbar-header">
+					<ul class="navigation-list list-inline visible-xs nMobileNav">
+						<li><a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse"><span class="icon"><i class="fa fa-bars"></i></span><br>
+						Menu</a></li>
+						<li><a href="/products"><span class="icon"><i class="fa fa-gift"></i></span><br>
+						Shop</a></li>
+						<li><a href="[%url page:'checkout' type:'cart'/%]"><span class="icon"><i class="fa fa-shopping-cart"></i></span><br>
+						Cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)</a></li>
+						<li><a href="/_myacct/"><span class="icon"><i class="fa fa-user"></i></span><br>
+						Account</a></li>
+					</ul>
+				</div>
+				<div class="navbar-collapse collapse navbar-responsive-collapse">
+					<ul class="nav navbar-nav">
+						[%cache type:'menu' id:'header-content-menu'%]
+							[%menu id:'web_header'%]
+								[%param *level_1%]
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]" [%if [@next_level@]%]class="dropdown-toggle"[%/if%]>[@name@] [%if [@next_level@]%]<span class="caret"></span>[%/if%]</a>
+										[%if [@next_level@]%]
+											<ul class="dropdown-menu">
+												[@next_level@]
+											</ul>
+										[%/if%]
+									</li>
+									[%/param%]
+								[%param *level_2%]
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
+										[%if [@next_level@]%]
+											<ul class="dropdown-menu dropdown-menu-horizontal">
+												[@next_level@]
+											</ul>
+										[%/if%]
+									</li>
+									[%/param%]
+								[%param *level_3%]
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]">[@name@]</a>
+										[%if [@next_level@]%]
+											<ul class="dropdown-menu dropdown-menu-horizontal">
+												[@next_level@]
+											</ul>
+										[%/if%]
+									</li>
+								[%/param%]
+							[%/menu%]
+						[%/ cache%]
+					</ul>
+					<ul class="nav navbar-nav navbar-right hidden-xs">
+						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
+							<ul class="dropdown-menu pull-right">
+								<li><a href="[%url page:'account'/%]">Account Home</a></li>
+								<li><a href="[%url page:'account'/%]#orders">Orders</a></li>
+								[%if [@config:allow_user_quote@]%]
+								<li><a href="[%url page:'account'/%]#quotes">Quotes</a></li>
+								[%/ if%]
+								<li><a href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
+								<li><a href="[%url page:'account' type:'favourites'/%]">Favourites</a></li>
+								[%if [@config:show_wishlist@]%]
+								<li><a href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
+								[%/if%]
+								<li><a href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
+								<li><a href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
+								<li><a href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
+								<li class="divider"></li>
+								[%if [@user:username@]%]
+									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
+									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log Out</a> </li>
+								[%else%]
+									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
+									<li> <a href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
+								[%/if%]
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="main-content" class="container" role="main">
+	<div class="row">

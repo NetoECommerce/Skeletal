@@ -1,0 +1,170 @@
+<div class="col-xs-12">
+	<div class="page-header">
+		<h1>My Account</h1>
+	</div>
+	<!--##[%TRIM inner:'1'%]
+		[%PARAM body%]##-->
+	<!--##[%show_message severity:'error'%]
+			[%PARAM header%]##-->
+
+	<!--##[%END PARAM%][%PARAM *body%]##-->
+	<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><i class="fa fa-exclamation-triangle"></i> [@info_msg@]</div>
+	<!--##[%END PARAM%][%END show_message%]##-->
+	<!--##[%END PARAM%][%END TRIM%]##-->
+	<div class="row">
+		<div class="col-xs-12 col-md-6">
+			<div class="well">
+				<form id="login" method="post" action="[%URL page:'account' type:'login'%][%END URL%]">
+					<input type="hidden" name="redirect" value="[@redirect@]">
+					<h3>Returning Customer? Log In. </h3>
+					<hr>
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group ">
+								<label>My E-mail Address is</label>
+								<input type="text" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com">
+								<p class="help-block hidden"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%END URL%]">Click Here</a></p>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>My Password is</label>
+								<input type="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25">
+								<p class="help-block"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%END URL%]">Click Here</a></p>
+							</div>
+						</div>
+					</div>
+					<button name="submit" type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-user"></i> Login Now</button>
+				</form>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<div class="well">
+				<form id="register" method="post" action="[%URL page:'account' type:'register'%][%END URL%]">
+					<!--##[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]##-->
+					<input type="hidden" name="redirect" value="[@redirect@]">
+					<h3>New Customer? Create an Account.</h3>
+					<hr />
+					<div class="row">
+
+						<div class="hidden col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>Username </label>
+								<span class="text-danger small">Required</span>
+								<input class="form-control" type="text" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%END format%][%random_number length:'6'%][%end random_number%]" size="25" maxlength="20">
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-12">
+							<div class="form-group">
+								<label>E-mail Address</label>
+								<span class="text-danger small">Required</span>
+								<input class="form-control" type="email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]" size="25">
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>Password</label>
+								<span class="text-danger small">Required</span>
+								<input class="form-control" type="password" name="reg_password" value="[%nohtml%][%end nohtml%]" size="25" >
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>Confirm Password</label>
+								<span class="text-danger small">Required</span>
+								<input class="form-control" type="password" name="reg_password2" value="[%nohtml%][%end nohtml%]" size="25">
+							</div>
+						</div>
+
+						<!--##[%EXTRA_CUSTOMER_FIELDS%]
+					[%PARAM *header%]##-->
+						<!--##[%END PARAM%]
+					[%PARAM *integer_option%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%PARAM *text_option%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%PARAM *short_text_option%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%PARAM *descimal_option%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%PARAM *boolean_option%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<input type="checkbox" class="form-control" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%]>
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%PARAM *date_option%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<input class="datepicker" class="form-control" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]">
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%PARAM *selection_header%]##-->
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+								<label>[@field_name@]</label>
+								<select name="[@field_id@]" class="form-control" >
+
+									<!--##[%END PARAM%]
+			[%PARAM *selection_body%]##-->
+									<option value="[@option_value@]">[@option_value@]</option>
+									<!--##[%END PARAM%]
+			[%PARAM *selection_footer%]##-->
+								</select>
+							</div>
+						</div>
+						<!--##[%END PARAM%]
+					[%END EXTRA_CUSTOMER_FIELDS%]##-->
+						<div class="clear"></div>
+						<div class="col-xs-12 col-md-12">
+							<div class="form-group">
+								<div class="checkbox">
+									<label>
+										<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time."/>
+										Subscribe To Newsletter
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-12">
+							<div class="form-group">
+								<input name="fn" type="hidden" value="proc">
+								<button name="submit" type="submit" class="btn btn-lg btn-block btn-success"><i class="fa fa-plus"></i> Register and Continue</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--##[%GA_FUNNEL%]/user/login.html[%END GA_FUNNEL%]##-->

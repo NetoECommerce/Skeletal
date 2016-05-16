@@ -1,0 +1,38 @@
+<!--##[%cart_vouchers type:'voucher'%]##-->
+	<!--##[%PARAM header%]##-->
+<div class="well">   
+<h4><i class="fa fa-gift"></i>  Gift Voucher Details</h4>
+<table cellpadding="4" cellspacing="0" width="100%" border="0">
+<!--##[%END PARAM%]
+<!--##[%PARAM *body%]##-->
+	<tr><td><b>#[@item_count@] &nbsp; [@vprogram_title@] - 
+<!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
+	<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
+<!--##[%END PARAM%][%PARAM if_false%]##-->
+	<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
+<!--##[%END PARAM%][%END DATA%]##-->
+</b>
+	</td>
+	</tr>
+	<tr><td>
+<!--
+<a class="_cpy_vouchermsgshow" ref="[@reward_id@]" href="javascript:void(0);">+</a> -->
+<div class="_cpy_vouchermsg" ref="[@reward_id@]">
+<table cellpadding="2" cellspacing="0" border="0">
+	<tr><td>Your Name:</td><td><!--##[%NOHTML%][@sender_name@][%END NOHTML%]##--></td></tr>
+	<tr><td>Recipient Name:</td><td><!--##[%NOHTML%][@recipient_name@][%END NOHTML%]##--></td></tr>
+	<tr><td>Recipient Email:</td><td><!--##[%NOHTML%][@recipient_email@][%END NOHTML%]##--></td></tr>
+	<tr><td>Delivery Date:</td><td><!--##[%FORMAT type:'date' format:'#d #k #Y (#g#a)' default:'Today'%][@required_date@][%END FORMAT%]##--></td></tr>
+</table>
+Gift Message:<br />
+<!--##[%FORMAT type:'text' nohtml:'1' addbr:'1'%][@gift_message@][%END FORMAT%]##--> <a href="[%url page:'checkout' fn:'voucher'%][%END url%]#voucher[@reward_id@]" title="Edit" rel="no-follow"><i class="fa fa-pencil"></i> Edit</a>
+</div>
+	</td></tr>
+<!--##[%END PARAM%]
+<!--##[%PARAM footer%]##-->
+</table>
+</div>
+	<!--##[%END PARAM%]
+[%END cart_vouchers%]##-->
+
+

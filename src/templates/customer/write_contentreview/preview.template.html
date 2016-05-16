@@ -1,0 +1,19 @@
+<div class="col-xs-12">
+	<h1 class="page-header">Preview Comment</h1>
+	[%if [@error@]%]<div class="alert alert-error">[@error@]</div>[%/if%]
+	<form name="preview_review" method="post" action="[%url page:'account' type:'write_contentreview'/%]">
+		<input type="hidden" name="fn" value="confirm">
+		<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]">
+		<input type="hidden" name="review_text" value="[%nohtml%][@form:review_text@][%/nohtml%]">
+		<input type="hidden" name="rating_value" value="[%nohtml%][@form:rating_value@][%/nohtml%]">
+		<input type="hidden" name="review_title" value="[%nohtml%][@form:review_title@][%/nohtml%]">
+		<input type="hidden" name="checked_terms_and_conditions" value="1">
+		<div id="review_details">
+			<h3>[%nohtml%][@form:review_title@][%/nohtml%]</h3>
+			<p>[%nohtml%][@form:review_text@][%/nohtml%]</p>
+		</div>
+		<p>
+			<input type="submit" class="btn btn-success btn-lg" value="Post My Comment">
+		</p>
+	</form>
+</div>

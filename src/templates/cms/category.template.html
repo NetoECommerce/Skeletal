@@ -1,0 +1,177 @@
+[%SET [@page_type@]='category'/%]
+[%load_template file:'cms/includes/sidebar.template.html'/%]
+[%breadcrumb%]
+	[%PARAM *header%]
+		<ul class="breadcrumb">
+			<li>
+				<a href="[@config:home_url@]">Home</a>
+			</li>
+	[%/PARAM%]
+	[%PARAM *body%]
+		<li>
+			<a href="[@url@]">[@name@]</a>
+		</li>
+	[%/PARAM%]
+	[%PARAM *footer%]
+		</ul>
+	[%/PARAM%]
+[%/breadcrumb%]
+<h1 class="page-header">
+	[%url_info name:'page_heading' if:'eq' value:''%]
+		[%PARAM if_true%]
+			[@content_name@]
+		[%/PARAM%]
+		[%PARAM if_false%]
+			[%url_info name:'page_heading'%][%end url_info%]
+		[%/PARAM%]
+	[%end url_info%]
+	[%IF [@keywords@] == ''%]
+		[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'%][%/FILTER%][%/NOHTML%][%/FILTER%]
+	[%/IF%]
+</h1>
+[%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
+	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
+		[%param *header%]
+			<div id="homepageCarousel" class="carousel slide">
+				[%if [@total_showing@] > 1%]
+					<ol class="carousel-indicators">
+						[%site_value id:'counter' type:'load'/%]
+					</ol>
+				[%/if%]
+				<div class="carousel-inner">
+		[%/param%]
+		[%param *footer%]
+				</div>
+				[%if [@total_showing@] > 1%]
+					<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
+						<span class="fa fa-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
+						<span class="fa fa-chevron-right"></span>
+					</a>
+				[%/if%]
+			</div>
+			<hr>
+		[%/param%]
+		[%param *ifempty%]
+		[%/param%]
+	[%/advert%]
+	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
+		[%param *header%]
+			<div class="row">
+		[%/param%]
+		[%param footer%]
+			</div>
+			<hr>
+		[%/param%]
+	[%/advert%]
+	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
+		<p>
+			[@content_short_description1@]
+			[@content_short_description2@]
+			[@content_short_description3@]
+		</p>
+		[@content_description1@]
+		[@content_description2@]
+		[@content_description3@]
+		<hr>
+	[%/if%]
+[%/if%]
+[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
+	[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
+	[%PARAM *header%]
+	<div class="row sort_container">
+		<div class="col-xs-4 col-sm-7 col-md-4">
+			<script language="javascript" type="text/javascript">
+				function viewtype(view) {
+					var f=document.viewForm;
+					f['viewby'].value=view;
+					f.submit();
+				}
+			</script>
+			<form method="get" name="viewForm" action="[@config:CURRENT_URL@]" class="hidden">
+				<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
+				<input name="viewby" type="hidden" value=""/>
+			</form>
+			<div class="viewby btn-group">
+				<a href="javascript:viewtype('');" class="btn btn-default [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow">
+					<i class="fa fa-th"></i>
+				</a>
+				<a href="javascript:viewtype('list');" class="btn btn-default [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow">
+					<i class="fa fa-th-list"></i>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4 hidden-xs hidden-sm">
+			<div class="btn-text">
+				<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
+			</div>
+		</div>
+		<div class="col-xs-8 col-sm-5 col-md-4">
+			<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
+				<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
+				<div class="form-group">
+					<label class="control-label col-xs-2">Sort</label>
+					<div class="col-xs-10">
+						<select name="sortby" onChange="return this.form.submit();" class="form-control">
+							<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
+								Most Popular
+							</option>
+							<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>
+								Name
+							</option>
+							<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>
+								SKU
+							</option>
+							<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>
+								Lowest Price
+							</option>
+							<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>
+								Highest Price
+							</option>
+						</select>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<hr>
+		</div>
+	</div>
+	<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
+		<div class="row">
+		[%/PARAM%]
+		[%PARAM *footer%]
+		</div>
+	</div>
+	[%IF [@total_results@] > [@config:thumb_limit@]%]
+		<div class="row">
+			<div class="col-xs-12">
+				<hr />
+				<div class="text-center">
+					<ul class="pagination">
+						[%paging limit:'3'%]
+							[%PARAM *previous_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
+							[%PARAM *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+							[%PARAM *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+							[%PARAM *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
+							[%PARAM *next_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
+						[%/paging%]
+					</ul>
+				</div>
+				<hr />
+			</div>
+		</div>
+	[%/IF%]
+	[%/PARAM%]
+	[%PARAM *ifempty%]
+		<div class="row">
+			<div class="col-xs-12">
+				<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
+			</div>
+		</div>
+	[%/PARAM%]
+[%/THUMB_LIST%]
+</div>

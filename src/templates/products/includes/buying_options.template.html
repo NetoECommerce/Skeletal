@@ -1,0 +1,212 @@
+<div class="extra-options">
+	[%multilevelpricing id:'[@SKU@]'%]
+		[%PARAM *header%]
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th colspan="2">
+						Buy In Bulk &amp; Save!
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				[%END PARAM%]
+				[%PARAM *body%]
+				<tr>
+				<td width="20%" nowrap="nowrap">
+				<span class="productmultilevelqty">Buy [%FORMAT type:'number' dp:'0' sp:','%][@minqty@][%END FORMAT%]
+				[%IF [@maxqty@] > 0%]
+				to [%FORMAT type:'number' dp:'0' sp:','%][@maxqty@][%END FORMAT%]:
+				</span>
+				</td>
+				[%ELSE%]
+				or more:
+				</span>
+				</td>
+				[%END IF%]
+				<td nowrap="nowrap">
+				<span class="productmultilevelprice"> Pay [%FORMAT type:'currency'%][@price@][%END FORMAT%] [@unit@]</span>
+				</td>
+				</tr>
+				[%END PARAM%]
+				[%PARAM *footer%]
+			</tbody>
+		</table>
+		[%END PARAM%]
+	[%END multilevelpricing%]
+	<hr />
+	<!-- PRODUCT OPTIONS -->
+	[%extra_options id:'[@SKU@]'%]
+		[%PARAM *header%]
+		<table class="table table-striped table-bordered">
+			<tr>
+				<th colspan="2">
+					Available Options
+				</th>
+			</tr>
+			[%END PARAM%][%PARAM *number_option%]
+				<tr>
+					<td>
+						<label>[@name@]</label>
+					</td>
+					<td>
+						<input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value="">
+					</td>
+				</tr>
+			[%END PARAM%][%PARAM *text_option%]
+				<tr>
+					<td>
+						<label>[@name@]</label>
+					</td>
+					<td>
+						<textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea>
+					</td>
+				</tr>
+			[%END PARAM%]
+			[%PARAM *select_option%]
+				<tr>
+					<td>
+						<label>[@name@]</label>
+					</td>
+					<td>
+						<select name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]">
+							[@choices@]
+						</select>
+					</td>
+				</tr>
+			[%END PARAM%]
+			[%PARAM *choices%]
+				<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
+				[%DATA id:'price' if:'!=' value:'0'%]
+					(+ [%FORMAT type:'currency'%][@price@][%END FORMAT%])
+				[%END DATA%]
+				</option>
+			[%END PARAM%]
+			[%PARAM *footer%]
+			<input type="hidden" name="extras" value="[@total_options@]"/>
+		</table>
+		<hr />
+		[%END PARAM%]
+	[%END extra_options%]
+
+	[%data id:'multiplier_qty' if:'ne' value:'0' %]
+	Order In Lots Of <strong>[@multiplier_qty@]</strong>
+	[%end data%]
+	[%data id:'min_qty' if:'ne' value:'0' %]
+	Minimum Order Quantity <strong>[@min_qty@]</strong>
+	[%end data%]
+	[%data id:'max_qty' if:'ne' value:'0' %]
+	Maximum Order Quantity <strong>[@max_qty@]</strong>
+	[%end data%]
+	<form class="buying-options">
+		<input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
+		<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
+		<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
+		<div class="row btn-stack">
+			<div class="col-xs-12 col-md-4">
+				<input type="number" min="[@min_qty@]" class="form-control qty input-lg" id="qty[@rndm@][@SKU@]" name="qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
+				<button type="button" title="Add to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white"></i> Pre-Order Now</button>
+				[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
+				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white"></i> Add to Cart</button>
+				[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+				<button type="button" title="Add to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white"></i> Backorder</button>
+				[%ELSE%]
+				<a class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope"></i> Notify Me</a>
+				[%END IF%]
+			</div>
+			<div class="col-xs-12 col-md-4">
+				[%if [@config:show_wishlist@]%]
+					<div class="product-wishlist">
+						[%IN_WISHLIST id:'[@SKU@]' %]
+						[%PARAM if_true%]
+							<a class="wishlist_toggle btn btn-lg btn-block btn-warning" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fa fa-star"></i></span></a>
+						[%END PARAM%]
+						[%PARAM if_false%]
+							<a class="wishlist_toggle btn btn-default btn-lg btn-block" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="fa fa-star-o"></i> Wishlist</span></a>
+						[%END PARAM%]
+						[%END IN_WISHLIST%]
+					</div>
+				[%/if%]
+			</div>
+		</div>
+	</form>
+	[%if [@config:show_shipping_calc@]%]
+	<hr/>
+	<div class="panel panel-default" id="shipbox">
+		<div class="panel-heading">
+			<h3 class="panel-title">Calculate Shipping</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row btn-stack">
+				<div class="col-xs-12 col-md-3">
+					<input type="number" name="input" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty">
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<select id="country" class="form-control">
+						[%countries%]
+							[%PARAM *body%]
+								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+							[%END PARAM%]
+						[%END countries%]
+					</select>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code">
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh"></i> Calculate</button>
+				</div>
+			</div>
+			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+				[%PARAM *header%]
+					<br />
+				[%END PARAM%]
+				[%PARAM *body%]
+					<hr />
+					<strong>[@shipping_method@]</strong> - [%format type:"currency"%][@cost@][%END format%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%END IF%]<br />
+					<i class="text-muted">[@shipping_description@]</i>
+				[%END PARAM%]
+				[%PARAM *footer%]
+					</p>
+				[%END PARAM%]
+				[%PARAM *ifempty%]
+					[%if [@ship_zip@]%]<p class="alert alert-danger alert-shipping-error">Shipping not available to selected location.</p>[%/if%]
+				[%END PARAM%]
+			[%END shipping_methods%]
+		</div>
+	</div>
+	[%/if%]
+	<!-- End Shipping Options -->
+	[%IF [@short_description@]%]
+	<p>
+	[@short_description@]
+	</p>
+	[%END IF%]
+</div>
+
+<div class="modal fade notifymodal" id="notifymodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Notify me when back in stock</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Your Name</label>
+					<input placeholder="Jane Smith" name="from_name" id="from_name" type="text" class="form-control" value="[%NOHTML%][@FROM_NAME@][%END NOHTML%]">
+				</div>
+				<div class="form-group">
+					<label>Your Email Address</label>
+					<input placeholder="jane.smith@test.com.au" name="from" id="from" type="email" class="form-control" value="[%NOHTML%][@FROM@][%END NOHTML%]">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input class="btn btn-danger" type="button" data-dismiss="modal" value="Cancel">
+				<input class="btn btn-success" type="button" data-dismiss="modal" value="Save My Details" onClick="javascript:$.addNotifyBackInStock('[@SKU@]', '');">
+			</div>
+		</div><!-- /.modal-content -->
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<div class="grid_16 omega">
+<hr />
+
+
+	<form id="_cpy_login_form" method="post" action="[%URL page:'account' type:'login'%][%END URL%]">
+	<input type="hidden" name="redirect" value="checkout">
+		<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group ">
+		
+			<label>My Username or E-mail Address is</label>
+			
+			<input type="text" id="username" name="username" value="[%nohtml%][%FORM id:'login_username'%][%END FORM%][%end nohtml%]" class="form-control">
+            <p class="help-block hidden"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%END URL%]">Click Here</a></p>
+            </div>
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<div class="form-group">
+			<label>My Password is</label>
+
+			<input type="password" id="password" name="password" value="" class="form-control">
+		<p class="help-block"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%END URL%]">Click Here</a></p>
+							</div>
+						</div>
+					</div>
+	</form>
+<p>
+       <button id="_cpy_login_confirm" class="btn btn-success btn-lg" type="button">Login &amp; Continue Checkout <i class="fa fa-chevron-right icon-white"></i></button>
+</p>
+    
+
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,74 @@
+<div class="col-xs-12">
+  <ul class="breadcrumb">
+    <li><a href="[@config:home_url@]">Home</a></li>
+    <li><a href="[%url page:'account' /%]">My Account</a></li>
+  </ul>
+  [%show_order id:'[@order_id@]'%]
+    [%param *header%]
+      <div class="page-header">
+        <h1>Track Order #[@order_id@]</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <strong>Status:</strong> <span class="label label-success">[@order_status@]</span>
+          <h4>Order #[@order_id@]</h4>
+          [%if [@customer_po@]%]<h4>PO #[@customer_po@]</h4>[%/if%]
+          <h5>Date Placed: [%format type:"date" format:"#D/#M/#Y"%][@date_placed@][%/format%]</h5>
+          [%if [@if_invoiced@] == 1%]<h5>Date Invoiced: [%format type:"date" format:"#D/#M/#Y"%][@date_invoiced@][%/format%]</h5>[%/if%]
+          [%if [@order_status@] like 'Completed'%]<h5>Date Completed: [%format type:"date" format:"#D/#M/#Y"%][@date_updated@][%/format%]</h5>[%/if%]
+        </div>
+        <div class="col-md-4">
+          <h4>Ship To:</h4>
+          <p>
+            [@ship_first_name@] [@ship_last_name@]<br/>
+            [%if [@ship_company@]%][@ship_company@]<br/>[%/if%]
+            [@ship_street1@]<br/>
+            [%if [@ship_street2@]%][@ship_street2@]<br/>[%/if%]
+            [@ship_city@], [@ship_state_name@] [@ship_zip@]<br/>
+            [@ship_country_name@]<br/>
+            Tel:[@ship_phone@]
+          <p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Qty</th>
+                  <th>Description</th>
+                  <th>Shipping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+    [%/param%]
+    [%param *body%]
+              <tr>
+                <td><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL' /%]" alt="[@model@]" width="50px" height="50px"></td>
+                <td>[@qty@]</td>
+                <td>[@model@]<i>[@extra@]</i>
+                  [%if [@aff_id@] eq [@config:aff_ebay_id@]%] <span class="text-muted">EBay ID: <strong>[@aff_ref@]</strong></span>[%/if%]
+            			[%if [@aff_id@] eq [@config:aff_free_id@]%] <span class="text-muted"><strong>Free Gift</strong></span>[%/if%]
+            			[%if [@aff_id@] eq [@config:aff_rental_id@]%] <span class="text-muted">Rental</span>[%/if%]
+                  [%format type:'date' default:'' format:'<b>Deliver On</b> #D/#M/#Y (#G:#I#a)'%][@date_delivery@][%/format%]
+                </td>
+                <td>
+                  [%if [@ship_method@]%]<p>[@ship_method@]</p>[%/if%]
+                  [%if [@ship_tracking@]%]
+                    <p>Tracking #[@ship_tracking@]</p>
+                  [%else%]
+                    <p>Tracking not yet available</p>
+                  [%/if%]
+                  [%if [@tracking_url@]%]<p><a href="[@tracking_url@]" target="_blank" class="btn btn-small">Track Online <i class="fa fa-share"></i></a></p>[%/if%]
+                </td>
+              </tr>
+    [%/param%]
+    [%param *footer%]
+            </tbody>
+          </table>
+        </div>
+      </div>
+    [%/param%]
+  [%/show_order%]
+</div>

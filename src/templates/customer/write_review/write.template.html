@@ -1,0 +1,80 @@
+[%site_value id:'footer_javascript'%]
+<script type="text/javascript" language="javascript">
+	function determineRating(){
+		var currentRating = $('#rating_value').val();
+		for (a = 1; a <= 5; a++){
+			if (a <= currentRating){
+				document.getElementById("rating_stars_" + a).className = "fa fa-star fa-3x";
+			}
+			else{
+				document.getElementById("rating_stars_" + a).className = "fa fa-star-o fa-3x";
+			}
+		}
+	}
+	function setRating(a){
+		$('#rating_value').val(a);
+		determineRating();
+	}
+	$(document).ready(function(){
+		determineRating();
+	});
+</script>
+[%/site_value%]
+<div class="col-xs-12">
+	<h1 class="page-header">Review [@model@]</h1>
+	<p class="lead">
+		Thank you for writing a review. By sharing your thoughts, you help website visitors make a better purchasing decision. In addition, your feedback helps us to improve our products and service.
+	</p>
+	[%if [@error@]%]
+	<div class="alert alert-danger">
+		[@error@]
+	</div>
+	[%/if%]
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Product Review</h3>
+		</div>
+		<div class="panel-body">
+			<form name="edit_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
+				<input type="hidden" name="fn" value="preview">
+				<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]">
+				[%if ![@username@]%]
+					<div class="form-group">
+						<label>Enter your name:</label>
+						<input size="70" type="text" name="customername" class="form-control" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" />
+					</div>
+					<div class="form-group">
+						<label>Enter your e-mail address:</label>
+						<input size="70" type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" />
+					</div>
+				[%/if%]
+				<div class="form-group">
+					<label>Title For Review</label>
+					<input type="text" name="review_title" class="form-control" value="[%nohtml%][@form:review_title@][%/nohtml%]"/>
+				</div>
+				<div class="form-group">
+					<label>Review</label>
+					<textarea name="review_text" style="width:100%" class="form-control">[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
+					<span id="rating_status"></span>
+					<span id="rating_saved"></span>
+				</div>
+				<div id="rating_select_options">
+					<div class="form-group">
+						<label>Pick a star rating for this product</label>
+						<input type="hidden" name="rating_value" id="rating_value" value="[@form:rating_value@]"/>
+						<div id="rating_stars"><br />
+							<i id="rating_stars_1" class="fa fa-star fa-3x" onclick="setRating('1');"></i>
+							<i id="rating_stars_2" class="fa fa-star fa-3x" onclick="setRating('2');"></i>
+							<i id="rating_stars_3" class="fa fa-star fa-3x" onclick="setRating('3');"></i>
+							<i id="rating_stars_4" class="fa fa-star fa-3x" onclick="setRating('4');"></i>
+							<i id="rating_stars_5" class="fa fa-star fa-3x" onclick="setRating('5');"></i>
+						</div>
+					</div>
+				</div>
+				<p>
+					<input class="btn btn-success btn-lg" type="submit" value="Preview"/>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>

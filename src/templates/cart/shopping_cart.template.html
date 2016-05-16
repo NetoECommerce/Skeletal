@@ -1,0 +1,320 @@
+<div class="col-xs-12">
+	<div class="page-header">
+		<h1>Shopping Cart</h1>
+	</div>
+	[%load_template file:'cart/cart.error.html'/%]
+	<div class="row btn-stack">
+		[%config id:'ALLOW_USER_QUOTE' if:'==' value:'1'%]
+			<div class="col-xs-12 col-md-3">
+				<button class="btn btn-default btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart </button>
+			</div>
+		[%/config%]
+		<div class="col-xs-12 col-md-3 [%config id:'ALLOW_USER_QUOTE' if:'==' value:'1'%]col-md-offset-6[%/config%][%config id:'ALLOW_USER_QUOTE' if:'==' value:'0'%]col-md-offset-9[%/config%]">
+			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout Now</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<hr />
+		</div>
+	</div>
+	[%cart_items%]
+	[%param header%]
+	<div class="row">
+		<div class="col-xs-12">
+			<form method="post" name="checkout" action="[%url page:'checkout'/%]">
+				<input type="hidden" name="recal" value="1" />
+				<table class="table table-bordered table-striped cartTable">
+					<thead>
+						<tr>
+							<th colspan="2" class="cartTable--heading cartTable--heading-item"> Item Description </th>
+							<th class="cartTable--heading cartTable--heading-quantity">Quantity </th>
+							<th class="cartTable--heading cartTable--heading-price">Price</th>
+							<th class="cartTable--heading cartTable--heading-remove hidden-xs">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					[%/param%]
+					[%param *body%]
+
+					<tr>
+						<td class="cartTable--column cartTable--column-image"><a href="[@url@]"><img class="img-responsive" src="[@thumb@]"/></a></td>
+						<td><a href="[@url@]">
+							<h4>[@model@] <i>[@extra@]</i></h4>
+							</a> [%if [@aff_id@] eq '[@config:AFF_EBAY_ID@]'%]
+							<p>eBay ID: [@aff_ref@]</p>
+							[%/if%]
+
+							[%if [@aff_id@] eq '[@config:AFF_FREE_ID@]'%]
+							<p><span class="label label-success">Free Gift</span></p>
+							[%/if%]
+
+							[%if [@preorder@]%]
+							<p><span class="label label-warning">On pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span></p>
+							[%/if%]
+
+
+							[%if [@has_components@]%]
+							[%cart_item_components counter:'[@counter@]'%]
+							[%param header%]
+							<ul class="list-unstyled">
+								[%/param%]
+								[%param *body%]
+								<li>
+									<input type="hidden" name="compsku[@count@]_[@component_count@]" value="[@SKU@]">
+									<label>[@model@] x </label>
+									<input type="text" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly[%/if%] value="[@qty@]" size="3">
+								</li>
+								[%/param%]
+								[%param *footer%]
+							</ul>
+							<input type="hidden" name="components[@count@]" value="[@total_components@]">
+							[%/param%]
+							[%/cart_item_components%]
+							[%/if%]
+							[%if [@gifts_available@]%]
+								<h4>Congratulations! The above purchase has made you eligible for [@gifts_available@] of the following FREE Gifts!</h4>
+								<span class="help-box">You can add any of the following gifts to your shopping Shopping Cart now and you will not be charged for them!</span> <br />
+								<br />
+								[%free_gifts id:'[@SKU@]'%]
+									[%param *header%]
+										<div class="row">
+									[%/param%]
+									[%PARAM *body%]
+										<div class="col-md-4">
+											<div class="thumbnail">
+												<a href="[%url type:'item ' id:'[@SKU@]'%][%END url%]" class="thumbnail-image"><img width="120" height="120" src="[@thumb@]" alt="[@model@]" /> </a>
+												<div class="caption"> <a href="[%url type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'70' rmhtml:'1'%][@model@][%/format%]</a>
+													<p><a class="btn btn-success btn-block"href="[%url page:'checkout' qs:'sku=[@SKU@]&gift=[@counter@]'/%]">Add to Cart</a> </p>
+												</div>
+											</div>
+										</div>
+									[%/param%]
+									[%PARAM *footer%]
+										</div>
+									[%/param%]
+								[%/free_gifts%]
+							[%/if%]
+						</td>
+						<td class="options-column">
+							<input name="line[@count@]" type="hidden" value="[@counter@]" />
+							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
+						</td>
+						<td class="text-right">
+							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
+							[%if [@discount_percent@] > 0%]
+								<p><i>-[%format type:'percent'%][@discount_percent@][%/format%]</i></p>
+							[%/if%]
+							<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
+						</td>
+						<td class="hidden-xs">
+							<a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+						</td>
+					</tr>
+					[%/param%]
+					[%param *footer%]
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<hr>
+		</div>
+	</div>
+	<div class="row btn-stack">
+		<div class="col-xs-12 col-md-3">
+			<button type="button" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class="fa fa-reply"></i> Continue Shopping</button>
+		</div>
+		<div class="col-xs-12 col-md-3 col-md-offset-6">
+			<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh"></i> Update My Changes</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<hr>
+		</div>
+		<div class="col-xs-12 col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Shipping Calculator</h4>
+				</div>
+				<div class="panel-body">
+					<form method="post" action="[%url page:'checkout'/%]">
+						<p>Enter your post code to calculate.</p>
+						<div class="form-group">
+							<select class="form-control" name="ship_country">
+							[%countries%]
+								[%PARAM *body%]
+									<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+								[%/param%]
+							[%/countries%]
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="ship_zip">Post Code</label>
+							<input class="form-control" type="text" size="5" name="ship_zip" id="ship_zip" value="[@ship_zip@]" />
+						</div>
+						<input type="submit" class="btn btn-default btn-block" value="Calculate Shipping" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Discount Code</h4>
+				</div>
+				<div class="panel-body">
+					<form method="post" action="[%url page:'checkout'/%]">
+						<p>If you have a coupon or discount code enter it below</p>
+						<div class="form-group">
+							<input class="form-control" type="text" name="addcpn" value="" />
+						</div>
+						<input type="submit" class="btn btn-block btn-default" value="Apply Coupon Code">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6">
+			<table class="table">
+				<tr>
+					<td>Sub Total</td>
+					<td class="text-right">[%format type:'currency'%][@product_total@][%/format%]</td>
+				</tr>
+				<tr>
+					<td colspan="2" >
+					[%shipping_methods country:'[@ship_country@]' zip:'[@ship_zip@]'%]
+						[%param header%]
+						<form method="post" name="SHsummary" action="[%url page:'checkout'/%]">
+						[%/param%]
+						[%param *body%]
+							<div class="form-group">
+							<label class="label-block" for="[@id@]">
+
+								<input class="pull-left" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
+
+								<h4>&nbsp;[@shipping_method@] - [%if [@shipping_quote@]%] P.O.A [%else%] [%if [@cost@] == 0%] [%if [@na@] == 0%] Free [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%/if%] </h4>
+
+								[%if [@delivery_time@] >= 1%]
+								<p>Estimated arrival of [%format type:'number' tl_unit:'day' tl_plural:'days'%][@delivery_time@][%/format%]</p>
+								[%/if%]
+
+								<p>[@shipping_description@]<p>
+
+								</label>
+							</div>
+						[%/param%]
+						[%param footer%]
+						</form></td>
+							</tr>
+							<tr>
+								<td>Shipping Cost To Post Code [@ship_zip@]</td>
+								<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
+							</tr>
+						[%/param%]
+						[%param ifempty%]
+							Enter post code to calculate shipping
+						</td>
+						</tr>
+						[%/param%]
+				[%/shipping_methods%]
+
+				[%active_coupons%]
+					[%param *header%]
+					<tr>
+						<td><b>Discounts Applied</b></td>
+						<td>&nbsp;</td>
+					</tr>
+					[%/param%]
+					[%param *body%]
+					<tr>
+						<td> [@code@] [@title@] <a href="[%url page:'checkout' qs:'rmcpn=[@code@]'/%]"><i class="fa fa-times"></i></a>
+						</td>
+						<td class="text-right">-[%format type:'currency'%][@discount@][%/format%]</td>
+					</tr>
+					[%/param%]
+				[%/active_coupons%]
+
+				[%if [@discount_total@] > 0%]
+				<tr>
+					<td>Discount Total</td>
+					<td class="text-right">-[%format type:'currency'%][@discount_total@][%/format%]</td>
+				</tr>
+				[%/if%]
+
+				[%if ![@notax@]%]
+				<tr>
+					<td>GST [%if [@tax_inc@]%]Inc.[%/if%]</td>
+					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
+				</tr>
+				[%/if%]
+
+				<tr class="success">
+					<td ><b>Shopping Cart Total</b></td>
+					<td class="text-right" ><h3>[%format type:'currency'%][@grand_total@][%/format%]</h3></td>
+				</tr>
+			</table>
+			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
+
+					<input type="hidden" name="payment" value="6"/>
+					[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
+							[%param *header%]
+							<div class="row">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">Select your payment plan</h4>
+						</div>
+						<div class="panel-body">
+							<select class="form-control" name="plan">
+								<option value="">Select your payment plan</option>
+								[%/param%]
+							[%param *body%]
+								<option value="[@id@]" [%if [%id%] eq [@payment_plan_id@]%]selected[%/if%]>[@name@]</option>
+								[%/param%]
+							[%param *footer%]
+							</select>
+						</div>
+					</div>
+					</div>
+
+					</div>
+					[%/param%]
+				[%/ payment_plans%]
+
+				<div class="row">
+					<div class="col-xs-12 col-md-6 text-center">
+						[%config id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%]
+						[%if [@form:npurpose@] ne 'facebook'%]
+							<p><a class="btn btn-block btn-paypal" href="javascript:document.paypal.submit()">Checkout with <i class="fa fa-coloured-paypal"></i></a></p>
+						[%/if%]
+						[%if [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+							<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'/%]"> <img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"> </a>
+						[%/if%]
+						[%/config%]
+					</div>
+					<div class="col-xs-12 col-md-6 text-center">
+						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
+							<i class="fa fa-shopping-cart"></i> Checkout Now
+						</button>
+					</div>
+				</div>
+				</div>
+			</form>
+			[%/param%]
+			[%/cart_items%]
+		</div>
+	</div>
+</div>
+
+<!-- Do not edit below this line-->
+<script type="text/javascript" language="javascript">
+function rmcart (id) { var obj = document.getElementById(id); if(obj) { obj.value="0"; document.checkout.submit(); } }
+</script>
+[%ga_funnel%]/purchase/shopping_cart.html[%/ga_funnel%]

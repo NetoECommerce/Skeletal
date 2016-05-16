@@ -1,0 +1,78 @@
+[%load_template file:'cms/includes/sidebar.template.html'/%]
+	[%breadcrumb%]
+		[%param *header%]
+			<ul class="breadcrumb">
+				<li><a href="[@config:home_url@]">Home</a></li>
+		[%/param%]
+		[%param *body%]
+				<li><a href="[@url@]">[@name@]</a></li>
+		[%/param%]
+		[%param *body_current%]
+				<li>[@name@]</li>
+		[%/param%]
+		[%param *footer%]
+			</ul>
+		[%/param%]
+	[%/breadcrumb%]
+	<h1>[@content_name@]</h1>
+	<hr>
+	<img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%/ASSET_URL%]" class="pull-right"/>
+	<img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%/ASSET_URL%]"  class="pull-right"/>
+	<p>
+		[@content_short_description1@]
+		[@content_short_description2@]
+		[@content_short_description3@]
+	</p>
+	<p>
+		[@content_description1@]
+		[@content_description2@]
+		[@content_description3@]
+	</p>
+	[%thumb_list type:'storelocation' limit:'50' filter_asc:'1'%]
+		[%param *body%]
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-8">
+							<h2><a href="[@url@]">[@stloc_name@]</a></h2>
+							<address>
+								<p>
+									[@stloc_street1@] [@stloc_street2@]<br>
+									[@stloc_city@][%if [@stloc_state@] or [@stloc_zip@]%], [@stloc_state@] [@stloc_zip@][%/if%][%if [@stloc_country@]%], [@stloc_country@][%/if%]
+								</p>
+								<p>
+									[%if [@stloc_phone@]%]<i class="fa fa-phone"></i> [@stloc_phone@]<br>[%/if%]
+									[%if [@stloc_fax@]%]<i class="fa fa-fax"></i> [@stloc_fax@]<br>[%/if%]
+									[%if [@stloc_email@]%]<i class="fa fa-envelope-o"></i> <a href="mailto:[@stloc_email@]">[@stloc_email@]</a><br>[%/if%]
+								</p>
+							</address>
+							[%thumbnails id:'[@stloc_id@]' type:'storeloc'%]
+								[%PARAM *body%]
+									<img src="[@thumb_image@]" alt="[@stloc_name@]">
+								[%/PARAM%]
+							[%/thumbnails%]
+						</div>
+						[%if [@stloc_lat@] and [@stloc_lng@]%]
+							<div class="col-xs-12 col-sm-4">
+								<a href="https://www.google.com.au/maps/place/[%url_encode%][@stloc_street1@] [@stloc_street2@] [@stloc_city@] [@stloc_state@] [@stloc_zip@][%/url_encode%]/@[@stloc_lat@],[@stloc_lng@],15z" target="_blank">
+									<img src="https://maps.googleapis.com/maps/api/staticmap?center=[@stloc_lat@],[@stloc_lng@]&zoom=20&size=400x400&markers=color:blue%7Clabel:%7C[@stloc_lat@],[@stloc_lng@]" class="img-responsive" alt="[%nohtml%][@stloc_name@] [@stloc_street1@] [@stloc_street2@], [@stloc_city@], [@stloc_state@] [@stloc_zip@], [@stloc_country@][%/nohtml%]">
+								</a>
+							</div>
+						[%/if%]
+					</div>
+				</div>
+			</div>
+		[%/param%]
+		[%param *footer%]
+			<ul class="pagination">
+				[%paging limit:'3'%]
+					[%param *previous_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-left"></i></a></li>[%/param%]
+					[%param *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+					[%param *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+					[%param *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+					[%param *next_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-right"></i></a></li>[%/param%]
+				[%/paging%]
+			</ul>
+		[%/param%]
+	[%/thumb_list%]
+</div>

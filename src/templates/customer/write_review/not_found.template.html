@@ -1,0 +1,17 @@
+<script type="text/javascript">
+function onload(){
+	setTimeout('product_redirect()', 5000);
+}
+function product_redirect(){
+    window.location = "[%URL type:'item' id:'[@SKU@]'%][%END URL%]";
+}
+</script>
+<div class="col-xs-12">
+	<h1>Review Not Found!</h1>
+	<p>
+		The review you are looking for cannot be found or has moved.<br />
+	</p>
+	<p>
+		<a href="[%URL type:'home'%][%END URL%]" class="btn btn-default"> Click here to go to our home page</a>
+	</p>
+</div>

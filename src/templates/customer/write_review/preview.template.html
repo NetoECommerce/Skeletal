@@ -1,0 +1,57 @@
+<script type="text/javascript" language="javascript">
+function back_to_write_review(){
+	document.preview_review.fn.value = "write";
+	document.preview_review.submit();
+	
+}
+function check_terms_and_conditions(){
+		if (document.getElementById("checkbox_confirm_terms_and_conditions").checked){
+			document.preview_review.checked_terms_and_conditions.value = "1";
+		}
+		else{
+			document.preview_review.checked_terms_and_conditions.value = "0";
+		}
+}
+</script>
+<div class="col-xs-12">
+	<h1 class="page-header">Preview [@model@] Review </h1>
+	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
+	<div class="errorbox"><ul>
+	<li>[@error@]</li>
+	</ul></div>
+	<!--##[%END DATA%]##-->	
+	<form name="preview_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
+		<input type="hidden" name="fn" value="confirm">
+		<input type="hidden" name="item" value="[%NOHTML%][%FORM id:'item'%][%END FORM%][%END NOHTML%]">
+		<input type="hidden" name="review_text" value="[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]">
+		<input type="hidden" name="rating_value" value="[%NOHTML%][%FORM id:'rating_value'%][%END FORM%][%END NOHTML%]">
+		<input type="hidden" name="review_title" value="[%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]">
+		<input type="hidden" name="customername" value="[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]">
+		<input type="hidden" name="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]">
+		<input type="hidden" name="checked_terms_and_conditions" value="1">
+		<div id="review_details">
+			<blockquote>
+				<h2>[%NOHTML%][%FORM id:'review_title'%][%END FORM%][%END NOHTML%]</h2>
+				<p>[%NOHTML%][%FORM id:'review_text'%][%END FORM%][%END NOHTML%]</p>
+				[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]
+					<div class="hidden">
+						[%NOHTML%][%FORM id:'customername'%][%END FORM%][%END NOHTML%]
+						[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]
+					</div>
+				[%END USER%]
+				[%SET [@data:ratings-count@] = 1 /%] 
+				[%WHILE [@data:ratings-count@] <= [@form:rating_value@]%]
+					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+					<i class="fa fa-star fa-3x"></i>
+				[%/ WHILE%]
+				[%WHILE [@data:ratings-count@] <= 5%]
+					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+					<i class="fa fa-star-o fa-3x"></i>
+				[%/ WHILE%]
+			</blockquote>
+		</div>
+		<p>
+			<input class="btn btn-success btn-lg" type="submit" value="Post Review"> <input class="btn btn-warning btn-lg" type="button" value="Edit Review" onclick="back_to_write_review();"/>
+		</p>
+	</form>
+</div>
