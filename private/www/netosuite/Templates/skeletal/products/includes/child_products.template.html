@@ -40,7 +40,38 @@
 						<td>
 							<div class="child-price"><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></div>
 							<!--##[%IF [@extra@] or [@has_child@] %]##-->			
-							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
+							<span class="label label-warning">Additional Options</span>
+							<!-- PRODUCT OPTIONS -->
+							[%extra_options id:'[@SKU@]'%]
+								[%PARAM *header%]
+								[%END PARAM%]
+							[%PARAM *number_option%]
+							    	<label>[@name@]</label>
+							    	<input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value="">
+							[%END PARAM%]
+							[%PARAM *text_option%]
+								<label>[@name@]</label>
+								<textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea>
+								[%END PARAM%]
+								[%PARAM *select_option%]
+					    			<label>[@name@]</label>
+					
+					    			<select name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]">
+					    				[@choices@]
+					    			</select>
+							[%END PARAM%]
+							[%PARAM *choices%]
+						    		<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
+						    		[%DATA id:'price' if:'!=' value:'0'%]
+						    			(+ [%FORMAT type:'currency'%][@price@][%END FORMAT%])
+						    		[%END DATA%]
+						    		</option>
+						    	[%END PARAM%]
+						    	[%PARAM *footer%]
+								<input type="hidden" name="extras" value="[@total_options@]"/>
+								<hr />
+							[%END PARAM%]
+							[%END extra_options%]
 							<!--##[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]##-->
 							<span class="label label-warning">Pre-Order</span>
 							<!--##[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]##-->
