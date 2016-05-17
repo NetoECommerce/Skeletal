@@ -3,6 +3,6 @@ steps:
   - type: "waiter"
 
   - name: "Upload theme"
-    command: "/opt/bin/upload themerepotest"
+    command: "/opt/bin/upload themerepos5"
     agents:
       queue: design
