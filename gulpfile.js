@@ -3,13 +3,13 @@ var less = require('gulp-less');
 var path = require('path');
 
 gulp.task('less', function () {
-	gulp.src('./httpdocs/assets/themes/**/css/app.less')
+	gulp.src('./src/css/app.less')
 	.pipe(less({
 		paths: [ path.join(__dirname, 'less', 'includes') ]
 	}))
-	.pipe(gulp.dest('./httpdocs/assets/themes/'));
+	.pipe(gulp.dest('./src/css/'));
 });
 
 gulp.task('default', function () {
-	gulp.watch('./httpdocs/assets/themes/*/css/**/*.less', ['less']);
+	gulp.watch('./src/css/*.less', ['less']);
 });
