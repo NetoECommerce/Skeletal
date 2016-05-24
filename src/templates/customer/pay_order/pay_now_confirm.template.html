@@ -71,7 +71,7 @@ function proc_pay() {
 					<label>Select your payment method</label>
 					<select class="form-control" name="card_type" onChange="showPD()">
 						<option value=""></option>
-						<!--##[%payment_methods charge_type:'cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
+						<!--##[%payment_methods charge_type:'cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' payment_amount:'[@amount_owed@]'%]
 [%PARAM *body%]##-->
 						<option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
 						<!--##[%END PARAM%]
