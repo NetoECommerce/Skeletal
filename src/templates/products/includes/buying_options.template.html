@@ -98,7 +98,7 @@
 	[%data id:'max_qty' if:'ne' value:'0' %]
 	Maximum Order Quantity <strong>[@max_qty@]</strong>
 	[%end data%]
-	<form class="buying-options">
+	<form class="buying-options" autocomplete="off">
 		<input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
 		<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
 		<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">

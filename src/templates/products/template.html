@@ -47,7 +47,7 @@
 		</div>
 		<div class="col-sm-7">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-			<form>
+			<form autocomplete="off">
 				[%list_item_variations id:'[@current_sku@]'%]
 					[%param header%]
 					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
