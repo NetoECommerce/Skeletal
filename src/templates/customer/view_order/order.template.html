@@ -11,9 +11,11 @@
 			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"/%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}
 	</script>
-	<div>
-		<input type="button" class="btn btn-default pull-left" value="Print Order / Invoice" onClick="print_invoice()"> 
-		<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+	<div class="row">
+		<div class="col-xs-12">
+			<input type="button" class="btn btn-default pull-left" value="Print Order / Invoice" onClick="print_invoice()"> 
+			<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+		</div>
 	</div>
 	[%print_order id:'[@order_id@]'/%]
 </div>
