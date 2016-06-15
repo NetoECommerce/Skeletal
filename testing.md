@@ -75,150 +75,206 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 
 ----
 
-## Function
+# Function
 
-/* ADDRESS BOOK */
-- $.add_addressbook_entry()
-- $.del_addressbook_entry()
-- $.addressbook_select(param)
+The following functions are all within jquery.neto.js:
 
+## ADDRESS BOOK
 
-/* AJAX ADD TO CART */
-- $.addToCartDefaults(nofancybox)
-- $.addToCartInit(param)
-- $.getAddToCartParam()
-- $.addChildCartItem()
-- $.addCartItem(skuo, qtyo, fns)
-- $.addMultipleCartItems(id)
-- $.removeCartItem(ind, fns)
-- $.buildCartItem(data)
+### $.add_addressbook_entry()
 
-/* AJAX SEARCH */
-- $.initSearchField(opts)
+Used of the 'Edit Your Address Book' page in the Account Summary page, it requires the following input fields to be filled out to add an address to the addressbook database:
 
-/* LOAD TEMPLATE */
-- $.load_ajax_template(id, input, fns)
+This is for the ajax to call the correct api - /ajax/addressbook:
 
-/* COMPATIBILITY LIST */
-- $.compatListInit(param)
-- $.getCompatListParam()
-- $.setCompatMatch(l, s)
-- $.buildCompatList(s, u)
+- var addrid = $('#addr_id').val(); 
 
-/* ENDLESS SCROLL FUNCTIONS */
-- $.endlessScroll_Init(param)
-- $.endlessScroll_loadPage(pgnum)
-- $.endlessScroll_updatePaging()
+The following are user inputs on from the page:
 
-/* UTIL FUNCTIONS */
-- $.isMobileView() {
-- $.isFacebookView()
-- $.isFacebookPurpose()
-- $.addFacebookNView()
-- $.addFacebookNPurpose()
-- $.addNPurpose(npur)
-- $.isJQVersion(cmp,vertxt)
-- $.setCurrencySymbol(symb)
-- $.formatNumber(num, param)
-- $.formatCurrency(num)  - Formats param num to be correct dollar format e.g. $4.00
+- var shiptitle = $('#ship_title').val();
+- var firstname = $('#ship_first_name').val();
+- var lastname = $('#ship_last_name').val();
+- var company = $('#ship_company').val();
+- var street1 = $('#ship_street1').val();
+- var street2 = $('#ship_street2').val();
+- var zip = $('#ship_zip').val();
+- var city = $('#ship_city').val();
+- var state = $('#ship_state').val();
+- var country = $('#ship_country').val();
+- var phone = $('#ship_phone').val();
+
+### $.del_addressbook_entry()
+### $.addressbook_select(param)
+
+---
+
+## AJAX ADD TO CART 
+
+### $.addToCartDefaults(nofancybox)
+### $.addToCartInit(param)
+### $.getAddToCartParam()
+### $.addChildCartItem()
+### $.addCartItem(skuo, qtyo, fns)
+### $.addMultipleCartItems(id)
+### $.removeCartItem(ind, fns)
+### $.buildCartItem(data)
+
+---
+
+## AJAX SEARCH 
+
+### $.initSearchField(opts)
+
+---
+
+## LOAD TEMPLATE 
+
+### $.load_ajax_template(id, input, fns)
+
+---
+
+## COMPATIBILITY LIST 
+
+### $.compatListInit(param)
+### $.getCompatListParam()
+### $.setCompatMatch(l, s)
+### $.buildCompatList(s, u)
+
+---
+
+## ENDLESS SCROLL FUNCTIONS 
+
+### $.endlessScroll_Init(param)
+### $.endlessScroll_loadPage(pgnum)
+### $.endlessScroll_updatePaging()
+
+---
+
+## UTIL FUNCTIONS 
+
+### $.isMobileView()
+### $.isFacebookView()
+### $.isFacebookPurpose()
+### $.addFacebookNView()
+### $.addFacebookNPurpose()
+### $.addNPurpose(npur)
+### $.isJQVersion(cmp,vertxt)
+### $.setCurrencySymbol(symb)
+### $.formatNumber(num, param)
+### $.formatCurrency(num)  - Formats param num to be correct dollar format e.g. $4.00
  - Can change the symbol by changing var NETOCurrencySymbol to different string.
-- $.create_netosd_data(data, sp)
-- $.create_netosd_data_rc(data, vids, sp)
-- $.parse_netosd_data(data, sp)
-- $.parse_netosd_data_rc(data, vds, sp)
-- $.js_var_dump(data, html, ind, vds)
-- $.get_ajax_data(data)
-- $.do_ajax(module, qs, syn, fns)
-- $.soap_input_opt(rdata, def, vds)
-- $.soap_input_opt(rdata, def, vds)
-- $.preload_images(images)
-- $.show_tooltip(obj, txt, setting, ubary)
-- $.show_overlay(obj, id, html, setting)
-- $.bgFrame()
-- $.parse_ntemplate(text, data)
-- $.escape_reserved(text) - Replaces space with escapes e.g '\ '       
-- $.is_empty(text) - Can only return true or not defined
-- $.isEmpty(text) - Boolean if param text is null - only works with strings
-- $.trimSpace(text) - Calls $.trim(text) which trims white space at the start and end of param text
-- $.isTrue(t)
-- $.toInt(n [,def]) - Change n into an interger 
-- $.toFloat(n[,def]) - If n is a number it returns it, if its a string it strips out spaces and '$'
-- $.toText(n[,def]) - Returns n into a string, if null/undefined make it an empty string
-- $.timestamp() - Current time
-- $.randID() - random 5 numbers
-- $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
+### $.create_netosd_data(data, sp)
+### $.create_netosd_data_rc(data, vids, sp)
+### $.parse_netosd_data(data, sp)
+### $.parse_netosd_data_rc(data, vds, sp)
+### $.js_var_dump(data, html, ind, vds)
+### $.get_ajax_data(data)
+### $.do_ajax(module, qs, syn, fns)
+### $.soap_input_opt(rdata, def, vds)
+### $.soap_input_opt(rdata, def, vds)
+### $.preload_images(images)
+### $.show_tooltip(obj, txt, setting, ubary)
+### $.show_overlay(obj, id, html, setting)
+### $.bgFrame()
+### $.parse_ntemplate(text, data)
+### $.escape_reserved(text) - Replaces space with escapes e.g '\ '       
+### $.is_empty(text) - Can only return true or not defined
+### $.isEmpty(text) - Boolean if param text is null - only works with strings
+### $.trimSpace(text) - Calls $.trim(text) which trims white space at the start and end of param text
+### $.isTrue(t)
+### $.toInt(n [,def]) - Change n into an interger 
+### $.toFloat(n[,def]) - If n is a number it returns it, if its a string it strips out spaces and '$'
+### $.toText(n[,def]) - Returns n into a string, if null/undefined make it an empty string
+### $.timestamp() - Current time
+### $.randID() - random 5 numbers
+### $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
 
-- $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
-- $.show_div_loading(div) 
-- $.remove_div_loading(div)
-- $.init_text_count(classname)
-- $.update_text_count(cur)
-- $.validate_email(email)
+### $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
+### $.show_div_loading(div) 
+### $.remove_div_loading(div)
+### $.init_text_count(classname)
+### $.update_text_count(cur)
+### $.validate_email(email)
+
+---
+
+## POPUP BOX FUNCTIONS 
+
+### $.overlay(opt)
+### $.get_center_pos()
+### $.move_center(anime)
+### $.nShowActivity() / $.nHideActivity() - Places over an overlay
+### $.nHideActivity()
+### $.nPopupBoxRescroll(bo)
+### $.nPopupBoxReposition(bo, opt)
+### $.nPopupBox(m, opt) 
+### $.nClosePopupBox() - Closes any popup boxes that are currently open
+### $.isChecked(obj)
+### $.setChecked(obj, val)
+
+---
+
+## COMMON FUNCTIONS 
+
+---
 
 
-/* POPUP BOX FUNCTIONS */
+## POST CODE SELECTOR 
 
-- $.overlay(opt)
-- $.get_center_pos()
-- $.move_center(anime)
-- $.nShowActivity() / $.nHideActivity() - Places over an overlay
-- $.nHideActivity()
-- $.nPopupBoxRescroll(bo)
-- $.nPopupBoxReposition(bo, opt)
-- $.nPopupBox(m, opt) 
-- $.nClosePopupBox() - Closes any popup boxes that are currently open
-- $.isChecked(obj)
-- $.setChecked(obj, val)
-
-/* COMMON FUNCTIONS */
-
-
-/* POST CODE SELECTOR */
-
-- $.postcode_selectorInit(param) - can adjust params e.g. 
+### $.postcode_selectorInit(param) - can adjust params e.g. 
  - 'items_returned', 'max_height', 'closetimer_secs', 'check_street', 'showparam'
-- $.load_city_selector(id) 
-- $.postcode_pl_close(id)
-- $.postcode_change_country(id)
-- $.postcode_lookup(id, typ, flk)
-- $.setPSTRValue(id, city, state, zip, keyword, esp)
-- $.getPSTRCache(id)
+### $.load_city_selector(id) 
+### $.postcode_pl_close(id)
+### $.postcode_change_country(id)
+### $.postcode_lookup(id, typ, flk)
+### $.setPSTRValue(id, city, state, zip, keyword, esp)
+### $.getPSTRCache(id)
 
-/* BACK IN STOCK NOTIFICATION */
+---
 
- - $.addNotifyBackInStock(sku, opts) 
- - $.addNotifyContent(content_id, opts)
+## BACK IN STOCK NOTIFICATION 
 
- /* STORE LOCATION FUNCTIONS */
+ ### $.addNotifyBackInStock(sku, opts) 
+ ### $.addNotifyContent(content_id, opts)
 
- - $.storeLocator_Init(param) - 
- - $.geoGoToLocation(country, address) - 
- - $.geoSearchStores(country, zip, address)
- - $.geoCleartMarkers()
- - $.geoSetLocation(res, opts)
- - $.geoStartSearch()
- - $.geoCreateMarker(mkopts, data, ctr)
- - $.geoCustAddMarker(lat, lng, name)
- - $.geoHighLightMarker(id)
- - $.geoSelectLocation(ind)
- - $.getStoreLocatorCache(id)
+ ---
+
+ ## STORE LOCATION FUNCTIONS 
+
+ ### $.storeLocator_Init(param) - 
+ ### $.geoGoToLocation(country, address) - 
+ ### $.geoSearchStores(country, zip, address)
+ ### $.geoCleartMarkers()
+ ### $.geoSetLocation(res, opts)
+ ### $.geoStartSearch()
+ ### $.geoCreateMarker(mkopts, data, ctr)
+ ### $.geoCustAddMarker(lat, lng, name)
+ ### $.geoHighLightMarker(id)
+ ### $.geoSelectLocation(ind)
+ ### $.getStoreLocatorCache(id)
+
+ ---
  
-/* PRODUCT VARIATIONS */
+## PRODUCT VARIATIONS 
 
-- $.product_variationInit(param)
-- $.productVariationSelected(spid, valid)
-- $.getITMVARCache()
-- $.kit_variationInit(param)
-- $.kitVariationSelected(compid, csid)
-- $.getKITVARCache()
+### $.product_variationInit(param)
+### $.productVariationSelected(spid, valid)
+### $.getITMVARCache()
+### $.kit_variationInit(param)
+### $.kitVariationSelected(compid, csid)
+### $.getKITVARCache()
 
-/* WISHLIST FUNCTIONS */
+---
 
-- $.addToWishList(param)
-- $.toggleAddNew()
-- $.closePopup(sku, newwishlist)
-- $.btnLdFn(sku)
+## WISHLIST FUNCTIONS 
 
-/* ONREADY */
+### $.addToWishList(param)
+### $.toggleAddNew()
+### $.closePopup(sku, newwishlist)
+### $.btnLdFn(sku)
 
-- 
+---
+
+## ONREADY 
+
+---
