@@ -280,26 +280,26 @@ can adjust params e.g
 
 ## BACK IN STOCK NOTIFICATION 
 
- ### $.addNotifyBackInStock(sku, opts) 
- ### $.addNotifyContent(content_id, opts)
+### $.addNotifyBackInStock(sku, opts) 
+### $.addNotifyContent(content_id, opts)
 
- ---
+---
 
- ## STORE LOCATION FUNCTIONS 
+## STORE LOCATION FUNCTIONS 
 
- ### $.storeLocator_Init(param)
- ### $.geoGoToLocation(country, address) 
- ### $.geoSearchStores(country, zip, address)
- ### $.geoCleartMarkers()
- ### $.geoSetLocation(res, opts)
- ### $.geoStartSearch()
- ### $.geoCreateMarker(mkopts, data, ctr)
- ### $.geoCustAddMarker(lat, lng, name)
- ### $.geoHighLightMarker(id)
- ### $.geoSelectLocation(ind)
- ### $.getStoreLocatorCache(id)
+### $.storeLocator_Init(param)
+### $.geoGoToLocation(country, address) 
+### $.geoSearchStores(country, zip, address)
+### $.geoCleartMarkers()
+### $.geoSetLocation(res, opts)
+### $.geoStartSearch()
+### $.geoCreateMarker(mkopts, data, ctr)
+### $.geoCustAddMarker(lat, lng, name)
+### $.geoHighLightMarker(id)
+### $.geoSelectLocation(ind)
+### $.getStoreLocatorCache(id)
 
- ---
+---
  
 ## PRODUCT VARIATIONS 
 
