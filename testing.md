@@ -81,6 +81,14 @@ The following functions are all within jquery.neto.js:
 
 ## ADDRESS BOOK
 
+Neto features an address book feature which allows users who are logged in to add, edit and remove postage addresses to their account. This can be done both from the checkout and from the accounts page.
+
+**Actions to test:**
+
+- Adding an entry to the address book (accounts page and checkout)
+- Removing an entry from the address book
+- Selecting an entry in the address book on the checkout
+
 ### $.add_addressbook_entry()
 
 Used of the 'Edit Your Address Book' page in the Account Summary page, it requires the following input fields to be filled out to add an address to the addressbook database:
@@ -110,6 +118,17 @@ The following are user inputs on from the page:
 
 ## AJAX ADD TO CART 
 
+There are various places throughout the system where you can add products to cart, in different ways.
+
+*Note: In each case it is important to test the pop-up that always follows the Add to Cart action.*
+
+- Standard Add to Cart (thumbnails & product page)
+- Adding a child item to cart (Table view on products with children)
+- Multi-item Add
+- Add a kit to cart
+- Add a kit with variations to cart (ensure the variations are refreshing correctly)
+- Remove an item from cart (cart page and cart drop down)
+
 ### $.addToCartDefaults(nofancybox)
 ### $.addToCartInit(param)
 ### $.getAddToCartParam()
@@ -123,17 +142,32 @@ The following are user inputs on from the page:
 
 ## AJAX SEARCH 
 
+Neto's search feature is powered by AJAX through Neto.js
+
+- Standard search
+- Search with AJAX dropdown
+
 ### $.initSearchField(opts)
 
 ---
 
 ## LOAD TEMPLATE 
 
+On product and cart pages there are AJAX templates which can refresh based on the users input.
+
+- Loading & refreshing AJAX templates on products with variations
+- Various AJAX templates on cart & checkout pages
+
 ### $.load_ajax_template(id, input, fns)
 
 ---
 
 ## COMPATIBILITY LIST 
+
+Compatibility categories can have a dropdown interface, where you select a top-level category and another will load underneath.
+
+- Loading of additional dropdowns
+- Eventual redirect to a results page
 
 ### $.compatListInit(param)
 ### $.getCompatListParam()
@@ -287,6 +321,10 @@ can adjust params e.g
 
 ## STORE LOCATION FUNCTIONS 
 
+Neto has a feature that lets users search through a database of stockists and see them on a map.
+
+- Search for a stockist and get a successful result
+
 ### $.storeLocator_Init(param)
 ### $.geoGoToLocation(country, address) 
 ### $.geoSearchStores(country, zip, address)
@@ -313,6 +351,10 @@ can adjust params e.g
 ---
 
 ## WISHLIST FUNCTIONS 
+
+Neto let's users add products to a wishlist so they can purchase them at a later date.
+- Add product to a wish list
+- Remove product from a wish list
 
 ### $.addToWishList(param)
 ### $.toggleAddNew()
