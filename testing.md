@@ -314,6 +314,9 @@ can adjust params e.g
 
 ## BACK IN STOCK NOTIFICATION 
 
+If a product is out of stock Neto lets users automatically be notified when it is back in stock.
+- Add a Back-in-stock notification from thumbnails and product pages
+
 ### $.addNotifyBackInStock(sku, opts) 
 ### $.addNotifyContent(content_id, opts)
 
