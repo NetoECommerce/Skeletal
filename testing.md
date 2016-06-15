@@ -161,8 +161,12 @@ The following are user inputs on from the page:
 ### $.isJQVersion(cmp,vertxt)
 ### $.setCurrencySymbol(symb)
 ### $.formatNumber(num, param)
-### $.formatCurrency(num)  - Formats param num to be correct dollar format e.g. $4.00
- - Can change the symbol by changing var NETOCurrencySymbol to different string.
+### $.formatCurrency(num)  
+
+Formats param num to be correct dollar format e.g. $4.00
+
+- Can change the symbol by changing var NETOCurrencySymbol to different string.
+
 ### $.create_netosd_data(data, sp)
 ### $.create_netosd_data_rc(data, vids, sp)
 ### $.parse_netosd_data(data, sp)
@@ -177,19 +181,51 @@ The following are user inputs on from the page:
 ### $.show_overlay(obj, id, html, setting)
 ### $.bgFrame()
 ### $.parse_ntemplate(text, data)
-### $.escape_reserved(text) - Replaces space with escapes e.g '\ '       
-### $.is_empty(text) - Can only return true or not defined
-### $.isEmpty(text) - Boolean if param text is null - only works with strings
-### $.trimSpace(text) - Calls $.trim(text) which trims white space at the start and end of param text
-### $.isTrue(t)
-### $.toInt(n [,def]) - Change n into an interger 
-### $.toFloat(n[,def]) - If n is a number it returns it, if its a string it strips out spaces and '$'
-### $.toText(n[,def]) - Returns n into a string, if null/undefined make it an empty string
-### $.timestamp() - Current time
-### $.randID() - random 5 numbers
-### $.randString:(len [, str]) - Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
+### $.escape_reserved(text) 
 
-### $.hasCSSClass(c) - checks to see if param c is a class in any stylesheet from the loaded page
+Replaces space with escapes e.g '\ '
+
+### $.is_empty(text) 
+
+Can only return true or not defined
+
+### $.isEmpty(text) 
+
+Boolean if param text is null - only works with strings
+
+### $.trimSpace(text) 
+
+Calls $.trim(text) which trims white space at the start and end of param text
+
+### $.isTrue(t)
+### $.toInt(n [,def]) 
+
+Change n into an interger 
+
+### $.toFloat(n[,def]) 
+
+If n is a number it returns it, if its a string it strips out spaces and '$'
+
+### $.toText(n[,def])
+
+Returns n into a string, if null/undefined make it an empty string
+
+### $.timestamp() 
+
+Current time
+
+### $.randID() 
+
+random 5 numbers
+
+### $.randString:(len [, str]) 
+
+Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
+
+### $.hasCSSClass(c) 
+
+checks to see if param c is a class in any stylesheet from the loaded page
+
 ### $.show_div_loading(div) 
 ### $.remove_div_loading(div)
 ### $.init_text_count(classname)
@@ -203,12 +239,18 @@ The following are user inputs on from the page:
 ### $.overlay(opt)
 ### $.get_center_pos()
 ### $.move_center(anime)
-### $.nShowActivity() / $.nHideActivity() - Places over an overlay
+### $.nShowActivity() / $.nHideActivity() 
+
+Places over an overlay
+
 ### $.nHideActivity()
 ### $.nPopupBoxRescroll(bo)
 ### $.nPopupBoxReposition(bo, opt)
 ### $.nPopupBox(m, opt) 
-### $.nClosePopupBox() - Closes any popup boxes that are currently open
+### $.nClosePopupBox() 
+
+Closes any popup boxes that are currently open
+
 ### $.isChecked(obj)
 ### $.setChecked(obj, val)
 
@@ -221,8 +263,12 @@ The following are user inputs on from the page:
 
 ## POST CODE SELECTOR 
 
-### $.postcode_selectorInit(param) - can adjust params e.g. 
+### $.postcode_selectorInit(param) 
+
+can adjust params e.g
+
  - 'items_returned', 'max_height', 'closetimer_secs', 'check_street', 'showparam'
+
 ### $.load_city_selector(id) 
 ### $.postcode_pl_close(id)
 ### $.postcode_change_country(id)
@@ -241,8 +287,8 @@ The following are user inputs on from the page:
 
  ## STORE LOCATION FUNCTIONS 
 
- ### $.storeLocator_Init(param) - 
- ### $.geoGoToLocation(country, address) - 
+ ### $.storeLocator_Init(param)
+ ### $.geoGoToLocation(country, address) 
  ### $.geoSearchStores(country, zip, address)
  ### $.geoCleartMarkers()
  ### $.geoSetLocation(res, opts)
