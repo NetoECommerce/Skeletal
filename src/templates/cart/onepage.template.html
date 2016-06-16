@@ -376,86 +376,97 @@ $(document).ready(function() {
 			</div>
 			<div class="col-xs-12 col-sm-8">
 
-				<!--##[%payment_methods type:'[@order_type@]'%]
-			[%PARAM header%]##-->
+			[%payment_methods type:'[@order_type@]'%]
+			[%PARAM header%]
 				<span class="hidden-md hidden-lg"><br></span>
 				<ul class="list-inline">
-					<!--##[%END PARAM%][%PARAM *body%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'American Express'%]##-->
+			[%END PARAM%]
+			[%PARAM *body%]
+				[%if [@name@] like 'American Express'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-americanexpress"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
+						</a>
+					</li>
+				[%/ if%]
+				[%if [@name@] like 'Visa'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-visa"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'MasterCard'%]##-->
+						</a>
+					</li>
+				[%/ if%]
+				[%if [@name@] like 'MasterCard' || [@name@] like 'Master Card'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-mastercard"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'Discover'%]##-->
+						</a>
+					</li>
+				[%/ if%]
+				[%if [@name@] like 'Discover'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-discover"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'Diners'%]##-->
+						</a>
+					</li>
+				[%/if%]
+				[%if [@name@] like 'Diners'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-diners"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
+						</a>
+					</li>
+				[%/if%]
+				[%if [@name@] like 'Cheque'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-cheque"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
+						</a>
+					</li>
+				[%/if%]
+				[%if [@name@] like 'Money Order'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-moneyorder"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'Direct Deposit'%]##-->
+						</a>
+					</li>
+				[%/if%]
+				[%if [@name@] like 'Direct Deposit' || [@name@] like 'Bank Deposit'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-directdeposit"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
+						</a>
+					</li>
+				[%/if%]
+				[%if [@name@] like 'bpay'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-bpay"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%DATA id:'name' if:'like' value:'paypal'%]##-->
+						</a>
+					</li>
+				[%/if%]
+				[%if [@name@] like 'paypal'%]
 					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
 							<div class="payment-icon payment-icon-paypal"></div>
 						</div>
-						</a></li>
-					<!--##[%END DATA%]##-->
-					<!--##[%END PARAM%][%PARAM *footer%]##-->
+						</a>
+					</li>
+				[%/if%]
+			[%/ PARAM%]
+			[%PARAM *footer%]
 				</ul>
-
-				<!--##[%END PARAM%]
-				[%END payment_methods%]##-->
+			[%/ PARAM%]
+			[%/ payment_methods%]
 				<!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 			[%PARAM *header%]##-->
 				<div class="panel panel-default">
