@@ -1,6 +1,6 @@
 [%cache type:'list' id:'[@inventory_id@]'%]
 	<div class="col-xs-12">
-		<div class="panel panel-default">
+		<div class="panel panel-default" itemscope itemtype="http://schema.org/Product">
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-3">
@@ -14,13 +14,15 @@
 					</div>
 					<div class="col-xs-3 text-right">
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-						<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
+							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 							[%if [@inpromo@]%]
-								<strong>Now [%if [@has_child@]%]from [%/if%]</strong> <span class="text-success">[%format type:'currency'%][@promo_price@][%/format%]</span>
+								<strong>Now [%if [@has_child@]%]from [%/if%]</strong>
+								<span class="text-success" itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 							[%else%]
-								[%if [@has_child@]%]From&nbsp;[%/if%]	<span itemprop="price">[%format type:'currency'%][@store_price@][%/format%]</span>
+								[%if [@has_child@]%]From&nbsp;[%/if%]
+								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 							[%/if%]
-	            [%if [@inpromo@]%]
+							[%if [@inpromo@]%]
 								<p><span class="label label-danger">On Sale</span></p>
 							[%/if%]
 							[%if [@save@] > 0 AND ![@has_child@] %]
