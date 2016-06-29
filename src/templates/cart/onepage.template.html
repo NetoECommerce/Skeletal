@@ -16,7 +16,6 @@ $(document).ready(function() {
 		</div>
 		<div class="col-md-6 text-right">
 			<h1>
-				[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
 					[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
 						<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
 					[%END IF%]
@@ -25,7 +24,6 @@ $(document).ready(function() {
 							<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
 						</a>
 					[%END IF%]
-				[%END IF%]
 			</h1>
 		</div>
 	</div>
