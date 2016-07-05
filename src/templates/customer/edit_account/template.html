@@ -52,7 +52,7 @@ function checkPostCode(ta) {
 	var zip = document.UPDATEINFO.elements[zip_id];
 	var country = document.UPDATEINFO.elements[country_id];
 	if(country.options[country.selectedIndex].value == 'AU') {
-		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
+		zip.value = zip.value.replace(new RegExp('\\D','g'), '');
 	}
 }
 
