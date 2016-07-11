@@ -40,7 +40,7 @@
 					<input type="hidden" id="sku[@rndm@][@sku@]" name="sku[@rndm@][@sku@]" value="[@sku@]">
 					<input type="hidden" id="model[@rndm@][@sku@]" name="model[@rndm@][@sku@]" value="[@model@]">
 					<input type="hidden" id="thumb[@rndm@][@sku@]" name="thumb[@rndm@][@sku@]" value="[@thumb@]">
-					<input type="hidden" id="qty[@rndm@][@sku@]" name="qty[@rndm@][@sku@]" value="1" placeholder="Qty" class="input-tiny">
+					<input type="hidden" id="qty[@rndm@][@sku@]" name="qty[@rndm@][@sku@]" value="[%if [@min_qty@] > 0%][@min_qty@][%else%]1[%/if%]" placeholder="Qty" class="input-tiny">
 					[%if [@extra@] or [@has_child@] %]
 						<a href="[@URL@]" title="Buying Options" class="btn btn-primary btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Buying Options</a>
 					[%elseif [@store_quantity@] > 0 AND [@preorder@] %]
