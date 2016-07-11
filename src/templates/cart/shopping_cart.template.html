@@ -290,14 +290,14 @@
 
 				<div class="row">
 					<div class="col-xs-12 col-md-6 text-center">
-						[%config id:'SHOW_PAYPAL_EXPRESS_LINK' if:'==' value:'1'%]
-						[%if [@form:npurpose@] ne 'facebook'%]
-							<p><a class="btn btn-block btn-paypal" href="javascript:document.paypal.submit()">Checkout with <i class="fa fa-coloured-paypal"></i></a></p>
+						[%if [@config:show_paypal_express_link@]%]
+							<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
+								<img src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" alt="Checkout With Paypal" height="38px">
+							</a>
 						[%/if%]
-						[%if [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
+						[%if [@config:allow_masterpass_checkout@]%]
 							<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'/%]"> <img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"> </a>
 						[%/if%]
-						[%/config%]
 					</div>
 					<div class="col-xs-12 col-md-6 text-center">
 						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
@@ -317,4 +317,18 @@
 <script type="text/javascript" language="javascript">
 function rmcart (id) { var obj = document.getElementById(id); if(obj) { obj.value="0"; document.checkout.submit(); } }
 </script>
+[%site_value id:'footer_javascript'%]
+	<script>
+	window.paypalCheckoutReady = function () {
+		paypal.checkout.setup(
+			"[%nohtml%][@config:paypal_merchant_id@][%/nohtml%]",
+			{
+				environment: "[%IF [@config:paypal_api_environment@] eq 'sandbox'%]sandbox[%else%]live[%/if%]",
+				button: 'paypal'
+			}
+		);
+	};
+	</script>
+	<script src="//www.paypalobjects.com/api/checkout.js" async></script>
+[%/site_value%]
 [%ga_funnel%]/purchase/shopping_cart.html[%/ga_funnel%]
