@@ -2,14 +2,14 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%PARAM *header%]
-		<ul class="breadcrumb">
-			<li>
-				<a href="[@config:home_url@]">Home</a>
+		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 			</li>
 	[%/PARAM%]
 	[%PARAM *body%]
-		<li>
-			<a href="[@url@]">[@name@]</a>
+		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
 		</li>
 	[%/PARAM%]
 	[%PARAM *footer%]
