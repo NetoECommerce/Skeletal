@@ -38,9 +38,10 @@
 		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing col-sm-4">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			[%if ![@inpromo@]%]
-				<div class="productprice productpricetext" itemprop="price" content="[@store_price@]">
-					[%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
-				</div>
+				<span class="productprice productpricetext" itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span>
+				<span class="productprice productpricetext" itemprop="price" content="[@store_price@]">
+					[@store_price@]
+				</span>
 				[%if [@save@] > 0%]
 					<div class="productrrp text-muted">
 						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
@@ -58,9 +59,11 @@
 						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 				[%/if%]
-				<div class="productpromo" itemprop="price" content="[@promo_price@]">
-					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
-				</div>
+				<span class="productpromo" itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span>
+				NOW
+				<span class="productpromo" itemprop="price" content="[@promo_price@]">
+					[@promo_price@]
+				</span>
 				[%if [@save@] > 0%]
 					<div class="productsave">
 						SAVE [%format type:'percent'%][@save@][%/format%]!

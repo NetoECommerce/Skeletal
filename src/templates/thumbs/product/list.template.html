@@ -14,13 +14,12 @@
 					</div>
 					<div class="col-xs-3 text-right">
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 							[%if [@inpromo@]%]
 								<strong>Now [%if [@has_child@]%]from [%/if%]</strong>
-								<span class="text-success" itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
+								<span itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span><span itemprop="price" content="[@promo_price@]">[@promo_price@]</span>
 							[%else%]
 								[%if [@has_child@]%]From&nbsp;[%/if%]
-								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
+								<span itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span><span itemprop="price" content="[@store_price@]">[@store_price@]</span>
 							[%/if%]
 							[%if [@inpromo@]%]
 								<p><span class="label label-danger">On Sale</span></p>

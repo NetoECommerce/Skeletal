@@ -16,12 +16,11 @@
 				</a>
 			</h5>
 			<p class="price" itemprop="offers">
-			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
 				<!--##[%IF [@inpromo@]%]##-->
 					<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##-->
 				<!--##[%ELSE%]##-->
-					<span itemprop="price" content="[@store_price@]"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>
+					<span itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span><span itemprop="price" content="[@store_price@]">[@store_price@]</span>
 				<!--##[%END IF%]##-->
 
 				<!--##[%IF [@save@] > 0 AND ![@has_child@]%]##-->

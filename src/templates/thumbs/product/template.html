@@ -9,12 +9,11 @@
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 				[%if [@inpromo@]%]
 					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
-					<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
+					<span itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span><span itemprop="price" content="[@promo_price@]">[@promo_price@]</span>
 				[%else%]
 					[%if [@has_child@]%]From&nbsp;[%/if%]
-					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
+					<span itemprop="priceCurrency" content="[@config:defaultcurrency@]">[@CONFIG:currency_symbol@]</span><span itemprop="price" content="[@store_price@]">[@store_price@]</span>
 				[%/if%]
-				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			</p>
 			<!-- Purchase Logic -->
 			<form class="form-inline buying-options">
@@ -28,6 +27,7 @@
 					<button type="button" title="Pre-Order Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
 				[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
 					<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+					<link itemprop="availability" href="http://schema.org/InStock" />
 				[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 					<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
 				[%else%]
