@@ -11,6 +11,7 @@
 		</p>
 		[%if [@user:credit_limit@] > 0%]
 			<p>Credit Limit: <strong>[%format type:"currency"%][@credit_limit@][%/format%]</strong></p>
+		[%/if%]
 		[%if [@user:credit@]%]
 			<p>Available Credit: <strong>[%format type:'currency'%][@credit@][%/format%]</strong></p>
 		[%/if%]
