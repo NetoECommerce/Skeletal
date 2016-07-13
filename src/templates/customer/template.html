@@ -22,15 +22,15 @@
 		[%if ![@user:email@]%]
 			<div class="col-xs-12">
 				<div class="alert alert-danger">
-					<a class="close" data-dismiss="alert">×</a> You are required to enter My email address in order to order from our web site and receive our email notifications. <br />
-					<a href="[%url page:'account' type:'edit_account'/%]">Click here</a> to enter My email address.
+					<a class="close" data-dismiss="alert">×</a> You are required to enter your email address to order from our website and receive email notifications. <br />
+					<a href="[%url page:'account' type:'edit_account'/%]">Enter your email address.</a>
 				</div>
 			</div>
 		[%/if%]
 		[%if [@unresolve_dispute@]%]
 			<div class="col-xs-12">
 				<div class="alert alert-warning"> <a class="close" data-dismiss="alert">×</a> You have [@unresolve_dispute@] unresolved dispute(s) your resolution centre.<br />
-					<a href="[%url page:'account' type:'warranty'/%]">Click here</a> to view  or close your unresolved disputes.
+					<a href="[%url page:'account' type:'warranty'/%]">Wiew  or close your unresolved disputes.</a>
 				</div>
 			</div>
 		[%/if%]
