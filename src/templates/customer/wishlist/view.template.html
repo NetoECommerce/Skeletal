@@ -4,14 +4,14 @@
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-		<li><a href="[%URL page:'account' type:'wishlist'%][%END URL%]">My Wish Lists</a></li>
+		<li><a href="[%URL page:'account' type:'wishlist'%][%END URL%]">My Wishlists</a></li>
 		<li><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%END URL%]"><!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##--></a></li>
 	</ul>
 	<h1>Edit My Wish List</h1>
 	<hr />
 	
 	<!--##[%DATA id:'msg' if:'eq' value:'LIST_UPDATED'%]##-->
-	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> Wish list has been updated. </div>
+	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> Wishlist has been updated. </div>
 	<!--##[%END DATA%]##-->
 	
 	<form NAME="wishlist_update" method="POST" action="[%URL page:'account' type:'wishlist' fn:'view'%][%END URL%]">
@@ -57,7 +57,7 @@
 		</div>
 	</form>
 </div>
-<h4><i class="fa fa-folder-open"></i> <!--##[%NOHTML%]##-->[@wishlist_name@] Content's<!--##[%END NOHTML%]##--></h4>
+<h4><i class="fa fa-folder-open"></i> <!--##[%NOHTML%]##-->[@wishlist_name@] Contents<!--##[%END NOHTML%]##--></h4>
 <hr />
 
 <!--##[%thumb_list limit:'10000' type:'products' sortby:'wishlist' template:'clist' filter_wishlist:'[@wishlist_id@]'%]##--> 
@@ -72,7 +72,7 @@
 <div class="clear"></div>
 <!--##[%END PARAM%]##--> 
 <!--##[%PARAM ifempty%]##--> 
-You have no items in this wish list. 
+You have no items in this wishlist. 
 <!--##[%END PARAM%]##--> 
 <!--##[%END thumb_list%]##-->
 </div>
