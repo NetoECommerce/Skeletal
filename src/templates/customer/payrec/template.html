@@ -163,7 +163,7 @@
 	</script>
 	<script type="text/javascript" language="javascript">showPD();updAmt();</script>
 [%/SITE_VALUE%]
-<div class="col-xs-12">
+<div class="col-xs-12" sys-indicator="controlled-[@config:CONTROLLED_CHECKOUT_PATH@]-body">
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
@@ -225,7 +225,7 @@
 						</div>
 						<div class="form-group">
 							<label>Card Number</label>
-							<input class="form-control" type="text" name="card_number" size="16" maxlength="16" value="">
+							<input class="form-control km_ignore" type="text" name="card_number" size="16" maxlength="16" value="">
 							<p class="help-block">(only digits)</p>
 						</div>
 						<div class="row">
@@ -235,7 +235,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p class="help-block">Month</p>
-									<select class="input-small form-control " name="card_exp_month">
+									<select class="input-small form-control km_ignore" name="card_exp_month">
 										<option value=""></option>
 										[%months%]
 											[%PARAM *body%]
@@ -248,7 +248,7 @@
 							<div class="col-xs-6">
 								<div class="form-group">
 									<p class="help-block">Year</p>
-									<select class="input-small form-control" name="card_exp_year">
+									<select class="input-small form-control km_ignore" name="card_exp_year">
 										<option value=""></option>
 										[%years from:'+0' to:'+10'%]
 											[%PARAM *body%]
@@ -261,7 +261,7 @@
 							<div class="col-xs-4">
 								<div class="form-group">
 									<label>Card CCID</label>
-									<input class="form-control" type="text"  name="card_ccid" size="5">
+									<input class="form-control km_ignore" type="text"  name="card_ccid" size="5">
 									<p class="help-block">(3-4 digit security code)</p>
 								</div>
 							</div>

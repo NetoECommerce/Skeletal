@@ -1,0 +1,40 @@
+<div sys-indicator="controlled-[@config:CONTROLLED_CHECKOUT_PATH@]-body">
+[%SHOW_PROCESSOR_VALUES %]
+[%PARAM *header%]
+<form name="payVerifyForm" method="POST" action="[%NOHTML%][@processor_posturl@][%/NOHTML%]">
+[%/PARAM%][%PARAM *body%]
+[%IF [@processor_posttype@] eq 'TEXTAREA' %]
+<textarea style="display:none;" name="[%NOHTML%][@processor_postfield@][%/NOHTML%]">[@processor_postdata@]</textarea>
+[%ELSE%]
+<input type="hidden" name="[%NOHTML%][@processor_postfield@][%/NOHTML%]" value="[%NOHTML%][@processor_postdata@][%/NOHTML%]">
+[%/IF%]
+[%/PARAM%][%PARAM *footer%]
+
+<p align="center">
+<img src="[@CONFIG:imageurl@]/loading.gif" alt="Please Wait..."/>   
+</p>
+
+<p align="center">
+Please wait while we verify your payment details....    
+</p>
+
+<p align="center">
+<button class="btn">Click here if you are not redirected within 60 seconds</button>
+</p>
+</form>
+
+[%SITE_VALUE id:'footer_javascript'%]
+<script language="Javascript" >
+$(document).ready(function() {	
+	document.payVerifyForm.submit(); 
+});
+</script>
+[%END SITE_VALUE%]
+
+[%/PARAM%][%PARAM *ifempty%]
+<p align="center">
+Payment verification failed. <a href="[%NOHTML%][@cancel_url@][%/NOHTML%]">Click here</a> to try another payment option.
+</p>
+[%/PARAM%]
+[%/SHOW_PROCESSOR_VALUES%]
+</div>

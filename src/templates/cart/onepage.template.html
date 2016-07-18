@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 </script>
 <!--##[%END SITE_VALUE%]##-->
-<div class="col-xs-12">
+<div class="col-xs-12"  sys-indicator="controlled-[@config:CONTROLLED_CHECKOUT_PATH@]-body">
 <div class="page-header">
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="masterpass"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the MasterPass website to checkout.</div>
@@ -30,7 +30,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-[%load_template file:"cart/cart.error.html"/%]
+[%load_template file:"cart/includes/cart_error.template.html"/%]
 <!--##[%IF [@processor_account@] ne '' %]##-->
 <div class="alert alert-warning">
 	<strong>Important! Your order is not yet complete.</strong>
@@ -376,97 +376,22 @@ $(document).ready(function() {
 			</div>
 			<div class="col-xs-12 col-sm-8">
 
-			[%payment_methods type:'[@order_type@]'%]
-			[%PARAM header%]
+				<!-- Payment Icon -->
+				<!--##[%checkout_pay_icons type:'[@order_type@]'%]
+                   [%PARAM header%]##-->
 				<span class="hidden-md hidden-lg"><br></span>
 				<ul class="list-inline">
-			[%END PARAM%]
-			[%PARAM *body%]
-				[%if [@name@] like 'American Express'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
+					<!--##[%END PARAM%][%PARAM *body%]##-->
+					<li><a class="_cpy_payicon" ref="[@id@]" ref2="[@name@]" href="javascript:void(0);">
 						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-americanexpress"></div>
+							<div class="payment-icon" style="background-image: url([@processor_icon_url@]); height: 30px;"></div>
 						</div>
-						</a>
-					</li>
-				[%/ if%]
-				[%if [@name@] like 'Visa'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-visa"></div>
-						</div>
-						</a>
-					</li>
-				[%/ if%]
-				[%if [@name@] like 'MasterCard' || [@name@] like 'Master Card'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-mastercard"></div>
-						</div>
-						</a>
-					</li>
-				[%/ if%]
-				[%if [@name@] like 'Discover'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-discover"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-				[%if [@name@] like 'Diners'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-diners"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-				[%if [@name@] like 'Cheque'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-cheque"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-				[%if [@name@] like 'Money Order'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-moneyorder"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-				[%if [@name@] like 'Direct Deposit' || [@name@] like 'Bank Deposit'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-directdeposit"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-				[%if [@name@] like 'bpay'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-bpay"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-				[%if [@name@] like 'paypal'%]
-					<li><a class="_cpy_payicon" ref="[@id@]" href="javascript:void(0);">
-						<div class="payment-icon-container">
-							<div class="payment-icon payment-icon-paypal"></div>
-						</div>
-						</a>
-					</li>
-				[%/if%]
-			[%/ PARAM%]
-			[%PARAM *footer%]
+					</a></li>
+					<!--##[%END PARAM%][%PARAM *footer%]##-->
 				</ul>
-			[%/ PARAM%]
-			[%/ payment_methods%]
+					<!--##[%END PARAM%]
+				[%END checkout_pay_icons%]##-->
+
 				<!--##[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 			[%PARAM *header%]##-->
 				<div class="panel panel-default">
@@ -514,8 +439,10 @@ $(document).ready(function() {
 				<h3>Balance Due: <span class="_cpy_balancedue"><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%end format%]##--></span></h3>
 				</p>
 				<input name="grand_total" id="grand_total" type="hidden" value="[%CART id:'grand_total'%][%END CART%]"/>
+
+				<!-- Payment Description -->
 				<div ref="card" class="_cpy_paydesc alert alert-info">
-					<!--##[%IF [@processor_type@] eq ''%]##-->
+					[%IF [@processor_type@] eq ''%]
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label for="card_number">Card Number</label>
@@ -560,12 +487,12 @@ $(document).ready(function() {
 							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
 						</div>
 					</div>
-					<!--##[%ELSE%]##-->
-					<!--##[%IF [@processor_type@] eq 'masterpass'%]##-->
+					[%ELSE%]
+					[%IF [@processor_type@] eq 'masterpass'%]
 					<div><img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"></div>
-					<!--##[%ELSE%]##-->
+					[%ELSE%]
 					[@processor_type@]
-					<!--##[%END IF%]##-->
+					[%END IF%]
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label>Card Type</label>
@@ -578,7 +505,7 @@ $(document).ready(function() {
 							<p class="form-control-static">[@processor_card_number@] <a href="[%URL page:'checkout' fn:'3rdparty' qs:'payproc=&payclr=y'%][%END URL%]">(Change card)</a></p>
 						</div>
 					</div>
-					<!--##[%IF [@processor_require_cvv@] eq 'y'%]##-->
+					[%IF [@processor_require_cvv@] eq 'y'%]
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label>Enter your [@processor_card_brand@] CCV</label>
@@ -587,29 +514,22 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<div class="clear"></div>
-					<!--##[%END IF%]##-->
-					<!--##[%END IF%]##-->
+					[%END IF%]
+					[%END IF%]
 					<!-- Start Fancybox explanation of CCV -->
 					<div style="display:none;">
 						<div id="ccv" style="width:600px;"> For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div ref="cheque" class="_cpy_paydesc alert alert-info"> The address to send your <span class="_cpy_payname">[@name@]</span> to will be provided after you confirm your order below. </div>
-				<div ref="bank" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
-				<div ref="bpay" class="_cpy_paydesc alert alert-info"> When you submit this page, you will be given a Bpay biller
-					code and a reference number. Please quote the numbers and call your
-					participating financial institution to make a payment from your
-					cheque, savings or credit card account. </div>
-				<div ref="paypalexpress" class="_cpy_paydesc alert alert-info">
-					<!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM if_true%]##-->
-					When you submit this page, you will be redirected to the PayPal website to continue your PayPal Express Checkout.
-					<!--##[%END PARAM%][%PARAM if_false%]##-->
-					When you submit this page, your paypal account or credit card will be debited.
-					<!--##[%END PARAM%][%END DATA%]##-->
-				</div>
-				<div ref="account" class="_cpy_paydesc alert alert-info"> Your [@config:company_name@] account will automatically be charged for the value of this order. </div>
-				<div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
+				<!--##[%checkout_pay_description type:'[@order_type@]' %]##-->
+				<!--##[[%PARAM header%]
+				[%END PARAM%][%PARAM *body%]##-->
+				<div ref="[@payment_desc_type@]" class="_cpy_paydesc alert alert-info">[@payment_description@]</div>
+				<!--##[%END PARAM%][%PARAM *footer%]
+				[%END PARAM%]##-->
+				<!--##[%END checkout_pay_description%]##-->
+
 				[%if [@config:checkout_req_agree_terms@] eq '1'%]
 					<div class="modal fade" id="termsModal">
 						<div class="modal-dialog">
@@ -627,14 +547,15 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
-					<p>
+					<p id="terms_agree_box">
 						<input type="hidden" name="agreement" value="y">
-						Agree To <a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions?</a>
-						<input type="checkbox" name="agree" value="y" class="terms_box" [%if [@agree@]%]checked[%/if%] required/>
+						Agree To <a href="#termbox" class="notify_popup" id="terms">Terms &amp; Conditions?</a>
+						<input type="checkbox" name="agree" value="y" class="terms_box" [%DATA id:'agree' if:'=' value:'1'%]checked[%END DATA%] required/>
 					</p>
 				[%/if%]
 				<p class="form-actions">
-					<button type="submit" class="btn btn-success btn-lg btn-block">Confirm &amp; Process Order <i class="fa fa-chevron-right icon-white"></i></button>
+					<button id="bt_submit" class="btn btn-block btn-lg btn-success cp-addcc-btn" type="button" data-toggle="modal" data-target="#braintreepayment"> Continue to Payment <i class="fa fa-chevron-right icon-white"></i> </button>
+					<button id="other_submit" type="submit" class="btn btn-success btn-lg btn-block">Confirm &amp; Process Order <i class="fa fa-chevron-right icon-white"></i></button>
 				</p>
 				<!-- End Payment -->
 			</div>
@@ -655,4 +576,8 @@ $(document).ready(function() {
 	<!--##[%load_ajax_template id:'address' type:'cart' template:'address' preload:"0"%][%END load_ajax_template%]##-->
 </div>
 <!--##[%GA_FUNNEL%]/purchase/confirmation.html[%END GA_FUNNEL%]##-->
-<!--##[%load_template file:'trackingcode/CheckoutTracking.html'%][%END load_template%]##-->
+[%tracking_code type:"Checkout"%][%/tracking_code%]
+
+[%load_ajax_template id:'braintree' type:'cart' template:'braintree' preload:"1"%][%END load_ajax_template%]
+
+

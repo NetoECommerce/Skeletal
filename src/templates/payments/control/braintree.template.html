@@ -1,0 +1,56 @@
+[%SITE_VALUE id:'footer_javascript'%]
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+[%IF [@config:BRAINTREE_API_HAS_3DS@]%]
+<script type="text/javascript" language="javascript">
+    var dropin_id = $('INPUT[name="dropin_id"]').val();
+    var dropin_key = $('INPUT[name="dropin_key"]').val();
+
+    braintree.setup(dropin_key, dropin_id, {
+        container: dropin_id,
+        onPaymentMethodReceived: function (obj) {
+            var r = $('INPUT[name="received_amount"]').val();
+            var client = new braintree.api.Client({
+                clientToken: dropin_key
+            });
+            client.verify3DS({
+                amount: $.toFloat(r),
+                creditCard: obj.nonce
+            }, function (error, response) {
+                window.parent.accept_payment( {gateway_token : response.nonce} );
+            });
+        }
+    });
+</script>
+[%else%]
+<script type="text/javascript" language="javascript">
+    var dropin_id = $('INPUT[name="dropin_id"]').val();
+    var dropin_key = $('INPUT[name="dropin_key"]').val();
+
+    braintree.setup(dropin_key, dropin_id, {
+        container:dropin_id,
+        onPaymentMethodReceived: function (obj) {
+            window.parent.accept_payment( {gateway_token : obj.nonce} );
+        }
+    });
+</script>
+[%/IF%]
+[%END SITE_VALUE%]
+
+<!--##[%checkout_pay_description type:'[@order_type@]' %]##-->
+<!--##[[%PARAM header%]
+[%END PARAM%][%PARAM *body%]##-->
+<div ref="[@payment_desc_type@]" class="_cpy_paydesc alert alert-info">[@payment_description@]</div>
+<!--##[%END PARAM%][%PARAM *footer%]
+[%END PARAM%]##-->
+<!--##[%END checkout_pay_description%]##-->
+
+<form method="POST" name="payment_form" action="[%URL page:'account' type:'stored_card'%][%END URL%]">
+    <input type="hidden" name="proc" class="proc" value="">
+    <input type="hidden" name="card_ccid" class="card_ccid" value="">
+    <div id="dropin"></div>
+    <br />
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="window.parent.cancel_payment()">Cancel</button>
+        <button type="submit" class="btn btn-success cp-stored-card-add">Confirm</button>
+    </div>
+</form>

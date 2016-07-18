@@ -1,0 +1,100 @@
+[%SITE_VALUE id:'footer_javascript'%]
+<script type="text/javascript" src="https://api.ewaypayments.com/JSONP/v3/js"></script>
+<script type="text/javascript">
+    var form = $('FORM[name="3ptyPaymentForm"]')[0];
+    if (form.addEventListener) {
+        form.addEventListener("submit", ewayAjax, false);
+    } else if (form.attachEvent) {
+        form.attachEvent('onsubmit', ewayAjax);
+    }
+
+    function ewayAjax(e) {
+        eWAY.process(
+                $('FORM[name="3ptyPaymentForm"]')[0],
+                {
+                    autoRedirect: false,
+                    onComplete: function (data) {
+                        if (data.Is3DSecure) {
+                            window.location.replace(data.RedirectUrl);
+                        }
+                        var accesscode = $('INPUT[name="EWAY_ACCESSCODE"]').val();
+                        window.parent.accept_payment( {processor_accesscode : accesscode} );
+                    },
+                    onError: function (e) {
+                        alert('There was an error processing the request');
+                    },
+                    onTimeout: function (e) {
+                        alert('The request has timed out.');
+                    }
+                }
+        );
+        e.preventDefault();
+    }
+
+</script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+        $('#form_close_btn').click( function() { window.parent.cancel_payment(); } );
+    });
+</script>
+[%END SITE_VALUE%]
+<!--##[%3rdparty_payment_form processor_module:'[@processor_module@]'%][%PARAM header%]##-->
+<div id="eway_message"></div>
+<form method="POST" id="3ptyPaymentForm" name="3ptyPaymentForm" action="[@processor_posturl@]">
+    <!--##[%END PARAM%][%PARAM *body%]##-->
+    <input type="hidden" name="[@cc_processor_accesscode@]" value="[@processor_accesscode@]" />
+    <input type="hidden" name="[@cc_processor_type@]" value="Credit Card" />
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label>Card Number</label>
+            <input class="form-control"  type="text" name="[@cc_card_number@]" maxlength="16" value="" />
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label>Card Holder's Name</label>
+            <input class="form-control"  type="text"  name="[@cc_card_name@]" maxlength="40" value="" />
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <label>Card Expiration Date</label>
+                </div>
+                <div class="col-xs-6">
+                    <select class="form-control col-xs-6" name="[@cc_card_exp_month@]">
+                        <option value=""></option>
+                        [%months%][%PARAM *body%]
+                        <option class="input-small" value="[@month@]">[@month@]</option>
+                        [%END PARAM%][%END months%]
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <select class="form-control"  name="[@cc_card_exp_year@]">
+                        <option value=""></option>
+                        [%years from:'+0' to:'+10'%][%PARAM *body%]
+                        <option value="[@year@]">[@year@]</option>
+                        [%END PARAM%][%END years%]
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label>Card Security Code</label>
+            <input type="text" name="[@cc_card_cvv@]" class="form-control" />
+            <span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+        </div>
+    </div>
+
+    <br />
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="window.parent.cancel_payment()">Cancel</button>
+        <button type="submit" class="btn btn-success cp-stored-card-add">Confirm</button>
+    </div>
+    <!--##[%END PARAM%][%PARAM *footer%]##-->
+</form>
+    <!--##[%END PARAM%]
+[%END 3rdparty_payment_form%]##-->

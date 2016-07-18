@@ -1,0 +1,17 @@
+<div id="_cpy_info_msgs">
+	[%show_message severity:'msg'%]
+		[%param *body%]
+			<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
+	[%show_message severity:'warn'%]
+		[%param *body%]
+			<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
+</div>

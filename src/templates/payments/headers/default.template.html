@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
+<meta name="description" content="[%url_info name:'meta_description'/%]"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
+<title>Payment</title>
+<link class="theme-selector" rel="stylesheet" type="text/css" href="[$imageurl$]/checkouts/universal/css/app.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="[$imageurl$]/checkouts/universal/css/skeletal-style.css" media="all"/>
+[%cdn_asset html:'1' type:'css' domain:'maxcdn.bootstrapcdn.com' library:'font-awesome' version:'4.4.0'%]css/font-awesome.min.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
+<!--[if lte IE 8]>
+	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
+<![endif]-->
+</head>
+<body id="c_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
+<div class="page-title">
+	<span class="title">Payment Amount: <!--##[%format type:'currency'%]##-->[@amount@]<!--##[%end format%]##--></span>
+	<div class="clear"></div>
+</div>
+<div name="message" class="clear"></div>
+<form action="/_cpanel" method="post" name="paySubmitForm">
+	<input type="hidden" name="cusid" value="">
+	<input type="hidden" name="received_amount" value="[@amount@]">
+	<input type="hidden" name="action" value="pay">
+</form>

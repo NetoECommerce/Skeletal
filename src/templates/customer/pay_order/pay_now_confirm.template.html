@@ -1,14 +1,53 @@
-<div class="col-xs-12">
-	<script language="javascript" type="text/javascript">
+<div class="col-xs-12" sys-indicator="controlled-[@config:CONTROLLED_CHECKOUT_PATH@]-body">
+    [%cdn_asset html:'1' type:'js' library:'jquery' version:'1.11.3'%]jquery.min.js[%/cdn_asset%]
+    <script language="javascript" type="text/javascript">
 function showPD() {
 	var f = document.itemForm;
 	var obj = f['card_type'];
-	var pl = document.getElementById('payccpl');
-	if(obj && pl){
-		var val= obj.options[obj.selectedIndex].value;
-		pl.style.display = (val.indexOf(':cc')>0? '': 'none');
+    var val= obj.options[obj.selectedIndex].value;
+    var valarr = val.split(':');
+
+    // hide all paypl
+    var paypls = document.getElementsByClassName("paypl");
+    for (var i = 0; i < paypls.length ; i++) {
+        paypls[i].style.display = 'none';
+    }
+
+    // show needed paypl
+    var pl_array = [];
+    if(valarr[0] > 0){
+        if(valarr[1] == 'cc'){
+            pl_array.push(document.getElementById('payccpl'));
+            pl_array.push(document.getElementById('paydefaultpl'));
+        }else if(valarr[1] == 'web'){
+            pl_array.push(document.getElementById('paydefaultpl'));
+        }
+
+        for (var j = 0; j < pl_array.length ; j++) {
+            pl_array[j].style.display = '';
+        }
+
 	}
 }
+
+function controlPay() {
+    var f = document.itemForm;
+    var obj = f['card_type'];
+    var val= obj.options[obj.selectedIndex].value;
+    var valarr = val.split(':');
+
+    if(valarr[0] > 0){
+        if(valarr[1] == 'cc'){
+            proc_pay();
+        }else if(valarr[1] == 'web'){
+            tokenPay();
+        }
+    }else{
+        alert('Please select a payment method.');
+    }
+
+}
+
 
 function proc_pay() {
 	var f = document.itemForm;
@@ -37,6 +76,79 @@ function proc_pay() {
 		}
 	}
 }
+
+function tokenPay(){
+    var f = document.itemForm;
+    var r = f['amount_paid'];
+    var rv = parseFloat(r.value);
+
+    var obj = f['card_type'];
+    var val= obj.options[obj.selectedIndex].value;
+    var valarr = val.split(':');
+	var payid = valarr[0];
+
+	if( rv > 0 && payid > 0){
+		var url = '[$secure_home_url$]/do/payment?id='+payid+'&amount='+rv;
+		$("#payment_iframe_div").html('<iframe id="payment_iframe" src="'+url+'" style="width:100%;height:400px;border:0px; z-index: 9999;" frameborder="0" allowtransparency="true" scrolling="no"></iframe>');
+		cpPaymentSpanner( {'visible':true}  );
+		var iframe_obj = $("#payment_iframe");
+		iframe_obj.off('load');
+		iframe_obj.on('load', function() {
+			cpPaymentSpanner( {'visible':false}  );
+		});
+		$('#tokenPayment').modal('show');
+
+	}else{
+		alert('Invalid payment amount.');
+		$('#tokenPayment').modal('hide');
+		$("#payment_iframe_div").html('');
+	}
+}
+
+function cpPaymentSpanner(opt) {
+    opt = $.extend({
+        'visible':true
+    }, opt);
+    if ( $('div.nspanner').length === 0 ) {
+        $('<div class="nspanner"><img src="[$imageurl$]/loading.gif" alt="Loading" /></div>').hide().css({'position': 'absolute'}).appendTo(document.body);
+        $(window).resize(function() {
+            $('div.nspanner:visible').move_center();
+        });
+        $(window).scroll(function() {
+            $('div.nspanner:visible').move_center();
+        });
+    }
+    var o = $('div.nspanner');
+    o.overlay({ 'visible': opt['visible'] });
+
+    if(opt['visible']) {
+        o.show().move_center();
+    } else {
+        o.hide();
+    }
+}
+
+function accept_payment(input_obj) {
+    for (var key in input_obj) {
+        if( key.indexOf('processor_') == 0 && key.match( /^[A-Za-z0-9_]+$/ )) {
+            if( $('[name="_prefix_key"]') ) {}
+            $('<input type="hidden">').attr('name', key).val(input_obj[key]).appendTo($('FORM[name="itemForm"]'));
+        }
+
+        if(input_obj['gateway_token']){
+            $('<input type="hidden">').attr('name', 'gateway_token').val(input_obj['gateway_token']).appendTo($('FORM[name="itemForm"]'));
+        }
+    }
+    $('#tokenPayment').modal('hide');
+
+    var f = document.itemForm;
+    f.submit();
+}
+
+function cancel_payment() {
+    $('#tokenPayment').modal('hide');
+    $("#payment_iframe_div").html('');
+}
 </script>
 
 	<!--# Start Breadcrumb# ##-->
@@ -56,97 +168,94 @@ function proc_pay() {
 	<!--##[%DATA id:'msg' if:'ne' value:''%]##-->
 	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>
 	<!--##[%END DATA%]##-->
-
-	<form action="[%URL page:'account' type:'pay_order'%][%END URL%]" method="post" name="itemForm">
-		<input type="hidden" name="id" value="[@order_id@]">
-		<input type="hidden" name="order_email" value="[@order_email@]">
-		<input type="hidden" name="fn" value="confirm">
-		<input type="hidden" name="action" value="paynow">
-		<input type="hidden" name="grand_total" value="[@grand_total@]">
-		<input type="hidden" name="paid_total" value="[@paid_total@]">
-		<h3>Pay By Credit Card</h3>
-		<div class="row">
-			<div class="col-xs-12 col-md-4">
-				<div class="form-group">
-					<label>Select your payment method</label>
-					<select class="form-control" name="card_type" onChange="showPD()">
-						<option value=""></option>
-						<!--##[%payment_methods charge_type:'cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' payment_amount:'[@amount_owed@]'%]
-[%PARAM *body%]##-->
-						<option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
-						<!--##[%END PARAM%]
-[%END payment_methods%]##-->
-					</select>
-				</div>
-
-				</div>
-
-			<div class="col-xs-12 col-md-6 col-md-offset-2">
-				<div id="payccpl">
-				<div class="well">
-					<div class="row">
-						<div class="col-xs-12">
-						<div class="form-group">
-							<label>Card Holder</label>
-							<input placeholder="John Smith" class="form-control" name="card_holder" size="30" maxlength="40" value="">
-						</div>
-						</div>
-						<div class="col-xs-12">
-						<div class="form-group">
-							<label>Card Number</label>
-							<input placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control" name="card_number" size="16" maxlength="16" value="">
-							<p class="help-text">(only digits)</p>
-						</div>
-						</div>
-					</div>
-					<div class="row">
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label>Card Expiration Date</label>
-						</div>
-						<div class="col-xs-12 col-md-4">
-						<label>Month</label>
-							<select name="card_exp_month" class="form-control">
-								<option value=""></option>
-								<!--##[%months%][%PARAM *body%]##-->
-								<option value="[@month@]">[@month@]</option>
-								<!--##[%END PARAM%][%END months%]##-->
-							</select>
-						</div>
-						<div class="col-xs-12 col-md-4">
-						<label>Year</label>
-							<select name="card_exp_year" class="form-control">
-								<option value=""></option>
-								<!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
-								<option value="[@year@]">[@year@]</option>
-								<!--##[%END PARAM%][%END years%]##-->
-							</select>
-						</div>
-						<div class="col-xs-12 col-md-4">
-
-							<label>Card CCID</label>
-							<input name="card_ccid" size="5" class="form-control">
-							<p class="help-text">(3-4 digit security code)</p>
-
-						</div>
-
-
-						</div>
-						</div>
-
-					</div>
-					<div class="form-group">
-					<label>Enter Amount You Want To Pay Now</label>
-					<input placeholder="[@config:moneysign@]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
-				</div>
-				<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="Process Credit Card Payment">
-			</div>
-
-				</div>
-			</div>
-		</div>
-
-	</form>
+    <form action="[%URL page:'account' type:'pay_order'%][%END URL%]" method="post" name="itemForm">
+        <input type="hidden" name="id" value="[@order_id@]">
+        <input type="hidden" name="order_email" value="[@order_email@]">
+        <input type="hidden" name="fn" value="confirm">
+        <input type="hidden" name="action" value="paynow">
+        <input type="hidden" name="grand_total" value="[@grand_total@]">
+        <input type="hidden" name="paid_total" value="[@paid_total@]">
+        <h3>Pay By Credit Card</h3>
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="form-group">
+                    <label>Select your payment method</label>
+                    <select class="form-control" name="card_type" onChange="showPD()">
+                        <!--##[%payment_methods charge_type:'cc, acc, web' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
+    [%PARAM *body%]##-->
+                        <option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
+                        <!--##[%END PARAM%]
+    [%END payment_methods%]##-->
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-md-offset-2">
+                <div id="payccpl" class="paypl" style="display:none;">
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Card Holder</label>
+                                    <input placeholder="John Smith" class="form-control" name="card_holder" size="30" maxlength="40" value="">
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label>Card Number</label>
+                                    <input placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control km_ignore" name="card_number" size="16" maxlength="16" value="">
+                                    <p class="help-text">(only digits)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label>Card Expiration Date</label>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <label>Month</label>
+                                    <select name="card_exp_month" class="form-control km_ignore">
+                                        <option value=""></option>
+                                        <!--##[%months%][%PARAM *body%]##-->
+                                        <option value="[@month@]">[@month@]</option>
+                                        <!--##[%END PARAM%][%END months%]##-->
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <label>Year</label>
+                                    <select name="card_exp_year" class="form-control km_ignore">
+                                        <option value=""></option>
+                                        <!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
+                                        <option value="[@year@]">[@year@]</option>
+                                        <!--##[%END PARAM%][%END years%]##-->
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <label>Card CCID</label>
+                                    <input name="card_ccid" size="5" class="form-control km_ignore">
+                                    <p class="help-text">(3-4 digit security code)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="paydefaultpl" class="paypl" style="display:none;">
+                    <div class="well">
+                        <div class="form-group">
+                            [%show_order id:'[@order_id@]'%]
+                                [%PARAM *footer%]
+                            <label>Enter Amount You Want To Pay Now</label>
+                            <input class="form-control" type="text" name="amount_paid"
+                                   value="[%format type:'number' dp:'2'%][@amount_owed@][%/format%]" size="15">
+                                [%/PARAM%]
+                            [%/show_order%]
+                        </div>
+                        <input type="button" class="btn btn-block btn-success" onclick="controlPay()" value="Process Credit Card Payment">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 	<hr>
 	<script type="text/javascript" language="javascript">showPD();</script>
 	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> Payment Processing.<br />
@@ -156,5 +265,12 @@ function proc_pay() {
 	<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
 
 	<!--#End Content# ##-->
+</div>
 
+<div class="modal fade" id="tokenPayment" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div id="payment_iframe_div" class="padding:10px;"></div>
+		</div>
+	</div>
 </div>

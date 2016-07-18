@@ -1,0 +1,43 @@
+<!-- Braintree -->
+<div class="modal fade" id="braintreepayment" tabindex="-1" role="dialog" aria-labelledby="braintreepaymentmodal" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title" id="braintreepaymentmodal">Braintree Payment</h4>
+</div>
+<div id="braintreepayment" class="modal-body">
+[%SITE_VALUE id:'footer_javascript'%]
+[%BRAINTREE_PAYMENT%]
+[%END BRAINTREE_PAYMENT%]
+[%END SITE_VALUE%]
+	<form method="POST" name="itemAddForm" action="[%URL page:'account' type:'stored_card'%][%END URL%]">
+		<input type="hidden" name="proc" class="proc" value="">
+		<input type="hidden" name="card_ccid" class="card_ccid" value="">
+		<div id="dropin"></div>
+		<br />
+		[%CONFIG id:'CHECKOUT_REQ_AGREE_TERMS' if:'eq' value:'1'%]
+				<!-- Start Fancybox terms -->
+				<div class="hidden">
+					<div id="termbox" class="panel">
+						<div class="panel-body">
+							[%content_zone id:'terms'%][%end content_zone%]
+						</div>
+					</div>
+				</div>
+				<p id="terms_agree_box">
+					<input type="hidden" name="agreement" value="y">
+					Agree To <a href="#termbox" class="notify_popup" id="terms">Terms &amp; Conditions?</a>
+					<input type="checkbox" name="braintree_agree" value="y" class="terms_box" [%DATA id:'agree' if:'=' value:'1'%]checked[%END DATA%] required/>
+				</p>
+		[%END CONFIG%]
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-success cp-stored-card-add">Confirm</button>
+		</div>
+	</form>
+</div>
+</div>
+</div>
+</div>
+

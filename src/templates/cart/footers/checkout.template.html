@@ -1,0 +1,54 @@
+	</div>
+</div>
+<div class="wrapper-footer" sys-indicator="controlled-[@config:CONTROLLED_CHECKOUT_PATH@]-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<hr />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-9 hidden-xs">
+				[%checkout_pay_icons type:'[@order_type@]' show_icon:'1' ignore_balance:'1'%]
+					[%param header%]
+						<ul class="list-inline">
+					[%/param%]
+					[%param *body%]
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon" style="background-image: url([@processor_icon_url@]); height: 30px;"></div>
+								</div>
+							</li>
+					[%/param%]
+					[%param *footer%]
+						</ul>
+					[%/param%]
+				[%/checkout_pay_icons%]
+			</div>
+			<div class="col-sm-3">
+				<address>
+					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
+					[%if [@config:company_abn@]%]<strong>ABN:</strong> [@config:company_abn@]<br>[%/ if%]
+					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
+					<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank">E-commerce Software</a> By Neto</p>
+				</address>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Required Neto Scripts - DO NOT REMOVE -->
+[%cdn_asset html:'1' type:'js' library:'jquery' version:'1.11.3'%]jquery.min.js[%/cdn_asset%]
+[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
+[%NETO_JS html:'1' id:'main' /%]
+[%cdn_asset html:'1' type:'js' library:'bootstrap' version:'3.2.0'%]bootstrap.min.js[%/cdn_asset%]
+<script type="text/javascript" src="[%ntheme_asset%]js/custom.js[%/ntheme_asset%]"></script>
+[%cdn_asset html:'1' type:'js' library:'jquery_ui' version:'1.11.1'%]js/jquery-ui-1.8.18.custom.min.js[%/cdn_asset%]
+[%SITE_VALUE id:'footer_javascript' type:'load'/%]
+<!-- Analytics -->
+[%tracking_code type:"Visitor"%][%/tracking_code%]
+<div class="npopup" style=""> <a href="javascript:void(0);" class="npopup-btn-close"></a>
+	<div class="npopup-body">
+	</div>
+</div>
+</body>
+</html>
