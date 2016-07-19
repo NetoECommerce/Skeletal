@@ -17,6 +17,7 @@
 							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 							[%if [@inpromo@]%]
 								<strong>Now [%if [@has_child@]%]from [%/if%]</strong>
+								<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
 								<span class="text-success" itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 							[%else%]
 								[%if [@has_child@]%]From&nbsp;[%/if%]
