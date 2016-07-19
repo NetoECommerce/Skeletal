@@ -69,7 +69,7 @@
 				<div class="productsavetext">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
-				<div class="time-text">
+				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">
 					[%format type:'date' format:' #H:#I #a, #d #K #Y'%][@promo_end@][%/format%]
 				</div>
 			[%/if%]
