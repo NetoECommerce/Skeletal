@@ -9,6 +9,7 @@
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 				[%if [@inpromo@]%]
 					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
+					<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
 					<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 				[%else%]
 					[%if [@has_child@]%]From&nbsp;[%/if%]
