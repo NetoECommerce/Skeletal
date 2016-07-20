@@ -42,31 +42,33 @@
 						</div>
 					</form>
 				[%/if%]
-				<ul class="list-inline list-social">
+				<ul class="list-inline list-social" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="url" content="[@config:home_url@]"/>
+					<meta itemprop="name" content="[@config:company_name@]"/>
 					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					[%if [@config:facebook_account_id@]%]
-					<li><a href="[@config:facebook_account_id@]" target="_blank"><i class="fa fa-facebook-square text-facebook"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank"><i class="fa fa-facebook-square text-facebook"></i></a></li>
 					[%/if%]
 					[%if [@config:twitter_account_id@]%]
-					<li><a href="[@config:twitter_account_id@]" target="_blank"><i class="fa fa-twitter-square text-twitter"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank"><i class="fa fa-twitter-square text-twitter"></i></a></li>
 					[%/if%]
 					[%if [@config:googleplus_account_id@]%]
-					<li><a href="[@config:googleplus_account_id@]" target="_blank"><i class="fa fa-google-plus-square text-google-plus"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank"><i class="fa fa-google-plus-square text-google-plus"></i></a></li>
 					[%/if%]
 					[%if [@config:youtube_account_id@]%]
-					<li><a href="[@config:youtube_account_id@]" target="_blank"><i class="fa fa-youtube-square text-youtube"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank"><i class="fa fa-youtube-square text-youtube"></i></a></li>
 					[%/if%]
 					[%if [@config:instagram_account_id@]%]
-					<li><a href="[@config:instagram_account_id@]" target="_blank"><i class="fa fa-instagram text-instagram"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank"><i class="fa fa-instagram text-instagram"></i></a></li>
 					[%/if%]
 					[%if [@config:pinterest_account_id@]%]
-					<li><a href="[@config:pinterest_account_id@]" target="_blank"><i class="fa fa-pinterest-square text-pinterest"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank"><i class="fa fa-pinterest-square text-pinterest"></i></a></li>
 					[%/if%]
 					[%if [@config:tumblr_account_id@]%]
-					<li><a href="[@config:tumblr_account_id@]" target="_blank"><i class="fa fa-tumblr-square text-tumblr"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank"><i class="fa fa-tumblr-square text-tumblr"></i></a></li>
 					[%/if%]
 					[%if [@config:linkedin_account_id@]%]
-					<li><a href="[@config:linkedin_account_id@]" target="_blank"><i class="fa fa-linkedin-square text-linkedin"></i></a></li>
+					<li><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank"><i class="fa fa-linkedin-square text-linkedin"></i></a></li>
 					[%/if%]
 				</ul>
 			</div>
