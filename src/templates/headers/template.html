@@ -30,9 +30,9 @@
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <div class="container wrapper-header">
 	<div class="row row-padded">
-		<div class="col-xs-12 col-sm-4 wrapper-logo">
-			<a href="[@config:homeurl@]" title="[@config:company_name@]">
-				<img class="logo" src="[@config:imageurl@]/website_logo.png" alt="[@config:company_name@]"/>
+		<div class="col-xs-12 col-sm-4 wrapper-logo" itemscope itemtype="http://schema.org/Organization">
+			<a itemprop="url" href="[@config:homeurl@]" title="[@config:company_name@]">
+				<img itemprop="logo" class="logo" src="[@config:imageurl@]/website_logo.png" alt="[@config:company_name@]"/>
 			</a>
 		</div>
 		<div class="col-xs-12 col-sm-4">
