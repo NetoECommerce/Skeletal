@@ -7,15 +7,15 @@
 	<div class="panel-heading" role="tab">
 		<h4 class="panel-title">
 		<a data-toggle="collapse" href="#voucherAccordion" aria-expanded="true" aria-controls="voucherAccordion">
-			Redeem a Gift Voucher
+			Redeem a gift voucher
 		</a>
 		</h4>
 	</div>
 	<div id="voucherAccordion" class="panel-collapse collapse" role="tabpanel">
 		<div class="panel-body">
-			<label>Voucher Code</label>
+			<label>Voucher code</label>
 			<input class="form-control" type="text" name="addvoucher" id="addvoucher" size="35" />
-			<label>Secret Code</label>
+			<label>Secret code</label>
 			<input class="form-control" type="text" id="_cpy_vsecret_mask" size="35" />
 			<input type="hidden" name="vsecret" id="vsecret" />
 			<hr>
@@ -25,12 +25,12 @@
 </div>
 <table class="_cpy_credit_table table table-bordered">
 	<tr>
-		<td class="header" colspan="3"><b>The Following Credit Is Available On Your Account:</b></td>
+		<td class="header" colspan="3"><b>Credit available on your account:</b></td>
 	</tr>
 	<tr>
 		<td width="80%" nowrap>Description</td>
-		<td nowrap>Balance Available</td>
-		<td nowrap>Apply Credit To This Order</td>
+		<td nowrap>Balance available</td>
+		<td nowrap>Apply credit to this order</td>
 	</tr>
 	[%active_vouchers%]
 		[%param *body%]
@@ -63,7 +63,7 @@
 [%/active_vouchers%]
 [%if [@user:credit@] > '0'%]
 	<tr>
-		<td><strong>Account Credit</strong></td>
+		<td><strong>Account credit</strong></td>
 		<td nowrap><a class="_cpy_crapplyall" ref="cr" href="javascript:void(0);">[%format type:'currency'%][@user:credit@][%/format%]</a></td>
 		<td nowrap><input placeholder="[@config:moneysign@]" type="text" class="form-control" name="apply_credit" id="apply_credit" size="8"/><input type="hidden" id="_cpy_crbalance" value="[%USER id:'credit'%][%/USER%]"/></td>
 	</tr>
