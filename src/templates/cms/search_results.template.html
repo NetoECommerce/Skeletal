@@ -71,7 +71,7 @@
 							</div>
 						</div>
 						<div class="col-md-4 hidden-xs hidden-sm">
-							<div class="btn-text"><strong>[@total_results@]</strong> Products Found</div>
+							<div class="btn-text"><strong>[@total_results@]</strong> Products found</div>
 						</div>
 						<div class="col-xs-8 col-sm-5 col-md-4">
 							<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
@@ -124,10 +124,10 @@
 					<div class="row">
 						<div class="col-xs-12">
 							[%FILTER ID:'keywords' if:'ne' value:''%]
-								<p>Search was unable to find any product results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
+								<p>Search was unable to find any product results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]'. You may have typed your query incorrectly, or are being too specific. Try using a broader search term.</p>
 							[%/FILTER%]
 							[%FILTER ID:'keywords' if:'eq' value:''%]
-								<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
+								<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance, please contact us.</p>
 							[%/FILTER%]
 							<hr />
 						</div>
