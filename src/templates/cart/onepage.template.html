@@ -8,11 +8,11 @@ $(document).ready(function() {
 <!--##[%END SITE_VALUE%]##-->
 <div class="col-xs-12">
 <div class="page-header">
-	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
-	<div class="_cpy_thirdparty_msg alert alert-info" ref="masterpass"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the MasterPass website to checkout.</div>
+	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to check out.</div>
+	<div class="_cpy_thirdparty_msg alert alert-info" ref="masterpass"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the MasterPass website to check out.</div>
 	<div class="row">
 		<div class="col-md-6">
-			<h1>Secure Checkout</h1>
+			<h1>Secure checkout</h1>
 		</div>
 		<div class="col-md-6 text-right">
 			<h1>
@@ -34,7 +34,7 @@ $(document).ready(function() {
 <!--##[%IF [@processor_account@] ne '' %]##-->
 <div class="alert alert-warning">
 	<strong>Important! Your order is not yet complete.</strong>
-	<p>Please confirm your billing and shipping details below and click the  &quot;Confirm &amp; Process Order&quot; button at the bottom of this page to complete your purchase.</p>
+	<p>Please confirm your billing and shipping details below and click the &quot;Confirm and process order&quot; button at the bottom of this page to complete your purchase.</p>
 </div>
 <!--##[%END IF%]##-->
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 <!--##[%USER id:'username' if:'eq' value:''%]##-->
 <div class="well">
-<strong>Returning Customer? <a id="_cpy_login_link" href="javascript:void(0);">Login for <i>Express</i> Checkout</a></strong>
+<strong>Returning customer? <a id="_cpy_login_link" href="javascript:void(0);">Login for <i>express</i> checkout</a></strong>
 <div id="_cpy_login_pl" style="[%FORM id:'login_username' if:'eq' value:''%]display:none;[%END FORM%]">
 <!--##[%load_ajax_template id:'login' type:'cart' template:'login' preload:"1"%][%END load_ajax_template%]##-->
 </div>
@@ -63,7 +63,7 @@ $(document).ready(function() {
 				<div class="col-xs-12 col-sm-4">
 					<div class="_step">
 						<div class="_step_no"> Step 1. </div>
-						<div class="_step_desc"> Billing Details </div>
+						<div class="_step_desc"> Billing details </div>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-8">
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_email">
-						Email Address
+						Email address
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8">
@@ -81,7 +81,7 @@ $(document).ready(function() {
 					</div>
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="confirm_email">
-						Confirm Email Address
+						Confirm email address
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8">
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_first_name">
-						First Name
+						First name
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8">
@@ -101,7 +101,7 @@ $(document).ready(function() {
 					</div>
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_last_name">
-						Last Name
+						Last name
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8">
@@ -145,7 +145,7 @@ $(document).ready(function() {
 					</div>
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_zip">
-						Postal Code
+						Postcode
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8">
@@ -154,7 +154,7 @@ $(document).ready(function() {
 					</div>
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_city">
-						Suburb / City
+						Suburb/City
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8"><div class="n-wrapper-form-control"><span id="bill_selector"></span></div>
@@ -172,7 +172,7 @@ $(document).ready(function() {
 					</div>
 					<div class="form-group">
 						<label class="control-label col-xs-12 col-sm-4" for="bill_phone">
-						Phone Number
+						Phone number
 						[%IF [@CONFIG:CHECKOUT_IGNORE_SHIPPHONE@]%]
 						[%else%]
 						<div class="small text-danger">Required</div>
@@ -192,14 +192,14 @@ $(document).ready(function() {
 				<div class="col-xs-12 col-sm-4">
 					<div class="_step">
 						<div class="_step_no"> Step 2. </div>
-						<div class="_step_desc"> Shipping Details </div>
+						<div class="_step_desc"> Shipping details </div>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-8">
 					<div id="_macart_ovl">
 						<div class="_shipping_choice">
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4">Ship Order To </label>
+								<label class="control-label col-xs-12 col-sm-4">Ship order to </label>
 								<div class="col-xs-12 col-sm-8">
 																	<div class="radio">
 										<label>
@@ -232,7 +232,7 @@ $(document).ready(function() {
 
 							<!--##[%USER id:'username' if:'ne' value:''%]##-->
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="shladb_addr">Choose From Your Address Book</label>
+								<label class="control-label col-xs-12 col-sm-4" for="shladb_addr">Choose from your address book</label>
 								<div class="col-xs-12 col-sm-8">
 									<select class="form-control" id="shladb_addr">
 										<option value=""></option>
@@ -245,13 +245,13 @@ $(document).ready(function() {
 
 							<!--##[%END USER%]##-->
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="ship_first_name">First Name <div class="small text-danger">Required</div></label>
+								<label class="control-label col-xs-12 col-sm-4" for="ship_first_name">First name <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
 									<input  class="form-control"  type="text" name="ship_first_name" id="ship_first_name" maxlength="50" value="[@ship_first_name@]">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="ship_last_name">Last Name <div class="small text-danger">Required</div></label>
+								<label class="control-label col-xs-12 col-sm-4" for="ship_last_name">Last name <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
 									<input  class="form-control"  type="text" name="ship_last_name" id="ship_last_name" maxlength="50" value="[@ship_last_name@]">
 								</div>
@@ -286,13 +286,13 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="ship_zip">Postal Code <div class="small text-danger">Required</div></label>
+								<label class="control-label col-xs-12 col-sm-4" for="ship_zip">Postcode <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
 									<input class="form-control" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" maxlength="10" />
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="ship_city">Suburb / City <div class="small text-danger">Required</div></label>
+								<label class="control-label col-xs-12 col-sm-4" for="ship_city">Suburb/City <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8"> <div class="n-wrapper-form-control"><span id="ship_selector"></span></div>
 									<input class="form-control" type="text" name="ship_city" id="ship_city" value="[@ship_city@]" maxlength="50"/>
 								</div>
@@ -304,7 +304,7 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-xs-12 col-sm-4" for="ship_phone">Phone Number <div class="small text-danger">Required</div></label>
+								<label class="control-label col-xs-12 col-sm-4" for="ship_phone">Phone number <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
 									<input class="form-control" type="text" name="ship_phone" id="ship_phone" maxlength="50" value="[@ship_phone@]" />
 								</div>
@@ -371,7 +371,7 @@ $(document).ready(function() {
 			<div class="col-xs-12 col-sm-4">
 				<div class="_step">
 					<div class="_step_no"> Step 3. </div>
-					<div class="_step_desc"> Payment Details </div>
+					<div class="_step_desc"> Payment details </div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-8">
@@ -511,20 +511,20 @@ $(document).ready(function() {
 
 				<p>
 
-				<h3>Balance Due: <span class="_cpy_balancedue"><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%end format%]##--></span></h3>
+				<h3>Balance due: <span class="_cpy_balancedue"><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%end format%]##--></span></h3>
 				</p>
 				<input name="grand_total" id="grand_total" type="hidden" value="[%CART id:'grand_total'%][%END CART%]"/>
 				<div ref="card" class="_cpy_paydesc alert alert-info">
 					<!--##[%IF [@processor_type@] eq ''%]##-->
 					<div class="col-xs-12">
 						<div class="form-group">
-							<label for="card_number">Card Number</label>
+							<label for="card_number">Card number</label>
 							<input class="form-control"  type="text" name="card_number" id="card_number" maxlength="16" value="" />
 						</div>
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Holder's Name</label>
+							<label>Cardholder's name</label>
 							<input class="form-control"  type="text"  name="card_holder" maxlength="40" value="" />
 						</div>
 					</div>
@@ -532,7 +532,7 @@ $(document).ready(function() {
 						<div class="row">
 							<div class="form-group">
 								<div class="col-xs-12">
-									<label>Card Expiration Date</label>
+									<label>Card expiration date</label>
 								</div>
 								<div class="col-xs-6">
 									<select class="form-control col-xs-6"  id="card_exp_month" name="card_exp_month">
@@ -555,9 +555,9 @@ $(document).ready(function() {
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Security Code</label>
+							<label>Card security code</label>
 							<input type="text" name="card_ccid" class="form-control" />
-							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+							<span class="help-inline">3/4-digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
 						</div>
 					</div>
 					<!--##[%ELSE%]##-->
@@ -568,13 +568,13 @@ $(document).ready(function() {
 					<!--##[%END IF%]##-->
 					<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Type</label>
+							<label>Card type</label>
 							<p class="form-control-static">[@processor_card_brand@]</p>
 						</div>
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Number</label>
+							<label>Card number</label>
 							<p class="form-control-static">[@processor_card_number@] <a href="[%URL page:'checkout' fn:'3rdparty' qs:'payproc=&payclr=y'%][%END URL%]">(Change card)</a></p>
 						</div>
 					</div>
@@ -583,7 +583,7 @@ $(document).ready(function() {
 						<div class="form-group">
 							<label>Enter your [@processor_card_brand@] CCV</label>
 							<input type="text" name="card_ccid" class="form-control" />
-							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+							<span class="help-inline">3/4-digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -591,13 +591,13 @@ $(document).ready(function() {
 					<!--##[%END IF%]##-->
 					<!-- Start Fancybox explanation of CCV -->
 					<div style="display:none;">
-						<div id="ccv" style="width:600px;"> For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>
+						<div id="ccv" style="width:600px;"> For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3-digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<div ref="cheque" class="_cpy_paydesc alert alert-info"> The address to send your <span class="_cpy_payname">[@name@]</span> to will be provided after you confirm your order below. </div>
 				<div ref="bank" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
-				<div ref="bpay" class="_cpy_paydesc alert alert-info"> When you submit this page, you will be given a Bpay biller
+				<div ref="bpay" class="_cpy_paydesc alert alert-info"> When you submit this page, you will be given a BPAY biller
 					code and a reference number. Please quote the numbers and call your
 					participating financial institution to make a payment from your
 					cheque, savings or credit card account. </div>
@@ -605,7 +605,7 @@ $(document).ready(function() {
 					<!--##[%DATA id:'paypal_payer_id' if:'eq' value:''%][%PARAM if_true%]##-->
 					When you submit this page, you will be redirected to the PayPal website to continue your PayPal Express Checkout.
 					<!--##[%END PARAM%][%PARAM if_false%]##-->
-					When you submit this page, your paypal account or credit card will be debited.
+					When you submit this page, your PayPal account or credit card will be debited.
 					<!--##[%END PARAM%][%END DATA%]##-->
 				</div>
 				<div ref="account" class="_cpy_paydesc alert alert-info"> Your [@config:company_name@] account will automatically be charged for the value of this order. </div>
@@ -616,7 +616,7 @@ $(document).ready(function() {
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title">Terms &amp; Conditions</h4>
+									<h4 class="modal-title">Terms and conditions</h4>
 								</div>
 								<div class="modal-body">
 									[%content_zone id:'terms'/%]
@@ -629,19 +629,19 @@ $(document).ready(function() {
 					</div>
 					<p>
 						<input type="hidden" name="agreement" value="y">
-						Agree To <a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions?</a>
+						Agree to <a href="#" data-toggle="modal" data-target="#termsModal">terms and conditions?</a>
 						<input type="checkbox" name="agree" value="y" class="terms_box" [%if [@agree@]%]checked[%/if%] required/>
 					</p>
 				[%/if%]
 				<p class="form-actions">
-					<button type="submit" class="btn btn-success btn-lg btn-block">Confirm &amp; Process Order <i class="fa fa-chevron-right icon-white"></i></button>
+					<button type="submit" class="btn btn-success btn-lg btn-block">Confirm and process order <i class="fa fa-chevron-right icon-white"></i></button>
 				</p>
 				<!-- End Payment -->
 			</div>
 			<!--##[%END DATA%]##-->
 			<!--##[%DATA id:'order_type' if:'eq' value:'quote'%]##-->
 			<p class="form-actions">
-				<button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm &amp; Process Quote <i class="fa fa-chevron-right icon-white"></i></button>
+				<button id="_cpy_checkout_submit" type="button" class="btn btn-success btn-large pull-right">Confirm and process quote <i class="fa fa-chevron-right icon-white"></i></button>
 			</p>
 			<!--##[%END DATA%]##-->
 
