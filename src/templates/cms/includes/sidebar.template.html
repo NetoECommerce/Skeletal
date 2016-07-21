@@ -3,13 +3,13 @@
 		<div class="panel panel-default">
 			<div class="panel-heading panel-heading-thumbnails">
 				<h3 class="panel-title">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#filters">Filter Products</a>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#filters">Filter products</a>
 				</h3>
 			</div>
 			<ul id="filters" class="panel-collapse collapse list-group">
 				[%PRODUCT_FILTER type:'variations' autohide:'0' sortoption:'sortorder'%]
 					[%PARAM *header%]
-						<li class="list-group-item"><h4>Filter By [@filter_name@]</h4></li>
+						<li class="list-group-item"><h4>Filter by [@filter_name@]</h4></li>
 					[%/PARAM%]
 					[%PARAM *body%]
 						[%DATA id:'selected' if:'==' value:'1'%]
@@ -29,7 +29,7 @@
 				[%PRODUCT_FILTER type:'category' limit:'100' autohide:'0' filter_parent_content:'1'%]
 					[%PARAM header%]
 						<li class="list-group-item">
-							<h4>Filter By Category</h4>
+							<h4>Filter by category</h4>
 						</li>
 					[%/PARAM%]
 					[%PARAM *body%]
@@ -50,7 +50,7 @@
 				[%product_filter type:'instock' autohide:'0'%]
 					[%param header%]
 						<li class="list-group-item">
-							<h4>Filter By Stock</h4>
+							<h4>Filter by stock</h4>
 						</li>
 					[%/param%]
 					[%param *body%]
@@ -96,7 +96,7 @@
 					[%/PRODUCT_FILTER%]
 					[%PRODUCT_FILTER type:'price' limit:'1'%]
 						[%PARAM header%]
-							<li class="list-group-item hidden-sm hidden-xs"><h4>Filter By Price Range</h4></li>
+							<li class="list-group-item hidden-sm hidden-xs"><h4>Filter by price range</h4></li>
 						[%/PARAM%]
 						[%PARAM *body%]
 							[%SITE_VALUE id:'footer_javascript'%]
@@ -141,7 +141,7 @@
 					[%/PRODUCT_FILTER%]
 					[%PRODUCT_FILTER type:'brand' limit:'50' autohide:'0'%]
 						[%PARAM header%]
-							<li class="list-group-item"><h4>Filter By Brand</h4></li>
+							<li class="list-group-item"><h4>Filter by brand</h4></li>
 						[%/PARAM%]
 						[%PARAM *body%]
 							[%DATA id:'selected' if:'==' value:'1'%]
@@ -204,7 +204,7 @@
 		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%PARAM header%]
 				<div class="panel panel-default hidden-xs">
-					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">Browsing History</h3></div>
+					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">Browsing history</h3></div>
 					<ul class="nav list-group">
 			[%/PARAM%]
 			[%PARAM footer%]
