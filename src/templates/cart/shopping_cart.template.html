@@ -10,7 +10,7 @@
 			</div>
 		[%/config%]
 		<div class="col-xs-12 col-md-3 [%config id:'ALLOW_USER_QUOTE' if:'==' value:'1'%]col-md-offset-6[%/config%][%config id:'ALLOW_USER_QUOTE' if:'==' value:'0'%]col-md-offset-9[%/config%]">
-			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout Now</button>
+			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout"><i class="fa fa-shopping-cart icon-white"></i> Checkout</button>
 		</div>
 	</div>
 	<div class="row">
@@ -300,8 +300,8 @@
 						[%/if%]
 					</div>
 					<div class="col-xs-12 col-md-6 text-center">
-						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
-							<i class="fa fa-shopping-cart"></i> Checkout Now
+						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout">
+							<i class="fa fa-shopping-cart"></i> Checkout
 						</button>
 					</div>
 				</div>
