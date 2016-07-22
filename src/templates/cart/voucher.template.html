@@ -17,13 +17,13 @@ mid = mid.replace('voucher_'+arr[i], '');
 if(arr[i] == 'rdate') {
 	var txt = mid.replace(/^\d+/, '');
 	fval = $('[name="voucher_'+arr[i]+id+txt+'"]').val();
-	
+
 	mid = mid.replace(/_.+$/, '');
 	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
 	if(id != mid) {
 		$(this).val(fval);
 	}
-	
+
 } else {
 	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
 	if(id != mid) {
@@ -89,10 +89,10 @@ $.fancybox("Please complete all the required fields indicated with a *", {showCl
 
 $('.submit_btn').click(function(e){
 $.sumbit_form();
-});			
+});
 
 $('.copy_btn').click(function(e){
-$.copy_values($(this).attr('ref'));	
+$.copy_values($(this).attr('ref'));
 });
 
 $.init_text_count('inputtext');
@@ -116,7 +116,7 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 <input type="hidden" name="fn" id="fn" value="payment" />
 <input type="hidden" name="voucher" value="y" />
 
-<h1>Personalise Your Gift Vouchers</h1>
+<h1>Personalise your gift vouchers</h1>
 <div>Gift vouchers will be sent to your specified recipients by email.</div>
 <div id="productoptions">
 <!--##[%cart_vouchers type:'voucher'%]##-->
@@ -124,7 +124,7 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 <hr />
 <div>
 <a name="voucher[@reward_id@]"></a>
-<h4>#[@item_count@] &nbsp; [@vprogram_title@] - 
+<h4>#[@item_count@] &nbsp; [@vprogram_title@] -
 <!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
 <!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
 <!--##[%END PARAM%][%PARAM if_false%]##-->
@@ -134,39 +134,39 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 
 <div class="form-group row">
 <div class="col-sm-6">
-Sender Name<span class="text-danger">*</span>
+Sender mame<span class="text-danger">*</span>
 <p class="muted">The name of the person sending the voucher</p>
 </div>
 <div class="col-sm-6">
 <input type="text" class="form-control" name="voucher_sender[@reward_id@]" value="[%NOHTML%][@sender_name@][%END NOHTML%]">
-<span class="sherror" ref="voucher_sender[@reward_id@]">* Required</span>
+<span class="sherror" ref="voucher_sender[@reward_id@]">*Required</span>
 </div>
 </div>
 
 <div class="form-group row">
 <div class="col-sm-6">
-Recipient Name<span class="text-danger">*</span>
+Recipient name<span class="text-danger">*</span>
 <p class="muted">The name of the person receiving the voucher</p>
 </div>
 <div class="col-sm-6">
 <input type="text" class="form-control" name="voucher_name[@reward_id@]" value="[%NOHTML%][@recipient_name@][%END NOHTML%]">
-<span class="sherror" ref="voucher_name[@reward_id@]">* Required</span>
+<span class="sherror" ref="voucher_name[@reward_id@]">*Required</span>
 </div>
 </div>
 
 <div class="form-group row">
-<div class="col-sm-6">Recipient Email<span class="text-danger">*</span>
+<div class="col-sm-6">Recipient email<span class="text-danger">*</span>
 <p class="muted">The e-voucher will be sent to this email address</p>
 </div>
 <div class="col-sm-6">
 <input type="text" class="form-control" name="voucher_email[@reward_id@]" value="[%NOHTML%][@recipient_email@][%END NOHTML%]">
-<span class="sherror" ref="voucher_email[@reward_id@]">* Required</span>
-<span class="sherror" ref="invalid_voucher_email[@reward_id@]">* Invalid</span>
+<span class="sherror" ref="voucher_email[@reward_id@]">*Required</span>
+<span class="sherror" ref="invalid_voucher_email[@reward_id@]">*Invalid</span>
 </div>
 </div>
 
 <div class="form-group row">
-<div class="col-sm-6">Send Voucher On This Date &amp; Time: <p class="muted">Leave blank to send ASAP or select a date and time</p></div>
+<div class="col-sm-6">Send voucher on this date and time: <p class="muted">Leave blank to send ASAP or select a date and time</p></div>
 <div class="btn-stack">
 <div class="col-sm-2 col-xs-12">
 <input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%END NOHTML%]" placeholder="Select Date">
@@ -199,7 +199,7 @@ Recipient Name<span class="text-danger">*</span>
 </div>
 
 <div class="form-group row">
-<div class="col-sm-6">Gift Voucher Message<span class="text-danger">*</span><p class="muted">The message that appears on the gift voucher email</p></div>
+<div class="col-sm-6">Gift voucher message<span class="text-danger">*</span><p class="muted">The message that appears on the gift voucher email</p></div>
 <div class="col-sm-6">
 <textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft"><!--##[%NOHTML%][@gift_message@][%END NOHTML%]##--></textarea>
 <div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> Character(s) Left</div>
@@ -216,7 +216,7 @@ Recipient Name<span class="text-danger">*</span>
 </div>
 
 <!--##[%END PARAM%]
-[%END cart_vouchers%]##-->	
+[%END cart_vouchers%]##-->
 </div>
 
 <div class="col-xs-12">
@@ -227,4 +227,3 @@ Recipient Name<span class="text-danger">*</span>
 <br />
 
 <!--##[%GA_FUNNEL%]/purchase/voucher.html[%END GA_FUNNEL%]##-->
-
