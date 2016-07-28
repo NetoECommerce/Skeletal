@@ -15,7 +15,7 @@
 =======
 		<div class="col-xs-12 col-md-9">
 			[%if [@config:allow_user_quote@] eq '1'%]
-				<button class="btn btn-default btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart</button>
+				<button class="btn btn-default btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create quote from cart</button>
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
@@ -23,7 +23,7 @@
 			[%/if%] -->
 		</div>
 		<div class="col-xs-12 col-md-3">
-			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout Now</button>
+			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout now</button>
 >>>>>>> refs/remotes/origin/master
 		</div>
 	</div>
@@ -67,7 +67,7 @@
 <<<<<<< HEAD
 							<p><span class="label label-success">Free gift</span></p>
 =======
-								<p><span class="label label-success">Free Gift</span></p>
+								<p><span class="label label-success">Free gift</span></p>
 >>>>>>> refs/remotes/origin/master
 							[%/if%]
 							[%if [@preorder@]%]
@@ -96,7 +96,7 @@
 								[%/cart_item_components%]
 							[%/if%]
 							[%if [@gifts_available@]%]
-								<h4>Congratulations! The above purchase has made you eligible for [@gifts_available@] of the following FREE gifts!</h4>
+								<h4>The above purchase has made you eligible for [@gifts_available@] of the following FREE gifts!</h4>
 								<span class="help-box">You can add any of the following gifts to your shopping cart now and you will not be charged for them.</span> <br />
 								<br />
 								[%free_gifts id:'[@SKU@]'%]
