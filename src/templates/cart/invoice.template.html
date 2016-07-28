@@ -143,7 +143,7 @@
 											<div class="media-body">
 												<h4 class="media-heading">Biller code: [@config:bpay_biller_code@]<br>
 												Ref: [@bpay_crn@]</h4>
-												<h5>Telephone and internet banking—BPAY</h5>
+												<h5>Telephone and internet banking&#8212;BPAY</h5>
 												<p>Contact your bank, credit union, or building sociey to make this payment from your cheque, savings, or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
 											</div>
 										</div>
@@ -209,7 +209,7 @@
 							[%else%]
 								<tr>
 									<td colspan="2"><b>Delivery method:</b> [@shipping_method@]</td>
-									<td>[%format type:'currency'%][@shipping_total@][%/format%][%data id:'shipping_discount' if:'>' value:'0' %] (Discount—[%format type:'currency'%]-[@shipping_discount@][%/format%])[%/data%]</td>
+									<td>[%format type:'currency'%][@shipping_total@][%/format%][%data id:'shipping_discount' if:'>' value:'0' %] (Discount&#8212;[%format type:'currency'%]-[@shipping_discount@][%/format%])[%/data%]</td>
 									<td>[%format type:'currency'%][@shipping_price@][%/format%]</td>
 								</tr>
 							[%/if%]
