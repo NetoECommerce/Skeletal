@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 	<div class="page-header">
-		<h1>My Account</h1>
+		<h1>My account</h1>
 	</div>
 
 	<!--##[%TRIM inner:'1'%]
@@ -17,25 +17,25 @@
 			<div class="well">
 				<form id="login" method="post" action="[%URL page:'account' type:'login'%][%END URL%]">
 					<input type="hidden" name="redirect" value="[@redirect@]">
-					<h3>Returning Customer? Log In. </h3>
+					<h3>Returning customer? Log in. </h3>
 					<hr>
 					<div class="row">
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group ">
-								<label>My E-mail Address is</label>
+								<label>Email address or username</label>
 								<input type="text" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com">
-								<p class="help-block hidden"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%END URL%]">Click Here</a></p>
+								<p class="help-block hidden"><i class="fa fa-question-circle"></i> <a href="[%URL page:'account' type:'forgotusr'%][%END URL%]">Forgot your username?</a></p>
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>My Password is</label>
+								<label>Password</label>
 								<input type="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25">
-								<p class="help-block"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%END URL%]">Click Here</a></p>
+								<p class="help-block"><i class="fa fa-question-circle"></i> <a href="[%URL page:'account' type:'forgotpwd'%][%END URL%]">Forgot your password?</a></p>
 							</div>
 						</div>
 					</div>
-					<button name="submit" type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-user"></i> Login Now</button>
+					<button name="submit" type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-user"></i> Log in now</button>
 				</form>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 				<form id="register" method="post" action="[%URL page:'account' type:'register'%][%END URL%]">
 					<!--##[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]##-->
 					<input type="hidden" name="redirect" value="[@redirect@]">
-					<h3>New Customer? Create an Account.</h3>
+					<h3>New customer? Create an account.</h3>
 					<hr />
 					<div class="row">
 
@@ -58,7 +58,7 @@
 						</div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
-								<label>E-mail Address</label>
+								<label>Email address</label>
 								<span class="text-danger small">Required</span>
 								<input class="form-control" type="email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]" size="25">
 							</div>
@@ -72,7 +72,7 @@
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>Confirm Password</label>
+								<label>Confirm password</label>
 								<span class="text-danger small">Required</span>
 								<input class="form-control" type="password" name="reg_password2" value="[%nohtml%][%end nohtml%]" size="25">
 							</div>
@@ -151,7 +151,7 @@
 								<div class="checkbox">
 									<label>
 										<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time."/>
-										Subscribe To Newsletter
+										Subscribe To newsletter
 									</label>
 								</div>
 							</div>
@@ -159,7 +159,7 @@
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
 								<input name="fn" type="hidden" value="proc">
-								<button name="submit" type="submit" class="btn btn-lg btn-block btn-success"><i class="fa fa-plus"></i> Register and Continue</button>
+								<button name="submit" type="submit" class="btn btn-lg btn-block btn-success"><i class="fa fa-plus"></i> Register and continue</button>
 							</div>
 						</div>
 					</div>

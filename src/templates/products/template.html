@@ -131,7 +131,7 @@
 			[%/if%]
 			[%if [@has_components@]%]
 			<hr>
-				<h2>Customise Your Purchase</h2>
+				<h2>Customise your purchase</h2>
 				[%load_template file:"products/includes/components.template.html"/%]
 			[%/if%]
 		</div>
@@ -141,7 +141,7 @@
 			[%discount_products id:'[@SKU@]' template:'' show_all:'1' limit:'100'%]
 			[%param header%]
 				<div class="alert alert-success">
-					<h3>BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
+					<h3>BONUS ITEMS! <small>Buy [@name@] today and receive these for FREE!</small></h3>
 						<div class="row">
 				[%/param%]
 				[%param *body%]
@@ -154,7 +154,7 @@
 									<h3 class="title">
 										<a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a>
 									</h3>
-									<div class="text-success"><strong>FREE</strong> With This Item!</div>
+									<div class="text-success"><strong>FREE</strong> with this item</div>
 								</div>
 							</div>
 						</div>
@@ -166,7 +166,7 @@
 			[%free_gifts id:'[@SKU@]'%]
 				[%param *header%]
 			<div class="alert alert-success">
-				<h3>FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
+				<h3>FREEBIES! <small>Buy [@name@] today and choose from one of these FREE gifts!</small></h3>
 					<div class="row">
 				[%/param%]
 				[%param *body%]
@@ -179,7 +179,7 @@
 									<h3 class="title">
 										<a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a>
 									</h3>
-									<div class="text-success"><strong>FREE</strong> With This Item!</div>
+									<div class="text-success"><strong>FREE</strong> with this item</div>
 								</div>
 							</div>
 						</div>
@@ -268,61 +268,61 @@
 								[%/if%]
 								[%if [@artist_author@]%]
 								<tr>
-									<td><strong>Artist / Author</strong></td>
+									<td><strong>Artist/Author</strong></td>
 									<td>[@artist_author@]</td>
 								</tr>
 								[%/if%]
 								[%if [@weight@] > '0'%]
 								<tr>
-									<td><strong>Shipping Weight</strong></td>
+									<td><strong>Shipping weight</strong></td>
 									<td>[@weight@]kg</td>
 								</tr>
 								[%/if%]
 								[%if [@width@] > '0'%]
 								<tr>
-									<td><strong>Shipping Width</strong></td>
+									<td><strong>Shipping width</strong></td>
 									<td>[@width@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@height@] > '0'%]
 								<tr>
-									<td><strong>Shipping Height</strong></td>
+									<td><strong>Shipping height</strong></td>
 									<td>[@height@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@length@] > '0'%]
 								<tr>
-									<td><strong>Shipping Length</strong></td>
+									<td><strong>Shipping length</strong></td>
 									<td>[@length@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@cubic@] > '0'%]
 								<tr>
-									<td><strong>Shipping Cubic</strong></td>
+									<td><strong>Shipping cubic</strong></td>
 									<td>[@cubic@]m3</td>
 								</tr>
 								[%/if%]
 								[%if [@unit@]%]
 								<tr>
-									<td><strong>Unit Of Measure</strong></td>
+									<td><strong>Unit of measure</strong></td>
 									<td>[@unit@]</td>
 								</tr>
 								[%/if%]
 								[%if [@actual_length@] > '0'%]
 								<tr>
-									<td><strong>Assembled Length</strong></td>
+									<td><strong>Assembled length</strong></td>
 									<td>[@actual_length@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@actual_height@] > '0'%]
 								<tr>
-									<td><strong>Assembled Height</strong></td>
+									<td><strong>Assembled height</strong></td>
 									<td>[@actual_height@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@actual_width@] > '0'%]
 								<tr>
-									<td><strong>Assembled Width</strong></td>
+									<td><strong>Assembled width</strong></td>
 									<td>[@actual_width@]m</td>
 								</tr>
 								[%/if%]
@@ -391,8 +391,8 @@
 							<a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a>
 						</p>
 					[%else%]
-						<h4>Be The First To Review This Product!</h4>
-						<p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
+						<h4>Be the first to review this product</h4>
+						<p>Help others shop smarter by writing reviews for products you have purchased.</p>
 						<p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a></p>
 					[%/if%]
 					</div><!--/.tab-pane-->

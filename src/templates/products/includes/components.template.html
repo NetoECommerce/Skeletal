@@ -63,7 +63,7 @@
 													</p>
 													[%if [@variation_available@] < '1'%]
 														<select disabled class="component-var-opt form-control component-config-input">
-															<option selected>Out Of Stock</option>
+															<option selected>Out of stock</option>
 														</select>
 													[%/if%]
 												[%list_item_variations id:'[@current_sku@]'%]
@@ -72,7 +72,7 @@
 																<option value="" disabled selected>[@specific_name@]</option>
 													[%/PARAM%]
 													[%PARAM *variation_body%]
-																<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
+																<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%](Out of stock)[%/IF%]</option>
 													[%/PARAM%]
 													[%PARAM *variation_footer%]
 																</select>
@@ -102,10 +102,10 @@
 <div class="row">
 	<div class="col-xs-12 col-md-5">
 		[%if [@preorder@]%]
-			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-Order Now</button>
+			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-order Now</button>
 		[%else%]
 			[%if [@store_quantity@] >= '1'%]
-				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to Cart</button>
+				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to cart</button>
 			[%/if%]
 		[%/if%]
 	</div>

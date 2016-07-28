@@ -8,7 +8,7 @@ function print_invoice() {
 
 	<!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
 
-	<div class="alert alert-success">Congratulations - Your Order Has Been Confirmed!</div>
+	<div class="alert alert-success">Your order has been confirmed.</div>
 </div>
 <div class="col-xs-12">
 <div class="row">
@@ -17,14 +17,14 @@ function print_invoice() {
 		<!--##[%show_order id:'[@order_id@]'%]
 [%PARAM *header%]##-->
 
-		<h3>Your Order ID</h3>
+		<h3>Your order ID</h3>
 		<h2 class="text-danger">[@order_id@]</h2>
 
 		<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
-		<p><a class="btn btn-default" href="[%URL page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%END URL%]"><i class="fa fa-print"></i> Print Receipt</a></p>
+		<p><a class="btn btn-default" href="[%URL page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%END URL%]"><i class="fa fa-print"></i> Print receipt</a></p>
 		<!--##[%END PARAM%][%PARAM if_false%]##-->
 		<p>
-			<button type="button" value="Print Receipt" onClick="print_invoice()" class="btn btn-default"><i class="fa fa-print"></i> Print Receipt</button>
+			<button type="button" value="Print Receipt" onClick="print_invoice()" class="btn btn-default"><i class="fa fa-print"></i> Print receipt</button>
 		</p>
 		<!--##[%END PARAM%][%END USER%]##-->
 
@@ -32,23 +32,23 @@ function print_invoice() {
 	<div class="col-xs-12 col-md-8">
 
 		<!--##[%USER id:'username' if:'eq' value:''%]##-->
-		<h3>Activate Your [@config:company_name@] Account</h3>
-		<p> So that you can shop faster in the future and track past orders we have automatically generated a [@config:company_name@] account for you. </p>
+		<h3>Activate your [@config:company_name@] account</h3>
+		<p> To shop faster in the future and track past orders, we have automatically generated a [@config:company_name@] account for you. </p>
 		<p> Click on the button below to activate this account and create an account password. Activation details have also been sent to your email address. </p>
-		<p> <a href="[%URL page:'account' type:'resetpwd' id:'[@logincode@]'%][%END URL%]" class="btn btn-success"> Activate Account and Create Password </a> </p>
+		<p> <a href="[%URL page:'account' type:'resetpwd' id:'[@logincode@]'%][%END URL%]" class="btn btn-success"> Activate account and create password </a> </p>
 		<p> <strong>Note:</strong> Activating your [@config:company_name@] account is optional. </p>
 		<!--##[%END USER%]##-->
 
 		<!--##[%USER id:'username' if:'ne' value:''%]##-->
-		<h3>Order Tracking:</h3>
-		<p>You will be updated by e-mail as to your orders progress.</p>
-		<p>To track the progress of your order online please go to <a href="[%URL page:'account'%][%END URL%]">your
+		<h3>Order tracking:</h3>
+		<p>Order progress updates will be sent to you via email.</p>
+		<p>To track the progress of your order online, please go to <a href="[%URL page:'account'%][%END URL%]">your
 			account</a> and select the order you wish to track.</p>
 		<!--##[%END USER%]##-->
 		<p>
 			<!-- AddThis Button BEGIN -->
 
-		<h3>Help Spread The Word:</h3>
+		<h3>Spread the word:</h3>
 		<br />
 		<div class="addthis_toolbox addthis_default_style" addthis:url="[@config:home_url@]" addthis:title="[@config:company_name@]"> <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> <a class="addthis_counter addthis_pill_style"></a> </div>
 		<script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4f6e8c00311460e7"></script>
@@ -61,7 +61,7 @@ function print_invoice() {
 <hr />
 <div class="panel panel-default">
 <div class="panel-heading">
-	<h3 class="panel-title">Payment Instructions</h3>
+	<h3 class="panel-title">Payment instructions</h3>
 </div>
 <div class="panel-body">
 	<!--##[%payment_methods id:'[@payment_method@]'%]
@@ -74,7 +74,7 @@ function print_invoice() {
 			<div class="payment-icon payment-icon-americanexpress"></div>
 		</div>
 		<div class="media-body">
-			<h4 class="media-heading">Your American Express Card has already been processed.</h4>
+			<h4 class="media-heading">Your American Express card has already been processed.</h4>
 		</div>
 	</div>
 
@@ -87,7 +87,7 @@ function print_invoice() {
 			<div class="payment-icon payment-icon-visa"></div>
 		</div>
 		<div class="media-body">
-			<h4 class="media-heading">Your Visa Card has already been processed.</h4>
+			<h4 class="media-heading">Your Visa card has already been processed.</h4>
 		</div>
 	</div>
 
@@ -100,7 +100,7 @@ function print_invoice() {
 			<div class="payment-icon payment-icon-mastercard"></div>
 		</div>
 		<div class="media-body">
-			<h4 class="media-heading">Your Master Card has already been processed.</h4>
+			<h4 class="media-heading">Your MasterCard has already been processed.</h4>
 		</div>
 	</div>
 
@@ -126,7 +126,7 @@ function print_invoice() {
 			<div class="payment-icon payment-icon-cheque"></div>
 		</div>
 		<div class="media-body">
-			<h4 class="media-heading">Please send your Cheque to :</h4>
+			<h4 class="media-heading">Please send your cheque to :</h4>
 			<p>[@config:company_name@]</p>
 			<p>[@config:COMPANY_POADDR@]</p>
 			<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
@@ -178,10 +178,10 @@ function print_invoice() {
 			<div class="payment-icon payment-icon-bpay"></div>
 		</div>
 		<div class="media-body">
-			<h4 class="media-heading">Biller Code: [@config:BPAY_BILLER_CODE@]<br>
+			<h4 class="media-heading">Biller code: [@config:BPAY_BILLER_CODE@]<br>
 			Ref: [@bpay_crn@]</h4>
-			<h5>Telephone &amp; Internet Banking - BPAY</h5>
-			<p>Contact your bank, credit union or building sociey to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
+			<h5>Telephone and internet banking&#8212;BPAY</h5>
+			<p>Contact your bank, credit union, or building sociey to make this payment from your cheque, savings, or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
 		</div>
 	</div>
 
@@ -194,7 +194,7 @@ function print_invoice() {
 			<div class="payment-icon payment-icon-paypal"></div>
 		</div>
 		<div class="media-body">
-			<h4 class="media-heading">Your Paypal payment has been processed. No further action is required by you at this stage.</h4>
+			<h4 class="media-heading">Your PayPal payment has been processed. No further action is required by you at this stage.</h4>
 		</div>
 	</div>
 
@@ -205,7 +205,7 @@ function print_invoice() {
 	<!--##[%END DATA%]##-->
 	<!--##[%END PARAM%]
 [%PARAM *ifempty%]##-->
-	<h3>No Payment method has been selected.</h3>
+	<h3>No payment method has been selected.</h3>
 	<!--##[%END PARAM%]
 [%END payment_methods%]##-->
 
@@ -213,7 +213,7 @@ function print_invoice() {
 
 
 <!--##[%DATA id:'ship_comment' if:'ne' value:''%]##-->
-	<h4>Special Delivery Instructions For These Items:</h4>
+	<h4>Special delivery instructions for these items:</h4>
 	<p>[@ship_comment@]</p>
 
 	<!--##[%END DATA%]##-->
@@ -230,7 +230,7 @@ function print_invoice() {
 </div>
 	</div>
 	<div class="col-xs-12">
-	<h2>Order Summary</h2>
+	<h2>Order summary</h2>
 	<table class="table table-striped table-bordered table-condensed">
 		<tr>
 			<th>Qty x SKU</th>
@@ -244,8 +244,8 @@ function print_invoice() {
 			<td>[@qty@]x [@SKU@]</td>
 			<td>[@model@] <i>[@extra@]</i>
 				<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <!--##[%END DATA%]##-->
-				<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-				<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+				<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>eBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+				<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free gift</b><!--##[%END DATA%]##--></td>
 			<td><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--> <!--##[%DATA id:'discount' if:'>' value:'0' %]##-->( Discount - <!--##[%format type:'currency'%]##-->-[@discount@]<!--##[%END format%]##--> )<!--##[%END DATA%]##--></td>
 
 			<td><!--##[%format type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
@@ -257,13 +257,13 @@ function print_invoice() {
 		<!--##[%DATA id:'shipping_quote' if:'=' value:'1' %]
 	[%PARAM if_true%]##-->
 		<tr>
-			<td colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
+			<td colspan="3"><b>Delivery method:</b> [@shipping_method@]</td>
 			<td nowrap>P.O.A.</td>
 		</tr>
 		<!--##[%END PARAM%]
 	[%PARAM if_false%]##-->
 		<tr>
-			<td colspan="2"><b>Delivery Method:</b> [@shipping_method@]</td>
+			<td colspan="2"><b>Delivery method:</b> [@shipping_method@]</td>
 			<td><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--><!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--> ( Discount - <!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--> )<!--##[%END DATA%]##--></td>
 			<td><!--##[%format type:'currency'%]##-->[@shipping_price@]<!--##[%END format%]##--></td>
 		</tr>
@@ -273,7 +273,7 @@ function print_invoice() {
 [%END DATA%]##-->
 		<!--##[%DATA id:'couponcode' if:'ne' value:'' %]##-->
 		<tr>
-			<td class="checkout_box_header" colspan="4">Special Pricing Arrangements / Discounts</td>
+			<td class="checkout_box_header" colspan="4">Special pricing arrangements/discounts</td>
 		</tr>
 		<tr>
 			<td class="shitem0" colspan="4">[@couponcode@]</td>
@@ -284,18 +284,18 @@ function print_invoice() {
 	<div class="col-xs-12 col-md-4 col-md-offset-8">
 	<table class="table table-striped table-bordered">
 		<tr>
-			<td><b>Order Subtotal</b></td>
+			<td><b>Order subtotal</b></td>
 			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td>
 		</tr>
 		<!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
 		<tr>
-			<td><b>Total Shipping</b></td>
+			<td><b>Total shipping</b></td>
 			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td>
 		</tr>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
 		<tr>
-			<td><b>Total Discount</b></td>
+			<td><b>Total discount</b></td>
 			<td style="text-align:right;"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td>
 		</tr>
 		<!--##[%END DATA%]##-->
@@ -312,16 +312,16 @@ function print_invoice() {
 		</tr>
 		<!--##[%END DATA%]##-->
 		<tr>
-			<td style="border-top: 1px solid #CCCCCC;"><b>Order Total</b></td>
+			<td style="border-top: 1px solid #CCCCCC;"><b>Order total</b></td>
 			<td style="text-align:right; border-top: 1px solid #CCCCCC;"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td>
 		</tr>
 		<!--##[%DATA id:'credit_apply' if:'>' value:'0' %]##-->
 		<tr>
-			<td style=" border-top: 2px solid #CCCCCC; border-bottom: 1px solid #CCCCCC;"><b>Amount Paid</b></td>
+			<td style=" border-top: 2px solid #CCCCCC; border-bottom: 1px solid #CCCCCC;"><b>Amount paid</b></td>
 			<td style="text-align:right; border-top: 1px solid #CCCCCC;"><span style="color:red;"><b>-<!--##[%format type:'currency'%]##-->[@amount_paid@]<!--##[%END format%]##--></b></span></td>
 		</tr>
 		<tr id="balance" style="display:none;">
-			<td><b>Balance Due</b></td>
+			<td><b>Balance due</b></td>
 			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@owed_total@]<!--##[%END format%]##--></b></td>
 		</tr>
 		<!--##[%END DATA%]##-->

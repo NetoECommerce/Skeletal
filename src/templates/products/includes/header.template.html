@@ -15,7 +15,7 @@
 					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
 					<i class="fa fa-star-o"></i>
 				[%/while%]
-				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> reviews.
+				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> review/s
 			</span>
 		[%/if%]
 		<div class="dropdown">
@@ -74,13 +74,13 @@
 				</div>
 			[%/if%]
 			[%if [@store_quantity@] > 0 AND [@preorder@] %]
-				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
+				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order&#8212;Released [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-				<span itemprop="availability" content="in_stock" class="label label-success">In Stock</span>
+				<span itemprop="availability" content="in_stock" class="label label-success">In stock</span>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out -  Backorder Available</span>
+				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold out&#8212;Backorder available</span>
 			[%else%]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out</span>
+				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold out</span>
 			[%/if%]
 			[%if [@availability_description@]%]
 				<div class="availability_description">

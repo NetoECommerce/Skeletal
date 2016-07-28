@@ -51,7 +51,7 @@
 		<div class="hidden-xs col-sm-4 text-right">
 			<div id="header-cart" class="btn-group">
 				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> items
 				</a>
 				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -120,20 +120,20 @@
 								[%if [@config:allow_user_quote@]%]
 								<li><a href="[%url page:'account'/%]#quotes">Quotes</a></li>
 								[%/ if%]
-								<li><a href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
+								<li><a href="[%url page:'account' type:'payrec'/%]">Pay invoices</a></li>
 								<li><a href="[%url page:'account' type:'favourites'/%]">Favourites</a></li>
 								[%if [@config:show_wishlist@]%]
 								<li><a href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
 								[%/if%]
-								<li><a href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
-								<li><a href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
-								<li><a href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
+								<li><a href="[%url page:'account' type:'warranty'/%]">Resolution centre</a></li>
+								<li><a href="[%url page:'account' type:'edit_account'/%]">Edit my details</a></li>
+								<li><a href="[%url page:'account' type:'edit_address'/%]">Edit my address book</a></li>
 								<li class="divider"></li>
 								[%if [@user:username@]%]
-									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
-									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log Out</a> </li>
+									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change my password</a> </li>
+									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log out</a> </li>
 								[%else%]
-									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
+									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">Log in</a> </li>
 									<li> <a href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
 								[%/if%]
 							</ul>
