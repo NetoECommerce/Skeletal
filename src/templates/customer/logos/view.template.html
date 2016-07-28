@@ -8,35 +8,35 @@ $(document).ready(function() {
 			else {
 				$('#updatelogo').submit();
 			}
-		}	
-	});	
-	
+		}
+	});
+
 	$('.upload_btn').click(function(e){
-			$.submit_form();	
-	});	
-	
+			$.submit_form();
+	});
+
 	$('.card_btn').click(function(e){
 		$('#updatecard').submit();
-	});	
-		
+	});
+
 });
-	
+
 </script>
 
 <!--#Start Column Left# ##-->
 <!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
 <!--# End Column Left# ##-->
- 
 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
+
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My account</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 
 <div class="page-header">
-<h1>Manage Logo</h1>
+<h1>Manage logo</h1>
 </div>
 
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
 <input type="file" name="upld_logo" id="upld_logo" /><br>
 <input class="upload_btn" type="button" class="btn" value="Upload Logo" /><br />
 <p class="helper-text">
-We accept GIF, JPG and PNG formats.<br />
+We accept GIF, JPG, and PNG formats.<br />
 Maximum file size is 5MB.
 </p>
 </div>

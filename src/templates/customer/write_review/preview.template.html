@@ -2,7 +2,7 @@
 function back_to_write_review(){
 	document.preview_review.fn.value = "write";
 	document.preview_review.submit();
-	
+
 }
 function check_terms_and_conditions(){
 		if (document.getElementById("checkbox_confirm_terms_and_conditions").checked){
@@ -14,12 +14,12 @@ function check_terms_and_conditions(){
 }
 </script>
 <div class="col-xs-12">
-	<h1 class="page-header">Preview [@model@] Review </h1>
+	<h1 class="page-header">Preview [@model@] review </h1>
 	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
 	<div class="errorbox"><ul>
 	<li>[@error@]</li>
 	</ul></div>
-	<!--##[%END DATA%]##-->	
+	<!--##[%END DATA%]##-->
 	<form name="preview_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
 		<input type="hidden" name="fn" value="confirm">
 		<input type="hidden" name="item" value="[%NOHTML%][%FORM id:'item'%][%END FORM%][%END NOHTML%]">
@@ -39,7 +39,7 @@ function check_terms_and_conditions(){
 						[%NOHTML%][%FORM id:'emailaddress'%][%END FORM%][%END NOHTML%]
 					</div>
 				[%END USER%]
-				[%SET [@data:ratings-count@] = 1 /%] 
+				[%SET [@data:ratings-count@] = 1 /%]
 				[%WHILE [@data:ratings-count@] <= [@form:rating_value@]%]
 					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
 					<i class="fa fa-star fa-3x"></i>

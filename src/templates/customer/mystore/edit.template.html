@@ -1,14 +1,14 @@
 <!--#Start Column Left# ##-->
 <!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
 <!--# End Column Left# ##-->
- 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
+
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
+<li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My stores</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 
 <!--##[%DATA id:'msg' if:'ne' value:''%]##-->
 <div class="alert alert-success">
@@ -28,7 +28,7 @@
 	<script language="javascript" type="text/javascript" src="[@config:imageurl@]/js/CDate.js"></script>
 	<script type="text/javascript" language="javascript">
 	$(document).ready(function() {
-	
+
 		$.extend({
 			select_category : function (id, chk) {
 				$('#catsel'+id+' INPUT[name^="updcat"]').each(function () {
@@ -37,7 +37,7 @@
 			},
 			getCurrentLoc : function () {
 				var arr = ['stloc_street1','stloc_street2','stloc_city','stloc_state', 'stloc_zip'];
-				
+
 				var country = $('[name="stloc_country"]').val();
 				var address = '';
 				var addctr = 0;
@@ -48,11 +48,11 @@
 						addctr++;
 					}
 				}
-	
+
 				$.geoGoToLocation(country,address);
 			}
 		});
-	
+
 		$.storeLocator_Init({'zoom_suburb': 15, 'onSetLocation': function (loc) {
 			var lat = loc.geometry.location.lat();
 			var lng = loc.geometry.location.lng();
@@ -61,9 +61,9 @@
 			$.geoCleartMarkers();
 			$.geoCustAddMarker(lat,lng,loc.formatted_address );
 		}});
-		
+
 		$.init_text_count('inputtext');
-	
+
 		$.postcode_selectorInit({
 			'id':'stloc_selector',
 			'country_id':'stloc_country',
@@ -72,18 +72,18 @@
 			'zip_id':'stloc_zip',
 			'fns': {'onChange': function () { $.getCurrentLoc(); }}
 		});
-	
+
 		$('INPUT[name^="updcat"]').live('click', function () {
 			$.select_category($(this).attr('ref'), $(this).attr('checked'));
 		});
-		
+
 		var arr = ['stloc_street1','stloc_street2'];
 		for(var i=0; i<arr.length; i++) {
 			$('[name="'+arr[i]+'"]').live('change', function () {
 				$.getCurrentLoc();
 			})
 		}
-		
+
 		$('#geo_getloc_btn').live('click', function () {
 			$.getCurrentLoc();
 		})
@@ -98,7 +98,7 @@
 <input name="updcategory" type="hidden" value="y"/>
 
 <div class="page-header">
-	<h1>Edit My Store</h1>
+	<h1>Edit my store</h1>
 </div>
 
 <div class="row">
@@ -107,7 +107,7 @@
 		<div class="content">
 			<table border="0" cellspacing="0" cellpadding="4">
 				<tr>
-					<td width="1%" nowrap>Store Name <span class="small text-danger">Required</span></td>
+					<td width="1%" nowrap>Store name <span class="small text-danger">Required</span></td>
 					<td>
 						<input name="stloc_name" class="input-large" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
 					</td>
@@ -130,10 +130,10 @@
 <div class="row">
 	<div class="span19">
 		<h4>Description</h4>
-			<label>Description of Your Store</label>
+			<label>Description of your store</label>
 			<textarea class="inputtext span18" name="description" rows="8" wrap="soft"><!--##[%NOHTML%][@description@][%END NOHTML%]##--></textarea>
 			<p class="help-block">
-				Max 1000 Character(s)
+				Max 1000 Characters
 			</p>
 			<!--##[%EXTRA_STORE_FIELDS%]
 			[%PARAM *header%]##-->
@@ -178,7 +178,7 @@
 			<!--##[%END PARAM%]
 			[%PARAM *footer%]##-->
 			<!--##[%END PARAM%]
-			[%END EXTRA_STORE_FIELDS%]##-->	
+			[%END EXTRA_STORE_FIELDS%]##-->
 		</table>
 	</div>
 </div>
@@ -201,10 +201,10 @@
 		<br />
 		<input type="text" name="stloc_street2" size="50" maxlength="50" value="[%NOHTML%][@stloc_street2@][%END NOHTML%]" />
 
-		<label>Postal Code<span class="required">*</span></label>
+		<label>Postcode<span class="required">*</span></label>
 		<input type="text" id="stloc_zip" name="stloc_zip" size="50" value="[%NOHTML%][@stloc_zip@][%END NOHTML%]" maxlength="10" />
-			
-		<label>Suburb / City<span class="required">*</span></label>
+
+		<label>Suburb/City<span class="required">*</span></label>
 		<span id="stloc_selector"></span>
 		<input type="text" id="stloc_city" name="stloc_city"  value="[%NOHTML%][@stloc_city@][%END NOHTML%]" size="50" maxlength="50"/>
 
@@ -212,23 +212,23 @@
 		<div id="stloc_state_pl" style="display:none;"></div>
 		<input type="text" name="stloc_state" id="stloc_state" value="[%NOHTML%][@stloc_state@][%END NOHTML%]" size="50" maxlength="50" />
 
-		<label>Latitude:</label>
+		<label>Latitude</label>
 		<input type="text" name="stloc_lat" class="readonly" readonly value="[%NOHTML%][@stloc_lat@][%END NOHTML%]" size="15" />
 
-		<label>Longitude:</label>
+		<label>Longitude</label>
 		<input type="text" name="stloc_lng" class="readonly" readonly value="[%NOHTML%][@stloc_lng@][%END NOHTML%]" size="15" />
 	</div>
 	<div class="span9">
 		<h4>&nbsp;</h4>
-		<label>Phone Number</label>
+		<label>Phone number</label>
 		<input type="text" name="stloc_phone" size="30" maxlength="30" value="[%NOHTML%][@stloc_phone@][%END NOHTML%]" />
 
-		<label>Fax Number</label>
+		<label>Fax number</label>
 		<input type="text" name="stloc_fax" size="30" maxlength="30" value="[%NOHTML%][@stloc_fax@][%END NOHTML%]" />
-		
-		<label>Contact Email</label>
+
+		<label>Contact email</label>
 		<input type="text" name="stloc_email" size="30" maxlength="50" value="[%NOHTML%][@stloc_email@][%END NOHTML%]" />
-		
+
 		<br />
 		<br />
 		<div id="geo_map"></div>
@@ -244,7 +244,7 @@
 
 <div class="row">
 	<div class="span18">
-	<h4>Product Range</h4>
+	<h4>Product range</h4>
 		<!--##[%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' category:'0'%]
 			[%PARAM header%]##-->
 				<div class="categorysel">
@@ -253,7 +253,7 @@
 					[%PARAM *level_2%]##--><li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%DATA id:'category[@id@]' if:'eq' value:'1'%]checked[%END DATA%]/> [@name@]<!--##[%DATA id:'next_level' if:'ne' value:''%]##--><ul id="catsel[@allcount@]">[@next_level@]</ul><!--##[%END DATA%]##--></li><!--##[%END PARAM%]
 					[%PARAM *level_3%]##--><li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%DATA id:'category[@id@]' if:'eq' value:'1'%]checked[%END DATA%]/> [@name@]<!--##[%DATA id:'next_level' if:'ne' value:''%]##--><ul id="catsel[@allcount@]">[@next_level@]</ul><!--##[%END DATA%]##--></li><!--##[%END PARAM%]
 					[%PARAM *level_4%]##--><li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%DATA id:'category[@id@]' if:'eq' value:'1'%]checked[%END DATA%]/> [@name@]</li><!--##[%END PARAM%]
-					[%PARAM footer%]##--> 
+					[%PARAM footer%]##-->
 					</ul>
 				</div>
 			<!--##[%END PARAM%]
@@ -265,7 +265,7 @@
 <div class="row">
 	<div class="span18">
 		<h4>Images</h4>
-		<p class="small">Store Logos will be re-sized and thumbnails will be created automatically. Uploaded images should not exceed 500kb in size.</p>
+		<p class="small">Store logos will be resized and thumbnails will be created automatically. Uploaded images should not exceed 500kb in size.</p>
 		<div class="span18">
 			<ul class="imagelist">
 			<!--##[%THUMBNAILS id:'[@stloc_id@]' type:'storeloc' showall:'1'%]##-->
@@ -275,10 +275,10 @@
 			<img src="[@config:IMAGE_URL@]/pixel.gif" border="0" width="80" height="80">
 			<!--##[%END PARAM%][%PARAM if_false%]##-->
 			<a target="_blank" href="[@full_image@]"><img src="[@thumb_image@]" border="0" width="80" height="80"></a>
-			<div>Remove Image On Save? <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
+			<div>Remove image on save? <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
 			<!--##[%END PARAM%][%END DATA%]##-->
 			</div>
-			
+
 			<div><input type="file" name="stloc_logo[@type@]"></div>
 			</li><!--##[%END PARAM%]##-->
 			<!--##[%END THUMBNAILS%]##-->
@@ -288,17 +288,15 @@
 	</div>
 </div>
 
-
 <div class="row">
 	<div class="span18">
 		<div class="form-actions">
-			<input type="button" class="btn" value="Reset" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp; 
+			<input type="button" class="btn" value="Reset" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp;
 			<input type="submit" class="btn btn-success" value="Save Changes">
 		</div>
 	</div>
 </div>
 
-
-</form> 
+</form>
 
 </div>

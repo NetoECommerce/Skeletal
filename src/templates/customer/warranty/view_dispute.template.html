@@ -17,11 +17,11 @@ function sendMessage() {
 <div class="col-xs-12">
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'/%]">My Account</a></li>
+		<li><a href="[%URL page:'account'/%]">My account</a></li>
 		<li><a href="[%URL page:'account' type:'warranty'/%]">Resolution Centre</a></li>
 	</ul>
 	<div class="page-header">
-		<h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1>
+		<h1>Resolution Centre - Warranty, payment, and return disputes</h1>
 	</div>
 	[%if [@error@]%]
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
@@ -65,7 +65,7 @@ function sendMessage() {
 								[%/if%]
 								<tr>
 									<th>
-										Shipped To
+										Shipped to
 									</th>
 									<td>
 										[%nohtml%][@bill_first_name@] [@bill_last_name@][%/nohtml%]
@@ -73,7 +73,7 @@ function sendMessage() {
 								</tr>
 								<tr>
 									<th>
-										Date Placed
+										Date placed
 									</th>
 									<td>
 										[%format type:"date"%][@date_placed@][%/format%]
@@ -81,7 +81,7 @@ function sendMessage() {
 								</tr>
 								<tr>
 									<th>
-										Order Status
+										Order status
 									</th>
 									<td>
 										[%nohtml%][@order_status@][%/nohtml%]
@@ -99,7 +99,7 @@ function sendMessage() {
 						</tr>
 						<tr>
 							<th>
-								Dispute Type
+								Dispute type
 							</th>
 							<td>
 								[@dispute_type@]
@@ -107,7 +107,7 @@ function sendMessage() {
 						</tr>
 						<tr>
 							<th>
-								Dispute Reason
+								Dispute reason
 							</th>
 							<td>
 								[@dispute_reason@]
@@ -115,7 +115,7 @@ function sendMessage() {
 						</tr>
 						<tr>
 							<th>
-								Dispute Status
+								Dispute status
 							</th>
 							<td>
 								[@dispute_status@]
@@ -126,7 +126,7 @@ function sendMessage() {
 						</tr>
 						<tr>
 							<th>
-								Disputed On
+								Disputed on
 							</th>
 							<td>
 								[%format type:"date"%][@date_disputed@][%/format%]
@@ -135,7 +135,7 @@ function sendMessage() {
 						[%if [@dispute_filed@]%]
 							<tr>
 								<th>
-									Filed On
+									Filed on
 								</th>
 								<td>
 									[%format type:"date" default:'-'%][@date_filed@][%/format%]
@@ -144,7 +144,7 @@ function sendMessage() {
 						[%/if%]
 						<tr>
 							<th>
-								Contact Email
+								Contact email
 							</th>
 							<td>
 								[%nohtml%][@email@][%/nohtml%]
@@ -152,7 +152,7 @@ function sendMessage() {
 						</tr>
 						<tr>
 							<th>
-								Contact Phone
+								Contact phone
 							</th>
 							<td>
 								[%nohtml%][@phone@][%/nohtml%]
@@ -190,7 +190,7 @@ function sendMessage() {
 			[%dispute_messages id:'[@dispute_id@]'%][%param *header%]
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				<h3 class="panel-title">Message History</h3>
+				<h3 class="panel-title">Message history</h3>
 				</div>
 				<div class="list-group">
 			[%/param%][%param *body%]

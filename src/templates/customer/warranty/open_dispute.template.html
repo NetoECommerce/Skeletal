@@ -1,7 +1,7 @@
 <div class="col-xs-12">
 <ul class="breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
 <li><a href="#">Resolution Centre</a></li>
 </ul>
 
@@ -41,11 +41,11 @@ function showOrder() {
 		<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
 		<p><b>PO#:</b> <!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--></p>
 		<!--##[%END DATA%]##-->
-		<p><b>Shipped To:</b> <!--##[%NOHTML%]##-->[@bill_first_name@] [@bill_last_name@]<!--##[%END NOHTML%]##--></p>
-		<p><b>Date Placed:</b> <!--##[%format type:"date"%]##-->[@date_placed@]<!--##[%END format%]##--></p>
-		<p><b>Order Status:</b> <!--##[%NOHTML%]##-->[@order_status@]<!--##[%END NOHTML%]##--></p>
-		<p><b>Contact Email:</b> <!--##[%NOHTML%]##-->[@email@]<!--##[%END NOHTML%]##--></p>
-		<p><b>Contact Phone:</b> <!--##[%NOHTML%]##-->[@phone@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Shipped to:</b> <!--##[%NOHTML%]##-->[@bill_first_name@] [@bill_last_name@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Date placed:</b> <!--##[%format type:"date"%]##-->[@date_placed@]<!--##[%END format%]##--></p>
+		<p><b>Order status:</b> <!--##[%NOHTML%]##-->[@order_status@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Contact email:</b> <!--##[%NOHTML%]##-->[@email@]<!--##[%END NOHTML%]##--></p>
+		<p><b>Contact phone:</b> <!--##[%NOHTML%]##-->[@phone@]<!--##[%END NOHTML%]##--></p>
 		<hr/>
 		<h4>Which items from the list below would you like to dispute?</h4>
 		<div class="row">
@@ -54,7 +54,7 @@ function showOrder() {
 					<div class="radio">
 						<label>
 							<input type="radio" name="dispute" id="dispute_order" value="order" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'order'%]checked[%END DATA%]/>
-							Dispute The Entire Order </label>
+							Dispute the entire order </label>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@ function showOrder() {
 					<div class="radio">
 						<label>
 							<input type="radio" name="dispute" id="dispute_line" value="line" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'line'%]checked[%END DATA%]/>
-							Dispute Selected Item(s) </label>
+							Dispute selected item(s) </label>
 					</div>
 				</div>
 			</div>
@@ -86,8 +86,8 @@ function showOrder() {
 						of [@qty@]</td>
 					<td><a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%END url%]"><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></a> <a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%END url%]">[@model@] <i>[@extra@]</i></a>
 						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>FREE*</b><!--##[%END DATA%]##-->
-						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>eBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+						<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free gift</b><!--##[%END DATA%]##--></td>
 					<td><!--##[%FORMAT type:'currency'%]##-->[@price@]<!--##[%END format%]##--></td>
 					<td><!--##[%format type:'currency'%]##-->[@discount@]<!--##[%END format%]##--></td>
 					<td><!--##[%FORMAT type:'currency'%]##-->[@subtotal@]<!--##[%END format%]##--></td>
@@ -98,7 +98,7 @@ function showOrder() {
 			<!--##[%END show_order%]##-->
 		</div>
 		<hr/>
-		<h4>Detailed Explanation Of Problem</h4>
+		<h4>Detailed explanation of problem</h4>
 		<p>[@dispute_type_title@] <i class="fa fa-arrow-right"></i> [@dispute_reason@]</p>
 		<textarea  class="form-control" name="message" rows="5"><!--##[%NOHTML%]##-->[@message@]<!--##[%END NOHTML%]##--></textarea>
 		<hr>
@@ -107,10 +107,10 @@ function showOrder() {
 				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="Cancel"> <i class="fa fa-remove icon-white"></i> Cancel </button>
 			</div>
 			<div class="col-xs-12 col-md-3 col-md-offset-3">
-				<button name="button" type="button" onClick="goBack()" class="btn btn-default btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
+				<button name="button" type="button" onClick="goBack()" class="btn btn-default btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go back </button>
 			</div>
 			<div class="col-xs-12 col-md-3">
-				<button type="submit" class="btn btn-success btn-block" >Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>
+				<button type="submit" class="btn btn-success btn-block" >Continue to next step <i class="fa fa-chevron-right icon-white"></i></button>
 			</div>
 		</div>
 	</form>

@@ -32,7 +32,7 @@
 	[%/if%]
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Product Review</h3>
+			<h3 class="panel-title">Product review</h3>
 		</div>
 		<div class="panel-body">
 			<form name="edit_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
@@ -44,12 +44,12 @@
 						<input size="70" type="text" name="customername" class="form-control" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" />
 					</div>
 					<div class="form-group">
-						<label>Enter your e-mail address:</label>
+						<label>Enter your email address:</label>
 						<input size="70" type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" />
 					</div>
 				[%/if%]
 				<div class="form-group">
-					<label>Title For Review</label>
+					<label>Review title</label>
 					<input type="text" name="review_title" class="form-control" value="[%nohtml%][@form:review_title@][%/nohtml%]"/>
 				</div>
 				<div class="form-group">
@@ -60,7 +60,7 @@
 				</div>
 				<div id="rating_select_options">
 					<div class="form-group">
-						<label>Pick a star rating for this product</label>
+						<label>Star rating</label>
 						<input type="hidden" name="rating_value" id="rating_value" value="[@form:rating_value@]"/>
 						<div id="rating_stars"><br />
 							<i id="rating_stars_1" class="fa fa-star fa-3x" onclick="setRating('1');"></i>

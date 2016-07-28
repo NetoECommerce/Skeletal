@@ -6,16 +6,16 @@
 <!--# Start Breadcrumb# ##--> 
 <ul class="breadcrumb"> 
 <li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="#">Standing Orders</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
+<li><a href="#">Standing orders</a></li>
 </ul>
 <!--# End Breadcrumb# ##--> 
 
-<h1>Standing Orders</h1>
+<h1>Standing orders</h1>
 
 
 					<form method="get" action="[%URL page:'account' type:'standing_orders'%][%END URL%]" class="form-inline">
-					 <b> Search For Standing Orders By Order ID, Invoice # or Your PO # : </b>
+					 <b> Search For standing orders By Order ID, Invoice # or Your PO # : </b>
 							<input type="text" name="ord" value="[%nohtml%][%FORM id:'ord'%][%END FORM%][%END nohtml%]" size="10">
 						&nbsp;<br /><br />
 
@@ -26,7 +26,7 @@
 							<option value="n" [%FORM id:'sts' if:'eq' value:'n'%]selected[%END FORM%]>Inactive</option>
 						</select>
 						&nbsp;
-						<button type="submit" class="btn"><i class="fa fa-search"></i> Search Standing Orders</button>
+						<button type="submit" class="btn"><i class="fa fa-search"></i> Search standing orders</button>
 					</form>
 <hr />
 <!--##[%thumb_list type:'standing_orders' limit:'20'%]##-->
@@ -37,13 +37,13 @@
 				<table width="100%" class="table table-striped table-bordered table-condensed">
                		<thead>
 					<tr> 
-						<th>Standing Order ID</th>
+						<th>Standing order ID</th>
 						<th>Date Placed</th>
 						<th>Current Status</th>
 						<th>Date Started</th>
 						<th>Amount On Order</th>
-						<th>Next Delivery</th>
-						<th>Date Fulfilled</th>
+						<th>Next delivery</th>
+						<th>Date fulfilled</th>
 						<th>&nbsp;</th>
 					</tr>
                     </thead>
@@ -74,7 +74,7 @@
 
 	<!--##[%END PARAM%]##-->
 	<!--##[%PARAM ifempty%]##-->
-<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>No Standing Orders Found.</div>
+<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>No standing orders Found.</div>
 				<!--##[%END PARAM%]##-->
 				<!--##[%END thumb_list%]##-->
 		 </td>

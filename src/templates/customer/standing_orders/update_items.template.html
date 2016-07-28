@@ -34,14 +34,14 @@ function addItem(ctr) {
 <!--##[%standing_order_items id:'[@storder_id@]' show_cart:'1'%]
 [%PARAM *header%]##-->
 <table  class="checkout_box" width="100%" border="0" align="center" cellpadding="6px" cellspacing="0">
-	<tr><td><div class="checkout_box_header">Standing Order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
+	<tr><td><div class="checkout_box_header">Standing order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
 	<tr><td>
 <table cellpadding="4" cellspacing="0" border="0">
 	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
 		<tr><td><b><span class="text-danger">[@order_status@]</span></b></td></tr>
 <!--##[%DATA id:'request_to_stop' if:'=' value:'1'%]
 	[%PARAM if_true%]##-->
-		<tr><td><b><span class="text-danger">Resquesting To Stop</span></b></td></tr>
+		<tr><td><b><span class="text-danger">Requesting to stop</span></b></td></tr>
 <!--##[%END PARAM%][%END DATA%]##-->
 		<tr><td>
 		</td></tr>
@@ -49,11 +49,11 @@ function addItem(ctr) {
 	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small">
 <table border="0" cellpadding="3" cellspacing="0">
-	<tr><td>Next Delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
-	<tr><td>Total Orders</td><td><!--##[%format type:'number'%]##-->[@total_orders_created@]<!--##[%END format%]##--></td></tr>
-	<tr><td>Total Spent</td><td><!--##[%format type:'currency'%]##-->[@total_money_spent@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Next delivery</td><td><!--##[%format type:'date'%]##-->[@date_next@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Total orders</td><td><!--##[%format type:'number'%]##-->[@total_orders_created@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Total spent</td><td><!--##[%format type:'currency'%]##-->[@total_money_spent@]<!--##[%END format%]##--></td></tr>
 <!--##[%DATA id:'fulfilled' if:'=' value:'1'%]##-->
-	<tr><td>Date Fulfilled</td><td><!--##[%format type:'date'%]##-->[@date_fulfilled@]<!--##[%END format%]##--></td></tr>
+	<tr><td>Date fulfilled</td><td><!--##[%format type:'date'%]##-->[@date_fulfilled@]<!--##[%END format%]##--></td></tr>
 <!--##[%END DATA%]##-->
 </table>
 	</td></tr>
@@ -61,9 +61,9 @@ function addItem(ctr) {
 </table>
 <div class="spacer"></div>
 <table width="100%" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Your Current Items On Order</td></tr>
+  <tr><td colspan="2" class="checkout_box_header">Your current items on order</td></tr>
   <tr><td>
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="50px" class="header" nowrap>Product</td>
 		<td width="99%" class="header" nowrap>&nbsp;</td>
@@ -79,8 +79,8 @@ function addItem(ctr) {
 	<td><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%END asset_url%]"></td>
 	<td>[@model@] <i>[@extra@]</i>
 <!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]##-->&nbsp; <b>Rental</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>EBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
-<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free Gift</b><!--##[%END DATA%]##--></td>
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]##-->&nbsp; <b>eBay ID: [@aff_ref@]</b><!--##[%END DATA%]##-->
+<!--##[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]##-->&nbsp; <b>Free gift</b><!--##[%END DATA%]##--></td>
 	<td><input name="line[@count@]" type="hidden" value="[@counter@]"><input name="sku[@count@]" type="hidden" value="[@SKU@]">
 <!--##[%DATA id:'editable' if:'eq' value:'y' %][%PARAM if_true%]##-->
 	<input id="qty[@count@]" type="text" name="qty[@count@]" value="[@qty@]" size="3">
@@ -103,35 +103,35 @@ function addItem(ctr) {
 <!--##[%PARAM *footer%]##-->
 <!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
 [%PARAM if_true%]##-->
-<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
-	<td class="store_total" nowrap>Delivery Cost</td>
+<tr><td class="shitem0"  colspan="5"><b>Delivery method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+	<td class="store_total" nowrap>Delivery cost</td>
 	<td class="store_total" nowrap>N/A</td></tr>
 <!--##[%END PARAM%]
 [%PARAM if_false%]##-->
-<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
-	<td class="store_total" nowrap>Delivery Cost</td>
+<tr><td class="shitem0"  colspan="5"><b>Delivery method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+	<td class="store_total" nowrap>Delivery cost</td>
 	<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
 <!--##[%END PARAM%]
 [%END DATA%]##-->
 <!--##[%DATA id:'couponcode' if:'ne' value:'' %]##-->
-	<tr><td class="header" colspan="7">Special Pricing Arrangements / Discounts</td></tr>
+	<tr><td class="header" colspan="7">Special pricing arrangements/discounts</td></tr>
 	<tr><td class="shitem0" colspan="7">[@couponcode@]</td></tr>
-	<tr><td class="shitem0" colspan="7">Special pricing arrangements / discounts will be calculated at time of order.</td></tr>
+	<tr><td class="shitem0" colspan="7">Special pricing arrangements/discounts will be calculated at time of order.</td></tr>
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
   <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
   <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
-	<tr><td><b>Order Subtotal</b></td>
+	<tr><td><b>Order subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
 	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
-	<tr><td><b>Total Shipping</b></td>
+	<tr><td><b>Total shipping</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
 	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
-	<tr><td><b>Total Discount</b></td>
+	<tr><td><b>Total discount</b></td>
 		<td align="right"><b>-<!--##[%format type:'currency'%]##-->[@discount_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
@@ -140,7 +140,7 @@ function addItem(ctr) {
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 	<tr><td colspan="2" style="border-bottom: 1px solid #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
-	<tr><td><b>Order Total</b></td>
+	<tr><td><b>Order total</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@grand_total@]<!--##[%END format%]##--></b></td></tr>
 	<tr><td colspan="2"><img src="[@config:imageurl@]/pixel.gif" width="1px" height="1px" alt=""></td></tr>
 </table></td></tr>
@@ -157,7 +157,7 @@ function addItem(ctr) {
 <input type="hidden" name="sku0" value="">
 </form>
 <table width="100%" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Add Items</td></tr>
+  <tr><td colspan="2" class="checkout_box_header">Add items</td></tr>
   <tr><td>
 <!--##[%THUMB_LIST type:'storder_products' limit:'100'%]
 [%PARAM filter_itemgroup%][@itemgroups@][%END PARAM%]
@@ -198,14 +198,14 @@ function addItem(ctr) {
 </table></div>
 <!--##[%END PARAM%]
 [%PARAM *ifempty%]##-->
-No Products are available.
+No products are available.
 <!--##[%END PARAM%]
 [%END THUMB_LIST%]##-->
 	</td></tr>
 </table>
 <div class="spacer"></div>
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp;
     <input type="image" alt="Update Changes" src="" onclick="updateChanges();"> &nbsp;
     <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif" onclick="saveChanges();">
 </center>

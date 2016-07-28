@@ -4,12 +4,12 @@
 <input type="hidden" name="previous" value="[@previous_action@]">
 <input type="hidden" name="fn" value="confirm">
 <table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
-	<tr><td class="checkout_box_header">Shipping Options to [@ship_country_name@] Post Code: <i>[@ship_zip@]</i></td></tr>
+	<tr><td class="checkout_box_header">Shipping options to [@ship_country_name@] postcode: <i>[@ship_zip@]</i></td></tr>
 	<tr><td>If you have not defined a preferred shipping method, the cheapest shipping method has been chosen as default.</td></tr>
 	<tr><td>
 <!--##[%standing_order_shipping_methods id:'[@storder_id@]'%]
 [%PARAM header%]##-->
-<table width="100%" cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width="100%" cellpadding="4" cellspacing="0" border="0" class="item_list">
 <!--##[%END PARAM%]
 [%PARAM *body%]##-->
 <tr><td width="12px"><input type="radio" name="ship" value="[@id@]" [%DATA id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%END DATA%]></td>
@@ -35,7 +35,7 @@
 </table>
 <!--##[%END PARAM%]
 [%PARAM ifempty%]##-->
-Sorry. No Shipping methods are avaliable.
+Sorry, no shipping methods are avaliable.
 <input type="hidden" name="ship" value="" />
 <!--##[%END PARAM%]
 [%END standing_order_shipping_methods%]##-->
@@ -43,7 +43,7 @@ Sorry. No Shipping methods are avaliable.
 </table>
 <div class="spacer"></div>
 <center>
-	<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif" /></a>&nbsp; 
+	<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif" /></a>&nbsp;
     <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif">
 </center>
 </form>

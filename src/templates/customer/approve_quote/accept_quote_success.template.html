@@ -6,14 +6,14 @@ function print_invoice() {
 </script>
 <ul class="breadcrumb">
 	<li><a href="[@config:home_url@]">Home</a></li>
-	<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-	<li><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
+	<li><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
+	<li><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve quotes</a></li>
 </ul>
-<h1>Approve Quote</h1>
+<h1>Approve quote</h1>
 <p>Congratulations! Quote #[@order_id@] has been approved and changed to an order. You can pay for this order now by clicking on the pay now button below.</p>
 <div>
 	<input class="btn btn-default pull-right" type="button" value="Print Invoice" onClick="print_invoice()">
-	<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success pull-left">Pay Now</button>
+	<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success pull-left">Pay now</button>
 </div>
 <!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
 </div>

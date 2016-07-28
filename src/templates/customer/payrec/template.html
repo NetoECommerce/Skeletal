@@ -166,11 +166,11 @@
 <div class="col-xs-12">
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
-		<li><a href="#">Pay Outstanding Orders and Invoices</a></li>
+		<li><a href="[%URL page:'account'%][%/URL%]">My account</a></li>
+		<li><a href="#">Pay outstanding orders and invoices</a></li>
 	</ul>
 	<div class="page-header">
-		<h1>Pay Outstanding Orders &amp; Invoices</h1>
+		<h1>Pay outstanding orders and invoices</h1>
 	</div>
 	[%if [@error@]%]
 		<div class="alert alert-danger">
@@ -185,25 +185,25 @@
 		</div>
 	[%/if%]
 <div id="processing" style="display:none;" class="alert alert-danger">
-	<h2>Payment Processing</h2>
+	<h2>Payment processing</h2>
 	<h2>Please do not refresh or close this page</h2>
 	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
-		<h3>My Account Details</h3>
-		<p><b>My Payment Terms</b> [@user:terms@]</p>
-		<p><b>My Account Balance</b> [%format type:"currency"%][@user:balance@][%/format%]<span class="text-muted">(Credit Limit: [%format type:"currency"%][@user:credit_limit@][%/format%])</span></p>
-		<p><b>My Available Credit</b> [%format type:"currency"%][@user:credit@][%/format%]</p>
+		<h3>My account details</h3>
+		<p><b>My payment terms</b> [@user:terms@]</p>
+		<p><b>My account balance</b> [%format type:"currency"%][@user:balance@][%/format%]<span class="text-muted">(Credit Limit: [%format type:"currency"%][@user:credit_limit@][%/format%])</span></p>
+		<p><b>My available credit</b> [%format type:"currency"%][@user:credit@][%/format%]</p>
 		<hr />
-		<h3>Real-Time Payment Processor</h3>
+		<h3>Real-time payment processor</h3>
 		<p class="help-block">
-			Enter your payment details and the amount you want to pay below. Then apply the payment to the invoices you want to pay until your <b>Out Of Balance</b> equals <b>0</b>. To finalise payment click on the <b>process payment</b> button at the bottom of the page.
+			Enter your payment details and the amount you want to pay below. Then apply the payment to the invoices you want to pay until your <b>out of balance</b> equals <b>0</b>. To finalise payment, click on the <b>process payment</b> button at the bottom of the page.
 		</p>
 		<br />
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
-				<label>Select Payment Method</label>
+				<label>Select payment method</label>
 				<select class="form-control" name="card_type" onChange="showPD()">
 					<option value=""></option>
 					[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
@@ -220,17 +220,17 @@
 					<hr>
 					<div class="well">
 						<div class="form-group">
-							<label>Card Holder</label>
+							<label>Cardholder</label>
 							<input class="form-control" type="text" name="card_holder" size="30" maxlength="40" value="">
 						</div>
 						<div class="form-group">
-							<label>Card Number</label>
+							<label>Card number</label>
 							<input class="form-control" type="text" name="card_number" size="16" maxlength="16" value="">
-							<p class="help-block">(only digits)</p>
+							<p class="help-block">(Digits only)</p>
 						</div>
 						<div class="row">
 							<div class="col-xs-12">
-								<label>Card Expiration Date</label>
+								<label>Card expiration date</label>
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
@@ -262,7 +262,7 @@
 								<div class="form-group">
 									<label>Card CCID</label>
 									<input class="form-control" type="text"  name="card_ccid" size="5">
-									<p class="help-block">(3-4 digit security code)</p>
+									<p class="help-block">(3 or 4-digit security code)</p>
 								</div>
 							</div>
 						</div>
@@ -273,12 +273,12 @@
 		<hr>
 		<div class="row">
 			<div class="col-xs-12 col-md-3">
-				<label>Payment Amount ([@config:moneysign@])</label>
+				<label>Payment amount ([@config:moneysign@])</label>
 				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
 			</div>
 		</div>
 		<hr />
-		<h3>Unpaid Orders</h3>
+		<h3>Unpaid orders</h3>
 		[%thumb_list type:'orders' limit:'100'%]
 			[%PARAM filter_1%][%/PARAM%]
 			[%PARAM filter_2%]y[%/PARAM%]
@@ -287,12 +287,12 @@
 					<thead>
 						<tr>
 							<th><b>Order ID</b></th>
-							<th><b>Invoiced Date</b></th>
-							<th><b>Payment Terms</b></th>
-							<th><b>Due Date</b></th>
-							<th><b>Total Due</b></th>
-							<th><b>Amount Owed</b></th>
-							<th colspan="2"><b>Amount Applied</b></th>
+							<th><b>Invoiced date</b></th>
+							<th><b>Payment terms</b></th>
+							<th><b>Due date</b></th>
+							<th><b>Total due</b></th>
+							<th><b>Amount owed</b></th>
+							<th colspan="2"><b>Amount applied</b></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -315,9 +315,9 @@
 						</tr>
 					[%/PARAM%]
 					[%PARAM *footer%]
-						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
-						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
-						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">Total applied</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
+						<tr><td align="right"	colspan="7" class="small">Payment amount</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">Out of balance</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
 					</tbody>
 				</table>
 					[%/PARAM%]
