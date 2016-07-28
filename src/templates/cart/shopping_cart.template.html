@@ -6,7 +6,7 @@
 	<div class="row btn-stack">
 		<div class="col-xs-12 col-md-9">
 			[%if [@config:allow_user_quote@] eq '1'%]
-				<button class="btn btn-default btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart</button>
+				<button class="btn btn-default" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart</button>
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
