@@ -1,0 +1,38 @@
+<hr/>
+<div class="panel panel-default form-inline" id="shipbox">
+	<div class="panel-heading">
+		<h3 class="panel-title">Calculate Shipping</h3>
+	</div>
+	<div class="panel-body n-wrapper-form-control">
+		<input type="hidden" name="input" id="zip" style="width:100%" value="[%SESSION id:'ship_zip'%][%END SESSION%]"  class="form-control" placeholder="Post Code">
+		<input type="hidden" id="ship_country" value="AU"/>
+		<input type="hidden" size="5" name="ship_state" id="ship_state" value="[@ship_state@]" />
+		<input type="hidden" name="shloc_state" id="shloc_state" value="[%SESSION id:'ship_state'%][%END SESSION%]"/>
+		<input type="hidden" name="input" id="n_qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="ship_selector">Suburb/Post Code</label>
+						<input type="text" id="ship_selector" style="width:100%" class="form-control" value="[%SESSION id:'ship_city'%][%END SESSION%]" size="50" maxlength="50" autocomplete="off" placeholder="Enter Suburb" /><input type="hidden" name="ship_city" id="ship_city" value="[%SESSION id:'ship_city'%][%END SESSION%]"/>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<label for="ship_selector">&nbsp;</label>
+					<button type="button" class="btn btn-default btn-block" id="calc_btn" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'qty': $('#n_qty').val() , 'ship_city':$('#ship_selector').val() , 'ship_zip': $('#zip').val(),'ship_state': $('#ship_state').val()});" title="Calculate"><i class="fa fa-refresh"></i> </button>
+				</div>
+			</div>
+			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+				[%PARAM *header%]
+					<br />
+				[%END PARAM%]
+				[%PARAM *body%]
+					<hr />
+					<b>[@shipping_method@]</b> - [%format type:"currency"%][@cost@][%END format%]<br />
+					<i>[@shipping_description@]</i>
+				[%END PARAM%]
+			[%PARAM *footer%]
+				</p>
+			[%END PARAM%]
+		[%END shipping_methods%]
+	</div>
+</div>

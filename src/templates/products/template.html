@@ -18,6 +18,57 @@
 			[%/if%]
 		});
 	</script>
+	[%if [@config:shipping_calculator@] eq 'suburb-selector'%]
+		<script>
+			var suburbCalcInit = function() {
+				$.postcode_selectorInit({
+					'id':'shloc_selector',
+					'country_id':'shloc_country',
+					'city_id':'shloc_city',
+					'state_id':'shloc_state',
+					'zip_id':'zip'
+				});
+			}
+			var refreshCalc = function(){
+				$.load_ajax_template('_buying_options', {
+					'showloading': '1',
+					'qty': $('#n_qty').val() ,
+					'ship_city': $('#shloc_city').val(),
+					'ship_country': $('#shloc_country').val(),
+					'ship_state': $('#shloc_state').val(),
+					'ship_zip': $('#zip').val(),
+
+				},{
+					'onLoad': suburbCalcInit
+				});
+			}
+			$(document).ready(function(){
+				suburbCalcInit();
+			});
+		</script>
+	[%elseif [@config:shipping_calculator@] eq 'suburb-search'%]
+		<script>
+			$.postcode_selectorInit({
+				'id':'ship_selector',
+				'country_id':'ship_country',
+				'city_id':'ship_city',
+				'state_id':'ship_state',
+				'zip_id':'zip',
+				'page' : {
+					'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+					'body': '<li><a href="javascript:##script##">##city## (##zip##)</a></li>',
+					'footer': '</ul>'
+				},
+				'items_returned': 100,
+				'closetimer_secs':5000,
+				'fns': {
+					'onChange' : function (){
+						$("#calc_btn").trigger('click');
+					}
+				}
+			});
+		</script>
+	[%/if%]
 	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/zoom/1.4/jquery.zoom-min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){

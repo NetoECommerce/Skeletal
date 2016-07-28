@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title">Shipping Calculator</h4>
+	</div>
+	<div class="panel-body">
+		<form method="post" action="[%URL page:'checkout'%][%END URL%]">
+			<p>Enter your Suburb to calculate.</p>
+			<div class="form-group">
+				<select name="ship_country" id="ship_country" class="form-control">
+					[%countries%]
+					[%PARAM *body%]
+					<option class="span3" value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
+					[%END PARAM%]
+					[%END countries%]
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Suburb</label>
+				<input type="hidden" size="5" name="ship_zip" id="ship_zip" value="[@ship_zip@]" />
+				<input type="hidden" size="5" name="ship_state" id="ship_state" value="[@ship_state@]" />
+				<input type="text" style="width:100%" class="form-control" id="ship_selector" value="[%SESSION id:'ship_city'%][%END SESSION%]" size="50" maxlength="50" autocomplete="off" />
+				<input type="hidden" name="ship_city" id="ship_city" value="[%SESSION id:'ship_city'%][%END SESSION%]"/>
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-default btn-block form-control" value="Calculate Shipping" />
+			</div>
+		</form>
+	</div>
+</div>
+[%site_value id:'footer_javascript'%]
+<script>
+	$.postcode_selectorInit({
+		'id':'ship_selector',
+		'country_id':'ship_country',
+		'city_id':'ship_city',
+		'state_id':'ship_state',
+		'zip_id':'zip',
+		'page' : {
+			'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+			'body': '<li><a href="javascript:##script##">##city## (##zip##)</a></li>',
+			'footer': '</ul>'
+		},
+		'items_returned': 100,
+		'closetimer_secs':5000,
+		'fns': {
+			'onChange' : function (){
+				$("#calc_btn").trigger('click');
+			}
+		}
+	});
+</script>
+[%/site_value%]
