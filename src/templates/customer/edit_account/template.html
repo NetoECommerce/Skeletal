@@ -82,7 +82,7 @@ function getlocation(ta) {
 	var sel = document.getElementById('suburb_sl'+id);
 
 	if(!zip.cvalue || zip.value!=zip.cvalue) {
-		zip.cvalue = zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
+		zip.cvalue = zip.value = zip.value.replace(new RegExp('\\D','g'), '');
 		msg.innerHTML = '<i>Loading...</i>';
 		dis.style.display = 'none';
 		msg.style.display = '';
