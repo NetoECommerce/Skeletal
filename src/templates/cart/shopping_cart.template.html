@@ -10,7 +10,7 @@
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
-				<a class="btn btn-default" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Create Quote From Cart"> <i class="fa fa-pencil icon-white"></i> Edit extra options</a>
+				<a class="btn btn-default" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i> Edit extra options</a>
 			[%/if%] -->
 		</div>
 		<div class="col-xs-12 col-md-3">
@@ -47,7 +47,7 @@
 							<p class="small">
 								[@extra@]
 								[%if [@config:checkout_upsell_extra@]%]
-									<a class="btn btn-default btn-xs" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Create Quote From Cart"> <i class="fa fa-pencil icon-white"></i></a>
+									<a class="btn btn-default btn-xs" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i></a>
 								[%/if%]
 							</p>
 							[%if [@aff_id@] eq '[@config:AFF_EBAY_ID@]'%]
