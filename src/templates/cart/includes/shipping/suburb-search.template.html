@@ -28,25 +28,25 @@
 	</div>
 </div>
 [%site_value id:'footer_javascript'%]
-<script>
-	$.postcode_selectorInit({
-		'id':'ship_selector',
-		'country_id':'ship_country',
-		'city_id':'ship_city',
-		'state_id':'ship_state',
-		'zip_id':'zip',
-		'page' : {
-			'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
-			'body': '<li><a href="javascript:##script##">##city## (##zip##)</a></li>',
-			'footer': '</ul>'
-		},
-		'items_returned': 100,
-		'closetimer_secs':5000,
-		'fns': {
-			'onChange' : function (){
-				$("#calc_btn").trigger('click');
+	<script>
+		$.postcode_selectorInit({
+			'id':'ship_selector',
+			'country_id':'ship_country',
+			'city_id':'ship_city',
+			'state_id':'ship_state',
+			'zip_id':'zip',
+			'page' : {
+				'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+				'body': '<li><a href="javascript:##script##">##city## (##zip##)</a></li>',
+				'footer': '</ul>'
+			},
+			'items_returned': 100,
+			'closetimer_secs':5000,
+			'fns': {
+				'onChange' : function (){
+					$("#calc_btn").trigger('click');
+				}
 			}
-		}
-	});
-</script>
+		});
+	</script>
 [%/site_value%]

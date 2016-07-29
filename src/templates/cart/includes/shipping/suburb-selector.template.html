@@ -1,29 +1,35 @@
-<form method="post" action="[%URL page:'checkout'%][%END URL%]">
-	<h4><i class="icon-envelope"></i> Shipping Calculator</h4>
-	<p>Enter your post code to calculate.</p>
-	<input type="hidden" size="5" id="ship_country" name="ship_country" value="AU" />
-	<div class="form-group">
-		<label>Post Code</label>
-		<input type="text" class="form-control" size="5" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title">Shipping Calculator</h4>
 	</div>
-	<div class="form-group">
-		<label>Suburb</label>
-		<span id="shloc_selector"></span>
-		<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%SESSION id:'ship_city'%][%END SESSION%]" size="50" maxlength="50"/>
-		<input type="hidden"  class="form-control" id="ship_state" name="ship_state"  value="[%SESSION id:'ship_state'%][%END SESSION%]"/>
+	<div class="panel-body n-wrapper-form-control">
+		<form method="post" action="[%URL page:'checkout'%][%END URL%]">
+			<p>Enter your post code to calculate.</p>
+			<input type="hidden" size="5" id="ship_country" name="ship_country" value="AU" />
+			<div class="form-group">
+				<label>Post Code</label>
+				<input type="text" class="form-control" size="5" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
+			</div>
+			<div class="form-group">
+				<label>Suburb</label>
+				<span id="shloc_selector"></span>
+				<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%SESSION id:'ship_city'%][%END SESSION%]" size="50" maxlength="50"/>
+				<input type="hidden"  class="form-control" id="ship_state" name="ship_state"  value="[%SESSION id:'ship_state'%][%END SESSION%]"/>
+			</div>
+			<input type="submit" class="btn btn-default" value="Calculate Shipping" />
+		</form>
 	</div>
-	<input type="submit" class="btn btn-default" value="Calculate Shipping" />
-</form>
+</div>
 [%SITE_VALUE id:'footer_javascript'%]
 	<script>
-	$(document).ready(function() {
-		$.postcode_selectorInit({
-			'id':'shloc_selector',
-			'country_id':'ship_country',
-			'city_id':'ship_city',
-			'zip_id':'ship_zip',
-			'state_id':'ship_state',
+		$(document).ready(function() {
+			$.postcode_selectorInit({
+				'id':'shloc_selector',
+				'country_id':'ship_country',
+				'city_id':'ship_city',
+				'zip_id':'ship_zip',
+				'state_id':'ship_state',
+			});
 		});
-	});
 	</script>
 [%END SITE_VALUE%]
