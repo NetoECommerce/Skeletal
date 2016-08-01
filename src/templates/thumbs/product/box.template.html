@@ -25,12 +25,12 @@
 				<!--##[%END IF%]##-->
 
 				<!--##[%IF [@save@] > 0 AND ![@has_child@]%]##-->
-						<span class="small text-danger">
+						<br><span class="small text-danger">
 							<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##--> OFF
 						</span>
 				<!--##[%END IF%]##-->
 				<!--##[%IF [@save@] > 0%]##-->
-					<span class="small text-muted">RRP <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
+					<br><span class="small text-muted">RRP <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
 				<!--##[%END IF%]##-->
 			</p>
 
