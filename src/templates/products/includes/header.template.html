@@ -2,7 +2,7 @@
 	<div class="wrapper-product-title col-sm-8">
 		<h1 itemprop="name">[@name@]</h1>
 		[%if [@subtitle@]%]
-		<h3 class="text-muted">[@subtitle@]</h3>
+			<h3 class="text-muted">[@subtitle@]</h3>
 		[%/if%]
 		[%if [@reviews@] > 0%]
 			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
@@ -46,7 +46,7 @@
 						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 					<div class="productsave">
-						SAVE [%format type:'currency'%] [@save_price@] [%/format%]  ([%format type:'percent'%][@save@][%/format%])
+						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
 			[%else%]
@@ -73,6 +73,7 @@
 					[%format type:'date' format:' #H:#I #a, #d #K #Y'%][@promo_end@][%/format%]
 				</div>
 			[%/if%]
+			[%tracking_code type:'BuyingOptions' /%]
 			[%if [@store_quantity@] > 0 AND [@preorder@] %]
 				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]

@@ -12,6 +12,7 @@
 			[%if [@config:checkout_upsell_extra@]%]
 				<a class="btn btn-default" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i> Edit extra options</a>
 			[%/if%] -->
+			[%tracking_code type:'CartCTA' /%]
 		</div>
 		<div class="col-xs-12 col-md-3">
 			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout Now</button>
