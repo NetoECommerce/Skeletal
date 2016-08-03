@@ -1,27 +1,27 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
-<!--##[%breadcrumb%]
-	[%param *header%]##-->
-	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<!--##[%end param%]
-		[%param *body%]##-->
+[%breadcrumb%]
+	[%param *header%]
+		<ul class="breadcrumb">
+			<li><a href="[@config:home_url@]">Home</a></li>
+	[%/param%]
+	[%param *body%]
 		<li><a href="[@url@]">[@name@]</a></li>
-		<!--##[%END param%]
-		[%param *body_current%]##-->
+	[%/param%]
+	[%param *body_current%]
 		<li>[@name@]</li>
-		<!--##[%END param%]
-		[%param *footer%]##-->
-	</ul>
-	<!--##[%end param%]
-[%end breadcrumb%]##-->
+	[%/param%]
+	[%param *footer%]
+		</ul>
+	[%/param%]
+[%/breadcrumb%]
 <h1>[@content_name@]</h1>
 <p class="muted">
-	<!--##[%IF [@content_author@]%]##-->
-		Author: [@content_author@]
-	<!--##[%END IF%]##-->
-	<!--##[%IF [@date_posted@] != 0000-00-00 00:00:00%]##-->
-		Date Posted:<!--##[%FORMAT type:'date'%]##-->[@date_posted@]<!--##[%END FORMAT%]##-->
-	<!--##[%END IF%]##-->
+	[%IF [@content_author@]%]
+		Author: [@content_author@] &nbsp;
+	[%/IF%]
+	[%if [@date_posted@] != 0000-00-00 00:00:00%]
+		Date Posted:[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]&nbsp;
+	[%/IF%]
 </p>
 <img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]" class="pull-right"/>
 <img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]"  class="pull-right"/>
@@ -38,11 +38,11 @@
 	[%/ parse%]
 </p>
 <hr />
-<!--##[%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' limit:''%]
-	[%PARAM header%]##-->
+[%content_menu content_type:'category' sortby:'sortorder,name' show_empty:'1' limit:''%]
+	[%param header%]
 		<div class="row">
-	<!--##[%END PARAM%]
-	[%PARAM *level_1%]##-->
+	[%/param%]
+	[%param *level_1%]
 		<div class="col-sm-4 category-thumbnail">
 			<h3><a href="[@url@]">[@name@]</a></h3>
 			<div class="wrapper-category-image">
@@ -51,11 +51,12 @@
 				</a>
 			</div>
 		</div>
-	<!--##[%END PARAM%]
-	[%PARAM footer%]##-->
+	[%/param%]
+	[%param footer%]
 		</div>
-	<!--##[%END PARAM%]
-[%END CATEGORYMENU%]##-->
+	[%/param%]
+[%/content_menu%]
+
 <!--#Start Column Right# ##-->
 </div>
 <!--# End Column Right# ##-->
