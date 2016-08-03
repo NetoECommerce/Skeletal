@@ -39,10 +39,10 @@
 </p>
 <hr />
 [%content_menu content_type:'category' sortby:'sortorder,name' show_empty:'1' limit:''%]
-	[%PARAM header%]
+	[%param header%]
 		<div class="row">
-	[%END PARAM%]
-	[%PARAM *level_1%]
+	[%/param%]
+	[%param *level_1%]
 		<div class="col-sm-4 category-thumbnail">
 			<h3><a href="[@url@]">[@name@]</a></h3>
 			<div class="wrapper-category-image">
@@ -51,11 +51,11 @@
 				</a>
 			</div>
 		</div>
-	[%END PARAM%]
-	[%PARAM footer%]
+	[%/param%]
+	[%param footer%]
 		</div>
-	[%END PARAM%]
-[%END CATEGORYMENU%]
+	[%/param%]
+[%/content_menu%]
 
 <!--#Start Column Right# ##-->
 </div>
