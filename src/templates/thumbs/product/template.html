@@ -1,6 +1,7 @@
 [%CACHE type:'gallery' id:'[@inventory_id@]'%]
 <div class="wrapper-thumbnail col-xs-8 col-sm-6 col-md-4 col-lg-3">
 	<div class="thumbnail" itemscope itemtype="http://schema.org/Product">
+		<meta itemprop="brand" content="[@brand@]"/>
 		<a href="[@URL@]" class="thumbnail-image">
 			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="product-image" alt="[@model@]" rel="itmimg[@SKU@]">
 		</a>
@@ -9,6 +10,7 @@
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 				[%if [@inpromo@]%]
 					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
+					<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
 					<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 				[%else%]
 					[%if [@has_child@]%]From&nbsp;[%/if%]
