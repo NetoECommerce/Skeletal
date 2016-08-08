@@ -20,7 +20,7 @@ function procorder() { var obj = document.ProcOrder.submited; if(obj.value=='1')
 
 function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){obj.style.display=(chk?'':'none');} }
 </script>
-<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
+<table	class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
 	<tr><td><div class="checkout_box_header">Standing Order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
 	<tr><td>
 <table cellpadding="4" cellspacing="0" border="0">
@@ -48,23 +48,23 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 </table>
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Confirm Order Address</td></tr>
-  <tr> 
-    <td width="50%" valign="top"><b>Order Billing Address:</b><br>
+	<tr><td colspan="2" class="checkout_box_header">Confirm Order Address</td></tr>
+	<tr>
+		<td width="50%" valign="top"><b>Order Billing Address:</b><br>
 			[@bill_first_name@] [@bill_last_name@] [@bill_company@]<br>
-      [@bill_street1@] [@bill_street2@]<br> [@bill_city@], [@bill_state_name@] 
-      [@bill_zip@]<br> [@bill_country_name@]<br>
+			[@bill_street1@] [@bill_street2@]<br> [@bill_city@], [@bill_state_name@]
+			[@bill_zip@]<br> [@bill_country_name@]<br>
 			Contact Numbers: [@bill_phone@]<br>
-      <br>
+			<br>
 			<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_bill_addr&previous=[@current_action@]'%][%END URL%]">Change Order Billing Address</a></td>
-    <td width="50%" valign="top"><b>Order Shipping Address:</b><br>
+		<td width="50%" valign="top"><b>Order Shipping Address:</b><br>
 			[@ship_first_name@] [@ship_last_name@] [@ship_company@]<br>
-      [@ship_street1@] [@ship_street2@]<br> [@ship_city@], [@ship_state_name@] 
-      [@ship_zip@]<br> [@ship_country_name@]<br>
+			[@ship_street1@] [@ship_street2@]<br> [@ship_city@], [@ship_state_name@]
+			[@ship_zip@]<br> [@ship_country_name@]<br>
 			Contact Numbers: [@ship_phone@]<br>
-      <br>
+			<br>
 			<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_ship_addr&previous=[@current_action@]'%][%END URL%]">Change Order Shipping Address</a></td>
-  </tr>
+	</tr>
 </table>
 <div class="spacer"></div>
 <form method="post" name="ProcOrder" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]" onSubmit="return procorder();">
@@ -74,14 +74,14 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 <!--##[%standing_order_items id:'[@storder_id@]'%]
 [%PARAM *header%]##-->
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
+	<tr><td>
 <!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
-<table cellpadding="4" cellspacing="4" border="0" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" width="100%">
 	<tr><td class="small">Purchase order # <b>[@customer_po@]</b></td></tr>
 </table>
 <!--##[%END DATA%]##-->
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="100px" class="header" nowrap>SKU</td>
 		<td width="99%" class="header" nowrap>Product</td>
@@ -110,12 +110,12 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 		<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></td></tr>
 <!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
 [%PARAM if_true%]##-->
-<tr><td class="shitem0"  colspan="4"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+<tr><td class="shitem0"	colspan="4"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
 	<td class="store_total" nowrap>Delivery Cost</td>
 	<td class="store_total" nowrap>N/A</td></tr>
 <!--##[%END PARAM%]
 [%PARAM if_false%]##-->
-<tr><td class="shitem0"  colspan="4"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+<tr><td class="shitem0"	colspan="4"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
 	<td class="store_total" nowrap>Delivery Cost</td>
 	<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
 <!--##[%END PARAM%]
@@ -130,8 +130,8 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
-  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
+	<tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'shipping_method_id' if:'ne' value:'' %]##-->
@@ -172,8 +172,8 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 <input type="hidden" name="grand_total" value="[@grand_total@]"/>
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Special Delivery Instructions</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Special Delivery Instructions</td></tr>
+	<tr><td>
 <textarea rows="3" style="width:100%;" id="comment" name="comment" wrap="soft" onChange="ctinst()" onKeyPress="ctinst()" onBlur="ctinst()">[@ship_comment@]</textarea>
 <span size="1" id="ct">&nbsp;</span>
 <script type="text/javascript" language="javascript">ctinst();</script>
@@ -181,11 +181,11 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 </table>
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Make Payment</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Make Payment</td></tr>
+	<tr><td>
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
 	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order</td></tr>
 </table>
 <!--##[%END DATA%]##-->
@@ -209,7 +209,7 @@ function shBalance(chk) { var obj=document.getElementById('balance'); if(obj){ob
 <br>
 Please send your cheque to:<br><br>
 <b>[@config:company_name@]<br>
-[@config:COMPANY_POADDR@]</b><br><br> 
+[@config:COMPANY_POADDR@]</b><br><br>
 Your order will not be processed until we receive your cheque.<br>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
@@ -217,7 +217,7 @@ Your order will not be processed until we receive your cheque.<br>
 <br>
 Please send your money order to:<br> <br>
 <b>[@config:company_name@]<br>
-[@config:COMPANY_POADDR@]</b><br><br> 
+[@config:COMPANY_POADDR@]</b><br><br>
 Your order will not be processed until we receive your money order.<br>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
@@ -235,10 +235,10 @@ Please leave your order number as reference. Your order will not be processed un
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 	<tr><td width="1%" valign="top" rowspan="2"><img src="[@config:imageurl@]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
 		<td width="99%"><b>Telephone &amp; Internet Banking - BPAY</b></td></tr>
-	<tr><td valign="top">When you submit this page, you will be given a biller 
-		code and a reference number. Please quote the numbers and call your 
-		participating financial institution to make a payment from your 
-		cheque, savings or credit card account. Once we receive notification 
+	<tr><td valign="top">When you submit this page, you will be given a biller
+		code and a reference number. Please quote the numbers and call your
+		participating financial institution to make a payment from your
+		cheque, savings or credit card account. Once we receive notification
 		of your BPAY payment, your order will be processed.</td>
 </tr></table><br>
 		<!--##[%END DATA%]##-->
@@ -246,9 +246,9 @@ Please leave your order number as reference. Your order will not be processed un
 <table width="100%" border="0" cellspacing="0" cellpadding="4">
 <tr>
 	<td width="1%" valign="top"><img src="[@config:imageurl@]/cart/paymentmethods/paypal.gif" width="60" height="38"></td>
-	<td width="99%" valign="top">When you submit this page, you will be 
-		sent to the paypal site where you can enter your e-mail address 
-		for your paypal account. Once we receive notification of your paypal 
+	<td width="99%" valign="top">When you submit this page, you will be
+		sent to the paypal site where you can enter your e-mail address
+		for your paypal account. Once we receive notification of your paypal
 		payment, your order will be processed.</td>
 </tr>
 </table><br>
@@ -266,9 +266,9 @@ Your [@config:company_name@] account will automatically be charged for the value
 <!--##[%END PARAM%]##-->
 <!--##[%END standing_order_items%]##-->
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a>&nbsp; 
-    <input type="image" alt="Confirm Send Order Now" src="[@config:imageurl@]/template/cart/confirm.gif">
-    <br>
-    Your order will be processed when the above confirmation button is clicked... 
-  </center>
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a>&nbsp;
+		<input type="image" alt="Confirm Send Order Now" src="[@config:imageurl@]/template/cart/confirm.gif">
+		<br>
+		Your order will be processed when the above confirmation button is clicked...
+	</center>
 </form>

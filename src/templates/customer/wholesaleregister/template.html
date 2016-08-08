@@ -23,7 +23,7 @@
 	<div class="form-group">
 		<label class="control-label col-sm-3">Username<span style="color:red;">*</label>
 		<div class="col-sm-9">
-			<input type="text"  name="reg_username" size="20" maxlength="15" value="[%nohtml%][%FORM id:'reg_username'%][%END FORM%][%end nohtml%]" class="form-control">
+			<input type="text"	name="reg_username" size="20" maxlength="15" value="[%nohtml%][%FORM id:'reg_username'%][%END FORM%][%end nohtml%]" class="form-control">
 			<p class="help-block">(used for future access to your account)</p>
 		</div>
 
@@ -38,13 +38,13 @@
 	<div class="form-group">
 		<label class="control-label col-sm-3">Password<span style="color:red;">*</span></label>
 		<div class="col-sm-9">
-			<input type="password"  name="reg_password" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control">
+			<input type="password"	name="reg_password" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="control-label col-sm-3">Confirm Password<span style="color:red;">*</span></label>
 		<div class="col-sm-9">
-			<input type="password"  name="reg_password2" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control">
+			<input type="password"	name="reg_password2" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control">
 		</div>
 	</div>
 
@@ -141,8 +141,6 @@
 		</div>
 	</div>
 </div>
-
-
 <!--##[%EXTRA_CUSTOMER_FIELDS%]
 [%PARAM *header%]##-->
 <div class="">
@@ -214,23 +212,20 @@
 </div>
 <!--##[%END PARAM%]
 [%END EXTRA_CUSTOMER_FIELDS%]##-->
-<div class="">
-
-    <h3>&nbsp;Terms &amp; Conditions Of Trade</h3>
+<div>
+	<h3>&nbsp;Terms &amp; Conditions Of Trade</h3>
 	<div style="width:100%; border:1px solid #CCCCCC; height: 150px; overflow:scroll; text-align:left; padding:10px;">
 		[%content_zone id:'wholesale_terms'%][%end content_zone%]
 	</div>
 	<p>
-		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>  Subscribe to the [@config:company_name@] newsletter.
+		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>	Subscribe to the [@config:company_name@] newsletter.
 	</p>
 	<p>
 		<input type="checkbox" name="agree" value="y">
 		I agree to the [@config:company_name@] terms of trade.
 	</p>
 </div>
-
 	<input type="submit" class="btn btn-lg btn-primary" value="Register">
 </form>
-
 </div>
 <!--##[%GA_FUNNEL%]/wholesaleregister/form.html[%END GA_FUNNEL%]##-->

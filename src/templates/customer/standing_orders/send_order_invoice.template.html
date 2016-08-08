@@ -7,23 +7,23 @@ function print_invoice() {
 <table border="0" cellspacing="0" cellpadding="0" align="center"><tr><td width="100%" valign="top">
 <!--##[%show_order id:'[@order_id@]'%]
 [%PARAM *header%]##-->
-<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
+<table	class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
 	<tr><td><div class="checkout_box_header">Order Confirmation</div></td>
 	<tr><td>
 <table cellpadding="4" cellspacing="0" border="0">
 	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
 		<tr><td><b>Your Order ID:<br />
 <span class="text-danger">[@order_id@]</span></b></td></tr>
-		<tr><td><br />		  <input type="button" value="Print Tax Invoice" onClick="print_invoice()" style="font-size:14px;"></td></tr>
+		<tr><td><br />			<input type="button" value="Print Tax Invoice" onClick="print_invoice()" style="font-size:14px;"></td></tr>
 		<tr><td><p><b><br />
-		  Order Tracking:</b> You will be updated by e-mail 
-as to your orders progress. To track the progress 
-of your order online please go to <a href="[%URL page:'account'%][%END URL%]">your 
+			Order Tracking:</b> You will be updated by e-mail
+as to your orders progress. To track the progress
+of your order online please go to <a href="[%URL page:'account'%][%END URL%]">your
 account</a> and select the order you want to track.</p></td></tr>
 				</table></td>
 	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small"><strong>Order Shipping Address:</strong><br />
-	  [@ship_first_name@] [@ship_last_name@]<br>
+		[@ship_first_name@] [@ship_last_name@]<br>
 <!--##[%DATA id:'ship_company' if:'ne' value:''%]##-->[@ship_company@]<br><!--##[%END DATA%]##-->
 		[@ship_street1@]<br>
 <!--##[%DATA id:'ship_street2' if:'ne' value:''%]##-->[@ship_street2@]<br><!--##[%END DATA%]##-->
@@ -34,8 +34,8 @@ account</a> and select the order you want to track.</p></td></tr>
 </table>
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Payment Instructions</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Payment Instructions</td></tr>
+	<tr><td>
 <!--##[%payment_methods id:'[@payment_method@]'%]
 [%PARAM *body%]##-->
 <p>Your chosen payment method is: <b>[@name@]</b></p>
@@ -93,7 +93,7 @@ YOUR ORDER WILL NOT BE PROCESSED UNTIL WE RECEIVE YOUR DEPOSIT. Please deposit y
 PLEASE leave your order number or last name as a payment reference.<br>
 <br>
 Once you have deposited the full amount, please email [@config:company_email@] with your order number to confirm your payment.<br></td></tr>
-</table>	
+</table>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
 <table align="center" cellpadding="0" cellspacing="4" border="0"><tr>
@@ -126,21 +126,21 @@ NO PAYMENT METHOD IS SELECTED!<br>
 </table>
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
+	<tr><td>
 	<!--##[%DATA id:'ship_comment' if:'ne' value:''%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
 	<tr><td class="small"><b>Special Delivery Instructions For These Items:</b><br>[@ship_comment@]</td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
-	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>  from time of order</td></tr>
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
+	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>	from time of order</td></tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%END DATA%]##-->
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="100px" class="header" nowrap>SKU</td>
 		<td width="99%" class="header" nowrap>Product</td>
@@ -168,11 +168,11 @@ NO PAYMENT METHOD IS SELECTED!<br>
 [%PARAM if_false%]##-->
 <!--##[%DATA id:'shipping_quote' if:'=' value:'1' %]
 	[%PARAM if_true%]##-->
-<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@]</td>
+<tr><td class="shitem0"	colspan="5"><b>Delivery Method:</b> [@shipping_method@]</td>
 	<td class="shitem0" nowrap>P.O.A.</td></tr>
 	<!--##[%END PARAM%]
 	[%PARAM if_false%]##-->
-<tr><td class="shitem0"  colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
+<tr><td class="shitem0"	colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
 	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td>
 	<td class="shitem0" nowrap><!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--><!--##[%END DATA%]##-->&nbsp;</td>
 	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_price@]<!--##[%END format%]##--></td></tr>
@@ -186,8 +186,8 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
-  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
+	<tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
@@ -227,27 +227,25 @@ NO PAYMENT METHOD IS SELECTED!<br>
 </table>
 <!--##[%END PARAM%]##-->
 <!--##[%END show_order%]##-->
-
-
 <!--##[%show_standing_order id:'[@storder_id@]'%]
 [%PARAM *header%]##-->
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Standing Order #[@storder_id@] Summary</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Standing Order #[@storder_id@] Summary</td></tr>
+	<tr><td>
 <!--##[%DATA id:'terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
 	<tr><td class="small">Order ships every <b>[@terms_num_times@] [@terms_type@](s)</b> From <b><!--##[%format type:'date'%]##-->[@first_date@]<!--##[%END format%]##--></b></td></tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
-	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>  from time of order</td></tr>
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
+	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>	from time of order</td></tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%END DATA%]##-->
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="100px" class="header" nowrap>SKU</td>
 		<td width="99%" class="header" nowrap>Product</td>
@@ -275,13 +273,13 @@ NO PAYMENT METHOD IS SELECTED!<br>
 [%PARAM if_false%]##-->
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]
 	[%PARAM if_true%]##-->
-<tr><td class="shitem0"  colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
+<tr><td class="shitem0"	colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
 	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td>
 	<td class="shitem0">&nbsp;</td>
 	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
 	<!--##[%END PARAM%]
 	[%PARAM if_false%]##-->
-<tr><td class="shitem0"  colspan="6"><b>Delivery Method:</b> [@shipping_method@] &nbsp; 
+<tr><td class="shitem0"	colspan="6"><b>Delivery Method:</b> [@shipping_method@] &nbsp;
 	Delivery cost will be calculated at time of order.</td></tr>
 	<!--##[%END PARAM%]
 	<!--##[%END DATA%]##-->
@@ -294,8 +292,8 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
-  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
+	<tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
@@ -324,7 +322,7 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <!--##[%END show_standing_order%]##-->
 
 </td>
-  </tr>
+	</tr>
 </table>
 <div class="spacer"></div>
 <center>

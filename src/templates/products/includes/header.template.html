@@ -46,7 +46,7 @@
 						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 					<div class="productsave">
-						SAVE [%format type:'currency'%] [@save_price@] [%/format%]  ([%format type:'percent'%][@save@][%/format%])
+						SAVE [%format type:'currency'%] [@save_price@] [%/format%]	([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
 			[%else%]
@@ -78,7 +78,7 @@
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
 				<span itemprop="availability" content="in_stock" class="label label-success">In Stock</span>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out -  Backorder Available</span>
+				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out -	Backorder Available</span>
 			[%else%]
 				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out</span>
 			[%/if%]

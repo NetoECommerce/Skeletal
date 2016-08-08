@@ -77,11 +77,8 @@ function print_invoice() {
 			<h4 class="media-heading">Your American Express Card has already been processed.</h4>
 		</div>
 	</div>
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
-
-
 	<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-visa"></div>
@@ -90,11 +87,8 @@ function print_invoice() {
 			<h4 class="media-heading">Your Visa Card has already been processed.</h4>
 		</div>
 	</div>
-
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
-
 	<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-mastercard"></div>
@@ -103,12 +97,8 @@ function print_invoice() {
 			<h4 class="media-heading">Your Master Card has already been processed.</h4>
 		</div>
 	</div>
-
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Discover'%]##-->
-
-
 	<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-discover"></div>
@@ -117,10 +107,8 @@ function print_invoice() {
 			<h4 class="media-heading">Your credit card has already been processed.</h4>
 		</div>
 	</div>
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
-
 		<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-cheque"></div>
@@ -132,11 +120,8 @@ function print_invoice() {
 			<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
 		</div>
 	</div>
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
-
-
 		<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-moneyorder"></div>
@@ -148,31 +133,24 @@ function print_invoice() {
 			<p>Please include your full name and order number so that we can easily locate your order.</p>
 		</div>
 	</div>
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Direct Deposit'%]##-->
-
 	<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-directdeposit"></div>
 		</div>
 		<div class="media-body">
 			<h4 class="media-heading">Please deposit your total order amount to :</h4>
-
 			<h5>[@config:COMPANY_BANK_NAME@]</h5>
 			<p><b>Name:</b> [@config:COMPANY_BANK_ACC@]</p>
 			<p><b>BSB: </b>[@config:COMPANY_BANK_BSB@]</p>
 			<p><b>Ac/no:</b>[@config:COMPANY_BANK_NUM@]</p>
-
 			<p>Please leave your order number or last name as a payment reference.</p>
 			<p>Once you have deposited the full amount, please email [@config:company_email@] with your order number to confirm your payment.</p>
-
 		</div>
 	</div>
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'bpay'%]##-->
-
 	<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-bpay"></div>
@@ -184,11 +162,8 @@ function print_invoice() {
 			<p>Contact your bank, credit union or building sociey to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
 		</div>
 	</div>
-
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'PayPal'%]##-->
-
 	<div class="media">
 		<div class="payment-icon-container pull-left">
 			<div class="payment-icon payment-icon-paypal"></div>
@@ -197,8 +172,6 @@ function print_invoice() {
 			<h4 class="media-heading">Your Paypal payment has been processed. No further action is required by you at this stage.</h4>
 		</div>
 	</div>
-
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
 	<h3>[@config:company_name@] Account </h3>
@@ -208,24 +181,16 @@ function print_invoice() {
 	<h3>No Payment method has been selected.</h3>
 	<!--##[%END PARAM%]
 [%END payment_methods%]##-->
-
 	<!-- End Content -->
-
-
 <!--##[%DATA id:'ship_comment' if:'ne' value:''%]##-->
 	<h4>Special Delivery Instructions For These Items:</h4>
 	<p>[@ship_comment@]</p>
-
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
 	<!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
-
 <p>Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order </p>
 	<!--##[%END DATA%]##-->
 	<!--##[%END DATA%]##-->
-
-
-
 </div>
 </div>
 	</div>
@@ -329,9 +294,6 @@ function print_invoice() {
 	</div>
 	<!--##[%END PARAM%]##-->
 	<!--##[%END show_order%]##-->
-
 	<!--##[%GA_FUNNEL%]/purchase/invoice.html[%END GA_FUNNEL%]##-->
 	<!--##[%load_template file:"trackingcode/PurchaseTracking.html"%][%END load_template%]##-->
-
-
 </div>

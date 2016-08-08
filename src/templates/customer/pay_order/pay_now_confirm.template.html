@@ -9,7 +9,6 @@ function showPD() {
 		pl.style.display = (val.indexOf(':cc')>0? '': 'none');
 	}
 }
-
 function proc_pay() {
 	var f = document.itemForm;
 	if(f) {
@@ -38,25 +37,21 @@ function proc_pay() {
 	}
 }
 </script>
-
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
-
 	<div class="page-header">
 		<h1>Pay Now</h1>
 	</div>
-
 	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
 	<div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
 	<!--##[%END DATA%]##-->
 	<!--##[%DATA id:'msg' if:'ne' value:''%]##-->
 	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>
 	<!--##[%END DATA%]##-->
-
 	<form action="[%URL page:'account' type:'pay_order'%][%END URL%]" method="post" name="itemForm">
 		<input type="hidden" name="id" value="[@order_id@]">
 		<input type="hidden" name="order_email" value="[@order_email@]">
@@ -78,9 +73,7 @@ function proc_pay() {
 [%END payment_methods%]##-->
 					</select>
 				</div>
-
 				</div>
-
 			<div class="col-xs-12 col-md-6 col-md-offset-2">
 				<div id="payccpl">
 				<div class="well">
@@ -123,17 +116,12 @@ function proc_pay() {
 							</select>
 						</div>
 						<div class="col-xs-12 col-md-4">
-
 							<label>Card CCID</label>
 							<input name="card_ccid" size="5" class="form-control">
 							<p class="help-text">(3-4 digit security code)</p>
-
-						</div>
-
-
 						</div>
 						</div>
-
+						</div>
 					</div>
 					<div class="form-group">
 					<label>Enter Amount You Want To Pay Now</label>
@@ -141,20 +129,15 @@ function proc_pay() {
 				</div>
 				<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="Process Credit Card Payment">
 			</div>
-
 				</div>
 			</div>
 		</div>
-
 	</form>
 	<hr>
 	<script type="text/javascript" language="javascript">showPD();</script>
 	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> Payment Processing.<br />
 		Please do not refresh or close this page.<br />
 		<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
-
 	<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
-
 	<!--#End Content# ##-->
-
 </div>

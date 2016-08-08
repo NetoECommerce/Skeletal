@@ -1,13 +1,13 @@
 <!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
 <!--##[%show_standing_order id:'[@storder_id@]'%]
 [%PARAM *header%]##-->
-<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
+<table	class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
 	<tr><td><div class="checkout_box_header">Standing Order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
 	<tr><td>
 <table cellpadding="4" cellspacing="0" border="0">
 	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
 		<tr><td><b>Order Shipping Address:</b><br />
-	  [@bill_first_name@] [@bill_last_name@]<br>
+		[@bill_first_name@] [@bill_last_name@]<br>
 <!--##[%DATA id:'bill_company' if:'ne' value:''%]##-->[@bill_company@]<br><!--##[%END DATA%]##-->
 		[@bill_street1@]<br>
 <!--##[%DATA id:'bill_street2' if:'ne' value:''%]##-->[@bill_street2@]<br><!--##[%END DATA%]##-->
@@ -18,7 +18,7 @@
 				</table></td>
 	<td width="10px" style="border-left:1px dotted #CCCCCC;"><img src="[@config:imageurl@]/pixel.gif" alt="" width="10px" height="1px"></td>
 	<td width="50%" valign="top" class="small"><b>Order Shipping Address:</b><br />
-	  [@ship_first_name@] [@ship_last_name@]<br>
+		[@ship_first_name@] [@ship_last_name@]<br>
 <!--##[%DATA id:'ship_company' if:'ne' value:''%]##-->[@ship_company@]<br><!--##[%END DATA%]##-->
 		[@ship_street1@]<br>
 <!--##[%DATA id:'ship_street2' if:'ne' value:''%]##-->[@ship_street2@]<br><!--##[%END DATA%]##-->
@@ -29,7 +29,7 @@
 </table></td></tr>
 </table>
 <div class="spacer"></div>
-<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
+<table	class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
 	<tr><td><div class="checkout_box_header">Order Status</div></td>
 	<tr><td>
 <table cellpadding="4" cellspacing="0" border="0">
@@ -73,9 +73,9 @@
 	<!--##[%show_standing_order id:'[@storder_id@]'rental_only:'1' %]
 	[%PARAM *header%]##-->
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Rental Products</td></tr>
-  <tr><td>
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+	<tr><td colspan="2" class="checkout_box_header">Rental Products</td></tr>
+	<tr><td>
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="50px" class="header" nowrap>Qty</td>
 		<td width="50px" class="header" nowrap>Product</td>
@@ -99,24 +99,24 @@
 	<!--##[%END PARAM%]##-->
 	<!--##[%END show_standing_order%]##-->
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Order Summary</td></tr>
+	<tr><td>
 <!--##[%DATA id:'terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
 	<tr><td class="small">Order ships every <b>[@terms_num_times@] [@terms_type@](s)</b> From <b><!--##[%format type:'date'%]##-->[@date_start@]<!--##[%END format%]##--></b></td></tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
-	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>  from time of order</td></tr>
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
+	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>	from time of order</td></tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
-<table cellpadding="4" cellspacing="4" border="0" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" width="100%">
 	<tr><td class="small">Purchase order # <b>[@customer_po@]</b></td></tr>
 </table>
 <!--##[%END DATA%]##-->
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="100px" class="header" nowrap>SKU</td>
 		<td width="99%" class="header" nowrap>Product</td>
@@ -144,13 +144,13 @@
 [%PARAM if_false%]##-->
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]
 	[%PARAM if_true%]##-->
-<tr><td class="shitem0"  colspan="3"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping'%][%END URL%]">Change</a>)</td>
+<tr><td class="shitem0"	colspan="3"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping'%][%END URL%]">Change</a>)</td>
 	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td>
 	<td class="shitem0">&nbsp;</td>
 	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
 	<!--##[%END PARAM%]
 	[%PARAM if_false%]##-->
-<tr><td class="shitem0"  colspan="6"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping'%][%END URL%]">Change</a>) &nbsp; 
+<tr><td class="shitem0"	colspan="6"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping'%][%END URL%]">Change</a>) &nbsp;
 	Delivery cost will be calculated at time of order.</td></tr>
 	<!--##[%END PARAM%]
 	<!--##[%END DATA%]##-->
@@ -163,8 +163,8 @@
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
-  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
+	<tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
@@ -191,8 +191,8 @@
 </table>
 <div class="spacer"></div>
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Payment Instructions</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Payment Instructions</td></tr>
+	<tr><td>
 <!--##[%payment_methods id:'[@payment_method@]'%]
 [%PARAM *body%]##-->
 <p>Your chosen payment method is: <b>[@name@]</b> &nbsp; <a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_payment'%][%END URL%]">Change Order Payment Method</a></p>
@@ -231,8 +231,6 @@ NO PAYMENT METHOD IS SELECTED!<br>
 <!--##[%END show_standing_order%]##-->
 <div class="spacer"></div>
 <center>
-
-<a href="[%URL page:'account' type:'standing_orders'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
+<a href="[%URL page:'account' type:'standing_orders'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp;
 <a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=send_order'%][%END URL%]"><img alt="Send Order Now" src="[@config:imageurl@]/template/cart/confirm.gif"></a>
 </center>
-

@@ -34,7 +34,7 @@ $(document).ready(function() {
 <!--##[%IF [@processor_account@] ne '' %]##-->
 <div class="alert alert-warning">
 	<strong>Important! Your order is not yet complete.</strong>
-	<p>Please confirm your billing and shipping details below and click the  &quot;Confirm &amp; Process Order&quot; button at the bottom of this page to complete your purchase.</p>
+	<p>Please confirm your billing and shipping details below and click the	&quot;Confirm &amp; Process Order&quot; button at the bottom of this page to complete your purchase.</p>
 </div>
 <!--##[%END IF%]##-->
 
@@ -167,7 +167,7 @@ $(document).ready(function() {
 						<div class="small text-danger">Required</div>
 						</label>
 						<div class="col-xs-12 col-sm-8"><div class="n-wrapper-form-control"><span id="bill_state_pl" style="display:none;"></span></div>
-							<input class="form-control"  type="text" name="bill_state" id="bill_state" value="[@bill_state@]" size="50" maxlength="50" />
+							<input class="form-control"	type="text" name="bill_state" id="bill_state" value="[@bill_state@]" size="50" maxlength="50" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -247,25 +247,25 @@ $(document).ready(function() {
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="ship_first_name">First Name <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
-									<input  class="form-control"  type="text" name="ship_first_name" id="ship_first_name" maxlength="50" value="[@ship_first_name@]">
+									<input	class="form-control"	type="text" name="ship_first_name" id="ship_first_name" maxlength="50" value="[@ship_first_name@]">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="ship_last_name">Last Name <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
-									<input  class="form-control"  type="text" name="ship_last_name" id="ship_last_name" maxlength="50" value="[@ship_last_name@]">
+									<input	class="form-control"	type="text" name="ship_last_name" id="ship_last_name" maxlength="50" value="[@ship_last_name@]">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="ship_company">Company</label>
 								<div class="col-xs-12 col-sm-8">
-									<input  class="form-control"  type="text" name="ship_company" id="ship_company" maxlength="50" value="[@ship_company@]">
+									<input	class="form-control"	type="text" name="ship_company" id="ship_company" maxlength="50" value="[@ship_company@]">
 								</div>
 							</div>
 							<div class="form-group">
-								<label  class="control-label col-xs-12 col-sm-4" for="ship_country">Country <div class="small text-danger">Required</div></label>
+								<label	class="control-label col-xs-12 col-sm-4" for="ship_country">Country <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
-									<select  class="form-control"  name="ship_country" id="ship_country">
+									<select	class="form-control"	name="ship_country" id="ship_country">
 										<!--##[%countries%]
 										[%PARAM *body%]##-->
 										<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
@@ -277,12 +277,12 @@ $(document).ready(function() {
 							<div class="form-group">
 								<label class="control-label col-xs-12 col-sm-4" for="ship_street1">Address <div class="small text-danger">Required</div></label>
 								<div class="col-xs-12 col-sm-8">
-									<input  class="form-control"  type="text" name="ship_street1" id="ship_street1" maxlength="50" value="[@ship_street1@]" />
+									<input	class="form-control"	type="text" name="ship_street1" id="ship_street1" maxlength="50" value="[@ship_street1@]" />
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-xs-12 col-sm-8 col-sm-offset-4">
-									<input  class="form-control" type="text" name="ship_street2" id="ship_street2" maxlength="50" value="[@ship_street2@]" />
+									<input	class="form-control" type="text" name="ship_street2" id="ship_street2" maxlength="50" value="[@ship_street2@]" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -353,7 +353,7 @@ $(document).ready(function() {
 						<div class="form-group">
 							<label class="control-label col-xs-12 col-sm-4" for="customer_po">Buying this for work?</label>
 							<div class="col-xs-12 col-sm-8">
-								<input class="form-control" type="text" name="customer_po" id="customer_po" maxlength="50" value="[@customer_po@]" placeholder="PO Number"  />
+								<input class="form-control" type="text" name="customer_po" id="customer_po" maxlength="50" value="[@customer_po@]" placeholder="PO Number"	/>
 								<p class="help-block">Enter your purchase order number above</p>
 							</div>
 						</div>
@@ -519,13 +519,13 @@ $(document).ready(function() {
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label for="card_number">Card Number</label>
-							<input class="form-control"  type="text" name="card_number" id="card_number" maxlength="16" value="" />
+							<input class="form-control"	type="text" name="card_number" id="card_number" maxlength="16" value="" />
 						</div>
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label>Card Holder's Name</label>
-							<input class="form-control"  type="text"  name="card_holder" maxlength="40" value="" />
+							<input class="form-control"	type="text"	name="card_holder" maxlength="40" value="" />
 						</div>
 					</div>
 					<div class="col-xs-12">
@@ -535,7 +535,7 @@ $(document).ready(function() {
 									<label>Card Expiration Date</label>
 								</div>
 								<div class="col-xs-6">
-									<select class="form-control col-xs-6"  id="card_exp_month" name="card_exp_month">
+									<select class="form-control col-xs-6"	id="card_exp_month" name="card_exp_month">
 										<option value=""></option>
 										[%months%][%PARAM *body%]
 										<option class="input-small" value="[@month@]">[@month@]</option>
@@ -543,7 +543,7 @@ $(document).ready(function() {
 									</select>
 								</div>
 								<div class="col-xs-6">
-									<select class="form-control"  name="card_exp_year">
+									<select class="form-control"	name="card_exp_year">
 										<option value=""></option>
 										[%years from:'+0' to:'+10'%][%PARAM *body%]
 										<option value="[@year@]">[@year@]</option>
