@@ -103,7 +103,7 @@
 						</td>
 						<td class="options-column">
 							<input name="line[@count@]" type="hidden" value="[@counter@]" />
-							<input id="qty[@count@]"	type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
+							<input id="qty[@count@]" type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
 						</td>
 						<td class="text-right">
 							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
@@ -261,8 +261,7 @@
 					<td class="text-right" ><h3>[%format type:'currency'%][@grand_total@][%/format%]</h3></td>
 				</tr>
 			</table>
-			<form method="post"	name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
-
+			<form method="post" name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
 					<input type="hidden" name="payment" value="6"/>
 					[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 							[%param *header%]

@@ -120,17 +120,20 @@ function chaddr() {
 	</tr>
 	<tr>
 		<td>
-<table cellpadding="4" cellspacing="0" border="0">
+			<table cellpadding="4" cellspacing="0" border="0">
 					<tr>
-
-					<td><strong>Choose From Your Address Book</strong></td>
-						<td><select type="text" id="ship_address_sel">
+						<td><strong>Choose From Your Address Book</strong></td>
+						<td>
+							<select type="text" id="ship_address_sel">
 								<option value=""></option>
-<!--##[%address_book%]
-[%PARAM *body%]##-->
-<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
-<!--##[%END PARAM%]
-[%END address_book%]##--> </select> <input type="button" value="Select" onClick="chaddr()"></td>
+								[%address_book%]
+									[%param *body%]
+										<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
+									[%/param%]
+								[%/address_book%]
+							</select>
+							<input type="button" value="Select" onClick="chaddr()">
+						</td>
 					</tr>
 				</table>
 				<table cellpadding="4" cellspacing="0" border="0">
@@ -143,11 +146,11 @@ function chaddr() {
 						<td><input name="ship_last_name" size="50" maxlength="50" value="[@ship_last_name@]"></td>
 					</tr>
 					<tr>
-			<td><strong>Company</strong></td>
+						<td><strong>Company</strong></td>
 						<td><input name="ship_company" size="50" maxlength="50" value="[@ship_company@]"></td>
 					</tr>
 					<tr>
-			<td><strong>Address</strong></td>
+						<td><strong>Address</strong></td>
 						<td><input name="ship_street1" size="50" maxlength="50" value="[@ship_street1@]"></td>
 					</tr>
 					<tr>
@@ -155,33 +158,37 @@ function chaddr() {
 						<td><input name="ship_street2" size="50" maxlength="50" value="[@ship_street2@]"></td>
 					</tr>
 					<tr>
-			<td nowrap><strong>Postal Code</strong></td>
+						<td nowrap><strong>Postal Code</strong></td>
 						<td><input name="ship_zip"	value="[@ship_zip@]" size="50" maxlength="10" onChange="updloca('ship')" onKeyUp="updloca('ship')"></td>
 					</tr>
 					<tr>
-			<td valign="top"><strong>Suburb Selector</strong></td>
+						<td valign="top"><strong>Suburb Selector</strong></td>
 						<td valign="top" nowrap><div id="suburb_diship">&nbsp;</div>
 							<div style="display:none;" id="suburb_mgship">&nbsp;</div></td>
 					</tr>
 					<tr>
-
-			<td><strong>City</strong></td>
+						<td><strong>City</strong></td>
 						<td><input type="text" name="ship_city" readonly="1" style="color:#666666;" value="[@ship_city@]" size="50" maxlength="50"></td>
 					</tr>
 					<tr>
-			<td><strong>State</strong></td>
+						<td><strong>State</strong></td>
 						<td><input type="text" name="ship_state" readonly="1" style="color:#666666;" value="[@ship_state@]" size="50" maxlength="50"></td>
 					</tr>
 					<tr>
-			<td><strong>Country</strong></td>
-						<td><select name="ship_country" size="1" onChange="updloca('ship')">
-<!--##[%countries%]
-[%PARAM *body%][%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]##--><option value="[@country_code@]" selected>[@country_name@]</option><!--##[%END DATA%][%END PARAM%]
-[%END countries%]##-->
-							</select></td>
+						<td><strong>Country</strong></td>
+						<td>
+							<select name="ship_country" size="1" onChange="updloca('ship')">
+								[%countries%]
+								[%param *body%]
+								[%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]
+								<option value="[@country_code@]" selected>[@country_name@]</option>
+								[%END DATA%][%END PARAM%]
+								[%/countries%]
+							</select>
+						</td>
 					</tr>
 					<tr>
-			<td><strong>Phone Number</strong></td>
+						<td><strong>Phone Number</strong></td>
 						<td><input name="ship_phone" size="50" maxlength="50" value="[@ship_phone@]"></td>
 					</tr>
 				</table></td>
