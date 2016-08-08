@@ -197,17 +197,12 @@
 						[%param *body%]
 							<div class="form-group">
 							<label class="label-block" for="[@id@]">
-
 								<input class="pull-left" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
-
 								<h4>&nbsp;[@shipping_method@] - [%if [@shipping_quote@]%] P.O.A [%else%] [%if [@cost@] == 0%] [%if [@na@] == 0%] Free [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%/if%] </h4>
-
 								[%if [@delivery_time@] >= 1%]
 								<p>Estimated arrival of [%format type:'number' tl_unit:'day' tl_plural:'days'%][@delivery_time@][%/format%]</p>
 								[%/if%]
-
 								<p>[@shipping_description@]<p>
-
 								</label>
 							</div>
 						[%/param%]
@@ -225,7 +220,6 @@
 						</tr>
 						[%/param%]
 				[%/shipping_methods%]
-
 				[%active_coupons%]
 					[%param *header%]
 					<tr>
@@ -241,73 +235,68 @@
 					</tr>
 					[%/param%]
 				[%/active_coupons%]
-
 				[%if [@discount_total@] > 0%]
 				<tr>
 					<td>Discount Total</td>
 					<td class="text-right">-[%format type:'currency'%][@discount_total@][%/format%]</td>
 				</tr>
 				[%/if%]
-
 				[%if ![@notax@]%]
 				<tr>
 					<td>GST [%if [@tax_inc@]%]Inc.[%/if%]</td>
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
-
 				<tr class="success">
 					<td ><b>Shopping Cart Total</b></td>
 					<td class="text-right" ><h3>[%format type:'currency'%][@grand_total@][%/format%]</h3></td>
 				</tr>
 			</table>
 			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
-
-					<input type="hidden" name="payment" value="6"/>
-					[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
-							[%param *header%]
-							<div class="row">
-				<div class="col-xs-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">Select your payment plan</h4>
+				<input type="hidden" name="payment" value="6"/>
+				[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
+					[%param *header%]
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">Select your payment plan</h4>
+									</div>
+									<div class="panel-body">
+										<select class="form-control" name="plan">
+											<option value="">Select your payment plan</option>
+				[%/param%]
+				[%param *body%]
+											<option value="[@id@]" [%if [%id%] eq [@payment_plan_id@]%]selected[%/if%]>[@name@]</option>
+				[%/param%]
+				[%param *footer%]
+										</select>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="panel-body">
-							<select class="form-control" name="plan">
-								<option value="">Select your payment plan</option>
-								[%/param%]
-							[%param *body%]
-								<option value="[@id@]" [%if [%id%] eq [@payment_plan_id@]%]selected[%/if%]>[@name@]</option>
-								[%/param%]
-							[%param *footer%]
-							</select>
-						</div>
-					</div>
-					</div>
-
-					</div>
-					[%/param%]
-				[%/ payment_plans%]
-
-				<div class="row">
-					<div class="col-xs-12 col-md-6 text-center">
-						[%if [@config:show_paypal_express_link@]%]
-							<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
-								<img src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" alt="Checkout With Paypal" height="38px">
-							</a>
-						[%/if%]
-						[%if [@config:allow_masterpass_checkout@]%]
-							<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'/%]"> <img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"> </a>
-						[%/if%]
-					</div>
-					<div class="col-xs-12 col-md-6 text-center">
-						<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
-							<i class="fa fa-shopping-cart"></i> Checkout Now
-						</button>
-					</div>
+				[%/param%]
+			[%/ payment_plans%]
+			<div class="row">
+				<div class="col-xs-12 col-md-6 text-center">
+					[%if [@config:show_paypal_express_link@]%]
+						<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
+							<img src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" alt="Checkout With Paypal" height="38px">
+						</a>
+					[%/if%]
+					[%if [@config:allow_masterpass_checkout@]%]
+						<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'/%]"> <img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"> </a>
+					[%/if%]
 				</div>
+				<div class="col-xs-12 col-md-6 text-center">
+					<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
+						<i class="fa fa-shopping-cart"></i> Checkout Now
+					</button>
 				</div>
-			</form>
+			</div>
+		</form>
+		[%tracking_code type:'CartCTA' /%]
+	</div>
 			[%/param%]
 			[%/cart_items%]
 		</div>
