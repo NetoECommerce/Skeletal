@@ -1,12 +1,12 @@
 <!--##[%cart_vouchers type:'voucher'%]##-->
 	<!--##[%PARAM header%]##-->
-<div class="well">   
-<h4><i class="fa fa-gift"></i>  Gift Voucher Details</h4>
+<div class="well">
+<h4><i class="fa fa-gift"></i>	Gift Voucher Details</h4>
 <table cellpadding="4" cellspacing="0" width="100%" border="0">
 <!--##[%END PARAM%]
 <!--##[%PARAM *body%]##-->
-	<tr><td><b>#[@item_count@] &nbsp; [@vprogram_title@] - 
-<!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
+	<tr><td><b>#[@item_count@] &nbsp; [@vprogram_title@] -
+		<!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
 	<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
 <!--##[%END PARAM%][%PARAM if_false%]##-->
 	<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
@@ -34,5 +34,3 @@ Gift Message:<br />
 </div>
 	<!--##[%END PARAM%]
 [%END cart_vouchers%]##-->
-
-

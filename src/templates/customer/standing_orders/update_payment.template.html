@@ -10,7 +10,6 @@ function selectPayment() {
 		}
 		i++; obj = document.getElementById('plan'+i);
 	}
-	
 	if(chk>=0) {
 		var chr = document.getElementById('charge'+i);
 		var detailcc = document.getElementById('pdetail_cc');
@@ -27,9 +26,9 @@ function selectPayment() {
 <input type="hidden" name="previous" value="[@previous_action@]">
 <input type="hidden" name="fn" value="confirm">
 <table class="checkout_box" width="600px" cellpadding="6px" cellspacing="0" border="0" align="center">
-    <tr>
-    <td class="checkout_box_header">How Would You Like To Pay For This Order?</td>
-  </tr>
+		<tr>
+		<td class="checkout_box_header">How Would You Like To Pay For This Order?</td>
+	</tr>
 <!--##[%payment_methods sortby:'sortorder,name' repeat_only:'1'%]
 [%PARAM *body%]##-->
 <tr id="pay_name[@count@]"><td><input type="radio" name="payment" id="payment[@count@]" value="[@id@]" [%DATA id:'id' if:'=' value:'[@payment_method@]'%]checked[%END DATA%] onclick="selectPayment()"> <b>[@name@]</b></td></tr>
@@ -43,18 +42,18 @@ function selectPayment() {
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'Visa'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-      <td><img src="[@config:imageurl@]/cart/paymentmethods/visa.gif" width="60" height="32"></td>
-      <td>Pay by Visa Card on our secure site. Your card will be processed by 
-        the [@config:COMPANY_BANK_NAME@]. </td>
-  </tr>
+		<tr>
+			<td><img src="[@config:imageurl@]/cart/paymentmethods/visa.gif" width="60" height="32"></td>
+			<td>Pay by Visa Card on our secure site. Your card will be processed by
+				the [@config:COMPANY_BANK_NAME@]. </td>
+	</tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'Master Card'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
 <tr>
 <td><img src="[@config:imageurl@]/cart/paymentmethods/mastercard.gif" width="60" height="32"></td>
-<td>Pay by Master Card on our secure site. Your card will be processed by 
+<td>Pay by Master Card on our secure site. Your card will be processed by
 the [@config:COMPANY_BANK_NAME@]. </td>
 </tr>
 </table>
@@ -63,55 +62,55 @@ the [@config:COMPANY_BANK_NAME@]. </td>
 <table border="0" cellpadding="3" cellspacing="0">
 <tr>
 <td><img src="[@config:imageurl@]/cart/paymentmethods/american_express.gif" width="60" height="32"></td>
-<td>Pay by American Express on our secure site. Your card will be processed by 
+<td>Pay by American Express on our secure site. Your card will be processed by
 the [@config:COMPANY_BANK_NAME@]. </td>
 </tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'Electronic Transfer'%]##-->
-  <table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-      <td><img src="[@config:imageurl@]/cart/paymentmethods/electronic_transfer.gif" width="60" height="32"></td>
-      <td>If you select to pay via Electronic Transfer or Direct Bank Deposit, we'll provide you with 
-        account details to send payment to. Payment is required within 5 weekdays. 
-        For the fastest possible delivery, we recommend payment via credit card. </td>
-  </tr>
+	<table border="0" cellpadding="3" cellspacing="0">
+		<tr>
+			<td><img src="[@config:imageurl@]/cart/paymentmethods/electronic_transfer.gif" width="60" height="32"></td>
+			<td>If you select to pay via Electronic Transfer or Direct Bank Deposit, we'll provide you with
+				account details to send payment to. Payment is required within 5 weekdays.
+				For the fastest possible delivery, we recommend payment via credit card. </td>
+	</tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'Money Order'%]##-->
- <table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-      <td><img src="[@config:imageurl@]/cart/paymentmethods/money_order.gif" width="60" height="32"></td>
-      <td>If you select to pay via Australia Post Money Order, we'll provide you 
-        with an address to send payment to. Payment is required within 5 weekdays. 
-        For the fastest possible delivery, we recommend payment via credit card 
-        or PayPal due to bank processing times. </td>
-  </tr>
+<table border="0" cellpadding="3" cellspacing="0">
+		<tr>
+			<td><img src="[@config:imageurl@]/cart/paymentmethods/money_order.gif" width="60" height="32"></td>
+			<td>If you select to pay via Australia Post Money Order, we'll provide you
+				with an address to send payment to. Payment is required within 5 weekdays.
+				For the fastest possible delivery, we recommend payment via credit card
+				or PayPal due to bank processing times. </td>
+	</tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'Account'%]##-->
-  <table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-      <td><img src="[@config:imageurl@]/cart/paymentmethods/account.gif" width="60" height="32"></td>
-      <td>Your [@config:company_name@] account will be charged for this order based on the payment terms you have previously organised with us. </td>
-  </tr>
+	<table border="0" cellpadding="3" cellspacing="0">
+		<tr>
+			<td><img src="[@config:imageurl@]/cart/paymentmethods/account.gif" width="60" height="32"></td>
+			<td>Your [@config:company_name@] account will be charged for this order based on the payment terms you have previously organised with us. </td>
+	</tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'Cheque'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-      <td><img src="[@config:imageurl@]/cart/paymentmethods/cheque.gif" width="60" height="32"></td>
-      <td>If you select to pay via Cheque we'll provide you with an address to 
-        send your cheque to.</td>
-  </tr>
+		<tr>
+			<td><img src="[@config:imageurl@]/cart/paymentmethods/cheque.gif" width="60" height="32"></td>
+			<td>If you select to pay via Cheque we'll provide you with an address to
+				send your cheque to.</td>
+	</tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'name' if:'like' value:'BPAY'%]##-->
 <table border="0" cellpadding="3" cellspacing="0">
-    <tr>
-      <td><img src="[@config:imageurl@]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
-      <td>If you select to pay via BPAY, we'll provide you with a BPAY biller code and reference number to pay via phone or internet banking. Payment is required within 5 weekdays. For the fastest possible delivery, we recommend payment via credit card or PayPal due to bank processing times.</td>
-  </tr>
+		<tr>
+			<td><img src="[@config:imageurl@]/cart/paymentmethods/bpay.gif" width="60" height="32"></td>
+			<td>If you select to pay via BPAY, we'll provide you with a BPAY biller code and reference number to pay via phone or internet banking. Payment is required within 5 weekdays. For the fastest possible delivery, we recommend payment via credit card or PayPal due to bank processing times.</td>
+	</tr>
 </table>
 <!--##[%END DATA%]##-->
 </td></tr>
@@ -120,9 +119,9 @@ the [@config:COMPANY_BANK_NAME@]. </td>
 </table>
 <div class="spacer"></div>
 <table id="pdetail_cc" class="checkout_box" width="600px" cellpadding="6px" cellspacing="0" border="0" align="center">
-    <tr>
-    <td class="checkout_box_header">Your Payment Detail</td>
-  </tr>
+		<tr>
+		<td class="checkout_box_header">Your Payment Detail</td>
+	</tr>
 	<tr><td>
 <table cellpadding="0" cellspacing="2" border="0">
 <tr><td>Card Number</td>
@@ -150,8 +149,8 @@ the [@config:COMPANY_BANK_NAME@]. </td>
 </table>
 <div class="spacer"></div>
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
-    <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif">
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp;
+		<input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif">
 </center>
 </form>
 <script type="text/javascript" language="javascript">

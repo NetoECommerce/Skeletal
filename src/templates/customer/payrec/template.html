@@ -80,8 +80,8 @@
 						}
 						i++; obj=f['pay'+i];
 					}
-					trec.innerHTML =  (Math.round(paid * 100) / 100);
-					tapp.innerHTML =  (Math.round(tamt * 100) / 100);
+					trec.innerHTML =	(Math.round(paid * 100) / 100);
+					tapp.innerHTML =	(Math.round(tamt * 100) / 100);
 					tmore.innerHTML = (Math.round((paid-tamt) * 100) / 100);
 				}
 			}
@@ -261,7 +261,7 @@
 							<div class="col-xs-4">
 								<div class="form-group">
 									<label>Card CCID</label>
-									<input class="form-control" type="text"  name="card_ccid" size="5">
+									<input class="form-control" type="text"	name="card_ccid" size="5">
 									<p class="help-block">(3-4 digit security code)</p>
 								</div>
 							</div>
@@ -274,7 +274,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-3">
 				<label>Payment Amount ([@config:moneysign@])</label>
-				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
+				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"	onChange="updAmt()">
 			</div>
 		</div>
 		<hr />

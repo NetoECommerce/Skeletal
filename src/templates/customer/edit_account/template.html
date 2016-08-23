@@ -1,6 +1,4 @@
-
 <div class="col-xs-12">
-
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
@@ -8,8 +6,6 @@
 		<li><a href="#">Edit My Account</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
-
-
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%END URL%]">
 	<div class="page-header">
 		<h1>Edit Your [@config:company_name@] Account Details</h1>
@@ -18,13 +14,10 @@
 		<p>Please complete all the required fields below before continuing.</p>
 		<!--##[%END DATA%]##-->
 	</div>
-
-
 		<!--##[%SITE_VALUE id:'footer_javascript'%]##-->
 		<script language="javascript" type="text/javascript">
 var httpReq = null;
 var httpReq2 = null;
-
 function getXMLHttpRequest() {
 	var client = null;
 	try {
@@ -38,7 +31,6 @@ function getXMLHttpRequest() {
 	}
 	return client;
 }
-
 function checkPostCode(ta) {
 	var id ='';
 	var zip_id = 'bill_zip';
@@ -48,14 +40,12 @@ function checkPostCode(ta) {
 		zip_id = 'ship_zip';
 		country_id = 'ship_country';
 	}
-
 	var zip = document.UPDATEINFO.elements[zip_id];
 	var country = document.UPDATEINFO.elements[country_id];
 	if(country.options[country.selectedIndex].value == 'AU') {
 		zip.value = zip.value.replace(new RegExp('\\D','g'), '');
 	}
 }
-
 function getlocation(ta) {
 	var id ='';
 	var city_id = 'bill_city';
@@ -96,7 +86,7 @@ function getlocation(ta) {
 			} else {
 				var url = '/do/get_locate?zip='+escape(zip.value);
 				var req = null;
-				if(ta && ta=='sh')  {
+				if(ta && ta=='sh')	{
 					httpReq2 = getXMLHttpRequest();
 					req = httpReq2;
 				} else {
@@ -124,7 +114,6 @@ function getlocation(ta) {
 		}
 	}
 }
-
 function selectSuburb(ta) {
 	var id ='';
 	var city_id = 'bill_city';
@@ -194,7 +183,6 @@ function setSuburbSl(data, ta) {
 getlocation();
 </script>
 		<!--##[%END SITE_VALUE%]##-->
-
 		<!--##[%DATA id:'error' if:'ne' value:''%]##-->
 		<div class="alert alert-danger">
 			[@error@]
@@ -297,7 +285,7 @@ getlocation();
 				</div>
 				<div class="form-group">
 					<label for="usercustom3">Your Web Site URL</label>
-					<input class="form-control"  type="text" name="usercustom3" id="usercustom3" size="100" maxlength="255" value="[@usercustom3@]">
+					<input class="form-control"	type="text" name="usercustom3" id="usercustom3" size="100" maxlength="255" value="[@usercustom3@]">
 				</div>
 			</div>
 			<!--##[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]##-->
@@ -305,7 +293,7 @@ getlocation();
 				<h2>Dropshipping Information</h2>
 				<h4>Customise the documentation we send out with your drop shipped orders.</h4>
 				<label>Drop Shipping Documentation Footer (Will be displayed on footer of packing slips, labels etc)</label>
-				<textarea class="form-control"  name="usercustom7" cols="50">[@usercustom7@]</textarea>
+				<textarea class="form-control"	name="usercustom7" cols="50">[@usercustom7@]</textarea>
 				<p class="help-block">(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)</p>
 				<hr>
 				<label>Dropshipping Company Logo (Will be displayed on header of packing slips, labels etc)</label>

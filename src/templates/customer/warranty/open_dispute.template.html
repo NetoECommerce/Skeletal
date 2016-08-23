@@ -4,17 +4,13 @@
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Resolution Centre</a></li>
 </ul>
-
-
 	<div class="page-header">
 		<h1>Resolution Centre</h1>
 		<h2>Step 3 - Raise dispute against order #[@order_id@]</h2>
 	</div>
-
 	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
 	<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 	<!--##[%END DATA%]##-->
-
 	<script language="javascript" type="text/javascript">
 function goBack() {
 	var f = document.disputeForm;
@@ -100,7 +96,7 @@ function showOrder() {
 		<hr/>
 		<h4>Detailed Explanation Of Problem</h4>
 		<p>[@dispute_type_title@] <i class="fa fa-arrow-right"></i> [@dispute_reason@]</p>
-		<textarea  class="form-control" name="message" rows="5"><!--##[%NOHTML%]##-->[@message@]<!--##[%END NOHTML%]##--></textarea>
+		<textarea	class="form-control" name="message" rows="5"><!--##[%NOHTML%]##-->[@message@]<!--##[%END NOHTML%]##--></textarea>
 		<hr>
 		<div class="row btn-stack">
 			<div class="col-xs-12 col-md-3">

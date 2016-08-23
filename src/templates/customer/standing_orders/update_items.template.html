@@ -33,7 +33,7 @@ function addItem(ctr) {
 <input type="hidden" name="fn" value="update">
 <!--##[%standing_order_items id:'[@storder_id@]' show_cart:'1'%]
 [%PARAM *header%]##-->
-<table  class="checkout_box" width="100%" border="0" align="center" cellpadding="6px" cellspacing="0">
+<table	class="checkout_box" width="100%" border="0" align="center" cellpadding="6px" cellspacing="0">
 	<tr><td><div class="checkout_box_header">Standing Order #[@storder_id@]<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->&nbsp; PO #<!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--><!--##[%END DATA%]##--></div></td>
 	<tr><td>
 <table cellpadding="4" cellspacing="0" border="0">
@@ -61,14 +61,14 @@ function addItem(ctr) {
 </table>
 <div class="spacer"></div>
 <table width="100%" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Your Current Items On Order</td></tr>
-  <tr><td>
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+	<tr><td colspan="2" class="checkout_box_header">Your Current Items On Order</td></tr>
+	<tr><td>
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="50px" class="header" nowrap>Product</td>
 		<td width="99%" class="header" nowrap>&nbsp;</td>
 		<td width="50px" class="header" nowrap>Qty</td>
-      <td width="12" class="header" nowrap>&nbsp;</td>
+			<td width="12" class="header" nowrap>&nbsp;</td>
 		<td width="75px" class="header" nowrap>Price</td>
 		<td width="75px" class="header" nowrap>Discounts</td>
 		<td width="100px" class="header" nowrap>Subtotal</td>
@@ -88,7 +88,7 @@ function addItem(ctr) {
 	[@qty@]
 <!--##[%END PARAM%][%END DATA%]##-->
 	</td>
-  <td>
+	<td>
 <!--##[%DATA id:'editable' if:'eq' value:'y' %][%PARAM if_true%]##-->
 <a href="javascript:rmcart('qty[@count@]');"><img src="[@config:imageurl@]/icons/cross.png" alt="remove item from cart" border="0"></a>
 <!--##[%END PARAM%][%PARAM if_false%]##-->
@@ -103,12 +103,12 @@ function addItem(ctr) {
 <!--##[%PARAM *footer%]##-->
 <!--##[%DATA id:'shipping_method_id' if:'eq' value:'' %]
 [%PARAM if_true%]##-->
-<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+<tr><td class="shitem0"	colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
 	<td class="store_total" nowrap>Delivery Cost</td>
 	<td class="store_total" nowrap>N/A</td></tr>
 <!--##[%END PARAM%]
 [%PARAM if_false%]##-->
-<tr><td class="shitem0"  colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
+<tr><td class="shitem0"	colspan="5"><b>Delivery Method:</b> [@shipping_method@] &nbsp; (<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_shipping&previous=[@current_action@]'%][%END URL%]">Change</a>)</td>
 	<td class="store_total" nowrap>Delivery Cost</td>
 	<td class="store_total" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td></tr>
 <!--##[%END PARAM%]
@@ -120,8 +120,8 @@ function addItem(ctr) {
 <!--##[%END DATA%]##-->
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-  <tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
-  <tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
+	<tr><td><img src="[@config:imageurl@]/pixel.gif" height="4px" width="1px"></td></tr>
+	<tr><td><table cellpadding="2px" cellspacing="0" border="0" align="right">
 	<tr><td><b>Order Subtotal</b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'fixed_shipping_cost' if:'=' value:'1' %]##-->
@@ -157,8 +157,8 @@ function addItem(ctr) {
 <input type="hidden" name="sku0" value="">
 </form>
 <table width="100%" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr><td colspan="2" class="checkout_box_header">Add Items</td></tr>
-  <tr><td>
+	<tr><td colspan="2" class="checkout_box_header">Add Items</td></tr>
+	<tr><td>
 <!--##[%THUMB_LIST type:'storder_products' limit:'100'%]
 [%PARAM filter_itemgroup%][@itemgroups@][%END PARAM%]
 [%PARAM group_id%][@usr_group@][%END PARAM%]
@@ -168,30 +168,30 @@ function addItem(ctr) {
 
 [%PARAM *body%]##-->
 <tr>
-    <td width="50"><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL'%][%END asset_url%]" alt="[@model@]" width="50px"  height="50px"></td>
-  <td>
+		<td width="50"><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL'%][%END asset_url%]" alt="[@model@]" width="50px"	height="50px"></td>
+	<td>
 	<span class="capsule_thumb_name">[@model@]<br /></span>
 	<!--##[%data id:'subtitle' if:'ne' value:''%]##-->
 	<span class="capsule_thumb_subtitle">[@subtitle@]</span><br />
 	<!--##[%end data%]##-->
-   <!--##[%data id:'misc3' if:'ne' value:''%]##--> <b>Strength:</b> [@misc3@] <!--##[%end data%]##--><!--##[%data id:'misc15' if:'ne' value:''%]##-->&nbsp;&nbsp;<b>Main Characteristics:</b> [@misc15@] <!--##[%end data%]##-->
+	<!--##[%data id:'misc3' if:'ne' value:''%]##--> <b>Strength:</b> [@misc3@] <!--##[%end data%]##--><!--##[%data id:'misc15' if:'ne' value:''%]##-->&nbsp;&nbsp;<b>Main Characteristics:</b> [@misc15@] <!--##[%end data%]##-->
 </td> <!--
-         <td nowrap="nowrap">
-      [%data id:'misc14' if:'eq' value:'Single'%] <br /><img src="[@config:imageurl@]/images/size_single.gif" width="115" height="24" alt="Single" /> [%END data%]
+				<td nowrap="nowrap">
+			[%data id:'misc14' if:'eq' value:'Single'%] <br /><img src="[@config:imageurl@]/images/size_single.gif" width="115" height="24" alt="Single" /> [%END data%]
 [%data id:'misc14' if:'eq' value:'Double'%] <br /><img src="[@config:imageurl@]/images/size_double.gif" width="115" height="24" alt="Single" /> [%END data%]
-        </td> -->
-              <td nowrap>
-      <span class="capsule_thumb_price"> <!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##--> ea </span><br />
-      [@misc1@] per capsule
-      </td>
+				</td> -->
+							<td nowrap>
+			<span class="capsule_thumb_price"> <!--##[%FORMAT type:'currency'%]##-->[@store_price@]<!--##[%END FORMAT%]##--> ea </span><br />
+			[@misc1@] per capsule
+			</td>
 <td align="center" nowrap>
-        <span class="capsule_thumb_qty">Order Qty:</span><br /><input type="text"  id="addqty[@count@]" value="" class="capsule_thumb_qty_input" size="3"><input type="hidden" id="addsku[@count@]" value="[@SKU@]">
+				<span class="capsule_thumb_qty">Order Qty:</span><br /><input type="text"	id="addqty[@count@]" value="" class="capsule_thumb_qty_input" size="3"><input type="hidden" id="addsku[@count@]" value="[@SKU@]">
 </td>
-                      <td nowrap="nowrap"><br />
+											<td nowrap="nowrap"><br />
 <input name="Update" type="button" value="Add Item" onclick="addItem([@count@])"/>
-      </td>
-  </tr>
-  <tr><td colspan="5"><div id="dotted_line"></div></td></tr>
+			</td>
+	</tr>
+	<tr><td colspan="5"><div id="dotted_line"></div></td></tr>
 <!--##[%END PARAM%]
 
 [%PARAM *footer%]##-->
@@ -205,7 +205,7 @@ No Products are available.
 </table>
 <div class="spacer"></div>
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
-    <input type="image" alt="Update Changes" src="" onclick="updateChanges();"> &nbsp;
-    <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif" onclick="saveChanges();">
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp;
+		<input type="image" alt="Update Changes" src="" onclick="updateChanges();"> &nbsp;
+		<input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif" onclick="saveChanges();">
 </center>
