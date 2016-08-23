@@ -35,12 +35,22 @@
 [%/site_value%]
 [%cache type:'display' id:'[@inventory_id@]'%]
 <div class="col-xs-12">
-	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		[%breadcrumb%][%param *body%]
-		<li><a href="[@url@]">[@name@]</a></li>
-		[%/param%][%/breadcrumb%]
-	</ul>
+	[%breadcrumb%]
+		[%param *header%]
+			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+				</li>
+		[%/param%]
+		[%param *body%]
+			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+			</li>
+		[%/param%]
+		[%param *footer%]
+			</ul>
+		[%/param%]
+	[%/breadcrumb%]
 	<div class="row">
 		<div class="col-sm-5">
 			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
@@ -399,6 +409,7 @@
 					[%/if%]
 				</div><!--/.tab-content-->
 			</div><!--/.tabbable-->
+			[%tracking_code type:'ProductDescription' /%]
 			[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 				[%param header%]
 				<hr />

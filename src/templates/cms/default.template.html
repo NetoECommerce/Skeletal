@@ -1,18 +1,19 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
-	[%param *header%]
-		<ul class="breadcrumb">
-			<li><a href="[@config:home_url@]">Home</a></li>
-	[%/param%]
-	[%param *body%]
-		<li><a href="[@url@]">[@name@]</a></li>
-	[%/param%]
-	[%param *body_current%]
-		<li>[@name@]</li>
-	[%/param%]
-	[%param *footer%]
+	[%PARAM *header%]
+		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+			</li>
+	[%/PARAM%]
+	[%PARAM *body%]
+		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+		</li>
+	[%/PARAM%]
+	[%PARAM *footer%]
 		</ul>
-	[%/param%]
+	[%/PARAM%]
 [%/breadcrumb%]
 <h1 class="page-header">[@content_name@]</h1>
 <p class="text-muted">
