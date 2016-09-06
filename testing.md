@@ -187,19 +187,58 @@ Compatibility categories can have a dropdown interface, where you select a top-l
 ## UTIL FUNCTIONS 
 
 ### $.isMobileView()
+
+Will return a true/false based on `var NETOMobileView`.
+
+On init `NETOMobileView` is set to false.
+
 ### $.isFacebookView()
+
+Will return a true/false based on `var NETOFacebookView`.
+
+On init `NETOFacebookView` is set to false.
+
 ### $.isFacebookPurpose()
+
+Will return a true/false based on `var NETOFacebookPurpose`.
+
+On init `NETOFacebookPurpose` is set to false.
+
 ### $.addFacebookNView()
+
+Finds all the `a` tags on the page and gives them an nview from the variable `NETOFacebookViewName`
+
+On init `NETOFacebookViewName` is set to a string 'facebook'.
+
+It also gives all each form a hidde input with the attribute name `nview` a `value` of `NETOFacebookViewName`.
+
 ### $.addFacebookNPurpose()
+
+Calls for the $.addNPurpose(npur) function then sets `NETOFacebookPurpose` to true.
+
 ### $.addNPurpose(npur)
+
+The same as the $.addFacebookNView() function, but instead of using the varible `NETOFacebookViewName` for the nview, it uses the param 'npur' the user places in.
+
 ### $.isJQVersion(cmp,vertxt)
+
+Figures out if you have the correct jQuery version?
+
 ### $.setCurrencySymbol(symb)
+
+Changes the variable `NETOCurrencySymbol` to be the param 'symb' the user places in.
+
+On init `NETOCurrencySymbol` is a string of '$'.
+
 ### $.formatNumber(num, param)
+
+
+
 ### $.formatCurrency(num)  
 
-Formats param num to be correct dollar format e.g. $4.00
+Formats param 'num' to be correct dollar format e.g. $4.00
 
-- Can change the symbol by changing var NETOCurrencySymbol to different string.
+- Can change the symbol by changing var NETOCurrencySymbol to different string using the $.setCurrencySymbol(symb) function.
 
 ### $.create_netosd_data(data, sp)
 ### $.create_netosd_data_rc(data, vids, sp)
