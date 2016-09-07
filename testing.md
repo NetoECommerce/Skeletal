@@ -269,12 +269,24 @@ Checks if param `data` has the string 'NSD1;' at the start of it, if it does it 
 ### $.parse_netosd_data_rc(data, vds, sp)
 ### $.js_var_dump(data, html, ind, vds)
 ### $.get_ajax_data(data)
+
+This is only every called from the `$.get_ajax_data(data)` function. The param `data` is the response after an ajax call is successful.
+
 ### $.do_ajax(module, qs, syn, fns)
 
-It does the ajax - npm sass --save
+Param `module` is where you are doing the ajax call to. e.g module would be used in a ajax function to go to the 'url' property: '/ajax/' + module.
+
+Param `qs` should be an Object of data. This function will start by checking formating `qs` into an Object.
+
+The function will then loop through each item in param `qs` and append it into one string with each item connected with a '&'.
+
+This is then used in the ajax function as the 'data' property.
+
+Param `syn` is used in the ajax function as the 'async' property.
+
+Param `fns` is used once the ajax function comes back as a success.
 
 ### $.soap_input_opt(rdata, def, vds)
-
 
 ### $.soap_default_opt(rdata, def[,vds])
 
@@ -371,6 +383,9 @@ Places over an overlay
 ### $.nPopupBoxRescroll(bo)
 ### $.nPopupBoxReposition(bo, opt)
 ### $.nPopupBox(m, opt) 
+
+Shows a popup box with the content of param `m`.
+
 ### $.nClosePopupBox() 
 
 Closes any popup boxes that are currently open
