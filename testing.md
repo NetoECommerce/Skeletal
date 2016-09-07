@@ -214,11 +214,11 @@ It also gives all each form a hidde input with the attribute name `nview` a `val
 
 ### $.addFacebookNPurpose()
 
-Calls for the $.addNPurpose(npur) function then sets `NETOFacebookPurpose` to true.
+Calls for the `$.addNPurpose(npur` function then sets `NETOFacebookPurpose` to true.
 
 ### $.addNPurpose(npur)
 
-The same as the $.addFacebookNView() function, but instead of using the varible `NETOFacebookViewName` for the nview, it uses the param 'npur' the user places in.
+The same as the `$.addFacebookNView()` function, but instead of using the varible `NETOFacebookViewName` for the nview, it uses the param 'npur' the user places in.
 
 ### $.isJQVersion(cmp,vertxt)
 
@@ -232,72 +232,123 @@ On init `NETOCurrencySymbol` is a string of '$'.
 
 ### $.formatNumber(num, param)
 
+Formats param `num` with the object given in param `param`.
 
+`param` takes three properties:
+
+- param['pf'] - appends the string specified as a prefix to the number formatted
+- param['dp'] - it will format the number to the specificed number of decimal places.
+- param['sp'] - adds the string specified at every thousand interval. Typically you would place a , here, so 10000 would be formatted as 10,000
 
 ### $.formatCurrency(num)  
 
-Formats param 'num' to be correct dollar format e.g. $4.00
+Returns the param `num` by formating it with the `$.formatCurrency(num, param` function.
 
-- Can change the symbol by changing var NETOCurrencySymbol to different string using the $.setCurrencySymbol(symb) function.
+- Can change the symbol by changing var NETOCurrencySymbol to different string using the `$.setCurrencySymbol(symb)` function.
 
 ### $.create_netosd_data(data, sp)
+
+Returns the string 'NSD1;' plus string that is returned from the function `$.create_netosd_data_rc(data, vids, sp)`.
+
+This is called in the `$.do_ajax(module, qs, syn, fns)` function in a loop for each property in the param `qs`.
+
 ### $.create_netosd_data_rc(data, vids, sp)
+
+Returns a string based off the values the users gives.
+
+This is only ever called from this function itself or from the `$.create_netosd_data(data, sp)` function
+
+
 ### $.parse_netosd_data(data, sp)
+
+Checks if param `data` has the string 'NSD1;' at the start of it, if it does it will return tmp[1]; which is calling another function with the following params `$.parse_netosd_data_rc(data, [], sp)`.
+
+- The param `data` is checking data.substr(5);
+- The param `sp` will be the users value or the string '|' if `sp` is null.
+
 ### $.parse_netosd_data_rc(data, vds, sp)
 ### $.js_var_dump(data, html, ind, vds)
 ### $.get_ajax_data(data)
 ### $.do_ajax(module, qs, syn, fns)
+
+It does the ajax - npm sass --save
+
 ### $.soap_input_opt(rdata, def, vds)
-### $.soap_input_opt(rdata, def, vds)
+
+
+### $.soap_default_opt(rdata, def[,vds])
+
+Formats each instances in param `rdata` to resemble each instances in param `def`
+
 ### $.preload_images(images)
+
+Preload images into the DOM 
+
 ### $.show_tooltip(obj, txt, setting, ubary)
 ### $.show_overlay(obj, id, html, setting)
 ### $.bgFrame()
+
+It is an empty function, it will return undefined.
+
 ### $.parse_ntemplate(text, data)
+
+A lot of RegExp and perl I think.
+
 ### $.escape_reserved(text) 
 
 Replaces space with escapes e.g '\ '
 
 ### $.is_empty(text) 
 
-Can only return true or not defined
+Return true if param `text` is empty. If param `text` does not equal null or '' it will return undefined.
+
 
 ### $.isEmpty(text) 
 
-Boolean if param text is null - only works with strings
+Returns true if `param` text is null or ''.
 
 ### $.trimSpace(text) 
 
 Calls $.trim(text) which trims white space at the start and end of param text
 
 ### $.isTrue(t)
+
+Will check differently depended on the typeof param `t`.
+
+- If param `t` is a string:
+ - 'y', 'yes','on','true','okay','ok', 't','1'.
+- If param `t` is a boolean:
+ - it will return `t`
+- If param `t` is a number:
+ - It will return true if param `t` is greater then 0 or if param `t` is less then 0 it will return false.
+
 ### $.toInt(n [,def]) 
 
-Change n into an interger 
+Change param `n` into an interger.
+
+### $.toText(n)
+
+Returns param `n` into a string, if it is null/undefined make it an empty string.
 
 ### $.toFloat(n[,def]) 
 
-If n is a number it returns it, if its a string it strips out spaces and '$'
-
-### $.toText(n[,def])
-
-Returns n into a string, if null/undefined make it an empty string
+If param `n` is a number it returns it, if its a string it strips out spaces and '$'.
 
 ### $.timestamp() 
 
-Current time
+Returns the current time.
 
 ### $.randID() 
 
-random 5 numbers
+Returns random 5 numbers
 
 ### $.randString:(len [, str]) 
 
-Random string of letters with a length of len. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
+Returns random string of letters with a length of param `len`. you can define the random letters with str e.g $.randString(4, "hey") = "ehhe" 
 
 ### $.hasCSSClass(c) 
 
-checks to see if param c is a class in any stylesheet from the loaded page
+Returns true or false based off checking to see if param `c` is a class in any stylesheet from the loaded page.
 
 ### $.show_div_loading(div) 
 ### $.remove_div_loading(div)
@@ -305,7 +356,7 @@ checks to see if param c is a class in any stylesheet from the loaded page
 ### $.update_text_count(cur)
 ### $.validate_email(email)
 
----
+Validates an email and splits items into an array with the email as first array item and the string after the last '.'.
 
 ## POPUP BOX FUNCTIONS 
 
