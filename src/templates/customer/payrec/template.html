@@ -205,10 +205,10 @@
 			<div class="col-xs-12 col-md-6">
 				<label>Select Payment Method</label>
 				<select class="form-control" name="card_type" onChange="showPD()">
-					<option value=""></option>
+					<option value="">Select an option</option>
 					[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
 						[%PARAM *body%]
-							<option value="[@id@]:[@charge_type@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%/DATA%]>[@name@]</option>
+							<option value="[@id@]:[@charge_type@]">[@name@]</option>
 						[%/PARAM%]
 					[%/payment_methods%]
 				</select>
