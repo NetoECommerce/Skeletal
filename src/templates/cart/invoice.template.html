@@ -101,7 +101,13 @@
 											<div class="media-body">
 												<h4 class="media-heading">Please send your Cheque to:</h4>
 												<p>[@config:company_name@]</p>
-												<p>[@config:company_poaddr@]</p>
+												<p>
+													[%if [@CONFIG:COMPANY_POADDR@]%]
+														[@CONFIG:COMPANY_POADDR@]
+													[%else%]
+														[@CONFIG:COMPANY_ADDR@]
+													[%/if%]
+												</p>
 												<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
 											</div>
 										</div>
@@ -114,7 +120,13 @@
 											<div class="media-body">
 												<h4 class="media-heading">Please send your money order to :</h4>
 												<p>[@config:company_name@]</p>
-												<p>[@config:company_poaddr@]</p>
+												<p>
+													[%if [@CONFIG:COMPANY_POADDR@]%]
+														[@CONFIG:COMPANY_POADDR@]
+													[%else%]
+														[@CONFIG:COMPANY_ADDR@]
+													[%/if%]
+												</p>
 												<p>Please include your full name and order number so that we can easily locate your order.</p>
 											</div>
 										</div>
