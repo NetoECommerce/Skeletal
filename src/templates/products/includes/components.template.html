@@ -37,7 +37,7 @@
 											</p>
 											<div class="input-group">
 												<span class="input-group-addon">QTY</span>
-												<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%]max="[@max_assemble@]"[%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" [%if [@fixed_assemble@]%]readonly[%/if%] value="[@qty@]" ref="[@sku@]" class="component-config-input form-control [%if [@fixed_assemble@]%]readonly[%/if%]">
+												<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%]max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" value="[@qty@]" ref="[@sku@]" class="component-config-input form-control [%if [@fixed_assemble@]%]readonly[%/if%]">
 											</div>
 										</div>
 									</div>
@@ -81,7 +81,7 @@
 												<div class="input-group">
 													<span class="input-group-addon">QTY</span>
 													[%if [@variation_available@] > '0'%]
-														<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%] max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" [%if [@fixed_assemble@]%] readonly [%/if%] value="[@qty@]" ref="[@current_sku@]" component-id="[@component_count@]" component-sku="[@SKU@]" class="component-var-sku form-control component-config-input [%if [@fixed_assemble@]%]readonly[%/if%]">
+														<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%] max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" [%if [@fixed_assemble@]%] readonly [%/if%] value="[@qty@]" ref="[@current_sku@]" component-id="[@component_count@]" component-sku="[@SKU@]" class="component-var-sku form-control component-config-input [%if [@fixed_assemble@]%]readonly[%/if%]" [%if [@fixed_assemble@]%] readonly[%/if%]>
 													[%else%]
 														<input type="number" readonly value="0" class="form-control readonly">
 													[%/if%]
