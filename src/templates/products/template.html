@@ -236,7 +236,7 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="description">
-						<div class="productdetails">
+						<div class="productdetails n-responsive-content">
 							[@description@]
 						</div>
 						<p class="small">
@@ -245,12 +245,16 @@
 					</div>
 					[%if [@features@]%]
 						<div class="tab-pane" id="features">
-							[@features@]
+							<div class="n-responsive-content">
+								[@features@]
+							</div>
 						</div>
 					[%/if%]
 					<div class="tab-pane" id="specifications">
 						[%if [@specifications@]%]
-							[@specifications@]
+							<div class="n-responsive-content">
+								[@specifications@]
+							</div>
 						[%/if%]
 						<table class="table">
 							<tbody>
@@ -353,7 +357,9 @@
 					</div>
 					[%if [@warranty@]%]
 						<div class="tab-pane" id="warranty">
-							[@warranty@]
+							<div class="n-responsive-content">
+								[@warranty@]
+							</div>
 						</div>
 					[%/if%]
 					[%if [@config:show_product_reviews@]%]
