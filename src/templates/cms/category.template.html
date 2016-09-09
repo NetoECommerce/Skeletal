@@ -66,14 +66,16 @@
 		[%/param%]
 	[%/advert%]
 	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
-		<p>
+		<div class="n-responsive-content">
 			[@content_short_description1@]
 			[@content_short_description2@]
 			[@content_short_description3@]
-		</p>
-		[@content_description1@]
-		[@content_description2@]
-		[@content_description3@]
+		</div>
+		<div class="n-responsive-content">
+			[@content_description1@]
+			[@content_description2@]
+			[@content_description3@]
+		</div>
 		<hr>
 	[%/if%]
 [%/if%]
