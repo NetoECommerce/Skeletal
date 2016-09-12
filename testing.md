@@ -267,7 +267,26 @@ Checks if param `data` has the string 'NSD1;' at the start of it, if it does it 
 - The param `sp` will be the users value or the string '|' if `sp` is null.
 
 ### $.parse_netosd_data_rc(data, vds, sp)
-### $.js_var_dump(data, html, ind, vds)
+
+This function will return two pieces of data in an array; [data, kvdata].
+
+The first piece of data is used in the function `$.parse_netosd_data(data, sp)` as what it returns if a variable txt equals 'NSD1;', else that function will return null.
+
+- The param `sp` will be the users value or the string '|' if `sp` is null.
+
+Checking if variable tp equals one of a few symbols, then loops until variable done is true AND cur is less then the length of variable data.
+
+In this loop we are adding the numbers/characters from variable data to variable chr. 
+
+If chr doesn't equal the string '|' it will be added to the variable len.
+
+Then depending on what symbol typ is, it will do a different loop.
+
+### $.js_var_dump(data[, html, ind, vds])
+
+This is primarly used to cause an alert for the user, the content of the alert depends on the param `data`.
+
+
 ### $.get_ajax_data(data)
 
 This is only every called from the `$.get_ajax_data(data)` function. The param `data` is the response after an ajax call is successful.
@@ -284,9 +303,18 @@ This is then used in the ajax function as the 'data' property.
 
 Param `syn` is used in the ajax function as the 'async' property.
 
-Param `fns` is used once the ajax function comes back as a success.
+Param `fns` is used once the ajax function comes back. 
+
+We do an ajax request, if the request was a success we store the response in a variable rdata which is a two part Array. We split the two Array parts into two variables:
+
+`var code = rdata[0].toUpperCase();`
+`var rdata = rdata[1];`
+
+
 
 ### $.soap_input_opt(rdata, def, vds)
+
+If there is not a param `rdata` and it is not an instance of an Object, it will make param `rdata` an empty object. It will then return `$.soap_default_data(rdata, def, vds)`.
 
 ### $.soap_default_opt(rdata, def[,vds])
 
