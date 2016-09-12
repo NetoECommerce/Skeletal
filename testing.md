@@ -111,8 +111,21 @@ The following are user inputs on from the page:
 - var country = $('#ship_country').val();
 - var phone = $('#ship_phone').val();
 
+If  the address is successfully added to the addressbook it will display a popup to the user with the content 'Address Updated Successfully'
+
+If thhe address fails to add to the addressbook it will store a the function `$.parse_ntemplate(param['msg'][data['msg']], data)` in the variable msg.
+
 ### $.del_addressbook_entry()
+
+Deletes an address from the addressbook. This calls  the same api as the `$.add_addressbook_entry()` function - 'addressbook'
+
 ### $.addressbook_select(param)
+
+This function will display a certain address based off the address the user selects.
+
+There is an event listener when the `select[id^="addr_id"]` changes, if this select box doesn't have the value of 'n' it will cause an ajax request that fetches and displays the correct address.
+
+`$('#ship_first_name').val(data['loc']['ship_first_name']);`
 
 ---
 
