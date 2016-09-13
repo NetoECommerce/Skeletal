@@ -143,10 +143,40 @@ There are various places throughout the system where you can add products to car
 - Remove an item from cart (cart page and cart drop down)
 
 ### $.addToCartDefaults(nofancybox)
+
+This function is called from the `$.addToCartInit(param)` function. It looks to have all the default values needed when adding to cart / displaying that a product has been added to cart.
+
+If the function `$.isMobileView()` or the param `nofancybox` is true it will display different content in the success messages.
+
+
 ### $.addToCartInit(param)
+
+This function calls an ajax request to the following api - /ajax/addtocart - to add a product to the cart.
+
+At the bottom of the function to removes all event listener on .addtocart and .delfromcart and then re-adds click event listener which calls the function `$.addCartItem(skuo, qtyo, fns)`
+
+```
+            $(document).off('click', ".addtocart");
+            $(document).on('click', ".addtocart", function() {
+                $.addCartItem('sku' + $(this).attr('rel'), 'qty' + $(this).attr('rel'));
+            });
+            $(document).off('click', ".delfromcart");
+            $(document).on('click', ".delfromcart", function() {
+                $.addCartItem('sku' + $(this).attr('rel'), 'qty' + $(this).attr('rel'));
+            });
+```
+
 ### $.getAddToCartParam()
-### $.addChildCartItem()
-### $.addCartItem(skuo, qtyo, fns)
+
+Returns NAddToCartData.
+
+On init NAddToCartData equals a new Object;
+
+### $.addChildCartItem(skuo, qtyo)
+### $.addCartItem(skuo, qtyo[, fns])
+
+Probably the largest function in the file. Adds and builds the cart.
+
 ### $.addMultipleCartItems(id)
 ### $.removeCartItem(ind, fns)
 ### $.buildCartItem(data)
