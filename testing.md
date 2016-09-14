@@ -179,7 +179,10 @@ Probably the largest function in the file. Adds and builds the cart.
 
 ### $.addMultipleCartItems(id)
 ### $.removeCartItem(ind, fns)
+
 ### $.buildCartItem(data)
+
+At the bottom of the function to removes the click event listener on .delfromcart and then re-adds click event listener which calls the function `$.removeCartItem($(this).attr('rel'))`
 
 ---
 
@@ -192,6 +195,15 @@ Neto's search feature is powered by AJAX through Neto.js
 
 ### $.initSearchField(opts)
 
+Builds the results of the search field based off the input the user places in a html element with the attribute 'nsearch-init'. 
+
+The function places the html element with the attrbute 'nsearch-id' in a variable called 'initchk'.
+
+It will then give initchk a value of NESearchTimers length. On initial load this is set to an empty array.
+
+There is a keyup event listener which build the search results shell and then calls an ajax request to the api 'ajax_search' 
+There is also a click event listener on the html element which will hide the item with the class 'pl-class', which is the search results container.
+
 ---
 
 ## LOAD TEMPLATE 
@@ -202,6 +214,10 @@ On product and cart pages there are AJAX templates which can refresh based on th
 - Various AJAX templates on cart & checkout pages
 
 ### $.load_ajax_template(id, input, fns)
+
+Calls an ajax request to the api 'ajax_template'.
+
+Called in the `$.productVariationSelected(spid, valid)` function.
 
 ---
 
@@ -444,13 +460,29 @@ Validates an email and splits items into an array with the email as first array 
 ## POPUP BOX FUNCTIONS 
 
 ### $.overlay(opt)
+
+appends an overlay with 0.5 opacity across the whole document with a z-index of 99999.
+
+If the window is resized this overlay will be given new width and height styles at the same sizes to the width and height of the document.
+
 ### $.get_center_pos()
+
+Returns an object with two elements; 'top' and 'left' which finds the center of the element we call from to the window.
+
 ### $.move_center(anime)
-### $.nShowActivity() / $.nHideActivity() 
 
-Places over an overlay
+Moves the element from its current position to the center of the screen using the `$.get_center_pos()` function.
 
-### $.nHideActivity()
+### $.nShowActivity() 
+
+Shows a div with the class 'nactivity'.
+
+It first calls the `$.nHideActivity()` function, then creats the html element with the nactivity class, appends it to the body, centers it to the window and the fades the div in.
+
+### $.nHideActivity() 
+
+For each 'div.nactivity[nactivity-status="active"]' it will fade out and hide the div.
+
 ### $.nPopupBoxRescroll(bo)
 ### $.nPopupBoxReposition(bo, opt)
 ### $.nPopupBox(m, opt) 
