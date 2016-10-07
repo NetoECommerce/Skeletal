@@ -217,6 +217,11 @@
 					<li>
 						<a href="#specifications" data-toggle="tab">Specifications</a>
 					</li>
+					[%if [@tnc@]%]
+						<li>
+							<a href="#terms" data-toggle="tab">Terms and Conditions</a>
+						</li>
+					[%/if%]
 					[%if [@config:show_product_reviews@]%]
 					<li>
 						<a class="reviews" href="#reviews" data-toggle="tab">
@@ -247,6 +252,13 @@
 						<div class="tab-pane" id="features">
 							<div class="n-responsive-content">
 								[@features@]
+							</div>
+						</div>
+					[%/if%]
+					[%if [@tnc@]%]
+						<div class="tab-pane" id="terms">
+							<div class="n-responsive-content">
+								[@tnc@]
 							</div>
 						</div>
 					[%/if%]
