@@ -15,5 +15,5 @@ function print_invoice() {
 	<input class="btn btn-default pull-right" type="button" value="Print Invoice" onClick="print_invoice()">
 	<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success pull-left">Pay Now</button>
 </div>
-<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
+[%print_order id:'[@order_id@]'%][%/ print_order%]
 </div>
