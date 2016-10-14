@@ -22,13 +22,9 @@
 [%/site_value%]
 <div class="col-xs-12">
 	<h1 class="page-header">Review [@model@]</h1>
-	<p class="lead">
-		Thank you for writing a review. By sharing your thoughts, you help website visitors make a better purchasing decision. In addition, your feedback helps us to improve our products and service.
-	</p>
+	<p class="lead">Thank you for writing a review. By sharing your thoughts, you help website visitors make a better purchasing decision. In addition, your feedback helps us to improve our products and service.</p>
 	[%if [@error@]%]
-	<div class="alert alert-danger">
-		[@error@]
-	</div>
+		<div class="alert alert-danger">[@error@]</div>
 	[%/if%]
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -71,9 +67,7 @@
 						</div>
 					</div>
 				</div>
-				<p>
-					<input class="btn btn-success btn-lg" type="submit" value="Preview"/>
-				</p>
+				<p><input class="btn btn-success btn-lg" type="submit" value="Preview"/></p>
 			</form>
 		</div>
 	</div>
