@@ -184,10 +184,11 @@
 			[@msg@]
 		</div>
 	[%/if%]
-<div id="processing" style="display:none;" class="alert alert-danger">
-	<h2>Payment Processing</h2>
-	<h2>Please do not refresh or close this page</h2>
-	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
+	<div id="processing" style="display:none;" class="alert alert-danger">
+		<h2>Payment Processing</h2>
+		<h2>Please do not refresh or close this page</h2>
+		<img src="[@config:imageurl@]/loading.gif" alt="Loading"/>
+	</div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
