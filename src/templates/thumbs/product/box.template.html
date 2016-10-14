@@ -1,40 +1,35 @@
-<!--##[%CACHE type:'box' id:'[@inventory_id@]'%]##-->
+[%CACHE type:'box' id:'[@inventory_id@]'%]
 <li class="list-group-item thumbnail-box">
 	<div class="row">
 		<div class="col-sm-12 col-md-5">
 			<a href="[@URL@]" title="[@model@]">
 				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" class="product-image" width="100%" alt="[@model@]" rel="itmimg[@SKU@]">
 			</a>
-			<!--##[%IF [@inpromo@]%]##-->
-			<div class="savings-container"><span class="label label-danger">On Sale</span></div>
-			<!--##[%END IF%]##-->
+			[%IF [@inpromo@]%]<div class="savings-container"><span class="label label-danger">On Sale</span></div>[%/ IF%]
 		</div>
 		<div class="col-sm-12 col-md-7">
 			<h5 class="title">
-				<a href="[@URL@]">
-					<!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##-->
-				</a>
+				<a href="[@URL@]">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%END FORMAT%]</a>
 			</h5>
 			<p class="price" itemprop="offers">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
-				<!--##[%IF [@inpromo@]%]##-->
-					<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##-->
-				<!--##[%ELSE%]##-->
-					<span itemprop="price" content="[@store_price@]"><!--##[%format type:'currency'%]##-->[@store_price@]<!--##[%END format%]##--></span>
-				<!--##[%END IF%]##-->
+				[%IF [@has_child@]%]From [%END IF%]
+				[%IF [@inpromo@]%]
+					[%format type:'currency'%][@promo_price@][%END format%]
+				[%ELSE%]
+					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%END format%]</span>
+				[%/ IF%]
 
-				<!--##[%IF [@save@] > 0 AND ![@has_child@]%]##-->
+				[%IF [@save@] > 0 AND ![@has_child@]%]
 						<br><span class="small text-danger">
-							<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##--> OFF
+							[%format type:'percent'%][@save@][%END format%] OFF
 						</span>
-				<!--##[%END IF%]##-->
-				<!--##[%IF [@save@] > 0%]##-->
-					<br><span class="small text-muted">RRP <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
-				<!--##[%END IF%]##-->
+				[%/ IF%]
+				[%IF [@save@] > 0%]
+					<br><span class="small text-muted">RRP [%format type:'currency'%][@retail@][%END format%]</span>
+				[%/ IF%]
 			</p>
-
 		</div>
 	</div>
 </li>
-<!--##[%END CACHE%]##-->
+/ CACHE%]
