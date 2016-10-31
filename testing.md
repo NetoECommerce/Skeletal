@@ -406,6 +406,8 @@ Formats each instances in param `rdata` to resemble each instances in param `def
 
 Preload images into the DOM 
 
+Called in the $.addToWishList(param) function
+
 ### $.show_tooltip(obj, txt, setting, ubary)
 ### $.show_overlay(obj, id, html, setting)
 ### $.bgFrame()
@@ -475,7 +477,22 @@ Returns true or false based off checking to see if param `c` is a class in any s
 ### $.show_div_loading(div) 
 ### $.remove_div_loading(div)
 ### $.init_text_count(classname)
+
+Parse a class name as the parameter e.g 'inputtext', which will find the textarea that you wish to count the text of.
+
+It will loop through all the DOM elements with the class of param `classname` and cal the $.update_text_count(cur) function with that element as param `cur`.
+
+There is an event listener of keyup and blur that will call the $.update_text_count(cur) function.
+
+Used in the `cart/voucher.template.html` and the `customer/mystore/edit/template.html`
+
 ### $.update_text_count(cur)
+
+Uses the DOM element of param `cur` and stores that elements attribute 'id' in a variable of `id`. Then it will for the DOM element of '#' + id + 'ctr'. 
+
+It will then store that elements attribute 'ref' in a variable `len`. It then places in the amount of characters left available for the field '#' + id + 'ctr'. This value equals variable `len` minus the current value of #' + id + 'ctr'.
+
+
 ### $.validate_email(email)
 
 Validates an email and splits items into an array with the email as first array item and the string after the last '.'.
@@ -522,6 +539,10 @@ Closes any popup boxes that are currently open
 ---
 
 ## COMMON FUNCTIONS 
+
+isEmpty(inputStr)
+
+Almost the exact function from the UTIL function `$.isEmpty(text)`, returns true if inputStr is null or "".
 
 ---
 
