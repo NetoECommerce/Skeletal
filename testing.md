@@ -175,7 +175,30 @@ On init NAddToCartData equals a new Object;
 ### $.addChildCartItem(skuo, qtyo)
 ### $.addCartItem(skuo, qtyo[, fns])
 
-Probably the largest function in the file. Adds and builds the cart.
+Add all the functions params to an object called `msgdata`.
+
+This function is called with the following events:
+
+```
+$(document).on('click', ".addtocart", function() {
+    $.addCartItem('sku' + $(this).attr('rel'), 'qty' + $(this).attr('rel'));
+});
+$(document).on('click', ".delfromcart", function() {
+    $.addCartItem('sku' + $(this).attr('rel'), 'qty' + $(this).attr('rel'));
+});
+```
+
+- param `skuo` = Product SKU
+
+The function takes the rel attribute from the button the user clicked, finds the hidden input field with an id attribute of the same value of param `skuo` and stores it into a variable of `tmpskuo`, and then gives the `msgdata` object a property of 'sku' with the value of var `tmpskuo`.
+
+- param `qtyo` = Quantity of the product the user has selected
+
+Find the hidden input with the name of 'qty' + the rel attribute the user clicked, and then stores this as a property of `msgdata` as 'qty'.
+
+Stores other product specific values in `msgdata` such as model and src path of the thumb view of the products main image.
+
+Calls the `$.do_ajax()` function to 'AddItem'
 
 ### $.addMultipleCartItems(id)
 ### $.removeCartItem(ind, fns)
