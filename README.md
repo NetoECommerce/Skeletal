@@ -22,7 +22,7 @@ As Skeletal is built almost entirely upon Bootstrap 3, the [Bootstrap documentat
 
 If you are not comfortable working with [LESS](http://lesscss.org/), you are best off writing all CSS in your own custom CSS file. As our `.less` files are compiled into `app.css`, avoid modifying `app.css`. Otherwise, if for whatever reason you eventually do need to re-compile the less files, any changes to `app.css` would be lost.
 
-If you are comfortable with Less, you're best off developing in you're own less file and adding it to the imports in ``src/css/app.less``, which needs to be compiled to ``src/css/app.css`` using Gulp. See our [Advanced Workflow documentation](https://www.neto.com.au/designer-documentation/developing-a-website-with-neto/advanced-development-workflow/), which helps you start from Skeletal to build your own theme.
+If you are comfortable with Less, you're best off developing in you're own less file and adding it to the imports in ``src/css/app.less``, which needs to be compiled to ``src/css/app.css`` using Gulp. 
 
 If you are compiling `.less` files for the purpose of contributing to Skeletal, follow these steps:
 
@@ -36,6 +36,12 @@ _Note that steps 1 and 2 only need to be completed once per system, so no need t
 ## Testing
 
 We have a simple testing guide located [here](/testing.md).
+
+## Contribute
+
+To contribute, simply start a branch, make your changes and submit a pull request.
+
+<img src="http://design.neto.com.au/assets/uploads/SPe87qvucH.png" width="500">
 
 ## Support
 
