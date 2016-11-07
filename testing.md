@@ -261,8 +261,28 @@ Compatibility categories can have a dropdown interface, where you select a top-l
 ## ENDLESS SCROLL FUNCTIONS 
 
 ### $.endlessScroll_Init(param)
+
+Sets up all the default values for the 'endlessScrollData' object and then uses `$.soap_default_data(param, defvals)` function to make sure the param `param` is set correctly.
+
+` $.endlessScrollData = param = $.soap_default_data(param, defvals);`
+
+Calls the `$.endlessScroll_updatePaging()` function.
+
+Then has a scroll event on window checking if `($(window).scrollTop() >= $(document).height() - $(window).height() - $.endlessScrollData['bottom_offset'])`
+
+If true it will call the `$.endlessScroll_loadPage()` with the following param which is the page number:
+
+`$.endlessScroll_loadPage(parseInt($.endlessScrollData.current_page) + 1);`
+
 ### $.endlessScroll_loadPage(pgnum)
+
+Creates an empty div and appends classes and content to it.
+
+Does an ajax get request - $.get(url, function(data){}
+
 ### $.endlessScroll_updatePaging()
+
+Replaces content in $.endlessScrollData['page']['replace_pagination_result'] for $.endlessScrollData['total_showing'] and $.endlessScrollData['total_items']. Using the `$.parse_ntemplate()` function.
 
 ---
 
@@ -398,9 +418,11 @@ We do an ajax request, if the request was a success we store the response in a v
 
 If there is not a param `rdata` and it is not an instance of an Object, it will make param `rdata` an empty object. It will then return `$.soap_default_data(rdata, def, vds)`.
 
-### $.soap_default_opt(rdata, def[,vds])
+### $.soap_default_data(rdata, def[,vds])
 
-Formats each instances in param `rdata` to resemble each instances in param `def`
+Formats each instances in param `rdata` to the instances in param `def` if there is no value or if it doesn't meet a set requirement.
+
+The function returns the param `rdata`.
 
 ### $.preload_images(images)
 
@@ -416,7 +438,13 @@ It is an empty function, it will return undefined.
 
 ### $.parse_ntemplate(text, data)
 
-A lot of RegExp and perl I think.
+Returns the param `text` aftr looping through and using regular expression to replace elements from param `text` with elements from param `data`.
+
+new RegExp(pattern[, flags])
+
+g - global match; find all matches rather than stopping after the first match
+i - ignore case
+m - multiline; treat beginning and end characters (^ and $) as working over multiple lines (i.e., match the beginning or end of each line (delimited by \n or \r), not only the very beginning or end of the whole input string)
 
 ### $.escape_reserved(text) 
 
