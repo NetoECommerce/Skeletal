@@ -6,10 +6,12 @@
 				'fns' : {
 					'onLoad' : function () {
 						$('.addtocart').button("loading");
+						$('.variation-select-wrapper').addClass('disable-interactivity')
 					},
 					'onReady' : function () {
 						$('.addtocart').button("reset");
 						$('.zoom').zoom();
+						$('.variation-select-wrapper').removeClass('disable-interactivity')
 					},
 				}
 			});
@@ -57,7 +59,7 @@
 		</div>
 		<div class="col-sm-7">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-			<form autocomplete="off">
+			<form autocomplete="off" class="variation-select-wrapper">
 				[%list_item_variations id:'[@current_sku@]'%]
 					[%param header%]
 					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
