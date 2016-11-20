@@ -4,9 +4,9 @@
 	</a>
 	<div class="carousel-caption">
         <h3>[@headline@]</h3>
-        <p><!--##[%format type:'text' nohtml:'1' trim:'LE2R' wordlength:'27'%][@description@][%END format%]##--></p>
+        <p>[%format type:'text' nohtml:'1' trim:'LE2R' wordlength:'27'%][@description@][%END format%]</p>
     </div>
 </div>
-<!--##[%SITE_VALUE id:'counter'%]##-->
+[%SITE_VALUE id:'counter'%]
 <li data-target="#myCarouselBanner" data-slide-to="[@count@]" [%DATA id:'count' if:'==' value:'0'%]class="active"[%END DATA%]></li>
-<!--##[%END SITE_VALUE%]##-->
+[%END SITE_VALUE%]

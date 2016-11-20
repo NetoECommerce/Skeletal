@@ -1,4 +1,4 @@
-<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
+[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]
 <script type="text/javascript" language="javascript">
 var httpReq ={};
 
@@ -12,19 +12,19 @@ function updloca(oid) {
 	var city = f[oid+'_city'];
 	var state = f[oid+'_state'];
 	var country = f[oid+'_country'];
-	
-	
+
+
 	msg.innerHTML = '<i>Loading...</i>'
 	msg.style.display = '';
 	dis.style.display = 'none';
-	
+
 	if(country.options[country.selectedIndex].value != '[@config:SELECTORCOUNTRY@]') {
 		msg.innerHTML = '<i>Please enter your city and state below.</i>';
 		city.readOnly = state.readOnly = false;
 		city.style.color = state.style.color = '#000000';
 	} else {
 		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
-		
+
 		city.readOnly = state.readOnly = true;
 		city.style.color = state.style.color = '#666666';
 		if( zip.value == '' ) {
@@ -52,10 +52,10 @@ function sub_ldsel(oid,data) {
 	var f = document.itemForm;
 	var dis = document.getElementById('suburb_di'+oid);
 	var msg = document.getElementById('suburb_mg'+oid);
-	
+
 	var city = f[oid+'_city'];
 	var state = f[oid+'_state'];
-	
+
 	var count = 0;
 	if(data.length > 0) {
 		var option = '<option value="">-- Select Suburb --</option>';
@@ -115,13 +115,13 @@ function chaddr() {
 <input type="hidden" name="previous" value="[@previous_action@]">
 <input type="hidden" name="fn" value="shipping">
 <table width="600" border="0" align="center" cellpadding="6px" cellspacing="0" class="checkout_box">
-  <tr> 
+  <tr>
       <td class="checkout_box_header">Purchase Order Number</td>
   </tr>
   <tr>
     <td class="small_text">Buying this for your work or business? Enter your purchase order number below.</td>
   </tr>
-  <tr> 
+  <tr>
     <td nowrap><b>Purchase Order #</b> &nbsp; <input name="customer_po" size="50" maxlength="50" value="[@customer_po@]"></td>
   </tr>
 </table>
@@ -133,16 +133,18 @@ function chaddr() {
   <tr>
     <td>
 <table cellpadding="4" cellspacing="0" border="0">
-          <tr> 
-            
+          <tr>
+
           <td><strong>Choose From Your Address Book</strong></td>
             <td><select type="text" id="ship_address_sel">
                 <option value=""></option>
-<!--##[%address_book%]
-[%PARAM *body%]##-->
-<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
-<!--##[%END PARAM%] 
-[%END address_book%]##--> </select> <input type="button" value="Select" onClick="chaddr()"></td>
+				[%address_book%]
+				[%PARAM *body%]
+					<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
+				[%END PARAM%]
+				[%END address_book%]
+				</select>
+			<input type="button" value="Select" onClick="chaddr()"></td>
           </tr>
         </table>
         <table cellpadding="4" cellspacing="0" border="0">
@@ -155,12 +157,12 @@ function chaddr() {
             <td><input name="ship_last_name" size="50" maxlength="50" value="[@ship_last_name@]"></td>
           </tr>
           <tr>
-            
+
       <td><strong>Company</strong></td>
             <td><input name="ship_company" size="50" maxlength="50" value="[@ship_company@]"></td>
           </tr>
           <tr>
-            
+
       <td><strong>Address</strong></td>
             <td><input name="ship_street1" size="50" maxlength="50" value="[@ship_street1@]"></td>
           </tr>
@@ -169,37 +171,37 @@ function chaddr() {
             <td><input name="ship_street2" size="50" maxlength="50" value="[@ship_street2@]"></td>
           </tr>
           <tr>
-            
+
       <td nowrap><strong>Postal Code</strong></td>
             <td><input name="ship_zip"  value="[@ship_zip@]" size="50" maxlength="10" onChange="updloca('ship')" onKeyUp="updloca('ship')"></td>
           </tr>
           <tr>
-            
+
       <td valign="top"><strong>Suburb Selector</strong></td>
             <td valign="top" nowrap><div id="suburb_diship">&nbsp;</div>
               <div style="display:none;" id="suburb_mgship">&nbsp;</div></td>
           </tr>
           <tr>
-            
+
       <td><strong>City</strong></td>
             <td><input type="text" name="ship_city" readonly="1" style="color:#666666;" value="[@ship_city@]" size="50" maxlength="50"></td>
           </tr>
           <tr>
-            
+
       <td><strong>State</strong></td>
             <td><input type="text" name="ship_state" readonly="1" style="color:#666666;" value="[@ship_state@]" size="50" maxlength="50"></td>
           </tr>
           <tr>
-            
+
       <td><strong>Country</strong></td>
             <td><select name="ship_country" size="1" onChange="updloca('ship')">
-<!--##[%countries%]
-[%PARAM *body%][%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]##--><option value="[@country_code@]" selected>[@country_name@]</option><!--##[%END DATA%][%END PARAM%]
-[%END countries%]##-->
+			[%countries%]
+			[%PARAM *body%][%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]<option value="[@country_code@]" selected>[@country_name@]</option>[%END DATA%][%END PARAM%]
+			[%/ countries%]
               </select></td>
           </tr>
           <tr>
-            
+
       <td><strong>Phone Number</strong></td>
             <td><input name="ship_phone" size="50" maxlength="50" value="[@ship_phone@]"></td>
           </tr>
@@ -208,7 +210,7 @@ function chaddr() {
 </table>
 <div class="spacer"></div>
 <center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
+<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp;
     <input type="image" alt="Continue" src="[@config:imageurl@]/template/cart/continue.gif">
 </center>
 </form>
