@@ -634,14 +634,52 @@ Uses the $.soap_default_data(param, defvals) function to scrub through and place
 Places this object in an object 'nStoreLocatorData['param']'.
 
 ### $.geoGoToLocation(country, address) 
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+
+End result is to use the $.geoSetLocation function.
+
 ### $.geoSearchStores(country, zip, address)
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+
 ### $.geoCleartMarkers()
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+Pulls 'markers' with the $.getStoreLocatorCache function and places it in the variable `markers`.
+
 ### $.geoSetLocation(res, opts)
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+Pulls 'map' with the $.getStoreLocatorCache function and places it in the variable `map`.
+
+
 ### $.geoStartSearch()
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+Pulls 'map' with the $.getStoreLocatorCache function and places it in the variable `map`.
+
 ### $.geoCreateMarker(mkopts, data, ctr)
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+Pulls 'map' with the $.getStoreLocatorCache function and places it in the variable `map`.
+Pulls 'info' with the $.getStoreLocatorCache function and places it in the variable `info`.
+Pulls 'markers' with the $.getStoreLocatorCache function and places it in the variable `markers`.
+
 ### $.geoCustAddMarker(lat, lng, name)
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+Pulls 'map' with the $.getStoreLocatorCache function and places it in the variable `map`.
+Pulls 'markers' with the $.getStoreLocatorCache function and places it in the variable `markers`.
+
 ### $.geoHighLightMarker(id)
+
+Pulls 'param' with the $.getStoreLocatorCache function and places it in the variable `param`.
+
 ### $.geoSelectLocation(ind)
+
+Pulls 'markers' with the $.getStoreLocatorCache function and places it in the variable `markers`.
+
 ### $.getStoreLocatorCache(id)
 
 Returns the param of object `nStoreLocatorData[id]` if found, else returns and empty object.
