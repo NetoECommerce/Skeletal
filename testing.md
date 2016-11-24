@@ -598,6 +598,18 @@ If a product is out of stock Neto lets users automatically be notified when it i
 - Add a Back-in-stock notification from thumbnails and product pages
 
 ### $.addNotifyBackInStock(sku, opts) 
+
+Adds users details to the Notify Back In Stock section in the cpanel. The user fills out a form with their name and email which then has a button that triggers this function:
+
+`<input class="btn btn-success" type="button" data-dismiss="modal" value="Save My Details" onClick="javascript:$.addNotifyBackInStock('[@SKU@]', '');">`
+
+Input Fields:
+
+'full_name': id - 'from_name', 
+'email_address': id - 'from'.
+
+$.do_ajax function to the 'notifyme' api.
+
 ### $.addNotifyContent(content_id, opts)
 
 ---
@@ -609,6 +621,18 @@ Neto has a feature that lets users search through a database of stockists and se
 - Search for a stockist and get a successful result
 
 ### $.storeLocator_Init(param)
+
+Sets up default values in an object called `defvals`. 
+
+'default_lat': -27.000,
+'default_lng': 133.000,
+
+Center of Australia.
+
+Uses the $.soap_default_data(param, defvals) function to scrub through and places all the correct values in.
+
+Places this object in an object 'nStoreLocatorData['param']'.
+
 ### $.geoGoToLocation(country, address) 
 ### $.geoSearchStores(country, zip, address)
 ### $.geoCleartMarkers()
@@ -619,6 +643,10 @@ Neto has a feature that lets users search through a database of stockists and se
 ### $.geoHighLightMarker(id)
 ### $.geoSelectLocation(ind)
 ### $.getStoreLocatorCache(id)
+
+Returns the param of object `nStoreLocatorData[id]` if found, else returns and empty object.
+
+This is used at the start of each Neto.js Store location function expect $.storeLocator_Init, which sets up the object nStoreLocatorData.
 
 ---
  
@@ -641,6 +669,17 @@ Neto let's users add products to a wishlist so they can purchase them at a later
 
 ### $.addToWishList(param)
 ### $.toggleAddNew()
+
+Has an event listener on '#wishlisttoggle', check when it toggles. When this event is called it has a simple if statement which display html inside the '#savemsg' DOM element.
+
+If $('#wishlisttoggle').is(":visible") it will display:
+
+- NWishListData['param']['msg']['ADDWISHLIST']
+
+Else:
+
+- NWishListData['param']['msg']['SAVECHANGES']
+
 ### $.closePopup(sku, newwishlist)
 ### $.btnLdFn(sku)
 
