@@ -83,7 +83,7 @@
 						[%cache type:'menu' id:'header-content-menu'%]
 							[%menu id:'web_header'%]
 								[%param *level_1%]
-									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]" [%if [@next_level@]%]class="dropdown-toggle"[%/if%]>[@name@] [%if [@next_level@]%]<span class="caret"></span>[%/if%]</a>
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%][%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]" [%if [@next_level@]%]class="dropdown-toggle"[%/if%]>[@name@] [%if [@next_level@]%]<span class="caret"></span>[%/if%]</a>
 										[%if [@next_level@]%]
 											<ul class="dropdown-menu">
 												[@next_level@]
@@ -92,7 +92,7 @@
 									</li>
 									[%/param%]
 								[%param *level_2%]
-									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%][%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
 										[%if [@next_level@]%]
 											<ul class="dropdown-menu dropdown-menu-horizontal">
 												[@next_level@]
@@ -101,7 +101,7 @@
 									</li>
 									[%/param%]
 								[%param *level_3%]
-									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%]"> <a href="[@url@]">[@name@]</a>
+									<li class="[%if [@next_level@]%]dropdown dropdown-hover[%/if%][%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]">[@name@]</a>
 										[%if [@next_level@]%]
 											<ul class="dropdown-menu dropdown-menu-horizontal">
 												[@next_level@]
