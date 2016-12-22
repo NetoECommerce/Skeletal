@@ -10,6 +10,9 @@
 					'onReady' : function () {
 						$('.addtocart').button("reset");
 						$('.zoom').zoom();
+						$("#sale-end").countdown({
+							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+						});
 					},
 				}
 			});
