@@ -8202,3 +8202,7 @@ input[readonly] {
 .btn .fa {
   pointer-events: none;
 }
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
