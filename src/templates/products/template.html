@@ -9,7 +9,9 @@
 					},
 					'onReady' : function () {
 						$('.addtocart').button("reset");
-						$('.zoom').zoom();
+						if($(window).innerWidth() > 767){
+							$('.zoom').zoom();
+						}
 						$("#sale-end").countdown({
 							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
 						});
@@ -24,7 +26,9 @@
 	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/zoom/1.4/jquery.zoom-min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.zoom').zoom();
+			if($(window).innerWidth() > 767){
+				$('.zoom').zoom();
+			}
 		});
 	</script>
 	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jcountdown/1.4/jquery.jcountdown.min.js"></script>
