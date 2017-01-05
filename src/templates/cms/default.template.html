@@ -137,6 +137,17 @@
 			</blockquote> <hr />
 		</div>
 	[%/param%]
+	[%param *footer%]
+		<ul class="pagination">
+		    [%paging limit:'3'%]
+			[%param *previous_page%]<li><a href="[@URL@]">Previous Page</a></li>[%/param%]
+			[%param *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+			[%param *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+			[%param *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
+			[%param *next_page%]<li><a href="[@URL@]">Next Page</a></li>[%/param%]
+		    [%/paging%]
+		</ul>
+    	[%/param%]
 [%/thumb_list%]
 <h3>Leave a comment</h3>
 <form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%/URL%]">
