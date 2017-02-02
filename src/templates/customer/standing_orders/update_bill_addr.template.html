@@ -1,30 +1,27 @@
-<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
+[%load_template file:"customer/standing_orders/messages.html"/%]
 <script type="text/javascript" language="javascript">
 var httpReq ={};
-
 function updloca(oid) {
 	var f = document.itemForm;
 	var msg = document.getElementById('suburb_mg'+oid);
 	var dis = document.getElementById('suburb_di'+oid);
 	var sel = document.getElementById('suburb_sl'+oid);
-
 	var zip = f[oid+'_zip'];
 	var city = f[oid+'_city'];
 	var state = f[oid+'_state'];
 	var country = f[oid+'_country'];
-	
-	
+
 	msg.innerHTML = '<i>Loading...</i>'
 	msg.style.display = '';
 	dis.style.display = 'none';
-	
+
 	if(country.options[country.selectedIndex].value != '[@config:SELECTORCOUNTRY@]') {
 		msg.innerHTML = '<i>Please enter your city and state below.</i>';
 		city.readOnly = state.readOnly = false;
 		city.style.color = state.style.color = '#000000';
 	} else {
 		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
-		
+
 		city.readOnly = state.readOnly = true;
 		city.style.color = state.style.color = '#666666';
 		if( zip.value == '' ) {
@@ -52,10 +49,9 @@ function sub_ldsel(oid,data) {
 	var f = document.itemForm;
 	var dis = document.getElementById('suburb_di'+oid);
 	var msg = document.getElementById('suburb_mg'+oid);
-	
 	var city = f[oid+'_city'];
 	var state = f[oid+'_state'];
-	
+
 	var count = 0;
 	if(data.length > 0) {
 		var option = '<option value="">-- Select Suburb --</option>';
@@ -96,62 +92,86 @@ function sub_sel(oid) {
 	}
 }
 </script>
-<form method="post" name="itemForm" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
-<input type="hidden" name="action" value="[@current_action@]">
-<input type="hidden" name="previous" value="[@previous_action@]">
-<input type="hidden" name="fn" value="confirm">
-<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
-    <tr>
-    <td class="checkout_box_header">Please Enter Billing Address For Standing Order #[@storder_id@]</td>
-  </tr> <tr>
-    <td>
-<table cellpadding="4" cellspacing="0" border="0">
-	<tr>
-            <td><strong>First Name</strong></td>
-            <td><input name="bill_first_name" size="50" maxlength="50" value="[@bill_first_name@]"></td></tr>
-	<tr>
-            <td><strong>Last Name</strong></td>
-            <td><input name="bill_last_name" size="50" maxlength="50" value="[@bill_last_name@]"></td></tr>
-	<tr>
-            <td><strong>Company</strong></td>
-            <td><input name="bill_company" size="50" maxlength="50" value="[@bill_company@]"></td></tr>
-	<tr>
-            <td><strong>Address</strong></td>
-            <td><input name="bill_street1" size="50" maxlength="50" value="[@bill_street1@]"></td></tr>
-	<tr><td>&nbsp;</td><td><input name="bill_street2" size="50" maxlength="50" value="[@bill_street2@]"></td></tr>
-	<tr>
-            <td nowrap><strong>Postal Code</strong></td>
-            <td><input name="bill_zip"  value="[@bill_zip@]" size="50" maxlength="10" onChange="updloca('bill')" onKeyUp="updloca('bill')"></td></tr>
-	<tr>
-            <td valign="top"><strong>Suburb Selector</strong></td>
-            <td valign="top" nowrap><div id="suburb_dibill">&nbsp;</div><div style="display:none;" id="suburb_mgbill">&nbsp;</div></td></tr>
-	<tr>
-            <td><strong>City</strong></td>
-            <td><input type="text" name="bill_city" readonly="1" style="color:#666666;" value="[@bill_city@]" size="50" maxlength="50"></td></tr>
-	<tr>
-            <td><strong>State</strong></td>
-            <td><input type="text" name="bill_state" readonly="1" style="color:#666666;" value="[@bill_state@]" size="50" maxlength="50"></td></tr>
-	<tr>
-            <td><strong>Country</strong></td>
-            <td><select name="bill_country" size="1" onChange="updloca('bill')">
-<!--##[%countries%]
-[%PARAM *body%]##--><option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%END DATA%]>[@country_name@]</option><!--##[%END PARAM%]
-[%END countries%]##-->
-						</select></td></tr>
-	<tr>
-            <td><strong>Phone Number</strong></td>
-            <td><input type="text" name="bill_phone" size="50" maxlength="50" value="[@bill_phone@]"></td></tr>
-	<tr><td>&nbsp;</td><td><input name="bill_to_ship" type="checkbox" checked>
-              Use this billing address as my billing address.</td>
-          </tr>
-</table>
-</td>
-  </tr>
-</table>
-<div class="spacer"></div>
-<center>
-<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif"></a> &nbsp; 
-    <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif">
-  </center>
-</form>
-<script language="javascript" type="text/javascript">updloca('bill');</script>
+<div class="col-xs-12">
+	<h1>Please Enter Billing Address For Standing Order #[@storder_id@]</h1>
+	<form method="post" name="itemForm" action="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]">
+		<input type="hidden" name="action" value="[@current_action@]">
+		<input type="hidden" name="previous" value="[@previous_action@]">
+		<input type="hidden" name="fn" value="confirm">
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>First Name</label>
+				<input name="bill_first_name" class="form-control" maxlength="50" value="[@bill_first_name@]">
+			</div>
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Last Name</label>
+				<input name="bill_last_name" class="form-control" maxlength="50" value="[@bill_last_name@]">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Company</label>
+				<input name="bill_company" class="form-control" maxlength="50" value="[@bill_company@]">
+			</div>
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Address</label>
+				<input name="bill_street1" class="form-control" maxlength="50" value="[@bill_street1@]"><br/>
+				<input name="bill_street2" class="form-control" maxlength="50" value="[@bill_street2@]">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Post Code</label>
+				<input name="bill_zip" class="form-control" value="[@bill_zip@]" maxlength="10" onChange="updloca('bill')" onKeyUp="updloca('bill')">
+			</div>
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Suburb Selector</label>
+				<div id="suburb_dibill">&nbsp;</div><div style="display:none;" id="suburb_mgbill">&nbsp;</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>City</label>
+				<input type="text" class="form-control" name="bill_city" readonly="1" style="color:#666666;" value="[@bill_city@]" maxlength="50">
+			</div>
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>State</label>
+				<input type="text" class="form-control" name="bill_state" readonly="1" style="color:#666666;" value="[@bill_state@]" maxlength="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Country</label>
+				<select name="bill_country" class="form-control" size="1" onChange="updloca('bill')">
+					[%countries%]
+						[%param *body%]
+							<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%/data%]>[@country_name@]</option>
+						[%/param%]
+					[%/countries%]
+				</select>
+			</div>
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>Phone Number</label>
+				<input type="text" class="form-control" name="bill_phone" maxlength="50" value="[@bill_phone@]">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-12 col-sm-6">
+				<label>
+					Use this address as my billing address.
+					<input name="bill_to_ship" type="checkbox" checked>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<hr/>
+				<a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'/%]" class="btn btn-lg btn-default">Back</a>
+				<button class="btn btn-lg btn-success" alt="Save Changes">Save Changes</button>
+			</div>
+		</div>
+	</form>
+</div>
+<script language="javascript" type="text/javascript">
+	updloca('bill');
+</script>
