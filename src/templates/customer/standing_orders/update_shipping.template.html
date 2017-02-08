@@ -1,50 +1,50 @@
-<!--##[%load_template file:"customer/standing_orders/messages.html"%][%END load_template%]##-->
-<form method="post" name="SetShipping" action="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]'%][%END URL%]">
-<input type="hidden" name="action" value="[@current_action@]">
-<input type="hidden" name="previous" value="[@previous_action@]">
-<input type="hidden" name="fn" value="confirm">
-<table  class="checkout_box" width="600" border="0" align="center" cellpadding="6px" cellspacing="0">
-	<tr><td class="checkout_box_header">Shipping Options to [@ship_country_name@] Post Code: <i>[@ship_zip@]</i></td></tr>
-	<tr><td>If you have not defined a preferred shipping method, the cheapest shipping method has been chosen as default.</td></tr>
-	<tr><td>
-<!--##[%standing_order_shipping_methods id:'[@storder_id@]'%]
-[%PARAM header%]##-->
-<table width="100%" cellpadding="4" cellspacing="0" border="0" class="item_list"> 
-<!--##[%END PARAM%]
-[%PARAM *body%]##-->
-<tr><td width="12px"><input type="radio" name="ship" value="[@id@]" [%DATA id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%END DATA%]></td>
-	<td><b><!--##[%DATA id:'shipping_quote' if:'=' value:'1'%]
-	[%PARAM if_true%]##-->P.O.A.<!--##[%END PARAM%]
-	[%PARAM if_false%]##-->
-	<!--##[%DATA id:'cost' if:'=' value:'0' %]
-		[%PARAM if_true%]##-->
-<!--##[%DATA id:'na' if:'=' value:'0' %]
-[%PARAM if_true%]##-->FREE<!--##[%END PARAM%]
-[%PARAM if_false%]##-->N/A<!--##[%END PARAM%]
-[%END DATA%]##-->
-		<!--##[%END PARAM%]
-		[%PARAM if_false%]##-->
-			<!--##[%format type:"currency"%]##-->[@cost@]<!--##[%END format%]##-->
-		<!--##[%END PARAM%]
-	[%END DATA%]##-->
-	<!--##[%END PARAM%]
-	[%END DATA%]##--> - [@shipping_method@]</b></td></tr>
-<tr><td>&nbsp;</td><td>[@shipping_description@]&nbsp;</td></tr>
-<!--##[%END PARAM%]
-[%PARAM footer%]##-->
-</table>
-<!--##[%END PARAM%]
-[%PARAM ifempty%]##-->
-Sorry. No Shipping methods are avaliable.
-<input type="hidden" name="ship" value="" />
-<!--##[%END PARAM%]
-[%END standing_order_shipping_methods%]##-->
-	</td></tr>
-</table>
-<div class="spacer"></div>
-<center>
-	<a href="[%URL page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'%][%END URL%]"><img alt="Go Back" src="[@config:imageurl@]/template/cart/back.gif" /></a>&nbsp; 
-    <input type="image" alt="Save Changes" src="[@config:imageurl@]/template/cart/confirm.gif">
-</center>
-</form>
-<!--##[%GA_FUNNEL%]/purchase/shipping.html[%END GA_FUNNEL%]##-->
+[%load_template file:"customer/standing_orders/messages.html"/%]
+<div class="col-xs-12">
+	<h1>Shipping Options</h1>
+	<h3>[@ship_country_name@] Post Code [@ship_zip@]</h3>
+	<p>If you have not defined a preferred shipping method, the cheapest shipping method has been chosen as default.</p><br/>
+	<form method="post" name="SetShipping" action="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'%][%/url%]">
+		<input type="hidden" name="action" value="[@current_action@]">
+		<input type="hidden" name="previous" value="[@previous_action@]">
+		<input type="hidden" name="fn" value="confirm">
+		<div class="row">
+			<div class="col-xs-12">
+				[%standing_order_shipping_methods id:'[@storder_id@]'%]
+					[%param *body%]
+						<div class="form-group">
+							<label>
+								<input type="radio" name="ship" value="[@id@]" [%data id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%/data%]>
+								[%if [@shipping_quote@]%]
+									P.O.A.
+								[%else%]
+									[%if [@cost@]%]
+										[%format type:"currency"%][@cost@][%/format%]
+									[%else%]
+										[%if [@na@]%]
+											N/A
+										[%else%]
+											FREE
+										[%/if%]
+									[%/if%]
+								[%/if%]
+								- [@shipping_method@]. [@shipping_description@]
+							</label>
+						</div>
+					[%/param%]
+					[%param ifempty%]
+						Sorry, no shipping methods are available.
+						<input type="hidden" name="ship" value="" />
+					[%/param%]
+				[%/standing_order_shipping_methods%]
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<hr/>
+				<a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=[@previous_action@]'/%]" class="btn btn-lg btn-default">Back</a>
+				<button class="btn btn-lg btn-success" alt="Save Changes">Save Changes</button>
+			</div>
+		</div>
+	</form>
+</div>
+[%ga_funnel%]/purchase/shipping.html[%/ga_funnel%]
