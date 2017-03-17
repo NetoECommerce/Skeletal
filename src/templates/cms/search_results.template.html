@@ -48,8 +48,10 @@
 		</h1>
 	[%/FILTER%]
 	[%FILTER ID:'keywords' if:'ne' value:' '%]
+		[%set [@cur_home_url@]%][%URL type:'page' id:'home'/%][%/set%]
+		[%set [@search_cat@]%][%if [@cur_home_url@] ne [@url@]%][@id@][%/if%][%/set%]
 		[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
-			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
+			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]' filter_category:'[@search_cat@]'%][%/VIEWBY%][%/PARAM%]
 				[%PARAM *header%]
 					<hr/>
 					<div class="row sort_container">
