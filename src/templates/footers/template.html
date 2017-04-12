@@ -48,28 +48,28 @@
 					<meta itemprop="name" content="[@config:company_name@]"/>
 					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					[%if [@config:facebook_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:website_name@] on Facebook"><i class="fa fa-facebook-square text-facebook"></i><span class="fallback-text">Facebook</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook"><i class="fa fa-facebook-square text-facebook"></i><span class="sr-only">Facebook</span></a></li>
 					[%/if%]
 					[%if [@config:twitter_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank" title="[@config:website_name@] on Twitter"><i class="fa fa-twitter-square text-twitter"></i><span class="fallback-text">Twitter</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank" title="[@config:company_name@] on Twitter"><i class="fa fa-twitter-square text-twitter"></i><span class="sr-only">Twitter</span></a></li>
 					[%/if%]
 					[%if [@config:googleplus_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank" title="[@config:website_name@] on Google Plus"><i class="fa fa-google-plus-square text-google-plus"></i><span class="fallback-text">Google Plus</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank" title="[@config:company_name@] on Google Plus"><i class="fa fa-google-plus-square text-google-plus"></i><span class="sr-only">Google Plus</span></a></li>
 					[%/if%]
 					[%if [@config:youtube_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank" title="[@config:website_name@] on Youtube"><i class="fa fa-youtube-square text-youtube"></i><span class="fallback-text">Youtube</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank" title="[@config:company_name@] on Youtube"><i class="fa fa-youtube-square text-youtube"></i><span class="sr-only">Youtube</span></a></li>
 					[%/if%]
 					[%if [@config:instagram_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank" title="[@config:website_name@] on Instagram"><i class="fa fa-instagram text-instagram"></i><span class="fallback-text">Instagram</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank" title="[@config:company_name@] on Instagram"><i class="fa fa-instagram text-instagram"></i><span class="sr-only">Instagram</span></a></li>
 					[%/if%]
 					[%if [@config:pinterest_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank" title="[@config:website_name@] on Pinterest"><i class="fa fa-pinterest-square text-pinterest"></i><span class="fallback-text">Pinterest</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank" title="[@config:company_name@] on Pinterest"><i class="fa fa-pinterest-square text-pinterest"></i><span class="sr-only">Pinterest</span></a></li>
 					[%/if%]
 					[%if [@config:tumblr_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank" title="[@config:website_name@] on Tumblr"><i class="fa fa-tumblr-square text-tumblr"></i><span class="fallback-text">Tumblr</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank" title="[@config:company_name@] on Tumblr"><i class="fa fa-tumblr-square text-tumblr"></i><span class="sr-only">Tumblr</span></a></li>
 					[%/if%]
 					[%if [@config:linkedin_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank" title="[@config:website_name@] on Linkedin"><i class="fa fa-linkedin-square text-linkedin"></i><span class="fallback-text">Linkedin</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank" title="[@config:company_name@] on Linkedin"><i class="fa fa-linkedin-square text-linkedin"></i><span class="sr-only">Linkedin</span></a></li>
 					[%/if%]
 				</ul>
 			</div>
@@ -90,7 +90,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-americanexpress"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -98,7 +98,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-visa"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -106,7 +106,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-mastercard"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -114,7 +114,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-discover"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -122,7 +122,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-diners"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -130,7 +130,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-cheque"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -138,7 +138,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-moneyorder"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -146,7 +146,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-directdeposit"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -154,7 +154,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-bpay"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
@@ -162,7 +162,7 @@
 							<li>
 								<div class="payment-icon-container">
 									<div class="payment-icon payment-icon-paypal"></div>
-									<span class="fallback-text">[@name@]</span>
+									<span class="sr-only">[@name@]</span>
 								</div>
 							</li>
 						[%/if%]
