@@ -9,11 +9,12 @@
 		var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 	}
 	</script>
-	[%if [@config:allow_quote_approval@]%]
 	<div class="form-actions">
-		<input type="button" class="btn btn-default pull-left" value="Print Quote" onClick="print_quote()"> &nbsp; <a href="[%URL page:'account' type:'approve_quote'%][%END URL%]" class="btn btn-success pull-right"><i class="fa fa-check icon-white"></i> Approve Quote</a>
+		<input type="button" class="btn btn-default pull-left" value="Print Quote" onClick="print_quote()">&nbsp;
+		[%if [@config:allow_quote_approval@]%]
+			<a href="[%URL page:'account' type:'approve_quote'%][%END URL%]" class="btn btn-success pull-right"><i class="fa fa-check icon-white"></i> Approve Quote</a>
+		[%/if%]
 		<div class="clear"></div>
 	</div>
-	[%/if%]
 	[%print_order id:'[@order_id@]'%][%END print_order%]
 </div>
