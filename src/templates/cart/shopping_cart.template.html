@@ -102,8 +102,10 @@
 							[%/if%]
 						</td>
 						<td class="options-column">
-							<input name="line[@count@]" type="hidden" value="[@counter@]" />
-							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
+							[%if [@aff_id@] ne 'free'%]
+								<input name="line[@count@]" type="hidden" value="[@counter@]" />
+								<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
+							[%/if%]
 						</td>
 						<td class="text-right">
 							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
@@ -113,7 +115,9 @@
 							<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
 						</td>
 						<td class="hidden-xs">
-							<a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+							[%if [@aff_id@] ne 'free'%]
+								<a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+							[%/if%]
 						</td>
 					</tr>
 					[%/param%]
