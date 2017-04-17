@@ -55,10 +55,10 @@
 		[%/param%]
 	[%/breadcrumb%]
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-xs-12 col-sm-5">
 			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 		</div>
-		<div class="col-sm-7">
+		<div class="col-xs-12 col-sm-7">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			<form autocomplete="off">
 				[%list_item_variations id:'[@current_sku@]'%]
