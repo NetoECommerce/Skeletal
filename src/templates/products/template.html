@@ -12,6 +12,9 @@
 						$('.addtocart').button("reset");
 						$('.zoom').zoom();
 						$('.variation-select-wrapper').removeClass('disable-interactivity');
+						$("#sale-end").countdown({
+							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+						});
 					},
 				}
 			});
@@ -54,10 +57,10 @@
 		[%/param%]
 	[%/breadcrumb%]
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-xs-12 col-sm-5">
 			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 		</div>
-		<div class="col-sm-7">
+		<div class="col-xs-12 col-sm-7">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			<form autocomplete="off" class="variation-select-wrapper">
 				[%list_item_variations id:'[@current_sku@]'%]

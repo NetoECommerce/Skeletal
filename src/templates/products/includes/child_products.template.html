@@ -1,4 +1,4 @@
-<!--##[%DISPLAY_CHILD_PRODUCTS id:'[@SKU@]'%]
+<!--##[%DISPLAY_CHILD_PRODUCTS id:'[@SKU@]' sortby:'sortorder,name'%]
 	[%PARAM *header%]##-->
         <hr />
 		<h4>Buying Options</h4>
@@ -48,7 +48,7 @@
 							<!--##[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]##-->
 							<span class="label label-warning">Back Order</span>
 							<!--##[%ELSE%]##-->
-							<span class="label label-important">Sold Out</span>
+							<span class="label label-danger">Sold Out</span>
 							<!--##[%END IF%]##-->
 						</td>
 					</tr>

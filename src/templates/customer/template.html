@@ -86,12 +86,18 @@
 			</a>
 			<br>
 		</div>
-		<div class="hidden col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
-			<p><i class="fa fa-refresh"></i> My Standing Orders</p>
-			<p class="text-muted small">View or edit your recurring orders.</p>
-			</a>
-			<br>
-		</div>
+		[%thumb_list type:'standing_orders' limit:'1'%]
+			[%param filter_1%][%form id:'ord'/%][%/param%]
+			[%param filter_2%][%form id:'sts'/%][%/param%]
+			[%param *body%]
+				<div class="col-xs-12 col-md-4"> <a class="btn btn-default btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
+					<p><i class="fa fa-refresh"></i> My Standing Orders</p>
+					<p class="text-muted small">View or edit your recurring orders.</p>
+					</a>
+					<br>
+				</div>
+			[%/param%]
+		[%/thumb_list%]
 		<div class="col-xs-12 col-md-4">
 		<a class="btn btn-default btn-lg btn-block" href="[%url page:'account'/%]#quotes">
 			<p><i class="fa fa-folder-o"></i> My Quotes </p>
@@ -317,74 +323,6 @@
 			<p>No quotes have been placed on this account. </p>
 		[%/param%]
 		[%param *footer%]
-		[%/param%]
-	[%/thumb_list%]
-</div>
-<div class="col-xs-12 hidden">
-	<h3>My Standing Orders</h3>
-	[%thumb_list type:'standing_orders' limit:'10'%]
-		[%param pgnum%][%FORM id:'pgstorder'/%][%/param%]
-		[%param filter_1%][%FORM id:'ord'/%][%/param%]
-		[%param filter_2%][%FORM id:'sts'/%][%/param%]
-		[%param header%]
-			<p>The following standing order(s) will be sent to you periodically as per our agreement with you. The next delivery date for each standing order is shown below. You can stop a standing order, have a standing order sent early or edit a standing order below.</p>
-			<table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th valign="top">Order ID</th>
-						<th valign="top">Status</th>
-						<th valign="top">Date Placed</th>
-						<th valign="top">Next Delivery Date</th>
-						<th valign="top">Order Value</th>
-						<th valign="top">&nbsp;</th>
-						<th valign="top">&nbsp;</th>
-					</tr>
-				</thead>
-				<tbody>
-		[%/param%]
-		[%param *body%]
-					<tr>
-						<td><a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]">[@storder_id@]</a></td>
-						<td>
-							[@order_status@]<br />
-							[%if [@request_to_stop@]%]<span class="text-danger">Requesting To Stop</span>[%/if%]
-						</td>
-						<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</td>
-						<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_next@][%/format%]</td>
-						<td>[%format type:"currency"%][@grand_total@][%/format%]</td>
-						<td><a class="btn" href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=update_items'/%]">Edit Order</a></td>
-						<td><a class="btn btn-success" href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]' qs:'action=send_order'/%]">Send Order Now</a></td>
-					</tr>
-		[%/param%]
-		[%param *footer%]
-				</tbody>
-			</table>
-			[%if [@total_results@] > 15%]
-				<div class="text-center">
-					<ul class="pagination">
-						[%paging limit:'3'%]
-							[%param *previous_page%]
-								<li><a href="[@url@]">Previous Page</a></li>
-							[%/param%]
-							[%param *goback_pages%]
-								<li><a href="[@url@]">[@page@]</a></li>
-							[%/param%]
-							[%param *current_page%]
-								<li class="active"><a href="[@url@]">[@page@]</a></li>
-							[%/param%]
-							[%param *gonext_pages%]
-								<li><a href="[@url@]">[@page@]</a></li>
-							[%/param%]
-							[%param *next_page%]
-								<li><a href="[@url@]">Next Page</a></li>
-							[%/param%]
-						[%/paging%]
-					</ul>
-				</div>
-			[%/if%]
-		[%/param%]
-		[%param ifempty%]
-			<p>No standing / recurring orders have been placed on this account. </p>
 		[%/param%]
 	[%/thumb_list%]
 </div>

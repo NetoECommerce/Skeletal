@@ -270,7 +270,8 @@ fieldset[disabled] .btn-info.active {
 	color: #cccccc /*{breadcrumb-text-colour}*/;
 }
 
-.breadcrumb > .active {
+.breadcrumb > .active,
+.breadcrumb a {
 	color: #999999 /*{breadcrumb-active-link-colour}*/;
 }
 
