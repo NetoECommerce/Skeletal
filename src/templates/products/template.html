@@ -11,7 +11,7 @@
 						$('.addtocart').button("reset");
 						$('.zoom').zoom();
 						$("#sale-end").countdown({
-							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+							date: convertToLocalCountdown(new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%]now[%/format%]), new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%][@promo_end@][%/format%]))
 						});
 					},
 				}
