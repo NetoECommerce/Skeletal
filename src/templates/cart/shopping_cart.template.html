@@ -103,7 +103,7 @@
 						</td>
 						<td class="options-column">
 							<input name="line[@count@]" type="hidden" value="[@counter@]" />
-							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" />
+							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%]/>
 						</td>
 						<td class="text-right">
 							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
