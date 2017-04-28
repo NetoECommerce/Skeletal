@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="R.header.lang">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
@@ -51,7 +51,7 @@
 		<div class="hidden-xs col-sm-4 text-right">
 			<div id="header-cart" class="btn-group">
 				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">R.header.shopping_cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> R.header.items
 				</a>
 				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -69,13 +69,13 @@
 				<div class="navbar-header">
 					<ul class="navigation-list list-inline visible-xs nMobileNav">
 						<li><a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse"><span class="icon"><i class="fa fa-bars"></i></span><br>
-						Menu</a></li>
+						R.header.menu</a></li>
 						<li><a href="/products"><span class="icon"><i class="fa fa-gift"></i></span><br>
-						Shop</a></li>
+						R.header.shop</a></li>
 						<li><a href="[%url page:'checkout' type:'cart'/%]"><span class="icon"><i class="fa fa-shopping-cart"></i></span><br>
-						Cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)</a></li>
+						R.header.cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)</a></li>
 						<li><a href="/_myacct/"><span class="icon"><i class="fa fa-user"></i></span><br>
-						Account</a></li>
+						R.header.account</a></li>
 					</ul>
 				</div>
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
@@ -113,28 +113,28 @@
 						[%/ cache%]
 					</ul>
 					<ul class="nav navbar-nav navbar-right hidden-xs">
-						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
+						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">R.header.my_account</span> <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
-								<li><a href="[%url page:'account'/%]">Account Home</a></li>
-								<li><a href="[%url page:'account'/%]#orders">Orders</a></li>
+								<li><a href="[%url page:'account'/%]">R.header.account_home</a></li>
+								<li><a href="[%url page:'account'/%]#orders">R.header.orders</a></li>
 								[%if [@config:allow_user_quote@]%]
-								<li><a href="[%url page:'account'/%]#quotes">Quotes</a></li>
+								<li><a href="[%url page:'account'/%]#quotes">R.header.quotes</a></li>
 								[%/ if%]
-								<li><a href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
-								<li><a href="[%url page:'account' type:'favourites'/%]">Favourites</a></li>
+								<li><a href="[%url page:'account' type:'payrec'/%]">R.header.pay_invoices</a></li>
+								<li><a href="[%url page:'account' type:'favourites'/%]">R.header.favourites</a></li>
 								[%if [@config:show_wishlist@]%]
-								<li><a href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
+								<li><a href="[%url page:'account' type:'wishlist'/%]">R.header.wishlists</a></li>
 								[%/if%]
-								<li><a href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
-								<li><a href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
-								<li><a href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
+								<li><a href="[%url page:'account' type:'warranty'/%]">R.header.resolution_centre</a></li>
+								<li><a href="[%url page:'account' type:'edit_account'/%]">R.header.edit_my_details</a></li>
+								<li><a href="[%url page:'account' type:'edit_address'/%]">R.header.edit_my_address_book</a></li>
 								<li class="divider"></li>
 								[%if [@user:username@]%]
-									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
-									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log Out</a> </li>
+									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> R.header.change_my_password</a> </li>
+									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> R.header.log_out</a> </li>
 								[%else%]
-									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
-									<li> <a href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
+									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">R.header.login</a> </li>
+									<li> <a href="[%url page:'account' type:'register'/%]" title="Register">R.header.register</a> </li>
 								[%/if%]
 							</ul>
 						</li>

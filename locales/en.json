@@ -1,0 +1,25 @@
+{
+	"header": {
+		"lang": "en",
+		"shopping_cart": "Shopping cart",
+		"items": "items",
+		"menu": "Menu",
+		"shop": "Shop",
+		"cart": "Cart",
+		"account": "Account",
+		"my_account": "My Account",
+		"account_home": "Account Home",
+		"orders": "Orders",
+		"quotes": "Quotes",
+		"pay_invoices": "Pay Invoices",
+		"favourites": "Favourites",
+		"wishlists": "Wishlists",
+		"resolution_centre": "Resolution Centre",
+		"edit_my_details": "Edit My Details",
+		"edit_my_address_book": "Edit My Address Book",
+		"change_my_password": "Change My Password",
+		"log_out": "Log Out",
+		"login": "Login",
+		"register": "Register"
+	}
+}

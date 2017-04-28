@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var path = require('path');
 var fs = require('fs');
+var international = require('gulp-international');
 
 gulp.task('less', function () {
 	fs.stat('./src/css/app.less', function(err, stat) {
@@ -14,6 +15,14 @@ gulp.task('less', function () {
 		paths: [ path.join(__dirname, 'less', 'includes') ]
 	}))
 	.pipe(gulp.dest('./src/css/'));
+});
+
+gulp.task('translate', function () {
+	return gulp.src('src/**/*.html')
+		.pipe(international({
+			filename: '${lang}/${path}/${name}.${ext}'
+		}))
+		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('default', function () {
