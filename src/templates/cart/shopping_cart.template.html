@@ -113,7 +113,18 @@
 							<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
 						</td>
 						<td class="hidden-xs">
-							<a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+							[%if [@aff_ref@] ne '' and [@aff_id@] eq 'free'%]
+								[%set [@rel_disc_code@]%][%split data1:[@aff_ref@] delimter:'*'%][%param *body%][%if [@count@] > 0%][@data1@][%/if%][%/param%][%/split%][%/set%]
+								[%active_coupons%]
+									[%param *body%]
+										[%if [@discount_id@] eq [@rel_disc_code@]%]
+											<a class="btn btn-block btn-danger" href="[%url page:'checkout' qs:'rmcpn=[@code@]'/%]"><i class="fa fa-trash-o"></i></a>
+										[%/if%]
+									[%/param%]
+								[%/active_coupons%]
+							[%else%]
+								<a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+							[%/if%]
 						</td>
 					</tr>
 					[%/param%]
