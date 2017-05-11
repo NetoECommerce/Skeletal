@@ -140,6 +140,7 @@
 		<div class="col-xs-12">
 			<hr>
 		</div>
+		[%if [@config:show_shipping_calc@]%]
 		<div class="col-xs-12 col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -166,6 +167,7 @@
 				</div>
 			</div>
 		</div>
+		[%/if%]
 		<div class="col-xs-12 col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -182,7 +184,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-6">
+		<div class="col-xs-12 [%if [@config:show_shipping_calc@]%]col-md-6[%else%]col-md-9[%/if%]">
 			<table class="table">
 				<tr>
 					<td>Sub Total</td>
