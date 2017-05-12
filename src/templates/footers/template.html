@@ -86,6 +86,13 @@
 						<ul class="list-inline">
 					[%/param%]
 					[%param *body%]
+					    [%if [@name@] like 'Afterpay' || [@name@] like 'After pay'%]
+						    <li>
+							    <div class="payment-icon-container">
+								<div class="payment-icon" style="background-image: url(https://cdn.neto.com.au/assets/neto-cdn/payment-icons/1.0.0/afterpay-payovertime.svg); height: 30px;"></div>
+							    </div>
+						    </li>					    
+					    [%/if%]							
 						[%if [@name@] like 'American Express'%]
 							<li>
 								<div class="payment-icon-container">
