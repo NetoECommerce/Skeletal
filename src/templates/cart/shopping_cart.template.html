@@ -295,7 +295,9 @@
 				</div>
 			</div>
 		</form>
+		[%if [@form:disable-scripts@] ne 'true'%]
 		[%tracking_code type:'CartCTA' /%]
+		[%/if%]
 	</div>
 			[%/param%]
 			[%/cart_items%]
