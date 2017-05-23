@@ -8207,3 +8207,6 @@ input[readonly] {
 .btn .fa {
   pointer-events: none;
 }
+.nactivity {
+  display: none;
+}
