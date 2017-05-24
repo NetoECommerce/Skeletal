@@ -197,11 +197,16 @@
 						<hr>
 						<div class="account-order-card">
 							<p>Date Placed <strong>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</strong></p>
-							[%if [@order_status@] ne 'Cancelled'%]<p>Date Due <strong>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</strong></p>[%/if%]
-							<p>
-								Amount Owed <strong>[%format type:"currency"%][@amount_owed@][%/format%]</strong>
-								[%if [@amount_owed@] <= 0%]<span class="label label-success">Paid in Full</span>[%/if%]
-							</p>
+							[%if [@order_status@] ne 'Cancelled'%]
+								<p>Date Due <strong>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</strong></p>
+								[%if [@amount_owed@] <= 0%]
+									<p><span class="label label-success">Paid in Full</span></p>
+								[%else%]
+									<p>Amount Owed <strong>[%format type:"currency"%][@amount_owed@][%/format%]</strong></p>
+								[%/if%]
+							[%else%]
+								<p>Amount Owed <strong>Order Cancelled</strong>
+							[%/if%]
 						</div>
 						<div class="row btn-stack">
 							<div class="col-xs-12 col-md-4">
