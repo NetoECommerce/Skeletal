@@ -173,6 +173,20 @@
 								</div>
 							</li>
 						[%/if%]
+						[%if [@name@] like 'Q Card' OR [@name@] like 'QCard'%]
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-q-card"></div>
+								</div>
+							</li>
+						[%/if%]
+						[%if [@name@] like 'Paymark Online Eftpos' OR [@name@] like 'Paymark'%]
+							<li>
+								<div class="payment-icon-container">
+									<div class="payment-icon payment-icon-paymark"></div>
+								</div>
+							</li>
+						[%/if%]
 					[%/param%]
 					[%param *footer%]
 						</ul>
