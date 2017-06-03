@@ -7610,6 +7610,7 @@ ul.imagelist li .imagethumb {
 .payment-icon {
   width: 60px;
   background-image: url('//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg');
+  background-image: url('/assets/themes/skeletal-ID-1321/img/paymenticons.svg');
   background-size: 60px;
 }
 .payment-icon-paypal {
@@ -7654,18 +7655,28 @@ ul.imagelist li .imagethumb {
 }
 .payment-icon-diners {
   margin-top: 7px;
-  height: 15px;
-  background-position: 0px -196px;
+  height: 17px;
+  background-position: 0px -197px;
 }
 .payment-icon-discover {
   margin-top: 10px;
   height: 10px;
-  background-position: 0px -186px;
+  background-position: 0px -187px;
 }
 .payment-icon-afterpay {
   margin-top: 10px;
   height: 13px;
   background-position: 0px -213px;
+}
+.payment-icon-q-card {
+  margin-top: 0px;
+  height: 35px;
+  background-position: 0px -244px;
+}
+.payment-icon-paymark {
+  margin-top: 7px;
+  height: 18px;
+  background-position: 0px -226px;
 }
 .savings-container {
   position: absolute;
