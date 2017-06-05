@@ -108,7 +108,7 @@ ship-to addresses. You can then choose your appropriate address for each order y
 <div class="form-group">
 <label for="ship_zip">Zip Code / Postal Code</label>
 <span class="small text-danger">Required</span>
-<input class="form-control" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" size="50" maxlength="10" onChange="updloca('ship')" onKeyUp="updloca('ship')">
+<input class="form-control" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" size="50" maxlength="10" onChange="clearSubState('itemForm','ship');updloca('ship')" onKeyUp="clearSubState('itemForm','ship');updloca('ship')">
 </div>
 
 </div>
@@ -201,6 +201,15 @@ var httpReq ={};
 
 function onload(){
 	checkDeleteButton();
+}
+
+function clearSubState(fid, oid) {
+	var f = document[fid];
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	
+	city.value="";
+	state.value="";
 }
 
 function updloca(oid) {
