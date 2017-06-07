@@ -1,9 +1,9 @@
 <div itemscope itemtype="http://schema.org/Product" class="row">
 	<meta itemprop="brand" content="[@brand@]"/>
 	<div class="wrapper-product-title col-sm-8">
-		<h1 itemprop="name">[@name@]</h1>
+		<h1 itemprop="name" aria-label="Product Name">[@name@]</h1>
 		[%if [@subtitle@]%]
-			<h3 class="text-muted">[@subtitle@]</h3>
+			<h3 class="text-muted" aria-label="Product Subtitle">[@subtitle@]</h3>
 		[%/if%]
 		[%if [@reviews@] > 0%]
 			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
@@ -20,18 +20,18 @@
 			</span>
 		[%/if%]
 		<div class="dropdown">
-			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				Share: <i class="fa fa-facebook-square text-facebook"></i>
-				<i class="fa fa-twitter-square text-twitter"></i>
-				<i class="fa fa-pinterest-square text-pinterest"></i>
-				<i class="fa fa-google-plus-square text-google-plus"></i>
+			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-expanded="true">
+				Share: <i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i>
+				<i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i>
+				<i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i>
+				<i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i>
 				<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu[@sku@]">
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i> Facebook</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i> Twitter</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i> Google+</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,31 +39,31 @@
 		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing col-sm-4">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			[%if ![@inpromo@]%]
-				<div class="productprice productpricetext" itemprop="price" content="[@store_price@]">
+				<div class="productprice productpricetext" itemprop="price" content="[@store_price@]" aria-label="Store Price">
 					[%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productrrp text-muted">
+					<div class="productrrp text-muted" aria-label="RRP Price">
 						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
-					<div class="productsave">
+					<div class="productsave" aria-label="Save Price">
 						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
 			[%else%]
-				<div class="productwasprice">
+				<div class="productwasprice" aria-label="Was price">
 					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productrrp muted">
+					<div class="productrrp muted" aria-label="RRP Price">
 						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 				[%/if%]
-				<div class="productpromo" itemprop="price" content="[@promo_price@]">
+				<div class="productpromo" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
 					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productsave">
+					<div class="productsave" aria-label="Save Price">
 						SAVE [%format type:'percent'%][@save@][%/format%]!
 					</div>
 				[%/if%]

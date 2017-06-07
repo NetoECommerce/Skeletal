@@ -2,7 +2,7 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%PARAM *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 			</li>
@@ -32,7 +32,7 @@
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
 		[%param *header%]
-			<div id="homepageCarousel" class="carousel slide" role="banner">
+			<section id="homepageCarousel" class="carousel slide" aria-label="Banner Images">
 				[%if [@total_showing@] > 1%]
 					<ol class="carousel-indicators">
 						[%site_value id:'counter' type:'load'/%]
@@ -50,7 +50,7 @@
 						<span class="fa fa-chevron-right"></span>
 					</a>
 				[%/if%]
-			</div>
+			</section>
 			<hr>
 		[%/param%]
 		[%param *ifempty%]
@@ -58,24 +58,24 @@
 	[%/advert%]
 	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
 		[%param *header%]
-			<div class="row">
+			<section class="row" aria-label="Featured Products">
 		[%/param%]
 		[%param footer%]
-			</div>
+			</section>
 			<hr>
 		[%/param%]
 	[%/advert%]
 	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
-		<div class="n-responsive-content">
+		<section class="n-responsive-content" aria-label="Short Description">
 			[@content_short_description1@]
 			[@content_short_description2@]
 			[@content_short_description3@]
-		</div>
-		<div class="n-responsive-content">
+		</section>
+		<section class="n-responsive-content" aria-label="Description">
 			[@content_description1@]
 			[@content_description2@]
 			[@content_description3@]
-		</div>
+		</section>
 		<hr>
 	[%/if%]
 [%/if%]
@@ -143,10 +143,10 @@
 		</div>
 	</div>
 	<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
-		<div class="row">
+		<section class="row" aria-label="Products In Category">
 		[%/PARAM%]
 		[%PARAM *footer%]
-		</div>
+		</section>
 	</div>
 	[%IF [@total_results@] > [@config:thumb_limit@]%]
 		<div class="row">
