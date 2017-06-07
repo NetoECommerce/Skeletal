@@ -1,5 +1,5 @@
 [%CACHE type:'gallery' id:'[@inventory_id@]'%]
-<div class="wrapper-thumbnail col-xs-8 col-sm-6 col-md-4 col-lg-3">
+<article class="wrapper-thumbnail col-xs-8 col-sm-6 col-md-4 col-lg-3" role="article">
 	<div class="thumbnail" itemscope itemtype="http://schema.org/Product">
 		<meta itemprop="brand" content="[@brand@]"/>
 		<a href="[@URL@]" class="thumbnail-image">
@@ -7,7 +7,7 @@
 		</a>
 		<div class="caption">
 			<h3 itemprop="name"><a href="[@URL@]" title="[@model@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</a></h3>
-			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" title="[@model@] price">
 				[%if [@inpromo@]%]
 					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
 					<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
@@ -52,5 +52,5 @@
 			[%/if%]
 		</div>
 	</div>
-</div>
+</article>
 [%/CACHE%]

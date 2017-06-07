@@ -29,7 +29,7 @@
 
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
-<div class="container wrapper-header">
+<header class="container wrapper-header">
 	<div class="row row-padded">
 		<div class="col-xs-12 col-sm-4 wrapper-logo">
 			<a href="[@config:homeurl@]" title="[@config:company_name@]">
@@ -38,7 +38,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<div class="header-search">
-				<form name="productsearch" method="get" action="/">
+				<form name="productsearch" method="get" action="/" role="search">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
 						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input Search"/>
@@ -66,7 +66,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default" role="navigation">
 				<div class="navbar-header">
 					<ul class="navigation-list list-inline visible-xs nMobileNav">
 						<li><a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse"><span class="icon"><i class="fa fa-bars"></i></span><br>
@@ -144,6 +144,6 @@
 			</nav>
 		</div>
 	</div>
-</div>
+</header>
 <div id="main-content" class="container" role="main">
 	<div class="row">
