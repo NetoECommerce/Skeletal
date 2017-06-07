@@ -1,6 +1,6 @@
 	</div>
 </div>
-<div class="wrapper-footer">
+<footer class="wrapper-footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -14,13 +14,13 @@
 						[%param *level_1%]
 							<div class="col-xs-12 col-sm-4">
 								<h4>[@name@]</h4>
-								<ul class="nav nav-pills nav-stacked">
+								<ul class="nav nav-pills nav-stacked" role="navigation">
 									[@next_level@]
 								</ul>
 							</div>
 						[%/param%]
 						[%param *level_2%]
-							<li><a href="[@url@]">[@name@]</a></li>
+							<li><a href="[@url@]" role="link">[@name@]</a></li>
 						[%/param%]
 					[%/menu%]
 				</div>
@@ -29,11 +29,11 @@
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
 					<p>Subscribe to our newsletter:</p>
-					<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]">
+					<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]" role="form">
 						<input type="hidden" name="list_id" value="1">
 						<input type="hidden" name="opt_in" value="y">
-						<div class="input-group">
-							<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required/>
+						<div class="input-group" role="group">
+							<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required aria-label="Email Address"/>
 							<input name="inp-submit" type="hidden" value="y" />
 							<input name="inp-opt_in" type="hidden" value="y" />
 							<span class="input-group-btn">
@@ -46,7 +46,7 @@
 					<meta itemprop="url" content="[@config:home_url@]"/>
 					<meta itemprop="logo" content="[@config:home_url@][@config:imageurl@]/website_logo.png"/>
 					<meta itemprop="name" content="[@config:company_name@]"/>
-					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank"><i class="fa fa-envelope"></i></a></li>
+					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank" title="Email us"><i class="fa fa-envelope"></i></a></li>
 					[%if [@config:facebook_account_id@]%]
 					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook"><i class="fa fa-facebook-square text-facebook"></i><span class="sr-only">Facebook</span></a></li>
 					[%/if%]
@@ -89,101 +89,117 @@
 						[%if [@name@] like 'American Express'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-americanexpress"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-americanexpress">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Visa'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-visa"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-visa">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'MasterCard' OR [@name@] like 'Master Card'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-mastercard"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-mastercard">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Discover'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-discover"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-discover">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Diners'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-diners"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-diners">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Cheque'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-cheque"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-cheque">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Money Order'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-moneyorder"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-moneyorder">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Direct Deposit' || [@name@] like 'Bank Deposit'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-directdeposit"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-directdeposit">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'bpay'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-bpay"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-bpay">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'paypal'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-paypal"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-paypal">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'afterpay'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-afterpay"></div>
+									<div class="payment-icon payment-icon-afterpay">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Q Card' OR [@name@] like 'QCard'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-q-card"></div>
+									<div class="payment-icon payment-icon-q-card">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
 						[%if [@name@] like 'Paymark Online Eftpos' OR [@name@] like 'Paymark'%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-paymark"></div>
+									<div class="payment-icon payment-icon-paymark">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 						[%/if%]
@@ -203,7 +219,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</footer>
 <!-- Required Neto Scripts - DO NOT REMOVE -->
 [%cdn_asset html:'1' type:'js' library:'jquery' version:'1.11.3'%]jquery.min.js[%/cdn_asset%]
 [%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]

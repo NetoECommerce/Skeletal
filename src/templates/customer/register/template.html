@@ -22,14 +22,14 @@
 					<div class="row">
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group ">
-								<label>My E-mail Address is</label>
+								<label for="username">My E-mail Address is</label>
 								<input type="text" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com">
 								<p class="help-block hidden"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%END URL%]">Click Here</a></p>
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>My Password is</label>
+								<label for="password">My Password is</label>
 								<input type="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off">
 								<p class="help-block"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%END URL%]">Click Here</a></p>
 							</div>
@@ -51,28 +51,28 @@
 
 						<div class="hidden col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>Username </label>
+								<label for="reg_username">Username </label>
 								<span class="text-danger small">Required</span>
 								<input class="form-control" type="text" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%END format%][%random_number length:'6'%][%end random_number%]" size="25" maxlength="20">
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
-								<label>E-mail Address</label>
+								<label for="reg_email">E-mail Address</label>
 								<span class="text-danger small">Required</span>
 								<input class="form-control" type="email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]" size="25">
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>Password</label>
+								<label for="reg_password">Password</label>
 								<span class="text-danger small">Required</span>
 								<input class="form-control" type="password" name="reg_password" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off">
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>Confirm Password</label>
+								<label for="reg_password2">Confirm Password</label>
 								<span class="text-danger small">Required</span>
 								<input class="form-control" type="password" name="reg_password2" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off">
 							</div>
@@ -84,7 +84,7 @@
 					[%PARAM *integer_option%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
 							</div>
 						</div>
@@ -92,7 +92,7 @@
 					[%PARAM *text_option%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
 							</div>
 						</div>
@@ -100,7 +100,7 @@
 					[%PARAM *short_text_option%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]">
 							</div>
 						</div>
@@ -108,7 +108,7 @@
 					[%PARAM *descimal_option%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<input type="text" class="form-control" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]">
 							</div>
 						</div>
@@ -116,7 +116,7 @@
 					[%PARAM *boolean_option%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<input type="checkbox" class="form-control" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%]>
 							</div>
 						</div>
@@ -124,7 +124,7 @@
 					[%PARAM *date_option%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<input class="datepicker" class="form-control" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]">
 							</div>
 						</div>
@@ -132,7 +132,7 @@
 					[%PARAM *selection_header%]##-->
 						<div class="col-xs-12 col-md-6">
 							<div class="form-group">
-								<label>[@field_name@]</label>
+								<label for="[@field_name@]">[@field_name@]</label>
 								<select name="[@field_id@]" class="form-control" >
 
 									<!--##[%END PARAM%]

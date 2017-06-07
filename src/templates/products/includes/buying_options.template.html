@@ -104,7 +104,7 @@
 		<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
 		<div class="row btn-stack">
 			<div class="col-xs-12 col-md-4">
-				<input type="number" min="[@min_qty@]" class="form-control qty input-lg" id="qty[@rndm@][@SKU@]" name="qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
+				<input type="number" min="[@min_qty@]" class="form-control qty input-lg" id="qty[@rndm@][@SKU@]" name="qty" aria-label="qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
 			</div>
 			<div class="col-xs-12 col-md-4">
 				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
@@ -142,10 +142,10 @@
 		<div class="panel-body">
 			<div class="row btn-stack">
 				<div class="col-xs-12 col-md-3">
-					<input type="number" name="input" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty">
+					<input type="number" name="input" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty" aria-label="qty">
 				</div>
 				<div class="col-xs-12 col-md-3">
-					<select id="country" class="form-control">
+					<select id="country" class="form-control" aria-label="Country">
 						[%countries%]
 							[%PARAM *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
@@ -154,7 +154,7 @@
 					</select>
 				</div>
 				<div class="col-xs-12 col-md-3">
-					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code">
+					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post Code">
 				</div>
 				<div class="col-xs-12 col-md-3">
 					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh"></i> Calculate</button>
