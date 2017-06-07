@@ -54,11 +54,11 @@
 			</ul>
 		[%/param%]
 	[%/breadcrumb%]
-	<section class="row" role="contentinfo" aria-label="Products Information">
-		<section class="col-xs-12 col-sm-5" role="group" aria-label="Product Images">
+	<div class="row">
+		<section class="col-xs-12 col-sm-5" role="contentinfo" aria-label="Product Images">
 			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 		</section>
-		<div class="col-xs-12 col-sm-7">
+		<section class="col-xs-12 col-sm-7" role="contentinfo" aria-label="Products Information">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			<form autocomplete="off">
 				[%list_item_variations id:'[@current_sku@]'%]
@@ -147,8 +147,8 @@
 				<h2>Customise Your Purchase</h2>
 				[%load_template file:"products/includes/components.template.html"/%]
 			[%/if%]
-		</div>
-	</section>
+		</section>
+	</div>
 	<div class="row">
 		<div class="col-xs-12">
 			[%discount_products id:'[@SKU@]' template:'' show_all:'1' limit:'100'%]
