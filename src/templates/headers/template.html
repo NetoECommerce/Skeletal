@@ -28,21 +28,22 @@
 </head>
 
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
-<div class="container wrapper-header">
+<a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
+<header class="container wrapper-header" aria-label="Header Container">
 	<div class="row row-padded">
 		<div class="col-xs-12 col-sm-4 wrapper-logo">
 			<a href="[@config:homeurl@]" title="[@config:company_name@]">
-				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@]"/>
+				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] Logo"/>
 			</a>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<div class="header-search">
-				<form name="productsearch" method="get" action="/">
+				<form name="productsearch" method="get" action="/" role="search" aria-label="Product Search">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
-						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="text"/>
+						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input Search"/>
 						<span class="input-group-btn">
-							<button type="submit" value="Search" class="btn btn-default"><i class="fa fa-search"></i></button>
+							<button type="submit" value="Search" class="btn btn-default" aria-label="Search Site"><i class="fa fa-search"></i></button>
 						</span>
 					</div>
 				</form>
@@ -51,9 +52,9 @@
 		<div class="hidden-xs col-sm-4 text-right">
 			<div id="header-cart" class="btn-group">
 				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
 				</a>
-				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-label="Shopping cart dropdown"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li class="box" id="neto-dropdown">
 						<div class="body padding" id="cartcontents"></div>
@@ -65,7 +66,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="navbar navbar-default">
+			<nav class="navbar navbar-default" role="navigation" aria-label="Main Menu">
 				<div class="navbar-header">
 					<ul class="navigation-list list-inline visible-xs nMobileNav">
 						<li><a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse"><span class="icon"><i class="fa fa-bars"></i></span><br>
@@ -113,7 +114,7 @@
 						[%/ cache%]
 					</ul>
 					<ul class="nav navbar-nav navbar-right hidden-xs">
-						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
+						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%] aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
 								<li><a href="[%url page:'account'/%]">Account Home</a></li>
 								<li><a href="[%url page:'account'/%]#orders">Orders</a></li>
@@ -140,9 +141,9 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</nav>
 		</div>
 	</div>
-</div>
-<div id="main-content" class="container" role="main">
+</header>
+<div id="main-content" class="container" [%if [@config:current_page_type@] eq 'product'%]role="main"[%/if%]>
 	<div class="row">

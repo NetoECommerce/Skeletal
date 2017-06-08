@@ -2,7 +2,7 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 	[%breadcrumb%]
 		[%param *header%]
-			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
 				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 				</li>
@@ -66,8 +66,8 @@
 								<input name="viewby" type="hidden" value="" />
 							</form>
 							<div class="viewby btn-group">
-								<a href="javascript:viewtype('');" class="btn btn-default [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow"><i class="fa fa-th"></i></a>
-								<a href="javascript:viewtype('list');" class="btn btn-default [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow"><i class="fa fa-th-list"></i></a>
+								<a href="javascript:viewtype('');" class="btn btn-default [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
+								<a href="javascript:viewtype('list');" class="btn btn-default [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
 							</div>
 						</div>
 						<div class="col-md-4 hidden-xs hidden-sm">
@@ -79,7 +79,7 @@
 								<div class="form-group">
 									<label class="control-label col-xs-2">Sort</label>
 									<div class="col-xs-10">
-										<select name="sortby" onChange="return this.form.submit();" class="form-control">
+										<select name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
 											<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
 											<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
 											<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>SKU</option>
@@ -105,13 +105,13 @@
 							<div class="col-xs-12">
 								<hr />
 								<div class="text-center">
-									<ul class="pagination">
+									<ul class="pagination" role="navigation" aria-label="Pagination Navigation">
 										[%paging limit:'3'%]
-											[%PARAM *previous_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
-											[%PARAM *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
-											[%PARAM *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
-											[%PARAM *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
-											[%PARAM *next_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
+											[%PARAM *previous_page%]<li><a href="[@URL@]" aria-label="Go Back 1 Page"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
+											[%PARAM *goback_pages%]<li><a href="[@URL@]" aria-label="Goto Page [@PAGE@]">[@PAGE@]</a></li>[%/PARAM%]
+											[%PARAM *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li>[%/PARAM%]
+											[%PARAM *gonext_pages%]<li><a href="[@URL@]" aria-label="Goto Page [@PAGE@]">[@PAGE@]</a></li>[%/PARAM%]
+											[%PARAM *next_page%]<li><a href="[@URL@]" aria-label="Go Forward 1 Page"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
 										[%/paging%]
 									</ul>
 								</div>
