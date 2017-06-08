@@ -56,6 +56,15 @@ function checkPostCode(ta) {
 	}
 }
 
+function clearSubState(fid, oid) {
+	var f = document[fid];
+	var city = f[oid+'_city'];
+	var state = f[oid+'_state'];
+	
+	city.value="";
+	state.value="";
+}
+
 function getlocation(ta) {
 	var id ='';
 	var city_id = 'bill_city';
@@ -239,7 +248,7 @@ getlocation();
 				<div class="form-group">
 					<label for="bill_zip">Post Code </label>
 					<span class="small text-danger">Required</span>
-					<input class="form-control" type="text" name="bill_zip" id="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
+					<input class="form-control" type="text" name="bill_zip" id="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="clearSubState('UPDATEINFO','bill');getlocation()" onKeyUp="clearSubState('UPDATEINFO','bill');getlocation()">
 				</div>
 				<div class="form-group n-wrapper-form-control">
 					<label for="suburb_sl">Suburb Selector </label>
