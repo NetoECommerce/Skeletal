@@ -65,18 +65,18 @@
 					[%param header%]
 					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
 					<hr>
-					<div class="row">
+					<div class="row" role="contentinfo" aria-label="Product Variation Selection">
 					[%/param%]
 					[%param *variation_header%]
-							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]">
-								<div class="variation-name">
+							<div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]" role="group" aria-label="[@specific_name@] Variations">
+								<div class="variation-name" aria-label="[@specific_name@] Variation">
 									<strong>[@specific_name@]</strong>
 								</div>
 								<div class="specific">
 									<input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
 				[%/param%]
 				[%param *variation_body%]
-									<div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+									<div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]" aria-label="[@specific_name@] - [@value_name@] Option">
 										<a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
 											[%if [@value_image@]%]
 												<img src="[@value_image@]" alt="[@value_name@]" />
@@ -232,11 +232,11 @@
 							[%set [@data:ratings-count@] = 1 /%]
 							[%while [@data:ratings-count@] <= [@data:rating@]%]
 								[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-								<i class="fa fa-star"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
 							[%/while%]
 							[%while [@data:ratings-count@] <= 5%]
 								[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-								<i class="fa fa-star-o"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
 							[%/while%]
 						</a>
 					</li>
