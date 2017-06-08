@@ -8220,3 +8220,10 @@ input[readonly] {
 .nactivity {
   display: none;
 }
+.account-summary h2 {
+  font-size: 24px;
+}
+.account-summary h3 {
+  font-size: 18px;
+  font-weight: normal;
+}
