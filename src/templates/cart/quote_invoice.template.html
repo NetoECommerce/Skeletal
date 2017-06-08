@@ -1,5 +1,4 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
-<div class="col-xs-12 col-sm-9" role="main">
 <script language="javascript" type="text/javascript">
 function print_invoice() {
 	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
