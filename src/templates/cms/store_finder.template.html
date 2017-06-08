@@ -1,4 +1,5 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
+<div class="col-xs-12 col-sm-9" role="main">
 	[%breadcrumb%]
 		[%param *header%]
 			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
@@ -72,11 +73,11 @@
 		[%param *footer%]
 			<ul class="pagination">
 				[%paging limit:'3'%]
-					[%param *previous_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-left"></i></a></li>[%/param%]
-					[%param *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
-					[%param *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
-					[%param *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/param%]
-					[%param *next_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-right"></i></a></li>[%/param%]
+					[%param *previous_page%]<li><a href="[@URL@]" aria-label="Go Back 1 Page"><i class="fa fa-chevron-left"></i></a></li>[%/param%]
+					[%param *goback_pages%]<li><a href="[@URL@]" aria-label="Goto Page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+					[%param *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li>[%/param%]
+					[%param *gonext_pages%]<li><a href="[@URL@]" aria-label="Goto Page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+					[%param *next_page%]<li><a href="[@URL@]" aria-label="Go Forward 1 Page"><i class="fa fa-chevron-right"></i></a></li>[%/param%]
 				[%/paging%]
 			</ul>
 		[%/param%]

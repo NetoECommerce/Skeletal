@@ -1,4 +1,4 @@
-<div itemtype="http://schema.org/Article">
+<article itemtype="http://schema.org/Article" role="article">
 	<span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 		<meta itemprop="url" content="[@config:homeurl@]"/>
 		<span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
@@ -25,19 +25,19 @@
 		[%IF [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="text-muted">([@reviews@])</span>[%END IF%]
 		<div class="dropdown">
 			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu[@content_id@]" data-toggle="dropdown" aria-expanded="true">
-				Share: <i class="fa fa-facebook-square text-facebook"></i>
-				<i class="fa fa-twitter-square text-twitter"></i>
-				<i class="fa fa-pinterest-square text-pinterest"></i>
-				<i class="fa fa-google-plus-square text-google-plus"></i>
+				Share: <i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i>
+				<i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i>
+				<i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i>
+				<i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i>
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu[@content_id@]">
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i> Facebook</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i> Twitter</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i> Google+</a></li>
 			</ul>
 		</div>
 	</p>
 	<hr/>
-</div>
+</article>

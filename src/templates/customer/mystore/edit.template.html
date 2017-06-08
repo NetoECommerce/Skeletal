@@ -1,14 +1,11 @@
-<!--#Start Column Left# ##-->
-<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
-<!--# End Column Left# ##-->
- 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
+ <div class="col-xs-12" role="main">
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 
 <!--##[%DATA id:'msg' if:'ne' value:''%]##-->
 <div class="alert alert-success">
@@ -28,7 +25,7 @@
 	<script language="javascript" type="text/javascript" src="[@config:imageurl@]/js/CDate.js"></script>
 	<script type="text/javascript" language="javascript">
 	$(document).ready(function() {
-	
+
 		$.extend({
 			select_category : function (id, chk) {
 				$('#catsel'+id+' INPUT[name^="updcat"]').each(function () {
@@ -37,7 +34,7 @@
 			},
 			getCurrentLoc : function () {
 				var arr = ['stloc_street1','stloc_street2','stloc_city','stloc_state', 'stloc_zip'];
-				
+
 				var country = $('[name="stloc_country"]').val();
 				var address = '';
 				var addctr = 0;
@@ -48,11 +45,11 @@
 						addctr++;
 					}
 				}
-	
+
 				$.geoGoToLocation(country,address);
 			}
 		});
-	
+
 		$.storeLocator_Init({'zoom_suburb': 15, 'onSetLocation': function (loc) {
 			var lat = loc.geometry.location.lat();
 			var lng = loc.geometry.location.lng();
@@ -61,9 +58,9 @@
 			$.geoCleartMarkers();
 			$.geoCustAddMarker(lat,lng,loc.formatted_address );
 		}});
-		
+
 		$.init_text_count('inputtext');
-	
+
 		$.postcode_selectorInit({
 			'id':'stloc_selector',
 			'country_id':'stloc_country',
@@ -72,18 +69,18 @@
 			'zip_id':'stloc_zip',
 			'fns': {'onChange': function () { $.getCurrentLoc(); }}
 		});
-	
+
 		$('INPUT[name^="updcat"]').live('click', function () {
 			$.select_category($(this).attr('ref'), $(this).attr('checked'));
 		});
-		
+
 		var arr = ['stloc_street1','stloc_street2'];
 		for(var i=0; i<arr.length; i++) {
 			$('[name="'+arr[i]+'"]').live('change', function () {
 				$.getCurrentLoc();
 			})
 		}
-		
+
 		$('#geo_getloc_btn').live('click', function () {
 			$.getCurrentLoc();
 		})
@@ -178,7 +175,7 @@
 			<!--##[%END PARAM%]
 			[%PARAM *footer%]##-->
 			<!--##[%END PARAM%]
-			[%END EXTRA_STORE_FIELDS%]##-->	
+			[%END EXTRA_STORE_FIELDS%]##-->
 		</table>
 	</div>
 </div>
@@ -203,7 +200,7 @@
 
 		<label>Postal Code<span class="required">*</span></label>
 		<input type="text" id="stloc_zip" name="stloc_zip" size="50" value="[%NOHTML%][@stloc_zip@][%END NOHTML%]" maxlength="10" />
-			
+
 		<label>Suburb / City<span class="required">*</span></label>
 		<span id="stloc_selector"></span>
 		<input type="text" id="stloc_city" name="stloc_city"  value="[%NOHTML%][@stloc_city@][%END NOHTML%]" size="50" maxlength="50"/>
@@ -225,10 +222,10 @@
 
 		<label>Fax Number</label>
 		<input type="text" name="stloc_fax" size="30" maxlength="30" value="[%NOHTML%][@stloc_fax@][%END NOHTML%]" />
-		
+
 		<label>Contact Email</label>
 		<input type="text" name="stloc_email" size="30" maxlength="50" value="[%NOHTML%][@stloc_email@][%END NOHTML%]" />
-		
+
 		<br />
 		<br />
 		<div id="geo_map"></div>
@@ -253,7 +250,7 @@
 					[%PARAM *level_2%]##--><li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%DATA id:'category[@id@]' if:'eq' value:'1'%]checked[%END DATA%]/> [@name@]<!--##[%DATA id:'next_level' if:'ne' value:''%]##--><ul id="catsel[@allcount@]">[@next_level@]</ul><!--##[%END DATA%]##--></li><!--##[%END PARAM%]
 					[%PARAM *level_3%]##--><li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%DATA id:'category[@id@]' if:'eq' value:'1'%]checked[%END DATA%]/> [@name@]<!--##[%DATA id:'next_level' if:'ne' value:''%]##--><ul id="catsel[@allcount@]">[@next_level@]</ul><!--##[%END DATA%]##--></li><!--##[%END PARAM%]
 					[%PARAM *level_4%]##--><li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%DATA id:'category[@id@]' if:'eq' value:'1'%]checked[%END DATA%]/> [@name@]</li><!--##[%END PARAM%]
-					[%PARAM footer%]##--> 
+					[%PARAM footer%]##-->
 					</ul>
 				</div>
 			<!--##[%END PARAM%]
@@ -278,7 +275,7 @@
 			<div>Remove Image On Save? <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
 			<!--##[%END PARAM%][%END DATA%]##-->
 			</div>
-			
+
 			<div><input type="file" name="stloc_logo[@type@]"></div>
 			</li><!--##[%END PARAM%]##-->
 			<!--##[%END THUMBNAILS%]##-->
@@ -292,13 +289,13 @@
 <div class="row">
 	<div class="span18">
 		<div class="form-actions">
-			<input type="button" class="btn" value="Reset" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp; 
+			<input type="button" class="btn" value="Reset" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp;
 			<input type="submit" class="btn btn-success" value="Save Changes">
 		</div>
 	</div>
 </div>
 
 
-</form> 
+</form>
 
 </div>

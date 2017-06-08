@@ -1,12 +1,15 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
+<div class="col-xs-12 col-sm-9" role="main">
 	[%breadcrumb%]
 		[%param *header%]
-			<ul class="breadcrumb">
-				<li><a href="[@config:home_url@]">Home</a></li>
+			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a></li>
 				<li><a href="[%url id:'94'/%]">Stockists</a></li>
 		[%/param%]
 		[%param *body%]
-				<li><a href="[@url@]">[@name@]</a></li>
+				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+				</li>
 		[%/param%]
 		[%param *body_current%]
 				<li>[@name@]</li>
@@ -17,7 +20,7 @@
 	[%/breadcrumb%]
 	<h1>[@stloc_name@]</h1>
 	<hr>
-	<div class="row">
+	<section class="row" aria-label="Stockists">
 		<div class="col-xs-12 col-sm-8">
 			<address>
 				<p>
@@ -43,5 +46,5 @@
 				</a>
 			</div>
 		[%/if%]
-	</div>
+	</section>
 </div>
