@@ -20,6 +20,10 @@ gulp.task('less', function () {
 gulp.task('translate', function () {
 	return gulp.src('src/**/*.html')
 		.pipe(international({
+			{
+			  prefix: '${',
+			  suffix: '}'
+		  	},
 			filename: '${lang}/${path}/${name}.${ext}'
 		}))
 		.pipe(gulp.dest('./dist'));
