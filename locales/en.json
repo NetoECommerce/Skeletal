@@ -291,33 +291,113 @@
 		"active_vouchers_title": "Vouchers &amp; Rewards",
 		"active_vouchers_description": "Description",
 		"active_vouchers_balance": "Balance",
-		"approve_quote": {},
+		"approve_quote": {
+			"approve_quote_confirm":{},
+			"approve_quote_success":{},
+			"delete_quote_confirm":{},
+			"delete_quote_success":{},
+			"template":{}
+		},
 		"documents": {},
 		"edit_account": {},
 		"edit_address": {},
-		"edit_pwd": {},
+		"edit_pwd": {
+			"done":{},
+			"template":{}
+		},
 		"favourites": {},
-		"forgotpwd": {},
-		"forgotusr": {},
-		"logos": {},
-		"mystore": {},
-		"nr_print": {},
-		"nr_track_order": {},
-		"nr_view_order": {},
-		"pay_order": {},
+		"forgotpwd": {
+			"done":{},
+			"template":{}
+		},
+		"forgotusr": {
+			"done":{},
+			"template":{}
+		},
+		"logos": {
+			"template":{},
+			"view":{}
+		},
+		"mystore": {
+			"edit":{},
+			"template":{},
+			"view":{}
+		},
+		"nr_print": {
+			"order":{},
+			"quote":{},
+			"template":{}
+		},
+		"nr_track_order": {
+			"order":{},
+			"template":{}
+		},
+		"nr_view_order": {
+			"order":{},
+			"quote":{},
+			"template":{}
+		},
+		"pay_order": {
+			"pay_now_confirm":{},
+			"pay_now_success":{}
+		},
 		"payrec": {},
-		"print": {},
-		"register": {},
-		"resetpwd": {},
-		"standing_order": {},
-		"track_order": {},
-		"view_order": {},
+		"print": {
+			"order":{},
+			"quote":{},
+			"template":{}
+		},
+		"register": {
+			"done":{},
+			"template":{}
+		},
+		"resetpwd": {
+			"done":{},
+			"template":{}
+		},
+		"standing_order": {
+			"template":{},
+			"view":{}
+		},
+		"track_order": {
+			"":{},
+			"":{}
+		},
+		"view_order": {
+			"":{},
+			"":{},
+			"":{}
+		},
 		"vouchers": {},
-		"warranty": {},
-		"wholesaleregister": {},
-		"wishlist": {},
-		"write_contentreview": {},
-		"write_review": {},
+		"warranty": {
+			"":{},
+			"":{},
+			"":{},
+			"":{},
+			"":{},
+			"":{},
+			"":{}
+		},
+		"wholesaleregister": {
+			"":{},
+			"":{}
+		},
+		"wishlist": {
+			"":{},
+			"":{},
+			"":{}
+		},
+		"write_contentreview": {
+			"":{},
+			"":{},
+			"":{}
+		},
+		"write_review": {
+			"":{},
+			"":{},
+			"":{},
+			"":{}
+		},
 		"login": {
 			"title": "My Account",
 			"login_title": "Returning Customer? Log In.",
