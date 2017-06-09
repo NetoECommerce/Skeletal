@@ -6,7 +6,21 @@
 		"social_share": "Share:",
 		"yes": "Yes",
 		"no": "No",
-		"and": "and"
+		"and": "and",
+		"or": "or",
+		"sort": "Sort",
+		"sort":{
+			"popular": "Most Popular",
+			"name": "Name",
+			"sku": "SKU",
+			"lowest_price": "Lowest Price",
+			"highest_price": "Highest Price",
+		},
+		"product_found":"Product Found",
+		"products_found":"Products Found",
+		"author": "Author:",
+		"date_posted": "Date Posted:",
+		"stockists": "Stockists"
 	},
 	"header": {
 		"lang": "en",
@@ -49,17 +63,40 @@
 
 	},
 	"sidebar":{
-		
+		"filter_products_title": "Filter Products",
+		"product_filter_variations_title": "Filter By",
+		"product_filter_category_title": "Filter By Category",
+		"product_filter_instock_title": "Filter By Stock",
+		"in_stock": "In Stock",
+		"product_filter_price_title": "Filter By Price Range",
+		"clear": "clear",
+		"product_filter_brand_title": "Filter By Brand",
+		"categories_menu_title": "Categories",
+		"phistory_title": "Browsing History",
+		"web_information_title": "Information"
+	},
+	"search":{
+		"title": "Search",
+		"keywords_true_start": "Search was unable to find any product results for",
+		"keywords_true_end": "you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.",
+		"keyword_false": "This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us."
 	},
 	"category":{
-		"product_found":"Product Found",
-		"products_found":"Products Found",
-		"sort_popular": "Most Popular",
-		"sort_name": "Name",
-		"sort_sku": "SKU",
-		"sort_lowest_price": "Lowest Price",
-		"sort_highest_price": "Highest Price",
 		"category_empty": "This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us."
+	},
+	"thumbnail":{
+		"on_sale":"On Sale",
+		"from_upper": "From",
+		"": "OFF",
+		"rrp": "RRP",
+		"now": "Now",
+		"from_lower": "from",
+		"see_buying_options": "See Buying Options",
+		"see_options": "See Options",
+		"pre_order": "Pre-Order",
+		"add_to_cart": "Add to Cart",
+		"backorder": "Backorder",
+		"out_of_stock": "Out Of Stock"
 	},
 	"product":{
 		"bonus_item": "BONUS ITEMS!",
@@ -372,5 +409,10 @@
 			"confirm_order": "Confirm &amp; Process Order",
 			"confirm_quote": "Confirm &amp; Process Quote"
 		},
-	}
+	},
+	"404": {
+		"title": "Page Not Found",
+		"subtitle": "The page you were looking for doesn't appear to exist or has moved.",
+		"btn": "Home",
+	},
 }
