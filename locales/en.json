@@ -680,46 +680,324 @@
 			}
 		},
 		"standing_order": {
-			"template":{},
-			"view":{}
+			"template":{
+				"breadcrumb": "Standing orders",
+				"title": "Standing orders",
+				"panel_title": "Standing order #",
+				"date_placed_heading": "Date Placed",
+				"current_status_heading": "Current Status",
+				"requesting_stop_heading": "Requesting To Stop",
+				"current_status_heading": "Current Status",
+				"date_started_heading": "Date Started",
+				"amount_on_order_heading": "Amount On Order",
+				"next_delivery_heading": "Next Delivery",
+				"date_fulfilled_heading": "Date Fulfilled",
+				"view_btn": "View order",
+				"standing_orders_empty": "No Standing Orders Found."
+			},
+			"view":{
+				"breadcrumb_one": "Standing orders",
+				"breadcrumb_two": "Standing order #",
+				"title": "Standing Order #",
+				"subtitle": "Purchase Order Number:",
+				"billing_address_heading": "Billing address",
+				"shipping_address_heading": "Shipping address",
+				"order_status_heading": "Order Status",
+				"next_delivery": "Next Delivery:",
+				"total_orders": "Total Orders:",
+				"total_spent": "Total Spent:",
+				"date_fulfilled": "Date Fulfilled:",
+				"rental_products_heading": "Rental Products",
+				"rental_qty_heading": "Qty",
+				"renta_product_heading": "Product",
+				"aff_id_rental": "Rental",
+				"aff_id_ebay": "eBay ID:",
+				"aff_id_free": "Free Gift",
+				"order_summary_heading": "Order Summary",
+				"terms_type": "Order ships every <strong>[@terms_num_times@] [@terms_type@](s) </strong>from <strong>",
+				"payment_terms_type": "Payment will be processed every <strong>[@payment_terms_num_times@] [@payment_terms_type@](s) </strong>from time of order.",
+				"sku_heading": "SKU",
+				"product_heading": "Product",
+				"qty_heading": "QTY",
+				"price_heading": "Price",
+				"discounts_heading": "Discounts",
+				"subtotal_heading": "Subtotal",
+				"order_subtotal": "Order Subtotal:",
+				"total_shipping": "Total Shipping:",
+				"total_discount": "Total Discount:",
+				"gst": "GST",
+				"inc": "Inc",
+				"order_total": "Order Total:",
+				"delivery_method_heading": "Delivery Method",
+				"shipping_method": "Delivery Method:",
+				"fixed_shipping_cost": "Shipping Total:",
+				"payment_instructions_heading": "Payment Instructions",
+				"payment_method": "Payment Method:",
+				"payment_method_paragraph": "Your [@name@] will be processed automatically.",
+				"card_holder": "Card Holder:",
+				"card_number": "Card Number:",
+				"card_exp": "Card Expires Date:",
+				"payment_empty": "No payment method is selected."
+			}
 		},
 		"track_order": {
-			"order":{},
-			"template":{}
+			"order":{
+				"title": "Track Order #",
+				"order_status": "Status:",
+				"order_id": "Order #",
+				"customer_po": "PO #",
+				"date_placed": "Date Placed:",
+				"if_invoiced": "Date Invoiced:",
+				"order_status": "Date Completed:",
+				"ship_to_heading": "Ship To:",
+				"ship_phone": "Tel:",
+				"image_heading": "Image",
+				"qty_heading": "Qty",
+				"description_heading": "Description",
+				"shipping_details_heading": "Shipping Details",
+				"ship_tracking": "Tracking #",
+				"ship_tracking_empty": "Tracking not yet available",
+				"track_btn": "Track Online"
+			},
+			"template":{
+				"paragraph": "Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service."
+			}
 		},
 		"view_order": {
-			"order":{},
-			"quote":{},
-			"template":{}
+			"order":{
+				"title": "View Order / Invoice",
+				"pay_btn": "Pay Now"
+			},
+			"quote":{
+				"title": "Quote #",
+				"approve_btn": "Approve Quote"
+			},
+			"template":{
+				"paragraph": "Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service."
+			}
 		},
-		"vouchers": {},
+		"vouchers": {
+			"title": "Vouchers &amp; Rewards",
+			"description_heading": "Description",
+			"balance_heading": "Balance",
+			"reward_points": "pts",
+			"vouchers_empty": "No vouchers or rewards are available."
+		},
 		"warranty": {
-			"dispute_sent":{},
-			"dispute_updated":{},
-			"open_dispute":{},
-			"select_dispute_reason":{},
-			"select_dispute_type":{},
-			"template":{},
-			"view_dispute":{}
+			"breadcrumb": "Resolution Centre",
+			"dispute_sent":{
+				"title": "Resolution Centre - Warranty, Payment &amp; Return Disputes",
+				"warranty_paragraph_one": "Your",
+				"warranty_btn": "dispute #",
+				"warranty_paragraph_two": "has been sent to [@config:company_name@]. You can track the progress of your dispute at any time from within your account.",
+				"another_btn": "Create Another Dispute",
+				"home_btn": "Return Home"
+
+			},
+			"dispute_updated":{
+				"title": "Resolution Centre - Warranty, Payment &amp; Return Disputes",
+				"subtitle": "Dispute #[@dispute_id@] has been updated.",
+
+			},
+			"open_dispute":{
+				"title": "Resolution Centre",
+				"subtitle": "Step 3 - Raise dispute against order #",
+				"order_id": "Order",
+				"customer_po": "PO#:",
+				"shipping_to": "Shipped To:",
+				"date_placed": "Date Placed:",
+				"order_status": "Order Status:",
+				"email": "Contact Email:",
+				"phone": "Contact Phone:",
+				"which_items_heading": "Which items from the list below would you like to dispute?",
+				"dispute_order": "Dispute The Entire Order",
+				"dispute_line": "Dispute Selected Item(s)",
+				"qty_heading": "Qty",
+				"item_heading": "Item",
+				"price_heading": "Price",
+				"discount_heading": "Discount",
+				"subtotal_heading": "Subtotal",
+				"of": "of",
+				"aff_id_free": "FREE*",
+				"aff_id_ebay": "EBay ID:",
+				"aff_id_free_gift": "Free Gift",
+				"explanation_heading": "Detailed Explanation Of Problem",
+				"cancel_btn": "Cancel",
+				"back_btn": "Go Back",
+				"continue_btn": "Continue to Next Step"
+			},
+			"select_dispute_reason":{
+				"title": "Resolution Centre",
+				"subtitle": "Step 2 - What type of dispute is this?",
+				"order_id_heading": "Select an Order ID",
+				"select_recent_order_option": "Select Recent Order",
+				"customer_po": "PO#",
+				"orders_empty": "No orders have been placed on this account.",
+				"view_btn": "View a list of your past order IDs",
+				"cancel_btn": "Cancel",
+				"back_btn": "Go Back",
+				"continue_btn": "Continue to Next Step"
+			},
+			"select_dispute_type":{
+				"title": "Resolution Centre",
+				"subtitle": "Step 1 - Choose the type of dispute you would like to raise",
+				"cancel_btn": "Cancel",
+				"continue_btn": "Continue to Next Step"
+			},
+			"template":{
+				"title": "Resolution Centre",
+				"subtitle": "<p>Need to return an item, make a warranty claim or have been over charged for an order? Please open a dispute so that we can resolve your problem as quickly as possible.</p> <p>Most disputes can be resolved through communication and it's best to contact us as soon as you recognise a potential problem. Once lodged you can also track the progress of your dispute online at any time. </p>",
+				"new_dispute_btn": "Open A New Dispute",
+				"open_dispute_heading": "Open Disputes",
+				"open_dispute_paragraph": "Below is list of all open disputes and their current status. To see past or closed disputes use the 'show' filter below.",
+				"dispute_status_heading": "Dispute# / Status",
+				"date_heading": "Date",
+				"type_heading": "Type",
+				"reason_heading": "Reason",
+				"order_id_heading": "Order ID",
+				"filter_replied_heading": "Filed On / Replied On",
+				"response_repuired": "Response Required",
+				"disputes_empty": "No disputes have been raised on this account."
+			},
+			"view_dispute":{
+				"title": "Resolution Centre - Warranty, Payment &amp; Return Disputes",
+				"dispute_details_heading": "Dispute Details",
+				"dispute_id": "Dispute #",
+				"order_id": "Order #",
+				"customer_po": "PO#",
+				"shipped_to": "Shipped To",
+				"date_placed": "Date Placed",
+				"order_status": "Order Status",
+				"dispute_type": "Dispute Type",
+				"dispute_reason": "Dispute Reason",
+				"dispute_status": "Dispute Status",
+				"response_repuired": "(Response Required)",
+				"date_disputed": "Disputed On",
+				"dispute_filed": "Filed On",
+				"email": "Contact Email",
+				"phone": "Contact Phone",
+				"products_dispute_heading": "Products on this dispute:",
+				"qty_heading": "Qty",
+				"item_heading": "Item",
+				"message_history_title": "Message History",
+				"close_dispute_btn": "Close This Dispute"
+			}
 		},
 		"wholesaleregister": {
-			"done":{},
-			"template":{}
+			"done":{
+				"title": "Registration Complete",
+				"subtitle": "Thank you [@username@] for registering.",
+				"home_btn": "Return to home"
+			},
+			"template":{
+				"title": "Wholesale Registration Form",
+				"": "Your Future Login Details",
+				"reg_username": "Username",
+				"reg_username_help": "(used for future access to your account)",
+				"reg_email": "Email Address",
+				"reg_email_help": "(order receipts &amp; invoices will be sent here)",
+				"reg_password": "Password",
+				"reg_password2": "Confirm Password",
+				"company_information_heading": "Company Information",
+				"reg_bill_first_name": "First Name",
+				"reg_bill_last_name": "Last Name",
+				"reg_bill_company": "Company Name",
+				"reg_bill_street1": "Address",
+				"reg_bill_zip": "Post Code",
+				"reg_bill_city": "Suburb",
+				"reg_bill_state": "State",
+				"reg_bill_country": "Country",
+				"reg_usercustom2": "ABN / ACN",
+				"reg_usercustom3": "Web Site URL",
+				"contact_information_heading": "Contact Information",
+				"reg_phone": "Phone Number",
+				"reg_fax": "Fax Number",
+				"other_details_heading": "Other Details",
+				"terms_heading": "Terms &amp; Conditions Of Trade",
+				"regoptin": "Subscribe to the [@config:company_name@] newsletter.",
+				"agree": "I agree to the [@config:company_name@] terms of trade.",
+				"register_btn": "Register",
+			}
 		},
 		"wishlist": {
-			"template":{},
-			"view":{}
+			"template":{
+				"breadcrumb": "Wish Lists",
+				"list_not_found": "Cannot find wish list.",
+				"list_deleted": "Wish list '<!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##-->' has been deleted.",
+				"title": "My Wish Lists",
+				"list_name_heading": "List Name",
+				"status_heading": "Status",
+				"remind_me_heading": "Remind Me Every",
+				"created_heading": "Created Date",
+				"expiry_heading": "Expiry Date",
+				"wishlist_active_y": "Active",
+				"wishlist_active_n": "Inactive",
+				"reminder_inc_days": "Day(s)",
+				"delete_btn": "Delete",
+				"wishlist_empty": "You have no wish lists setup. Please add a new list below.",
+				"add_new_list_heading": "Add New List",
+				"add_new_list_btn": "Add New List"
+			},
+			"view":{
+				"breadcrumb": "My Wishlists",
+				"title": "Edit My Wish List",
+				"list_updated": "Wishlist has been updated.",
+				"settings": "Settings",
+				"list_name": "List Name",
+				"created_on": "Created on",
+				"save_btn": "Save My List Settings",
+				"list_status": "List Status",
+				"wh_active_y": "Active",
+				"wh_active_n": "Inactive",
+				"wh_reminder_inc_days": "Remind about this list every",
+				"wh_exp": "day(s) until this list expire on:",
+				"contents": "Contents",
+				"wishlist_empty": "You have no items in this wishlist. "
+			}
 		},
 		"write_contentreview": {
-			"confirm":{},
-			"not_found":{},
-			"preview":{}
+			"confirm":{
+				"title": "Your Comment Has Been Posted!",
+				"subtitle": "Thank you for taking the time to write a comment. Your comment has been submitted and if it meets our content posting terms and conditions it will appear on our website shortly.",
+				"home_btn": "Go to our home page"
+			},
+			"not_found":{
+				"title": "Review not found!",
+				"subtitle": "The review you are looking for cannot be found or has moved.",
+				"home_btn": "Go to our home page"
+			},
+			"preview":{
+				"title": "Preview Comment",
+				"btn": "Post My Comment"
+			}
 		},
 		"write_review": {
-			"not_found":{},
-			"preview":{},
-			"template":{},
-			"write":{}
+			"not_found":{
+				"title": "Review Not Found!",
+				"subtitle": "The review you are looking for cannot be found or has moved.",
+				"btn": "Click here to go to our home page"
+			},
+			"preview":{
+				"title": "Preview [@model@] Review",
+				"edit_btn": "Edit Review"
+			},
+			"template":{
+				"title": "Your Review Has Been Posted!",
+				"subtitle": "Thank you for taking the time to write a review. Your review has been submitted and if it meets our content posting terms and conditions it will appear on our website shortly.",
+				"back_btn": "Go back to",
+				"home_btn": "Go to our home page"
+			},
+			"write":{
+				"title": "Review",
+				"subtitle": "Thank you for writing a review. By sharing your thoughts, you help website visitors make a better purchasing decision. In addition, your feedback helps us to improve our products and service.",
+				"product_review_heading": "Product Review",
+				"customername": "Enter your name:",
+				"emailaddress": "Enter your e-mail address:",
+				"review_title": "Title For Review",
+				"review_text": "Review",
+				"rating_value": "Pick a star rating for this product",
+				"preview_btn": "Preview"
+			}
 		},
 		"login": {
 			"title": "My Account",
