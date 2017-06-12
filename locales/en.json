@@ -20,7 +20,8 @@
 		"products_found":"Products Found",
 		"author": "Author:",
 		"date_posted": "Date Posted:",
-		"stockists": "Stockists"
+		"stockists": "Stockists",
+		"required": "Required"
 	},
 	"header": {
 		"lang": "en",
@@ -292,111 +293,433 @@
 		"active_vouchers_description": "Description",
 		"active_vouchers_balance": "Balance",
 		"approve_quote": {
-			"approve_quote_confirm":{},
-			"approve_quote_success":{},
-			"delete_quote_confirm":{},
-			"delete_quote_success":{},
-			"template":{}
+			"approve_quote_confirm":{
+				"title": "Approve Quote",
+				"print_btn": "Print Quote",
+				"confirm_btn": "Confirm &amp; Approve Quote",
+				"cancel_btn": "Cancel"
+			},
+			"approve_quote_success":{
+				"title": "Approve Quote",
+				"subtitle": "Congratulations! Quote #[@order_id@] has been approved and changed to an order. You can pay for this order now by clicking on the pay now button below.",
+				"print_btn": "Print Invoice",
+				"pay_btn": "Pay Now"
+			},
+			"delete_quote_confirm":{
+				"title": "Dismiss Quote",
+				"print_btn": "Print Quote",
+				"dismissal_reason": "Dismissal Reason",
+				"confirm_btn": "Confirm &amp; Dismiss Quote"
+			},
+			"delete_quote_success":{
+				"title": "Dismiss Quote",
+				"subtitle": "Your quote [@order_id@] has been dismissed. No further action is required."
+			},
+			"template":{
+				"title": "Approve Quotes",
+				"quote_id_heading": "Quote ID",
+				"date_quoted_heading": "Date Quoted",
+				"email_heading": "Email Of Quote Recipient",
+				"approve_heading": "Approve",
+				"dismiss_heading": "Dismiss",
+				"approved_btn": "Approve Quote",
+				"dismiss_btn": "Dismiss Quote",
+				"quotes_empty": "No quotes found. 1"
+			}
 		},
-		"documents": {},
-		"edit_account": {},
-		"edit_address": {},
+		"documents": {
+			"breadcrumb_name": "Files",
+			"title": "My Files",
+			"file_heading": "File Name",
+			"download_heading": "Download",
+			"download_btn": "Download",
+			"documents_empty": "We do not have any files stored on your account."
+		},
+		"edit_account": {
+			"breadcrumb_name": "Edit My Account",
+			"title": "Edit Your [@config:company_name@] Account Details",
+			"subtitle": "Please complete all the required fields below before continuing.",
+			"msg_innerHTML_loading": "Loading...",
+			"msg_innerHTML_zip_empty": "Please enter your billing country and postal code above.",
+			"msg_innerHTML_reg_empty": "Error. Please contact our customer support: sales.com.au",
+			"msg_innerHTML_else": "Please enter your billing suburb and state below.",
+			"billing_info_heading": "Billing Information",
+			"required": "Required",
+			"bill_first_name": "First Name",
+			"bill_last_name": "Last Name",
+			"bill_company": "Company Name",
+			"bill_country": "Country",
+			"bill_street1": "Address",
+			"bill_zip": "Post Code",
+			"suburb_sl": "Suburb Selector",
+			"suburb_sl_option": "Select Suburb",
+			"card_type": "Preferred Payment Method",
+			"card_type_option": "Select Payment Type",
+			"order_comment": "Default Order Instructions",
+			"contact_info_heading": "Contact Information",
+			"email": "Email Address",
+			"phone": "Phone Number",
+			"fax": "Fax Number",
+			"company_info_heading": "Company Information",
+			"usercustom2": "ABN / ACN",
+			"usercustom3": "Your Web Site URL",
+			"dropshipping_info_title": "Dropshipping Information",
+			"dropshipping_info_subtitle": "Customise the documentation we send out with your drop shipped orders.",
+			"dropshipping_info_label_one": "Drop Shipping Documentation Footer (Will be displayed on footer of packing slips, labels etc)",
+			"dropshipping_info_help_one": "(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)",
+			"dropshipping_info_label_two": "Dropshipping Company Logo (Will be displayed on header of packing slips, labels etc)",
+			"dropshipping_info_help_two": "(Instructions: Click browse to search your local computer for your company logo. Your logo should be in .JPG or .GIF format. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)",
+			"dellogo": "Delete logo?",
+			"save_btn": "Save Changes"
+		},
+		"edit_address": {
+			"breadcrumb_name": "Edit Your Address Book",
+			"title": "Add or Edit Address Book Entry",
+			"msg_updated": "Your address '[@ship_title@]' has been updated.",
+			"msg_deleted": "Your address '[@ship_title@]' has been deleted.",
+			"msg_created": "Your address '[@ship_title@]' has been created.",
+			"help_block": "You can use the Address Book tool to create and save multiple ship-to addresses. You can then choose your appropriate address for each order you place at checkout.",
+			"shipping_lead": "Add a new address or edit an existing address",
+			"addr_id_add_or_edit": "Add or Edit",
+			"addr_id_add_new": "Add New Entry",
+			"address_title": "Address Details",
+			"ship_title": "Address Title",
+			"ship_title_help": "(eg: Work Address)",
+			"ship_first_name": "First Name",
+			"ship_last_name": "Last Name",
+			"ship_company": "Company",
+			"ship_street1": "Address",
+			"ship_zip": "Zip Code / Postal Code",
+			"ship_zip": "Suburb Selector",
+			"ship_city": "City",
+			"ship_city": "State",
+			"ship_city": "Country",
+			"ship_phone": "Phone Number",
+			"defaddr": "Save as My Default Address",
+			"delete_btn": "Delete Address",
+			"save_btn": "Save Address",
+			"msg_innerHTML_loading": "Loading...",
+			"msg_innerHTML_not_selectedcountry": "Please enter your city and state below.",
+			"msg_innerHTML_zip_empty": "Please enter your postal code above.",
+			"msg_innerHTML_not_httpReq": "Error. Please contact our customer support: [@config:COMPANY_EMAIL@]",
+			"sub_ldsel_option": "Select Suburb",
+			"sub_ldsel_msg_innerHTML": "Invalid Post Code.",
+			"confirm_delete": "Do you want to delete this address book entry?",
+		},
 		"edit_pwd": {
-			"done":{},
-			"template":{}
+			"done":{
+				"title": "Password Changed",
+				"paragraph": "Your password has been changed, and a confirmation email has been sent to [@EMAIL@]",
+				"account_btn": "Continue To My Account Home Page",
+				"home_btn": "Continue To [@config:company_name@] Home Page"
+			},
+			"template":{
+				"breadcrumb": "Change My Password",
+				"title": "Change Account Password",
+				"paragraph": "Please enter your current and new password below in order to change your password.",
+				"current_pass": "Current Password:",
+				"new_pass": "New Password:",
+				"confirm_new_pass": "Confirm New Password:",
+				"change_btn": "Change My Password"
+			}
 		},
-		"favourites": {},
+		"favourites": {
+			"breadcrumb_name": "Re-Order",
+			"title": "Reorder Your Favourite Items",
+			"paragraph": "Thanks for checking back [@bill_first_name@]. We've made it even easier for you to order from us.  Use this quick list to access all the items you have purchased from us in the past for quick reordering!",
+			"favourites_empty": "It appears that you have not purchased from this website before. Once you have made some purchases from this website, come back to this page for a quick listing of all your past purchases for easy reordering!"
+		},
 		"forgotpwd": {
-			"done":{},
-			"template":{}
+			"done":{
+				"title": "Password Sent To [@EMAIL@]",
+				"paragraph_one": "For security reasons a new account password has been generated and sent to [@EMAIL@].",
+				"paragraph_two": "You can reset your password to something you remember the next time you login.",
+				"contine_btn": "Continue To Login"
+			},
+			"template":{
+				"title": "Forgot Password?",
+				"forgotpwd_paragraph": "Please enter your e-mail address and we will send you a new password by e-mail.",
+				"email": "Email Address",
+				"send_btn": "Send Me A New Password"
+			}
 		},
 		"forgotusr": {
-			"done":{},
-			"template":{}
+			"done":{
+				"title": "Username Send To [@EMAIL@]",
+				"paragraph": "Your username has been sent to [@EMAIL@].",
+				"continue_btn": "Continue To Login"
+			},
+			"template":{
+				"title": "Forgotten username?",
+				"help": "Please enter your e-mail address below and we will send you your username by e-mail.",
+				"email": "Email Address",
+				"send_btn": "Send Me My Username"
+			}
 		},
 		"logos": {
-			"template":{},
-			"view":{}
+			"template":{
+				"breadcrumb_name": "Manage Logo's",
+				"title": "Manage Logo's",
+				"paragraph": "Sorry, you need to be logged in to manage your logo's. Either login, or create an account."
+			},
+			"view":{
+				"title": "Manage Logo",
+				"logo_heading": "Upload your logo file here",
+				"upld_logo_btn": "",
+				"upld_logo_help": "We accept GIF, JPG and PNG formats.<br /> Maximum file size is 5MB."
+			}
 		},
 		"mystore": {
-			"edit":{},
-			"template":{},
-			"view":{}
+			"edit":{
+				"breadcrumb": ">My Stores",
+				"title": "Edit My Store",
+				"details_heading": "Details",
+				"stloc_name": "Store Name",
+				"status": "Status",
+				"active_y": "Active",
+				"active_n": "Inactive",
+				"description_heading": "Description",
+				"description_label": "Description of Your Store",
+				"description_help": "Max 1000 Character(s)",
+				"address_heading": "Address",
+				"stloc_country": "Country",
+				"stloc_street1": "Address",
+				"stloc_zip": "Postal Code",
+				"stloc_city": "Suburb / City",
+				"stloc_state": "State",
+				"stloc_lat": "Latitude:",
+				"stloc_lng": "Longitude:",
+				"stloc_phone": "Phone Number",
+				"stloc_fax": "Fax Number",
+				"stloc_email": "Contact Email",
+				"geo_getloc_btn": "Get the Latitude and Longitude for the above address",
+				"product_range_heading": "Product Range",
+				"images_heading": "Images",
+				"images_paragraph": "Store Logos will be re-sized and thumbnails will be created automatically. Uploaded images should not exceed 500kb in size.",
+				"stloc_logodel": "Remove Image On Save?",
+				"reset_btn": "Reset",
+				"save_btn": "Save Changes"
+			},
+			"template":{
+				"title": "My Stores",
+				"paragraph": "Sorry, the page you are looking for cannot be found. If you require further assistance please contact customer service."
+			},
+			"view":{
+				"title": "My Stores",
+				"store_heading": "Store Name",
+				"address_heading": "Address",
+				"status_heading": "Status",
+				"date_heading": "Date Updated",
+				"storelocation_active_y": "Active",
+				"storelocation_active_n": "Inactive",
+				"edit_btn": "Edit Store",
+				"add_btn": "Add Store"
+			}
 		},
 		"nr_print": {
-			"order":{},
-			"quote":{},
-			"template":{}
+			"title": "Print Invoice [@order_id@]",
+			"page_not_found": "Page Not Found!"
 		},
 		"nr_track_order": {
-			"order":{},
-			"template":{}
+			"order":{
+				"title": "Track Order #<!--##[%NOHTML%]##-->[@order_id@]<!--##[%END NOHTML%]##-->",
+				"order_status": "Status:",
+				"order_num": "Order #[@order_id@]",
+				"po_num": "PO #",
+				"date_placed": "Date Placed:",
+				"date_completed": "Date Completed:",
+				"ship_to_heading": "Ship To:",
+				"description_heading": "Description",
+				"shipping_heading": "Shipping Details",
+				"aff_id_rental": "Rental",
+				"aff_id_ebay": "EBay ID:",
+				"aff_id_free": "Free Gift",
+				"deliver_on": "Deliver On",
+				"tracking_num": "Tracking #",
+				"no_tracking": "Tracking not yet available",
+				"track_btn": "Track Online"
+			},
+			"template":{
+				"alert": "Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service.",
+				"title": "Retrieve Order Tracking Information",
+				"paragraph": "For security reasons please enter some details related to your order so that we can provide tracking information.",
+				"email": "Order E-mail Address",
+				"id": "Order ID",
+				"zip": "Order Ship Postcode",
+				"track_btn": "Track Order"
+			}
 		},
 		"nr_view_order": {
-			"order":{},
-			"quote":{},
-			"template":{}
+			"order":{
+				"title": "View Order / Invoice",
+				"pay_btn": "Pay Now"
+			},
+			"quote":{
+				"title": "Quote #",
+				"approve_btn": "Approve Quote"
+			},
+			"template":{
+				"id_empty": "Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service.",
+				"title": "Retrieve Order Details",
+				"email": "My E-mail Address is:",
+				"id": "Order ID:",
+				"zip": "Ship To Post Code:",
+				"submit_btn": "View"
+			}
 		},
 		"pay_order": {
-			"pay_now_confirm":{},
-			"pay_now_success":{}
+			"pay_now_confirm":{
+				"proc_pay_select": "Please select a payment method.",
+				"proc_pay_enter": "Please enter a payment amount.",
+				"title": "Pay Now",
+				"credit_card_title": "Pay By Credit Card",
+				"credit_card_label": "Select your payment method",
+				"card_type_option": "Select an option",
+				"card_holder": "Card Holder",
+				"card_holder_placeholder": "John Smith",
+				"card_number": "Card Number",
+				"card_number_help": "(only digits)",
+				"card_expiration_date": "Card Expiration Date",
+				"card_exp_month": "Month",
+				"card_exp_year": "Year",
+				"card_ccid": "Card CCID",
+				"card_ccid_help": "(3-4 digit security code)",
+				"amount_paid": "Enter Amount You Want To Pay Now",
+				"process_btn": "Process Credit Card Payment",
+				"processing": "Payment Processing.<br /> Please do not refresh or close this page.",
+			},
+			"pay_now_success":{
+				"title": "Thank You!",
+				"paragraph": "Your payment order has been processed.",
+				"print_btn": "Print Invoice"
+			}
 		},
-		"payrec": {},
+		"payrec": {
+			"proc_pay_alert_one": "Please select a payment method.",
+			"proc_pay_alert_two": "You are [@config:moneysign@]'+tmore.innerHTML+' out of balance.",
+			"proc_pay_alert_three": "Please enter a payment amount.",
+			"updAmt_alert_one": "Error: Invalid Amount Applied.",
+			"updAmt_alert_two": "Error: Invalid payment amount.",
+			"breadcrumb": "Pay Outstanding Orders and Invoices",
+			"title": "Pay Outstanding Orders &amp; Invoices",
+			"processing_heading_one": "Payment Processing",
+			"processing_heading_two": "Please do not refresh or close this page",
+			"account_details_heading": "My Account Details",
+			"payment_terms": "My Payment Terms",
+			"account_balance": "My Account Balance",
+			"available_credit": "My Available Credit",
+			"real_time_heading": "Real-Time Payment Processor",
+			"real_time_help": "Enter your payment details and the amount you want to pay below. Then apply the payment to the invoices you want to pay until your <b>Out Of Balance</b> equals <b>0</b>. To finalise payment click on the <b>process payment</b> button at the bottom of the page.",
+			"card_type": "Select Payment Method",
+			"card_type_option": "Select an option",
+			"card_holder": "Card Holder",
+			"card_number": "Card Number",
+			"card_number_help": "(only digits)",
+			"card_exp": "Card Expiration Date",
+			"card_exp_month": "Month",
+			"card_exp_year": "Year",
+			"card_ccid": "Card CCID",
+			"card_ccid_help": "(3-4 digit security code)",
+			"amount_paid": "Payment Amount",
+			"unpaid_orders": "Unpaid Orders",
+			"order_id_heading": "Order ID",
+			"invoiced_date_heading": "Invoiced Date",
+			"payment_terms_heading": "Payment Terms",
+			"due_date_heading": "Due Date",
+			"total_due_heading": "Total Due",
+			"amount_owed_heading": "Amount Owed",
+			"amount_applied_heading": "Amount Applied",
+			"total_app": "Total Applied",
+			"total_rec": "Payment Amount",
+			"total_more": "Out of Balance",
+			"orders_empty": "No outstanding orders on this account.",
+			"reset_btn": "Reset",
+			"process_btn": "Process Payment"
+		},
 		"print": {
-			"order":{},
-			"quote":{},
-			"template":{}
+			"title": "Print Invoice",
+			"page_not_found": "Page Not Found!"
 		},
 		"register": {
-			"done":{},
-			"template":{}
+			"done":{
+				"title": "Registration Complete",
+				"paragraph": "Thank you [@username@] for registering.",
+				"continue_btn": "Continue Shopping"
+			},
+			"template":{
+				"title": "My Account",
+				"login_heading": "Returning Customer? Log In.",
+				"username": "My E-mail Address is",
+				"username_help": "Forgot Your Username",
+				"username_help_btn": "Click Here",
+				"password": "My Password is",
+				"password_help": "Forgot Your Password",
+				"password_help_btn": "Click Here",
+				"login_btn": "Login Now",
+				"register_title": "New Customer? Create an Account.",
+				"reg_username": "Username",
+				"reg_password": "E-mail Address",
+				"reg_password2": "Confirm Password",
+				"regoptin": "Subscribe To Newsletter",
+				"register_btn": "Register and Continue"
+			}
 		},
 		"resetpwd": {
-			"done":{},
-			"template":{}
+			"done":{
+				"title": "Account Password Changed",
+				"paragraph": "Your password has been changed, and a confirmation email has been sent to [@EMAIL@].",
+				"account_btn": "Continue To My Account Home Page",
+				"home_btn": "Continue To [@config:company_name@] Home Page"
+			},
+			"template":{
+				"title": "Create Account Password",
+				"paragraph": "So that you can shop faster in the future, print and track past orders, please create an account password below.",
+				"new_pass": "Password:",
+				"confirm_new_pass": "Confirm Password:",
+				"save_btn": "Save Changes"
+			}
 		},
 		"standing_order": {
 			"template":{},
 			"view":{}
 		},
 		"track_order": {
-			"":{},
-			"":{}
+			"order":{},
+			"template":{}
 		},
 		"view_order": {
-			"":{},
-			"":{},
-			"":{}
+			"order":{},
+			"quote":{},
+			"template":{}
 		},
 		"vouchers": {},
 		"warranty": {
-			"":{},
-			"":{},
-			"":{},
-			"":{},
-			"":{},
-			"":{},
-			"":{}
+			"dispute_sent":{},
+			"dispute_updated":{},
+			"open_dispute":{},
+			"select_dispute_reason":{},
+			"select_dispute_type":{},
+			"template":{},
+			"view_dispute":{}
 		},
 		"wholesaleregister": {
-			"":{},
-			"":{}
+			"done":{},
+			"template":{}
 		},
 		"wishlist": {
-			"":{},
-			"":{},
-			"":{}
+			"template":{},
+			"view":{}
 		},
 		"write_contentreview": {
-			"":{},
-			"":{},
-			"":{}
+			"confirm":{},
+			"not_found":{},
+			"preview":{}
 		},
 		"write_review": {
-			"":{},
-			"":{},
-			"":{},
-			"":{}
+			"not_found":{},
+			"preview":{},
+			"template":{},
+			"write":{}
 		},
 		"login": {
 			"title": "My Account",
