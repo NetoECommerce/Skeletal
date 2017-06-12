@@ -463,7 +463,7 @@
 			"view":{
 				"title": "Manage Logo",
 				"logo_heading": "Upload your logo file here",
-				"upld_logo_btn": "",
+				"upld_logo_btn": "Upload Logo",
 				"upld_logo_help": "We accept GIF, JPG and PNG formats.<br /> Maximum file size is 5MB."
 			}
 		},
@@ -889,7 +889,8 @@
 			},
 			"template":{
 				"title": "Wholesale Registration Form",
-				"": "Your Future Login Details",
+				"subtitle": "If you already have an account with us, please login at the <a href='[%url page:'account' type:'login'%][%END url%]'>login page</a>",
+				"login_heading": "Your Future Login Details",
 				"reg_username": "Username",
 				"reg_username_help": "(used for future access to your account)",
 				"reg_email": "Email Address",
