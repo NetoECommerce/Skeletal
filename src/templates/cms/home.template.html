@@ -2,7 +2,7 @@
 	[%if [@config:show_home_ads@]%]
 		[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
 			[%param *header%]
-				<div id="homepageCarousel" class="carousel slide">
+				<section id="homepageCarousel" class="carousel slide" aria-label="Banner Images">
 					[%if [@total_showing@] > 1%]
 						<ol class="carousel-indicators">
 							[%site_value id:'counter' type:'load'/%]
@@ -20,7 +20,7 @@
 							<span class="fa fa-chevron-right"></span>
 						</a>
 					[%/if%]
-				</div>
+				</section>
 			[%/param%]
 			[%param *ifempty%]
 				<a class="neto-placeholder neto-placeholder-rotator btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" href="[@config:home_url@]/_cpanel?item=adw&page=view&id=New&plan_id=1">
@@ -30,24 +30,24 @@
 		[%/advert%]
 	[%/if%]
 	<hr>
-	<div id="homepage-content" class="n-responsive-content">[@page_content@]</div>
+	<section id="homepage-content" class="n-responsive-content" aria-label="Main Description">[@page_content@]</section>
 	[%if [@config:show_home_ads@]%]
 		[%advert type:'product' limit:'8' template:'' ad_group:''%]
 			[%param *header%]
 				<hr />
-				<div class="row">
+				<section class="row" aria-label="Featured Products">
 			[%/param%]
 			[%param footer%]
-				</div>
+				</section>
 			[%/param%]
 			[%param *ifempty%]
 				[%random_products category:'0' template:'' limit:'8'%]
 					[%param *header%]
 						<hr />
-						<div class="row">
+						<section class="row" aria-label="Featured Products">
 					[%/param%]
 					[%param *footer%]
-						</div>
+						</section>
 					[%/param%]
 				[%/random_products%]
 			[%/param%]

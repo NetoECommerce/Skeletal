@@ -40,7 +40,7 @@
 <div class="col-xs-12">
 	[%breadcrumb%]
 		[%param *header%]
-			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
 				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 				</li>
@@ -55,10 +55,10 @@
 		[%/param%]
 	[%/breadcrumb%]
 	<div class="row">
-		<div class="col-xs-12 col-sm-5">
+		<section class="col-xs-12 col-sm-5" role="contentinfo" aria-label="Product Images">
 			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-		</div>
-		<div class="col-xs-12 col-sm-7">
+		</section>
+		<section class="col-xs-12 col-sm-7" role="contentinfo" aria-label="Products Information">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			<form autocomplete="off">
 				[%list_item_variations id:'[@current_sku@]'%]
@@ -147,7 +147,7 @@
 				<h2>Customise Your Purchase</h2>
 				[%load_template file:"products/includes/components.template.html"/%]
 			[%/if%]
-		</div>
+		</section>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
