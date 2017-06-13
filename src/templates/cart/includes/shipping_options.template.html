@@ -19,22 +19,19 @@
 				<input type="hidden" id="delivery_exc[@addr_id@]_[@id@]" value="[@exclude_delivery_days@]" />
 				<input type="hidden" id="delivery_only[@addr_id@]_[@id@]" value="[@only_delivery_days@]" />
 				<h4>
-				[%DATA id:'shipping_quote' if:'=' value:'1'%]
-					[%PARAM if_true%]P.O.A.[%/PARAM%]
-		[%PARAM if_false%]
-				[%DATA id:'cost' if:'=' value:'0' %]
-			[%PARAM if_true%]
-				[%DATA id:'na' if:'=' value:'0' %]
-				[%PARAM if_true%]FREE[%/PARAM%]
-				[%PARAM if_false%]N/A[%/PARAM%]
-			[%/DATA%]
-				[%/PARAM%]
-			[%PARAM if_false%]
-				[%format type:"currency"%][@cost@][%/format%]
-				[%/PARAM%]
-		[%/DATA%]
-				[%/PARAM%]
-	[%/DATA%] - [@shipping_method@] </h4></label>
+				[%if [@shipping_quote@]%] P.O.A
+				[%else%]
+					[%if [@cost@] == 0%]
+						[%if [@na@] == 0%]
+							[%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@]
+							[%else%] Free
+							[%/if%]
+						[%else%] Not Applicable
+						[%/if%]
+					[%else%] [%format type:'currency'%][@cost@][%/format%]
+					[%/if%]
+				[%/if%] - [@shipping_method@]
+				</h4></label>
 	<p class="help-block">[@shipping_description@]</p>
 	</td>
 		</tr>

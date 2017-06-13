@@ -166,7 +166,7 @@
 				[%END PARAM%]
 				[%PARAM *body%]
 					<hr />
-					<strong>[@shipping_method@]</strong> - [%format type:"currency"%][@cost@][%END format%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%END IF%]<br />
+					<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%END IF%]<br />
 					<i class="text-muted">[@shipping_description@]</i>
 				[%END PARAM%]
 				[%PARAM *footer%]
