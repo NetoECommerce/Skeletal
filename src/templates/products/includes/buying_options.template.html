@@ -157,20 +157,23 @@
 					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post Code">
 				</div>
 				<div class="col-xs-12 col-md-3">
-					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh"></i> Calculate</button>
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh" aria-hidden="true"></i> Calculate</button>
 				</div>
 			</div>
 			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
 				[%PARAM *header%]
 					<br />
+					<div role="alert" aria-atomic="true" aria-label="Shipping Results">
 				[%END PARAM%]
 				[%PARAM *body%]
+					<div role="group" aria-label="Shipping Method Option">
 					<hr />
 					<strong>[@shipping_method@]</strong> - [%format type:"currency"%][@cost@][%END format%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%END IF%]<br />
 					<i class="text-muted">[@shipping_description@]</i>
+					</div>
 				[%END PARAM%]
 				[%PARAM *footer%]
-					</p>
+					</div>
 				[%END PARAM%]
 				[%PARAM *ifempty%]
 					[%if [@ship_zip@]%]<p class="alert alert-danger alert-shipping-error">Shipping not available to selected location.</p>[%/if%]
@@ -181,7 +184,7 @@
 	[%/if%]
 	<!-- End Shipping Options -->
 	[%IF [@short_description@]%]
-	<p>
+	<p aria-label="Product Short Description">
 	[@short_description@]
 	</p>
 	[%END IF%]

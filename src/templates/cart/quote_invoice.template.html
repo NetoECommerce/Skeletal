@@ -1,7 +1,4 @@
-<!--#Start Column Left# ##-->
-<!--##[%load_template file:"includes/sidebar.template.html"%][%END load_template%]##-->
-<!--# End Column Left# ##-->
-
+<div class="col-xs-12">
 <script language="javascript" type="text/javascript">
 function print_invoice() {
 	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
@@ -19,7 +16,7 @@ Congratulations - Your Quote Has Been Confirmed!
 	<tr><td width="50%"><table border="0" cellpadding="2px" cellspacing="0" width="100%">
 		<tr><td><b>Your Quote ID:<br />
 <span class="text-danger">[@order_id@]</span></b></td></tr>
-		<tr><td><br />		  
+		<tr><td><br />
 <!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
 Your quote information will be sent to [@email@].
 <!--##[%END PARAM%][%PARAM if_false%]##-->
@@ -28,8 +25,8 @@ Your quote information will be sent to [@email@].
 		</td></tr>
 		<tr><td><p><b><br />
 <!--##[%USER id:'username' if:'ne' value:''%]##-->
-		  Quote Tracking:</b> To track the progress 
-of your quote online please go to <a href="[%URL page:'account'%][%END URL%]">your 
+		  Quote Tracking:</b> To track the progress
+of your quote online please go to <a href="[%URL page:'account'%][%END URL%]">your
 account</a> and select the quote you want to track.
 <!--##[%END USER%]##-->
 </p></td></tr>
@@ -54,18 +51,18 @@ Quote Summary
 </th></tr>
   <tr><td>
 	<!--##[%DATA id:'ship_comment' if:'ne' value:''%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
 	<tr><td class="small"><b>Special Delivery Instructions For These Items:</b><br>[@ship_comment@]</td></tr>
 </table>
 	<!--##[%END DATA%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:''%]##-->
 <!--##[%DATA id:'payment_terms_type' if:'ne' value:'once'%]##-->
-<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%"> 
+<table cellpadding="4" cellspacing="4" border="0" class="comment_ctrl" width="100%">
 	<tr><td class="small">Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b>  from time of order</td></tr>
 </table>
 <!--##[%END DATA%]##-->
 <!--##[%END DATA%]##-->
-<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list"> 
+<table width=100% cellpadding="4" cellspacing="0" border="0" class="item_list">
 	<tr>
 		<td width="100px" class="checkout_table_header" nowrap>SKU</td>
 		<td width="99%" class="checkout_table_header" nowrap>Product</td>
