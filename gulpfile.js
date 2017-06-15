@@ -22,6 +22,7 @@ gulp.task('translate', function () {
 		.pipe(international({
 			//dryRun: true,
             verbose: true,
+			encodeEntities: false,
 			filename: '${lang}/${path}/${name}.${ext}',
 			delimiter: {
 				prefix: '${',
