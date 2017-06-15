@@ -20,11 +20,13 @@ gulp.task('less', function () {
 gulp.task('translate', function () {
 	return gulp.src('src/**/*.html')
 		.pipe(international({
-			{
-			  prefix: '${',
-			  suffix: '}'
-		  	},
-			filename: '${lang}/${path}/${name}.${ext}'
+			//dryRun: true,
+            verbose: true,
+			filename: '${lang}/${path}/${name}.${ext}',
+			delimiter: {
+				prefix: '${',
+				suffix: '}'
+			}
 		}))
 		.pipe(gulp.dest('./dist'));
 });

@@ -9,12 +9,12 @@
 		"and": "和",
 		"or": "要么",
 		"sort": "分类",
-		"sort":{
+		"category_sort":{
 			"popular": "最受欢迎",
 			"name": "名称",
 			"sku": "SKU",
 			"lowest_price": "最低价格",
-			"highest_price": "最高价",
+			"highest_price": "最高价"
 		},
 		"product_found":"找到的产品",
 		"products_found":"找到的产品",
@@ -105,7 +105,6 @@
 		"free": "自由",
 		"with_item": "有了这个项目！",
 		"freebies": "赠品",
-		"with_item": "有了这个项目！",
 		"choose_free": "今天＆amp; 从这些免费礼品中选择一种!",
 		"description": "描述",
 		"warranty": "保证",
@@ -129,7 +128,7 @@
 		"actual_width": "组合宽度",
 		"product_type": "类型",
 		"format": "格式",
-		"cubic": "组合长度",
+		"assem_cubic": "组合长度",
 		"product_review_title": "成为第一个评论这个产品！",
 		"help_other": "帮助其他",
 		"product_review_subtitle": "用户通过为您购买的产品撰写评论来更智能地购物。",
@@ -209,8 +208,7 @@
 			"comment": "你的评论",
 			"name": "你的名字",
 			"email": "您的电子邮件地址",
-			"btn": "发表评论",
-			"response": "响应"
+			"btn": "发表评论"
 		},
 		"notifymodal":{
 			"title": "回到库存时通知我",
@@ -388,10 +386,10 @@
 			"ship_company": "公司",
 			"ship_street1": "地址",
 			"ship_zip": "邮政编码/邮政编码",
-			"ship_zip": "郊区选择",
+			"suburb_diship": "郊区选择",
 			"ship_city": "市",
-			"ship_city": "州",
-			"ship_city": "国家",
+			"ship_state": "州",
+			"ship_country": "国家",
 			"ship_phone": "电话号码",
 			"defaddr": "另存为我的默认地址",
 			"delete_btn": "删除地址",
@@ -402,7 +400,7 @@
 			"msg_innerHTML_not_httpReq": "错误。 请联系我们的客户支持： [@config:COMPANY_EMAIL@]",
 			"sub_ldsel_option": "选择郊区",
 			"sub_ldsel_msg_innerHTML": "邮政编码无效",
-			"confirm_delete": "要删除此地址簿条目吗？",
+			"confirm_delete": "要删除此地址簿条目吗？"
 		},
 		"edit_pwd": {
 			"done":{
@@ -584,7 +582,7 @@
 				"card_ccid_help": "（3-4位安全码）",
 				"amount_paid": "输入您想要支付的金额",
 				"process_btn": "流程信用卡付款",
-				"processing": "付款处理。<br /> 请不要刷新或关闭此页面。",
+				"processing": "付款处理。<br /> 请不要刷新或关闭此页面。"
 			},
 			"pay_now_success":{
 				"title": "谢谢！",
@@ -685,7 +683,6 @@
 				"date_placed_heading": "安排日期",
 				"current_status_heading": "当前状态",
 				"requesting_stop_heading": "要求停止",
-				"current_status_heading": "当前状态",
 				"date_started_heading": "开始日期",
 				"amount_on_order_heading": "订购量",
 				"next_delivery_heading": "下一个交货",
@@ -746,7 +743,7 @@
 				"customer_po": "PO #",
 				"date_placed": "安排日期：",
 				"if_invoiced": "日期开具：",
-				"order_status": "完成日期：",
+				"date_completed": "完成日期：",
 				"ship_to_heading": "运送到：",
 				"ship_phone": "联系电话：",
 				"image_heading": "图片",
@@ -794,7 +791,7 @@
 			},
 			"dispute_updated":{
 				"title": "解决中心 - 保修，付款 &amp; 返回争议",
-				"subtitle": "争议 #[@dispute_id@] 已经升级。",
+				"subtitle": "争议 #[@dispute_id@] 已经升级。"
 
 			},
 			"open_dispute":{
@@ -915,7 +912,7 @@
 				"terms_heading": "条款 &amp; 贸易条件",
 				"regoptin": "订阅 [@config:company_name@] 通讯。",
 				"agree": "我同意 [@config:company_name@] 交易条件。",
-				"register_btn": "寄存器",
+				"register_btn": "寄存器"
 			}
 		},
 		"wishlist": {
@@ -1007,7 +1004,7 @@
 			"click_here": "点击这里",
 			"login_now": "现在登录",
 			"password_label": "我的密码是",
-			"forgot_username": "忘记密码了吗",
+			"forgot_pword": "忘记密码了吗",
 			"register_title": "新客户？ 创建一个帐户。",
 			"reg_username_label": "用户名",
 			"reg_email_label": "电子邮件地址",
@@ -1020,7 +1017,7 @@
 			"title": "登出 -",
 			"subtitle": "您已成功登出帐户。",
 			"btn": "再次登录"
-		},
+		}
 	},
 	"cart":{
 		"adduserlogo": {
@@ -1121,7 +1118,7 @@
 			"surcharge": "附加费",
 			"gst": "GST",
 			"inc": "公司",
-			"quote_total": "报价合计",
+			"quote_total": "报价合计"
 		},
 		"rental_invoice": {
 			"title": "恭喜 - 您的报价已经确认！",
@@ -1241,7 +1238,7 @@
 			"voucher_msg": "礼券信息 <span class='text-danger'>*</span><p class='muted'>礼品邮件中显示的信息</p>",
 			"voucher_msg_length": "其余字符",
 			"continue_btn": "继续结帐"
-		},
+		}
 	},
 	"checkout":{
 		"title":"安全支付",
@@ -1266,7 +1263,7 @@
 			"bill_zip":"邮政编码",
 			"bill_city":"郊区/市",
 			"bill_state":"州",
-			"bill_phone":"电话号码",
+			"bill_phone":"电话号码"
 		},
 		"shipping_details":{
 			"step": "第2步。",
@@ -1323,11 +1320,11 @@
 			"agree": "同意",
 			"confirm_order": "确认 &amp; 流程订单",
 			"confirm_quote": "确认 &amp; 流程报价"
-		},
+		}
 	},
 	"404": {
 		"title": "找不到网页",
 		"subtitle": "您正在寻找的页面似乎不存在或已移动。",
-		"btn": "家",
-	},
+		"btn": "家"
+	}
 }

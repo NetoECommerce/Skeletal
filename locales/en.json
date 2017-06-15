@@ -9,12 +9,12 @@
 		"and": "and",
 		"or": "or",
 		"sort": "Sort",
-		"sort":{
+		"category_sort":{
 			"popular": "Most Popular",
 			"name": "Name",
 			"sku": "SKU",
 			"lowest_price": "Lowest Price",
-			"highest_price": "Highest Price",
+			"highest_price": "Highest Price"
 		},
 		"product_found":"Product Found",
 		"products_found":"Products Found",
@@ -105,7 +105,6 @@
 		"free": "FREE",
 		"with_item": "With This Item!",
 		"freebies": "FREEBIES",
-		"with_item": "With This Item!",
 		"choose_free": "Today &amp; Choose From One Of These FREE Gifts!",
 		"description": "Description",
 		"warranty": "Warranty",
@@ -129,7 +128,7 @@
 		"actual_width": "Assembled Width",
 		"product_type": "Type",
 		"format": "Format",
-		"cubic": "Assembled Length",
+		"assem_cubic": "Assembled Length",
 		"product_review_title": "Be The First To Review This Product!",
 		"help_other": "Help other",
 		"product_review_subtitle": "users shop smarter by writing reviews for products you have purchased.",
@@ -209,8 +208,7 @@
 			"comment": "Your Comment",
 			"name": "Your Name",
 			"email": "Your Email Address",
-			"btn": "Post Comment",
-			"response": "Response"
+			"btn": "Post Comment"
 		},
 		"notifymodal":{
 			"title": "Notify me when back in stock",
@@ -388,10 +386,10 @@
 			"ship_company": "Company",
 			"ship_street1": "Address",
 			"ship_zip": "Zip Code / Postal Code",
-			"ship_zip": "Suburb Selector",
+			"suburb_diship": "Suburb Selector",
 			"ship_city": "City",
-			"ship_city": "State",
-			"ship_city": "Country",
+			"ship_state": "State",
+			"ship_country": "Country",
 			"ship_phone": "Phone Number",
 			"defaddr": "Save as My Default Address",
 			"delete_btn": "Delete Address",
@@ -402,7 +400,7 @@
 			"msg_innerHTML_not_httpReq": "Error. Please contact our customer support: [@config:COMPANY_EMAIL@]",
 			"sub_ldsel_option": "Select Suburb",
 			"sub_ldsel_msg_innerHTML": "Invalid Post Code.",
-			"confirm_delete": "Do you want to delete this address book entry?",
+			"confirm_delete": "Do you want to delete this address book entry?"
 		},
 		"edit_pwd": {
 			"done":{
@@ -584,7 +582,7 @@
 				"card_ccid_help": "(3-4 digit security code)",
 				"amount_paid": "Enter Amount You Want To Pay Now",
 				"process_btn": "Process Credit Card Payment",
-				"processing": "Payment Processing.<br /> Please do not refresh or close this page.",
+				"processing": "Payment Processing.<br /> Please do not refresh or close this page."
 			},
 			"pay_now_success":{
 				"title": "Thank You!",
@@ -685,7 +683,6 @@
 				"date_placed_heading": "Date Placed",
 				"current_status_heading": "Current Status",
 				"requesting_stop_heading": "Requesting To Stop",
-				"current_status_heading": "Current Status",
 				"date_started_heading": "Date Started",
 				"amount_on_order_heading": "Amount On Order",
 				"next_delivery_heading": "Next Delivery",
@@ -746,7 +743,7 @@
 				"customer_po": "PO #",
 				"date_placed": "Date Placed:",
 				"if_invoiced": "Date Invoiced:",
-				"order_status": "Date Completed:",
+				"date_completed": "Date Completed:",
 				"ship_to_heading": "Ship To:",
 				"ship_phone": "Tel:",
 				"image_heading": "Image",
@@ -794,7 +791,7 @@
 			},
 			"dispute_updated":{
 				"title": "Resolution Centre - Warranty, Payment &amp; Return Disputes",
-				"subtitle": "Dispute #[@dispute_id@] has been updated.",
+				"subtitle": "Dispute #[@dispute_id@] has been updated."
 
 			},
 			"open_dispute":{
@@ -915,7 +912,7 @@
 				"terms_heading": "Terms &amp; Conditions Of Trade",
 				"regoptin": "Subscribe to the [@config:company_name@] newsletter.",
 				"agree": "I agree to the [@config:company_name@] terms of trade.",
-				"register_btn": "Register",
+				"register_btn": "Register"
 			}
 		},
 		"wishlist": {
@@ -1007,7 +1004,7 @@
 			"click_here": "Click Here",
 			"login_now": "Login Now",
 			"password_label": "My Password is",
-			"forgot_username": "Forgot Your Password",
+			"forgot_pword": "Forgot Your Password",
 			"register_title": "New Customer? Create an Account.",
 			"reg_username_label": "Username",
 			"reg_email_label": "E-mail Address",
@@ -1020,7 +1017,7 @@
 			"title": "Logged Out -",
 			"subtitle": "You have been successfully logged out of your account.",
 			"btn": "Log in again"
-		},
+		}
 	},
 	"cart":{
 		"adduserlogo": {
@@ -1121,7 +1118,7 @@
 			"surcharge": "Surcharge",
 			"gst": "GST",
 			"inc": "Inc.",
-			"quote_total": "Quote Total",
+			"quote_total": "Quote Total"
 		},
 		"rental_invoice": {
 			"title": "Congratulations - Your Quote Has Been Confirmed!",
@@ -1241,7 +1238,7 @@
 			"voucher_msg": "Gift Voucher Message<span class='text-danger'>*</span><p class='muted'>The message that appears on the gift voucher email</p>",
 			"voucher_msg_length": "Character(s) Left",
 			"continue_btn": "Continue To Checkout"
-		},
+		}
 	},
 	"checkout":{
 		"title":"Secure Checkout",
@@ -1266,7 +1263,7 @@
 			"bill_zip":"Postal Code",
 			"bill_city":"Suburb / City",
 			"bill_state":"State",
-			"bill_phone":"Phone Number",
+			"bill_phone":"Phone Number"
 		},
 		"shipping_details":{
 			"step": "Step 2.",
@@ -1323,11 +1320,11 @@
 			"agree": "Agree To",
 			"confirm_order": "Confirm &amp; Process Order",
 			"confirm_quote": "Confirm &amp; Process Quote"
-		},
+		}
 	},
 	"404": {
 		"title": "Page Not Found",
 		"subtitle": "The page you were looking for doesn't appear to exist or has moved.",
-		"btn": "Home",
-	},
+		"btn": "Home"
+	}
 }
