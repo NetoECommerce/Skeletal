@@ -52,11 +52,7 @@
 		<div class="hidden-xs col-sm-4 text-right">
 			<div id="header-cart" class="btn-group">
 				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
-<<<<<<< HEAD
-					<i class="fa fa-shopping-cart"></i> <span class="visible-lg visible-inline-lg">${header.shopping_cart}</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> ${header.items}
-=======
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
->>>>>>> origin/master
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="visible-lg visible-inline-lg">${header.shopping_cart}</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> ${header.items}
 				</a>
 				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-label="Shopping cart dropdown"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
@@ -118,11 +114,7 @@
 						[%/ cache%]
 					</ul>
 					<ul class="nav navbar-nav navbar-right hidden-xs">
-<<<<<<< HEAD
-						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%]><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">${header.my_account}</span> <span class="caret"></span></a>
-=======
-						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%] aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
->>>>>>> origin/master
+						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%] aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">${header.my_account}</span> <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
 								<li><a href="[%url page:'account'/%]">${header.account_home}</a></li>
 								<li><a href="[%url page:'account'/%]#orders">${header.orders}</a></li>
