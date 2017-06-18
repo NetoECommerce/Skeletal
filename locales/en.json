@@ -1320,6 +1320,55 @@
 			"agree": "Agree To",
 			"confirm_order": "Confirm &amp; Process Order",
 			"confirm_quote": "Confirm &amp; Process Quote"
+		},
+		"address": {
+			"ladb_addr": "Choose From Your Address Book",
+			"_addr_first_name": "First Name",
+			"_addr_last_name": "Last Name",
+			"_addr_company": "Company",
+			"_addr_country": "Country",
+			"_addr_zip": "Postal Code",
+			"_addr_city": "Suburb / City",
+			"_addr_state": "State",
+			"_addr_phone": "Phone Number",
+			"save_btn": "Save Address"
+		},
+		"cart_items": {
+			"title": "Apply Coupon / Promo Code",
+			"_cpy_add_coupon": "Apply Coupon Code",
+			"active_discounts": "Active Discounts",
+			"cart_vouchers": "Rewards Earned",
+			"reward_points": "pts",
+			"order_summary": "Order Summary - ",
+			"order_subtotal": "Order Subtotal",
+			"surcharge": "Surcharge",
+			"tax": "GST",
+			"tax_inc": "Inc.",
+			"edit_btn": "Edit Order"
+		},
+		"login": {
+			"username": "My Username or E-mail Address is",
+			"forgotusr": "Forgot Your Username",
+			"password": "My Password is",
+			"forgotpwd": "Forgot Your Password",
+			"click_here": "Click Here",
+			"_cpy_login_confirm": "Login &amp; Continue Checkout"
+		},
+		"redeem_vouchers": {
+			"voucherAccordion": "Redeem a Gift Voucher",
+			"addvoucher": "Voucher Code",
+			"_cpy_vsecret_mask": "Secret Code",
+			"redeem_btn": "Redeem Voucher",
+			"credit_available": "The Following Credit Is Available On Your Account:",
+			"description_heading": "Description",
+			"balance_heading": "Balance Available",
+			"apply_credit_heading": "Apply Credit To This Order",
+			"voucher_once": "<strong>NOTE:</strong> This voucher can only be used once. Any unused credit will not be available for future use.",
+			"account_credit": "Account Credit"
+		},
+		"shipping_options": {},
+		"voucher_msg": {
+
 		}
 	},
 	"404": {
