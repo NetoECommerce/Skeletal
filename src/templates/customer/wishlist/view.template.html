@@ -1,7 +1,7 @@
 <script language="javascript" type="text/javascript" src="[@config:imageurl@]/js/CDate.js"></script>
 
 <div class="col-xs-12">
-	<ul class="breadcrumb">
+	<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 		<li><a href="[%URL page:'account' type:'wishlist'%][%END URL%]">My Wishlists</a></li>
@@ -9,11 +9,11 @@
 	</ul>
 	<h1>Edit My Wish List</h1>
 	<hr />
-	
+
 	<!--##[%DATA id:'msg' if:'eq' value:'LIST_UPDATED'%]##-->
 	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> Wishlist has been updated. </div>
 	<!--##[%END DATA%]##-->
-	
+
 	<form NAME="wishlist_update" method="POST" action="[%URL page:'account' type:'wishlist' fn:'view'%][%END URL%]">
 		<input type="hidden" name="id" value="[@wishlist_id@]" />
 		<input type="hidden" name="proc" value="update" />
@@ -24,19 +24,19 @@
 				<div class="col-xs-12 col-md-6">
 					<div class="form-group">
 						<label>List Name</label>
-						<span class="label label-info">Created on 
-						<!--##[%FORMAT type:'date' default:'' format:'#d #k #Y (#H:#I)'%][@date_created@][%END FORMAT%]##-->. 
-						<!--##[%FORMAT type:'date' default:'' format:' Last reminder sent on #d #k #Y (#H:#I).'%][@date_reminder@][%END FORMAT%]##--> 
+						<span class="label label-info">Created on
+						<!--##[%FORMAT type:'date' default:'' format:'#d #k #Y (#H:#I)'%][@date_created@][%END FORMAT%]##-->.
+						<!--##[%FORMAT type:'date' default:'' format:' Last reminder sent on #d #k #Y (#H:#I).'%][@date_reminder@][%END FORMAT%]##-->
 						</span>
 						<input class="form-control" type="text" name="wh_name" value="[%NOHTML%][@wishlist_name@][%END NOHTML%]" maxlength="50" />
-						
+
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-6">
 				<label>&nbsp;</label>
 				<p><input type="submit" class="btn btn-success" name="submit" value="Save My List Settings" /></p>
 				</div>
-				
+
 				<div class="col-xs-12 col-md-6 hidden">
 				<div class="form-group">
 					<label>List Status</label>
@@ -60,23 +60,23 @@
 <h4><i class="fa fa-folder-open"></i> <!--##[%NOHTML%]##-->[@wishlist_name@] Contents<!--##[%END NOHTML%]##--></h4>
 <hr />
 
-<!--##[%thumb_list limit:'10000' type:'products' sortby:'wishlist' template:'clist' filter_wishlist:'[@wishlist_id@]'%]##--> 
-<!--##[%PARAM pgnum%][%FORM id:'pgquote'%][%END FORM%][%END PARAM%]##--> 
+<!--##[%thumb_list limit:'10000' type:'products' sortby:'wishlist' template:'clist' filter_wishlist:'[@wishlist_id@]'%]##-->
+<!--##[%PARAM pgnum%][%FORM id:'pgquote'%][%END FORM%][%END PARAM%]##-->
 <!--##[%PARAM header%]##-->
 <div class="thumb">
 	<ul class="thumbnails">
-		<!--##[%END PARAM%]##--> 
+		<!--##[%END PARAM%]##-->
 		<!--##[%PARAM *footer%]##-->
 	</ul>
 </div>
 <div class="clear"></div>
-<!--##[%END PARAM%]##--> 
-<!--##[%PARAM ifempty%]##--> 
-You have no items in this wishlist. 
-<!--##[%END PARAM%]##--> 
+<!--##[%END PARAM%]##-->
+<!--##[%PARAM ifempty%]##-->
+You have no items in this wishlist.
+<!--##[%END PARAM%]##-->
 <!--##[%END thumb_list%]##-->
 </div>
 
-<!--#Start Column Right# ##--> 
-<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##--> 
+<!--#Start Column Right# ##-->
+<!--##[%load_template file:"column_right/customer.template.html"%][%END load_template%]##-->
 <!--# End Column Right# ##-->
