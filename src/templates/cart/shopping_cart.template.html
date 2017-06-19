@@ -6,7 +6,7 @@
 	<div class="row btn-stack">
 		<div class="col-xs-12 col-md-9">
 			[%if [@config:allow_user_quote@] eq '1'%]
-				<button class="btn btn-default" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt"></i> Create Quote From Cart</button>
+				<button class="btn btn-default" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt" aria-hidden="true"></i> Create Quote From Cart</button>
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
@@ -14,7 +14,7 @@
 			[%/if%] -->
 		</div>
 		<div class="col-xs-12 col-md-3">
-			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white"></i> Checkout Now</button>
+			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Checkout Now</button>
 		</div>
 	</div>
 	<div class="row">
@@ -24,7 +24,7 @@
 	</div>
 	[%cart_items%]
 	[%param header%]
-	<div class="row">
+	<div class="row" role="contentinfo" aria-label="Products In Shopping Cart">
 		<div class="col-xs-12">
 			<form method="post" name="checkout" action="[%url page:'checkout'/%]">
 				<input type="hidden" name="recal" value="1" />
@@ -41,7 +41,7 @@
 					[%/param%]
 					[%param *body%]
 					<tr>
-						<td class="cartTable--column cartTable--column-image"><a href="[@url@]"><img class="img-responsive" src="[@thumb@]"/></a></td>
+						<td class="cartTable--column cartTable--column-image"><a href="[@url@]"><img class="img-responsive" src="[@thumb@]" alt="[@model@]"/></a></td>
 						<td>
 							<a href="[@url@]"><h4>[@model@]</h4></a>
 							<p class="small">
@@ -103,7 +103,7 @@
 						</td>
 						<td class="options-column">
 							<input name="line[@count@]" type="hidden" value="[@counter@]" />
-							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%]/>
+							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%] aria-label="[@model@] Quantity"/>
 						</td>
 						<td class="text-right">
 							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
@@ -113,7 +113,7 @@
 							<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
 						</td>
 						<td class="hidden-xs">
-							<a class="btn btn-block btn-danger" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o"></i></a>
+							<a class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 					[%/param%]
@@ -130,19 +130,19 @@
 	</div>
 	<div class="row btn-stack">
 		<div class="col-xs-12 col-md-3">
-			<button type="button" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class="fa fa-reply"></i> Continue Shopping</button>
+			<button type="button" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
 		</div>
 		<div class="col-xs-12 col-md-3 col-md-offset-6">
-			<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh"></i> Update My Changes</button>
+			<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh" aria-hidden="true"></i> Update My Changes</button>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
 			<hr>
 		</div>
-		[%if [@config:show_shipping_calc@]%]
+    [%if [@config:show_shipping_calc@]%]
 		<div class="col-xs-12 [%if [@config:show_coupon_promo_code_field@]%]col-md-3[%else%]col-md-6[%/if%]">
-			<div class="panel panel-default">
+			<div class="panel panel-default" role="contentinfo" aria-label="Calculate Shipping">
 				<div class="panel-heading">
 					<h4 class="panel-title">Shipping Calculator</h4>
 				</div>
@@ -168,9 +168,9 @@
 			</div>
 		</div>
 		[%/if%]
-		[%if [@config:show_coupon_promo_code_field@]%]
+		[%if [@config:show_coupon_promo_code_field@]%]        
 		<div class="col-xs-12 [%if [@config:show_shipping_calc@]%]col-md-3[%else%]col-md-6[%/if%]">
-			<div class="panel panel-default">
+			<div class="panel panel-default" role="contentinfo" aria-label="Discount Code">
 				<div class="panel-heading">
 					<h4 class="panel-title">Discount Code</h4>
 				</div>
@@ -294,7 +294,7 @@
 				</div>
 				<div class="col-xs-12 col-md-6 text-center">
 					<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
-						<i class="fa fa-shopping-cart"></i> Checkout Now
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout Now
 					</button>
 				</div>
 			</div>

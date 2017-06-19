@@ -13,7 +13,7 @@
 					[%menu id:'web_footer'%]
 						[%param *level_1%]
 							<div class="col-xs-12 col-sm-4">
-								<h4>[@name@]</h4>
+								<h4 aria-label="[@name@] Menu">[@name@]</h4>
 								<ul class="nav nav-pills nav-stacked">
 									[@next_level@]
 								</ul>
@@ -46,7 +46,7 @@
 					<meta itemprop="url" content="[@config:home_url@]"/>
 					<meta itemprop="logo" content="[@config:home_url@][@config:imageurl@]/website_logo.png"/>
 					<meta itemprop="name" content="[@config:company_name@]"/>
-					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank" title="Email us"><i class="fa fa-envelope"></i></a></li>
+					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank" title="Email us" aria-label="Email us"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
 					[%if [@config:facebook_account_id@]%]
 					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook" role="link"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
 					[%/if%]
@@ -230,8 +230,8 @@
 [%SITE_VALUE id:'footer_javascript' type:'load'/%]
 <!-- Analytics -->
 [%tracking_code type:'Visitor' /%]
-<div class="npopup" style="" role="alert" aria-atomic="true"> <a href="javascript:void(0);" class="npopup-btn-close"></a>
-	<div class="npopup-body">
+<div class="npopup" style="" role="alertdialog" aria-atomic="true" aria-label="Popup" aria-describedby="npopupDesc" tabindex="-1"> <a href="javascript:void(0);" class="npopup-btn-close" aria-label="Close Popup"></a>
+	<div class="npopup-body" id="npopupDesc">
 	</div>
 </div>
 <div class="nactivity"><i class="fa fa-spinner fa-spin fa-inverse fa-3x fa-fw"></i></div>
