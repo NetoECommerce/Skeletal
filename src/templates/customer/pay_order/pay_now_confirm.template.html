@@ -30,10 +30,10 @@ function proc_pay() {
 					f.submit();
 				}
 			} else {
-				alert('Please select a payment method.');
+				alert('${customer.pay_order.pay_now_confirm.proc_pay_select}');
 			}
 		} else {
-			alert('Please enter a payment amount.');
+			alert('${customer.pay_order.pay_now_confirm.proc_pay_enter}');
 		}
 	}
 }
@@ -41,13 +41,13 @@ function proc_pay() {
 
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+		<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+		<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
 
 	<div class="page-header">
-		<h1>Pay Now</h1>
+		<h1>${customer.pay_order.pay_now_confirm.title}</h1>
 	</div>
 
 	<!--##[%DATA id:'error' if:'ne' value:''%]##-->
@@ -64,13 +64,13 @@ function proc_pay() {
 		<input type="hidden" name="action" value="paynow">
 		<input type="hidden" name="grand_total" value="[@grand_total@]">
 		<input type="hidden" name="paid_total" value="[@paid_total@]">
-		<h3>Pay By Credit Card</h3>
+		<h3>${customer.pay_order.pay_now_confirm.credit_card_title}</h3>
 		<div class="row">
 			<div class="col-xs-12 col-md-4">
 				<div class="form-group">
-					<label>Select your payment method</label>
+					<label>${customer.pay_order.pay_now_confirm.credit_card_label}</label>
 					<select class="form-control" name="card_type" onChange="showPD()">
-						<option value="" selected>Select an option</option>
+						<option value="" selected>${customer.pay_order.pay_now_confirm.card_type_option}</option>
 						<!--##[%payment_methods charge_type:'cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' payment_amount:'[@amount_owed@]'%]
 [%PARAM *body%]##-->
 						<option value="[@id@]:[@charge_type@]">[@name@]</option>
@@ -87,25 +87,25 @@ function proc_pay() {
 					<div class="row">
 						<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Holder</label>
-							<input placeholder="John Smith" class="form-control" name="card_holder" size="30" maxlength="40" value="">
+							<label>${customer.pay_order.pay_now_confirm.card_holder}</label>
+							<input placeholder="${customer.pay_order.pay_now_confirm.card_holder_placeholder}" class="form-control" name="card_holder" size="30" maxlength="40" value="">
 						</div>
 						</div>
 						<div class="col-xs-12">
 						<div class="form-group">
-							<label>Card Number</label>
+							<label>${customer.pay_order.pay_now_confirm.card_number}</label>
 							<input placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control" name="card_number" size="16" maxlength="16" value="">
-							<p class="help-text">(only digits)</p>
+							<p class="help-text">${customer.pay_order.pay_now_confirm.card_number_help}</p>
 						</div>
 						</div>
 					</div>
 					<div class="row">
 					<div class="form-group">
 						<div class="col-xs-12">
-							<label>Card Expiration Date</label>
+							<label>${customer.pay_order.pay_now_confirm.card_expiration_date}</label>
 						</div>
 						<div class="col-xs-12 col-md-4">
-						<label>Month</label>
+						<label>${customer.pay_order.pay_now_confirm.card_exp_month}</label>
 							<select name="card_exp_month" class="form-control">
 								<option value=""></option>
 								<!--##[%months%][%PARAM *body%]##-->
@@ -114,7 +114,7 @@ function proc_pay() {
 							</select>
 						</div>
 						<div class="col-xs-12 col-md-4">
-						<label>Year</label>
+						<label>${customer.pay_order.pay_now_confirm.card_exp_year}</label>
 							<select name="card_exp_year" class="form-control">
 								<option value=""></option>
 								<!--##[%years from:'+0' to:'+10'%][%PARAM *body%]##-->
@@ -124,9 +124,9 @@ function proc_pay() {
 						</div>
 						<div class="col-xs-12 col-md-4">
 
-							<label>Card CCID</label>
+							<label>${customer.pay_order.pay_now_confirm.card_ccid}</label>
 							<input name="card_ccid" size="5" class="form-control">
-							<p class="help-text">(3-4 digit security code)</p>
+							<p class="help-text">${customer.pay_order.pay_now_confirm.card_ccid_help}</p>
 
 						</div>
 
@@ -136,10 +136,10 @@ function proc_pay() {
 
 					</div>
 					<div class="form-group">
-					<label>Enter Amount You Want To Pay Now</label>
+					<label>${customer.pay_order.pay_now_confirm.amount_paid}</label>
 					<input placeholder="[@config:moneysign@]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
 				</div>
-				<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="Process Credit Card Payment">
+				<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="${customer.pay_order.pay_now_confirm.process_btn}">
 			</div>
 
 				</div>
@@ -149,8 +149,7 @@ function proc_pay() {
 	</form>
 	<hr>
 	<script type="text/javascript" language="javascript">showPD();</script>
-	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> Payment Processing.<br />
-		Please do not refresh or close this page.<br />
+	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> ${customer.pay_order.pay_now_confirm.processing}<br />
 		<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 
 	<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->

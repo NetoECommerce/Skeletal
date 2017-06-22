@@ -8,35 +8,35 @@ $(document).ready(function() {
 			else {
 				$('#updatelogo').submit();
 			}
-		}	
-	});	
-	
+		}
+	});
+
 	$('.upload_btn').click(function(e){
-			$.submit_form();	
-	});	
-	
+			$.submit_form();
+	});
+
 	$('.card_btn').click(function(e){
 		$('#updatecard').submit();
-	});	
-		
+	});
+
 });
-	
+
 </script>
 
 <!--#Start Column Left# ##-->
 <!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
 <!--# End Column Left# ##-->
- 
 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 
 <div class="page-header">
-<h1>Manage Logo</h1>
+<h1>${customer.logos.view.title}</h1>
 </div>
 
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
 </div>
 </div>
 <div class="float_left logo-block">
-<h3>Upload your logo file here</h3>
+<h3>${customer.logos.view.logo_heading}</h3>
 <div class="float_left">
 <table cellpadding="0" cellspacing="2" border="0">
 <tr><td align="center">
@@ -58,10 +58,9 @@ $(document).ready(function() {
 </div>
 <div class="float_left choose-file">
 <input type="file" name="upld_logo" id="upld_logo" /><br>
-<input class="upload_btn" type="button" class="btn" value="Upload Logo" /><br />
+<input class="upload_btn" type="button" class="btn" value="${customer.logos.view.upld_logo_btn}" /><br />
 <p class="helper-text">
-We accept GIF, JPG and PNG formats.<br />
-Maximum file size is 5MB.
+${customer.logos.view.upld_logo_help}
 </p>
 </div>
 <input type="hidden" name="upld_logo_sku" value="COMPANY_LOGO">

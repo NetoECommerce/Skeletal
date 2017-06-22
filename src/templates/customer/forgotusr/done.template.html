@@ -1,18 +1,18 @@
 <div class="grid_12">
 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 
 <div class="page-header">
-<h1> Username Send To [@EMAIL@]</h1>
+<h1> ${customer.forgotusr.done.title}</h1>
 </div>
 
-<p>Your username has been sent to [@EMAIL@].</p>
+<p>${customer.forgotusr.done.paragraph}</p>
 
-<p><a href="[%URL page:'account' type:'login'%][%END URL%]" class="btn">Continue To Login</a></p>
+<p><a href="[%URL page:'account' type:'login'%][%END URL%]" class="btn">${customer.forgotusr.done.continue_btn}</a></p>
 
 </div>

@@ -247,6 +247,7 @@
 		"log_out": "log out",
 		"credit_limit": "Credit Limit:",
 		"available_credit": "Available Credit:",
+		"account_options": "Account Options",
 		"no_email_title": "You are required to enter your email address to order from our website and receive email notifications.",
 		"no_email_link": "Enter your email address.",
 		"unresolve_dispute_title": "You have [@unresolve_dispute@] unresolved dispute(s) your resolution centre.",
@@ -266,6 +267,7 @@
 		"orders_title": "My Orders",
 		"orders_link": "View, print and track orders you have placed.",
 		"orders_date_placed": "Date Placed",
+		"orders_date_due": "Date Due",
 		"orders_amount_owed": "Amount Owed",
 		"orders_paid_full": "Paid in Full",
 		"orders_track": "Track",
@@ -358,6 +360,7 @@
 			"msg_innerHTML_zip_empty": "Please enter your billing country and postal code above.",
 			"msg_innerHTML_reg_empty": "Error. Please contact our customer support: sales.com.au",
 			"msg_innerHTML_else": "Please enter your billing suburb and state below.",
+			"invalid_postcode": "Invalid Post Code.",
 			"billing_info_heading": "Billing Information",
 			"required": "Required",
 			"bill_first_name": "First Name",
@@ -486,7 +489,7 @@
 		},
 		"mystore": {
 			"edit":{
-				"breadcrumb": ">My Stores",
+				"breadcrumb": "My Stores",
 				"title": "Edit My Store",
 				"details_heading": "Details",
 				"stloc_name": "Store Name",
@@ -537,13 +540,15 @@
 		},
 		"nr_track_order": {
 			"order":{
-				"title": "Track Order #<!--##[%NOHTML%]##-->[@order_id@]<!--##[%END NOHTML%]##-->",
+				"title": "Track Order",
 				"order_status": "Status:",
 				"order_num": "Order #[@order_id@]",
 				"po_num": "PO #",
 				"date_placed": "Date Placed:",
+				"date_invoiced": "Date Invoiced:",
 				"date_completed": "Date Completed:",
 				"ship_to_heading": "Ship To:",
+				"tel": "Tel:",
 				"description_heading": "Description",
 				"shipping_heading": "Shipping Details",
 				"aff_id_rental": "Rental",
@@ -567,10 +572,12 @@
 		"nr_view_order": {
 			"order":{
 				"title": "View Order / Invoice",
+				"print_btn": "Print Order / Invoice",
 				"pay_btn": "Pay Now"
 			},
 			"quote":{
 				"title": "Quote #",
+				"print_btn": "Print Quote",
 				"approve_btn": "Approve Quote"
 			},
 			"template":{
@@ -673,6 +680,7 @@
 				"login_btn": "Login Now",
 				"register_title": "New Customer? Create an Account.",
 				"reg_username": "Username",
+				"reg_email": "E-mail Address",
 				"reg_password": "E-mail Address",
 				"reg_password2": "Confirm Password",
 				"regoptin": "Subscribe To Newsletter",
@@ -723,12 +731,12 @@
 				"date_fulfilled": "Date Fulfilled:",
 				"rental_products_heading": "Rental Products",
 				"rental_qty_heading": "Qty",
-				"renta_product_heading": "Product",
+				"rental_product_heading": "Product",
 				"aff_id_rental": "Rental",
 				"aff_id_ebay": "eBay ID:",
 				"aff_id_free": "Free Gift",
 				"order_summary_heading": "Order Summary",
-				"terms_type": "Order ships every <strong>[@terms_num_times@] [@terms_type@](s) </strong>from <strong>",
+				"terms_type": "Order ships every <strong>[@terms_num_times@] [@terms_type@](s) </strong>from ",
 				"payment_terms_type": "Payment will be processed every <strong>[@payment_terms_num_times@] [@payment_terms_type@](s) </strong>from time of order.",
 				"sku_heading": "SKU",
 				"product_heading": "Product",
@@ -739,7 +747,7 @@
 				"order_subtotal": "Order Subtotal:",
 				"total_shipping": "Total Shipping:",
 				"total_discount": "Total Discount:",
-				"gst": "GST",
+				"tax": "GST",
 				"inc": "Inc",
 				"order_total": "Order Total:",
 				"delivery_method_heading": "Delivery Method",
@@ -769,6 +777,9 @@
 				"qty_heading": "Qty",
 				"description_heading": "Description",
 				"shipping_details_heading": "Shipping Details",
+				"aff_id_rental": "Rental",
+				"aff_id_ebay": "eBay ID:",
+				"aff_id_free": "Free Gift",
 				"ship_tracking": "Tracking #",
 				"ship_tracking_empty": "Tracking not yet available",
 				"track_btn": "Track Online"
@@ -780,10 +791,12 @@
 		"view_order": {
 			"order":{
 				"title": "View Order / Invoice",
+				"print_btn": "Print Order / Invoice",
 				"pay_btn": "Pay Now"
 			},
 			"quote":{
 				"title": "Quote #",
+				"print_btn": "Print Quote",
 				"approve_btn": "Approve Quote"
 			},
 			"template":{
@@ -994,6 +1007,7 @@
 			},
 			"preview":{
 				"title": "Preview [@model@] Review",
+				"post_btn": "Post Review",
 				"edit_btn": "Edit Review"
 			},
 			"template":{

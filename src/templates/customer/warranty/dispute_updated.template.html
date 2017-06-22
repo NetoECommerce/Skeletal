@@ -1,13 +1,13 @@
 <div class="col-xs-12">
 <ul class="breadcrumb">
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="#">Resolution Centre</a></li>
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+<li><a href="#">${customer.warranty.breadcrumb}</a></li>
 </ul>
 
 
-<h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1>
-<p>Dispute #[@dispute_id@] has been updated.</p>
+<h1>${customer.warranty.dispute_updated.title}</h1>
+<p>${customer.warranty.dispute_updated.subtitle}</p>
 <input type="button" class="btn btn-default"> value="Done" onClick="window.location.replace('[%URL page:account type:warranty id:[@dispute_id@]%][%END URL%]');">
 <script language="javascript" type="text/javascript">
 setTimeout("window.location.replace('[%URL page:account type:warranty id:[@dispute_id@]%][%END URL%]')",1000);

@@ -1,26 +1,22 @@
 
 <div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
-<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb"> 
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="#">Resolution Centre</a></li>
+<ul class="breadcrumb" role="navigation" aria-label="${general.breadcrumb}">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+<li><a href="#">${customer.warranty.breadcrumb}</a></li>
 </ul>
 <!--# End Breadcrumb# ##-->
 
 
-<h1>Resolution Centre - Warranty, Payment, and Return Disputes</h1>
-<p>Need to return an item, make a warranty claim or have been over
-        charged for an order? Please open a dispute so that we can resolve your problem as quickly as possible.</p>
-      <p>Most disputes can be resolved through communication and it's best to contact
-        us as soon as you recognise a potential problem. Once lodged
-        you can also track the progress of your dispute online at any time. </p>
+<h1>${customer.warranty.template.title}</h1>
+${customer.warranty.template.subtitle}
 <p>
-<a class="btn btn-success" href="[%URL page:'account' type:'warranty' fn:'create'%][%END URL%]"><i class="fa fa-plus icon-white"></i> Open A New Dispute</a>
+<a class="btn btn-success" href="[%URL page:'account' type:'warranty' fn:'create'%][%END URL%]"><i class="fa fa-plus icon-white"></i> ${customer.warranty.template.new_dispute_btn}</a>
 </p>
 
 <hr />
-<h3><i class="fa fa-folder-open"></i> Open Disputes</h3>
+<h3><i class="fa fa-folder-open"></i> ${customer.warranty.template.open_dispute_heading}</h3>
 <br />
 
 <!--##[%thumb_list type:'disputes' limit:'5'%]##-->
@@ -28,17 +24,17 @@
 <!--##[%PARAM filter_2%][%FORM id:'dstatus'%][%END FORM%][%END PARAM%]##-->
 <!--##[%PARAM header%]##-->
 
-<p>Below is list of all open disputes and their current status. To see past or closed disputes use the "show" filter below.</p>
+<p>${customer.warranty.template.open_dispute_paragraph}</p>
 
 <table class="table table-striped table-bordered table-condensed">
 <thead>
 	<tr>
-		<th>Dispute# / Status</th>
-		<th>Date</th>
-		<th>Type</th>
-		<th>Reason</th>
-		<th>Order ID</th>
-		<th>Filed On / Replied On</th>
+		<th>${customer.warranty.template.dispute_status_heading}</th>
+		<th>${customer.warranty.template.date_heading}</th>
+		<th>${customer.warranty.template.type_heading}</th>
+		<th>${customer.warranty.template.reason_heading}</th>
+		<th>${customer.warranty.template.order_id_heading}</th>
+		<th>${customer.warranty.template.filter_replied_heading}</th>
 	</tr>
     </thead>
 <!--##[%END PARAM%]##-->
@@ -46,7 +42,7 @@
 <tr>
 	<td><a href="[%URL page:'account' type:'warranty' id:'[@dispute_id@]'%][%END URL%]">[@dispute_id@]</a> [@dispute_status@]
 <!--##[%DATA id:'response_repuired' if:'=' value:'1'%]##-->
-<p class="text-danger">Response Required</p>
+<p class="text-danger">${customer.warranty.template.response_repuired}</p>
 <!--##[%END DATA%]##--></td>
 	<td><!--##[%format type:"date" default:"-" format:"#d #k #Y"%]##-->[@date_disputed@]<!--##[%END format%]##--></td>
 	<td>[@dispute_type@]</td>
@@ -76,7 +72,7 @@
 
               <!--##[%END PARAM%]##-->
               <!--##[%PARAM ifempty%]##-->
-<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> No disputes have been raised on this account. </div>
+<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> ${customer.warranty.template.disputes_empty} </div>
               <!--##[%END PARAM%]##-->
               <!--##[%END thumb_list%]##-->
 </div>

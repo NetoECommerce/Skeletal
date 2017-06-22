@@ -18,13 +18,13 @@
 [%/site_value%]
 <div class="col-xs-12">
 	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
-		<li><a href="#">Resolution Centre</a></li>
+		<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+		<li><a href="[%URL page:'account'%][%/URL%]">${customer.breadcrumb_name}</a></li>
+		<li><a href="#">${customer.warranty.breadcrumb}</a></li>
 	</ul>
 	<div class="page-header">
-		<h1>Resolution Centre</h1>
-		<h2>Step 2 - What type of dispute is this?</h2>
+		<h1>${customer.warranty.select_dispute_reason.title}</h1>
+		<h2>${customer.warranty.select_dispute_reason.subtitle}</h2>
 	</div>
 	[%if [@error@]%]
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
@@ -53,40 +53,40 @@
 			[%/PARAM%]
 		[%/dispute_reasons%]
 		<hr>
-		<h3>Select an Order ID</h3>
+		<h3>${customer.warranty.select_dispute_reason.order_id_heading}</h3>
 		<div class="row btn-stack">
 			<div class="col-xs-12 col-md-4">
 				<input type="text" name="order" class="hidden" value="[@order@]" size="15"/>
 				[%thumb_list type:'orders' limit:'30'%]
 					[%param header%]
 						<select class="form-control" onchange="selOrder(this)">
-						<option value="">Select Recent Order</option>
+						<option value="">${customer.warranty.select_dispute_reason.select_recent_order_option}</option>
 					[%/param%]
 					[%param *body%]
-						<option value="[@order_id@]">[@order_id@] [%if [@customer_po@]%] (PO# [@customer_po@])[%/if%]</option>
+						<option value="[@order_id@]">[@order_id@] [%if [@customer_po@]%] (${customer.warranty.select_dispute_reason.customer_po} [@customer_po@])[%/if%]</option>
 					[%/param%]
 					[%param *footer%]
 						</select>
 					[%/param%]
 					[%param *ifempty%]
-						<div class="alert alert-danger"> No orders have been placed on this account. </div>
+						<div class="alert alert-danger"> ${customer.warranty.select_dispute_reason.orders_empty} </div>
 					[%/param%]
 				[%/thumb_list%]
 			</div>
 			<div class="col-xs-12 col-md-5">
-				<a class="btn btn-block btn-default" href="[%url page:account/%]" target="_blank">View a list of your past order IDs</a>
+				<a class="btn btn-block btn-default" href="[%url page:account/%]" target="_blank">${customer.warranty.select_dispute_reason.view_btn}</a>
 			</div>
 		</div>
 		<hr>
 		<div class="row btn-stack">
 			<div class="col-xs-12 col-md-3">
-				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="Cancel"> <i class="fa fa-remove icon-white"></i> Cancel </button>
+				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="${customer.warranty.select_dispute_reason.cancel_btn}"> <i class="fa fa-remove icon-white"></i> Cancel </button>
 			</div>
 			<div class="col-xs-12 col-md-3 col-md-offset-3">
-				<button name="button" type="button" onClick="goBack()" class="btn btn-default btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
+				<button name="button" type="button" onClick="goBack()" class="btn btn-default btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> ${customer.warranty.select_dispute_reason.back_btn} </button>
 			</div>
 			<div class="col-xs-12 col-md-3">
-				<button type="submit" class="btn btn-success btn-block" >Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>
+				<button type="submit" class="btn btn-success btn-block" >${customer.warranty.select_dispute_reason.continue_btn} <i class="fa fa-chevron-right icon-white"></i></button>
 			</div>
 		</div>
 	</form>

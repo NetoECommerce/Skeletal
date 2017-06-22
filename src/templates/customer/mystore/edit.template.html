@@ -1,9 +1,9 @@
  <div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
 <ul class="breadcrumb">
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+<li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">${customer.mystore.edit.breadcrumb}</a></li>
 </ul>
 <!--# End Breadcrumb# ##-->
 
@@ -95,26 +95,26 @@
 <input name="updcategory" type="hidden" value="y"/>
 
 <div class="page-header">
-	<h1>Edit My Store</h1>
+	<h1>${customer.mystore.edit.title}</h1>
 </div>
 
 <div class="row">
 	<div class="span19">
-		<h4>Details</h4>
+		<h4>${customer.mystore.edit.details_heading}</h4>
 		<div class="content">
 			<table border="0" cellspacing="0" cellpadding="4">
 				<tr>
-					<td width="1%" nowrap>Store Name <span class="small text-danger">Required</span></td>
+					<td width="1%" nowrap>${customer.mystore.edit.stloc_name} <span class="small text-danger">${general.required}</span></td>
 					<td>
 						<input name="stloc_name" class="input-large" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
 					</td>
 				</tr>
 				<tr>
-					<td nowrap>Status</td>
+					<td nowrap>${customer.mystore.edit.status}</td>
 					<td>
 						<select name="active">
-							<option value="y" [%DATA id:'active' if:'eq' value:'y'%]selected[%END DATA%]>Active</option>
-							<option value="n" [%DATA id:'active' if:'eq' value:'n'%]selected[%END DATA%]>Inactive</option>
+							<option value="y" [%DATA id:'active' if:'eq' value:'y'%]selected[%END DATA%]>${customer.mystore.edit.active_y}</option>
+							<option value="n" [%DATA id:'active' if:'eq' value:'n'%]selected[%END DATA%]>${customer.mystore.edit.active_n}</option>
 						</select>
 					</td>
 				</tr>
@@ -126,11 +126,11 @@
 
 <div class="row">
 	<div class="span19">
-		<h4>Description</h4>
-			<label>Description of Your Store</label>
+		<h4>${customer.mystore.edit.description_heading}</h4>
+			<label>${customer.mystore.edit.description_label}</label>
 			<textarea class="inputtext span18" name="description" rows="8" wrap="soft"><!--##[%NOHTML%][@description@][%END NOHTML%]##--></textarea>
 			<p class="help-block">
-				Max 1000 Character(s)
+				${customer.mystore.edit.description_help}
 			</p>
 			<!--##[%EXTRA_STORE_FIELDS%]
 			[%PARAM *header%]##-->
@@ -183,8 +183,8 @@
 
 <div class="row">
 	<div class="span9">
-		<h4>Address</h4>
-		<label>Country<span class="required">*</span></label>
+		<h4>${customer.mystore.edit.address_heading}</h4>
+		<label>${customer.mystore.edit.stloc_country}<span class="required">*</span></label>
 		<select id="stloc_country" name="stloc_country">
 		<!--##[%countries%]
 			[%PARAM *body%]##-->
@@ -193,37 +193,37 @@
 		[%END countries%]##-->
 		</select>
 
-		<label>Address<span class="required">*</span></label>
+		<label>${customer.mystore.edit.stloc_street1}<span class="required">*</span></label>
 		<input type="text" name="stloc_street1" size="50" maxlength="50" value="[%NOHTML%][@stloc_street1@][%END NOHTML%]" />
 		<br />
 		<input type="text" name="stloc_street2" size="50" maxlength="50" value="[%NOHTML%][@stloc_street2@][%END NOHTML%]" />
 
-		<label>Postal Code<span class="required">*</span></label>
+		<label>${customer.mystore.edit.stloc_zip}<span class="required">*</span></label>
 		<input type="text" id="stloc_zip" name="stloc_zip" size="50" value="[%NOHTML%][@stloc_zip@][%END NOHTML%]" maxlength="10" />
 
-		<label>Suburb / City<span class="required">*</span></label>
+		<label>${customer.mystore.edit.stloc_city}<span class="required">*</span></label>
 		<span id="stloc_selector"></span>
 		<input type="text" id="stloc_city" name="stloc_city"  value="[%NOHTML%][@stloc_city@][%END NOHTML%]" size="50" maxlength="50"/>
 
-		<label>State<span class="required">*</span></label>
+		<label>${customer.mystore.edit.stloc_state}<span class="required">*</span></label>
 		<div id="stloc_state_pl" style="display:none;"></div>
 		<input type="text" name="stloc_state" id="stloc_state" value="[%NOHTML%][@stloc_state@][%END NOHTML%]" size="50" maxlength="50" />
 
-		<label>Latitude:</label>
+		<label>${customer.mystore.edit.stloc_lat}</label>
 		<input type="text" name="stloc_lat" class="readonly" readonly value="[%NOHTML%][@stloc_lat@][%END NOHTML%]" size="15" />
 
-		<label>Longitude:</label>
+		<label>${customer.mystore.edit.stloc_lng}</label>
 		<input type="text" name="stloc_lng" class="readonly" readonly value="[%NOHTML%][@stloc_lng@][%END NOHTML%]" size="15" />
 	</div>
 	<div class="span9">
 		<h4>&nbsp;</h4>
-		<label>Phone Number</label>
+		<label>${customer.mystore.edit.stloc_phone}</label>
 		<input type="text" name="stloc_phone" size="30" maxlength="30" value="[%NOHTML%][@stloc_phone@][%END NOHTML%]" />
 
-		<label>Fax Number</label>
+		<label>${customer.mystore.edit.stloc_fax}</label>
 		<input type="text" name="stloc_fax" size="30" maxlength="30" value="[%NOHTML%][@stloc_fax@][%END NOHTML%]" />
 
-		<label>Contact Email</label>
+		<label>${customer.mystore.edit.stloc_email}</label>
 		<input type="text" name="stloc_email" size="30" maxlength="50" value="[%NOHTML%][@stloc_email@][%END NOHTML%]" />
 
 		<br />
@@ -234,14 +234,14 @@
 <div class="row">
 	<div class="span18">
 		<br />
-		<input id="geo_getloc_btn" type="button" class="btn" value="Get the Latitude and Longitude for the above address">
+		<input id="geo_getloc_btn" type="button" class="btn" value="${customer.mystore.edit.geo_getloc_btn}">
 	</div>
 </div>
 <hr />
 
 <div class="row">
 	<div class="span18">
-	<h4>Product Range</h4>
+	<h4>${customer.mystore.edit.product_range_heading}</h4>
 		<!--##[%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' category:'0'%]
 			[%PARAM header%]##-->
 				<div class="categorysel">
@@ -261,8 +261,8 @@
 
 <div class="row">
 	<div class="span18">
-		<h4>Images</h4>
-		<p class="small">Store Logos will be re-sized and thumbnails will be created automatically. Uploaded images should not exceed 500kb in size.</p>
+		<h4>${customer.mystore.edit.images_heading}</h4>
+		<p class="small">${customer.mystore.edit.images_paragraph}</p>
 		<div class="span18">
 			<ul class="imagelist">
 			<!--##[%THUMBNAILS id:'[@stloc_id@]' type:'storeloc' showall:'1'%]##-->
@@ -272,7 +272,7 @@
 			<img src="[@config:IMAGE_URL@]/pixel.gif" border="0" width="80" height="80">
 			<!--##[%END PARAM%][%PARAM if_false%]##-->
 			<a target="_blank" href="[@full_image@]"><img src="[@thumb_image@]" border="0" width="80" height="80"></a>
-			<div>Remove Image On Save? <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
+			<div>${customer.mystore.edit.stloc_logodel} <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
 			<!--##[%END PARAM%][%END DATA%]##-->
 			</div>
 
@@ -289,8 +289,8 @@
 <div class="row">
 	<div class="span18">
 		<div class="form-actions">
-			<input type="button" class="btn" value="Reset" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp;
-			<input type="submit" class="btn btn-success" value="Save Changes">
+			<input type="button" class="btn" value="${customer.mystore.edit.reset_btn}" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp;
+			<input type="submit" class="btn btn-success" value="${customer.mystore.edit.save_btn}">
 		</div>
 	</div>
 </div>

@@ -247,6 +247,7 @@
 		"log_out": "登出",
 		"credit_limit": "信用限额：",
 		"available_credit": "剩余金额：",
+		"account_options": "Account Options",
 		"no_email_title": "您需要从我们的网站上输入您的电子邮件地址，并收到电子邮件通知。",
 		"no_email_link": "输入你的电子邮箱地址。",
 		"unresolve_dispute_title": "你有 [@unresolve_dispute@] 未解决的争议您的解决中心。",
@@ -266,6 +267,7 @@
 		"orders_title": "我的订单",
 		"orders_link": "查看，打印和跟踪订单。",
 		"orders_date_placed": "安排日期",
+		"orders_date_due": "Date Due",
 		"orders_amount_owed": "欠下的数额",
 		"orders_paid_full": "付全款",
 		"orders_track": "跟踪",
@@ -358,6 +360,7 @@
 			"msg_innerHTML_zip_empty": "请输入您的帐单国家/地区和邮政编码。",
 			"msg_innerHTML_reg_empty": "错误。 请联系我们的客户支持：sales.com.au",
 			"msg_innerHTML_else": "请在下面输入您的结算区域和状态。",
+			"invalid_postcode": "Invalid Post Code.",
 			"billing_info_heading": "账单信息",
 			"required": "需要",
 			"bill_first_name": "名字",
@@ -486,7 +489,7 @@
 		},
 		"mystore": {
 			"edit":{
-				"breadcrumb": ">我的商店",
+				"breadcrumb": "我的商店",
 				"title": "编辑我的商店",
 				"details_heading": "细节",
 				"stloc_name": "商店名称",
@@ -537,13 +540,15 @@
 		},
 		"nr_track_order": {
 			"order":{
-				"title": "跟踪订单 #<!--##[%NOHTML%]##-->[@order_id@]<!--##[%END NOHTML%]##-->",
+				"title": "跟踪订单",
 				"order_status": "状态：",
 				"order_num": "订购 #[@order_id@]",
 				"po_num": "PO #",
 				"date_placed": "安排日期：",
+				"date_invoiced": "Date Invoiced:",
 				"date_completed": "完成日期：",
 				"ship_to_heading": "运送到：",
+				"tel": "Tel:",
 				"description_heading": "描述",
 				"shipping_heading": "送货细节",
 				"aff_id_rental": "出租",
@@ -567,10 +572,12 @@
 		"nr_view_order": {
 			"order":{
 				"title": "查看订单/发票",
+				"print_btn": "Print Order / Invoice",
 				"pay_btn": "现在付款"
 			},
 			"quote":{
 				"title": "引用 #",
+				"print_btn": "Print Quote",
 				"approve_btn": "批准报价"
 			},
 			"template":{
@@ -673,6 +680,7 @@
 				"login_btn": "现在登录",
 				"register_title": "新客户？ 创建一个帐户。",
 				"reg_username": "用户名",
+				"reg_email": "E-mail Address",
 				"reg_password": "电子邮件地址",
 				"reg_password2": "确认密码",
 				"regoptin": "订阅电子报",
@@ -723,12 +731,12 @@
 				"date_fulfilled": "完成日期：",
 				"rental_products_heading": "租赁产品",
 				"rental_qty_heading": "数量",
-				"renta_product_heading": "产品",
+				"rental_product_heading": "产品",
 				"aff_id_rental": "出租",
 				"aff_id_ebay": "eBay ID:",
 				"aff_id_free": "赠品",
 				"order_summary_heading": "订单摘要",
-				"terms_type": "每船订单 <strong>[@terms_num_times@] [@terms_type@](小号) </strong>从 <strong>",
+				"terms_type": "每船订单 <strong>[@terms_num_times@] [@terms_type@](小号) </strong>从 ",
 				"payment_terms_type": "付款将被处理 <strong>[@payment_terms_num_times@] [@payment_terms_type@](小号) </strong>从订单的时间。",
 				"sku_heading": "SKU",
 				"product_heading": "产品",
@@ -739,7 +747,7 @@
 				"order_subtotal": "订单小计：",
 				"total_shipping": "总运费：",
 				"total_discount": "总折扣：",
-				"gst": "GST",
+				"tax": "GST",
 				"inc": "公司",
 				"order_total": "合计订单：",
 				"delivery_method_heading": "运输方式",
@@ -769,6 +777,9 @@
 				"qty_heading": "数量",
 				"description_heading": "描述",
 				"shipping_details_heading": "送货细节",
+				"aff_id_rental": "Rental",
+				"aff_id_ebay": "eBay ID:",
+				"aff_id_free": "Free Gift",
 				"ship_tracking": "跟踪 #",
 				"ship_tracking_empty": "跟踪还没有",
 				"track_btn": "在线追踪"
@@ -780,10 +791,12 @@
 		"view_order": {
 			"order":{
 				"title": "查看订单/发票",
+				"print_btn": "Print Order / Invoice",
 				"pay_btn": "现在付款"
 			},
 			"quote":{
 				"title": "引用 #",
+				"print_btn": "Print Quote",
 				"approve_btn": "批准报价"
 			},
 			"template":{
@@ -994,6 +1007,7 @@
 			},
 			"preview":{
 				"title": "预习 [@model@] 评论",
+				"post_btn": "Post Review",
 				"edit_btn": "编辑评论"
 			},
 			"template":{

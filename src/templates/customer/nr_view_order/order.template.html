@@ -3,14 +3,14 @@
 <!--# End Column Left# ##-->
 
 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 <div class="page-header">
-<h1>View Order / Invoice</h1>
+<h1>${customer.nr_view_order.order.title}</h1>
 </div>
 
 <script language="javascript" type="text/javascript">
@@ -19,12 +19,12 @@ function print_invoice() {
 }
 </script>
 <div class="form-actions">
-<input type="button" class="btn pull-left" value="Print Order / Invoice" onClick="print_invoice()"> 
+<input type="button" class="btn pull-left" value="${customer.nr_view_order.order.print_btn}" onClick="print_invoice()">
 
 [%show_order id:'[@order_id@]'%]
 	[%param *body%]
 		[%if [@amount_owed@] > 0%]
-			<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+			<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> ${customer.nr_view_order.order.pay_btn}</button>
 		[%/if%]
 	[%/param%]
 [%/show_order%]

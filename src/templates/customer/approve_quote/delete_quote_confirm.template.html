@@ -7,27 +7,27 @@ function print_quote() {
 </script>
 
 <!--# Start Breadcrumb# ##-->
-<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
+<ul class="breadcrumb" role="navigation" aria-label="${general.breadcrumb}">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">${customer.approve_quote.delete_quote_confirm.title}</a></li>
 </ul>
 <!--# End Breadcrumb# ##-->
 
 <div class="page-header">
-<h1>Dismiss Quote</h1>
+<h1>${customer.approve_quote.delete_quote_confirm.title}</h1>
 </div>
 
 <div>
-<input class="btn pull-right" type="button" value="Print Quote" onClick="print_quote()">
+<input class="btn pull-right" type="button" value="${customer.approve_quote.delete_quote_confirm.print_btn}" onClick="print_quote()">
 <form name="dismissForm" method="post" action="[%URL page:'account' type:'approve_quote'  id:'[@order_id@]' fn:'confirm'%][%END URL%]">
 <input type="hidden" name="order_email" value="[@order_email@]" />
 <input type="hidden" name="action"value="dismiss" />
-<label>Dismissal Reason</label>
+<label>${customer.approve_quote.delete_quote_confirm.dismissal_reason}</label>
 <textarea name="comment" cols="20" rows="4" placeholder="Enter your dismissal reasons here">[@comment@]</textarea>
 <div class="clear"></div>
 
-<button onclick="document.dismissForm.submit();" class="btn btn-success">Confirm &amp; Dismiss Quote</button>
+<button onclick="document.dismissForm.submit();" class="btn btn-success">${customer.approve_quote.delete_quote_confirm.confirm_btn}</button>
 
 
 </form>

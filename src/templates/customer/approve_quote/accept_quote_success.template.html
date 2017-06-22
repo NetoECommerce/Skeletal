@@ -4,16 +4,16 @@ function print_invoice() {
 	var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 }
 </script>
-<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
-	<li><a href="[@config:home_url@]">Home</a></li>
-	<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-	<li><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
+<ul class="breadcrumb" role="navigation" aria-label="${general.breadcrumb}">
+	<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+	<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+	<li><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">${customer.approve_quote.approve_quote_success.title}</a></li>
 </ul>
-<h1>Approve Quote</h1>
-<p>Congratulations! Quote #[@order_id@] has been approved and changed to an order. You can pay for this order now by clicking on the pay now button below.</p>
+<h1>${customer.approve_quote.approve_quote_success.title}</h1>
+<p>${customer.approve_quote.approve_quote_success.subtitle}</p>
 <div>
-	<input class="btn btn-default pull-right" type="button" value="Print Invoice" onClick="print_invoice()">
-	<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success pull-left">Pay Now</button>
+	<input class="btn btn-default pull-right" type="button" value="${customer.approve_quote.approve_quote_success.print_btn}" onClick="print_invoice()">
+	<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success pull-left">${customer.approve_quote.approve_quote_success.pay_btn}</button>
 </div>
 <!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
 </div>

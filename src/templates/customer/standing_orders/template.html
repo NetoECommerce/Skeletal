@@ -1,11 +1,11 @@
 [%load_template file:"includes/sidebar.template.html"/%]
 <div class="col-xs-12">
 	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
-		<li><a href="[%url page:'account' type:'standing_orders'/%]">Standing orders</a></li>
+		<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+		<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+		<li><a href="[%url page:'account' type:'standing_orders'/%]">${customer.standing_order.template.breadcrumb}</a></li>
 	</ul>
-	<h1>Standing orders</h1>
+	<h1>${customer.standing_order.template.title}</h1>
 	<hr/>
 	[%thumb_list type:'standing_orders' limit:'20'%]
 		[%param filter_1%][%form id:'ord'/%][%/param%]
@@ -16,32 +16,32 @@
 		[%param *body%]
 			<div class="col-md-4">
 				<div class="panel [%if [@order_status@] like 'Stopped'%]panel-danger[%else%]panel-default[%/if%]">
-					<div class="panel-heading"><h3 class="panel-title">Standing order #[@storder_id@]</h3></div>
+					<div class="panel-heading"><h3 class="panel-title">${customer.standing_order.template.panel_title}[@storder_id@]</h3></div>
 					<table class="table">
 						<tbody>
 							<tr>
-								<th>Date Placed</th>
+								<th>${customer.standing_order.template.date_placed_heading}</th>
 								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</td>
 							</tr>
-								<th>Current Status</th>
+								<th>${customer.standing_order.template.current_status_heading}</th>
 								<td nowrap>[@order_status@] [%if [@request_to_stop@] eq '1'%]<br /><span class="small text-danger">Requesting To Stop</span>[%/if%]</td>
 							</tr>
-								<th>Date Started</th>
+								<th>${customer.standing_order.template.requesting_stop_heading}</th>
 								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_start@][%/format%]</td>
 							</tr>
-								<th>Amount On Order</th>
+								<th>${customer.standing_order.template.amount_on_order_heading}</th>
 								<td>[%format type:"currency"%][@grand_total@][%/format%]</td>
 							</tr>
-								<th>Next Delivery</th>
+								<th>${customer.standing_order.template.next_delivery_heading}</th>
 								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_next@][%/format%]</td>
 							</tr>
-								<th>Date Fulfilled</th>
+								<th>${customer.standing_order.template.date_fulfilled_heading}</th>
 								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_fulfilled@][%/format%]</td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="panel-body">
-						<a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]" class="btn btn-default">View order</a>
+						<a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]" class="btn btn-default">${customer.standing_order.template.view_btn}</a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 		</div>
 		[%/param%]
 		[%param *ifempty%]
-		<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>No Standing Orders Found.</div>
+		<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>${customer.standing_order.template.standing_orders_empty}</div>
 		[%/param%]
 	[%/thumb_list%]
 </div>

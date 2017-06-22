@@ -1,24 +1,24 @@
 [%load_template file:"customer/standing_orders/messages.html"/%]
 <div class="col-xs-12">
 	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%url page:'account'/%]">My account</a></li>
-		<li><a href="[%url page:'account' type:'standing_orders'/%]">Standing orders</a></li>
-		<li><a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]">Standing order #[@storder_id@]</a></li>
+		<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+		<li><a href="[%url page:'account'/%]">${customer.breadcrumb_name}</a></li>
+		<li><a href="[%url page:'account' type:'standing_orders'/%]">${customer.standing_order.view.breadcrumb_one}</a></li>
+		<li><a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]">${customer.standing_order.view.breadcrumb_two}[@storder_id@]</a></li>
 	</ul>
 [%show_standing_order id:'[@storder_id@]'%]
 	[%param *header%]
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>Standing Order #[@storder_id@]</h1>
+				<h1>${customer.standing_order.view.title}[@storder_id@]</h1>
 				[%if [@customer_po@]%]
-					<h3>Purchase Order Number: [%nohtml%][@customer_po@][%/nohtml%]</h3><br/>
+					<h3>${customer.standing_order.view.subtitle} [%nohtml%][@customer_po@][%/nohtml%]</h3><br/>
 				[%/if%]
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-6">
-				<h3>Billing address</h3>
+				<h3>${customer.standing_order.view.billing_address_heading} </h3>
 				<p>
 					[@bill_first_name@] [@bill_last_name@]<br/>
 					[%if [@bill_company@]%]
@@ -36,7 +36,7 @@
 				</p>
 			</div>
 			<div class="col-xs-12 col-sm-6">
-				<h3>Shipping address</h3>
+				<h3>${customer.standing_order.view.shipping_address_heading} </h3>
 				<p>
 					[@ship_first_name@] [@ship_last_name@]<br/>
 					[%if [@ship_company@]%]
@@ -59,18 +59,18 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h3>Order Status</h3>
+				<h3>${customer.standing_order.view.order_status_heading}</h3>
 				<p>
 					<span class="label [%if [@order_status@] eq 'Active'%]label-success[%elseif [@order_status@] eq 'Inactive' || [@order_status@] like 'waiting approval'%]label-warning[%else%]label-danger[%/if%]">
 						[@order_status@]
 					</span>
 				</p>
 				<p>
-					Next Delivery: [%format type:'date'%][@date_next@][%/format%]<br/>
-					Total Orders: [%format type:'number'%][@total_orders_created@][%/format%]<br/>
-					Total Spent: [%format type:'currency'%][@total_money_spent@][%/format%]<br/>
+					${customer.standing_order.view.next_delivery} [%format type:'date'%][@date_next@][%/format%]<br/>
+					${customer.standing_order.view.total_orders} [%format type:'number'%][@total_orders_created@][%/format%]<br/>
+					${customer.standing_order.view.total_spent} [%format type:'currency'%][@total_money_spent@][%/format%]<br/>
 					[%data id:'fulfilled' if:'=' value:'1'%]
-						Date Fulfilled: [%format type:'date'%][@date_fulfilled@][%/format%]
+						${customer.standing_order.view.date_fulfilled} [%format type:'date'%][@date_fulfilled@][%/format%]
 					[%/data%]
 				</p>
 				<hr/>
@@ -80,12 +80,12 @@
 			<div class="col-xs-12">
 				[%show_standing_order id:'[@storder_id@]' rental_only:'1'%]
 					[%param *header%]
-						<h3>Rental Products</h3>
+						<h3>${customer.standing_order.view.rental_products_heading}</h3>
 						<table class="table">
 							<thead>
 								<tr>
-									<th>Qty</th>
-									<th>Product</th>
+									<th>${customer.standing_order.view.rental_qty_heading}</th>
+									<th>${customer.standing_order.view.rental_product_heading}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -97,11 +97,11 @@
 									<img width="50" height="50" src="[%asset_url type:'item' id:'[@sku@]' thumb:'thumb'/%]">
 									[@model@] <i>[@extra@]</i>
 									[%if [@aff_id@] eq [@config:aff_rental_id@]%]
-										<strong>Rental</strong>
+										<strong>${customer.standing_order.view.aff_id_rental}</strong>
 									[%elseif [@aff_id@] eq [@config:aff_ebay_id@]%]
-										<br/><strong>eBay ID: [@aff_ref@]</strong>
+										<br/><strong>${customer.standing_order.view.aff_id_ebay} [@aff_ref@]</strong>
 									[%elseif [@aff_id@] eq [@config:aff_free_id@]%]
-										<br/><strong>Free Gift</strong>
+										<br/><strong>${customer.standing_order.view.aff_id_free}</strong>
 									[%/if%]
 								</td>
 							</tr>
@@ -116,22 +116,22 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h3>Order Summary</h3>
+				<h3>${customer.standing_order.view.order_summary_heading}</h3>
 				[%if [@terms_type@] ne 'once'%]
-					<p>Order ships every <strong>[@terms_num_times@] [@terms_type@](s) </strong>from <strong>[%format type:'date'%][@date_start@][%/format%]</strong>.</p>
+					<p>${customer.standing_order.view.terms_type} <strong>[%format type:'date'%][@date_start@][%/format%]</strong>.</p>
 				[%/if%]
 				[%if [@payment_terms_type@] ne 'once'%]
-					<p>Payment will be processed every <strong>[@payment_terms_num_times@] [@payment_terms_type@](s) </strong>from time of order.</p>
+					<p>${customer.standing_order.view.payment_terms_type}</p>
 				[%/if%]
 				<table class="table">
 					<thead>
 						<tr>
-							<th>SKU</th>
-							<th>Product</th>
-							<th>QTY</th>
-							<th>Price</th>
-							<th>Discounts</th>
-							<th>Subtotal</th>
+							<th>${customer.standing_order.view.sku_heading}</th>
+							<th>${customer.standing_order.view.product_heading}</th>
+							<th>${customer.standing_order.view.qty_heading}</th>
+							<th>${customer.standing_order.view.price_heading}</th>
+							<th>${customer.standing_order.view.discounts_heading}</th>
+							<th>${customer.standing_order.view.subtotal_heading}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -141,11 +141,11 @@
 		<td>[@sku@]</td>
 		<td>[@model@] <i>[@extra@]</i>
 			[%if [@aff_id@] eq [@config:aff_rental_id@]%]
-				<strong>Rental</strong>
+				<strong>${customer.standing_order.view.aff_id_rental}</strong>
 			[%elseif [@aff_id@] eq [@config:aff_ebay_id@]%]
-				<br/><strong>eBay ID: [@aff_ref@]</strong>
+				<br/><strong>${customer.standing_order.view.aff_id_ebay} [@aff_ref@]</strong>
 			[%elseif [@aff_id@] eq [@config:aff_free_id@]%]
-				<br/><strong>Free Gift</strong>
+				<br/><strong>${customer.standing_order.view.aff_id_free}</strong>
 			[%/if%]
 		</td>
 		<td>[@qty@]</td>
@@ -161,17 +161,17 @@
 [%param *footer%]
 	<tr>
 		<td colspan="6" style="text-align:right">
-			<strong>Order Subtotal: </strong>[%format type:'currency'%][@product_total@][%/format%]<br/>
+			<strong>${customer.standing_order.view.order_subtotal} </strong>[%format type:'currency'%][@product_total@][%/format%]<br/>
 			[%if [@fixed_shipping_cost@]%]
-				<strong>Total Shipping: </strong>[%format type:'currency'%][@shipping_total@][%/format%]<br/>
+				<strong>${customer.standing_order.view.total_shipping} </strong>[%format type:'currency'%][@shipping_total@][%/format%]<br/>
 			[%/if%]
 			[%if [@discount_total@]%]
-				<strong>Total Discount: </strong>-[%format type:'currency'%][@discount_total@][%/format%]<br/>
+				<strong>${customer.standing_order.view.total_discount} </strong>-[%format type:'currency'%][@discount_total@][%/format%]<br/>
 			[%/if%]
 			[%if [@notax@] eq 0%]
-				<strong>GST [%data id:'tax_inc' if:'eq' value:'y' %]Inc[%/data%]: </strong>[%format type:'currency'%][@tax_total@][%/format%]<br/>
+				<strong>${customer.standing_order.view.tax} [%data id:'tax_inc' if:'eq' value:'y' %]${customer.standing_order.view.inc}[%/data%]: </strong>[%format type:'currency'%][@tax_total@][%/format%]<br/>
 			[%/if%]
-			<strong>Order Total: </strong>[%format type:'currency'%][@grand_total@][%/format%]
+			<strong>${customer.standing_order.view.order_total} </strong>[%format type:'currency'%][@grand_total@][%/format%]
 		</td>
 	</tr>
 </tbody>
@@ -183,30 +183,30 @@
 		<div class="col-xs-12 col-sm-6">
 			[%if [@shipping_method_id@]%]
 				<h3>Delivery Method</h3>
-				<p><strong>Delivery Method: </strong>[@shipping_method@]</p>
+				<p><strong>${customer.standing_order.view.delivery_method_heading} </strong>[@shipping_method@]</p>
 				[%if [@fixed_shipping_cost@]%]
-					<p><strong>Shipping Total: </strong>[%format type:'currency'%][@shipping_total@][%/format%]</p>
+					<p><strong>${customer.standing_order.view.shipping_method} </strong>[%format type:'currency'%][@shipping_total@][%/format%]</p>
 				[%/if%]
 			[%/if%]
 		</div>
 		<div class="col-xs-12 col-sm-6">
-			<h3>Payment Instructions</h3>
+			<h3>${customer.standing_order.view.payment_instructions_heading}</h3>
 			[%payment_methods id:'[@payment_method@]'%]
 				[%param *body%]
 					<p><strong>Payment Method: </strong>[@name@]</p>
 					<p>
 						[%if [@name@] like 'American Express' || [@name@] like 'visa' || [@name@] like 'Master Card' || [@name@] like 'Mastercard'%]
-							Your [@name@] will be processed automatically.
+							${customer.standing_order.view.payment_method_paragraph}
 						[%/if%]
 						[%if [@charge_type@] eq 'cc'%]
-							Card Holder: [@card_holder@]<br/>
-							Card Number: [@card_number@]</br/>
-							Card Expires Date: [@card_exp_month@] / [@card_exp_year@]
+							${customer.standing_order.view.card_holder} [@card_holder@]<br/>
+							${customer.standing_order.view.card_number} [@card_number@]</br/>
+							${customer.standing_order.view.card_exp} [@card_exp_month@] / [@card_exp_year@]
 						[%/if%]
 					</p>
 				[%/param%]
 				[%param *ifempty%]
-					No payment method is selected.
+					${customer.standing_order.view.payment_empty}
 				[%/param%]
 			[%/payment_methods%]
 		</div>

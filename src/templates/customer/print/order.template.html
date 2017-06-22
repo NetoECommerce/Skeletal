@@ -5,7 +5,7 @@
 <meta name="author" content="The Neto E-commerce Website Development Team">
 <link rel="stylesheet" type="text/css" href="[@config:imageurl@]/css/default.css">
 [%set [@order_print@] %]true[%/set%]
-<title>Print Invoice [@order_id@]</title>
+<title>${customer.print.title} [@order_id@]</title>
 </head>
 <body>
 <!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->

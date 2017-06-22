@@ -2,24 +2,24 @@
 <!--##[%load_template file:"column_left/customer.template.html"%][%END load_template%]##-->
 <!--# End Column Left# ##-->
 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 <div class="page-header">
-<h1>Password Changed</h1>
+<h1>${customer.edit_pwd.done.title}</h1>
 </div>
 
 <p>
-Your password has been changed, and a confirmation email has been sent to [@EMAIL@].
+${customer.edit_pwd.done.paragraph}
 </p>
 <p>
-<a href="[%URL page:'account'%][%END URL%]">Continue To My Account Home Page</a><br />
+<a href="[%URL page:'account'%][%END URL%]">${customer.edit_pwd.done.account_btn}</a><br />
 </p>
 <p>
-<a href="[@config:homeurl@]">Continue To [@config:company_name@] Home Page</a>
+<a href="[@config:homeurl@]">${customer.edit_pwd.done.home_btn}</a>
 </p>
 
 <!--#Start Column Right# ##-->

@@ -1,13 +1,13 @@
 <div class="col-xs-12">
 
-<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb"> 
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="[%URL page:'account' type:'documents'%][%END URL%]">Files</a></li>
+<ul class="breadcrumb" role="navigation" aria-label="${general.breadcrumb}">
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+<li><a href="[%URL page:'account' type:'documents'%][%END URL%]">${customer.documents.breadcrumb_name}</a></li>
 </ul>
 
 <div class="page-header">
-<h1>My Files</h1>
+<h1>${customer.documents.title}</h1>
 </div>
 
 
@@ -16,8 +16,8 @@
 <table class="table table-bordered table-striped">
 <thead>
     <tr>
-      <th>File Name</th>
-      <th>Download</th>
+      <th>${customer.documents.file_heading}</th>
+      <th>${customer.documents.download_heading}</th>
     </tr>
 </thead>
 <tbody>
@@ -25,7 +25,7 @@
 [%PARAM *body%]##-->
 	<tr>
 	<td nowrap>[@filename@]</td>
-	<td nowrap><a href="[@uri@]"><button type="button" class="btn btn-default" title="Download"><i class="fa fa-folder-open"></i> Download</button></a></td>
+	<td nowrap><a href="[@uri@]"><button type="button" class="btn btn-default" title="${customer.documents.download_btn}"><i class="fa fa-folder-open"></i> ${customer.documents.download_btn}</button></a></td>
  </tr>
 <!--##[%END PARAM%]
 [%PARAM *footer%]##-->
@@ -33,7 +33,7 @@
 </table>
 <!--##[%END PARAM%]
 [%PARAM *ifempty%]##-->
-We do not have any files stored on your account.
+${customer.documents.documents_empty}
 <!--##[%END PARAM%]
 [%END customer_filelist%]##-->
 

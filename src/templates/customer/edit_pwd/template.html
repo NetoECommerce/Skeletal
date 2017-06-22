@@ -1,14 +1,14 @@
-<div class="col-xs-12"> 
+<div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
 <ul class="breadcrumb">
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-<li><a href="#">Change My Password</a></li>
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+<li><a href="#">${customer.edit_pwd.template.breadcrumb}</a></li>
 </ul>
 
 <!--# End Breadcrumb# ##-->
 <div class="page-header">
-<h1>Change Account Password</h1>
+<h1>${customer.edit_pwd.template.title}</h1>
 </div>
 
 <!--##[%DATA id:'error' if:'ne' value:''%]##-->
@@ -18,7 +18,7 @@
 </div>
 <!--##[%END DATA%]##-->
 
-<p>Please enter your current and new password below in order to change your password.</p>
+<p>${customer.edit_pwd.template.paragraph}</p>
 
 <form method="POST" action="[%URL page:'account' type:'edit_pwd'%][%END URL%]">
 <input type="hidden" name="fn" value="proc">
@@ -26,21 +26,21 @@
 
 <div class="col-xs-12 col-md-4">
 <div class="form-group">
-<label for="current_pass">Current Password:</label>
+<label for="current_pass">${customer.edit_pwd.template.current_pass}</label>
 <input class="form-control"  name="current_pass" id="current_pass" type="password" value="">
 </div>
 </div>
 
 <div class="col-xs-12 col-md-4">
 <div class="form-group">
-<label for="new_pass">New Password:</label>
+<label for="new_pass">${customer.edit_pwd.template.new_pass}</label>
 <input class="form-control"  name="new_pass" id="new_pass" type="password"  value="">
 </div>
 </div>
 
 <div class="col-xs-12 col-md-4">
 <div class="form-group">
-<label for="confirm_new_pass">Confirm New Password:</label>
+<label for="confirm_new_pass">${customer.edit_pwd.template.confirm_new_pass}</label>
 <input class="form-control"  name="confirm_new_pass" id="confirm_new_pass" type="password" value="">
 </label>
 </div>
@@ -48,7 +48,7 @@
 </div>
 <div class="row">
 <div class="col-xs-12 col-md-3 col-md-offset-9">
-<input type="submit" class="btn btn-block btn-lg btn-success" value="Change My Password"/>
+<input type="submit" class="btn btn-block btn-lg btn-success" value="${customer.edit_pwd.template.change_btn}"/>
 </div>
 </div>
 

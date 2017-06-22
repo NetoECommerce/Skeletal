@@ -23,13 +23,13 @@
 								f.submit();
 							}
 						} else {
-							alert('Please select a payment method.');
+							alert('${customer.payrec.proc_pay_alert_one}');
 						}
 					} else {
-						alert('You are [@config:moneysign@]'+tmore.innerHTML+' out of balance.');
+						alert('${customer.payrec.proc_pay_alert_two}');
 					}
 				} else {
-					alert('Please enter a payment amount.');
+					alert('${customer.payrec.proc_pay_alert_three}');
 				}
 
 			}
@@ -43,7 +43,7 @@
 				if(chk.value != '') {
 					var amt = parseFloat(chk.value);
 					if(isNaN(amt) || amt <0) {
-						alert("Error: Invalid Amount Applied.");
+						alert("${customer.payrec.updAmt_alert_one}");
 						chk.value='0';
 					} else {
 						amt = (Math.round(amt * 100) / 100);
@@ -58,7 +58,7 @@
 					if(r.value != '') {
 						paid = parseFloat(r.value);
 						if(isNaN(paid)) {
-							alert("Error: Invalid payment amount.");
+							alert("${customer.payrec.updAmt_alert_two}");
 							r.value='0';
 							paid = 0;
 						} else {
@@ -165,12 +165,12 @@
 [%/SITE_VALUE%]
 <div class="col-xs-12">
 	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
-		<li><a href="#">Pay Outstanding Orders and Invoices</a></li>
+		<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+		<li><a href="[%URL page:'account'%][%/URL%]">${customer.breadcrumb_name}</a></li>
+		<li><a href="#">${customer.payrec.breadcrumb}</a></li>
 	</ul>
 	<div class="page-header">
-		<h1>Pay Outstanding Orders &amp; Invoices</h1>
+		<h1>${customer.payrec.title}</h1>
 	</div>
 	[%if [@error@]%]
 		<div class="alert alert-danger">
@@ -185,27 +185,27 @@
 		</div>
 	[%/if%]
 <div id="processing" style="display:none;" class="alert alert-danger">
-	<h2>Payment Processing</h2>
-	<h2>Please do not refresh or close this page</h2>
+	<h2>${customer.payrec.processing_heading_one}</h2>
+	<h2>${customer.payrec.processing_heading_two}</h2>
 	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
-		<h3>My Account Details</h3>
-		<p><b>My Payment Terms</b> [@user:terms@]</p>
-		<p><b>My Account Balance</b> [%format type:"currency"%][@user:balance@][%/format%]<span class="text-muted">(Credit Limit: [%format type:"currency"%][@user:credit_limit@][%/format%])</span></p>
-		<p><b>My Available Credit</b> [%format type:"currency"%][@user:credit@][%/format%]</p>
+		<h3>${customer.payrec.account_details_heading}</h3>
+		<p><b>${customer.payrec.payment_terms}</b> [@user:terms@]</p>
+		<p><b>${customer.payrec.account_balance}</b> [%format type:"currency"%][@user:balance@][%/format%]<span class="text-muted">(Credit Limit: [%format type:"currency"%][@user:credit_limit@][%/format%])</span></p>
+		<p><b>${customer.payrec.available_credit}</b> [%format type:"currency"%][@user:credit@][%/format%]</p>
 		<hr />
-		<h3>Real-Time Payment Processor</h3>
+		<h3>${customer.payrec.real_time_heading}</h3>
 		<p class="help-block">
-			Enter your payment details and the amount you want to pay below. Then apply the payment to the invoices you want to pay until your <b>Out Of Balance</b> equals <b>0</b>. To finalise payment click on the <b>process payment</b> button at the bottom of the page.
+		${customer.payrec.real_time_help}
 		</p>
 		<br />
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
-				<label>Select Payment Method</label>
+				<label>${customer.payrec.card_type}</label>
 				<select class="form-control" name="card_type" onChange="showPD()">
-					<option value="">Select an option</option>
+					<option value="">${customer.payrec.card_type_option}</option>
 					[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
 						[%PARAM *body%]
 							<option value="[@id@]:[@charge_type@]">[@name@]</option>
@@ -220,21 +220,21 @@
 					<hr>
 					<div class="well">
 						<div class="form-group">
-							<label>Card Holder</label>
+							<label>${customer.payrec.card_holder}</label>
 							<input class="form-control" type="text" name="card_holder" size="30" maxlength="40" value="">
 						</div>
 						<div class="form-group">
-							<label>Card Number</label>
+							<label>${customer.payrec.card_number}</label>
 							<input class="form-control" type="text" name="card_number" size="16" maxlength="16" value="">
-							<p class="help-block">(only digits)</p>
+							<p class="help-block">${customer.payrec.card_number_help}</p>
 						</div>
 						<div class="row">
 							<div class="col-xs-12">
-								<label>Card Expiration Date</label>
+								<label>${customer.payrec.card_exp}</label>
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
-									<p class="help-block">Month</p>
+									<p class="help-block">${customer.payrec.card_exp_month}</p>
 									<select class="input-small form-control " name="card_exp_month">
 										<option value=""></option>
 										[%months%]
@@ -247,7 +247,7 @@
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
-									<p class="help-block">Year</p>
+									<p class="help-block">${customer.payrec.card_exp_year}</p>
 									<select class="input-small form-control" name="card_exp_year">
 										<option value=""></option>
 										[%years from:'+0' to:'+10'%]
@@ -260,9 +260,9 @@
 							</div>
 							<div class="col-xs-4">
 								<div class="form-group">
-									<label>Card CCID</label>
+									<label>${customer.payrec.card_ccid}</label>
 									<input class="form-control" type="text"  name="card_ccid" size="5">
-									<p class="help-block">(3-4 digit security code)</p>
+									<p class="help-block">${customer.payrec.card_ccid_help}</p>
 								</div>
 							</div>
 						</div>
@@ -273,12 +273,12 @@
 		<hr>
 		<div class="row">
 			<div class="col-xs-12 col-md-3">
-				<label>Payment Amount ([@config:moneysign@])</label>
+				<label>${customer.payrec.amount_paid} ([@config:moneysign@])</label>
 				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
 			</div>
 		</div>
 		<hr />
-		<h3>Unpaid Orders</h3>
+		<h3>${customer.payrec.unpaid_orders}</h3>
 		[%thumb_list type:'orders' limit:'100'%]
 			[%PARAM filter_1%][%/PARAM%]
 			[%PARAM filter_2%]y[%/PARAM%]
@@ -286,13 +286,13 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th><b>Order ID</b></th>
-							<th><b>Invoiced Date</b></th>
-							<th><b>Payment Terms</b></th>
-							<th><b>Due Date</b></th>
-							<th><b>Total Due</b></th>
-							<th><b>Amount Owed</b></th>
-							<th colspan="2"><b>Amount Applied</b></th>
+							<th><b>${customer.payrec.order_id_heading}</b></th>
+							<th><b>${customer.payrec.invoiced_date_heading}</b></th>
+							<th><b>${customer.payrec.payment_terms_heading}</b></th>
+							<th><b>${customer.payrec.due_date_heading}/b></th>
+							<th><b>${customer.payrec.total_due_heading}</b></th>
+							<th><b>${customer.payrec.amount_owed_heading}</b></th>
+							<th colspan="2"><b>${customer.payrec.amount_applied_heading}</b></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -315,14 +315,14 @@
 						</tr>
 					[%/PARAM%]
 					[%PARAM *footer%]
-						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
-						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
-						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">${customer.payrec.total_app}</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
+						<tr><td align="right"	colspan="7" class="small">${customer.payrec.total_rec}</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">${customer.payrec.total_more}</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
 					</tbody>
 				</table>
 					[%/PARAM%]
 					[%PARAM ifempty%]
-						No outstanding orders on this account.
+						${customer.payrec.orders_empty}
 					[%/PARAM%]
 				[%/thumb_list%]
 				<div class="clear"></div>
@@ -334,10 +334,10 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-md-3">
-						<input type="button" value="Reset" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%URL page:'account' type:'payrec'%][%/URL%]'"><br>
+						<input type="button" value="${customer.payrec.reset_btn}" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%URL page:'account' type:'payrec'%][%/URL%]'"><br>
 					</div>
 					<div class="col-xs-12 col-md-3 col-md-offset-6">
-						<input type="button" onclick="proc_pay()" value="Process Payment" class="btn btn-success btn-lg btn-block">
+						<input type="button" onclick="proc_pay()" value="${customer.payrec.process_btn}" class="btn btn-success btn-lg btn-block">
 					</div>
 				</div>
 			</form>

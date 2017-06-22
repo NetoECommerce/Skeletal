@@ -2,20 +2,20 @@
 <div class="col-xs-12" >
 
 	<!--# Start Breadcrumb# ##-->
-	<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-		<li><a href="#">Edit My Account</a></li>
+	<ul class="breadcrumb" role="navigation" aria-label="${general.breadcrumb}">
+		<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+		<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
+		<li><a href="#">${customer.edit_account.breadcrumb_name}</a></li>
 	</ul>
 	<!--# End Breadcrumb# ##-->
 
 
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%END URL%]">
 	<div class="page-header">
-		<h1>Edit Your [@config:company_name@] Account Details</h1>
+		<h1>${customer.edit_account.title}</h1>
 		<!-- This block will give them a description on what fields are missing -->
 		<!--##[%DATA id:'updated' if:'=' value:'0'%]##-->
-		<p>Please complete all the required fields below before continuing.</p>
+		<p>${customer.edit_account.subtitle}</p>
 		<!--##[%END DATA%]##-->
 	</div>
 
@@ -83,7 +83,7 @@ function getlocation(ta) {
 
 	if(!zip.cvalue || zip.value!=zip.cvalue) {
 		zip.cvalue = zip.value = zip.value.replace(new RegExp('\\D','g'), '');
-		msg.innerHTML = '<i>Loading...</i>';
+		msg.innerHTML = '<i>${customer.edit_account.msg_innerHTML_loading}</i>';
 		dis.style.display = 'none';
 		msg.style.display = '';
 		if(country.options[country.selectedIndex].value == 'AU') {
@@ -92,7 +92,7 @@ function getlocation(ta) {
 			city_in.disabled = true;
 			state_in.disabled = true;
 			if( zip.value == '' ) {
-				msg.innerHTML = '<i>Please enter your billing country and postal code above.</i>';
+				msg.innerHTML = '<i>${customer.edit_account.msg_innerHTML_zip_empty}</i>';
 			} else {
 				var url = '/do/get_locate?zip='+escape(zip.value);
 				var req = null;
@@ -105,7 +105,7 @@ function getlocation(ta) {
 				}
 
 				if(!req) {
-					msg.innerHTML = '<i>Error. Please contact our customer support: sales.com.au</i>';
+					msg.innerHTML = '<i>${customer.edit_account.msg_innerHTML_reg_empty}</i>';
 				} else {
 					req.onreadystatechange = function() {
 						if(req.readyState == 4 && req.status == 200) {
@@ -120,7 +120,7 @@ function getlocation(ta) {
 		} else {
 			city_in.disabled = false;
 			state_in.disabled = false;
-			msg.innerHTML = '<i>Please enter your billing suburb and state below.</i>';
+			msg.innerHTML = '<i>${customer.edit_account.msg_innerHTML_else}</i>';
 		}
 	}
 }
@@ -166,7 +166,7 @@ function setSuburbSl(data, ta) {
 
 	var count = 0;
 	if(data.length > 0) {
-		var option = '<option value="">Select Suburb</option>';
+		var option = '<option value="">${customer.edit_account.suburb_sl_option}</option>';
 		var city = document.UPDATEINFO.elements[city_id];
 		var state = document.UPDATEINFO.elements[state_id];
 		var sel_value = city.value+' - '+state.value;
@@ -179,7 +179,7 @@ function setSuburbSl(data, ta) {
 	}
 
 	if(count <= 0) {
-		msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
+		msg.innerHTML = '<span class="text-danger">${customer.edit_account.invalid_postcode}</span>';
 		dis.style.display = 'none';
 		msg.style.display = '';
 	} else {
@@ -202,24 +202,24 @@ getlocation();
 		<!--##[%END DATA%]##-->
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
-				<h2 name="billing" id="billing">Billing Information</h2>
+				<h2 name="billing" id="billing">${customer.edit_account.billing_info_heading}</h2>
 				<div class="form-group">
-					<label for="bill_first_name">First Name </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_first_name">${customer.edit_account.bill_first_name} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<input type="text" class="form-control" name="bill_first_name" id="bill_first_name" value="[@bill_first_name@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_last_name">Last Name </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_last_name">${customer.edit_account.bill_last_name} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<input type="text" class="form-control" name="bill_last_name" id="bill_last_name" value="[@bill_last_name@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_company">Company Name</label>
+					<label for="bill_company">${customer.edit_account.bill_company}</label>
 					<input type="text" class="form-control" name="bill_company" id="bill_company" value="[@bill_company@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_country">Country </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_country">${customer.edit_account.bill_country} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<select class="form-control" id="bill_country" name="bill_country" onChange="getlocation()">
 						<!--##[%countries sortby:'sortorder,name' %]
 [%PARAM *body%]##-->
@@ -229,24 +229,24 @@ getlocation();
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="bill_street1">Address </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_street1">${customer.edit_account.bill_street1} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<input class="form-control" type="text" id="bill_street1" name="bill_street1" value="[@bill_street1@]" maxlength="50">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" id="bill_street2" name="bill_street2" value="[@bill_street2@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_zip">Post Code </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_zip">${customer.edit_account.bill_zip} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<input class="form-control" type="text" id="bill_zip" name="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
 				</div>
 				<div class="form-group n-wrapper-form-control">
-					<label for="suburb_sl">Suburb Selector </label>
-					<span class="small text-danger">Required</span>
+					<label for="suburb_sl">${customer.edit_account.suburb_sl} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<div id="suburb_di">
 						<select class="form-control" id="suburb_sl" onChange="selectSuburb()">
-							<option value="">Select Suburb</option>
+							<option value="">${customer.edit_account.suburb_sl_option}</option>
 						</select>
 					</div>
 					<div style="display:none;" id="suburb_mg">&nbsp;</div>
@@ -256,10 +256,10 @@ getlocation();
 					<input type="hidden" name="bill_state" value="[@bill_state@]">
 				</div>
 				<div class="form-group">
-					<label for="card_type">Preferred Payment Method </label>
-					<span class="small text-danger">Required</span>
+					<label for="card_type">${customer.edit_account.card_type} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<select class="form-control" name="card_type" id="card_type">
-						<option value="">Select Payment Type</option>
+						<option value="">${customer.edit_account.card_type_option}</option>
 						<!--##[%payment_methods sortby:'sortorder,name' ignore_balance:'1' %]
 [%PARAM *body%]##-->
 						<option value="[@id@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%END DATA%]>[@name@]</option>
@@ -268,55 +268,51 @@ getlocation();
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="order_comment">Default Order Instructions</label>
+					<label for="order_comment">${customer.edit_account.order_comment}</label>
 					<textarea class="form-control" cols="40" rows="4" name="order_comment" id="order_comment"><!--##[%NOHTML%][@order_comment@][%END NOHTML%]##--></textarea>
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-6">
-				<h2 name="contact" id="contact">Contact Information</h2>
+				<h2 name="contact" id="contact">${customer.edit_account.contact_info_heading}</h2>
 				<div class="form-group">
-					<label for="email">Email Address</label>
-					<span class="small text-danger">Required</span>
+					<label for="email">${customer.edit_account.email}</label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<input class="form-control" type="text" name="email" id="email" size="50" value="[@email@]">
 				</div>
 				<div class="form-group">
-					<label for="phone">Phone Number </label>
-					<span class="small text-danger">Required</span>
+					<label for="phone">${customer.edit_account.phone} </label>
+					<span class="small text-danger">${customer.edit_account.required}</span>
 					<input class="form-control" type="text" name="phone" id="phone" size="50" value="[@phone@]">
 				</div>
 				<div class="form-group">
-					<label for="fax">Fax Number</label>
+					<label for="fax">${customer.edit_account.fax}</label>
 					<input class="form-control" type="text" name="fax" id="fax" size="50" value="[@fax@]">
 				</div>
 			</div>
 			<div class="col-xs-12 col-md-6">
-				<h2 name="company" id="Company">Company Information</h2>
+				<h2 name="company" id="Company">${customer.edit_account.company_info_heading}</h2>
 				<div class="form-group">
-					<label for="usercustom2">ABN / ACN</label>
+					<label for="usercustom2">${customer.edit_account.usercustom2}</label>
 					<input class="form-control" type="text" name="usercustom2" id="usercustom2" size="20" maxlength="25" value="[@usercustom2@]">
 				</div>
 				<div class="form-group">
-					<label for="usercustom3">Your Web Site URL</label>
+					<label for="usercustom3">${customer.edit_account.usercustom3}</label>
 					<input class="form-control"  type="text" name="usercustom3" id="usercustom3" size="100" maxlength="255" value="[@usercustom3@]">
 				</div>
 			</div>
 			<!--##[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]##-->
 			<div class="col-xs-12 col-md-6">
-				<h2>Dropshipping Information</h2>
-				<h4>Customise the documentation we send out with your drop shipped orders.</h4>
-				<label>Drop Shipping Documentation Footer (Will be displayed on footer of packing slips, labels etc)</label>
+				<h2>${customer.edit_account.dropshipping_info_title}</h2>
+				<h4>${customer.edit_account.dropshipping_info_subtitle}</h4>
+				<label>${customer.edit_account.dropshipping_info_label_one}</label>
 				<textarea class="form-control"  name="usercustom7" cols="50">[@usercustom7@]</textarea>
-				<p class="help-block">(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)</p>
+				<p class="help-block">${customer.edit_account.dropshipping_info_help_one}</p>
 				<hr>
-				<label>Dropshipping Company Logo (Will be displayed on header of packing slips, labels etc)</label>
+				<label>${customer.edit_account.dropshipping_info_label_two}</label>
 				<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:imageurl@]/pixel.gif'%][%END asset_url%]?[@config:current_timestamp@]"><br>
 				<input type="file" name="logo">
-				<p class="help-block">(Instructions: Click browse to search
-					your local computer for your company logo. Your logo
-					should be in .JPG or .GIF format. When you are finished
-					click the &quot;save changes I have made&quot; button
-					at the bottom of this page.)</p>
-				<label>Delete logo?</label>
+				<p class="help-block">${customer.edit_account.dropshipping_info_help_two}</p>
+				<label>${customer.edit_account.dellogo}</label>
 				<input type="checkbox" name="dellogo" value="1">
 			</div>
 			<!--##[%END CONFIG%]##-->
@@ -327,7 +323,7 @@ getlocation();
 			</div>
 			<div class="col-xs-12 col-md-2 col-md-offset-10">
 			<input type="hidden" name="update" value="1">
-				<input type="SUBMIT" class="btn btn-lg btn-success" value="Save Changes">
+				<input type="SUBMIT" class="btn btn-lg btn-success" value="${customer.edit_account.save_btn}">
 			</div>
 		</div>
 	</form>

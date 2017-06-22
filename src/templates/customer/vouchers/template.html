@@ -1,13 +1,13 @@
 <div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
 <ul class="breadcrumb">
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+<li><a href="[@config:home_url@]">${general.breadcrumbs_home}</a></li>
+<li><a href="[%URL page:'account'%][%END URL%]">${customer.breadcrumb_name}</a></li>
 </ul>
 <!--# End Breadcrumb# ##-->
 
 <div class="page-header">
-<h1>Vouchers &amp; Rewards</h1>
+<h1>${customer.vouchers.title}</h1>
 </div>
 
 
@@ -16,8 +16,8 @@
 <table class="table table-bordered table-striped" cellpadding="2" cellspacing="0" width="100%" border="0">
 <thead>
     <tr>
-      <th>Description</th>
-      <th>Balance</th>
+      <th>${customer.vouchers.description_heading}</th>
+      <th>${customer.vouchers.balance_heading}</th>
     </tr>
 </thead>
 <tbody>
@@ -29,7 +29,7 @@
 		<!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
 
 <!--##[%DATA id:'show_points' if:'==' value:'1'%]##-->
- (<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##--> pts)
+ (<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##--> ${customer.vouchers.reward_points})
 <!--##[%END DATA%]##-->
 
 	</td>
@@ -37,7 +37,7 @@
 <!--##[%END PARAM%][%PARAM *footer%]##-->
 </table>
 <!--##[%END PARAM%][%PARAM ifempty%]##-->
-No vouchers or rewards are available.
+${customer.vouchers.vouchers_empty}
 <!--##[%END PARAM%]
 [%END active_vouchers%]##-->
 

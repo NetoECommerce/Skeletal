@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-	<h1 class="page-header">Preview Comment</h1>
+	<h1 class="page-header">${customer.write_contentreview.preview.title}</h1>
 	[%if [@error@]%]<div class="alert alert-error">[@error@]</div>[%/if%]
 	<form name="preview_review" method="post" action="[%url page:'account' type:'write_contentreview'/%]">
 		<input type="hidden" name="fn" value="confirm">
@@ -13,7 +13,7 @@
 			<p>[%nohtml%][@form:review_text@][%/nohtml%]</p>
 		</div>
 		<p>
-			<input type="submit" class="btn btn-success btn-lg" value="Post My Comment">
+			<input type="submit" class="btn btn-success btn-lg" value="${customer.write_contentreview.preview.btn}">
 		</p>
 	</form>
 </div>
