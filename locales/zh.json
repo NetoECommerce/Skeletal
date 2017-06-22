@@ -27,11 +27,12 @@
 		"add_banner": "Click to add a banner",
 		"breadcrumb": "Breadcrumb",
 		"categories": "Categories",
-		"category": "Category",		
+		"category": "Category",
 		"featured_products": "Featured Products",
 		"banner_images": "Banner Images",
 		"description":"Description",
-		"short_description": "Short Description"
+		"short_description": "Short Description",
+		"skip_to_main": "Skip to main content"
 	},
 	"header": {
 		"lang": "zh",
@@ -60,17 +61,18 @@
 		"newsletter_title": "保持联系",
 		"newsletter_subtitle": "订阅我们的新闻：",
 		"newsletter_email_placeholder": "电子邮件地址",
-		"facebook_sr": "Facebook的",
-		"twitter_sr": "推特",
-		"google_plus_sr": "Google Plus",
-		"youtube_sr": "的Youtube",
-		"instagram_sr": "Instagram的",
-		"pinterest_sr": "Pinterest的",
-		"tumblr_sr": "Tumblr",
-		"linkedin_sr": "Linkedin",
+		"facebook": "Facebook的",
+		"twitter": "推特",
+		"google_plus": "Google Plus",
+		"youtube": "的Youtube",
+		"instagram": "Instagram的",
+		"pinterest": "Pinterest的",
+		"tumblr": "Tumblr",
+		"linkedin": "Linkedin",
 		"copyright": "版权",
-		"ecommerce_software": "电子商务软件",
-		"by_neto": "由Neto"
+		"abn": "ABN:",
+		"address": "Address:",
+		"by_neto": "<a href='http://www.neto.com.au' title='E-commerce Shopping Cart' target='_blank'>${footer.address}</a> By Neto"
 
 	},
 	"sidebar":{

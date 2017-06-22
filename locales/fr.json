@@ -31,7 +31,8 @@
 		"featured_products": "Featured Products",
 		"banner_images": "Banner Images",
 		"description":"Description",
-		"short_description": "Short Description"
+		"short_description": "Short Description",
+		"skip_to_main": "Skip to main content"
 	},
 	"header": {
 		"lang": "fr",
@@ -60,17 +61,18 @@
 		"newsletter_title": "Stay In Touch",
 		"newsletter_subtitle": "Subscribe to our newsletter:",
 		"newsletter_email_placeholder": "Email Address",
-		"facebook_sr": "Facebook",
-		"twitter_sr": "Twitter",
-		"google_plus_sr": "Google Plus",
-		"youtube_sr": "Youtube",
-		"instagram_sr": "Instagram",
-		"pinterest_sr": "Pinterest",
-		"tumblr_sr": "Tumblr",
-		"linkedin_sr": "Linkedin",
+		"facebook": "Facebook",
+		"twitter": "Twitter",
+		"google_plus": "Google Plus",
+		"youtube": "Youtube",
+		"instagram": "Instagram",
+		"pinterest": "Pinterest",
+		"tumblr": "Tumblr",
+		"linkedin": "Linkedin",
 		"copyright": "Copyright",
-		"ecommerce_software": "E-commerce Software",
-		"by_neto": "By Neto"
+		"abn": "ABN:",
+		"address": "Address:",
+		"by_neto": "<a href='http://www.neto.com.au' title='E-commerce Shopping Cart' target='_blank'>${footer.address}</a> By Neto"
 
 	},
 	"sidebar":{
