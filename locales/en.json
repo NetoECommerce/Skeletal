@@ -1366,9 +1366,28 @@
 			"voucher_once": "<strong>NOTE:</strong> This voucher can only be used once. Any unused credit will not be available for future use.",
 			"account_credit": "Account Credit"
 		},
-		"shipping_options": {},
+		"shipping_options": {
+			"title": "Shipping Options For",
+			"shipping_methods_empty": "Please enter your post code above to see available shipping options. No Shipping methods are available for the selected location.",
+			"delivery_instructions": "Delivery Instructions",
+			"user_order_comment_fld": "Save for future orders",
+			"checkout_show_deliverydate_title": "Select Your Preferred Delivery Date",
+			"delivery_date_label": "Your selected date",
+			"delivery_date_placeholder": "Select Date",
+			"add_reminder": "Set future reminder for this event?",
+			"reminder_title_label": "Event Name",
+			"reminder_title": "Please note that you will be reminded via email 2 week prior to the event.",
+			"hide_authority_to_leave": "Authority to leave parcel if receiver not available?"
+		},
 		"voucher_msg": {
-
+			"title": "Gift Voucher Details",
+			"reward_points": "pts",
+			"sender_name": "Your Name:",
+			"recipient_name": "Recipient Name:",
+			"recipient_email": "Recipient Email:",
+			"required_date": "Delivery Date:",
+			"gift_message": "Gift Message:",
+			"edit_btn": "Edit"
 		}
 	},
 	"404": {

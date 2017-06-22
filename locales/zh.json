@@ -1320,6 +1320,74 @@
 			"agree": "同意",
 			"confirm_order": "确认 &amp; 流程订单",
 			"confirm_quote": "确认 &amp; 流程报价"
+		},
+		"address": {
+			"ladb_addr": "从您的地址簿中选择",
+			"_addr_first_name": "名字",
+			"_addr_last_name": "姓",
+			"_addr_company": "公司",
+			"_addr_country": "国家",
+			"_addr_zip": "邮政编码",
+			"_addr_city": "郊区/市",
+			"_addr_state": "州",
+			"_addr_phone": "电话号码",
+			"save_btn": "保存地址"
+		},
+		"cart_items": {
+			"title": "申请优惠券/促销代码",
+			"_cpy_add_coupon": "申请优惠券代码",
+			"active_discounts": "主动折扣",
+			"cart_vouchers": "获得奖励",
+			"reward_points": "分",
+			"order_summary": "订单摘要 -",
+			"order_subtotal": "订单小计",
+			"surcharge": "附加费",
+			"tax": "GST",
+			"tax_inc": "公司",
+			"edit_btn": "编辑订单"
+		},
+		"login": {
+			"username": "我的用户名或电子邮件地址是",
+			"forgotusr": "忘记了你的用户名",
+			"password": "我的密码是",
+			"forgotpwd": "忘记密码了吗",
+			"click_here": "点击这里",
+			"_cpy_login_confirm": "登录 &amp; 继续结帐"
+		},
+		"redeem_vouchers": {
+			"voucherAccordion": "兑换礼券",
+			"addvoucher": "优惠券代码",
+			"_cpy_vsecret_mask": "密码",
+			"redeem_btn": "兑现券",
+			"credit_available": "您的帐户中提供以下信用证：",
+			"description_heading": "描述",
+			"balance_heading": "余额可用",
+			"apply_credit_heading": "向此订单申请信用",
+			"voucher_once": "<strong>注意：</strong> 这张凭证只能使用一次。 任何未使用的信用额将不会用于将来的使用。",
+			"account_credit": "帐户信用"
+		},
+		"shipping_options": {
+			"title": "送货选项",
+			"shipping_methods_empty": "请输入您上面的邮政编码查看可用的运送选项。 没有可用于所选位置的运送方式。",
+			"delivery_instructions": "交货说明",
+			"user_order_comment_fld": "保存以备将来订单",
+			"checkout_show_deliverydate_title": "选择您的首选交货日期",
+			"delivery_date_label": "您选择的日期",
+			"delivery_date_placeholder": "选择日期",
+			"add_reminder": "为此事件设置未来提醒？",
+			"reminder_title_label": "事件名称",
+			"reminder_title": "请注意，您将在活动前2周通过电子邮件提醒您。",
+			"hide_authority_to_leave": "如果接收器不可用，离开包裹的权力？"
+		},
+		"voucher_msg": {
+			"title": "礼券详细资料",
+			"reward_points": "分",
+			"sender_name": "你的名字：",
+			"recipient_name": "收件人姓名：",
+			"recipient_email": "收件人电子邮件：",
+			"required_date": "邮寄日期：",
+			"gift_message": "礼品信息：",
+			"edit_btn": "编辑"
 		}
 	},
 	"404": {
