@@ -1,7 +1,7 @@
 {
 	"general":{
 		"breadcrumbs_home": "家",
-		"pagination": "Pagination Navigation",
+		"pagination": "分页导航",
 		"pagination_previous_page": "上一页",
 		"pagination_next_page": "下一页",
 		"social_share": "分享：",
@@ -19,20 +19,20 @@
 			"highest_price": "最高价"
 		},
 		"product_found":"找到的产品",
-		"products_found":"Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found",
+		"products_found":"产品[%if [@total_results@] > 1%]小号[%/if%]&nbsp; 发现",
 		"author": "作者：",
 		"date_posted": "发布日期：",
 		"stockists": "批发商",
 		"required": "需要",
-		"add_banner": "Click to add a banner",
-		"breadcrumb": "Breadcrumb",
-		"categories": "Categories",
-		"category": "Category",
-		"featured_products": "Featured Products",
-		"banner_images": "Banner Images",
-		"description":"Description",
-		"short_description": "Short Description",
-		"skip_to_main": "Skip to main content"
+		"add_banner": "点击添加横幅",
+		"breadcrumb": "面包屑",
+		"categories": "分类",
+		"category": "类别",
+		"featured_products": "特色产品",
+		"banner_images": "横幅图片",
+		"description":"描述",
+		"short_description": "简短的介绍",
+		"skip_to_main": "跳到主要内容"
 	},
 	"header": {
 		"lang": "zh",
@@ -45,7 +45,7 @@
 		"my_account": "我的帐户",
 		"account_home": "帐户首页",
 		"orders": "命令",
-		"quotes": "Quotes",
+		"quotes": "行情",
 		"pay_invoices": "行情",
 		"favourites": "最爱",
 		"wishlists": "心愿",
@@ -71,8 +71,8 @@
 		"linkedin": "Linkedin",
 		"copyright": "版权",
 		"abn": "ABN:",
-		"address": "Address:",
-		"by_neto": "<a href='http://www.neto.com.au' title='E-commerce Shopping Cart' target='_blank'>${footer.address}</a> By Neto"
+		"address": "地址:",
+		"by_neto": "<a href='http://www.neto.com.au' title='电子商务购物车' target='_blank'>${footer.address}</a> 由Neto"
 
 	},
 	"sidebar":{
@@ -109,7 +109,7 @@
 		"add_to_cart": "添加到购物车",
 		"backorder": "延期交货",
 		"out_of_stock": "缺货",
-		"comment": "Comment"
+		"comment": "评论"
 	},
 	"404": {
 		"title": "找不到网页",
@@ -141,14 +141,14 @@
 		}
 	},
 	"product":{
-		"components_title": "Customise Your Purchase",
-		"bonus_item": "BONUS ITEMS!",
+		"components_title": "自定义您的购买",
+		"bonus_item": "奖金项目！",
 		"buy": "购买",
-		"receive_free": "Buy [@name@] Today &amp; Receive These For FREE!",
+		"receive_free": "购买 [@name@] 今天 &amp; 免费接收这些！",
 		"free": "自由",
 		"with_item": "有了这个项目！",
 		"freebies": "赠品",
-		"choose_free": "Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!",
+		"choose_free": "购买 [@name@] 今天 &amp; 从这些免费礼品中选择！",
 		"description": "描述",
 		"warranty": "保证",
 		"features": "特征",
@@ -173,7 +173,7 @@
 		"format": "格式",
 		"assem_cubic": "组合长度",
 		"product_review_title": "成为第一个评论这个产品！",
-		"product_review_subtitle": "Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.",
+		"product_review_subtitle": "帮助其他 [@config:company_name@] 用户通过为您购买的产品撰写评论来更智能地购物。",
 		"product_review_btn": "写产品评论",
 		"upsell_products": "我们也推荐",
 		"crosssell": "你也许也喜欢",
@@ -193,7 +193,7 @@
 			"pre_order": "现在预订",
 			"add_to_cart": "添加到购物车",
 			"backorder": "延期交货",
-			"notify_me": "Notify Me",
+			"notify_me": "提醒我",
 			"wishlist": "收藏",
 			"calc_shipping_title": "计算运费",
 			"calc_btn": "计算",
@@ -267,7 +267,7 @@
 		"orders_title": "我的订单",
 		"orders_link": "查看，打印和跟踪订单。",
 		"orders_date_placed": "安排日期",
-		"orders_date_due": "Date Due",
+		"orders_date_due": "截止日期",
 		"orders_amount_owed": "欠下的数额",
 		"orders_paid_full": "付全款",
 		"orders_track": "跟踪",
@@ -548,7 +548,7 @@
 				"date_invoiced": "Date Invoiced:",
 				"date_completed": "完成日期：",
 				"ship_to_heading": "运送到：",
-				"tel": "Tel:",
+				"tel": "联系电话:",
 				"description_heading": "描述",
 				"shipping_heading": "送货细节",
 				"aff_id_rental": "出租",
@@ -572,12 +572,12 @@
 		"nr_view_order": {
 			"order":{
 				"title": "查看订单/发票",
-				"print_btn": "Print Order / Invoice",
+				"print_btn": "打印订单/发票",
 				"pay_btn": "现在付款"
 			},
 			"quote":{
 				"title": "引用 #",
-				"print_btn": "Print Quote",
+				"print_btn": "打印报价",
 				"approve_btn": "批准报价"
 			},
 			"template":{
@@ -791,12 +791,12 @@
 		"view_order": {
 			"order":{
 				"title": "查看订单/发票",
-				"print_btn": "Print Order / Invoice",
+				"print_btn": "打印订单/发票",
 				"pay_btn": "现在付款"
 			},
 			"quote":{
 				"title": "引用 #",
-				"print_btn": "Print Quote",
+				"print_btn": "打印报价",
 				"approve_btn": "批准报价"
 			},
 			"template":{
@@ -922,7 +922,7 @@
 				"login_heading": "您的未来登录详细信息",
 				"reg_username": "用户名",
 				"reg_username_help": "（用于将来访问您的帐户）",
-				"reg_email": "Email Address",
+				"reg_email": "电子邮件地址",
 				"reg_email_help": "（订单收据 &amp; 发票将在这里发送）",
 				"reg_password": "密码",
 				"reg_password2": "确认密码",
@@ -1007,14 +1007,14 @@
 			},
 			"preview":{
 				"title": "预习 [@model@] 评论",
-				"post_btn": "Post Review",
+				"post_btn": "发表评论",
 				"edit_btn": "编辑评论"
 			},
 			"template":{
 				"title": "您的评论已发布！",
 				"subtitle": "感谢您抽出时间撰写评论。 您的评论已经提交，如果它符合我们的内容发布条款和条件，它将很快出现在我们的网站上。",
 				"back_btn": "回去",
-				"home_btn": "Go to our home page"
+				"home_btn": "转到我们的主页"
 			},
 			"write":{
 				"title": "评论",
@@ -1110,7 +1110,7 @@
 			"aff_rental_id": "出租",
 			"aff_ebay_id": "EBay ID:",
 			"aff_free_id": "赠品",
-			"discount": "Discount",
+			"discount": "折扣",
 			"shipping_method": "运输方式：",
 			"poa": "P.O.A.",
 			"special_pricing_arrangements": "特价定价安排/折扣",
@@ -1169,7 +1169,7 @@
 			"addthis_heading": "帮助传播词：",
 			"payment_instructions_heading": "付款说明",
 			"chosen_payment_title": "您选择的付款方式是",
-			"american_express_processed": "Your American Express Card has already been processed.",
+			"american_express_processed": "您的美国运通卡已经被处理。",
 			"visa_processed": "您的Visa卡已被处理。",
 			"master_card_processed": "您的主卡已经被处理。",
 			"credit_card_processed": "您的信用卡已经被处理。",
@@ -1238,9 +1238,9 @@
 			"discount_code_btn": "申请优惠券代码",
 			"subtotal": "子总计",
 			"shipping_method_poa": "P.O.A",
-			"shipping_method_free": "Free",
-			"shipping_method_na": "Not Applicable",
-			"estimated_arrival": "Estimated arrival of ",
+			"shipping_method_free": "自由",
+			"shipping_method_na": "不适用",
+			"estimated_arrival": "预计到达",
 			"shipping_cost": "发送代码的运费",
 			"empty_post_code": "输入邮政编码来计算运费",
 			"discounts_applied": "折扣适用",
@@ -1364,7 +1364,7 @@
 				"_addr_last_name": "姓",
 				"_addr_company": "公司",
 				"_addr_country": "国家",
-				"_addr_street1": "Address",
+				"_addr_street1": "地址",
 				"_addr_zip": "邮政编码",
 				"_addr_city": "郊区/市",
 				"_addr_state": "州",
@@ -1379,12 +1379,12 @@
 				"reward_points": "分",
 				"order_summary": "订单摘要 -",
 				"order_subtotal": "订单小计",
-				"shipping_quote": "Total Shipping",
-				"discount_total": "Total Discount",
+				"shipping_quote": "总运费",
+				"discount_total": "总折扣",
 				"surcharge": "附加费",
 				"tax": "GST",
 				"tax_inc": "公司",
-				"order_total": "Order Total",
+				"order_total": "合计订单",
 				"edit_btn": "编辑订单"
 			},
 			"login": {
@@ -1410,7 +1410,7 @@
 			"shipping_options": {
 				"title": "送货选项",
 				"shipping_quote_poa":"P.O.A.",
-				"shipping_quote_free": "FREE",
+				"shipping_quote_free": "自由",
 				"shipping_quote_na":"N/A",
 				"shipping_methods_empty": "请输入您上面的邮政编码查看可用的运送选项。 没有可用于所选位置的运送方式。",
 				"delivery_instructions": "交货说明",
