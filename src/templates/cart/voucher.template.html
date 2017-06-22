@@ -17,13 +17,13 @@ mid = mid.replace('voucher_'+arr[i], '');
 if(arr[i] == 'rdate') {
 	var txt = mid.replace(/^\d+/, '');
 	fval = $('[name="voucher_'+arr[i]+id+txt+'"]').val();
-	
+
 	mid = mid.replace(/_.+$/, '');
 	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
 	if(id != mid) {
 		$(this).val(fval);
 	}
-	
+
 } else {
 	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
 	if(id != mid) {
@@ -81,7 +81,7 @@ var okay = $.check_vouchers();
 
 if(okay) { $('#upsellcartform').submit(); }
 else {
-$.fancybox("Please complete all the required fields indicated with a *", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
+$.fancybox("${cart.voucher.fancybox} *", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
 }
 }
 
@@ -89,10 +89,10 @@ $.fancybox("Please complete all the required fields indicated with a *", {showCl
 
 $('.submit_btn').click(function(e){
 $.sumbit_form();
-});			
+});
 
 $('.copy_btn').click(function(e){
-$.copy_values($(this).attr('ref'));	
+$.copy_values($(this).attr('ref'));
 });
 
 $.init_text_count('inputtext');
@@ -116,17 +116,17 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 <input type="hidden" name="fn" id="fn" value="payment" />
 <input type="hidden" name="voucher" value="y" />
 
-<h1>Personalise Your Gift Vouchers</h1>
-<div>Gift vouchers will be sent to your specified recipients by email.</div>
+<h1>${cart.voucher.title}</h1>
+<div>${cart.voucher.subtitle}</div>
 <div id="productoptions">
 <!--##[%cart_vouchers type:'voucher'%]##-->
 <!--##[%PARAM *body%]##-->
 <hr />
 <div>
 <a name="voucher[@reward_id@]"></a>
-<h4>#[@item_count@] &nbsp; [@vprogram_title@] - 
+<h4>#[@item_count@] &nbsp; [@vprogram_title@] -
 <!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
-<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
+<!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->${cart.voucher.reward_points}
 <!--##[%END PARAM%][%PARAM if_false%]##-->
 <!--##[%format type:'currency'%]##-->[@reward_amount@]<!--##[%END format%]##-->
 <!--##[%END PARAM%][%END DATA%]##-->
@@ -134,42 +134,42 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 
 <div class="form-group row">
 <div class="col-sm-6">
-Sender Name<span class="text-danger">*</span>
-<p class="muted">The name of the person sending the voucher</p>
+${cart.voucher.sender_name}<span class="text-danger">*</span>
+<p class="muted">${cart.voucher.sender_name_help}</p>
 </div>
 <div class="col-sm-6">
 <input type="text" class="form-control" name="voucher_sender[@reward_id@]" value="[%NOHTML%][@sender_name@][%END NOHTML%]">
-<span class="sherror" ref="voucher_sender[@reward_id@]">* Required</span>
+<span class="sherror" ref="voucher_sender[@reward_id@]">* ${general.required}</span>
 </div>
 </div>
 
 <div class="form-group row">
 <div class="col-sm-6">
-Recipient Name<span class="text-danger">*</span>
-<p class="muted">The name of the person receiving the voucher</p>
+${cart.voucher.recipient_name}<span class="text-danger">*</span>
+<p class="muted">${cart.voucher.recipient_name_help}</p>
 </div>
 <div class="col-sm-6">
 <input type="text" class="form-control" name="voucher_name[@reward_id@]" value="[%NOHTML%][@recipient_name@][%END NOHTML%]">
-<span class="sherror" ref="voucher_name[@reward_id@]">* Required</span>
+<span class="sherror" ref="voucher_name[@reward_id@]">* ${general.required}</span>
 </div>
 </div>
 
 <div class="form-group row">
-<div class="col-sm-6">Recipient Email<span class="text-danger">*</span>
-<p class="muted">The e-voucher will be sent to this email address</p>
+<div class="col-sm-6">${cart.voucher.recipient_email}<span class="text-danger">*</span>
+<p class="muted">${cart.voucher.recipient_email_help}</p>
 </div>
 <div class="col-sm-6">
 <input type="text" class="form-control" name="voucher_email[@reward_id@]" value="[%NOHTML%][@recipient_email@][%END NOHTML%]">
-<span class="sherror" ref="voucher_email[@reward_id@]">* Required</span>
-<span class="sherror" ref="invalid_voucher_email[@reward_id@]">* Invalid</span>
+<span class="sherror" ref="voucher_email[@reward_id@]">* ${general.required}</span>
+<span class="sherror" ref="invalid_voucher_email[@reward_id@]">* ${cart.voucher.invalid}</span>
 </div>
 </div>
 
 <div class="form-group row">
-<div class="col-sm-6">Send Voucher On This Date &amp; Time: <p class="muted">Leave blank to send ASAP or select a date and time</p></div>
+<div class="col-sm-6">${cart.voucher.required_date_day}</p></div>
 <div class="btn-stack">
 <div class="col-sm-2 col-xs-12">
-<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%END NOHTML%]" placeholder="Select Date">
+<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%END NOHTML%]" placeholder="${cart.voucher.required_date_day_placeholder}">
 </div>
 <div class="col-sm-2 col-xs-12">
 <select class="form-control" name="voucher_rdate[@reward_id@]_hr">
@@ -191,19 +191,19 @@ Recipient Name<span class="text-danger">*</span>
 <div class="col-sm-2 col-xs-12">
 <select class="form-control" name="voucher_rdate[@reward_id@]_am">
 <option value=""></option>
-<option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%END DATA%]>am</option>
-<option value="pm" [%DATA id:'required_date_am' if:'eq' value:'pm'%]selected[%END DATA%]>pm</option>
+<option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%END DATA%]>${cart.voucher.required_date_am}</option>
+<option value="pm" [%DATA id:'required_date_am' if:'eq' value:'pm'%]selected[%END DATA%]>${cart.voucher.required_date_pm}</option>
 </select>
 </div>
 </div>
 </div>
 
 <div class="form-group row">
-<div class="col-sm-6">Gift Voucher Message<span class="text-danger">*</span><p class="muted">The message that appears on the gift voucher email</p></div>
+<div class="col-sm-6">${cart.voucher.voucher_msg}</div>
 <div class="col-sm-6">
 <textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft"><!--##[%NOHTML%][@gift_message@][%END NOHTML%]##--></textarea>
-<div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> Character(s) Left</div>
-<span class="sherror" ref="voucher_msg[@reward_id@]">*Required</span>
+<div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> ${cart.voucher.voucher_msg_length}</div>
+<span class="sherror" ref="voucher_msg[@reward_id@]">*${general.required}</span>
 </div>
 </div>
 
@@ -216,15 +216,14 @@ Recipient Name<span class="text-danger">*</span>
 </div>
 
 <!--##[%END PARAM%]
-[%END cart_vouchers%]##-->	
+[%END cart_vouchers%]##-->
 </div>
 
 <div class="col-xs-12">
-<input class="submit_btn btn btn-success btn-large pull-right" type="button" value="Continue To Checkout"/>
+<input class="submit_btn btn btn-success btn-large pull-right" type="button" value="${cart.voucher.continue_btn}"/>
 </div>
 </form>
 
 <br />
 
 <!--##[%GA_FUNNEL%]/purchase/voucher.html[%END GA_FUNNEL%]##-->
-

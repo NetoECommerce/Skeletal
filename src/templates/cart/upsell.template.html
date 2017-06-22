@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="page-header">
-					<h1>Before you checkout...</h1>
+					<h1>${cart.upsell.title}</h1>
 				</div>
 			</div>
 		</div>
@@ -91,7 +91,7 @@
 			<div class="row">
 				<div class="col-xs-12 col-md-4 col-md-offset-8">
 					<input type="hidden" id="continue_to_payment" name="continue_to_payment" value="1">
-					<input class="submit_btn btn btn-success btn-lg btn-block" type="submit" value="Continue To Checkout">
+					<input class="submit_btn btn btn-success btn-lg btn-block" type="submit" value="${cart.upsell.continue_btn}">
 				</div>
 			</div>
 		</form>
@@ -101,13 +101,13 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="page-header">
-							<h1>Before you checkout, we thought you might like these:</h1>
+							<h1>${cart.upsell.upsell_heading}</h1>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-md-4 col-md-offset-8">
-						<a href="[%url page:'checkout' fn:'[@form:fn@]'/%]" class="btn btn-success btn-lg btn-block" title="Continue To Checkout">Continue To Checkout <i class="fa fa-chevron-right icon-white"></i></a>
+						<a href="[%url page:'checkout' fn:'[@form:fn@]'/%]" class="btn btn-success btn-lg btn-block" title="${cart.upsell.continue_btn}">${cart.upsell.continue_btn} <i class="fa fa-chevron-right icon-white"></i></a>
 					</div>
 				</div>
 				<div class="row">
@@ -128,7 +128,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-md-4 col-md-offset-8">
-				<a href="[%url page:'checkout' fn:'[@form:fn@]'/%]" class="btn btn-success btn-lg btn-block" title="Continue To Checkout">Continue To Checkout <i class="fa fa-chevron-right icon-white"></i></a>
+				<a href="[%url page:'checkout' fn:'[@form:fn@]'/%]" class="btn btn-success btn-lg btn-block" title="${cart.upsell.continue_btn}">${cart.upsell.continue_btn} <i class="fa fa-chevron-right icon-white"></i></a>
 			</div>
 		</div>
 	[%/if%]
