@@ -104,7 +104,7 @@
 	"thumbnail":{
 		"on_sale":"On Sale",
 		"from_upper": "From",
-		"": "OFF",
+		"off": "OFF",
 		"rrp": "RRP",
 		"now": "Now",
 		"from_lower": "from",
@@ -113,7 +113,8 @@
 		"pre_order": "Pre-Order",
 		"add_to_cart": "Add to Cart",
 		"backorder": "Backorder",
-		"out_of_stock": "Out Of Stock"
+		"out_of_stock": "Out Of Stock",
+		"comment": "Comment"
 	},
 	"form":{
 		"review":{
@@ -140,6 +141,7 @@
 		}
 	},
 	"product":{
+		"components_title": "Customise Your Purchase",
 		"bonus_item": "BONUS ITEMS!",
 		"buy": "Buy",
 		"receive_free": "Today &amp; Receive These For FREE!",
@@ -171,8 +173,7 @@
 		"format": "Format",
 		"assem_cubic": "Assembled Length",
 		"product_review_title": "Be The First To Review This Product!",
-		"help_other": "Help other",
-		"product_review_subtitle": "users shop smarter by writing reviews for products you have purchased.",
+		"product_review_subtitle": "Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.",
 		"product_review_btn": "Write a product review",
 		"upsell_products": "We Also Recommend",
 		"crosssell": "You May Also Like",

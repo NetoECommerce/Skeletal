@@ -16,12 +16,12 @@
 					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
 					<i class="fa fa-star-o"></i>
 				[%/while%]
-				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> reviews.
+				${product.header.rated} <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> ${product.header.based_on} <span itemprop="ratingCount">[@reviews@]</span> ${product.header.reviews}
 			</span>
 		[%/if%]
 		<div class="dropdown">
 			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-expanded="true">
-				Share: <i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i>
+				${general.social_share}  <i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i>
 				<i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i>
 				<i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i>
 				<i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i>
@@ -44,31 +44,31 @@
 				</div>
 				[%if [@save@] > 0%]
 					<div class="productrrp text-muted" aria-label="RRP Price">
-						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
+						${product.header.rrp} [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 					<div class="productsave" aria-label="Save Price">
-						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
+						${product.header.save} [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
 			[%else%]
 				<div class="productwasprice" aria-label="Was price">
-					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
+					${product.header.was} [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
 					<div class="productrrp muted" aria-label="RRP Price">
-						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
+						${product.header.rrp} [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
 					</div>
 				[%/if%]
 				<div class="productpromo" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
-					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
+					${product.header.now} [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
 					<div class="productsave" aria-label="Save Price">
-						SAVE [%format type:'percent'%][@save@][%/format%]!
+						${product.header.save} [%format type:'percent'%][@save@][%/format%]!
 					</div>
 				[%/if%]
 				<div class="productsavetext">
-					Sale Ends in <span id="sale-end" class="time"></span>
+					${product.header.sale_ends} <span id="sale-end" class="time"></span>
 				</div>
 				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">
 					[%format type:'date' format:' #H:#I #a, #d #K #Y'%][@promo_end@][%/format%]
@@ -76,13 +76,13 @@
 			[%/if%]
 			[%tracking_code type:'BuyingOptions' /%]
 			[%if [@store_quantity@] > 0 AND [@preorder@] %]
-				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
+				<span itemprop="availability" content="preorder" class="label label-warning">${product.header.labels.pre_order} [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-				<span itemprop="availability" content="in_stock" class="label label-success">In Stock</span>
+				<span itemprop="availability" content="in_stock" class="label label-success">${product.header.labels.in_stock}</span>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out -  Backorder Available</span>
+				<span itemprop="availability" content="out_of_stock" class="label label-danger">${product.header.labels.backorder}</span>
 			[%else%]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out</span>
+				<span itemprop="availability" content="out_of_stock" class="label label-danger">${product.header.labels.sold_out}</span>
 			[%/if%]
 			[%if [@availability_description@]%]
 				<div class="availability_description">

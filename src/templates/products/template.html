@@ -40,9 +40,9 @@
 <div class="col-xs-12">
 	[%breadcrumb%]
 		[%param *header%]
-			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="${general.breadcrumb}">
 				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">${general.breadcrumbs_home}</span></a>
 				</li>
 		[%/param%]
 		[%param *body%]
@@ -144,7 +144,7 @@
 			[%/if%]
 			[%if [@has_components@]%]
 			<hr>
-				<h2>Customise Your Purchase</h2>
+				<h2>${product.components_title}</h2>
 				[%load_template file:"products/includes/components.template.html"/%]
 			[%/if%]
 		</section>
@@ -154,7 +154,7 @@
 			[%discount_products id:'[@SKU@]' template:'' show_all:'1' limit:'100'%]
 			[%param header%]
 				<div class="alert alert-success">
-					<h3>BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
+					<h3>${product.bonus_item} <small>${product.receive_free}</small></h3>
 						<div class="row">
 				[%/param%]
 				[%param *body%]
@@ -167,7 +167,7 @@
 									<h3 class="title">
 										<a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a>
 									</h3>
-									<div class="text-success"><strong>FREE</strong> With This Item!</div>
+									<div class="text-success"><strong>${product.free}</strong> ${product.with_item}</div>
 								</div>
 							</div>
 						</div>
@@ -179,7 +179,7 @@
 			[%free_gifts id:'[@SKU@]'%]
 				[%param *header%]
 			<div class="alert alert-success">
-				<h3>FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
+				<h3>${product.freebies} <small>Buy [@name@] ${product.choose_free}</small></h3>
 					<div class="row">
 				[%/param%]
 				[%param *body%]
@@ -192,7 +192,7 @@
 									<h3 class="title">
 										<a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a>
 									</h3>
-									<div class="text-success"><strong>FREE</strong> With This Item!</div>
+									<div class="text-success"><strong>${product.free}</strong> ${product.with_item}</div>
 								</div>
 							</div>
 						</div>
@@ -205,30 +205,30 @@
 			<div class="tabbable">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#description" data-toggle="tab">Description</a>
+						<a href="#description" data-toggle="tab">${product.description}</a>
 					</li>
 					[%if [@warranty@]%]
 						<li>
-							<a href="#warranty" data-toggle="tab">Warranty</a>
+							<a href="#warranty" data-toggle="tab">${product.warranty}</a>
 						</li>
 					[%/if%]
 					[%if [@features@]%]
 						<li>
-							<a href="#features" data-toggle="tab">Features</a>
+							<a href="#features" data-toggle="tab">${product.features}</a>
 						</li>
 					[%/if%]
 					<li>
-						<a href="#specifications" data-toggle="tab">Specifications</a>
+						<a href="#specifications" data-toggle="tab">${product.specifications}</a>
 					</li>
 					[%if [@tnc@]%]
 						<li>
-							<a href="#terms" data-toggle="tab">Terms and Conditions</a>
+							<a href="#terms" data-toggle="tab">${product.terms}</a>
 						</li>
 					[%/if%]
 					[%if [@config:show_product_reviews@]%]
 					<li>
 						<a class="reviews" href="#reviews" data-toggle="tab">
-							Reviews
+							${product.reviews}
 							[%set [@data:ratings-count@] = 1 /%]
 							[%while [@data:ratings-count@] <= [@data:rating@]%]
 								[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
@@ -274,96 +274,96 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td><strong>SKU</strong></td>
+									<td><strong>${product.sku}</strong></td>
 									<td>[@SKU@]</td>
 								</tr>
 								[%if [@manufacturer_model@]%]
 								<tr>
-									<td><strong>Model #</strong></td>
+									<td><strong>${product.model}</strong></td>
 									<td>[@manufacturer_model@]</td>
 								</tr>
 								[%/if%]
 								[%if [@barcode@]%]
 								<tr>
-									<td><strong>Barcode #</strong></td>
+									<td><strong>${product.barcode}</strong></td>
 									<td>[@barcode@]</td>
 								</tr>
 								[%/if%]
 								[%if [@brand@]%]
 								<tr>
-									<td><strong>Brand</strong></td>
+									<td><strong>${product.brand}</strong></td>
 									<td>[@brand@]</td>
 								</tr>
 								[%/if%]
 								[%if [@artist_author@]%]
 								<tr>
-									<td><strong>Artist / Author</strong></td>
+									<td><strong>${product.artist_author}</strong></td>
 									<td>[@artist_author@]</td>
 								</tr>
 								[%/if%]
 								[%if [@weight@] > '0'%]
 								<tr>
-									<td><strong>Shipping Weight</strong></td>
+									<td><strong>${product.weight}</strong></td>
 									<td>[@weight@]kg</td>
 								</tr>
 								[%/if%]
 								[%if [@width@] > '0'%]
 								<tr>
-									<td><strong>Shipping Width</strong></td>
+									<td><strong>${product.width}</strong></td>
 									<td>[@width@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@height@] > '0'%]
 								<tr>
-									<td><strong>Shipping Height</strong></td>
+									<td><strong>${product.height}</strong></td>
 									<td>[@height@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@length@] > '0'%]
 								<tr>
-									<td><strong>Shipping Length</strong></td>
+									<td><strong>${product.length}</strong></td>
 									<td>[@length@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@cubic@] > '0'%]
 								<tr>
-									<td><strong>Shipping Cubic</strong></td>
+									<td><strong>${product.cubic}</strong></td>
 									<td>[@cubic@]m3</td>
 								</tr>
 								[%/if%]
 								[%if [@unit@]%]
 								<tr>
-									<td><strong>Unit Of Measure</strong></td>
+									<td><strong>${product.unit}</strong></td>
 									<td>[@unit@]</td>
 								</tr>
 								[%/if%]
 								[%if [@actual_length@] > '0'%]
 								<tr>
-									<td><strong>Assembled Length</strong></td>
+									<td><strong>${product.actual_length}</strong></td>
 									<td>[@actual_length@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@actual_height@] > '0'%]
 								<tr>
-									<td><strong>Assembled Height</strong></td>
+									<td><strong>${product.actual_height}</strong></td>
 									<td>[@actual_height@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@actual_width@] > '0'%]
 								<tr>
-									<td><strong>Assembled Width</strong></td>
+									<td><strong>${product.actual_width}</strong></td>
 									<td>[@actual_width@]m</td>
 								</tr>
 								[%/if%]
 								[%if [@product_type@]%]
 								<tr>
-									<td><strong>Type</strong></td>
+									<td><strong>${product.product_type}</strong></td>
 									<td>[@product_type@]</td>
 								</tr>
 								[%/if%]
 								[%if [@format@]%]
 								<tr>
-									<td><strong>Format</strong></td>
+									<td><strong>${product.format}</strong></td>
 									<td>[@format@]</td>
 								</tr>
 								[%/if%]
@@ -387,7 +387,7 @@
 							<blockquote>
 								<h4 itemprop="name">[%nohtml%][@title@][%/nohtml%]</h4>
 								<div>
-									<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
+									<strong>[%if [@reviewname@]%]${form.by} <span itemprop="author">[@reviewname@]</span> ${general.on} [%/if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
 								</div>
 								<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span><br />
 								<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
@@ -422,9 +422,9 @@
 							<a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a>
 						</p>
 					[%else%]
-						<h4>Be The First To Review This Product!</h4>
-						<p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
-						<p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a></p>
+						<h4>${product.product_review_title}</h4>
+						<p>${product.product_review_subtitle}</p>
+						<p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> ${product.product_review_btn}/a></p>
 					[%/if%]
 					</div><!--/.tab-pane-->
 					[%/if%]
@@ -434,7 +434,7 @@
 			[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 				[%param header%]
 				<hr />
-				<h3>We Also Recommend</h3>
+				<h3>${product.upsell_products}</h3>
 				<br />
 				<div class="row">
 				[%/param%]
@@ -445,7 +445,7 @@
 			[%crosssell id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 				[%param header%]
 				<hr />
-				<h3>You May Also Like</h3>
+				<h3>${product.crosssell}</h3>
 				<br />
 				<div class="row">
 				[%/param%]
@@ -456,7 +456,7 @@
 			[%related_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 				[%param header%]
 				<hr />
-				<h3>Others Also Bought</h3>
+				<h3>${product.related_products}</h3>
 				<br />
 				<div class="row">
 				[%/param%]
@@ -467,7 +467,7 @@
 			[%thumb_list type:'products' sortby:'random' filter_category:'[@content_id@]' template:'' filter_exsku1:'[@sku@]' limit:'[@config:upsell_limit@]'%]
 				[%param *header%]
 				<hr />
-				<h3>More From This Category</h3>
+				<h3>${product.category_products}</h3>
 				<br />
 				<div class="row">
 				[%/param%][%param footer%]
@@ -479,7 +479,7 @@
 				[%product_history limit:'[@config:phistory_limit@]' template:''%]
 					[%param header%]
 					<hr />
-					<h3>Your Browsing History</h3>
+					<h3>${product.product_history}</h3>
 					<br />
 					<div class="row">
 					[%/param%]

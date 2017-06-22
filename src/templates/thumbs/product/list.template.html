@@ -17,18 +17,18 @@
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 							[%if [@inpromo@]%]
-								<strong>Now [%if [@has_child@]%]from [%/if%]</strong>
+								<strong>${thumbnail.now} [%if [@has_child@]%]${thumbnail.from_lower} [%/if%]</strong>
 								<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
 								<span class="text-success" itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 							[%else%]
-								[%if [@has_child@]%]From&nbsp;[%/if%]
+								[%if [@has_child@]%]${thumbnail.from_upper}&nbsp;[%/if%]
 								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 							[%/if%]
 							[%if [@inpromo@]%]
-								<p><span class="label label-danger">On Sale</span></p>
+								<p><span class="label label-danger">${thumbnail.on_sale}</span></p>
 							[%/if%]
 							[%if [@save@] > 0 AND ![@has_child@] %]
-								<p><span class="label label-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
+								<p><span class="label label-warning">[%format type:'percent'%][@save@][%/format%] ${thumbnail.off}</span></p>
 							[%/if%]
 							[%if [@save@] > 0%]
 								<p><span class="label label-default">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
@@ -45,15 +45,15 @@
 					<input type="hidden" id="thumb[@rndm@][@sku@]" name="thumb[@rndm@][@sku@]" value="[@thumb@]">
 					<input type="hidden" id="qty[@rndm@][@sku@]" name="qty[@rndm@][@sku@]" value="[%if [@min_qty@] > 0%][@min_qty@][%else%]1[%/if%]" placeholder="Qty" class="input-tiny">
 					[%if [@extra@] or [@has_child@] %]
-						<a href="[@URL@]" title="Buying Options" class="btn btn-primary btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Buying Options</a>
+						<a href="[@URL@]" title="Buying Options" class="btn btn-primary btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">${thumbnail.see_buying_options}</a>
 					[%elseif [@store_quantity@] > 0 AND [@preorder@] %]
-						<button type="button" title="Pre-Order Now!" class="addtocart btn btn-warning btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
+						<button type="button" title="Pre-Order Now!" class="addtocart btn btn-warning btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">${thumbnail.pre_order}r</button>
 					[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">${thumbnail.add_to_cart}</button>
 					[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
+						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">${thumbnail.backorder}</button>
 					[%elseif%]
-						<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
+						<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">${thumbnail.out_of_stock}</a>
 					[%/if%]
 				</form>
 			</div>

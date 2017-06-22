@@ -29,14 +29,14 @@
 													[%format type:'currency'%][@itm_price@][%END format%]
 												[%else%]
 													[%if [@inpromo@]%]
-														<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
+														<strong>${product.components.now}</strong> [%format type:'currency'%][@promo_price@][%/format%]
 													[%else%]
 														[%format type:'currency'%][@store_price@][%/format%]
 													[%/if%]
 												[%/if%]
 											</p>
 											<div class="input-group">
-												<span class="input-group-addon">QTY</span>
+												<span class="input-group-addon">${product.components.qty}</span>
 												<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%]max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" value="[@qty@]" ref="[@sku@]" class="component-config-input form-control [%if [@fixed_assemble@]%]readonly[%/if%]">
 											</div>
 										</div>
@@ -55,7 +55,7 @@
 															[%format type:'currency'%][@itm_price@][%END format%]
 														[%else%]
 															[%if [@inpromo@]%]
-																<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
+																<strong>${product.components.now}</strong> [%format type:'currency'%][@promo_price@][%/format%]
 															[%else%]
 																[%format type:'currency'%][@store_price@][%/format%]
 															[%/if%]
@@ -63,7 +63,7 @@
 													</p>
 													[%if [@variation_available@] < '1'%]
 														<select disabled class="component-var-opt form-control component-config-input">
-															<option selected>Out Of Stock</option>
+															<option selected>${product.components.out_of_stock}</option>
 														</select>
 													[%/if%]
 												[%list_item_variations id:'[@current_sku@]'%]
@@ -72,7 +72,7 @@
 																<option value="" disabled selected>[@specific_name@]</option>
 													[%/PARAM%]
 													[%PARAM *variation_body%]
-																<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
+																<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%]${product.components.out_of_stock_option}[%/IF%]</option>
 													[%/PARAM%]
 													[%PARAM *variation_footer%]
 																</select>
@@ -103,7 +103,7 @@
 		<table class="table table-striped table-bordered">
 			<tr>
 				<th colspan="2">
-					Available Options
+					${product.components.table_title}
 				</th>
 			</tr>
 			[%END PARAM%][%PARAM *number_option%]
@@ -154,10 +154,10 @@
 <div class="row">
 	<div class="col-xs-12 col-md-5">
 		[%if [@preorder@]%]
-			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-Order Now</button>
+			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> ${product.components.pre_order}</button>
 		[%else%]
 			[%if [@store_quantity@] >= '1'%]
-				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to Cart</button>
+				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> ${product.components.add_to_cart}</button>
 			[%/if%]
 		[%/if%]
 	</div>

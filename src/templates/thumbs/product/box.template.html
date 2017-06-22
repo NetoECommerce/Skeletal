@@ -6,7 +6,7 @@
 				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" class="product-image" width="100%" alt="[@model@]" rel="itmimg[@SKU@]">
 			</a>
 			<!--##[%IF [@inpromo@]%]##-->
-			<div class="savings-container"><span class="label label-danger">On Sale</span></div>
+			<div class="savings-container"><span class="label label-danger">${thumbnail.on_sale}</span></div>
 			<!--##[%END IF%]##-->
 		</div>
 		<div class="col-sm-12 col-md-7">
@@ -17,7 +17,7 @@
 			</h5>
 			<p class="price" itemprop="offers">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->
+				<!--##[%IF [@has_child@]%]##-->${thumbnail.from_upper} <!--##[%END IF%]##-->
 				<!--##[%IF [@inpromo@]%]##-->
 					<!--##[%format type:'currency'%]##-->[@promo_price@]<!--##[%END format%]##-->
 				<!--##[%ELSE%]##-->
@@ -26,11 +26,11 @@
 
 				<!--##[%IF [@save@] > 0 AND ![@has_child@]%]##-->
 						<br><span class="small text-danger">
-							<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##--> OFF
+							<!--##[%format type:'percent'%]##-->[@save@]<!--##[%END format%]##--> ${thumbnail.off}
 						</span>
 				<!--##[%END IF%]##-->
 				<!--##[%IF [@save@] > 0%]##-->
-					<br><span class="small text-muted">RRP <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
+					<br><span class="small text-muted">${thumbnail.rrp} <!--##[%format type:'currency'%]##-->[@retail@]<!--##[%END format%]##--></span>
 				<!--##[%END IF%]##-->
 			</p>
 

@@ -108,7 +108,8 @@
 		"pre_order": "预购",
 		"add_to_cart": "添加到购物车",
 		"backorder": "延期交货",
-		"out_of_stock": "缺货"
+		"out_of_stock": "缺货",
+		"comment": "Comment"
 	},
 	"404": {
 		"title": "找不到网页",
@@ -140,13 +141,14 @@
 		}
 	},
 	"product":{
+		"components_title": "Customise Your Purchase",
 		"bonus_item": "BONUS ITEMS!",
 		"buy": "购买",
-		"receive_free": "今天＆amp; 免费接收这些！",
+		"receive_free": "Buy [@name@] Today &amp; Receive These For FREE!",
 		"free": "自由",
 		"with_item": "有了这个项目！",
 		"freebies": "赠品",
-		"choose_free": "今天＆amp; 从这些免费礼品中选择一种!",
+		"choose_free": "Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!",
 		"description": "描述",
 		"warranty": "保证",
 		"features": "特征",
@@ -171,8 +173,7 @@
 		"format": "格式",
 		"assem_cubic": "组合长度",
 		"product_review_title": "成为第一个评论这个产品！",
-		"help_other": "帮助其他",
-		"product_review_subtitle": "用户通过为您购买的产品撰写评论来更智能地购物。",
+		"product_review_subtitle": "Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.",
 		"product_review_btn": "写产品评论",
 		"upsell_products": "我们也推荐",
 		"crosssell": "你也许也喜欢",
