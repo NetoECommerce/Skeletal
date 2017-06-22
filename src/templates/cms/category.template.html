@@ -2,9 +2,9 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%PARAM *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="${general.breadcrumb}">
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">${general.breadcrumbs_home}</span></a>
 			</li>
 	[%/PARAM%]
 	[%PARAM *body%]
@@ -32,7 +32,7 @@
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
 		[%param *header%]
-			<section id="homepageCarousel" class="carousel slide" aria-label="Banner Images">
+			<section id="homepageCarousel" class="carousel slide" aria-label="${general.banner_images}">
 				[%if [@total_showing@] > 1%]
 					<ol class="carousel-indicators">
 						[%site_value id:'counter' type:'load'/%]
@@ -58,7 +58,7 @@
 	[%/advert%]
 	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
 		[%param *header%]
-			<section class="row" aria-label="Featured Products">
+			<section class="row" aria-label="${general.featured_products}">
 		[%/param%]
 		[%param footer%]
 			</section>
@@ -66,12 +66,12 @@
 		[%/param%]
 	[%/advert%]
 	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
-		<section class="n-responsive-content" aria-label="Short Description">
+		<section class="n-responsive-content" aria-label="${general.short_description}">
 			[@content_short_description1@]
 			[@content_short_description2@]
 			[@content_short_description3@]
 		</section>
-		<section class="n-responsive-content" aria-label="Description">
+		<section class="n-responsive-content" aria-label="${general.description}">
 			[@content_description1@]
 			[@content_description2@]
 			[@content_description3@]
@@ -106,30 +106,30 @@
 		</div>
 		<div class="col-md-4 hidden-xs hidden-sm">
 			<div class="btn-text">
-				<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
+				<strong>[@total_results@]</strong> ${general.products_found}
 			</div>
 		</div>
 		<div class="col-xs-8 col-sm-5 col-md-4">
 			<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 				<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
 				<div class="form-group">
-					<label class="control-label col-xs-2">Sort</label>
+					<label class="control-label col-xs-2">${general.sort}</label>
 					<div class="col-xs-10">
 						<select name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
 							<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
-								Most Popular
+								${general.category_sort.popular}
 							</option>
 							<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>
-								Name
+								${general.category_sort.name}
 							</option>
 							<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>
-								SKU
+								${general.category_sort.sku}
 							</option>
 							<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>
-								Lowest Price
+								${general.category_sort.lowest_price}
 							</option>
 							<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>
-								Highest Price
+								${general.category_sort.highest_price}
 							</option>
 						</select>
 					</div>
@@ -153,13 +153,13 @@
 			<div class="col-xs-12">
 				<hr />
 				<div class="text-center">
-					<ul class="pagination" role="navigation" aria-label="Pagination Navigation">
+					<ul class="pagination" role="navigation" aria-label="${general.pagination}">
 						[%paging limit:'3'%]
-							[%PARAM *previous_page%]<li><a href="[@URL@]" aria-label="Go Back 1 Page"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
+							[%PARAM *previous_page%]<li><a href="[@URL@]" aria-label="${general.pagination_previous_page}"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
 							[%PARAM *goback_pages%]<li><a href="[@URL@]"  aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/PARAM%]
 							[%PARAM *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li>[%/PARAM%]
 							[%PARAM *gonext_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/PARAM%]
-							[%PARAM *next_page%]<li><a href="[@URL@]" aria-label="Go Forward 1 Page"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
+							[%PARAM *next_page%]<li><a href="[@URL@]" aria-label="${general.pagination_next_page}"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
 						[%/paging%]
 					</ul>
 				</div>
@@ -171,7 +171,7 @@
 	[%PARAM *ifempty%]
 		<div class="row">
 			<div class="col-xs-12">
-				<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
+				<p>${category.category_empty}</p>
 			</div>
 		</div>
 	[%/PARAM%]

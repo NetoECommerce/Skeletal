@@ -1,6 +1,7 @@
 {
 	"general":{
 		"breadcrumbs_home": "Home",
+		"pagination": "Pagination Navigation",
 		"pagination_previous_page": "Previous Page",
 		"pagination_next_page": "Next Page",
 		"social_share": "Share:",
@@ -8,6 +9,7 @@
 		"no": "No",
 		"and": "and",
 		"or": "or",
+		"on": "on",
 		"sort": "Sort",
 		"category_sort":{
 			"popular": "Most Popular",
@@ -17,11 +19,19 @@
 			"highest_price": "Highest Price"
 		},
 		"product_found":"Product Found",
-		"products_found":"Products Found",
+		"products_found":"Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found",
 		"author": "Author:",
 		"date_posted": "Date Posted:",
 		"stockists": "Stockists",
-		"required": "Required"
+		"required": "Required",
+		"add_banner": "Click to add a banner",
+		"breadcrumb": "Breadcrumb",
+		"categories": "Categories",
+		"category": "Category",		
+		"featured_products": "Featured Products",
+		"banner_images": "Banner Images",
+		"description":"Description",
+		"short_description": "Short Description"
 	},
 	"header": {
 		"lang": "en",
@@ -84,6 +94,11 @@
 	"category":{
 		"category_empty": "This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us."
 	},
+	"404": {
+		"title": "Page Not Found",
+		"subtitle": "The page you were looking for doesn't appear to exist or has moved.",
+		"btn": "Home"
+	},
 	"thumbnail":{
 		"on_sale":"On Sale",
 		"from_upper": "From",
@@ -97,6 +112,30 @@
 		"add_to_cart": "Add to Cart",
 		"backorder": "Backorder",
 		"out_of_stock": "Out Of Stock"
+	},
+	"form":{
+		"review":{
+			"title": "Title For Comment",
+			"subtitle": "Comments have to be approved before showing up",
+			"by": "By:",
+			"response": "Response",
+			"leave_a_comment": "Leave a comment",
+			"comment": "Your Comment",
+			"comment_title": "Comments",
+			"name": "Your Name",
+			"email": "Your Email Address",
+			"btn": "Post Comment"
+		},
+		"notifymodal":{
+			"title": "Notify me when back in stock",
+			"subtitle": "Comments have to be approved before showing up",
+			"name": "Your Name",
+			"name_placeholder": "Jane Smith",
+			"email": "Your Email Address",
+			"email_placeholder": "jane.smith@test.com.au",
+			"cancel": "Cancel",
+			"save_details": "Save My Details"
+		}
 	},
 	"product":{
 		"bonus_item": "BONUS ITEMS!",
@@ -196,29 +235,6 @@
 				"backorder": "Sold Out -  Backorder Available",
 				"sold_out": "Sold Out"
 			}
-		}
-	},
-	"form":{
-		"review":{
-			"title": "Title For Comment",
-			"subtitle": "Comments have to be approved before showing up",
-			"by": "By:",
-			"response": "Response",
-			"leave_a_comment": "Leave a comment",
-			"comment": "Your Comment",
-			"name": "Your Name",
-			"email": "Your Email Address",
-			"btn": "Post Comment"
-		},
-		"notifymodal":{
-			"title": "Notify me when back in stock",
-			"subtitle": "Comments have to be approved before showing up",
-			"name": "Your Name",
-			"name_placeholder": "Jane Smith",
-			"email": "Your Email Address",
-			"email_placeholder": "jane.smith@test.com.au",
-			"cancel": "Cancel",
-			"save_details": "Save My Details"
 		}
 	},
 	"customer":{
@@ -1404,9 +1420,4 @@
 			}
 		}
 	},
-	"404": {
-		"title": "Page Not Found",
-		"subtitle": "The page you were looking for doesn't appear to exist or has moved.",
-		"btn": "Home"
-	}
 }

@@ -1,6 +1,7 @@
 {
 	"general":{
 		"breadcrumbs_home": "家",
+		"pagination": "Pagination Navigation",
 		"pagination_previous_page": "上一页",
 		"pagination_next_page": "下一页",
 		"social_share": "分享：",
@@ -8,6 +9,7 @@
 		"no": "没有",
 		"and": "和",
 		"or": "要么",
+		"on": "on",
 		"sort": "分类",
 		"category_sort":{
 			"popular": "最受欢迎",
@@ -17,11 +19,19 @@
 			"highest_price": "最高价"
 		},
 		"product_found":"找到的产品",
-		"products_found":"找到的产品",
+		"products_found":"Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found",
 		"author": "作者：",
 		"date_posted": "发布日期：",
 		"stockists": "批发商",
-		"required": "需要"
+		"required": "需要",
+		"add_banner": "Click to add a banner",
+		"breadcrumb": "Breadcrumb",
+		"categories": "Categories",
+		"category": "Category",		
+		"featured_products": "Featured Products",
+		"banner_images": "Banner Images",
+		"description":"Description",
+		"short_description": "Short Description"
 	},
 	"header": {
 		"lang": "zh",
@@ -97,6 +107,35 @@
 		"add_to_cart": "添加到购物车",
 		"backorder": "延期交货",
 		"out_of_stock": "缺货"
+	},
+	"404": {
+		"title": "找不到网页",
+		"subtitle": "您正在寻找的页面似乎不存在或已移动。",
+		"btn": "家"
+	},
+	"form":{
+		"review":{
+			"title": "评论标题",
+			"subtitle": "评论必须在出现前批准",
+			"by": "By:",
+			"response": "响应",
+			"leave_a_comment": "发表评论",
+			"comment": "你的评论",
+			"comment_title": "Comments",
+			"name": "你的名字",
+			"email": "您的电子邮件地址",
+			"btn": "发表评论"
+		},
+		"notifymodal":{
+			"title": "回到库存时通知我",
+			"subtitle": "评论必须在出现前批准",
+			"name": "你的名字",
+			"name_placeholder": "简史密斯",
+			"email": "您的电子邮件地址",
+			"email_placeholder": "jane.smith@test.com.au",
+			"cancel": "取消",
+			"save_details": "保存我的详细信息"
+		}
 	},
 	"product":{
 		"bonus_item": "BONUS ITEMS!",
@@ -196,29 +235,6 @@
 				"backorder": "已售完 - 可订购",
 				"sold_out": "卖光了"
 			}
-		}
-	},
-	"form":{
-		"review":{
-			"title": "评论标题",
-			"subtitle": "评论必须在出现前批准",
-			"by": "By:",
-			"response": "响应",
-			"leave_a_comment": "发表评论",
-			"comment": "你的评论",
-			"name": "你的名字",
-			"email": "您的电子邮件地址",
-			"btn": "发表评论"
-		},
-		"notifymodal":{
-			"title": "回到库存时通知我",
-			"subtitle": "评论必须在出现前批准",
-			"name": "你的名字",
-			"name_placeholder": "简史密斯",
-			"email": "您的电子邮件地址",
-			"email_placeholder": "jane.smith@test.com.au",
-			"cancel": "取消",
-			"save_details": "保存我的详细信息"
 		}
 	},
 	"customer":{
@@ -1207,7 +1223,7 @@
 			"shipping_method_poa": "P.O.A",
 			"shipping_method_free": "Free",
 			"shipping_method_na": "Not Applicable",
-			"estimated_arrival": "Estimated arrival of ",			
+			"estimated_arrival": "Estimated arrival of ",
 			"shipping_cost": "发送代码的运费",
 			"empty_post_code": "输入邮政编码来计算运费",
 			"discounts_applied": "折扣适用",
@@ -1402,9 +1418,4 @@
 			}
 		}
 	},
-	"404": {
-		"title": "找不到网页",
-		"subtitle": "您正在寻找的页面似乎不存在或已移动。",
-		"btn": "家"
-	}
 }

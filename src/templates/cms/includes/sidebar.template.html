@@ -3,13 +3,13 @@
 		<div class="panel panel-default">
 			<div class="panel-heading panel-heading-thumbnails">
 				<h3 class="panel-title">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#filters">Filter Products</a>
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#filters">${sidebar.filter_products_title}</a>
 				</h3>
 			</div>
 			<ul id="filters" class="panel-collapse collapse list-group" role="group">
 				[%PRODUCT_FILTER type:'variations' autohide:'0' sortoption:'sortorder'%]
 					[%PARAM *header%]
-						<li class="list-group-item"><h4>Filter By [@filter_name@]</h4></li>
+						<li class="list-group-item"><h4>${sidebar.product_filter_variations_title} [@filter_name@]</h4></li>
 					[%/PARAM%]
 					[%PARAM *body%]
 						[%DATA id:'selected' if:'==' value:'1'%]
@@ -29,7 +29,7 @@
 				[%PRODUCT_FILTER type:'category' limit:'100' autohide:'0' filter_parent_content:'1'%]
 					[%PARAM header%]
 						<li class="list-group-item">
-							<h4>Filter By Category</h4>
+							<h4>${sidebar.product_filter_category_title}</h4>
 						</li>
 					[%/PARAM%]
 					[%PARAM *body%]
@@ -50,24 +50,24 @@
 				[%product_filter type:'instock' autohide:'0'%]
 					[%param header%]
 						<li class="list-group-item">
-							<h4>Filter By Stock</h4>
+							<h4>${sidebar.product_filter_instock_title}</h4>
 						</li>
 					[%/param%]
 					[%param *body%]
 						[%if [@selected@]%]
 							<li class="filter-remove">
-								<a href="[@remove_url@]" class="list-group-item" rel="nofollow" role="link">In Stock <span class="text-muted">([@total@])</span></a>
+								<a href="[@remove_url@]" class="list-group-item" rel="nofollow" role="link">${sidebar.in_stock} <span class="text-muted">([@total@])</span></a>
 							</li>
 						[%else%]
 							<li class="filter">
-								<a href="[@url@]" class="list-group-item" role="link">In Stock <span class="text-muted">([@total@])</span></a>
+								<a href="[@url@]" class="list-group-item" role="link">${sidebar.in_stock} <span class="text-muted">([@total@])</span></a>
 							</li>
 						[%/if%]
 					[%/param%]
 				[%/product_filter%]
 					[%PRODUCT_FILTER type:'price' limit:'6'%]
 						[%PARAM header%]
-							<li class="list-group-item hidden-md hidden-lg"><h4>Filter By Price Range</h4></li>
+							<li class="list-group-item hidden-md hidden-lg"><h4>${sidebar.product_filter_price_title}</h4></li>
 						[%/PARAM%]
 						[%PARAM *body%]
 							[%DATA id:'selected' if:'==' value:'1'%]
@@ -96,7 +96,7 @@
 					[%/PRODUCT_FILTER%]
 					[%PRODUCT_FILTER type:'price' limit:'1'%]
 						[%PARAM header%]
-							<li class="list-group-item hidden-sm hidden-xs"><h4>Filter By Price Range</h4></li>
+							<li class="list-group-item hidden-sm hidden-xs"><h4>${sidebar.product_filter_price_title}</h4></li>
 						[%/PARAM%]
 						[%PARAM *body%]
 							[%SITE_VALUE id:'footer_javascript'%]
@@ -134,14 +134,14 @@
 									<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
 									<input  name="pr" type="hidden" value="">
 									<input type="submit" value="Filter By Price" class="btn btn-default btn-xs" />
-									<a href="[@remove_url@]" class="btn btn-default btn-xs" rel="nofollow"> clear</a>
+									<a href="[@remove_url@]" class="btn btn-default btn-xs" rel="nofollow"> ${sidebar.clear}</a>
 								</form>
 							</li>
 						[%/PARAM%]
 					[%/PRODUCT_FILTER%]
 					[%PRODUCT_FILTER type:'brand' autohide:'0'%]
 						[%PARAM header%]
-							<li class="list-group-item"><h4>Filter By Brand</h4></li>
+							<li class="list-group-item"><h4>${sidebar.product_filter_brand_title}</h4></li>
 						[%/PARAM%]
 						[%PARAM *body%]
 							[%DATA id:'selected' if:'==' value:'1'%]
@@ -164,7 +164,7 @@
 	[%CATEGORYMENU sortby:'sortorder,selected,name' show_empty:'1'%]
 		[%PARAM header%]
 			<div class="panel panel-default hidden-xs">
-				<div class="panel-heading"><h3 class="panel-title">Categories</h3></div>
+				<div class="panel-heading"><h3 class="panel-title">${sidebar.categories_menu_title}</h3></div>
 				<ul class="list-group" role="navigation" aria-label="Category Menu">
 				[%/PARAM%]
 				[%PARAM *level_1%]
@@ -201,7 +201,7 @@
 		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%PARAM header%]
 				<section class="panel panel-default hidden-xs" role="contentinfo" aria-label="Browsing History">
-					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">Browsing History</h3></div>
+					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">${sidebar.phistory_title}</h3></div>
 					<ul class="nav list-group">
 			[%/PARAM%]
 			[%PARAM footer%]
@@ -213,7 +213,7 @@
 	[%MENU id:'web_information'%]
 		[%PARAM header%]
 		<div class="panel panel-default hidden-xs">
-			<div class="panel-heading"><h3 class="panel-title">Information</h3></div>
+			<div class="panel-heading"><h3 class="panel-title">${sidebar.web_information_title}</h3></div>
 			<ul class="list-group" role="navigation" aria-label="Information Menu">
 				[%/PARAM%]
 				[%PARAM *level_1%]
