@@ -6,10 +6,12 @@
 				'fns' : {
 					'onLoad' : function () {
 						$('.addtocart').button("loading");
+						$('.variation-wrapper').addClass('disable-interactivity');
 					},
 					'onReady' : function () {
 						$('.addtocart').button("reset");
 						$('.zoom').zoom();
+						$('.variation-wrapper').removeClass('disable-interactivity');
 						$("#sale-end").countdown({
 							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
 						});
@@ -60,7 +62,7 @@
 		</section>
 		<section class="col-xs-12 col-sm-7" role="contentinfo" aria-label="Products Information">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-			<form autocomplete="off">
+			<form autocomplete="off" class="variation-wrapper">
 				[%list_item_variations id:'[@current_sku@]'%]
 					[%param header%]
 					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
