@@ -18,7 +18,9 @@
 				[%/if%]
 				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			</p>
+			[%if [@form:disable_scripts@] ne 'true'%]
 			[%tracking_code type:'Thumbnails' /%]
+			[%/if%]
 			<!-- Purchase Logic -->
 			<form class="form-inline buying-options">
 				<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">

@@ -430,7 +430,9 @@
 					[%/if%]
 				</div><!--/.tab-content-->
 			</div><!--/.tabbable-->
+			[%if [@form:disable_scripts@] ne 'true'%]
 			[%tracking_code type:'ProductDescription' /%]
+			[%/if%]
 			[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 				[%param header%]
 				<hr />

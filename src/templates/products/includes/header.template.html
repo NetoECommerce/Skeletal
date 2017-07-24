@@ -74,7 +74,9 @@
 					[%format type:'date' format:' #H:#I #a, #d #K #Y'%][@promo_end@][%/format%]
 				</div>
 			[%/if%]
+			[%if [@form:disable_scripts@] ne 'true'%]
 			[%tracking_code type:'BuyingOptions' /%]
+			[%/if%]
 			[%if [@store_quantity@] > 0 AND [@preorder@] %]
 				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]

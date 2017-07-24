@@ -34,7 +34,9 @@
 								<p><span class="label label-default">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
 							[%/if%]
 						</div>
+						[%if [@form:disable_scripts@] ne 'true'%]
 						[%tracking_code type:'Thumbnails' /%]
+						[%/if%]
 					</div>
 				</div>
 			</div>
