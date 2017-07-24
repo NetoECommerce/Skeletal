@@ -221,8 +221,8 @@
 							[%else%]
 								<tr>
 									<td colspan="2"><b>Delivery Method:</b> [@shipping_method@]</td>
-									<td>[%format type:'currency'%][@shipping_total@][%/format%][%data id:'shipping_discount' if:'>' value:'0' %] ( Discount - [%format type:'currency'%]-[@shipping_discount@][%/format%] )[%/data%]</td>
-									<td>[%format type:'currency'%][@shipping_price@][%/format%]</td>
+									<td>[%if [@shipping_total@] > 0%][%format type:'currency'%][@shipping_total@][%/format%][%/if%][%data id:'shipping_discount' if:'>' value:'0' %] ( Discount - [%format type:'currency'%]-[@shipping_discount@][%/format%] )[%/data%]</td>
+									<td>[%if [@shipping_price@] > 0%][%format type:'currency'%][@shipping_price@][%/format%][%/if%]</td>
 								</tr>
 							[%/if%]
 						[%/if%]
@@ -245,7 +245,7 @@
 						[%if ![@shipping_quote@]%]
 							<tr>
 								<td><b>Total Shipping</b></td>
-								<td class="text-right"><b>[%format type:'currency'%][@shipping_total@][%/format%]</b></td>
+								<td class="text-right">[%if [@shipping_total@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@shipping_total@][%/format%] [%/if%]</td>
 							</tr>
 						[%/if%]
 						[%if [@discount_total@] > '0'%]
