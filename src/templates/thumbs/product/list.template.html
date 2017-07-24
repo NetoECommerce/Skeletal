@@ -2,16 +2,17 @@
 	<article class="col-xs-12" role="article" aria-label="Product Thumbnail">
 		<div class="panel panel-default" itemscope itemtype="http://schema.org/Product">
 			<meta itemprop="brand" content="[@brand@]"/>
+			<meta itemprop="mpn" content="[@sku@]"/>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-4 col-sm-3">
 						<a href="[@URL@]" class="thumbnail-image">
-							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="product-image img-responsive" alt="[@model@]" rel="itmimg[@sku@]">
+							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" itemprop="image" class="product-image img-responsive" alt="[@model@]" rel="itmimg[@sku@]">
 						</a>
 					</div>
 					<div class="col-xs-8 col-sm-6">
 						<h3 itemprop="name"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'100' rmhtml:'1'%][@model@][%/format%]</a></h3>
-						<p>[@short_description@]</p>
+						<p itemprop="description">[@short_description@]</p>
 					</div>
 					<div class="col-xs-12 col-sm-3 text-right">
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
