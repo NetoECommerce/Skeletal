@@ -8082,6 +8082,9 @@ h4 {
 .account-order-card {
   min-height: 85px;
 }
+.disable-interactivity {
+  pointer-events: none;
+}
 .paypal_button {
   background: #E9E9E9;
   padding: 5px;

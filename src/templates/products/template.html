@@ -6,10 +6,12 @@
 				'fns' : {
 					'onLoad' : function () {
 						$('.addtocart').button("loading");
+						$('.variation-wrapper').addClass('disable-interactivity');
 					},
 					'onReady' : function () {
 						$('.addtocart').button("reset");
 						$('.zoom').zoom();
+						$('.variation-wrapper').removeClass('disable-interactivity');
 						$("#sale-end").countdown({
 							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
 						});
@@ -54,13 +56,13 @@
 			</ul>
 		[%/param%]
 	[%/breadcrumb%]
-	<div class="row">
+	<div class="row" itemscope itemtype="http://schema.org/Product">
 		<section class="col-xs-12 col-sm-5" role="contentinfo" aria-label="Product Images">
 			[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 		</section>
 		<section class="col-xs-12 col-sm-7" role="contentinfo" aria-label="Products Information">
 			[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-			<form autocomplete="off">
+			<form autocomplete="off" class="variation-wrapper">
 				[%list_item_variations id:'[@current_sku@]'%]
 					[%param header%]
 					<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
@@ -384,10 +386,16 @@
 						[%param *body%]
 						<div itemprop="review" itemscope itemtype="http://schema.org/Review">
 							<meta itemprop="itemReviewed" content="[@name@]">
+							<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]">
 							<blockquote>
 								<h4 itemprop="name">[%nohtml%][@title@][%/nohtml%]</h4>
 								<div>
-									<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
+									<strong>
+										[%if [@reviewname@]%]
+											By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[@reviewname@]</span></span> on 
+										[%/if%]
+										<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]
+									</strong>
 								</div>
 								<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span><br />
 								<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
@@ -430,7 +438,9 @@
 					[%/if%]
 				</div><!--/.tab-content-->
 			</div><!--/.tabbable-->
+			[%if [@form:disable_scripts@] ne 'true'%]
 			[%tracking_code type:'ProductDescription' /%]
+			[%/if%]
 			[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 				[%param header%]
 				<hr />

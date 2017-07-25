@@ -214,7 +214,7 @@
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>ABN:</strong> [@config:company_abn@]<br>[%/ if%]
 					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
-					<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank" rel="noopener">E-commerce Software</a> By Neto</p>
+					[%if [@config:show_platform_branding@]%]<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank" rel="noopener">E-commerce Software</a> By Neto</p>[%/if%]
 				</address>
 			</div>
 		</div>
@@ -228,6 +228,7 @@
 <script type="text/javascript" src="[%ntheme_asset%]js/custom.js[%/ntheme_asset%]"></script>
 [%cdn_asset html:'1' type:'js' library:'jquery_ui' version:'1.11.1'%]js/jquery-ui-1.8.18.custom.min.js[%/cdn_asset%]
 [%SITE_VALUE id:'footer_javascript' type:'load'/%]
+[%if [@form:disable_scripts@] ne 'true'%]
 <!-- Analytics -->
 [%tracking_code type:'Visitor' /%]
 <div class="npopup" style="" role="alertdialog" aria-atomic="true" aria-label="Popup" aria-describedby="npopupDesc" tabindex="-1"> <a href="javascript:void(0);" class="npopup-btn-close" aria-label="Close Popup"></a>

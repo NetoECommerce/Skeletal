@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head itemscope itemtype="http://schema.org/WebSite">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
 <meta name="description" content="[%url_info name:'meta_description'/%]"/>
@@ -12,8 +12,8 @@
 <meta property="og:url" content="[@config:canonical_url@]"/>
 <meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
 [@config:GOOGLE_VERIFICATION_CODE@]
-<title>[%url_info name:'page_title'/%]</title>
-<link rel="canonical" href="[@config:canonical_url@]"/>
+<title itemprop='name'>[%url_info name:'page_title'/%]</title>
+<link rel="canonical" href="[@config:canonical_url@]" itemprop="url"/>
 <link rel="shortcut icon" href="/assets/favicon_logo.png?[@config:neto_css_version@]"/>
 <link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
 <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
@@ -24,9 +24,10 @@
 	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
 	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
 <![endif]-->
+[%if [@form:disable_scripts@] ne 'true'%]
 [%tracking_code type:'Declaration'/%]
+[%/if%]
 </head>
-
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
 <header class="container wrapper-header" aria-label="Header Container">
@@ -122,7 +123,7 @@
 								<li><a href="[%url page:'account'/%]#quotes">Quotes</a></li>
 								[%/ if%]
 								<li><a href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
-								<li><a href="[%url page:'account' type:'favourites'/%]">Favourites</a></li>
+								<li><a href="[%url page:'account' type:'favourites'/%]">Reorder</a></li>
 								[%if [@config:show_wishlist@]%]
 								<li><a href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
 								[%/if%]

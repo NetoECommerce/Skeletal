@@ -264,8 +264,8 @@ function print_invoice() {
 	[%PARAM if_false%]##-->
 		<tr>
 			<td colspan="2"><b>Delivery Method:</b> [@shipping_method@]</td>
-			<td><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--><!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--> ( Discount - <!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--> )<!--##[%END DATA%]##--></td>
-			<td><!--##[%format type:'currency'%]##-->[@shipping_price@]<!--##[%END format%]##--></td>
+			<td>[%if [@shipping_total@] > 0%][%format type:'currency'%][@shipping_total@][%/format%][%/if%]<!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--> ( Discount - <!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--> )<!--##[%END DATA%]##--></td>
+			<td>[%if [@shipping_price@] > 0%][%format type:'currency'%][@shipping_price@][%/format%][%/if%]</td>
 		</tr>
 		<!--##[%END PARAM%]
 	<!--##[%END DATA%]##-->
@@ -290,7 +290,7 @@ function print_invoice() {
 		<!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
 		<tr>
 			<td><b>Total Shipping</b></td>
-			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td>
+			<td style="text-align:right;"><b>[%if [@shipping_total@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@shipping_total@][%/format%] [%/if%]</b></td>
 		</tr>
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
