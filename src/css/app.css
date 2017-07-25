@@ -7610,6 +7610,7 @@ ul.imagelist li .imagethumb {
 .payment-icon {
   width: 60px;
   background-image: url('//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg');
+  background-image: url('http://devphil.neto.com.au//assets/images/paymenticons.svg');
   background-size: 60px;
 }
 .payment-icon-paypal {
@@ -7676,6 +7677,16 @@ ul.imagelist li .imagethumb {
   margin-top: 7px;
   height: 18px;
   background-position: 0px -226px;
+}
+.payment-icon-zipmoney {
+  margin-top: 2px;
+  height: 30px;
+  background-position: 0px 30px;
+}
+.payment-icon-zippay {
+  margin-top: 7px;
+  height: 18px;
+  background-position: 0px 49px;
 }
 .savings-container {
   position: absolute;
