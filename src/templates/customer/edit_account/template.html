@@ -292,7 +292,7 @@ getlocation();
 			<div class="col-xs-12 col-md-6">
 				<h2 name="company" id="Company">Company Information</h2>
 				<div class="form-group">
-					<label for="usercustom2">ABN / ACN</label>
+					<label for="usercustom2">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
 					<input class="form-control" type="text" name="usercustom2" id="usercustom2" size="20" maxlength="25" value="[@usercustom2@]">
 				</div>
 				<div class="form-group">
