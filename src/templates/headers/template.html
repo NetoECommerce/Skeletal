@@ -12,7 +12,7 @@
 <meta property="og:url" content="[@config:canonical_url@]"/>
 <meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
 [@config:GOOGLE_VERIFICATION_CODE@]
-<title itemprop='name'>[%url_info name:'page_title'/%]</title>
+<title itemprop='name'>[%if [%url_info name:'page_title'/%] ne ''%][%url_info name:'page_title'/%][%else%][@CONFIG:WEBSITE_NAME@][%/if%]</title>
 <link rel="canonical" href="[@config:canonical_url@]" itemprop="url"/>
 <link rel="shortcut icon" href="/assets/favicon_logo.png?[@config:neto_css_version@]"/>
 <link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
