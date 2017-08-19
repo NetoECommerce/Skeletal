@@ -1,0 +1,6 @@
+{
+  "defaults": {
+    "ignore": [ "notice", "warning" ]
+  },
+  "urls": [ "http://skeletaltheme.neto.com.au" ]
+}
