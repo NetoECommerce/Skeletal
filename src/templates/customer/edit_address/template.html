@@ -229,8 +229,6 @@ function updloca(oid) {
 		city.readOnly = state.readOnly = false;
 		city.style.color = state.style.color = '#000000';
 	} else {
-		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
-
 		city.readOnly = state.readOnly = true;
 		city.style.color = state.style.color = '#666666';
 		if( zip.value == '' ) {
