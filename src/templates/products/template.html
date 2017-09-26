@@ -124,7 +124,7 @@
 												<select class="_itmspec_opt form-control" ref="[@specific_id@]">
 					[%/param%]
 					[%param *variation_body_select%]
-													<option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@]</option>
+													<option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@] [%if [@variation_store_quantity@] < 1 %] (Out of Stock) [%/if%]</option>
 					[%/param%]
 					[%param *variation_footer_select%]
 												</select>
