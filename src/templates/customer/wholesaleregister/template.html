@@ -142,12 +142,12 @@
 </div>
 
 
-<!--##[%EXTRA_CUSTOMER_FIELDS%]
-[%PARAM *header%]##-->
+[%EXTRA_CUSTOMER_FIELDS%]
+[%PARAM *header%]
 <div class="">
 <h3>Other Details</h3>
-<!--##[%END PARAM%]
-[%PARAM *integer_option%]##-->
+[%END PARAM%]
+[%PARAM *integer_option%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -157,8 +157,8 @@
 		<input type="text" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *text_option%]##-->
+[%END PARAM%]
+[%PARAM *text_option%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -168,8 +168,8 @@
 		<textarea name="[@field_id@]" class="form-control" cols="20" [%if [@required_field@]%]required="true"[%/if%]>[%NOHTML%][@field_default@][%END NOHTML%]</textarea>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *short_text_option%]##-->
+[%END PARAM%]
+[%PARAM *short_text_option%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -179,8 +179,8 @@
 		<input type="text" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *descimal_option%]##-->
+[%END PARAM%]
+[%PARAM *descimal_option%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -190,8 +190,8 @@
 		<input type="text" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *boolean_option%]##-->
+[%END PARAM%]
+[%PARAM *boolean_option%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -201,8 +201,8 @@
 		<input type="checkbox" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *date_option%]##-->
+[%END PARAM%]
+[%PARAM *date_option%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -212,8 +212,8 @@
 		<input class="datepicker" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *selection_header%]##-->
+[%END PARAM%]
+[%PARAM *selection_header%]
 <div class="form-group">
 	<label class="control-label col-sm-3">
 		[@field_name@]
@@ -221,19 +221,19 @@
 	</label>
 	<div class="col-sm-9">
 		<select name="[@field_id@]" [%if [@required_field@]%]required="true"[%/if%]>
-			<!--##[%END PARAM%]
-			[%PARAM *selection_body%]##-->
+			[%END PARAM%]
+			[%PARAM *selection_body%]
 				<option value="[@option_value@]">[@option_value@]</option>
-			<!--##[%END PARAM%]
-		[%PARAM *selection_footer%]##-->
+			[%END PARAM%]
+		[%PARAM *selection_footer%]
 		</select>
 	</div>
 </div>
-<!--##[%END PARAM%]
-[%PARAM *footer%]##-->
+[%END PARAM%]
+[%PARAM *footer%]
 </div>
-<!--##[%END PARAM%]
-[%END EXTRA_CUSTOMER_FIELDS%]##-->
+[%END PARAM%]
+[%END EXTRA_CUSTOMER_FIELDS%]
 <div class="">
 
     <h3>&nbsp;Terms &amp; Conditions Of Trade</h3>
