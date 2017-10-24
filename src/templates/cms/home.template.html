@@ -35,6 +35,7 @@
 		[%advert type:'product' limit:'8' template:'' ad_group:''%]
 			[%param *header%]
 				<hr aria-hidden="true"/>
+				<h2 class="sr-only">Featured products</h2>
 				<section class="row" aria-label="Featured products">
 			[%/param%]
 			[%param footer%]
@@ -44,6 +45,7 @@
 				[%random_products category:'0' template:'' limit:'8'%]
 					[%param *header%]
 						<hr aria-hidden="true"/>
+						<h2 class="sr-only">Featured products</h2>
 						<section class="row" aria-label="Featured products">
 					[%/param%]
 					[%param *footer%]
