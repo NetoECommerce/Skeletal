@@ -5,43 +5,43 @@
 		<meta itemprop="mpn" content="[@sku@]"/>
 		<a href="[@URL@]" class="thumbnail-image">
 			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="product-image" alt="[@model@]" rel="itmimg[@SKU@]">
+			<div class="caption">
+				<p class="name" itemprop="name">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
+				<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					[%if [@inpromo@]%]
+						Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
+						<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
+						<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
+					[%else%]
+						[%if [@has_child@]%]From&nbsp;[%/if%]
+						<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
+					[%/if%]
+					<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
+				</p>
+				[%if [@form:disable_scripts@] ne 'true'%]
+				[%tracking_code type:'Thumbnails' /%]
+				[%/if%]
+			</div>
 		</a>
-		<div class="caption">
-			<h3 itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</a></h3>
-			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[@model@] price">
-				[%if [@inpromo@]%]
-					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
-					<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
-					<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
-				[%else%]
-					[%if [@has_child@]%]From&nbsp;[%/if%]
-					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
-				[%/if%]
-				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-			</p>
-			[%if [@form:disable_scripts@] ne 'true'%]
-			[%tracking_code type:'Thumbnails' /%]
+		<!-- Purchase Logic -->
+		<form class="form-inline buying-options">
+			<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+			<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+			<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+			<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="[%if [@min_qty@] > 0%][@min_qty@][%else%]1[%/if%]" class="input-tiny">
+			[%if [@extra@] or [@has_child@] or [@editable_bundle@]%]
+				<a href="[@URL@]" title="View [@model@] Buying Options" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Options</a>
+			[%elseif [@store_quantity@] > 0 AND [@preorder@] %]
+				<button type="button" title="Pre-Order [@model@] Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
+			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
+			[%else%]
+				<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When [@model@] Is Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
 			[%/if%]
-			<!-- Purchase Logic -->
-			<form class="form-inline buying-options">
-				<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
-				<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
-				<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
-				<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="[%if [@min_qty@] > 0%][@min_qty@][%else%]1[%/if%]" class="input-tiny">
-				[%if [@extra@] or [@has_child@] or [@editable_bundle@]%]
-					<a href="[@URL@]" title="View [@model@] Buying Options" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Options</a>
-				[%elseif [@store_quantity@] > 0 AND [@preorder@] %]
-					<button type="button" title="Pre-Order [@model@] Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
-				[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-					<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
-				[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-					<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
-				[%else%]
-					<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When [@model@] Is Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
-				[%/if%]
-			</form>
-			<!-- /Purchase Logic -->
-		</div>
+		</form>
+		<!-- /Purchase Logic -->
 		<div class="savings-container">
 			[%if [@inpromo@]%]
 				<span class="label label-danger">On Sale</span>
