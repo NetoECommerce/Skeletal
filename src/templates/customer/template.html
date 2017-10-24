@@ -240,22 +240,22 @@
 			</div>
 			[%if [@total_results@] > 15%]
 				<div class="text-center">
-					<ul class="pagination" role="navigation" aria-label="Orders Pagination Navigation">
+					<ul class="pagination" aria-label="Orders pagination navigation">
 						[%paging limit:'3'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]" aria-label="Go Back 1 Page">Previous Page</a></li>
+								<li><a href="[@url@]" aria-label="Go back one page">Previous Page</a></li>
 							[%/param%]
 							[%param *goback_pages%]
-								<li><a href="[@url@]" aria-label="Go To Page [@PAGE@]">[@page@]</a></li>
+								<li><a href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *current_page%]
-								<li class="active"><a href="[@url@]" aria-label="Current Page">[@page@]</a></li>
+								<li class="active"><a href="[@url@]" aria-label="Current page">[@page@]</a></li>
 							[%/param%]
 							[%param *gonext_pages%]
-								<li><a href="[@url@]" aria-label="Go To Page [@PAGE@]">[@page@]</a></li>
+								<li><a href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]" aria-label="Go Forward 1 Page">Next Page</a></li>
+								<li><a href="[@url@]" aria-label="Go forward one page">Next Page</a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
