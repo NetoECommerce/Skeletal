@@ -2,7 +2,7 @@
 	[%if [@config:show_home_ads@]%]
 		[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
 			[%param *header%]
-				<section id="homepageCarousel" class="carousel slide" aria-label="Banner Images">
+				<section id="homepageCarousel" class="carousel slide" aria-label="Banner images">
 					[%if [@total_showing@] > 1%]
 						<ol class="carousel-indicators">
 							[%site_value id:'counter' type:'load'/%]
@@ -29,13 +29,13 @@
 			[%/param%]
 		[%/advert%]
 	[%/if%]
-	<hr>
-	<section id="homepage-content" class="n-responsive-content" aria-label="Main Description">[@page_content@]</section>
+	<hr aria-hidden="true" />
+	<section id="homepage-content" class="n-responsive-content" aria-label="Main description">[@page_content@]</section>
 	[%if [@config:show_home_ads@]%]
 		[%advert type:'product' limit:'8' template:'' ad_group:''%]
 			[%param *header%]
-				<hr />
-				<section class="row" aria-label="Featured Products">
+				<hr aria-hidden="true"/>
+				<section class="row" aria-label="Featured products">
 			[%/param%]
 			[%param footer%]
 				</section>
@@ -43,8 +43,8 @@
 			[%param *ifempty%]
 				[%random_products category:'0' template:'' limit:'8'%]
 					[%param *header%]
-						<hr />
-						<section class="row" aria-label="Featured Products">
+						<hr aria-hidden="true"/>
+						<section class="row" aria-label="Featured products">
 					[%/param%]
 					[%param *footer%]
 						</section>
