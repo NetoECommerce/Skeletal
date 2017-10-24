@@ -51,7 +51,7 @@
 		[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
 			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
 				[%PARAM *header%]
-					<hr/>
+					<hr aria-hidden="true"/>
 					<div class="row sort_container">
 						<div class="col-xs-4 col-sm-7 col-md-4">
 							<script language="javascript" type="text/javascript">
@@ -103,7 +103,7 @@
 					[%IF [@total_results@] > [@config:thumb_limit@]%]
 						<div class="row">
 							<div class="col-xs-12">
-								<hr />
+								<hr aria-hidden="true"/>
 								<div class="text-center">
 									<ul class="pagination" aria-label="Pagination navigation">
 										[%paging limit:'3'%]
@@ -115,7 +115,7 @@
 										[%/paging%]
 									</ul>
 								</div>
-								<hr />
+								<hr aria-hidden="true"/>
 							</div>
 						</div>
 					[%/IF%]
@@ -129,7 +129,7 @@
 							[%FILTER ID:'keywords' if:'eq' value:''%]
 								<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
 							[%/FILTER%]
-							<hr />
+							<hr aria-hidden="true"/>
 						</div>
 					</div>
 				[%/PARAM%]

@@ -38,13 +38,13 @@
 		[@content_description3@]
 	[%/ parse%]
 </section>
-<hr />
+<hr aria-hidden="true"/>
 [%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' limit:''%]
 	[%PARAM header%]
 		<section class="row" aria-label="Categories">
 	[%/ PARAM%]
 	[%PARAM *level_1%]
-		<div class="col-sm-4 category-thumbnail" role="article" aria-label="[@name@] Category">
+		<div class="col-sm-4 category-thumbnail" role="article" aria-label="[@name@] category">
 			<h3><a href="[@url@]">[@name@]</a></h3>
 			<div class="wrapper-category-image">
 				<a href="[@url@]">
