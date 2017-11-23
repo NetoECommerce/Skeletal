@@ -105,7 +105,7 @@ function getlocation(ta) {
 				}
 
 				if(!req) {
-					msg.innerHTML = '<i>Error. Please contact our customer support: sales.com.au</i>';
+					msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
 				} else {
 					req.onreadystatechange = function() {
 						if(req.readyState == 4 && req.status == 200) {
