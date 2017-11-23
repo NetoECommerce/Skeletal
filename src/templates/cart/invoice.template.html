@@ -262,7 +262,7 @@
 						[%/if%]
 						[%if [@notax@] eq '0'%]
 							<tr>
-								<td><b>GST[%data id:'tax_inc' if:'eq' value:'y' %] Inc.[%/data%]</b></td>
+								<td><b>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%][%data id:'tax_inc' if:'eq' value:'y' %] Inc.[%/data%]</b></td>
 								<td class="text-right"><b>[%format type:'currency'%][@tax_total@][%/format%]</b></td>
 							</tr>
 						[%/if%]

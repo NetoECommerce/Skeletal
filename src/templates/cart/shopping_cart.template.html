@@ -247,7 +247,7 @@
 				[%/if%]
 				[%if ![@notax@]%]
 				<tr>
-					<td>GST [%if [@tax_inc@]%]Inc.[%/if%]</td>
+					<td>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%] [%if [@tax_inc@]%]Inc.[%/if%]</td>
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
