@@ -212,7 +212,7 @@
 			<div class="col-sm-3">
 				<address role="contentinfo" aria-label="Company details">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
-					[%if [@config:company_abn@]%]<strong>ABN:</strong> [@config:company_abn@]<br>[%/ if%]
+					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
 					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
 					[%if [@config:show_platform_branding@]%]<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank">E-commerce Software</a> By Neto</p>[%/if%]
 				</address>

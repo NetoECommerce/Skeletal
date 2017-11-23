@@ -169,7 +169,7 @@
 				<strong>Total Discount: </strong>-[%format type:'currency'%][@discount_total@][%/format%]<br/>
 			[%/if%]
 			[%if [@notax@] eq 0%]
-				<strong>GST [%data id:'tax_inc' if:'eq' value:'y' %]Inc[%/data%]: </strong>[%format type:'currency'%][@tax_total@][%/format%]<br/>
+				<strong>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%] [%data id:'tax_inc' if:'eq' value:'y' %]Inc[%/data%]: </strong>[%format type:'currency'%][@tax_total@][%/format%]<br/>
 			[%/if%]
 			<strong>Order Total: </strong>[%format type:'currency'%][@grand_total@][%/format%]
 		</td>
