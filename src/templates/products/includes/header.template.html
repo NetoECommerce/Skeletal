@@ -5,18 +5,18 @@
 		[%if [@subtitle@]%]
 			<h3 class="text-muted" role="heading" aria-label="Product Subtitle">[@subtitle@]</h3>
 		[%/if%]
-		[%if [@reviews@] > 0%]
+		[%if [@^reviews@] > 0%]
 			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-				[%set [@data:ratings-count@] = 1 /%]
-				[%while [@data:ratings-count@] <= [@data:rating@]%]
-					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+				[%set [@ratings-count@] = 1 /%]
+				[%while [@ratings-count@] <= [@^rating@]%]
+					[%set [@ratings-count@] = [@ratings-count@]+1 /%]
 					<i class="fa fa-star"></i>
 				[%/ while%]
-				[%while [@data:ratings-count@] <= 5%]
-					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+				[%while [@ratings-count@] <= 5%]
+					[%set [@ratings-count@] = [@ratings-count@]+1 /%]
 					<i class="fa fa-star-o"></i>
 				[%/while%]
-				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> reviews.
+				Rated <span itemprop="ratingValue">[@^rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@^reviews@]</span> review/s.
 			</span>
 		[%/if%]
 		<div class="dropdown">
