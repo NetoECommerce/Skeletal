@@ -1,3 +1,5 @@
+[![Build status](https://badge.buildkite.com/5a56074c3e84be99497d29dced76a15755a02cf00c642e7855.svg)](https://buildkite.com/neto-ecommerce/skeletal)
+
 <img width="407" src="http://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
 
 Skeletal is the development theme for Neto. This theme contains all of our supported front-end features, so we build all new custom websites and themes with Skeletal as the starting point. Skeletal is built on Bootstrap 3.
@@ -22,7 +24,7 @@ As Skeletal is built almost entirely upon Bootstrap 3, the [Bootstrap documentat
 
 If you are not comfortable working with [LESS](http://lesscss.org/), you are best off writing all CSS in your own custom CSS file. As our `.less` files are compiled into `app.css`, avoid modifying `app.css`. Otherwise, if for whatever reason you eventually do need to re-compile the less files, any changes to `app.css` would be lost.
 
-If you are comfortable with Less, you're best off developing in you're own less file and adding it to the imports in ``src/css/app.less``, which needs to be compiled to ``src/css/app.css`` using Gulp. 
+If you are comfortable with Less, you're best off developing in you're own less file and adding it to the imports in ``src/css/app.less``, which needs to be compiled to ``src/css/app.css`` using Gulp.
 
 If you are compiling `.less` files for the purpose of contributing to Skeletal, follow these steps:
 
