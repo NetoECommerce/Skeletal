@@ -10,8 +10,12 @@
 		<li><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
 	</ul>
 	<h1>Approve Quote</h1>
-	<input class="pull-right btn btn-default" type="button" value="Print Quote" onClick="print_quote()">
-	<button onclick="location.href='[%URL page:'account' type:'approve_quote' qs:'action=approve&order_email=[@order_email@]' id:'[@order_id@]' fn:'confirm'%][%END URL%]'" class="btn btn-success pull-left" style="margin-right:12px;" >Confirm &amp; Approve Quote</button>
-	<button  onclick="location.href='[%URL page:'account' type:'approve_quote'%][%END URL%]'" class="btn btn-danger pull-left">Cancel</button>
+	<div class="row">
+		<div class="col-xs-12">
+			<input class="pull-right btn btn-default" type="button" value="Print Quote" onClick="print_quote()">
+			<button onclick="location.href='[%URL page:'account' type:'approve_quote' qs:'action=approve&order_email=[@order_email@]' id:'[@order_id@]' fn:'confirm'%][%END URL%]'" class="btn btn-success pull-left" style="margin-right:12px;" >Confirm &amp; Approve Quote</button>
+			<button  onclick="location.href='[%URL page:'account' type:'approve_quote'%][%END URL%]'" class="btn btn-danger pull-left">Cancel</button>
+		</div>
+	</div>
 	<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
 </div>

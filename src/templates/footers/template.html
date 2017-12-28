@@ -46,30 +46,30 @@
 					<meta itemprop="url" content="[@config:home_url@]"/>
 					<meta itemprop="logo" content="[@config:home_url@][@config:imageurl@]/website_logo.png"/>
 					<meta itemprop="name" content="[@config:company_name@]"/>
-					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank" title="Email us" aria-label="Email us"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+					<li><a href="[%url type:'page' id:'contact_us'/%]" target="_blank" title="Email us" rel="noopener" aria-label="Email us"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
 					[%if [@config:facebook_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook" rel="noopener"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
 					[%/if%]
 					[%if [@config:twitter_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank" title="[@config:company_name@] on Twitter"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank" title="[@config:company_name@] on Twitter" rel="noopener"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a></li>
 					[%/if%]
 					[%if [@config:googleplus_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank" title="[@config:company_name@] on Google Plus"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i><span class="sr-only">Google Plus</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank" title="[@config:company_name@] on Google Plus" rel="noopener"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i><span class="sr-only">Google Plus</span></a></li>
 					[%/if%]
 					[%if [@config:youtube_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank" title="[@config:company_name@] on Youtube"><i class="fa fa-youtube-square text-youtube" aria-hidden="true"></i><span class="sr-only">Youtube</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank" title="[@config:company_name@] on Youtube" rel="noopener"><i class="fa fa-youtube-square text-youtube" aria-hidden="true"></i><span class="sr-only">Youtube</span></a></li>
 					[%/if%]
 					[%if [@config:instagram_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank" title="[@config:company_name@] on Instagram"><i class="fa fa-instagram text-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank" title="[@config:company_name@] on Instagram" rel="noopener"><i class="fa fa-instagram text-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
 					[%/if%]
 					[%if [@config:pinterest_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank" title="[@config:company_name@] on Pinterest"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank" title="[@config:company_name@] on Pinterest" rel="noopener"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest</span></a></li>
 					[%/if%]
 					[%if [@config:tumblr_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank" title="[@config:company_name@] on Tumblr"><i class="fa fa-tumblr-square text-tumblr" aria-hidden="true"></i><span class="sr-only">Tumblr</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank" title="[@config:company_name@] on Tumblr" rel="noopener"><i class="fa fa-tumblr-square text-tumblr" aria-hidden="true"></i><span class="sr-only">Tumblr</span></a></li>
 					[%/if%]
 					[%if [@config:linkedin_account_id@]%]
-					<li><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank" title="[@config:company_name@] on Linkedin"><i class="fa fa-linkedin-square text-linkedin" aria-hidden="true"></i><span class="sr-only">Linkedin</span></a></li>
+					<li><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank" title="[@config:company_name@] on Linkedin" rel="noopener"><i class="fa fa-linkedin-square text-linkedin" aria-hidden="true"></i><span class="sr-only">Linkedin</span></a></li>
 					[%/if%]
 				</ul>
 			</div>
@@ -214,7 +214,7 @@
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
 					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
-					[%if [@config:show_platform_branding@]%]<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank">E-commerce Software</a> By Neto</p>[%/if%]
+					[%if [@config:show_platform_branding@]%]<p class="small"><a href="http://www.neto.com.au" title="E-commerce Shopping Cart" target="_blank" rel="noopener">E-commerce Software</a> By Neto</p>[%/if%]
 				</address>
 			</div>
 		</div>

@@ -94,7 +94,7 @@ function print_invoice() {
 					<!--##[%DATA id:'ship_tracking' if:'eq' value:'' %]##-->
 					Tracking not yet available <!--##[%END DATA%]##-->
 					<!--##[%DATA id:'tracking_url' if:'ne' value:'' %]##-->
-					<a href="[@tracking_url@]" target="_blank" class="btn btn-default btn-sm">Track Online <i class="fa fa-external-link"></i></a>
+					<a href="[@tracking_url@]" target="_blank" rel="noopener" class="btn btn-default btn-sm">Track Online <i class="fa fa-external-link"></i></a> 
 					<!--##[%END DATA%]##-->
 					<!--##[%DATA id:'tracking_url' if:'eq' value:'' %]##-->
 					&nbsp; <!--##[%END DATA%]##--></td>
