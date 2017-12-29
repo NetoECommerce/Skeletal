@@ -82,7 +82,7 @@
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
 				<span itemprop="availability" content="http://schema.org/InStock" class="label label-success">In Stock</span>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="http://schema.org/LimitedAvailability" class="label label-danger">Sold Out -  Backorder Available</span>
+				<span itemprop="availability" content="http://schema.org/LimitedAvailability" class="label label-danger">Sold Out - Backorder Available</span>
 			[%else%]
 				<span itemprop="availability" content="http://schema.org/OutOfStock" class="label label-danger">Sold Out</span>
 			[%/if%]
