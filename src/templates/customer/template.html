@@ -194,6 +194,8 @@
 										label-success
 									[%elseif [@order_status@] eq 'Cancelled'%]
 										label-danger
+									[%else%]
+										label-default
 								[%/if%]
 								">
 								[@order_status@]
@@ -263,7 +265,7 @@
 			[%/if%]
 		[%/param%]
 		[%param ifempty%]
-			<p>No orders have been placed on this account. </p>
+			<p>No orders have been placed on this account.</p>
 		[%/param%]
 	[%/thumb_list%]
 </section>
@@ -306,12 +308,12 @@
 		[%param *footer%]
 				</tbody>
 			</table>
-			[%if [@total_results@] > 15%]
+			[%if [@total_results@] > 10%]
 				<div class="text-center">
 					<ul class="pagination" role="navigation" aria-label="Quotes Pagination Navigation">
 						[%paging limit:'3'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]">Previous Page</a></li>
+								<li><a href="[@url@]"><i class="fa fa-chevron-left"></i></a></li>
 							[%/param%]
 							[%param *goback_pages%]
 								<li><a href="[@url@]">[@page@]</a></li>
@@ -323,7 +325,7 @@
 								<li><a href="[@url@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]">Next Page</a></li>
+								<li><a href="[@url@]"><i class="fa fa-chevron-right"></i></a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
@@ -400,9 +402,9 @@
 		<form class="form-inline" method="POST" action="[%url page:'account' type:'wishlist'/%]">
 			<input type="hidden" name="proc" value="addlist"/>
 			<div class="row">
-				<label for="inputEmail1" class="col-xs-12 col-md-2 control-label">Wishlist Name</label>
+				<label for="wh_name" class="col-xs-12 col-md-2 control-label">New Wishlist</label>
 				<div class="col-xs-12 col-md-3">
-					<input class="form-control" type="text" name="wh_name" value=""/>
+					<input class="form-control" type="text" name="wh_name" id="wh_name" placeholder="Wishlist Name"/>
 					<br>
 				</div>
 				<div class="col-xs-12 col-md-3">
