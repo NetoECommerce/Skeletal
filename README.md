@@ -61,7 +61,7 @@ If you already have a local version of Skeletal then you just need to update it 
 
 ### Make a new branch
 
-You do not want your changes to be on master, changes need to be reviewed to ensure it meets Neto standards and you could possible have made mistakes. You make a branch off the master branch so you have all the latest commits and can safely make  changes without effectly live code.
+You do not want your changes to be on master, changes need to be reviewed to ensure it meets Neto standards and you could possible have made mistakes. You make a branch off the master branch so you have all the latest commits and can safely make  changes without affecting live code.
 
 `git checkout -b "BRANCH-NAME"`
 
