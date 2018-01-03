@@ -13,7 +13,7 @@
 						$('.zoom').zoom();
 						$('.variation-wrapper').removeClass('disable-interactivity');
 						$("#sale-end").countdown({
-							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+							date: convertToLocalCountdown(new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%]now[%/format%]), new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%][@promo_end@][%/format%]))
 						});
 					},
 				}
@@ -33,7 +33,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#sale-end").countdown({
-				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+				date: convertToLocalCountdown(new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%]now[%/format%]), new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%][@promo_end@][%/format%]))
 			});
 		});
 	</script>

@@ -145,3 +145,21 @@ $('.nToggleMenu').click(function(){
 	var toggleTarget = $(this).attr('data-target')
 	$(toggleTarget).slideToggle();
 });
+
+// Account for timezone on local PC in time countdown
+// server_now should be a javascript date object representing the time on the server
+//    you can achieve this with new Date([%format type:'date' format:'#Y,#M-1,#D,#H,#I,#S,0'%]now[%/format%])
+// to_convert is another javascript date object and is the time you want converted to local time string for neto js countdown
+function convertToLocalCountdown(server_now, to_convert) {
+	var local_time = Math.floor(new Date().getTime());
+	var time_dif = Math.floor(server_now.getTime()) - local_time;
+	
+	var time_out = new Date(Math.floor(to_convert.getTime())+time_dif);
+	
+	var time_out_hours=(time_out.getHours() < 10) ? ("0" + time_out.getHours()) : time_out.getHours();
+	var time_out_mins=(time_out.getMinutes() < 10) ? ("0" + time_out.getMinutes()) : time_out.getMinutes();
+
+	var time_out_str = $.datepicker.formatDate("MM d, yy ",time_out)+time_out_hours+":"+time_out_mins;
+	
+	return time_out_str;
+}
