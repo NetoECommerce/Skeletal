@@ -8,17 +8,17 @@ Skeletal is the development theme for Neto. This theme contains all of our suppo
 
 ## Installation
 
-The safest way to install Skeletal is through Neto's theme store. Go to **Content** > **Website Themes** in your Neto control panel, hover over _Skeletal_ and click the green _Install_ button.
+The safest way to install Skeletal is through Neto's theme store. Go to **Webstore** > **Theme editor** in your Neto control panel, hover over _Skeletal_ and click the green _Install_ button.
 
 To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your website. You should also rename this new `src` directory to whatever you would like your custom theme to be named.
 
-For the above, you will need FTP access to your Neto website, which you can request [here](http://docs.neto.com.au/designer-documentati/tips-tricks/how-to-connect-to-neto-via-ftp/).
+For the above, you will need FTP access to your Neto website, which you can request [here](https://developers.neto.com.au/documentation/web-designers/news-and-tips/how-to-connect-to-neto-via-ftp/).
 
 ## Documentation
 
-Documentation for designers and developers can be found [here](https://www.neto.com.au/designer-documentation/).
+Documentation for designers and developers can be found [here](https://developers.neto.com.au/).
 
-As Skeletal is built almost entirely upon Bootstrap 3, the [Bootstrap documentation](http://getbootstrap.com) is perhaps the most valuable source of documentation for a web designer who isn't looking to build complex functionality.
+As Skeletal is built almost entirely upon Bootstrap 3, the [Bootstrap documentation](https://getbootstrap.com/docs/3.3/) is perhaps the most valuable source of documentation for a web designer who isn't looking to build complex functionality.
 
 ## Compiling .less files
 
