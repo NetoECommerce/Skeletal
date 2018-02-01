@@ -6751,7 +6751,7 @@ button.close {
   margin-top: 20px;
 }
 #header-cart {
-  z-index: 10002;
+  z-index: 1002;
 }
 .search_loading_icon {
   position: absolute;
