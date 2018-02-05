@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-<ul class="breadcrumb">
+<ul class="breadcrumb" aria-label="Breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Resolution Centre</a></li>
@@ -37,7 +37,7 @@ function showOrder() {
 		<input type="hidden" name="type" value="[%NOHTML%][@type@][%END NOHTML%]">
 		<input type="hidden" name="reason" value="[%NOHTML%][@reason@][%END NOHTML%]">
 		<input type="hidden" name="order" value="[%NOHTML%][@order_id@][%END NOHTML%]">
-		<h3>Order <a target="_blank" href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a></h3>
+		<h3>Order <a target="_blank" rel="noopener" href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%END URL%]">[@order_id@]</a></h3>
 		<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
 		<p><b>PO#:</b> <!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--></p>
 		<!--##[%END DATA%]##-->

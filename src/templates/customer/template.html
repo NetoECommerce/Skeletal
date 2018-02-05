@@ -1,6 +1,6 @@
 <section class="account-summary">
 <div class="col-xs-12">
-	<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+	<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
 		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 			<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 		</li>
@@ -194,6 +194,8 @@
 										label-success
 									[%elseif [@order_status@] eq 'Cancelled'%]
 										label-danger
+									[%else%]
+										label-default
 								[%/if%]
 								">
 								[@order_status@]
@@ -203,11 +205,16 @@
 						<hr>
 						<div class="account-order-card">
 							<p>Date Placed <strong>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</strong></p>
-							[%if [@order_status@] ne 'Cancelled'%]<p>Date Due <strong>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</strong></p>[%/if%]
-							<p>
-								Amount Owed <strong>[%format type:"currency"%][@amount_owed@][%/format%]</strong>
-								[%if [@amount_owed@] <= 0%]<span class="label label-success">Paid in Full</span>[%/if%]
-							</p>
+							[%if [@order_status@] ne 'Cancelled'%]
+								<p>Date Due <strong>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</strong></p>
+								[%if [@amount_owed@] <= 0%]
+									<p><span class="label label-success">Paid in Full</span></p>
+								[%else%]
+									<p>Amount Owed <strong>[%format type:"currency"%][@amount_owed@][%/format%]</strong></p>
+								[%/if%]
+							[%else%]
+								<p>Amount Owed <strong>Order Cancelled</strong>
+							[%/if%]
 						</div>
 						<div class="row btn-stack">
 							<div class="col-xs-12 col-md-4">
@@ -235,22 +242,22 @@
 			</div>
 			[%if [@total_results@] > 15%]
 				<div class="text-center">
-					<ul class="pagination" role="navigation" aria-label="Orders Pagination Navigation">
+					<ul class="pagination" aria-label="Orders pagination navigation">
 						[%paging limit:'3'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]" aria-label="Go Back 1 Page">Previous Page</a></li>
+								<li><a href="[@url@]" aria-label="Go back one page">Previous Page</a></li>
 							[%/param%]
 							[%param *goback_pages%]
-								<li><a href="[@url@]" aria-label="Go To Page [@PAGE@]">[@page@]</a></li>
+								<li><a href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *current_page%]
-								<li class="active"><a href="[@url@]" aria-label="Current Page">[@page@]</a></li>
+								<li class="active"><a href="[@url@]" aria-label="Current page">[@page@]</a></li>
 							[%/param%]
 							[%param *gonext_pages%]
-								<li><a href="[@url@]" aria-label="Go To Page [@PAGE@]">[@page@]</a></li>
+								<li><a href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]" aria-label="Go Forward 1 Page">Next Page</a></li>
+								<li><a href="[@url@]" aria-label="Go forward one page">Next Page</a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
@@ -258,7 +265,7 @@
 			[%/if%]
 		[%/param%]
 		[%param ifempty%]
-			<p>No orders have been placed on this account. </p>
+			<p>No orders have been placed on this account.</p>
 		[%/param%]
 	[%/thumb_list%]
 </section>
@@ -301,12 +308,12 @@
 		[%param *footer%]
 				</tbody>
 			</table>
-			[%if [@total_results@] > 15%]
+			[%if [@total_results@] > 10%]
 				<div class="text-center">
 					<ul class="pagination" role="navigation" aria-label="Quotes Pagination Navigation">
 						[%paging limit:'3'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]">Previous Page</a></li>
+								<li><a href="[@url@]"><i class="fa fa-chevron-left"></i></a></li>
 							[%/param%]
 							[%param *goback_pages%]
 								<li><a href="[@url@]">[@page@]</a></li>
@@ -318,7 +325,7 @@
 								<li><a href="[@url@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]">Next Page</a></li>
+								<li><a href="[@url@]"><i class="fa fa-chevron-right"></i></a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
@@ -395,9 +402,9 @@
 		<form class="form-inline" method="POST" action="[%url page:'account' type:'wishlist'/%]">
 			<input type="hidden" name="proc" value="addlist"/>
 			<div class="row">
-				<label for="inputEmail1" class="col-xs-12 col-md-2 control-label">Wishlist Name</label>
+				<label for="wh_name" class="col-xs-12 col-md-2 control-label">New Wishlist</label>
 				<div class="col-xs-12 col-md-3">
-					<input class="form-control" type="text" name="wh_name" value=""/>
+					<input class="form-control" type="text" name="wh_name" id="wh_name" placeholder="Wishlist Name"/>
 					<br>
 				</div>
 				<div class="col-xs-12 col-md-3">

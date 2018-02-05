@@ -2,7 +2,7 @@
 <div class="col-xs-12" >
 
 	<!--# Start Breadcrumb# ##-->
-	<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+	<ul class="breadcrumb" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 		<li><a href="#">Edit My Account</a></li>
@@ -82,7 +82,7 @@ function getlocation(ta) {
 	var sel = document.getElementById('suburb_sl'+id);
 
 	if(!zip.cvalue || zip.value!=zip.cvalue) {
-		zip.cvalue = zip.value = zip.value.replace(new RegExp('\\D','g'), '');
+		zip.cvalue = zip.value;
 		msg.innerHTML = '<i>Loading...</i>';
 		dis.style.display = 'none';
 		msg.style.display = '';
@@ -105,7 +105,7 @@ function getlocation(ta) {
 				}
 
 				if(!req) {
-					msg.innerHTML = '<i>Error. Please contact our customer support: sales.com.au</i>';
+					msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
 				} else {
 					req.onreadystatechange = function() {
 						if(req.readyState == 4 && req.status == 200) {
@@ -292,7 +292,7 @@ getlocation();
 			<div class="col-xs-12 col-md-6">
 				<h2 name="company" id="Company">Company Information</h2>
 				<div class="form-group">
-					<label for="usercustom2">ABN / ACN</label>
+					<label for="usercustom2">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
 					<input class="form-control" type="text" name="usercustom2" id="usercustom2" size="20" maxlength="25" value="[@usercustom2@]">
 				</div>
 				<div class="form-group">

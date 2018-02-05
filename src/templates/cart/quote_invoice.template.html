@@ -95,9 +95,9 @@ Quote Summary
 	<!--##[%END PARAM%]
 	[%PARAM if_false%]##-->
 <tr><td class="shitem0"  colspan="3"><b>Delivery Method:</b> [@shipping_method@]</td>
-	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></td>
+	<td class="shitem0" nowrap>[%if [@shipping_total@] > 0%][%format type:'currency'%][@shipping_total@][%/format%][%/if%]</td>
 	<td class="shitem0" nowrap><!--##[%DATA id:'shipping_discount' if:'>' value:'0' %]##--><!--##[%format type:'currency'%]##-->-[@shipping_discount@]<!--##[%END format%]##--><!--##[%END DATA%]##-->&nbsp;</td>
-	<td class="shitem0" nowrap><!--##[%format type:'currency'%]##-->[@shipping_price@]<!--##[%END format%]##--></td></tr>
+	<td class="shitem0" nowrap>[%if [@shipping_price@] > 0%][%format type:'currency'%][@shipping_price@][%/format%][%/if%]</td></tr>
 	<!--##[%END PARAM%]
 	<!--##[%END DATA%]##-->
 <!--##[%END PARAM%]
@@ -114,7 +114,7 @@ Quote Summary
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@product_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%DATA id:'shipping_quote' if:'=' value:'0' %]##-->
 	<tr><td><b>Total Shipping</b></td>
-		<td align="right"><b><!--##[%format type:'currency'%]##-->[@shipping_total@]<!--##[%END format%]##--></b></td></tr>
+		<td align="right"><b>[%if [@shipping_total@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@shipping_total@][%/format%] [%/if%]</b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'discount_total' if:'>' value:'0' %]##-->
 	<tr><td><b>Total Discount</b></td>
@@ -125,7 +125,7 @@ Quote Summary
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@surcharge_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 <!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-	<tr><td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
+	<tr><td><b>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%]<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 		<td align="right"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td></tr>
 <!--##[%END DATA%]##-->
 	<tr><td style="border-top: 1px solid #CCCCCC;"><b>Quote Total</b></td>
