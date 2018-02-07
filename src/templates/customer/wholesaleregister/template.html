@@ -213,20 +213,21 @@
 </div>
 <!--##[%END PARAM%]
 [%END EXTRA_CUSTOMER_FIELDS%]##-->
-<div class="">
 
-    <h3>&nbsp;Terms &amp; Conditions Of Trade</h3>
-	<div style="width:100%; border:1px solid #CCCCCC; height: 150px; overflow:scroll; text-align:left; padding:10px;">
-		[%content_zone id:'wholesale_terms'%][%end content_zone%]
-	</div>
+	[%set [@wholesale_terms@] %][%content_zone id:'wholesale_terms' /%][%/set%]
+	[%if [@wholesale_terms@] ne ''%]
+		<h3>Terms &amp; Conditions Of Trade</h3>
+		<div class="well">[@wholesale_terms@]</div>
+	[%/if%]
+	
 	<p>
-		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>  Subscribe to the [@config:company_name@] newsletter.
+		<input type="checkbox" name="regoptin" value="Y" [%form id:'regoptin' if:'eq' value:'Y'%]checked[%/form%]>
+		Subscribe to the [@config:company_name@] newsletter.
 	</p>
 	<p>
 		<input type="checkbox" name="agree" value="y">
-		I agree to the [@config:company_name@] terms of trade.
+		I agree to the [@config:company_name@] terms &amp; conditions of trade.
 	</p>
-</div>
 
 	<input type="submit" class="btn btn-lg btn-primary" value="Register">
 </form>
