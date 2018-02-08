@@ -1,7 +1,7 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 	[%breadcrumb%]
 		[%param *header%]
-			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
 				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 				</li>
@@ -16,7 +16,7 @@
 		[%/param%]
 	[%/breadcrumb%]
 	<h1>[@content_name@]</h1>
-	<hr>
+	<hr aria-hidden="true"/>
 	<img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%/ASSET_URL%]" class="pull-right" alt="[@name@] main image"/>
 	<img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%/ASSET_URL%]"  class="pull-right" alt="[@name@] image"/>
 	<section class="n-responsive-content" aria-label="Short Description">
@@ -70,13 +70,13 @@
 			</div>
 		[%/param%]
 		[%param *footer%]
-			<ul class="pagination">
+			<ul class="pagination" aria-label="Pagination navigation">
 				[%paging limit:'3'%]
-					[%param *previous_page%]<li><a href="[@URL@]" aria-label="Go Back 1 Page"><i class="fa fa-chevron-left"></i></a></li>[%/param%]
-					[%param *goback_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
-					[%param *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li>[%/param%]
-					[%param *gonext_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
-					[%param *next_page%]<li><a href="[@URL@]" aria-label="Go Forward 1 Page"><i class="fa fa-chevron-right"></i></a></li>[%/param%]
+					[%param *previous_page%]<li><a href="[@URL@]" aria-label="Go back one page"><i class="fa fa-chevron-left"></i></a></li>[%/param%]
+					[%param *goback_pages%]<li><a href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+					[%param *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/param%]
+					[%param *gonext_pages%]<li><a href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+					[%param *next_page%]<li><a href="[@URL@]" aria-label="Go forward one page"><i class="fa fa-chevron-right"></i></a></li>[%/param%]
 				[%/paging%]
 			</ul>
 		[%/param%]
