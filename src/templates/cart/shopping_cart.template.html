@@ -219,8 +219,12 @@
 								<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
 							</tr>
 						[%/param%]
-						[%param ifempty%]
-							Enter post code to calculate shipping
+						[%param *ifempty%]
+							[%if [@ship_zip@]%]
+								<p class="alert alert-danger no-margin" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to selected location.</p>
+							[%else%]
+								Enter post code to calculate shipping
+							[%/if%]
 						</td>
 						</tr>
 						[%/param%]
