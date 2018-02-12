@@ -255,9 +255,9 @@
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
-				<tr class="success">
+				<tr>
 					<th scope="row"><b>Shopping Cart Total</b></th>
-					<td class="text-right" ><p class="h3">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
+					<td class="text-right text-success" ><p class="h2">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
 				</tr>
 			</table>
 			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
