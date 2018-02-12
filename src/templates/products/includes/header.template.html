@@ -78,13 +78,13 @@
 			[%tracking_code type:'BuyingOptions' /%]
 			[%/if%]
 			[%if [@store_quantity@] > 0 AND [@preorder@] %]
-				<span itemprop="availability" content="preorder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
+				<span itemprop="availability" content="http://schema.org/PreOrder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-				<span itemprop="availability" content="in_stock" class="label label-success">In Stock</span>
+				<span itemprop="availability" content="http://schema.org/InStock" class="label label-success">In Stock</span>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out -  Backorder Available</span>
+				<span itemprop="availability" content="http://schema.org/LimitedAvailability" class="label label-danger">Sold Out - Backorder Available</span>
 			[%else%]
-				<span itemprop="availability" content="out_of_stock" class="label label-danger">Sold Out</span>
+				<span itemprop="availability" content="http://schema.org/OutOfStock" class="label label-danger">Sold Out</span>
 			[%/if%]
 			[%if [@availability_description@]%]
 				<div class="availability_description">
