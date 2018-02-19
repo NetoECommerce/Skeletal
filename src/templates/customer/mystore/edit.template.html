@@ -10,7 +10,7 @@
         <div class="alert alert-success"><a class="close" data-dismiss="alert">×</a> [@msg@]</div>
     [%END DATA%]
     [%DATA id:'error' if:'ne' value:''%]
-        <div class="alert alert-error"><a class="close" data-dismiss="alert">×</a> [@error@]</div>
+        <div class="alert danger"><a class="close" data-dismiss="alert">×</a> [@error@]</div>
     [%END DATA%]
 
     [%SITE_VALUE id:'footer_javascript'%]
@@ -89,7 +89,7 @@
         		<h4>Details</h4>
         		<div class="content">
                     <div class="form-group">
-                        <label for="stloc_name">Store Name <span class="small text-danger">Required</span></label>
+                        <label for="stloc_name">Store Name <span class="required text-danger">*</span></label>
                         <input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
                     </div>
                     <div class="form-group">
@@ -110,7 +110,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <input class="datepicker" class="form-control" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
-                            [%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+                            [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
                             <select id="[@field_id@]" name="[@field_id@]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
                 [%END PARAM%]
                 [%PARAM *selection_body%]
@@ -182,7 +182,7 @@
         	<div class="col-xs-12 col-md-6">
         		<h4>Address</h4>
                 <div class="form-group">
-            		<label for="stloc_country">Country<span class="required text-danger">*</span></label>
+            		<label for="stloc_country">Country <span class="required text-danger">*</span></label>
                     <select id="stloc_country" name="stloc_country" class="form-control">
                 		[%countries%]
                 			[%PARAM *body%]
@@ -192,7 +192,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-            		<label for="stloc_street1">Address line 1<span class="required text-danger">*</span></label>
+            		<label for="stloc_street1">Address line 1 <span class="required text-danger">*</span></label>
             		<input type="text" class="form-control" name="stloc_street1" size="50" maxlength="50" value="[%NOHTML%][@stloc_street1@][%END NOHTML%]" />
                 </div>
                 <div class="form-group">
@@ -201,16 +201,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="stloc_zip">Postal Code<span class="required text-danger">*</span></label>
+                    <label for="stloc_zip">Postal Code <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" id="stloc_zip" name="stloc_zip" size="50" value="[%NOHTML%][@stloc_zip@][%END NOHTML%]" maxlength="10" />
                 </div>
                 <div class="form-group">
-                    <label for="stloc_city">Suburb / City<span class="required text-danger">*</span></label><br/>
+                    <label for="stloc_city">Suburb / City <span class="required text-danger">*</span></label><br/>
                     <span id="stloc_selector"></span>
                     <input type="text" class="form-control" id="stloc_city" name="stloc_city" value="[%NOHTML%][@stloc_city@][%END NOHTML%]" size="50" maxlength="50"/>
                 </div>
                 <div class="form-group">
-                    <label for="stloc_state">State<span class="required text-danger">*</span></label><br/>
+                    <label for="stloc_state">State <span class="required text-danger">*</span></label><br/>
                     <div id="stloc_state_pl" style="display:none;"></div>
                     <input type="text" name="stloc_state" class="form-control" id="stloc_state" value="[%NOHTML%][@stloc_state@][%END NOHTML%]" size="50" maxlength="50" />
                 </div>
