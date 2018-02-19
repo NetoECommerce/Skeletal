@@ -6,7 +6,7 @@
 	<div class="row btn-stack">
 		<div class="col-xs-12 col-md-9">
 			[%if [@config:allow_user_quote@] eq '1'%]
-				<button class="btn btn-default" type="button" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt" aria-hidden="true"></i> Create Quote From Cart</button>
+				<button class="btn btn-default" type="button" role="link" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt" aria-hidden="true"></i> Create Quote From Cart</button>
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
@@ -14,17 +14,17 @@
 			[%/if%] -->
 		</div>
 		<div class="col-xs-12 col-md-3">
-			<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Checkout Now</button>
+			<button class="btn btn-success btn-lg btn-block" type="button" role="link" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Checkout Now</button>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<hr />
+			<hr aria-hidden="true" />
 		</div>
 	</div>
 	[%cart_items%]
 	[%param header%]
-	<div class="row" role="contentinfo" aria-label="Products In Shopping Cart">
+	<div class="row" role="contentinfo" aria-label="Products in shopping cart">
 		<div class="col-xs-12">
 			<form method="post" name="checkout" action="[%url page:'checkout'/%]">
 				<input type="hidden" name="recal" value="1" />
@@ -43,11 +43,11 @@
 					<tr>
 						<td class="cartTable--column cartTable--column-image"><a href="[@url@]"><img class="img-responsive" src="[@thumb@]" alt="[@model@]"/></a></td>
 						<td>
-							<a href="[@url@]"><h4>[@model@]</h4></a>
+							<a href="[@url@]"><p class="h4">[@model@]</p></a>
 							<p class="small">
 								[@extra@]
 								[%if [@config:checkout_upsell_extra@]%]
-									<a class="btn btn-default btn-xs" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i></a>
+									<a class="btn btn-default btn-xs" type="button" role="link" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white" aria-hidden="true"></i></a>
 								[%/if%]
 							</p>
 							[%if [@aff_id@] eq '[@config:AFF_EBAY_ID@]'%]
@@ -78,7 +78,7 @@
 								[%/cart_item_components%]
 							[%/if%]
 							[%if [@gifts_available@]%]
-								<h4>Congratulations! The above purchase has made you eligible for [@gifts_available@] of the following FREE Gifts!</h4>
+								<p class="h4">Congratulations! The above purchase has made you eligible for [@gifts_available@] of the following FREE Gifts!</p>
 								<span class="help-box">You can add any of the following gifts to your shopping Shopping Cart now and you will not be charged for them!</span> <br />
 								<br />
 								[%free_gifts id:'[@SKU@]'%]
@@ -110,10 +110,10 @@
 							[%if [@discount_percent@] > 0%]
 								<p><i>-[%format type:'percent'%][@discount_percent@][%/format%]</i></p>
 							[%/if%]
-							<h4>[%format type:'currency'%][@subtotal@][%/format%]</h4>
+							<p class="h4">[%format type:'currency'%][@subtotal@][%/format%]</p>
 						</td>
 						<td class="hidden-xs">
-							<a class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							<a role="button" class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 					[%/param%]
@@ -130,10 +130,10 @@
 	</div>
 	<div class="row btn-stack">
 		<div class="col-xs-12 col-md-3">
-			<button type="button" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-default btn-block" title="Continue Shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
+			<button type="button" role="link" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-default btn-block" title="Continue shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
 		</div>
 		<div class="col-xs-12 col-md-3 col-md-offset-6">
-			<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update Changes"><i class="fa fa-refresh" aria-hidden="true"></i> Update My Changes</button>
+			<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-refresh" aria-hidden="true"></i> Update My Changes</button>
 		</div>
 	</div>
 	<div class="row">
@@ -142,9 +142,9 @@
 		</div>
     [%if [@config:show_shipping_calc@]%]
 		<div class="col-xs-12 [%if [@config:show_coupon_promo_code_field@]%]col-md-3[%else%]col-md-6[%/if%]">
-			<div class="panel panel-default" role="contentinfo" aria-label="Calculate Shipping">
+			<div class="panel panel-default" role="contentinfo" aria-label="Calculate shipping">
 				<div class="panel-heading">
-					<h4 class="panel-title">Shipping Calculator</h4>
+					<h2 class="panel-title">Shipping Calculator</h2>
 				</div>
 				<div class="panel-body">
 					<form method="post" action="[%url page:'checkout'/%]">
@@ -168,17 +168,18 @@
 			</div>
 		</div>
 		[%/if%]
-		[%if [@config:show_coupon_promo_code_field@]%]        
+		[%if [@config:show_coupon_promo_code_field@]%]
 		<div class="col-xs-12 [%if [@config:show_shipping_calc@]%]col-md-3[%else%]col-md-6[%/if%]">
 			<div class="panel panel-default" role="contentinfo" aria-label="Discount Code">
 				<div class="panel-heading">
-					<h4 class="panel-title">Discount Code</h4>
+					<h2 class="panel-title">Discount Code</h2>
 				</div>
 				<div class="panel-body">
 					<form method="post" action="[%url page:'checkout'/%]">
 						<p>If you have a coupon or discount code enter it below</p>
 						<div class="form-group">
-							<input class="form-control" type="text" name="addcpn" value="" />
+							<label class="sr-only" for="addcpn">Coupon code</label>
+							<input class="form-control" type="text" id="addcpn" name="addcpn" value="" />
 						</div>
 						<input type="submit" class="btn btn-block btn-default" value="Apply Coupon Code">
 					</form>
@@ -186,10 +187,10 @@
 			</div>
 		</div>
 		[%/if%]
-		<div class="col-xs-12 col-md-6">
+		<div class="col-xs-12 col-md-6" role="contentinfo" aria-label="Cart pricing information">
 			<table class="table">
 				<tr>
-					<td>Sub Total</td>
+					<th scope="row">Sub Total</th>
 					<td class="text-right">[%format type:'currency'%][@product_total@][%/format%]</td>
 				</tr>
 				<tr>
@@ -202,7 +203,7 @@
 							<div class="form-group">
 							<label class="label-block" for="[@id@]">
 								<input class="pull-left" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
-								<h4>&nbsp;[@shipping_method@] - [%if [@shipping_quote@]%] P.O.A [%else%] [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%/if%] </h4>								
+								<h4>&nbsp;[@shipping_method@] - [%if [@shipping_quote@]%] P.O.A [%else%] [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%/if%] </h4>
 								[%if [@delivery_time@] >= 1%]
 								<p>Estimated arrival of [%format type:'number' tl_unit:'day' tl_plural:'days'%][@delivery_time@][%/format%]</p>
 								[%/if%]
@@ -227,33 +228,32 @@
 				[%active_coupons%]
 					[%param *header%]
 					<tr>
-						<td><b>Discounts Applied</b></td>
+						<th scope="row"><b>Discounts Applied</b></th>
 						<td>&nbsp;</td>
 					</tr>
 					[%/param%]
 					[%param *body%]
 					<tr>
-						<td> [@code@] [@title@] <a href="[%url page:'checkout' qs:'rmcpn=[@code@]'/%]"><i class="fa fa-times"></i></a>
-						</td>
+						<th scope="row"> [@code@] [@title@] <a href="[%url page:'checkout' qs:'rmcpn=[@code@]'/%]" role="button" title="Remove discount"><i class="fa fa-times" aria-hidden="true"></i></a></th>
 						<td class="text-right">-[%format type:'currency'%][@discount@][%/format%]</td>
 					</tr>
 					[%/param%]
 				[%/active_coupons%]
 				[%if [@discount_total@] > 0%]
 				<tr>
-					<td>Discount Total</td>
+					<th scope="row">Discount Total</th>
 					<td class="text-right">-[%format type:'currency'%][@discount_total@][%/format%]</td>
 				</tr>
 				[%/if%]
 				[%if ![@notax@]%]
 				<tr>
-					<td>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%] [%if [@tax_inc@]%]Inc.[%/if%]</td>
+					<th scope="row">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%] [%if [@tax_inc@]%]Inc.[%/if%]</th>
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
 				<tr class="success">
-					<td ><b>Shopping Cart Total</b></td>
-					<td class="text-right" ><h3>[%format type:'currency'%][@grand_total@][%/format%]</h3></td>
+					<th scope="row"><b>Shopping Cart Total</b></th>
+					<td class="text-right" ><p class="h3">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
 				</tr>
 			</table>
 			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
@@ -293,7 +293,7 @@
 					[%/if%]
 				</div>
 				<div class="col-xs-12 col-md-6 text-center">
-					<button class="btn btn-success btn-lg btn-block" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now">
+					<button class="btn btn-success btn-lg btn-block" role="link" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout now">
 						<i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout Now
 					</button>
 				</div>

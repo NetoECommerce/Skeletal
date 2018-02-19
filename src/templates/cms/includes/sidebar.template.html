@@ -14,13 +14,13 @@
 					[%PARAM *body%]
 						[%DATA id:'selected' if:'==' value:'1'%]
 							[%PARAM *if_true%]
-								<li class="filter-remove filter"><a href="[@remove_single_url@]" class="list-group-item" rel="nofollow" role="link">
+								<li class="filter-remove filter"><a href="[@remove_single_url@]" class="list-group-item" rel="nofollow" >
 									[@name@] <span class="text-muted"></span></a>
 								</li>
 							[%/PARAM%]
 							[%PARAM *if_false%]
 								<li class="filter">
-									<a class="list-group-item" href="[@url@]" role="link" aria-label="Filter [@filter_name@] to [@name@]"> [@name@] <span class="text-muted"></span></a>
+									<a class="list-group-item" href="[@url@]"  aria-label="Filter [@filter_name@] to [@name@]"> [@name@] <span class="text-muted"></span></a>
 								</li>
 							[%/PARAM%]
 						[%/DATA%]
@@ -35,13 +35,13 @@
 					[%PARAM *body%]
 						[%DATA id:'selected' if:'==' value:'1'%]
 							[%PARAM *if_true%]
-							<li class="filter-remove"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" role="link">
+							<li class="filter-remove"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" >
 							[@name@] <span class="text-muted">([@total@])</span></a>
 							</li>
 							[%/PARAM%]
 							[%PARAM *if_false%]
 								<li class="filter">
-								<a href="[@url@]" class="list-group-item" role="link">[@name@] <span class="text-muted">([@total@])</span></a>
+								<a href="[@url@]" class="list-group-item" >[@name@] <span class="text-muted">([@total@])</span></a>
 								</li>
 							[%/PARAM%]
 						[%/DATA%]
@@ -56,11 +56,11 @@
 					[%param *body%]
 						[%if [@selected@]%]
 							<li class="filter-remove">
-								<a href="[@remove_url@]" class="list-group-item" rel="nofollow" role="link">In Stock <span class="text-muted">([@total@])</span></a>
+								<a href="[@remove_url@]" class="list-group-item" rel="nofollow" >In Stock <span class="text-muted">([@total@])</span></a>
 							</li>
 						[%else%]
 							<li class="filter">
-								<a href="[@url@]" class="list-group-item" role="link">In Stock <span class="text-muted">([@total@])</span></a>
+								<a href="[@url@]" class="list-group-item" >In Stock <span class="text-muted">([@total@])</span></a>
 							</li>
 						[%/if%]
 					[%/param%]
@@ -72,23 +72,23 @@
 						[%PARAM *body%]
 							[%DATA id:'selected' if:'==' value:'1'%]
 								[%PARAM *if_true%]
-									<li class="filter-remove hidden-md hidden-lg"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" role="link">
+									<li class="filter-remove hidden-md hidden-lg"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" >
 										[@name@] <span class="text-muted">([@total@])</span></a>
 									</li>
 								[%/PARAM%]
 								[%PARAM *if_false%]
 									[%DATA id:'min' if:'=' value:'0'%]
 										[%DATA id:'max' if:'>' value:'0'%]
-											<li class="filter hidden-md hidden-lg"><a class="list-group-item" href="[@url@]" role="link">[%FORMAT type:'currency' dp:'0'%][@max@][%/FORMAT%] or below</a></li>
+											<li class="filter hidden-md hidden-lg"><a class="list-group-item" href="[@url@]" >[%FORMAT type:'currency' dp:'0'%][@max@][%/FORMAT%] or below</a></li>
 										[%/DATA%]
 									[%/DATA%]
 									[%DATA id:'min' if:'>' value:'0'%]
 										[%DATA id:'max' if:'>' value:'0'%]
-											<li class="filter hidden-md hidden-lg"><a class="list-group-item" href="[@url@]" role="link">[%FORMAT type:'currency' dp:'0'%][@min@][%/FORMAT%] to [%FORMAT type:'currency' dp:'0'%][@max@][%/FORMAT%]</a></li>
+											<li class="filter hidden-md hidden-lg"><a class="list-group-item" href="[@url@]" >[%FORMAT type:'currency' dp:'0'%][@min@][%/FORMAT%] to [%FORMAT type:'currency' dp:'0'%][@max@][%/FORMAT%]</a></li>
 										[%/DATA%]
 									[%/DATA%]
 									[%DATA id:'max' if:'=' value:'0'%]
-										<li class="filter hidden-md hidden-lg"><a class="list-group-item" href="[@url@]" role="link">[%FORMAT type:'currency' dp:'0'%][@min@][%/FORMAT%] or above</a></li>
+										<li class="filter hidden-md hidden-lg"><a class="list-group-item" href="[@url@]" >[%FORMAT type:'currency' dp:'0'%][@min@][%/FORMAT%] or above</a></li>
 									[%/DATA%]
 								[%/PARAM%]
 							[%/DATA%]
@@ -146,12 +146,12 @@
 						[%PARAM *body%]
 							[%DATA id:'selected' if:'==' value:'1'%]
 								[%PARAM *if_true%]
-									<li class="filter-remove"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" role="link">
+									<li class="filter-remove"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" >
 										[@brand@] <span class="text-muted">([@total@])</span></a>
 									</li>
 								[%/PARAM%][%PARAM *if_false%]
 									<li class="filter">
-										<a href="[@url@]" class="list-group-item" role="link">[@brand@] <span class="text-muted">([@total@])</span></a>
+										<a href="[@url@]" class="list-group-item" >[@brand@] <span class="text-muted">([@total@])</span></a>
 									</li>
 								[%/PARAM%]
 							[%/DATA%]
@@ -165,10 +165,10 @@
 		[%PARAM header%]
 			<div class="panel panel-default hidden-xs">
 				<div class="panel-heading"><h3 class="panel-title">Categories</h3></div>
-				<ul class="list-group" role="navigation" aria-label="Category Menu">
+				<ul class="list-group" role="navigation" aria-label="Category menu">
 				[%/PARAM%]
 				[%PARAM *level_1%]
-					<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%]"><a href="[@url@]" class="list-group-item dropdown-toggle" role="link">[@name@]</a>
+					<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%]"><a href="[@url@]" class="list-group-item dropdown-toggle" >[@name@]</a>
 						[%DATA id:'next_level' if:'ne' value:''%]
 							<ul class="dropdown-menu dropdown-menu-horizontal">
 								[@next_level@]
@@ -178,7 +178,7 @@
 				[%/PARAM%]
 				[%PARAM *level_2%]
 					<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%]">
-						<a href="[@url@]" role="link">[@name@]</a>
+						<a href="[@url@]" >[@name@]</a>
 						[%DATA id:'next_level' if:'ne' value:''%]
 							<ul class="dropdown-menu dropdown-menu-horizontal">
 								[@next_level@]
@@ -188,7 +188,7 @@
 				[%/PARAM%]
 				[%PARAM *level_3%]
 					<li class="lv3-li">
-						<a href="[@url@]" role="link">[@name@]</a>
+						<a href="[@url@]" >[@name@]</a>
 					</li>
 				[%/PARAM%]
 				[%PARAM footer%]
@@ -200,7 +200,7 @@
 	[%CONFIG id:'phistory_limit' if:'ne' value:'0'%]
 		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%PARAM header%]
-				<section class="panel panel-default hidden-xs" role="contentinfo" aria-label="Browsing History">
+				<section class="panel panel-default hidden-xs" role="contentinfo" aria-label="Browsing history">
 					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">Browsing History</h3></div>
 					<ul class="nav list-group">
 			[%/PARAM%]
@@ -214,10 +214,10 @@
 		[%PARAM header%]
 		<div class="panel panel-default hidden-xs">
 			<div class="panel-heading"><h3 class="panel-title">Information</h3></div>
-			<ul class="list-group" role="navigation" aria-label="Information Menu">
+			<ul class="list-group" role="navigation" aria-label="Information menu">
 				[%/PARAM%]
 				[%PARAM *level_1%]
-					<li class="[%if [@next_level@]%]dropdown-submenu[%/if%]"><a class="list-group-item" href="[@url@]" role="link">[@name@]</a>
+					<li class="[%if [@next_level@]%]dropdown-submenu[%/if%]"><a class="list-group-item" href="[@url@]" >[@name@]</a>
 						[%if [@next_level@]%]
 							<ul class="dropdown-menu">
 								[@next_level@]
@@ -229,13 +229,13 @@
 					<li class="[%if [@next_level@]%]dropdown-submenu[%/if%]">
 						<a href="[@url@]">[@name@]</a>
 						[%if [@next_level@]%]
-							<ul class="dropdown-menu" role="link">[@next_level@]</ul>
+							<ul class="dropdown-menu" >[@next_level@]</ul>
 						[%/if%]
 					</li>
 				[%/PARAM%]
 				[%PARAM *level_3%]
 					<li class="lv3-li">
-						<a href="[@url@]" role="link">[@name@]</a>
+						<a href="[@url@]" >[@name@]</a>
 					</li>
 				[%/PARAM%]
 				[%PARAM footer%]
