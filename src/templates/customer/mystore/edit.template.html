@@ -60,18 +60,18 @@
     			'fns': {'onChange': function () { $.getCurrentLoc(); }}
     		});
 
-    		$('INPUT[name^="updcat"]').live('click', function () {
+    		$('INPUT[name^="updcat"]').on('click', function () {
     			$.select_category($(this).attr('ref'), $(this).attr('checked'));
     		});
 
     		var arr = ['stloc_street1','stloc_street2'];
     		for(var i=0; i<arr.length; i++) {
-    			$('[name="'+arr[i]+'"]').live('change', function () {
+    			$('[name="'+arr[i]+'"]').on('change', function () {
     				$.getCurrentLoc();
     			})
     		}
 
-    		$('#geo_getloc_btn').live('click', function () {
+    		$('#geo_getloc_btn').on('click', function () {
     			$.getCurrentLoc();
     		})
     	});
