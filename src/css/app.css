@@ -7735,12 +7735,6 @@ ul.imagelist li .imagethumb {
 .productdetails {
   margin-top: 20px;
 }
-.productdetails p:first-child {
-  margin-bottom: 20px;
-  font-size: 21px;
-  font-weight: 200;
-  line-height: 30px;
-}
 #n_product h1 {
   margin-top: 0;
 }
