@@ -106,7 +106,9 @@
 							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%] aria-label="[@model@] Quantity"/>
 						</td>
 						<td class="text-right">
-							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
+							[%if [@qty@] > 1%]
+								<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>
+							[%/if%]
 							[%if [@discount_percent@] > 0%]
 								<p><i>-[%format type:'percent' dp:'2'%][@discount_percent@][%/format%]</i></p>
 							[%/if%]
