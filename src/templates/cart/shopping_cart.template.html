@@ -108,7 +108,7 @@
 						<td class="text-right">
 							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
 							[%if [@discount_percent@] > 0%]
-								<p><i>-[%format type:'percent'%][@discount_percent@][%/format%]</i></p>
+								<p><i>-[%format type:'percent' dp:'2'%][@discount_percent@][%/format%]</i></p>
 							[%/if%]
 							<p class="h4">[%format type:'currency'%][@subtotal@][%/format%]</p>
 						</td>
