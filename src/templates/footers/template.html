@@ -88,8 +88,9 @@
 					[%param *body%]
 							<li>
 								<div class="payment-icon-container">
-									<div class="payment-icon" style="background-image: url('[@processor_icon_url@]'); height: 30px;"></div>
-									<span class="sr-only">[@name@]</span>
+									<div class="payment-icon payment-icon-[%format type:'text' case:'lower' trim:'lra'%][@name@][%/format%]">
+										<span class="sr-only">[@name@]</span>
+									</div>
 								</div>
 							</li>
 					[%/param%]
