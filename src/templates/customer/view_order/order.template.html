@@ -14,7 +14,13 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<input type="button" class="btn btn-default pull-left" value="Print Order / Invoice" onClick="print_invoice()">
-			<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+			[%show_order id:'[@order_id@]'%]
+				[%param *header%]
+					[%if [@amount_owed@] > 0%]
+						<button class="btn btn-success pull-right" onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+					[%/if%]
+				[%/param%]
+			[%/show_order%]
 		</div>
 	</div>
 	[%print_order id:'[@order_id@]'/%]
