@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+<ul class="breadcrumb" aria-label="Breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Re-Order</a></li>
@@ -14,13 +14,13 @@ Thanks for checking back [@bill_first_name@]. We've made it even easier for you 
 </p>
 <!--#Start Pagination# ##-->
 <div class="text-center">
-<ul class="pagination" role="navigation" aria-label="Pagination For Reorders">
+<ul class="pagination" aria-label="Pagination for reorders">
 <!--##[%paging limit:'3'%]
-[%PARAM *previous_page%]##--><li><a href="[@URL@]" aria-label="Go Back 1 Page">Previous Page</a></li><!--##[%END PARAM%]
-[%PARAM *goback_pages%]##--><li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li><!--##[%END PARAM%]
-[%PARAM *current_page%]##--><li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li><!--##[%END PARAM%]
-[%PARAM *gonext_pages%]##--><li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li><!--##[%END PARAM%]
-[%PARAM *next_page%]##--><li><a href="[@URL@]" aria-label="Go Forward 1 Page">Next Page</a></li><!--##[%END PARAM%]
+[%PARAM *previous_page%]##--><li><a href="[@URL@]" aria-label="Go back one page">Previous Page</a></li><!--##[%END PARAM%]
+[%PARAM *goback_pages%]##--><li><a href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *current_page%]##--><li class="active"><a href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *gonext_pages%]##--><li><a href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li><!--##[%END PARAM%]
+[%PARAM *next_page%]##--><li><a href="[@URL@]" aria-label="Go forward one page">Next Page</a></li><!--##[%END PARAM%]
 [%END paging%]##-->
 </ul>
 </div>
