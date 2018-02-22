@@ -3,12 +3,12 @@
 <!--# End Column Left# ##-->
 
 
-<!--# Start Breadcrumb# ##--> 
-<ul class="breadcrumb"> 
+<!--# Start Breadcrumb# ##-->
+<ul class="breadcrumb" aria-label="Breadcrumb"> 
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 </ul>
-<!--# End Breadcrumb# ##--> 
+<!--# End Breadcrumb# ##-->
 <div class="page-header">
 <h1>View Order / Invoice</h1>
 </div>
@@ -19,7 +19,7 @@ function print_invoice() {
 }
 </script>
 <div class="form-actions">
-<input type="button" class="btn pull-left" value="Print Order / Invoice" onClick="print_invoice()"> 
+<input type="button" class="btn pull-left" value="Print Order / Invoice" onClick="print_invoice()">
 
 [%show_order id:'[@order_id@]'%]
 	[%param *body%]
