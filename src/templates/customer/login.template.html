@@ -44,18 +44,10 @@
 				<form id="register" method="post" action="[%URL page:'account' type:'register'%][%END URL%]">
 					<!--##[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]##-->
 					<input type="hidden" name="redirect" value="[@redirect@]">
+					<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%END format%][%random_number length:'6'%][%end random_number%]">
 					<h3>New Customer? Create an Account.</h3>
 					<hr />
 					<div class="row">
-
-
-						<div class="hidden col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="reg_username">Username </label>
-								<span class="text-danger small">Required</span>
-								<input class="form-control" type="text" id="reg_username" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%END format%][%random_number length:'6'%][%end random_number%]" size="25" maxlength="20" required>
-							</div>
-						</div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
 								<label for="reg_email">E-mail Address</label>
