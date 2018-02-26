@@ -405,7 +405,7 @@
 								<div>
 									<strong>
 										[%if [@reviewname@]%]
-											By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[@reviewname@]</span></span> on
+											By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[%nohtml%][@reviewname@][%/nohtml%]</span></span> on
 										[%/if%]
 										<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]
 									</strong>
