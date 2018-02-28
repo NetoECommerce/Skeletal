@@ -219,7 +219,7 @@
 				[%if [@required_field@]%]<span style="color:red;">*</span>[%/if%]
 			</label>
 			<div class="col-sm-9">
-				<select name="[@field_id@]" [%if [@required_field@]%]required[%/if%]>
+				<select name="[@field_id@]" class="form-control" [%if [@required_field@]%]required[%/if%]>
 					[%/param%]
 					[%param *selection_body%]
 						<option value="[@option_value@]">[@option_value@]</option>
