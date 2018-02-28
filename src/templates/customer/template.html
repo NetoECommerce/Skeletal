@@ -171,7 +171,7 @@
 <section class="col-xs-12" aria-label="My Orders">
 	<hr />
 	<h2 id="orders">My Orders</h2>
-	[%thumb_list type:'orders' limit:'10'%]
+	[%thumb_list type:'orders' limit:'9'%]
 		[%param filter_1%]
 			[%form id:'ord'/%]
 		[%/param%]
@@ -240,7 +240,7 @@
 		[%/param%]
 		[%param *footer%]
 			</div>
-			[%if [@total_results@] > 15%]
+			[%if [@total_results@] > 9%]
 				<div class="text-center">
 					<ul class="pagination" aria-label="Orders pagination navigation">
 						[%paging limit:'3'%]
