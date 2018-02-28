@@ -208,7 +208,7 @@
 				[%if [@required_field@]%]<span style="color:red;">*</span>[%/if%]
 			</label>
 			<div class="col-sm-9">
-				<input class="datepicker" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required[%/if%]>
+				<input name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control datepicker" [%if [@required_field@]%]required[%/if%]>
 			</div>
 		</div>
 	[%/param%]
