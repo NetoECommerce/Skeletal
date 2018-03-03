@@ -23,10 +23,10 @@
 			</section>
 			<section class="col-xs-12 col-sm-7" role="contentinfo" aria-label="Products information">
 				[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-				<!-- variation selection and child products -->
-				[%load_template file:"products/includes/variant_products.template.html"/%]
+				<!-- child products -->
+				[%load_template file:"products/includes/child_products.template.html"/%]
 				[%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
-					<!-- Main addtocart include -->
+					<!-- addtocart functionality -->
 					[%load_ajax_template id:'_buying_options' type:'item' template:'buying_options' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 				[%/if%]
 				[%if [@has_components@]%]
