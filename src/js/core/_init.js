@@ -1,5 +1,3 @@
-// NOTICE!! THIS IS REQUIRED TO MAKE YOUR NETO SHOPPING CART WORK
-// DO NOT REMOVE UNLESS YOU REALLY KNOW WHAT YOU ARE DOING
 (function($) {
 	$.extend({
 		initPageFuncs: function() {
@@ -94,75 +92,4 @@
 
 $(document).ready(function() {
   $.initPageFuncs();
-});
-
-var focused = $('body');
-var lastFocused = $('body');
-// Capture the current element the user focused in
-$(document).on('focusin', function(){ focused = document.activeElement; });
-// Capture the last item focused
-function updateFocused(){ lastFocused = focused; };
-// Place focus on popup
-$(document).ready(function(){
-	var popUp = document.getElementById('npopupDesc');
-	// Configuration of the observer:
-	var config = {childList: true};
-	// Create an observer instance
-	var popUpObserver = new MutationObserver(function(mutations) {
-	mutations.forEach(function(mutation) {
-		// Initial observer
-		if(mutation.addedNodes["0"]){
-			updateFocused();
-			// focus on the popup
-			$(popUp).attr('tabindex', '-1').focus();
-		}else{
-			$(popUp).attr('tabindex', '').blur();
-			// Observer closing popup
-			$(lastFocused).focus();
-		}
-	  });
-	});
-	// Pass in the target node, as well as the observer options
-	if(popUp){ popUpObserver.observe(popUp, config);}
-});
-
-$(document).ready(function() {
-	// Popup Credit Card CCV Description At Checkout
-	$("#card_ccv").fancybox();
-	// Popup Terms At Checkout
-	$("#terms").fancybox({ 'width' : 850,'height': 650});
-	// Jquery Ui Date Picker
-	$(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
-	// Carousel
-	$('.carousel').carousel();
-	// Fancbox
-	$(".fancybox").fancybox();
-	// Tooltip
-	$('.tipsy').tooltip({trigger:'hover',placement:'bottom'});
-});
-
-// Mobile menu
-$('.nToggleMenu').click(function(){
-	var toggleTarget = $(this).attr('data-target')
-	$(toggleTarget).slideToggle();
-});
-// Btn loading state
-$(".btn-loads").click(function(){
-	$(this).button("loading");
-	var pendingbutton=this;
-	setTimeout(function(){
-		$(pendingbutton).button("reset");
-	},3000);
-});
-// Who needs AddThis?
-function windowPopup(url, width, height) {
-	// Calculate the position of the popup so
-	// it’s centered on the screen.
-	var left = (screen.width / 2) - (width / 2),
-		top = (screen.height / 2) - (height / 2);
-	window.open(url,"","menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left);
-}
-$(".js-social-share").on("click", function(e) {
-	e.preventDefault();
-	windowPopup($(this).attr("href"), 500, 300);
 });
