@@ -1,0 +1,79 @@
+<form autocomplete="off" class="variation-wrapper">
+  [%list_item_variations id:'[@current_sku@]'%]
+    [%param header%]
+    <input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
+    <hr aria-hidden="true"/>
+    <div class="row" role="contentinfo" aria-label="Product variation selection">
+    [%/param%]
+    [%param *variation_header%]
+        <div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]" role="group" aria-label="[@specific_name@] variation selection">
+          <div class="variation-name" aria-label="[@specific_name@] variation">
+            <strong>[@specific_name@]</strong>
+          </div>
+          <div class="specific">
+            <input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+  [%/param%]
+  [%param *variation_body%]
+            <div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]" aria-label="[@specific_name@] - [@value_name@] option">
+              <a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+                [%if [@value_image@]%]
+                  <img src="[@value_image@]" alt="[@value_name@]" />
+                [%/if%]
+                [%if [@value_name@]%]
+                  [@value_name@]
+                [%ELSE%]
+                  [@value_description@]
+                [%/if%]
+              </a>
+            </div>
+  [%/param%]
+  [%param *variation_body_radio%]
+            <label class="_itmspec_listitm btn btn-default" ref="[@specific_id@]_[@value_id@]">
+              <input class="_itmspec_radio" type="radio" name="_itmspec_radio[@specific_id@]" value="[@value_id@]" ref="[@specific_id@]_[@value_id@]" [%if [@selected@]%]checked[%/if%]> [@value_name@]
+            </label>
+  [%/param%]
+  [%param *variation_body_image%]
+            <span class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+              <a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+                [%if [@value_image@]%]
+                    <img src="[@value_image@]" alt="[@value_name@]">
+                  [%else%]
+                    [@value_name@]
+                [%/if%]
+              </a>
+            </span>
+  [%/param%]
+  [%param *variation_footer%]
+            <div class="clear"></div>
+          </div>
+        </div>
+  [%/param%]
+  [%param *variation_header_select%]
+        <div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]" aria-label="[@specific_name@] variation selection">
+          <div class="variation-name">
+            <label for="[@specific_id@]_itmspec_opt">[@specific_name@]</label>
+          </div>
+            <div class="specific">
+              <input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+              <div class="n-wrapper-form-control">
+                <span class="_itmspec_optpl" ref="[@specific_id@]">
+                  <select id="[@specific_id@]_itmspec_opt" name="[@specific_id@]_itmspec_opt" class="_itmspec_opt form-control" ref="[@specific_id@]">
+    [%/param%]
+    [%param *variation_body_select%]
+                    <option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@]</option>
+    [%/param%]
+    [%param *variation_footer_select%]
+                  </select>
+                </span>
+              </div>
+            </div>
+        </div>
+    [%/param%]
+    [%param footer%]
+      </div>
+    [%/param%]
+  [%/list_item_variations%]
+  [%if ![@has_variation@]%]
+  [%load_template file:"products/includes/child_products.template.html"/%]
+  [%/if%]
+</form>
