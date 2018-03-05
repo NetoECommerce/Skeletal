@@ -272,7 +272,7 @@
 <section class="col-xs-12" aria-label="My Quotes">
 	<hr />
 	<h2 id="quotes">My Quotes</h2>
-	[%thumb_list limit:'5' type:'quotes'%]
+	[%thumb_list limit:'10' type:'quotes'%]
 		[%param pgnum%]
 			[%form id:'pgquote'/%]
 		[%/param%]
@@ -308,24 +308,24 @@
 		[%param *footer%]
 				</tbody>
 			</table>
-			[%if [@total_results@] > 10%]
+			[%if [@total_results@] > [@limit@]%]
 				<div class="text-center">
-					<ul class="pagination" role="navigation" aria-label="Quotes Pagination Navigation">
-						[%paging limit:'3'%]
+					<ul class="pagination" aria-label="Quotes Pagination Navigation">
+						[%paging limit:'3' qs_name:'pgquote'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]"><i class="fa fa-chevron-left"></i></a></li>
+								<li><a href="[@url@]" aria-label="Go back one page">Previous Page</a></li>
 							[%/param%]
 							[%param *goback_pages%]
-								<li><a href="[@url@]">[@page@]</a></li>
+								<li><a href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *current_page%]
-								<li class="active"><a href="[@url@]">[@page@]</a></li>
+								<li class="active"><a href="[@url@]" aria-label="Current page">[@page@]</a></li>
 							[%/param%]
 							[%param *gonext_pages%]
-								<li><a href="[@url@]">[@page@]</a></li>
+								<li><a href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]"><i class="fa fa-chevron-right"></i></a></li>
+								<li><a href="[@url@]" aria-label="Go forward one page">Next Page</a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
@@ -333,9 +333,7 @@
 			[%/if%]
 		[%/param%]
 		[%param ifempty%]
-			<p>No quotes have been placed on this account. </p>
-		[%/param%]
-		[%param *footer%]
+			<p>No quotes have been placed on this account.</p>
 		[%/param%]
 	[%/thumb_list%]
 </section>
