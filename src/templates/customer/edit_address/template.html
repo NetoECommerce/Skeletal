@@ -224,32 +224,34 @@ function updloca(oid) {
 		theCountry = country.options[country.selectedIndex].value
 	}
 
-	if(theCountry != '[@config:SELECTORCOUNTRY@]') {
-		msg.innerHTML = '<i>Please enter your city and state below.</i>';
-		city.readOnly = state.readOnly = false;
-		city.style.color = state.style.color = '#000000';
-	} else {
-		city.readOnly = state.readOnly = true;
-		city.style.color = state.style.color = '#666666';
-		if( zip.value == '' ) {
-			msg.innerHTML = '<i>Please enter your postal code above.</i>';
+	var url = '[@config:secure_home_url@]/do/get_locate?zip='+escape(zip.value)+"&cty="+escape(theCountry);
+	  httpReq[oid] = ajax_XMLHttpRequest();
+	  if(!httpReq[oid]) {
+	    msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
+	  } else {
+	    httpReq[oid].onreadystatechange = function() {
+	      if(httpReq[oid].readyState == 4 && httpReq[oid].status == 200) {
+		var data = httpReq[oid].responseText.split('\n');
+		if(data.length <= 1) {
+		  msg.innerHTML = '<i>Please enter your city and state below.</i>';
+		  city.readOnly = state.readOnly = false;
+		  city.style.color = state.style.color = '#000000';
 		} else {
-			var url = '[@config:secure_home_url@]/do/get_locate?zip='+escape(zip.value);
-			httpReq[oid] = ajax_XMLHttpRequest();
-			if(!httpReq[oid]) {
-				msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
-			} else {
-				httpReq[oid].onreadystatechange = function() {
-					if(httpReq[oid].readyState == 4 && httpReq[oid].status == 200) {
-						var data = httpReq[oid].responseText.split('\n');
-						sub_ldsel(oid,data);
-					}
-				};
-				httpReq[oid].open("GET",url,true);
-				httpReq[oid].send(null);
-			}
+		  if (theCountry == "AU") {
+		    zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
+		  }
+		  city.readOnly = state.readOnly = true;
+		  city.style.color = state.style.color = '#666666';
+		} if( zip.value == '' ) {
+		  msg.innerHTML = '<i>Please enter your postal code above.</i>';
+		} else {
+		  sub_ldsel(oid,data);
 		}
-	}
+	      }
+	    };
+	    httpReq[oid].open("GET",url,true);
+	    httpReq[oid].send(null)
+	  }
 }
 
 function sub_ldsel(oid,data) {
