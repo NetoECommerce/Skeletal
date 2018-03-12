@@ -118,13 +118,15 @@
 						</div>
 						[%END PARAM%]
 					[%PARAM *boolean_option%]
-						<div class="col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
+						[%site_value id:'register_checkboxes'%]
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+									[@field_name@]
+								</label>
 								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
 							</div>
-						</div>
+						[%/site_value%]
 						[%END PARAM%]
 					[%PARAM *date_option%]
 						<div class="col-xs-12 col-md-6">
@@ -155,6 +157,7 @@
 						<div class="clear"></div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
+								[%site_value id:'register_checkboxes' type:'load'/%]
 								<div class="checkbox">
 									<label>
 										<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time."/>
