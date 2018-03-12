@@ -95,7 +95,7 @@
 							<div class="form-group">
 								<label for="[@field_id@]">[@field_name@]</label>
 								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+								<textarea class="form-control" rows="3" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]></textarea>
 							</div>
 						</div>
 						[%END PARAM%]
