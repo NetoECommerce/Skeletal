@@ -1,3 +1,5 @@
+// NOTICE!! THIS IS REQUIRED TO MAKE YOUR NETO SHOPPING CART WORK
+// DO NOT REMOVE UNLESS YOU REALLY KNOW WHAT YOU ARE DOING
 (function($) {
 	$.extend({
 		initPageFuncs: function() {
@@ -32,8 +34,7 @@
 				'category_footer'	: '</ul>'
 			});
 		},
-
-    // For child product multi-add to cart function
+		// For child product multi-add to cart function
 		checkValidQty: function() {
 			var found = 0;
 			$("#multiitemadd :input").each(function() {
@@ -91,5 +92,5 @@
 })(jQuery);
 
 $(document).ready(function() {
-  $.initPageFuncs();
+	$.initPageFuncs();
 });
