@@ -7694,6 +7694,7 @@ ul.imagelist li .imagethumb {
   position: absolute;
   top: 0;
   right: 0;
+  text-align: right;
 }
 .list-group > li + .filter > a:before {
   content: '\F096\0020';
