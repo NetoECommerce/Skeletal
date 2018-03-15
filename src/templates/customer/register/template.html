@@ -91,13 +91,15 @@
 						</div>
 						[%END PARAM%]
 					[%PARAM *text_option%]
-						<div class="col-xs-12 col-md-12">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<textarea class="form-control" style="resize:vertical;" rows="3" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]></textarea>
+						[%site_value id:'register_textareas'%]
+							<div class="col-xs-12 col-md-12">
+								<div class="form-group">
+									<label for="[@field_id@]">[@field_name@]</label>
+									[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+									<textarea class="form-control" style="resize:vertical;" rows="3" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]></textarea>
+								</div>
 							</div>
-						</div>
+						[%/site_value%]
 						[%END PARAM%]
 					[%PARAM *short_text_option%]
 						<div class="col-xs-12 col-md-6">
@@ -154,6 +156,7 @@
 						</div>
 						[%END PARAM%]
 					[%END EXTRA_CUSTOMER_FIELDS%]
+						[%site_value id:'register_textareas' type:'load'/%]
 						<div class="clear"></div>
 						<div class="col-xs-12 col-md-12">
 							<div class="form-group">
