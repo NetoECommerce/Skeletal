@@ -79,83 +79,80 @@
 						</div>
 
 						[%EXTRA_CUSTOMER_FIELDS%]
-					[%PARAM *header%]
-						[%END PARAM%]
-					[%PARAM *integer_option%]
-						<div class="col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
-							</div>
-						</div>
-						[%END PARAM%]
-					[%PARAM *text_option%]
-						[%site_value id:'register_textareas'%]
-							<div class="col-xs-12 col-md-12">
-								<div class="form-group">
-									<label for="[@field_id@]">[@field_name@]</label>
-									[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-									<textarea class="form-control" style="resize:vertical;" rows="3" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]></textarea>
+							[%PARAM *integer_option%]
+								<div class="col-xs-12 col-md-6">
+									<div class="form-group">
+										<label for="[@field_id@]">[@field_name@]</label>
+										[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+									</div>
 								</div>
-							</div>
-						[%/site_value%]
-						[%END PARAM%]
-					[%PARAM *short_text_option%]
-						<div class="col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
-							</div>
-						</div>
-						[%END PARAM%]
-					[%PARAM *descimal_option%]
-						<div class="col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
-							</div>
-						</div>
-						[%END PARAM%]
-					[%PARAM *boolean_option%]
-						[%site_value id:'register_checkboxes'%]
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
-									[@field_name@]
-								</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-							</div>
-						[%/site_value%]
-						[%END PARAM%]
-					[%PARAM *date_option%]
-						<div class="col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<input class="form-control datepicker" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
-							</div>
-						</div>
-						[%END PARAM%]
-					[%PARAM *selection_header%]
-						<div class="col-xs-12 col-md-6">
-							<div class="form-group">
-								<label for="[@field_id@]">[@field_name@]</label>
-								[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
-								<select id="[@field_id@]" name="[@field_id@]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
-
-									[%END PARAM%]
-			[%PARAM *selection_body%]
-									<option value="[@option_value@]">[@option_value@]</option>
-									[%END PARAM%]
-			[%PARAM *selection_footer%]
-								</select>
-							</div>
-						</div>
-						[%END PARAM%]
-					[%END EXTRA_CUSTOMER_FIELDS%]
+							[%/PARAM%]
+							[%PARAM *text_option%]
+								[%site_value id:'register_textareas'%]
+									<div class="col-xs-12 col-md-12">
+										<div class="form-group">
+											<label for="[@field_id@]">[@field_name@]</label>
+											[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+											<textarea class="form-control" style="resize:vertical;" rows="3" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]></textarea>
+										</div>
+									</div>
+								[%/site_value%]
+							[%/PARAM%]
+							[%PARAM *short_text_option%]
+								<div class="col-xs-12 col-md-6">
+									<div class="form-group">
+										<label for="[@field_id@]">[@field_name@]</label>
+										[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+									</div>
+								</div>
+							[%/PARAM%]
+							[%PARAM *descimal_option%]
+								<div class="col-xs-12 col-md-6">
+									<div class="form-group">
+										<label for="[@field_id@]">[@field_name@]</label>
+										[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+									</div>
+								</div>
+							[%/PARAM%]
+							[%PARAM *boolean_option%]
+								[%site_value id:'register_checkboxes'%]
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+											[@field_name@]
+										</label>
+										[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+									</div>
+								[%/site_value%]
+							[%/PARAM%]
+							[%PARAM *date_option%]
+								<div class="col-xs-12 col-md-6">
+									<div class="form-group">
+										<label for="[@field_id@]">[@field_name@]</label>
+										[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+										<input class="form-control datepicker" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+									</div>
+								</div>
+							[%/PARAM%]
+							[%PARAM *selection_header%]
+								<div class="col-xs-12 col-md-6">
+									<div class="form-group">
+										<label for="[@field_id@]">[@field_name@]</label>
+										[%if [@required_field@]%]<span class="text-danger small">Required</span>[%/if%]
+										<select id="[@field_id@]" name="[@field_id@]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
+							[%/PARAM%]
+							[%PARAM *selection_body%]
+											<option value="[@option_value@]">[@option_value@]</option>
+							[%/PARAM%]
+							[%PARAM *selection_footer%]
+										</select>
+									</div>
+								</div>
+							[%/PARAM%]
+						[%/EXTRA_CUSTOMER_FIELDS%]
 						[%site_value id:'register_textareas' type:'load'/%]
 						<div class="clear"></div>
 						<div class="col-xs-12 col-md-12">
