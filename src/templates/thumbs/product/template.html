@@ -10,11 +10,11 @@
 			<p class="h3" itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</a></p>
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[@model@] price">
 				[%if [@inpromo@]%]
-					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
+					Now&nbsp;[%if [@has_child@] AND [@has_from_price@] %]from&nbsp;[%/if%]
 					<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
 					<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 				[%else%]
-					[%if [@has_child@]%]From&nbsp;[%/if%]
+					[%if [@has_child@] AND [@has_from_price@] %]From&nbsp;[%/if%]
 					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 				[%/if%]
 				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
