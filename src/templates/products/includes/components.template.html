@@ -1,3 +1,5 @@
+<hr aria-hidden="true"/>
+<h2>Customise Your Purchase</h2>
 <div class="component selector">
 	[%ITEM_KITTING id:'[@SKU@]' variation_kitting:1%]
 		[%PARAM *group_header%]
@@ -25,7 +27,7 @@
 										<div class="caption">
 											<h4 class="title">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</h4>
 											<p class="price">
-												[%if [@itm_price@]%]
+												[%if [@itm_price@] AND [@itm_price@] >= 0 %]
 													[%format type:'currency'%][@itm_price@][%END format%]
 												[%else%]
 													[%if [@inpromo@]%]
@@ -51,7 +53,7 @@
 												<div class="caption">
 													<h4 class="title">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</h4>
 													<p class="price">
-														[%if [@itm_price@]%]
+														[%if [@itm_price@] AND [@itm_price@] >= 0 %]
 															[%format type:'currency'%][@itm_price@][%END format%]
 														[%else%]
 															[%if [@inpromo@]%]

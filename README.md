@@ -123,6 +123,26 @@ Then ensure you have the most up to date commits:
 
 **Please Note:** This is one of the reasons users should do a branch instead of a fork. When you fork a repo, it makes a copy of the repo but under your users account, e.g If I forked Skeletal it work be in my repos instead of NetoECommerce. This makes it difficult to review as it no longer can be checked out while in the NetoECommerce/Skeletal repo.
 
+#### Review a fork instead of branch
+
+Open up the `.git/config file` and add a new line under `[remote "origin"]`:
+
+```
+fetch = +refs/pull/*/head:refs/pull/origin/*
+```
+
+Now you can fetch and checkout any pull request so that you can test them:
+
+```
+# Fetch all pull request branches
+git fetch origin
+
+# Checkout out a given pull request branch based on its number
+git checkout pull/origin/999
+```
+
+Keep in mind that these branches will be read only and you won't be able to push any changes. Branch name will be `pull/origin/PULL_REQUEST_NUMBER`.
+
 When you have the pull request branch locally, push it into the theme directory to view the changes on your Neto dev site.
 
 `/httpdocs/assets/themes/THEME-NAME`
