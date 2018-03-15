@@ -223,7 +223,7 @@
 						[%/param%]
 						[%param *ifempty%]
 							[%if [@ship_zip@]%]
-								<p class="alert alert-danger no-margin" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to selected location.</p>
+								<b class="text-danger">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</b>
 							[%else%]
 								Enter post code to calculate shipping
 							[%/if%]
@@ -259,7 +259,7 @@
 				[%/if%]
 				<tr>
 					<th scope="row"><b>Shopping Cart Total</b></th>
-					<td class="text-right text-success" ><p class="h2">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
+					<td class="text-right" ><p class="h3">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
 				</tr>
 			</table>
 			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
