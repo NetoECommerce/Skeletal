@@ -68,7 +68,7 @@
 										<li>
 											<input type="hidden" name="compsku[@count@]_[@component_count@]" value="[@SKU@]">
 											<label>[@model@] x </label>
-											<input type="text" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly [%/if%] value="[@qty@]" size="3">
+											<input type="number" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly [%/if%] value="[@qty@]" size="3">
 										</li>
 									[%/param%]
 									[%param *footer%]
@@ -103,12 +103,14 @@
 						</td>
 						<td class="options-column">
 							<input name="line[@count@]" type="hidden" value="[@counter@]" />
-							<input id="qty[@count@]"  type="text" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%] aria-label="[@model@] Quantity"/>
+							<input id="qty[@count@]"  type="number" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%] aria-label="[@model@] Quantity"/>
 						</td>
 						<td class="text-right">
-							[%if [@qty@] > 1%]<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>[%/if%]
+							[%if [@qty@] > 1%]
+								<h5>[@qty@] x [%format type:'currency'%][@price@][%/format%]</h5>
+							[%/if%]
 							[%if [@discount_percent@] > 0%]
-								<p><i>-[%format type:'percent'%][@discount_percent@][%/format%]</i></p>
+								<p><i>-[%format type:'percent' dp:'2'%][@discount_percent@][%/format%]</i></p>
 							[%/if%]
 							<p class="h4">[%format type:'currency'%][@subtotal@][%/format%]</p>
 						</td>
