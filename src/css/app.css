@@ -8241,3 +8241,7 @@ input[readonly] {
 p.h3 {
   margin-top: 0;
 }
+.wholesale-terms {
+  max-height: 300px;
+  overflow-y: auto;
+}
