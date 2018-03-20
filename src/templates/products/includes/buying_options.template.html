@@ -134,7 +134,7 @@
 			</div>
 		</div>
 	</form>
-	[%if [@config:show_shipping_calc@]%]
+	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
 	<hr/>
 	<section class="panel panel-default" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
 		<div class="panel-heading">
