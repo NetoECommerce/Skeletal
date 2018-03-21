@@ -3,18 +3,18 @@
 <head itemscope itemtype="http://schema.org/WebSite">
 	[%load_template file:'headers/includes/head.template.html'/%]
 	<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
-	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
+	<!-- <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/> -->
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
 <header class="container wrapper-header" aria-label="Header container">
 	<div class="row row-padded">
-		<div class="col-xs-12 col-sm-4 wrapper-logo">
+		<div class="col-12 col-sm-4 wrapper-logo">
 			<a href="[@config:homeurl@]" title="[@config:company_name@]">
 				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="col-12 col-sm-4">
 			<div class="header-search">
 				<form name="productsearch" method="get" action="/" role="search" aria-label="Product Search">
 					<input type="hidden" name="rf" value="kw"/>
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-12">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
 					<ul class="navigation-list list-inline visible-xs nMobileNav" role="navigation" aria-label="Mobile menu">

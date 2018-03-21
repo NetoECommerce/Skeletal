@@ -103,11 +103,11 @@
 		<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
 		<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
 		<div class="row btn-stack">
-			<div class="col-xs-12 col-md-4">
+			<div class="col-12 col-md-4">
 				<label class="sr-only" for="qty[@rndm@][@SKU@]">[@model@] quantity field</label>
 				<input type="number" min="[@min_qty@]" class="form-control qty input-lg" id="qty[@rndm@][@SKU@]" name="qty" aria-label="[@model@] quantity field" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
 			</div>
-			<div class="col-xs-12 col-md-4">
+			<div class="col-12 col-md-4">
 				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
 				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
 				[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
@@ -118,7 +118,7 @@
 				<a class="btn btn-info btn-lg btn-block" title="Notify Me When [@model@] Is Back In Stock" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
 				[%END IF%]
 			</div>
-			<div class="col-xs-12 col-md-4">
+			<div class="col-12 col-md-4">
 				[%if [@config:show_wishlist@]%]
 					<div class="product-wishlist">
 						[%IN_WISHLIST id:'[@SKU@]' %]
@@ -142,10 +142,10 @@
 		</div>
 		<div class="panel-body">
 			<div class="row btn-stack">
-				<div class="col-xs-12 col-md-3">
+				<div class="col-12 col-md-3">
 					<input type="number" name="input" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty" aria-label="qty">
 				</div>
-				<div class="col-xs-12 col-md-3">
+				<div class="col-12 col-md-3">
 					<select id="country" class="form-control" aria-label="Country">
 						[%countries%]
 							[%PARAM *body%]
@@ -154,10 +154,10 @@
 						[%END countries%]
 					</select>
 				</div>
-				<div class="col-xs-12 col-md-3">
+				<div class="col-12 col-md-3">
 					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post code">
 				</div>
-				<div class="col-xs-12 col-md-3">
+				<div class="col-12 col-md-3">
 					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh" aria-hidden="true"></i> Calculate</button>
 				</div>
 			</div>

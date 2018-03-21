@@ -168,10 +168,10 @@ Recipient Name<span class="text-danger">*</span>
 <div class="form-group row">
 <div class="col-sm-6">Send Voucher On This Date &amp; Time: <p class="muted">Leave blank to send ASAP or select a date and time</p></div>
 <div class="btn-stack">
-<div class="col-sm-2 col-xs-12">
+<div class="col-sm-2 col-12">
 <input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%END NOHTML%]" placeholder="Select Date">
 </div>
-<div class="col-sm-2 col-xs-12">
+<div class="col-sm-2 col-12">
 <select class="form-control" name="voucher_rdate[@reward_id@]_hr">
 <option value=""></option>
 <option value="1" [%DATA id:'required_date_12hr' if:'=' value:'1'%]selected[%END DATA%]>1</option>
@@ -188,7 +188,7 @@ Recipient Name<span class="text-danger">*</span>
 <option value="12" [%DATA id:'required_date_12hr' if:'=' value:'12'%]selected[%END DATA%]>12</option>
 </select>
 </div>
-<div class="col-sm-2 col-xs-12">
+<div class="col-sm-2 col-12">
 <select class="form-control" name="voucher_rdate[@reward_id@]_am">
 <option value=""></option>
 <option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%END DATA%]>am</option>
@@ -219,7 +219,7 @@ Recipient Name<span class="text-danger">*</span>
 [%END cart_vouchers%]##-->	
 </div>
 
-<div class="col-xs-12">
+<div class="col-12">
 <input class="submit_btn btn btn-success btn-large pull-right" type="button" value="Continue To Checkout"/>
 </div>
 </form>

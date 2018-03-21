@@ -1,4 +1,4 @@
-<div class="col-xs-12">
+<div class="col-12">
 	<ul class="breadcrumb" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
@@ -19,7 +19,7 @@
 		<div class="panel-heading"> <i class="fa fa-cog"></i> <!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##--> Settings </div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-xs-12 col-md-6">
+				<div class="col-12 col-md-6">
 					<div class="form-group">
 						<label>List Name</label>
 						<span class="label label-info">Created on
@@ -30,12 +30,12 @@
 
 					</div>
 				</div>
-				<div class="col-xs-12 col-md-6">
+				<div class="col-12 col-md-6">
 				<label>&nbsp;</label>
 				<p><input type="submit" class="btn btn-success" name="submit" value="Save My List Settings" /></p>
 				</div>
 
-				<div class="col-xs-12 col-md-6 hidden">
+				<div class="col-12 col-md-6 hidden">
 				<div class="form-group">
 					<label>List Status</label>
 					<select class="form-control" name="wh_active">
@@ -44,7 +44,7 @@
 					</select>
 				</div>
 				</div>
-				<div class="col-xs-12 col-md-6 hidden">
+				<div class="col-12 col-md-6 hidden">
 					<label>Remind about this list every</label>
 					<input class="form-control" type="text" name="wh_reminder_inc_days" value="[%DATA id:'reminder_inc_days' if:'>' value:'0'%][@reminder_inc_days@][%END DATA%]" size="5" maxlength="5" />
 					<label>day(s) until this list expire on:</label>

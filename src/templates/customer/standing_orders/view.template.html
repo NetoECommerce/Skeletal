@@ -1,5 +1,5 @@
 [%load_template file:"customer/standing_orders/messages.html"/%]
-<div class="col-xs-12">
+<div class="col-12">
 	<ul class="breadcrumb" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%url page:'account'/%]">My account</a></li>
@@ -9,7 +9,7 @@
 [%show_standing_order id:'[@storder_id@]'%]
 	[%param *header%]
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<h1>Standing Order #[@storder_id@]</h1>
 				[%if [@customer_po@]%]
 					<h3>Purchase Order Number: [%nohtml%][@customer_po@][%/nohtml%]</h3><br/>
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12 col-sm-6">
+			<div class="col-12 col-sm-6">
 				<h3>Billing address</h3>
 				<p>
 					[@bill_first_name@] [@bill_last_name@]<br/>
@@ -35,7 +35,7 @@
 					[@bill_phone@]<br/>
 				</p>
 			</div>
-			<div class="col-xs-12 col-sm-6">
+			<div class="col-12 col-sm-6">
 				<h3>Shipping address</h3>
 				<p>
 					[@ship_first_name@] [@ship_last_name@]<br/>
@@ -53,12 +53,12 @@
 					[@ship_phone@]<br/>
 				</p>
 			</div>
-			<div class="col-xs-12">
+			<div class="col-12">
 				<hr/>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<h3>Order Status</h3>
 				<p>
 					<span class="label [%if [@order_status@] eq 'Active'%]label-success[%elseif [@order_status@] eq 'Inactive' || [@order_status@] like 'waiting approval'%]label-warning[%else%]label-danger[%/if%]">
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				[%show_standing_order id:'[@storder_id@]' rental_only:'1'%]
 					[%param *header%]
 						<h3>Rental Products</h3>
@@ -115,7 +115,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<h3>Order Summary</h3>
 				[%if [@terms_type@] ne 'once'%]
 					<p>Order ships every <strong>[@terms_num_times@] [@terms_type@](s) </strong>from <strong>[%format type:'date'%][@date_start@][%/format%]</strong>.</p>
@@ -180,7 +180,7 @@
 			</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 col-sm-6">
+		<div class="col-12 col-sm-6">
 			[%if [@shipping_method_id@]%]
 				<h3>Delivery Method</h3>
 				<p><strong>Delivery Method: </strong>[@shipping_method@]</p>
@@ -189,7 +189,7 @@
 				[%/if%]
 			[%/if%]
 		</div>
-		<div class="col-xs-12 col-sm-6">
+		<div class="col-12 col-sm-6">
 			<h3>Payment Instructions</h3>
 			[%payment_methods id:'[@payment_method@]'%]
 				[%param *body%]

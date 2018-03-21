@@ -1,5 +1,5 @@
 
-<div class="col-xs-12" >
+<div class="col-12" >
 
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb" aria-label="Breadcrumb">
@@ -201,7 +201,7 @@ getlocation();
 		</div>
 		<!--##[%END DATA%]##-->
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<h2 name="billing" id="billing">Billing Information</h2>
 				<div class="form-group">
 					<label for="bill_first_name">First Name </label>
@@ -272,7 +272,7 @@ getlocation();
 					<textarea class="form-control" cols="40" rows="4" name="order_comment" id="order_comment"><!--##[%NOHTML%][@order_comment@][%END NOHTML%]##--></textarea>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<h2 name="contact" id="contact">Contact Information</h2>
 				<div class="form-group">
 					<label for="email">Email Address</label>
@@ -289,7 +289,7 @@ getlocation();
 					<input class="form-control" type="text" name="fax" id="fax" size="50" value="[@fax@]">
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<h2 name="company" id="Company">Company Information</h2>
 				<div class="form-group">
 					<label for="usercustom2">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
@@ -301,7 +301,7 @@ getlocation();
 				</div>
 			</div>
 			<!--##[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]##-->
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<h2>Dropshipping Information</h2>
 				<h4>Customise the documentation we send out with your drop shipped orders.</h4>
 				<label>Drop Shipping Documentation Footer (Will be displayed on footer of packing slips, labels etc)</label>
@@ -322,10 +322,10 @@ getlocation();
 			<!--##[%END CONFIG%]##-->
 		</div>
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<hr>
 			</div>
-			<div class="col-xs-12 col-md-2 col-md-offset-10">
+			<div class="col-12 col-md-2 col-md-offset-10">
 			<input type="hidden" name="update" value="1">
 				<input type="SUBMIT" class="btn btn-lg btn-success" value="Save Changes">
 			</div>

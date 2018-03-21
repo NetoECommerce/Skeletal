@@ -3,7 +3,7 @@
 		var win = window.open('[%url page:"account" type:"print" fn:"invoice" id:"[@order_id@]"/%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 	}
 </script>
-<div class="col-xs-12">
+<div class="col-12">
 	[%load_template file:"cart/cart.error.html"/%]
 	[%payment_confirmation%]
 		[%param *body%]
@@ -15,11 +15,11 @@
 		[%/param%]
 	[%/payment_confirmation%]
 </div>
-<div class="col-xs-12">
+<div class="col-12">
 	[%show_order id:'[@order_id@]'%]
 		[%param *header%]
 			<div class="row">
-				<div class="col-xs-12 col-md-4">
+				<div class="col-12 col-md-4">
 					<h3>Your Order ID</h3>
 					<h2 class="text-danger">[@order_id@]</h2>
 					[%if [@user:username@]%]
@@ -28,7 +28,7 @@
 						<p><a class="btn btn-default" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a></p>
 					[%/if%]
 				</div>
-				<div class="col-xs-12 col-md-8">
+				<div class="col-12 col-md-8">
 					[%if [@user:username@]%]
 						<h3>Order Tracking:</h3>
 						<p>You will be updated by e-mail as to your orders progress.</p>
@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-12">
 					<hr />
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -188,7 +188,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					<h2>Order Summary</h2>
 					<table class="table table-striped table-bordered table-condensed">
 						<tr>
@@ -236,7 +236,7 @@
 						[%/if%]
 					</table>
 				</div>
-				<div class="col-xs-12 col-md-4 col-md-offset-8">
+				<div class="col-12 col-md-4 col-md-offset-8">
 					<table class="table table-striped table-bordered">
 						<tr>
 							<td><b>Order Subtotal</b></td>

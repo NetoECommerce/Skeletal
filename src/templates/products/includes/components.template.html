@@ -9,7 +9,7 @@
 			<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
 			<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@QTY@]">
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-12">
 					<div class="panel panel-default">
 						[%if [@assemble_group_fullname@]%]
 							<div class="panel-heading">
@@ -20,7 +20,7 @@
 		[%/PARAM%]
 		[%PARAM *body%]
 							[%if ![@has_variation@]%]
-								<div class="col-xs-12 col-md-4 wrapper-components-thumbnail">
+								<div class="col-12 col-md-4 wrapper-components-thumbnail">
 									<input type="checkbox" id="[@sku@]a" class="hidden" checked>
 									<div class="components-thumbnail thumbnail component[@group_count@]">
 										<img class="component-var-thumb" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
@@ -46,7 +46,7 @@
 								</div>
 							[%else%]
 
-									<div class="col-xs-12 col-md-4 wrapper-components-thumbnail">
+									<div class="col-12 col-md-4 wrapper-components-thumbnail">
 										[%if [@variation_available@] > '0'%]<input type="checkbox" id="[@sku@]a" class="hidden" checked>[%/if%]
 										<div class="components-thumbnail thumbnail component[@group_count@]">
 											<img class="component-var-thumb" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
@@ -154,7 +154,7 @@
 	[%END extra_options%]
 </div>
 <div class="row">
-	<div class="col-xs-12 col-md-5">
+	<div class="col-12 col-md-5">
 		[%if [@preorder@]%]
 			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-Order Now</button>
 		[%else%]
@@ -165,7 +165,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-12">
 		<hr>
 	</div>
 </div>

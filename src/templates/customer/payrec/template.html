@@ -163,7 +163,7 @@
 	</script>
 	<script type="text/javascript" language="javascript">showPD();updAmt();</script>
 [%/SITE_VALUE%]
-<div class="col-xs-12">
+<div class="col-12">
 	<ul class="breadcrumb" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
@@ -202,7 +202,7 @@
 		</p>
 		<br />
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<label>Select Payment Method</label>
 				<select class="form-control" name="card_type" onChange="showPD()">
 					<option value="">Select an option</option>
@@ -216,7 +216,7 @@
 		</div>
 		<div style="display:none;" id="payccpl">
 			<div class="row">
-				<div class="col-xs-12 col-md-6">
+				<div class="col-12 col-md-6">
 					<hr>
 					<div class="well">
 						<div class="form-group">
@@ -229,7 +229,7 @@
 							<p class="help-block">(only digits)</p>
 						</div>
 						<div class="row">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<label>Card Expiration Date</label>
 							</div>
 							<div class="col-xs-6">
@@ -272,7 +272,7 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-xs-12 col-md-3">
+			<div class="col-12 col-md-3">
 				<label>Payment Amount ([@config:moneysign@])</label>
 				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
 			</div>
@@ -328,15 +328,15 @@
 				<div class="clear"></div>
 				<div class="form-actions"></div>
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-12">
 						<hr>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-12 col-md-3">
+					<div class="col-12 col-md-3">
 						<input type="button" value="Reset" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%URL page:'account' type:'payrec'%][%/URL%]'"><br>
 					</div>
-					<div class="col-xs-12 col-md-3 col-md-offset-6">
+					<div class="col-12 col-md-3 col-md-offset-6">
 						<input type="button" onclick="proc_pay()" value="Process Payment" class="btn btn-success btn-lg btn-block">
 					</div>
 				</div>

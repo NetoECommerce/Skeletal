@@ -4,7 +4,7 @@ function print_invoice() {
 }
 </script>
 
-<div class="col-xs-12">
+<div class="col-12">
 
 	<!--# Start Breadcrumb# ##-->
 	<ul class="breadcrumb" aria-label="Breadcrumb">
@@ -18,7 +18,7 @@ function print_invoice() {
 		<h1>Track Order #<!--##[%NOHTML%]##-->[@order_id@]<!--##[%END NOHTML%]##--></h1>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 col-md-6"> <strong>Status:</strong> <span class="label label-success">[@order_status@]</span>
+		<div class="col-12 col-md-6"> <strong>Status:</strong> <span class="label label-success">[@order_status@]</span>
 			<h4><!--##[%NOHTML%]##-->Order #[@order_id@]<!--##[%END NOHTML%]##--></h4>
 			<!--##[%DATA id:'customer_po' if:'ne' value:''%]##-->
 			<h4>PO # <!--##[%NOHTML%]##-->[@customer_po@]<!--##[%END NOHTML%]##--></h4>
@@ -31,7 +31,7 @@ function print_invoice() {
 			<h5>Date Completed: <!--##[%format type:"date" format:"#D/#M/#Y"%]##-->[@date_updated@]<!--##[%END format%]##--></h5>
 			<!--##[%END DATA%]##-->
 		</div>
-		<div class="col-xs-12 col-md-6">
+		<div class="col-12 col-md-6">
 			<h4>Ship To:</h4>
 			<!--##[%NOHTML%]##-->
 			[@ship_first_name@] [@ship_last_name@]

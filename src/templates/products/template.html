@@ -1,6 +1,6 @@
 [%load_template file:"products/includes/product_scripts.template.html"/%]
 [%cache type:'display' id:'[@inventory_id@]'%]
-	<div class="col-xs-12">
+	<div class="col-12">
 		[%breadcrumb%]
 			[%param *header%]
 				<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
@@ -18,10 +18,10 @@
 			[%/param%]
 		[%/breadcrumb%]
 		<div class="row" itemscope itemtype="http://schema.org/Product">
-			<section class="col-xs-12 col-sm-5" role="contentinfo" aria-label="Product images">
+			<section class="col-12 col-sm-5" role="contentinfo" aria-label="Product images">
 				[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			</section>
-			<section class="col-xs-12 col-sm-7" role="contentinfo" aria-label="Products information">
+			<section class="col-12 col-sm-7" role="contentinfo" aria-label="Products information">
 				[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 				<!-- child products -->
 				[%load_template file:"products/includes/child_products.template.html"/%]
@@ -38,7 +38,7 @@
 		<div class="row">
 				[%discount_products id:'[@SKU@]' template:'' show_all:'1' limit:'100'%]
 					[%param header%]
-						<div class="col-xs-12">
+						<div class="col-12">
 						<div class="alert alert-success">
 							<h3>BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
 								<div class="row">
@@ -66,7 +66,7 @@
 				[%/discount_products%]
 				[%free_gifts id:'[@SKU@]'%]
 					[%param *header%]
-						<div class="col-xs-12">
+						<div class="col-12">
 						<div class="alert alert-success">
 							<h3>FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
 								<div class="row">
@@ -92,11 +92,11 @@
 						</div>
 					[%/param%]
 				[%/free_gifts%]
-				<div class="col-xs-12">
+				<div class="col-12">
 					[%load_template file:"products/includes/product_information.template.html"/%]
 					[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'ProductDescription' /%][%/if%]
 				</div>
-				<div class="col-xs-12">
+				<div class="col-12">
 					[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 						[%param header%]
 						<hr aria-hidden="true"/>
@@ -149,7 +149,7 @@
 						[%/param%]
 					[%/product_history%]
 				[%/if%]
-			</div><!--/.col-xs-12-->
+			</div><!--/.col-12-->
 		</div><!--/.row-->
-	</div><!--/.col-xs-12-->
+	</div><!--/.col-12-->
 </div><!--/.row-->

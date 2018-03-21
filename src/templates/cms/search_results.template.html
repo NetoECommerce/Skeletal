@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12"><hr></div>
+						<div class="col-12"><hr></div>
 					</div>
 					<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
 						<div class="row">
@@ -102,7 +102,7 @@
 					</div>
 					[%IF [@total_results@] > [@config:thumb_limit@]%]
 						<div class="row">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<hr aria-hidden="true"/>
 								<div class="text-center">
 									<ul class="pagination" aria-label="Pagination navigation">
@@ -122,7 +122,7 @@
 				[%/PARAM%]
 				[%PARAM *ifempty%]
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-12">
 							[%FILTER ID:'keywords' if:'ne' value:''%]
 								<p>Search was unable to find any product results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
 							[%/FILTER%]
