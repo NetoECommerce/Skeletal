@@ -2,18 +2,20 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%PARAM *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
-			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 			</li>
 	[%/PARAM%]
 	[%PARAM *body%]
-		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
 		</li>
 	[%/PARAM%]
 	[%PARAM *footer%]
-		</ul>
+		</ol>
+	</nav>
 	[%/PARAM%]
 [%/breadcrumb%]
 <h1 class="page-header">
@@ -32,7 +34,7 @@
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
 		[%param *header%]
-			<section id="homepageCarousel" class="carousel slide" aria-label="Banner images">
+			<section id="homepageCarousel" class="carousel slide" data-ride="carousel" aria-label="Banner images">
 				[%if [@total_showing@] > 1%]
 					<ol class="carousel-indicators">
 						[%site_value id:'counter' type:'load'/%]
@@ -43,18 +45,19 @@
 		[%param *footer%]
 				</div>
 				[%if [@total_showing@] > 1%]
-					<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
-						<span class="fa fa-chevron-left"></span>
+					<a class="carousel-control-prev" href="#homepageCarousel" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
 					</a>
-					<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
-						<span class="fa fa-chevron-right"></span>
+					<a class="carousel-control-next" href="#homepageCarousel" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
 					</a>
 				[%/if%]
 			</section>
 			<hr aria-hidden="true" />
 		[%/param%]
-		[%param *ifempty%]
-		[%/param%]
+		[%param *ifempty%][%/param%]
 	[%/advert%]
 	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
 		[%param *header%]
@@ -83,7 +86,7 @@
 	[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
 	[%PARAM *header%]
 	<div class="row sort_container">
-		<div class="col-xs-4 col-sm-7 col-md-4">
+		<div class="col-4 col-md-7 col-lg-4">
 			<script language="javascript" type="text/javascript">
 				function viewtype(view) {
 					var f=document.viewForm;
@@ -96,41 +99,31 @@
 				<input name="viewby" type="hidden" value=""/>
 			</form>
 			<div class="viewby btn-group">
-				<a href="javascript:viewtype('');" class="btn btn-default [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view">
+				<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view">
 					<i class="fa fa-th"></i>
 				</a>
-				<a href="javascript:viewtype('list');" class="btn btn-default [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view">
+				<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view">
 					<i class="fa fa-th-list"></i>
 				</a>
 			</div>
 		</div>
-		<div class="col-md-4 hidden-xs hidden-sm">
+		<div class="col-4 hidden-xs hidden-sm">
 			<div class="btn-text">
 				<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
 			</div>
 		</div>
-		<div class="col-xs-8 col-sm-5 col-md-4">
+		<div class="col-8 col-md-5 col-lg-4">
 			<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 				<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
-				<div class="form-group">
-					<label class="control-label col-xs-2" for="sortby">Sort</label>
-					<div class="col-xs-10">
+				<div class="form-row">
+					<label class="control-label col-2" for="sortby">Sort</label>
+					<div class="col-10">
 						<select id="sortby" name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
-							<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
-								Most Popular
-							</option>
-							<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>
-								Name
-							</option>
-							<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>
-								SKU
-							</option>
-							<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>
-								Lowest Price
-							</option>
-							<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>
-								Highest Price
-							</option>
+							<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
+							<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
+							<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>SKU</option>
+							<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>Lowest Price</option>
+							<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>Highest Price</option>
 						</select>
 					</div>
 				</div>
