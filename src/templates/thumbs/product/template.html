@@ -1,13 +1,13 @@
 [%CACHE type:'gallery' id:'[@inventory_id@]'%]
-<article class="wrapper-thumbnail col-6 col-md-4 col-lg-3" role="article" aria-label="Product Thumbnail">
+<article class="col-8 col-sm-6 col-md-4 col-lg-3" role="article" aria-label="Product thumbnail">
 	<div class="card" itemscope itemtype="http://schema.org/Product">
 		<meta itemprop="brand" content="[@brand@]"/>
 		<meta itemprop="mpn" content="[@sku@]"/>
 		<a href="[@URL@]" class="thumbnail-image">
-			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="product-image" alt="[@model@]" rel="itmimg[@SKU@]">
+			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="card-img-top" alt="[@model@]" rel="itmimg[@SKU@]">
 		</a>
-		<div class="caption">
-			<p class="h3" itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</a></p>
+		<div class="card-body">
+			<p class="card-title h5" itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</a></p>
 			<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[@model@] price">
 				[%if [@inpromo@]%]
 					Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
@@ -19,9 +19,7 @@
 				[%/if%]
 				<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			</p>
-			[%if [@form:disable_scripts@] ne 'true'%]
-			[%tracking_code type:'Thumbnails' /%]
-			[%/if%]
+			[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Thumbnails' /%][%/if%]
 			<!-- Purchase Logic -->
 			<form class="form-inline buying-options">
 				<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
@@ -37,21 +35,21 @@
 				[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 					<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
 				[%else%]
-					<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When [@model@] Is Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
+					<a class="notify_popup btn btn-secondary-outline btn-block btn-loads" href="[@url@]" title="Notify Me When [@model@] Is Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
 				[%/if%]
 			</form>
 			<!-- /Purchase Logic -->
 		</div>
 		<div class="savings-container">
 			[%if [@inpromo@]%]
-				<span class="label label-danger">On Sale</span>
+				<span class="badge badge-danger">On Sale</span>
 			[%/if%]
 			[%if [@save@] > 0 AND ![@has_child@] %]
-				<span class="label label-warning">
+				<span class="badge badge-warning">
 				[%format type:'percent'%][@save@][%/format%] OFF</span>
 			[%/if%]
 			[%if [@save@] > 0%]
-				<span class="label label-default">RRP [%format type:'currency'%][@retail@][%/format%]</span>
+				<span class="badge badge-secondary">RRP [%format type:'currency'%][@retail@][%/format%]</span>
 			[%/if%]
 		</div>
 	</div>

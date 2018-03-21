@@ -1,8 +1,8 @@
 <aside class="col-12 col-sm-3" id="left-sidebar">
 	[%IF [@page_type@] eq 'category' and [@config:show_filters@]%]
-		<div class="panel panel-default">
-			<div class="panel-heading panel-heading-thumbnails">
-				<h3 class="panel-title">
+		<div class="card mb-2">
+			<div class="card-body">
+				<h3 class="card-title">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#filters">Filter Products</a>
 				</h3>
 			</div>
@@ -96,7 +96,7 @@
 					[%/PRODUCT_FILTER%]
 					[%PRODUCT_FILTER type:'price' limit:'1'%]
 						[%PARAM header%]
-							<li class="list-group-item hidden-sm hidden-xs"><h4>Filter By Price Range</h4></li>
+							<li class="list-group-item hidden-sm d-none d-sm-block"><h4>Filter By Price Range</h4></li>
 						[%/PARAM%]
 						[%PARAM *body%]
 							[%SITE_VALUE id:'footer_javascript'%]
@@ -121,7 +121,7 @@
 									});
 								</script>
 							[%/SITE_VALUE%]
-							<li class="list-group-item hidden-sm hidden-xs"><p id="price-range"></p>
+							<li class="list-group-item hidden-sm d-none d-sm-block"><p id="price-range"></p>
 								[%DATA id:'selected' if:'==' value:'1'%]
 									[%PARAM *if_true%]
 										<p id="price-range-text" class="price_range"></p>
@@ -163,12 +163,12 @@
 	[%CACHE type:'cmenu' id:'sidebar'%]
 	[%CATEGORYMENU sortby:'sortorder,selected,name' show_empty:'1'%]
 		[%PARAM header%]
-			<div class="panel panel-default hidden-xs">
-				<div class="panel-heading"><h3 class="panel-title">Categories</h3></div>
-				<ul class="list-group" role="navigation" aria-label="Category menu">
+			<div class="card d-none d-sm-block mb-2">
+				<div class="card-body"><h3 class="card-title">Categories</h3></div>
+				<ul class="list-group list-group-flush" role="navigation" aria-label="Category menu">
 				[%/PARAM%]
 				[%PARAM *level_1%]
-					<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%]"><a href="[@url@]" class="list-group-item dropdown-toggle" >[@name@]</a>
+					<li class="list-group-item  [%DATA id:'next_level' if:'ne' value:''%] dropdown dropdown-hover[%/DATA%]"><a href="[@url@]" class="dropdown-toggle">[@name@]</a>
 						[%DATA id:'next_level' if:'ne' value:''%]
 							<ul class="dropdown-menu dropdown-menu-horizontal">
 								[@next_level@]
@@ -200,8 +200,8 @@
 	[%CONFIG id:'phistory_limit' if:'ne' value:'0'%]
 		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%PARAM header%]
-				<section class="panel panel-default hidden-xs" role="contentinfo" aria-label="Browsing history">
-					<div class="panel-heading panel-heading-thumbnails"><h3 class="panel-title">Browsing History</h3></div>
+				<section class="card d-none d-sm-block my-2" role="contentinfo" aria-label="Browsing history">
+					<div class="card-body"><h3 class="card-title">Browsing History</h3></div>
 					<ul class="nav list-group">
 			[%/PARAM%]
 			[%PARAM footer%]
@@ -212,12 +212,12 @@
 	[%/CONFIG%]
 	[%MENU id:'web_information'%]
 		[%PARAM header%]
-		<div class="panel panel-default hidden-xs">
-			<div class="panel-heading"><h3 class="panel-title">Information</h3></div>
-			<ul class="list-group" role="navigation" aria-label="Information menu">
+		<div class="card d-none d-sm-block my-2">
+			<div class="card-body"><h3 class="card-title">Information</h3></div>
+			<ul class="list-group list-group-flush" role="navigation" aria-label="Information menu">
 				[%/PARAM%]
 				[%PARAM *level_1%]
-					<li class="[%if [@next_level@]%]dropdown-submenu[%/if%]"><a class="list-group-item" href="[@url@]" >[@name@]</a>
+					<li class="list-group-item  [%if [@next_level@]%] dropdown-submenu[%/if%]"><a href="[@url@]" >[@name@]</a>
 						[%if [@next_level@]%]
 							<ul class="dropdown-menu">
 								[@next_level@]
