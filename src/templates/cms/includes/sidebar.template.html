@@ -1,148 +1,146 @@
 <aside class="col-12 col-sm-3" id="left-sidebar">
 	[%IF [@page_type@] eq 'category' and [@config:show_filters@]%]
 		<div class="card mb-2">
-			<div class="card-body">
+			<div class="card-body border-bottom">
 				<h3 class="card-title mb-0">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#filters-accordion" href="#filters">Filter Products</a>
+					<a role="button" data-toggle="collapse" aria-expanded="false" href="#filters" aria-controls="#filters">Filter Products <i class="fa fa-caret-down"></i></a>
 				</h3>
 			</div>
-			<ul id="filters" class="panel-collapse collapse list-group list-group-flush" role="group">
-				[%product_filter type:'variations' autohide:'0' sortoption:'sortorder'%]
-					[%param *header%]
-						<li class="list-group-item"><h4 class="mb-0">Filter By [@filter_name@]</h4></li>
-					[%/param%]
-					[%param *body%]
-						[%DATA id:'selected' if:'==' value:'1'%]
-							[%param *if_true%]
+			<div id="filters" class="collapse">
+				<ul class="list-group list-group-flush" role="group">
+					[%product_filter type:'variations' autohide:'0' sortoption:'sortorder'%]
+						[%param *header%]
+							<li class="list-group-item"><h4 class="mb-0">Filter By [@filter_name@]</h4></li>
+						[%/param%]
+						[%param *body%]
+							[%if [@selected@]%]
+									<li class="filter-remove filter list-group-item d-flex justify-content-between align-items-center">
+										<a href="[@remove_single_url@]" rel="nofollow">[@name@]</a>
+										<span class="badge badge-secondary badge-pill">[@total@]</span>
+									</li>
+							[%else%]
+									<li class="filter list-group-item d-flex justify-content-between align-items-center">
+										<a href="[@url@]"  aria-label="Filter [@filter_name@] to [@name@]">[@name@]</a>
+										<span class="badge badge-secondary badge-pill">[@total@]</span>
+									</li>
+							[%/if%]
+						[%/param%]
+					[%/product_filter%]
+					[%product_filter type:'category' limit:'100' autohide:'0' filter_parent_content:'1'%]
+						[%param header%]
+							<li class="list-group-item"><h4 class="mb-0">Filter By Category</h4></li>
+						[%/param%]
+						[%param *body%]
+							[%if [@selected@]%]
 								<li class="filter-remove filter list-group-item d-flex justify-content-between align-items-center">
 									<a href="[@remove_single_url@]" rel="nofollow">[@name@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
-							[%/param%]
-							[%param *if_false%]
+							[%else%]
 								<li class="filter list-group-item d-flex justify-content-between align-items-center">
 									<a href="[@url@]"  aria-label="Filter [@filter_name@] to [@name@]">[@name@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
-							[%/param%]
-						[%/DATA%]
-					[%/param%]
-				[%/product_filter%]
-				[%product_filter type:'category' limit:'100' autohide:'0' filter_parent_content:'1'%]
-					[%param header%]
-						<li class="list-group-item"><h4 class="mb-0">Filter By Category</h4></li>
-					[%/param%]
-					[%param *body%]
-						[%DATA id:'selected' if:'==' value:'1'%]
-							[%param *if_true%]
-							<li class="filter-remove"><a href="[@remove_url@]" class="list-group-item" rel="nofollow" >
-							[@name@] <span class="text-muted">([@total@])</span></a>
-							</li>
-							[%/param%]
-							[%param *if_false%]
-								<li class="filter">
-								<a href="[@url@]" class="list-group-item" >[@name@] <span class="text-muted">([@total@])</span></a>
+							[%/if%]
+						[%/param%]
+					[%/product_filter%]
+					[%product_filter type:'instock' autohide:'0'%]
+						[%param header%]
+							<li class="list-group-item"><h4 class="mb-0">Filter By Stock</h4></li>
+						[%/param%]
+						[%param *body%]
+							[%if [@selected@]%]
+								<li class="filter-remove list-group-item d-flex justify-content-between align-items-center">
+									<a href="[@remove_single_url@]" rel="nofollow">In Stock</a>
+									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
-							[%/param%]
-						[%/DATA%]
-					[%/param%]
-				[%/product_filter%]
-				[%product_filter type:'instock' autohide:'0'%]
-					[%param header%]
-						<li class="list-group-item"><h4 class="mb-0">Filter By Stock</h4></li>
-					[%/param%]
-					[%param *body%]
-						[%if [@selected@]%]
-							<li class="filter-remove list-group-item d-flex justify-content-between align-items-center">
-								<a href="[@remove_single_url@]" rel="nofollow">In Stock</a>
-								<span class="badge badge-secondary badge-pill">[@total@]</span>
-							</li>
-						[%else%]
-							<li class="filter list-group-item d-flex justify-content-between align-items-center">
-								<a href="[@url@]">In Stock</a>
-								<span class="badge badge-secondary badge-pill">[@total@]</span>
-							</li>
-						[%/if%]
-					[%/param%]
-				[%/product_filter%]
-				[%product_filter type:'price' limit:'6'%]
-					[%param header%]
-						<li class="list-group-item d-l-none d-xl-none"><h4>Filter By Price Range</h4></li>
-					[%/param%]
-					[%param *body%]
-						[%if [@selected@]%]
+							[%else%]
+								<li class="filter list-group-item d-flex justify-content-between align-items-center">
+									<a href="[@url@]">In Stock</a>
+									<span class="badge badge-secondary badge-pill">[@total@]</span>
+								</li>
+							[%/if%]
+						[%/param%]
+					[%/product_filter%]
+					[%product_filter type:'price' limit:'6'%]
+						[%param header%]
+							<li class="list-group-item d-l-none d-xl-none"><h4>Filter By Price Range</h4></li>
+						[%/param%]
+						[%param *body%]
+							[%if [@selected@]%]
 								<li class="filter-remove list-group-item d-l-none d-xl-none d-flex justify-content-between align-items-center">
 									<a href="[@remove_url@]" class="list-group-item" rel="nofollow" >[@name@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
-						[%else%]
-							[%if [@min@] == 0 AND [@max@] > 0%]
-								<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]">[%format type:'currency' dp:'0'%][@max@][%/format%] or below</a></li>
-							[%elseif [@min@] > 0 AND [@max@] > 0%]
-								<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]">[%format type:'currency' dp:'0'%][@min@][%/format%] to [%format type:'currency' dp:'0'%][@max@][%/format%]</a></li>
-							[%elseif [@max@] == 0%]
-								<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]" >[%format type:'currency' dp:'0'%][@min@][%/format%] or above</a></li>
+							[%else%]
+								[%if [@min@] == 0 AND [@max@] > 0%]
+									<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]">[%format type:'currency' dp:'0'%][@max@][%/format%] or below</a></li>
+								[%elseif [@min@] > 0 AND [@max@] > 0%]
+									<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]">[%format type:'currency' dp:'0'%][@min@][%/format%] to [%format type:'currency' dp:'0'%][@max@][%/format%]</a></li>
+								[%elseif [@max@] == 0%]
+									<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]" >[%format type:'currency' dp:'0'%][@min@][%/format%] or above</a></li>
+								[%/if%]
 							[%/if%]
-						[%/if%]
-					[%/param%]
-				[%/product_filter%]
-				[%product_filter type:'price' limit:'1'%]
-					[%param header%]
-						<li class="list-group-item hidden-sm d-none d-sm-block"><h4>Filter By Price Range</h4></li>
-					[%/param%]
-					[%param *body%]
-						[%SITE_VALUE id:'footer_javascript'%]
-							<script type="text/javascript">
-								$(function() {
-								var vals = ['[@min@]','[@max@]'];
-								for(var i=0; i<vals.length; i++) {vals[i]=parseInt(vals[i]); }
-									$( "#price-range" ).slider({
-										range: true,
-										min: vals[0],
-										max: vals[1],
-										values: vals,
-										slide: function( event, ui ) {
-											$( "#price-range-text" ).html( '[@config:currency_symbol@]'+ui.values[0]+' to [@config:currency_symbol@]'+ui.values[1] );
-											$( '#pricesearch input[name="pr"]' ).val( ui.values[0]+'-'+ui.values[1] );
-										},
-										create: function( event, ui ) {
-											$( "#price-range-text" ).html( '[@config:currency_symbol@]'+vals[0]+' to [@config:currency_symbol@]'+vals[1] );
-											$( '#pricesearch input[name="pr"]' ).val( vals[0]+'-'+vals[1] );
-										}
+						[%/param%]
+					[%/product_filter%]
+					[%product_filter type:'price' limit:'1'%]
+						[%param header%]
+							<li class="list-group-item hidden-sm d-none d-sm-block"><h4>Filter By Price Range</h4></li>
+						[%/param%]
+						[%param *body%]
+							[%SITE_VALUE id:'footer_javascript'%]
+								<script type="text/javascript">
+									$(function() {
+									var vals = ['[@min@]','[@max@]'];
+									for(var i=0; i<vals.length; i++) {vals[i]=parseInt(vals[i]); }
+										$( "#price-range" ).slider({
+											range: true,
+											min: vals[0],
+											max: vals[1],
+											values: vals,
+											slide: function( event, ui ) {
+												$( "#price-range-text" ).html( '[@config:currency_symbol@]'+ui.values[0]+' to [@config:currency_symbol@]'+ui.values[1] );
+												$( '#pricesearch input[name="pr"]' ).val( ui.values[0]+'-'+ui.values[1] );
+											},
+											create: function( event, ui ) {
+												$( "#price-range-text" ).html( '[@config:currency_symbol@]'+vals[0]+' to [@config:currency_symbol@]'+vals[1] );
+												$( '#pricesearch input[name="pr"]' ).val( vals[0]+'-'+vals[1] );
+											}
+										});
 									});
-								});
-							</script>
-						[%/SITE_VALUE%]
-						<li class="list-group-item hidden-sm d-none d-sm-block">
-							<p id="price-range"></p><p id="price-range-text" class="price_range"></p>
-							<form id="pricesearch" method="get" action="[@config:current_url@]">
-								<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
-								<input  name="pr" type="hidden" value="">
-								<input type="submit" value="Filter By Price" class="btn btn-outline-secondary btn-sm" />
-								<a href="[@remove_url@]" class="btn btn-outline-secondary btn-sm" rel="nofollow"> clear</a>
-							</form>
-						</li>
-					[%/param%]
-				[%/product_filter%]
-				[%product_filter type:'brand' autohide:'0'%]
-					[%param header%]
-						<li class="list-group-item"><h4 class="mb-0">Filter By Brand</h4></li>
-					[%/param%]
-					[%param *body%]
-						[%if [@selected@]%]
-							<li class="filter-remove list-group-item d-flex justify-content-between align-items-center">
-								<a href="[@remove_url@]" rel="nofollow">[@brand@]</a>
-								<span class="badge badge-secondary badge-pill">[@total@]</span>
+								</script>
+							[%/SITE_VALUE%]
+							<li class="list-group-item hidden-sm d-none d-sm-block">
+								<p id="price-range"></p><p id="price-range-text" class="price_range"></p>
+								<form id="pricesearch" method="get" action="[@config:current_url@]">
+									<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
+									<input  name="pr" type="hidden" value="">
+									<input type="submit" value="Filter By Price" class="btn btn-outline-secondary btn-sm" />
+									<a href="[@remove_url@]" class="btn btn-outline-secondary btn-sm" rel="nofollow"> clear</a>
+								</form>
 							</li>
-						[%else%]
-							<li class="filter list-group-item d-flex justify-content-between align-items-center">
-								<a href="[@url@]">[@brand@]</a>
-								<span class="badge badge-secondary badge-pill">[@total@]</span>
-							</li>
-						[%/if%]
-					[%/param%]
-				[%/product_filter%]
-			</ul>
+						[%/param%]
+					[%/product_filter%]
+					[%product_filter type:'brand' autohide:'0'%]
+						[%param header%]
+							<li class="list-group-item"><h4 class="mb-0">Filter By Brand</h4></li>
+						[%/param%]
+						[%param *body%]
+							[%if [@selected@]%]
+								<li class="filter-remove list-group-item d-flex justify-content-between align-items-center">
+									<a href="[@remove_url@]" rel="nofollow">[@brand@]</a>
+									<span class="badge badge-secondary badge-pill">[@total@]</span>
+								</li>
+							[%else%]
+								<li class="filter list-group-item d-flex justify-content-between align-items-center">
+									<a href="[@url@]">[@brand@]</a>
+									<span class="badge badge-secondary badge-pill">[@total@]</span>
+								</li>
+							[%/if%]
+						[%/param%]
+					[%/product_filter%]
+				</ul>
+			</div>
 		</div>
 	[%/IF%]
 	[%CACHE type:'cmenu' id:'sidebar'%]

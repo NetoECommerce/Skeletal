@@ -1,32 +1,24 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%param *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
-			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<nav aria-label="breadcrumb">
+		<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 			</li>
 	[%/param%]
 	[%param *body%]
-		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
 		</li>
 	[%/param%]
 	[%param *footer%]
 		</ul>
+		</nav>
 	[%/param%]
 [%/breadcrumb%]
 <h1>[@content_name@]</h1>
-<p class="muted">
-	[%IF [@content_author@]%]
-		Author: [@content_author@]
-	[%/ IF%]
-	[%IF [@date_posted@] != 0000-00-00 00:00:00%]
-		Date Posted:[%FORMAT type:'date'%][@date_posted@][%END FORMAT%]
-	[%/ IF%]
-</p>
-<img src="[%ASSET_URL type:'content' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]" class="pull-right" alt="[@name@] main image"/>
-<img src="[%ASSET_URL type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'%][%END ASSET_URL%]"  class="pull-right" alt="[@name@] image"/>
-<section class="n-responsive-content" aria-label="Short Description">
+<section class="n-responsive-content" aria-label="Short description">
 	[@content_short_description1@]
 	[@content_short_description2@]
 	[@content_short_description3@]
@@ -39,22 +31,20 @@
 	[%/ parse%]
 </section>
 <hr aria-hidden="true"/>
-[%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' limit:''%]
-	[%PARAM header%]
+[%content_menu content_type:'category' sortby:'sortorder,name' show_empty:'1' limit:''%]
+	[%param header%]
 		<section class="row" aria-label="Categories">
-	[%/ PARAM%]
-	[%PARAM *level_1%]
-		<div class="col-sm-4 category-thumbnail" role="article" aria-label="[@name@] category">
-			<h3><a href="[@url@]">[@name@]</a></h3>
-			<div class="wrapper-category-image">
-				<a href="[@url@]">
-					<img src="[%asset_url type:'category' id:'[@id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" alt="[@name@]" />
-				</a>
-			</div>
+	[%/ param%]
+	[%param *level_1%]
+		<div class="col-6 col-sm-4 category-thumbnail" role="article" aria-label="[@name@] category">
+			<p class="h3"><a href="[@url@]">[@name@]</a></p>
+			<a href="[@url@]">
+				<img src="[%asset_url type:'category' id:'[@id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" class="img-fluid" alt="[@name@]" />
+			</a>
 		</div>
-	[%/ PARAM%]
-	[%PARAM footer%]
+	[%/ param%]
+	[%param footer%]
 		</section>
-	[%/ PARAM%]
-[%/ CATEGORYMENU%]
+	[%/ param%]
+[%/ content_menu%]
 </div>
