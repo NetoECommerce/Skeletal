@@ -3,25 +3,27 @@
 	<div class="col-12">
 		[%breadcrumb%]
 			[%param *header%]
-				<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
-					<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 						<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 					</li>
 			[%/param%]
 			[%param *body%]
-				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
 				</li>
 			[%/param%]
 			[%param *footer%]
-				</ul>
+				</ol>
+				</nav>
 			[%/param%]
 		[%/breadcrumb%]
 		<div class="row" itemscope itemtype="http://schema.org/Product">
-			<section class="col-12 col-sm-5" role="contentinfo" aria-label="Product images">
+			<section class="col-12 col-md-5" role="contentinfo" aria-label="Product images">
 				[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			</section>
-			<section class="col-12 col-sm-7" role="contentinfo" aria-label="Products information">
+			<section class="col-12 col-md-7" role="contentinfo" aria-label="Products information">
 				[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 				<!-- child products -->
 				[%load_template file:"products/includes/child_products.template.html"/%]
@@ -44,15 +46,11 @@
 								<div class="row">
 						[%/param%]
 						[%param *body%]
-								<div class="col-sm-3">
-									<div class="thumbnail">
-										<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image">
-											<img src="[@thumb@]" alt="[@name@]">
-										</a>
-										<div class="caption">
-											<h3 class="title">
-												<a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a>
-											</h3>
+								<div class="col-8 col-sm-6 col-md-3">
+									<div class="card">
+										<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="card-img-top"><img src="[@thumb@]" alt="[@name@]"></a>
+										<div class="card-body">
+											<p class="card-title h5"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 											<div class="text-success"><strong>FREE</strong> With This Item!</div>
 										</div>
 									</div>
@@ -72,15 +70,11 @@
 								<div class="row">
 					[%/param%]
 					[%param *body%]
-							<div class="col-sm-3">
-								<div class="thumbnail">
-									<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image">
-										<img src="[@thumb@]" alt="[@name@]">
-									</a>
-									<div class="caption">
-										<h3 class="title">
-											<a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a>
-										</h3>
+							<div class="col-8 col-sm-6 col-md-3">
+								<div class="card">
+									<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="card-img-top"><img src="[@thumb@]" alt="[@name@]"></a>
+									<div class="card-body">
+										<p class="card-title h5"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 										<div class="text-success"><strong>FREE</strong> With This Item!</div>
 									</div>
 								</div>

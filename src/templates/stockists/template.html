@@ -41,7 +41,7 @@
 		[%if [@stloc_lat@] and [@stloc_lng@]%]
 			<div class="col-12 col-sm-4">
 				<a href="https://www.google.com.au/maps/place/[%url_encode%][@stloc_street1@] [@stloc_street2@] [@stloc_city@] [@stloc_state@] [@stloc_zip@][%/url_encode%]/@[@stloc_lat@],[@stloc_lng@],15z">
-					<img src="https://maps.googleapis.com/maps/api/staticmap?center=[@stloc_lat@],[@stloc_lng@]&zoom=20&size=400x400&markers=color:blue%7Clabel:%7C[@stloc_lat@],[@stloc_lng@][%if [@config:GOOGLE_GEO_API@]%]&key=[@config:GOOGLE_GEO_API@][%/if%]" class="img-responsive" alt="[%nohtml%][@stloc_name@] [@stloc_street1@] [@stloc_street2@], [@stloc_city@], [@stloc_state@] [@stloc_zip@], [@stloc_country@][%/nohtml%]">
+					<img src="https://maps.googleapis.com/maps/api/staticmap?center=[@stloc_lat@],[@stloc_lng@]&zoom=20&size=400x400&markers=color:blue%7Clabel:%7C[@stloc_lat@],[@stloc_lng@][%if [@config:GOOGLE_GEO_API@]%]&key=[@config:GOOGLE_GEO_API@][%/if%]" class="img-fluid" alt="[%nohtml%][@stloc_name@] [@stloc_street1@] [@stloc_street2@], [@stloc_city@], [@stloc_state@] [@stloc_zip@], [@stloc_country@][%/nohtml%]">
 				</a>
 			</div>
 		[%/if%]
