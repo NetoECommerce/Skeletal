@@ -1,7 +1,7 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%param *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 			</li>
@@ -38,13 +38,13 @@
 		[@content_description3@]
 	[%/ parse%]
 </section>
-<hr />
+<hr aria-hidden="true"/>
 [%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' limit:''%]
 	[%PARAM header%]
 		<section class="row" aria-label="Categories">
 	[%/ PARAM%]
 	[%PARAM *level_1%]
-		<div class="col-sm-4 category-thumbnail" role="article" aria-label="[@name@] Category">
+		<div class="col-sm-4 category-thumbnail" role="article" aria-label="[@name@] category">
 			<h3><a href="[@url@]">[@name@]</a></h3>
 			<div class="wrapper-category-image">
 				<a href="[@url@]">

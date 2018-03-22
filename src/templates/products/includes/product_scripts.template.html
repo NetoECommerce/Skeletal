@@ -1,0 +1,53 @@
+[%site_value id:'footer_javascript'%]
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+			$.product_variationInit({
+				'loadtmplates': ['_buying_options', '_images','_header'],
+				'fns' : {
+					'onLoad' : function () {
+						$('.addtocart').button("loading");
+						$('.variation-wrapper').addClass('disable-interactivity');
+					},
+					'onReady' : function () {
+						$('.addtocart').button("reset");
+						$('.zoom').zoom();
+						$('.variation-wrapper').removeClass('disable-interactivity');
+						$("#sale-end").countdown({
+							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+						});
+					},
+				}
+			});
+			[%if [@has_components@]%]
+				$.kit_variationInit({});
+			[%/if%]
+		});
+	</script>
+	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/zoom/1.4/jquery.zoom-min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.zoom').zoom();
+		});
+	</script>
+	<script type="text/javascript" src="//cdn.neto.com.au/assets/neto-cdn/jcountdown/1.4/jquery.jcountdown.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sale-end").countdown({
+				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$("li[role='tab']").click(function(){
+				$("li[role='tab']").attr("aria-selected","false"); //deselect all the tabs
+			 	$(this).attr("aria-selected","true");  // select this tab
+				var tabpanid= $(this).attr("aria-controls"); //find out what tab panel this tab controls
+			   var tabpan = $("#"+tabpanid);
+				$("div[role='tabpanel']").attr("aria-hidden","true"); //hide all the panels
+				tabpan.attr("aria-hidden","false");  // show our panel
+			 });
+		})
+		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){e.preventDefault();})
+	</script>
+[%/site_value%]

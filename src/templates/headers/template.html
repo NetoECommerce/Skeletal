@@ -1,40 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head itemscope itemtype="http://schema.org/WebSite">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
-<meta name="description" content="[%url_info name:'meta_description'/%]"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:homeurl@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:homeurl@]/assets/website_logo.png[%/if%]"/>
-<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
-<meta property="og:site_name" content="[@config:website_name@]"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="[@config:canonical_url@]"/>
-<meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
-[@config:GOOGLE_VERIFICATION_CODE@]
-<title itemprop='name'>[%url_info name:'page_title'/%]</title>
-<link rel="canonical" href="[@config:canonical_url@]" itemprop="url"/>
-<link rel="shortcut icon" href="/assets/favicon_logo.png?[@config:neto_css_version@]"/>
-<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
-<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
-[%cdn_asset html:'1' type:'css' domain:'maxcdn.bootstrapcdn.com' library:'font-awesome' version:'4.4.0'%]css/font-awesome.min.css[%/cdn_asset%]
-[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
-[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
-<!--[if lte IE 8]>
-	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
-<![endif]-->
-[%if [@form:disable_scripts@] ne 'true'%]
-[%tracking_code type:'Declaration'/%]
-[%/if%]
+  [%load_template file:'headers/includes/head.template.html'/%]
+  <link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
+  <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
-<header class="container wrapper-header" aria-label="Header Container">
+<header class="container wrapper-header" aria-label="Header container">
 	<div class="row row-padded">
 		<div class="col-xs-12 col-sm-4 wrapper-logo">
 			<a href="[@config:homeurl@]" title="[@config:company_name@]">
-				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] Logo"/>
+				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>
 		<div class="col-xs-12 col-sm-4">
@@ -42,9 +19,9 @@
 				<form name="productsearch" method="get" action="/" role="search" aria-label="Product Search">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
-						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input Search"/>
+						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
 						<span class="input-group-btn">
-							<button type="submit" value="Search" class="btn btn-default" aria-label="Search Site"><i class="fa fa-search"></i></button>
+							<button type="submit" value="Search" class="btn btn-default" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</span>
 					</div>
 				</form>
@@ -67,21 +44,25 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12">
-			<nav class="navbar navbar-default" role="navigation" aria-label="Main Menu">
+			<nav class="navbar navbar-default">
 				<div class="navbar-header">
-					<ul class="navigation-list list-inline visible-xs nMobileNav">
-						<li><a href="#" class="nToggleMenu" data-target=".navbar-responsive-collapse"><span class="icon"><i class="fa fa-bars"></i></span><br>
-						Menu</a></li>
-						<li><a href="/products"><span class="icon"><i class="fa fa-gift"></i></span><br>
-						Shop</a></li>
-						<li><a href="[%url page:'checkout' type:'cart'/%]"><span class="icon"><i class="fa fa-shopping-cart"></i></span><br>
-						Cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)</a></li>
-						<li><a href="/_myacct/"><span class="icon"><i class="fa fa-user"></i></span><br>
-						Account</a></li>
+					<ul class="navigation-list list-inline visible-xs nMobileNav" role="navigation" aria-label="Mobile menu">
+						<li><a href="#" role="button" class="nToggleMenu" data-target=".navbar-responsive-collapse" data-toggle="collapse">
+							<span class="icon" aria-hidden="true"><i class="fa fa-bars"></i></span><br>Menu
+						</a></li>
+						<li><a href="/products">
+							<span class="icon" aria-hidden="true"><i class="fa fa-gift"></i></span><br>Shop
+						</a></li>
+						<li><a href="[%url page:'checkout' type:'cart'/%]">
+							<span class="icon" aria-hidden="true"><i class="fa fa-shopping-cart"></i></span><br>Cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)
+						</a></li>
+						<li><a href="/_myacct/">
+							<span class="icon" aria-hidden="true"><i class="fa fa-user"></i></span><br>Account
+						</a></li>
 					</ul>
 				</div>
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" role="navigation" aria-label="Main menu">
 						[%cache type:'menu' id:'header-content-menu'%]
 							[%menu id:'web_header'%]
 								[%param *level_1%]
@@ -114,7 +95,7 @@
 							[%/menu%]
 						[%/ cache%]
 					</ul>
-					<ul class="nav navbar-nav navbar-right hidden-xs">
+					<ul class="nav navbar-nav navbar-right hidden-xs" role="navigation" aria-label="Accounts menu">
 						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%] aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
 							<ul class="dropdown-menu pull-right">
 								<li><a href="[%url page:'account'/%]">Account Home</a></li>
