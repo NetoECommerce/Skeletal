@@ -105,7 +105,7 @@
 		<div class="row btn-stack">
 			<div class="col-12 col-md-4">
 				<label class="sr-only" for="qty[@rndm@][@SKU@]">[@model@] quantity field</label>
-				<input type="number" min="[@min_qty@]" class="form-control qty input-lg" id="qty[@rndm@][@SKU@]" name="qty" aria-label="[@model@] quantity field" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
+				<input type="number" min="[@min_qty@]" class="form-control qty form-control-lg" id="qty[@rndm@][@SKU@]" name="qty" aria-label="[@model@] quantity field" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
 			</div>
 			<div class="col-12 col-md-4">
 				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
@@ -126,7 +126,7 @@
 							<a class="wishlist_toggle btn btn-lg btn-block btn-warning" href role="button" title="Remove To Wishlist" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fa fa-star" aria-hidden="true"></i></span></a>
 						[%END PARAM%]
 						[%PARAM if_false%]
-							<a class="wishlist_toggle btn btn-default btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="fa fa-star-o" aria-hidden="true"></i> Wishlist</span></a>
+							<a class="wishlist_toggle btn btn-outline-secondary btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="fa fa-star-o" aria-hidden="true"></i> Wishlist</span></a>
 						[%END PARAM%]
 						[%END IN_WISHLIST%]
 					</div>
@@ -136,11 +136,11 @@
 	</form>
 	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
 	<hr/>
-	<section class="panel panel-default" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
-		<div class="panel-heading">
-			<h3 class="panel-title">Calculate Shipping</h3>
+	<section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
+		<div class="card-header">
+			<h3>Calculate Shipping</h3>
 		</div>
-		<div class="panel-body">
+		<div class="card-body">
 			<div class="row btn-stack">
 				<div class="col-12 col-md-3">
 					<input type="number" name="input" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty" aria-label="qty">

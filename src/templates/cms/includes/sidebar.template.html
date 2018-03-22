@@ -1,8 +1,8 @@
 <aside class="col-12 col-sm-3" id="left-sidebar">
 	[%IF [@page_type@] eq 'category' and [@config:show_filters@]%]
 		<div class="card mb-2">
-			<div class="card-body border-bottom">
-				<h3 class="card-title mb-0">
+			<div class="card-header border-bottom">
+				<h3 class="mb-0">
 					<a role="button" data-toggle="collapse" aria-expanded="false" href="#filters" aria-controls="#filters">Filter Products <i class="fa fa-caret-down"></i></a>
 				</h3>
 			</div>
@@ -147,7 +147,7 @@
 	[%CATEGORYMENU sortby:'sortorder,selected,name' show_empty:'1'%]
 		[%param header%]
 			<div class="card d-none d-sm-block mb-2">
-				<div class="card-body"><h3 class="card-title mb-0">Categories</h3></div>
+				<div class="card-header"><h3 class="mb-0">Categories</h3></div>
 				<ul class="list-group list-group-flush" role="navigation" aria-label="Category menu">
 				[%/param%]
 				[%param *level_1%]
@@ -178,7 +178,7 @@
 		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%param header%]
 				<section class="card d-none d-sm-block my-2" role="contentinfo" aria-label="Browsing history">
-					<div class="card-body"><h3 class="card-title mb-0">Browsing History</h3></div>
+					<div class="card-header"><h3 class="mb-0">Browsing History</h3></div>
 					<ul class="nav list-group">
 			[%/param%]
 			[%param footer%]
@@ -190,7 +190,7 @@
 	[%MENU id:'web_information'%]
 		[%param header%]
 		<div class="card d-none d-sm-block my-2">
-			<div class="card-body"><h3 class="card-title mb-0">Information</h3></div>
+			<div class="card-header"><h3 class="mb-0">Information</h3></div>
 			<ul class="list-group list-group-flush" role="navigation" aria-label="Information menu">
 				[%/param%]
 				[%param *level_1%]
