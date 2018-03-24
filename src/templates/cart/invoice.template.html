@@ -23,9 +23,9 @@
 					<h3>Your Order ID</h3>
 					<h2 class="text-danger">[@order_id@]</h2>
 					[%if [@user:username@]%]
-						<p><button type="button" value="Print Receipt" onClick="print_invoice()" class="btn btn-default"><i class="fa fa-print"></i> Print Receipt</button></p>
+						<p><button type="button" value="Print Receipt" onClick="print_invoice()" class="btn btn-outline-secondary"><i class="fa fa-print"></i> Print Receipt</button></p>
 					[%else%]
-						<p><a class="btn btn-default" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a></p>
+						<p><a class="btn btn-outline-secondary" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a></p>
 					[%/if%]
 				</div>
 				<div class="col-12 col-md-8">
