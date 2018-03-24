@@ -2,18 +2,18 @@
 <h1>Wholesale Registration Form</h1>
 <p>If you already have an account with us, please login at the <a href="[%url page:'account' type:'login'%][%END url%]">login page</a>.</p>
 
-<!--##[%TRIM inner:'1'%][%PARAM body%]##-->
-<!--##[%show_message severity:'error'%][%PARAM header%]##-->
+[%TRIM inner:'1'%][%PARAM body%]
+[%show_message severity:'error'%][%PARAM header%]
 
-<!--##[%END PARAM%][%PARAM *body%]##-->
-	<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@info_msg@]</div><!--##[%END PARAM%]##-->
-<!--##[%PARAM footer%]##-->
+[%END PARAM%][%PARAM *body%]
+	<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@info_msg@]</div>[%END PARAM%]
+[%PARAM footer%]
 
-<!--##[%END PARAM%][%END show_message%]##-->
-<!--##[%END PARAM%][%END TRIM%]##-->
+[%END PARAM%][%END show_message%]
+[%END PARAM%][%END TRIM%]
 
 <form name="adduser" id="adduser" method="POST" action="[%url page:'account' type:'wholesaleregister'%][%END url%]" class="form-horizontal">
-	<!--##[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]##-->
+	[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]
 	<input type="hidden" name="fn" value="proc">
 	<input type="hidden" name="redirect" value="[@redirect@]">
 
@@ -102,11 +102,11 @@
 		<label class="control-label col-sm-3">Country<span style="color:red;">*</span></label>
 		<div class="col-sm-9">
 			<select name="reg_bill_country" class="form-control" required>
-				<!--##[%countries sortby:'sortorder,name' %]
-					[%PARAM *body%]##-->
+				[%countries sortby:'sortorder,name' %]
+					[%PARAM *body%]
 						<option value="[@country_code@]" [%FORM id:'reg_bill_country' if:'eq' value:'[@country_code@]'%]selected[%END FORM%]>[@country_name@]</option>
-					<!--##[%END PARAM%]
-				[%END countries%]##-->
+					[%END PARAM%]
+				[%END countries%]
 			</select>
 		</div>
 	</div>
@@ -253,4 +253,4 @@
 </form>
 
 </div>
-<!--##[%GA_FUNNEL%]/wholesaleregister/form.html[%END GA_FUNNEL%]##-->
+[%GA_FUNNEL%]/wholesaleregister/form.html[%END GA_FUNNEL%]

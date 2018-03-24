@@ -1,11 +1,9 @@
 <div class="col-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb"> 
+	<ul class="breadcrumb" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%url page:'account'/%]">My Account</a></li>
 	</ul>
-	<div class="page-header">
-		<h1>View Order / Invoice</h1>
-	</div>
+	<div class="page-header"><h1>View Order / Invoice</h1></div>
 	<script language="javascript" type="text/javascript">
 		function print_invoice() {
 			var win = window.open('[%url page:'account' type:'print' fn:'invoice' id:'[@order_id@]'/%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');

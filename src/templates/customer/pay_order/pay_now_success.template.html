@@ -3,21 +3,9 @@
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'/%]">My Account</a></li>
 	</ul>
-	<div class="page-header">
-		<h1>Thank You!</h1>
-	</div>
-	[%if [@error@]%]
-		<div class="alert alert-danger">
-			<a class="close" data-dismiss="alert">×</a>
-			[@error@]
-		</div>
-	[%/if%]
-	[%if [@msg@]%]
-		<div class="alert alert-success">
-			<a class="close" data-dismiss="alert">×</a>
-			[@msg@]
-		</div>
-	[%/if%]
+	<div class="page-header"><h1>Thank You!</h1></div>
+	[%if [@error@]%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/if%]
+	[%if [@msg@]%]<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a>[@msg@]</div>[%/if%]
 	<p>Your payment order has been processed.</p>
 	<script language="javascript" type="text/javascript">
 		function print_invoice() {
