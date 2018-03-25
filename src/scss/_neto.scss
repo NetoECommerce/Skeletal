@@ -1,0 +1,133 @@
+// Thumbnail
+.savings-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: right;
+}
+// Payment icons
+
+.payment-icon-container {
+	padding:10px;
+	background:#EFEFEF;
+	border-radius:3px;
+	display:inline-block;
+	height:50px;
+}
+.payment-icon {
+	width:60px;
+	background-image: url('//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg');
+	background-size:60px;
+}
+.payment-icon-paypal {
+	height:16px;
+	background-position:0px 0px;
+	margin-top:8px;
+}
+.payment-icon-bpay {
+	height:18px;
+	background-position:0px -17px;
+	margin-top:6px;
+}
+.payment-icon-moneyorder {
+	margin-top:3px;
+	height:22px;
+	background-position:0px -35px;
+}
+.payment-icon-cheque {
+	margin-top:8px;
+	height:13px;
+	background-position:0px -58px;
+}
+.payment-icon-directdeposit {
+	margin-top:-4px;
+	height:38px;
+	background-position:0px -72px;
+}
+.payment-icon-americanexpress {
+	margin-top:5px;
+	height:21px;
+	background-position:0px -110px;
+}
+.payment-icon-mastercard {
+	margin-top:-3px;
+	height:36px;
+	background-position:0px -132px;
+}
+.payment-icon-visa {
+	margin-top:6px;
+	height:18px;
+	background-position:0px -168px;
+}
+.payment-icon-diners {
+	margin-top:7px;
+	height:17px;
+	background-position:0px -197px;
+}
+.payment-icon-discover {
+	margin-top:10px;
+	height:10px;
+	background-position:0px -187px;
+}
+.payment-icon-afterpay {
+	margin-top:10px;
+	height:13px;
+	background-position:0px -213px;
+}
+.payment-icon-q-card {
+	margin-top: 0px;
+	height: 35px;
+	background-position: 0px -244px;
+}
+.payment-icon-paymark {
+	margin-top: 7px;
+	height: 18px;
+	background-position: 0px -226px;
+}
+.payment-icon-zipmoney {
+	margin-top: 2px;
+	height: 30px;
+	background-position: 0px 30px;
+}
+.payment-icon-zippay {
+	margin-top: 7px;
+	height: 18px;
+	background-position: 0px 49px;
+}
+// Shopping Cart Popup
+.thumb_cart{
+	button{
+		margin-top:20px;
+		&.checkout {
+			float:right;
+		}
+	}
+	ul {
+		list-style-type:none;
+		margin:0;
+		padding:0;
+	}
+	li {
+		border-bottom:1px solid #EEE;
+		padding:10px 0px;
+		font-size:11px;
+		overflow:auto;
+	}
+	.left {
+		float:left;
+		margin-right:5px;
+		width:50px;
+		img {
+			width:50px;
+			height:50px;
+		}
+	}
+	.right {
+		width:170px;
+		float:left;
+		a {
+			white-space: normal;
+			clear:none;
+		}
+	}
+}
