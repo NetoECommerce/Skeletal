@@ -60,7 +60,7 @@
 	[%/advert%]
 	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
 		[%param *header%]
-			<section class="row" aria-label="Featured products">
+			<section class="row products-row" aria-label="Featured products">
 		[%/param%]
 		[%param footer%]
 			</section>
@@ -110,7 +110,7 @@
 		<div class="col-8 col-md-5 col-lg-4">
 			<form method="get" action="[@config:CURRENT_URL@]">
 				<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
-				<div class="form-group row">
+				<div class="form-row">
 					<label class="col-2 col-form-label" for="sortby">Sort</label>
 					<div class="col-10">
 						<select id="sortby" name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
@@ -131,7 +131,7 @@
 		</div>
 	</div>
 	<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
-		<section class="row" aria-label="Products in category">
+		<section class="row products-row" aria-label="Products in category">
 		[%/param%]
 		[%param *footer%]
 		</section>

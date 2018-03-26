@@ -5,16 +5,16 @@
 			<meta itemprop="mpn" content="[@sku@]"/>
 			<div class="card-body">
 				<div class="row">
-					<div class="col-xs-4 col-sm-3">
+					<div class="col-4 col-md-3">
 						<a href="[@URL@]" class="thumbnail-image">
 							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@sku@]">
 						</a>
 					</div>
-					<div class="col-xs-8 col-sm-6">
+					<div class="col-8 col-md-6">
 						<h3 itemprop="name"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'100' rmhtml:'1'%][@model@][%/format%]</a></h3>
 						<p itemprop="description">[@short_description@]</p>
 					</div>
-					<div class="col-12 col-sm-3 text-right">
+					<div class="col-12 col-md-3 text-right">
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 							[%if [@inpromo@]%]
@@ -26,13 +26,13 @@
 								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 							[%/if%]
 							[%if [@inpromo@]%]
-								<p><span class="label label-danger">On Sale</span></p>
+								<p><span class="badge badge-danger">On Sale</span></p>
 							[%/if%]
 							[%if [@save@] > 0 AND ![@has_child@] %]
-								<p><span class="label label-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
+								<p><span class="badge badge-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
 							[%/if%]
 							[%if [@save@] > 0%]
-								<p><span class="label label-default">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
+								<p><span class="badge badge-secondary">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
 							[%/if%]
 						</div>
 						[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Thumbnails' /%][%/if%]

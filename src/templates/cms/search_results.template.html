@@ -72,7 +72,7 @@
 						<div class="col-8 col-md-5 col-lg-4">
 							<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 								<input name="rf" type="hidden" value="[%filter_code/%]" >
-								<div class="form-group row">
+								<div class="form-row">
 									<label class="col-2 col-form-label" for="sortby">Sort</label>
 									<div class="col-10">
 										<select name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
@@ -91,7 +91,7 @@
 						<div class="col-12"><hr></div>
 					</div>
 					<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
-						<div class="row">
+						<div class="row products-row">
 					[%/param%]
 					[%param *footer%]
 						</div>

@@ -5,8 +5,54 @@
 	right: 0;
 	text-align: right;
 }
+// dropdown hover support
+@include media-breakpoint-up(md) {
+	.dropdown-hover{
+		&:hover > .dropdown-menu {
+			display: block;
+		}
+	}
+}
+.dropdown-menu-horizontal {
+	top: -8px;
+	left: 100%;
+}
+// Social icons
+.list-social{
+	a {
+		font-size:1.25rem;
+		color:#474949;
+		&:hover {
+			text-decoration: none;
+			color: black;
+		}
+	}
+}
+.text-facebook {
+	color: #3b5998;
+}
+.text-twitter {
+	color: #00acee;
+}
+.text-google-plus {
+	color: #dd4b39;
+}
+.text-youtube {
+	color: #c4302b;
+}
+.text-instagram {
+	color: #3f729b;
+}
+.text-pinterest {
+	color: #c8232c;
+}
+.text-tumblr {
+	color: #34526f;
+}
+.text-linkedin {
+	color: #0e76a8;
+}
 // Payment icons
-
 .payment-icon-container {
 	padding:10px;
 	background:#EFEFEF;
@@ -94,7 +140,20 @@
 	height: 18px;
 	background-position: 0px 49px;
 }
+// Fix for jquery UI
+.price_range {
+	color: inherit !important;
+}
 // Shopping Cart Popup
+#neto-dropdown {
+	width: 250px;
+	a {
+		padding: 0;
+	}
+	#cartcontents{
+		padding: 10px;
+	}
+}
 .thumb_cart{
 	button{
 		margin-top:20px;
@@ -103,6 +162,7 @@
 		}
 	}
 	ul {
+		text-align: left;
 		list-style-type:none;
 		margin:0;
 		padding:0;
@@ -128,6 +188,157 @@
 		a {
 			white-space: normal;
 			clear:none;
+		}
+	}
+}
+.float_right{
+	float: right !important;
+}
+.btn-default{
+	@extend .btn-outline-secondary;
+}
+// npopup
+.successaddmessage {
+	padding: 0!important;
+	width: auto !important;
+	.header {
+		font-size:18px;
+		font-weight:bold;
+		margin-bottom:10px;
+	}
+	.body {
+		padding:5px;
+		margin-bottom:10px;
+		.image {
+			width: 20%em;
+			float:left;
+			height: 3em;
+			img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				width: auto;
+			}
+		}
+		.description {
+			float:left;
+			width: 75%;
+			height: 3em;
+			line-height: 3em;
+			overflow: hidden;
+		}
+	}
+	.footer {
+		margin-bottom:5px;
+		.left {
+			float:left;
+		}
+		.right {
+			float:right;
+			text-align:right;
+		}
+	}
+	@include media-breakpoint-down(sm) {
+		.left, .right {
+			float: none !important;
+			display: inline;
+		}
+	}
+}
+.successaddmessageclear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.anpopup {
+	position: fixed !important;
+}
+.npopup {
+	display:none;
+	position: relative;
+	text-shadow: none;
+	background:#FFF;
+	border-radius: 4px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+	height:auto;
+	width: 500px !important;
+	margin:0;
+	z-index:10000;
+	.npopup-body {
+		height:auto;
+		overflow:auto;
+		width:auto;
+		padding:10px;
+	}
+	.npopup-btn-close {
+		position: absolute;
+		top: -18px;
+		right: -18px;
+		width: 36px;
+		height: 36px;
+		cursor: pointer;
+		z-index: 8040;
+	}
+	.npopup-continue {
+		margin-right: 10px;
+	}
+	.npopup-btn-close {
+		background-image: url('/assets/npopup_sprite.png');
+	}
+	@include media-breakpoint-down(sm) {
+		.npopup {
+			width: auto !important;
+			max-width: 80%;
+		}
+		.npopup-continue, .npopup-checkout, .npopup-view {
+			display: block;
+			width: 100%;
+			margin: 0;
+		}
+		.npopup-continue, .npopup-view {
+			margin-bottom: 10px;
+		}
+	}
+}
+//Generic disable activity class
+.disable-interactivity {
+	pointer-events: none;
+}
+.btn .fa {
+	pointer-events:none;
+}
+.nactivity{
+	display: none;
+}
+// Product page main image
+.main-image a > .zoom {
+	@include media-breakpoint-down(sm) {
+		pointer-events: none;
+	}
+}
+#main-image {
+	max-width: 100%;
+	height: auto;
+	&.component-var-thumb {
+		width:100%;
+	}
+}
+// Product thumbnail row
+.products-row{
+	@extend .justify-content-center;
+	@extend .justify-content-sm-start;
+}
+// Cart
+.cartTable {
+	.cartTable--heading-quantity,
+	.cartTable--heading-price,
+	.cartTable--column-image {
+		@include media-breakpoint-up(md) {
+			width: 100px;
 		}
 	}
 }

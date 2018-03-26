@@ -10,7 +10,7 @@
 				<ul class="list-group list-group-flush" role="group">
 					[%product_filter type:'variations' autohide:'0' sortoption:'sortorder'%]
 						[%param *header%]
-							<li class="list-group-item"><h4 class="mb-0">Filter By [@filter_name@]</h4></li>
+							<li class="list-group-item"><h3 class="h4 mb-0">Filter By [@filter_name@]</h3></li>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -28,7 +28,7 @@
 					[%/product_filter%]
 					[%product_filter type:'category' limit:'100' autohide:'0' filter_parent_content:'1'%]
 						[%param header%]
-							<li class="list-group-item"><h4 class="mb-0">Filter By Category</h4></li>
+							<li class="list-group-item"><h3 class="h4 mb-0">Filter By Category</h3></li>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -46,7 +46,7 @@
 					[%/product_filter%]
 					[%product_filter type:'instock' autohide:'0'%]
 						[%param header%]
-							<li class="list-group-item"><h4 class="mb-0">Filter By Stock</h4></li>
+							<li class="list-group-item"><h3 class="h4 mb-0">Filter By Stock</h3></li>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -64,7 +64,7 @@
 					[%/product_filter%]
 					[%product_filter type:'price' limit:'6'%]
 						[%param header%]
-							<li class="list-group-item d-l-none d-xl-none"><h4>Filter By Price Range</h4></li>
+							<li class="list-group-item d-l-none d-xl-none"><h3 class="h4 mb-0">Filter By Price Range</h3></li>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -85,7 +85,7 @@
 					[%/product_filter%]
 					[%product_filter type:'price' limit:'1'%]
 						[%param header%]
-							<li class="list-group-item hidden-sm d-none d-sm-block"><h4>Filter By Price Range</h4></li>
+							<li class="list-group-item hidden-sm d-none d-sm-block"><h3 class="h4 mb-0">Filter By Price Range</h3></li>
 						[%/param%]
 						[%param *body%]
 							[%SITE_VALUE id:'footer_javascript'%]
@@ -123,7 +123,7 @@
 					[%/product_filter%]
 					[%product_filter type:'brand' autohide:'0'%]
 						[%param header%]
-							<li class="list-group-item"><h4 class="mb-0">Filter By Brand</h4></li>
+							<li class="list-group-item"><h3 class="h4 mb-0">Filter By Brand</h3></li>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -147,26 +147,26 @@
 	[%CATEGORYMENU sortby:'sortorder,selected,name' show_empty:'1'%]
 		[%param header%]
 			<div class="card d-none d-sm-block mb-2">
-				<div class="card-header"><h3 class="mb-0">Categories</h3></div>
+				<div class="card-header"><h3 class="h4 mb-0">Categories</h3></div>
 				<ul class="list-group list-group-flush" role="navigation" aria-label="Category menu">
 				[%/param%]
 				[%param *level_1%]
-					<li class="list-group-item  [%DATA id:'next_level' if:'ne' value:''%] dropdown dropdown-hover[%/DATA%]"><a href="[@url@]" class="dropdown-toggle">[@name@]</a>
+					<li class="list-group-item  [%if [@next_level@]%] dropdown dropdown-hover[%/if%]"><a class="text-dark" href="[@url@]">[@name@]</a>
 						[%if [@next_level@]%]
 							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
 						[%/if%]
 					</li>
 				[%/param%]
 				[%param *level_2%]
-					<li class="[%DATA id:'next_level' if:'ne' value:''%]dropdown dropdown-hover[%/DATA%]">
-						<a href="[@url@]" >[@name@]</a>
+					<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
+						<a class="dropdown-item" href="[@url@]">[@name@]</a>
 						[%if [@next_level@]%]
 							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
 						[%/if%]
 					</li>
 				[%/param%]
 				[%param *level_3%]
-					<li class="lv3-li"><a href="[@url@]">[@name@]</a></li>
+					<li><a class="dropdown-item" href="[@url@]">[@name@]</a></li>
 				[%/param%]
 				[%param footer%]
 				</ul>
@@ -178,7 +178,7 @@
 		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
 			[%param header%]
 				<section class="card d-none d-sm-block my-2" role="contentinfo" aria-label="Browsing history">
-					<div class="card-header"><h3 class="mb-0">Browsing History</h3></div>
+					<div class="card-header"><h3 class="h4 mb-0">Browsing History</h3></div>
 					<ul class="nav list-group">
 			[%/param%]
 			[%param footer%]
@@ -190,26 +190,26 @@
 	[%MENU id:'web_information'%]
 		[%param header%]
 		<div class="card d-none d-sm-block my-2">
-			<div class="card-header"><h3 class="mb-0">Information</h3></div>
+			<div class="card-header"><h3 class="h4 mb-0">Information</h3></div>
 			<ul class="list-group list-group-flush" role="navigation" aria-label="Information menu">
 				[%/param%]
 				[%param *level_1%]
-					<li class="list-group-item  [%if [@next_level@]%] dropdown-submenu[%/if%]"><a href="[@url@]" >[@name@]</a>
+					<li class="list-group-item  [%if [@next_level@]%] dropdown dropdown-hover[%/if%]"><a class="text-dark" href="[@url@]">[@name@]</a>
 						[%if [@next_level@]%]
-							<ul class="dropdown-menu">[@next_level@]</ul>
+							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
 						[%/if%]
 					</li>
 				[%/param%]
 				[%param *level_2%]
-					<li class="[%if [@next_level@]%]dropdown-submenu[%/if%]">
-						<a href="[@url@]">[@name@]</a>
-						[%if [@next_level@]%]<ul class="dropdown-menu">[@next_level@]</ul>[%/if%]
+					<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
+						<a class="dropdown-item" href="[@url@]">[@name@]</a>
+						[%if [@next_level@]%]
+							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
+						[%/if%]
 					</li>
 				[%/param%]
 				[%param *level_3%]
-					<li class="lv3-li">
-						<a href="[@url@]">[@name@]</a>
-					</li>
+					<li><a class="dropdown-item" href="[@url@]">[@name@]</a></li>
 				[%/param%]
 				[%param footer%]
 			</ul>
