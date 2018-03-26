@@ -334,11 +334,23 @@
 }
 // Cart
 .cartTable {
+	tbody tr td {
+		vertical-align: middle;
+	}
+	.row > div {
+		display: inline-block;
+	}
 	.cartTable--heading-quantity,
 	.cartTable--heading-price,
 	.cartTable--column-image {
 		@include media-breakpoint-up(md) {
 			width: 100px;
 		}
+	}
+}
+// Add margin to stacked btns
+.btn-stack .col-12 + .col-12 {
+	@include media-breakpoint-down(sm) {
+		margin-top: 5px;
 	}
 }

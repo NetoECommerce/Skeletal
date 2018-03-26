@@ -45,48 +45,48 @@
 		[%/if%]
 		[%if [@config:allow_quote_approval@]%]
 			<div class="col-12 col-md-4 mb-3" role="article" arai-label="Approve quotes">
-				<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'approve_quote'/%]">
+				<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'approve_quote'/%]">
 					<h3><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approve Quotes </h3>
-					<p class="text-muted small">Manage and approve quotes on account</p>
+					<p class="small">Manage and approve quotes on account</p>
 				</a>
 			</div>
 		[%/if%]
 		[%if [@config:customer_view_docs@]%]
 			<div class="col-12 col-md-4 mb-3" role="article" aria-label="My files">
-				<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'documents'/%]">
+				<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'documents'/%]">
 					<h3><i class="fa fa-folder-open" aria-hidden="true"></i> My Files</h3>
-					<p class="text-muted small">View and download your files</p>
+					<p class="small">View and download your files</p>
 				</a>
 			</div>
 		[%/if%]
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="Edit My Contact Details">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'edit_account'/%]#contact">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_account'/%]#contact">
 				<h3><i class="fa fa-pencil" aria-hidden="true"></i> Edit My Contact Details</h3>
-				<p class="text-muted small">Change your name, phone number and more</p>
+				<p class="small">Change your name, phone number and more</p>
 			</a>
 		</div>
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="Edit My Address Book">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'edit_address'/%]">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_address'/%]">
 				<h3><i class="fa fa-book" aria-hidden="true"></i> Edit My Address Book</h3>
-				<p class="text-muted small">Change or add your shipping address</p>
+				<p class="small">Change or add your shipping address</p>
 			</a>
 		</div>
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="Change My Password">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'edit_pwd'/%]">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_pwd'/%]">
 				<h3><i class="fa fa-lock" aria-hidden="true"></i> Change My Password</h3>
-				<p class="text-muted small">Set something you'll remember!</p>
+				<p class="small">Set something you'll remember!</p>
 			</a>
 		</div>
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="Pay Invoices Online">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'payrec'/%]">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'payrec'/%]">
 				<h3><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Invoices Online</h3>
-				<p class="text-muted small">Pay your outstanding balance</p>
+				<p class="small">Pay your outstanding balance</p>
 			</a>
 		</div>
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="My Orders">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account'/%]#orders">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account'/%]#orders">
 				<h3><i class="fa fa-folder" aria-hidden="true"></i> My Orders</h3>
-				<p class="text-muted small">View, print and track orders you have placed.</p>
+				<p class="small">View, print and track orders you have placed.</p>
 			</a>
 		</div>
 		[%thumb_list type:'standing_orders' limit:'1'%]
@@ -94,37 +94,37 @@
 			[%param filter_2%][%form id:'sts'/%][%/param%]
 			[%param *body%]
 				<div class="col-12 col-md-4 mb-3" role="article" aria-label="My Standing Orders">
-					<a class="btn btn-light btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
+					<a class="btn btn-outline-secondary btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
 						<h3><i class="fa fa-refresh" aria-hidden="true"></i> My Standing Orders</h3>
-						<p class="text-muted small">View or edit your recurring orders.</p>
+						<p class="small">View or edit your recurring orders.</p>
 					</a>
 				</div>
 			[%/param%]
 		[%/thumb_list%]
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="My Quotes">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account'/%]#quotes">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account'/%]#quotes">
 				<h3><i class="fa fa-folder-o" aria-hidden="true"></i> My Quotes</h3>
-				<p class="text-muted small">View or print any outstanding quotes.</p>
+				<p class="small">View or print any outstanding quotes.</p>
 			</a>
 		</div>
 		[%if [@config:show_wishlist@]%]
 			<div class="col-12 col-md-4 mb-3" role="article" aria-label="My Wishlists">
-				<a class="btn btn-light btn-lg btn-block"  href="[%url page:'account' type:'wishlist'/%]">
+				<a class="btn btn-outline-secondary btn-lg btn-block"  href="[%url page:'account' type:'wishlist'/%]">
 					<h3><i class="fa fa-star" aria-hidden="true"></i> My Wishlists</h3>
-					<p class="text-muted small">View, create or edit your wishlist(s)</p>
+					<p class="small">View, create or edit your wishlist(s)</p>
 				</a>
 			</div>
 		[%/if%]
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="Resolution Centre">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'warranty'/%]">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'warranty'/%]">
 				<h3><i class="fa fa-info-circle" aria-hidden="true"></i> Resolution Centre</strong></h3>
-				<p class="text-muted small">Problems with a product or order?</p>
+				<p class="small">Problems with a product or order?</p>
 			</a>
 		</div>
 		<div class="col-12 col-md-4 mb-3" role="article" aria-label="Reorder Items">
-			<a class="btn btn-light btn-lg btn-block" href="[%url page:'account' type:'favourites'/%]">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'favourites'/%]">
 				<h3><i class="fa fa-truck" aria-hidden="true"></i> Reorder Items</h3>
-				<p class="text-muted small">Reorder from a list of past purchases.</p>
+				<p class="small">Reorder from a list of past purchases.</p>
 			</a>
 		</div>
 	</div>
