@@ -20,10 +20,10 @@
 			[%/param%]
 		[%/breadcrumb%]
 		<div class="row" itemscope itemtype="http://schema.org/Product">
-			<section class="col-12 col-md-5" role="contentinfo" aria-label="Product images">
+			<section class="col-12 col-lg-5" role="contentinfo" aria-label="Product images">
 				[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 			</section>
-			<section class="col-12 col-md-7" role="contentinfo" aria-label="Products information">
+			<section class="col-12 col-lg-7" role="contentinfo" aria-label="Products information">
 				[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
 				<!-- child products -->
 				[%load_template file:"products/includes/child_products.template.html"/%]

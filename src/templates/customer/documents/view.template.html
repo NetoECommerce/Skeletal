@@ -1,9 +1,11 @@
 <div class="col-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li><a href="[%URL page:'account' type:'documents'%][%/ URL%]">Files</a></li>
-	</ul>
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'documents'%][%/ URL%]">Files</a></li>
+	</ol>
+	</nav>
 	<div class="page-header"><h1>My Files</h1></div>
 	[%customer_filelist id:'[@username@]'%]
 		[%param *header%]

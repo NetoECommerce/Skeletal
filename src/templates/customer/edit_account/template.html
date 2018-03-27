@@ -1,11 +1,11 @@
 <div class="col-12" >
-	<!-- Start Breadcrumb -->
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li><a href="#">Edit My Account</a></li>
-	</ul>
-	<!-- End Breadcrumb -->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Edit My Account</a></li>
+	</ol>
+	</nav>
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%/ URL%]">
 	<div class="page-header">
 		<h1>Edit Your [@config:company_name@] Account Details</h1>
@@ -312,11 +312,9 @@
 			[%/ CONFIG%]
 		</div>
 		<div class="row">
-			<div class="col-12">
-				<hr>
-			</div>
+			<div class="col-12"><hr></div>
 			<div class="col-12 col-md-2 col-md-offset-10">
-			<input type="hidden" name="update" value="1">
+				<input type="hidden" name="update" value="1">
 				<input type="SUBMIT" class="btn btn-lg btn-success" value="Save Changes">
 			</div>
 		</div>

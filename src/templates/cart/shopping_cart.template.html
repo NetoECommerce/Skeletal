@@ -2,7 +2,7 @@
 	<div class="page-header"><h1>Shopping Cart</h1></div>
 	[%load_template file:'cart/cart.error.html'/%]
 	<div class="row btn-stack">
-		<div class="col-12 col-md-9">
+		<div class="col-12 col-md-8 col-lg-9">
 			[%if [@config:allow_user_quote@] eq '1'%]
 				<button class="btn btn-outline-secondary" type="button" role="link" onclick="window.location='[%url page:'checkout' fn:'quote'/%]';" title="Create Quote From Cart"> <i class="fa fa-list-alt" aria-hidden="true"></i> Create Quote From Cart</button>
 			[%/if%]
@@ -11,7 +11,7 @@
 				<a class="btn btn-outline-secondary" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i> Edit extra options</a>
 			[%/if%] -->
 		</div>
-		<div class="col-12 col-md-3">
+		<div class="col-12 col-md-4 col-lg-3">
 			<button class="btn btn-success btn-lg btn-block" type="button" role="link" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout Now"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Checkout Now</button>
 		</div>
 	</div>
@@ -124,17 +124,17 @@
 			<div class="col-12"><hr aria-hidden="true" /></div>
 		</div>
 		<div class="row btn-stack">
-			<div class="col-12 col-md-3">
+			<div class="col-12 col-md-4 col-lg-3">
 				<button type="button" role="link" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-outline-secondary btn-block" title="Continue shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
 			</div>
-			<div class="col-12 col-md-3 offset-md-6">
+			<div class="col-12 col-md-4 offset-md-4 col-lg-3 offset-lg-6">
 				<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-refresh" aria-hidden="true"></i> Update My Changes</button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12"><hr aria-hidden="true" /></div>
 			[%if [@config:show_shipping_calc@]%]
-				<div class="col-12 [%if [@config:show_coupon_promo_code_field@]%]col-md-3[%else%]col-md-6[%/if%]">
+				<div class="col-12 [%if [@config:show_coupon_promo_code_field@]%]col-lg-3[%else%]col-lg-6[%/if%]">
 					<div class="card" role="contentinfo" aria-label="Calculate shipping">
 						<div class="card-header">
 							<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
@@ -162,7 +162,7 @@
 				</div>
 			[%/if%]
 			[%if [@config:show_coupon_promo_code_field@]%]
-				<div class="col-12 [%if [@config:show_shipping_calc@]%]col-md-3[%else%]col-md-6[%/if%]">
+				<div class="col-12 [%if [@config:show_shipping_calc@]%]col-lg-3[%else%]col-lg-6[%/if%]">
 					<div class="card" role="contentinfo" aria-label="Discount Code">
 						<div class="card-header">
 							<h2 class="card-title mb-0 h4">Discount Code</h2>
@@ -180,7 +180,7 @@
 					</div>
 				</div>
 			[%/if%]
-			<div class="col-12 col-md-6" role="contentinfo" aria-label="Cart pricing information">
+			<div class="col-12 col-lg-6" role="contentinfo" aria-label="Cart pricing information">
 				<table class="table">
 					<tr>
 						<th scope="row">Sub Total</th>
@@ -273,7 +273,7 @@
 					[%/param%]
 					[%/ payment_plans%]
 					<div class="row btn-stack">
-						<div class="col-12 col-md-6 text-center">
+						<div class="col-12 col-lg-6 text-center">
 							[%if [@config:show_paypal_express_link@]%]
 								<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
 									<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
@@ -283,7 +283,7 @@
 								<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'/%]"> <img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"> </a>
 							[%/if%]
 						</div>
-						<div class="col-12 col-md-6 text-center">
+						<div class="col-12 col-lg-6 text-center">
 							<button class="btn btn-success btn-lg btn-block" role="link" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout now">
 								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout Now
 							</button>
