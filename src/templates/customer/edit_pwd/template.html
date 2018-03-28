@@ -1,13 +1,15 @@
 <div class="col-12">
-	<!-- Start Breadcrumb -->
-	<ul class="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-		<li><a href="#">Change My Password</a></li>
-	</ul>
-	<!-- End Breadcrumb -->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Change My Password</a></li>
+		</ol>
+	</nav>
 	<div class="page-header"><h1>Change Account Password</h1></div>
-	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/ DATA%]
+	[%DATA id:'error' if:'ne' value:''%]
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">[@error@] <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+	[%/ DATA%]
 	<p>Please enter your current and new password below in order to change your password.</p>
 	<form method="POST" action="[%URL page:'account' type:'edit_pwd'%][%END URL%]">
 		<input type="hidden" name="fn" value="proc">
@@ -33,7 +35,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-3 col-md-offset-9">
+			<div class="col-12 col-md-3 offset-md-9">
 				<input type="submit" class="btn btn-block btn-lg btn-success" value="Change My Password"/>
 			</div>
 		</div>

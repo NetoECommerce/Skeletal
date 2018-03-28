@@ -1,11 +1,11 @@
 <div class="col-12">
-<!-- Start Breadcrumb -->
-<ul class="breadcrumb" aria-label="Breadcrumb">
-<li><a href="[@config:home_url@]">Home</a></li>
-<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-<li><a href="#">Edit Your Address Book</a></li>
-</ul>
-<!-- End Breadcrumb -->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Edit Your Address Book</a></li>
+		</ol>
+	</nav>
 <div class="page-header">
 <h1>Add or Edit Address Book Entry</h1>
 </div>
@@ -13,9 +13,9 @@
 [%TRIM inner:'1'%]
 [%param body%]
 	[%show_message name:"update_error"%]
-	[%param header%]<div class="errorbox"><ul>[%/ param%]
+	[%param header%]<div class="errorbox alert alert-danger" role="alert"><ul class="mb-0">[%/ param%]
 	[%param *body%]<li></li>[%/ param%]
-	[%param footer%]</ul></div><br>[%/ param%]
+	[%param footer%]</ul></div>[%/ param%]
 	[%/ show_message%]
 [%/ param%]
 [%/ TRIM%]
@@ -23,20 +23,20 @@
 [%TRIM inner:'1'%]
 [%param body%]
 	[%show_message name:"edit_msg"%]
-	[%param header%]<div class="successbox"><ul>[%/ param%]
+	[%param header%]<div class="successbox alert alert-success" role="alert"><ul class="mb-0">[%/ param%]
 	[%param *body%]<li>
 		[%DATA id:'msg' if:'eq' value:'updated' %]Your address '[@ship_title@]' has been updated.[%/ DATA%]
 		[%DATA id:'msg' if:'eq' value:'deleted' %]Your address '[@ship_title@]' has been deleted.[%/ DATA%]
 		[%DATA id:'msg' if:'eq' value:'created' %]Your address '[@ship_title@]' has been created.[%/ DATA%]
 	</li>[%/ param%]
-	[%param footer%]</ul></div><br>[%/ param%]
+	[%param footer%]</ul></div>[%/ param%]
 	[%/ show_message%]
 [%/ param%]
 [%/ TRIM%]
 
 <p class="help-block">You can use the Address Book tool to create and save multipleship-to addresses. You can then choose your appropriate address for each order you place at checkout.</p>
 
-<form class="well" method="POST" name="shipping" action="[%URL page:'account' type:'edit_address'%][%/ URL%]">
+<form class="card card-body mb-3" method="POST" name="shipping" action="[%URL page:'account' type:'edit_address'%][%/ URL%]">
 	<label class="lead">Add a new address or edit an existing address</label>
 	<select class="form-control input-lg" type="text" name="addr_id" id="addr_id">
 		<option value="">Add or Edit</option>
@@ -121,7 +121,7 @@
 			<div class="form-group">
 				<label for="ship_city">Country</label>
 				<span class="small text-danger">Required</span>
-				<select class="form-control" name="ship_country" id="ship_country" size="1" onChange="updloca('ship')">
+				<select class="form-control" name="ship_country" id="ship_country" onChange="updloca('ship')">
 					[%countries%]
 					[%param *body%]<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/ DATA%]>[@country_name@]</option>[%/ param%]
 					[%/ countries%]
@@ -142,7 +142,7 @@
 		<div class="col-12 col-md-2">
 			<input type="button" name="delete" class="btn btn-danger btn-lg btn-block" value="Delete Address" id="delete_button" onClick="javascript:$.del_addressbook_entry()"><br>
 		</div>
-		<div class="col-12 col-md-2 col-md-offset-8">
+		<div class="col-12 col-md-2 offset-md-8">
 			<input type="button" name="submit" class="btn btn-success btn-lg btn-block" value="Save Address" id="save_button" onClick="javascript:$.add_addressbook_entry()">
 		</div>
 	</div>

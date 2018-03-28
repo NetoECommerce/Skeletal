@@ -354,3 +354,7 @@
 		margin-top: 5px;
 	}
 }
+#suburb_sl{
+	@extend .form-control;
+	@extend select.form-control;
+}

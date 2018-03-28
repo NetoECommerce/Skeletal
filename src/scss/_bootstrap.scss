@@ -2,6 +2,7 @@
 //
 // Color system
 //
+$gray-100: #f8f9fa;
 $blue:    #006FF5;
 $theme-colors: (
     "primary": $blue
@@ -22,6 +23,8 @@ $display1-size:               4.5rem;
 $display2-size:               4.125rem;
 $display3-size:               3.375rem;
 $display4-size:               2.625rem;
+// Breadcrumbs
+$breadcrumb-bg:               $gray-100;
 
 // Import Bootstrap
 //
