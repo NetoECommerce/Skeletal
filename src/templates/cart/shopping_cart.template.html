@@ -41,7 +41,7 @@
 					[%/param%]
 					[%param *body%]
 					<tr>
-						<td class="cartTable--column cartTable--column-image"><a href="[@url@]"><img class="img-responsive" src="[@thumb@]" alt="[@model@]"/></a></td>
+						<td class="cartTable--column cartTable--column-image"><a href="[@url@]"><img class="img-responsive" src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" alt="[@model@]"/></a></td>
 						<td>
 							<a href="[@url@]"><p class="h4">[@model@]</p></a>
 							<p class="small">
