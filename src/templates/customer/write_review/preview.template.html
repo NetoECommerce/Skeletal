@@ -15,7 +15,7 @@
 </script>
 <div class="col-12">
 	<h1 class="page-header">Preview [@model@] Review </h1>
-	[%DATA id:'error' if:'ne' value:''%]<div class="errorbox"><ul><li>[@error@]</li></ul></div>[%/ DATA%]
+	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger erorbox" role="alert">[@error@]</div>[%/ DATA%]
 	<form name="preview_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
 		<input type="hidden" name="fn" value="confirm">
 		<input type="hidden" name="item" value="[%NOHTML%][%FORM id:'item'%][%/ FORM%][%/ NOHTML%]">
@@ -30,7 +30,7 @@
 				<h2>[%NOHTML%][%FORM id:'review_title'%][%/ FORM%][%/ NOHTML%]</h2>
 				<p>[%NOHTML%][%FORM id:'review_text'%][%/ FORM%][%/ NOHTML%]</p>
 				[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]
-					<div class="hidden">
+					<div class="d-none">
 						[%NOHTML%][%FORM id:'customername'%][%/ FORM%][%/ NOHTML%]
 						[%NOHTML%][%FORM id:'emailaddress'%][%/ FORM%][%/ NOHTML%]
 					</div>

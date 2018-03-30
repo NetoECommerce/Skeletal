@@ -1,11 +1,11 @@
 <div class="col-12">
-    <!-- Start Breadcrumb -->
-    <ul class="breadcrumb" aria-label="Breadcrumb">
-        <li><a href="[@config:home_url@]">Home</a></li>
-        <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-        <li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
-    </ul>
-    <!-- End Breadcrumb -->
+  <nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+      <li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+      <li class="breadcrumb-item"><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
+    </ol>
+	</nav>
     [%DATA id:'msg' if:'ne' value:''%]
         <div class="alert alert-success"><a class="close" data-dismiss="alert">×</a> [@msg@]</div>
     [%END DATA%]
@@ -88,17 +88,17 @@
         	<div class="col-12">
         		<h4>Details</h4>
         		<div class="content">
-                    <div class="form-group">
-                        <label for="stloc_name">Store Name <span class="required text-danger">*</span></label>
-                        <input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
-                    </div>
-                    <div class="form-group">
-                        <label for="stloc_name">Status</label>
-                        <select name="active" class="form-control">
-                            <option value="y" [%DATA id:'active' if:'eq' value:'y'%]selected[%END DATA%]>Active</option>
-                            <option value="n" [%DATA id:'active' if:'eq' value:'n'%]selected[%END DATA%]>Inactive</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="stloc_name">Store Name <span class="required text-danger">*</span></label>
+                    <input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
+                </div>
+                <div class="form-group">
+                    <label for="stloc_name">Status</label>
+                    <select name="active" class="form-control">
+                        <option value="y" [%DATA id:'active' if:'eq' value:'y'%]selected[%END DATA%]>Active</option>
+                        <option value="n" [%DATA id:'active' if:'eq' value:'n'%]selected[%END DATA%]>Inactive</option>
+                    </select>
+                </div>
         		</div>
         	</div>
         </div>
@@ -199,7 +199,6 @@
             		<label for="stloc_street1">Address line 2</label>
             		<input type="text" class="form-control" name="stloc_street2" size="50" maxlength="50" value="[%NOHTML%][@stloc_street2@][%END NOHTML%]" />
                 </div>
-
                 <div class="form-group">
                     <label for="stloc_zip">Postal Code <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" id="stloc_zip" name="stloc_zip" size="50" value="[%NOHTML%][@stloc_zip@][%END NOHTML%]" maxlength="10" />

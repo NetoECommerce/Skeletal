@@ -1,13 +1,19 @@
 <div class="col-12">
-	<!-- Start Breadcrumb-->
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-	</ul>
-	<!-- End Breadcrumb -->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		</ol>
+	</nav>
 	<div class="page-header"><h1>My Stores</h1></div>
-	[%DATA id:'msg' if:'ne' value:''%]<div class="alert"><a class="close" data-dismiss="alert">×</a>[@msg@]</div>[%/ DATA%]
-	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/ DATA%]
+	[%if [@msg@]%]<div class="alert alert-dismissible fade show" role="alert">[@msg@]
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	</div>
+	[%/ if%]
+	[%if [@error@]%]<div class="alert alert-danger alert-dismissible fade show" role="alert">[@error@]
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		</div>
+	[%/ if%]
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
 		<tr>
 			<th width="200px" nowrap>Store Name</th>
@@ -36,7 +42,7 @@
 				<td valign="top" nowrap>
 			[%FORMAT type:'date' format:'#d #k #Y (#H:#I)' default:'-'%][@date_updated@][%/ FORMAT%]
 			</td>
-				<td valign="top" nowrap><a href="[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/ URL%]"><button type="button" class="btn" title="Edit">Edit Store</button></a></td>
+				<td valign="top" nowrap><a href="[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/ URL%]"><button type="button" class="btn btn-outline-secondary" title="Edit">Edit Store</button></a></td>
 			 </tr>
 			[%/ PARAM%]
 			[%PARAM *ifempty%]

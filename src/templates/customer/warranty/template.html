@@ -1,11 +1,11 @@
 <div class="col-12">
-	<!-- Start Breadcrumb -->
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li><a href="#">Resolution Centre</a></li>
-	</ul>
-	<!-- End Breadcrumb-->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Resolution Centre</a></li>
+		</ol>
+	</nav>
 	<h1>Resolution Centre - Warranty, Payment, and Return Disputes</h1>
 	<p>Need to return an item, make a warranty claim or have been over charged for an order? Please open a dispute so that we can resolve your problem as quickly as possible.</p>
 	<p>Most disputes can be resolved through communication and it's best to contact us as soon as you recognise a potential problem. Once lodged you can also track the progress of your dispute online at any time. </p>
@@ -57,18 +57,18 @@
 		[%/ param%]
 		[%param *footer%]
 	</table>
-	<div class="text-center">
-		<ul class="pagination" aria-label="Pagination navigation">
+	<nav aria-label="Orders page navigation">
+		<ul class="pagination justify-content-center mt-3">
 			[%paging limit:'3'%]
-			[%param *previous_page%]<li><a href="[@URL@]">Previous Page</a></li>[%/ param%]
-			[%param *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *next_page%]<li><a href="[@URL@]">Next Page</a></li>[%/ param%]
+			[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go back one page">Previous Page</a></li>[%/ param%]
+			[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/ param%]
+			[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/ param%]
+			[%param *gonext_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/ param%]
+			[%param *next_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go forward one page">Next Page</a></li>[%/ param%]
 			[%/ paging%]
 		</ul>
-	</div>
+	</nav>
 	[%/ param%]
-	[%param ifempty%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> No disputes have been raised on this account. </div>[%/ param%]
+	[%param ifempty%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a> No disputes have been raised on this account. </div>[%/ param%]
 	[%/ thumb_list%]
 </div>

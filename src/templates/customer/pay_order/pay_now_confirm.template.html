@@ -38,14 +38,13 @@
 			}
 		}
 	</script>
-	<!-- Start Breadcrumb -->
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-	</ul>
-	<!-- End Breadcrumb -->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		</ol>
+	</nav>
 	<div class="page-header"><h1>Pay Now</h1></div>
-
 	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>[%/ DATA%]
 	[%DATA id:'msg' if:'ne' value:''%]<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>[%/ DATA%]
 	<form action="[%URL page:'account' type:'pay_order'%][%/ URL%]" method="post" name="itemForm">
@@ -72,7 +71,7 @@
 			</div>
 			<div class="col-12 col-md-6 offset-md-2">
 				<div id="payccpl">
-					<div class="well">
+					<div class="card card-body">
 						<div class="row">
 							<div class="col-12">
 							<div class="form-group">

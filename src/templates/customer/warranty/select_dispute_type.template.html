@@ -1,15 +1,17 @@
 <div class="col-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'/%]">My Account</a></li>
-		<li><a href="#">Resolution Centre</a></li>
-	</ul>
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'/%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Resolution Centre</a></li>
+		</ol>
+	</nav>
 	<div class="page-header">
 		<h1>Resolution Centre</h1>
 		<h2>Step 1 - Choose the type of dispute you would like to raise</h2>
 	</div>
 	[%if [@error@]%]
-		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
+		<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 	[%/if%]
 	<form name="disputeForm" action="[%url page:'account' type:'warranty' fn:'create'/%]" method="post">
 		[%dispute_types%]
@@ -19,10 +21,12 @@
 			[%END PARAM%]
 			[%PARAM *body%]
 				<div class="col-12 col-md-6">
-					<div class="well">
-						<div class="radio">
-							<label for="[@dispute_type_id@]">
-							<h4><input type="radio" name="type" value="[@dispute_type_id@]" id="[@dispute_type_id@]" [%if [@type@] eq [@dispute_type_id@]%]checked[%/if%]> [@dispute_type_title@]</h4><p>[@description@]</p></label>
+					<div class="card card-body">
+						<div class="form-check">
+							<input type="radio" class="form-check-input" name="type" value="[@dispute_type_id@]" id="[@dispute_type_id@]" [%if [@type@] eq [@dispute_type_id@]%]checked[%/if%]>
+							<label class="form-check-label" for="[@dispute_type_id@]">
+								<h4>[@dispute_type_title@]</h4><p>[@description@]</p>
+							</label>
 						</div>
 					</div>
 				</div>
@@ -40,7 +44,7 @@
 			<div class="col-12 col-md-3">
 				<a href="[%url page:'account' type:'warranty'/%]" class="btn btn-danger btn-block" value="Cancel"><i class="fa fa-remove icon-white"></i> Cancel</a>
 			</div>
-			<div class="col-12 col-md-3 col-md-offset-6">
+			<div class="col-12 col-md-3 offset-md-6">
 				<button type="submit" class="btn btn-success btn-block">Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>
 			</div>
 		</div>

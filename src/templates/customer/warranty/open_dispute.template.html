@@ -1,9 +1,11 @@
 <div class="col-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li><a href="#">Resolution Centre</a></li>
-	</ul>
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'/%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Resolution Centre</a></li>
+		</ol>
+	</nav>
 	<div class="page-header">
 		<h1>Resolution Centre</h1>
 		<h2>Step 3 - Raise dispute against order #[@order_id@]</h2>
@@ -36,43 +38,29 @@
 		<input type="hidden" name="order" value="[%NOHTML%][@order_id@][%/ NOHTML%]">
 		<h3>Order <a target="_blank" rel="noopener" href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%/ URL%]">[@order_id@]</a></h3>
 		[%DATA id:'customer_po' if:'ne' value:''%]
-		<p><b>PO#:</b>
-			[%NOHTML%][@customer_po@][%/ NOHTML%]
-		</p>
+		<p><b>PO#:</b> [%NOHTML%][@customer_po@][%/ NOHTML%]</p>
 		[%/ DATA%]
-		<p><b>Shipped To:</b>
-			[%NOHTML%][@bill_first_name@] [@bill_last_name@][%/ NOHTML%]
-		</p>
-		<p><b>Date Placed:</b>
-			[%format type:"date"%][@date_placed@][%/ format%]
-		</p>
-		<p><b>Order Status:</b>
-			[%NOHTML%][@order_status@][%/ NOHTML%]
-		</p>
-		<p><b>Contact Email:</b>
-			[%NOHTML%][@email@][%/ NOHTML%]
-		</p>
-		<p><b>Contact Phone:</b>
-			[%NOHTML%][@phone@][%/ NOHTML%]
-		</p>
+		<p><b>Shipped To:</b> [%NOHTML%][@bill_first_name@] [@bill_last_name@][%/ NOHTML%]</p>
+		<p><b>Date Placed:</b> [%format type:"date"%][@date_placed@][%/ format%]</p>
+		<p><b>Order Status:</b> [%NOHTML%][@order_status@][%/ NOHTML%]</p>
+		<p><b>Contact Email:</b> [%NOHTML%][@email@][%/ NOHTML%]</p>
+		<p><b>Contact Phone:</b>[%NOHTML%][@phone@][%/ NOHTML%]</p>
 		<hr/>
 		<h4>Which items from the list below would you like to dispute?</h4>
 		<div class="row">
 			<div class="col-12 col-md-6">
-				<div class="well">
-					<div class="radio">
-						<label>
-							<input type="radio" name="dispute" id="dispute_order" value="order" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'order'%]checked[%/ DATA%]/>
-							Dispute The Entire Order </label>
+				<div class="card card-body">
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="dispute" id="dispute_order" value="order" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'order'%]checked[%/ DATA%]/>
+						<label class="form-check-label">Dispute The Entire Order </label>
 					</div>
 				</div>
 			</div>
 			<div class="col-12 col-md-6">
-				<div class="well">
-					<div class="radio">
-						<label>
-							<input type="radio" name="dispute" id="dispute_line" value="line" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'line'%]checked[%/ DATA%]/>
-							Dispute Selected Item(s) </label>
+				<div class="card card-body">
+					<div class="form-check">
+						<input type="radio" class="form-check-input" name="dispute" id="dispute_line" value="line" onclick="showOrder()" [%DATA id:'dispute' if:'eq' value:'line'%]checked[%/ DATA%]/>
+						<label class="form-check-label">Dispute Selected Item(s) </label>
 					</div>
 				</div>
 			</div>
@@ -121,8 +109,8 @@
 			<div class="col-12 col-md-3">
 				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="Cancel"> <i class="fa fa-remove icon-white"></i> Cancel </button>
 			</div>
-			<div class="col-12 col-md-3 col-md-offset-3">
-				<button name="button" type="button" onClick="goBack()" class="btn btn-default btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
+			<div class="col-12 col-md-3 offset-md-3">
+				<button name="button" type="button" onClick="goBack()" class="btn btn-outline-secondary btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
 			</div>
 			<div class="col-12 col-md-3">
 				<button type="submit" class="btn btn-success btn-block">Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>

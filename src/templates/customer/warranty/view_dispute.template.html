@@ -15,13 +15,15 @@
 	}
 </script>
 <div class="col-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'/%]">My Account</a></li>
-		<li><a href="[%URL page:'account' type:'warranty'/%]">Resolution Centre</a></li>
-	</ul>
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'/%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'warranty'/%]">Resolution Centre</a></li>
+		</ol>
+	</nav>
 	<div class="page-header"><h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1></div>
-	[%if [@error@]%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/if%]
+	[%if [@error@]%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/if%]
 	<form name="disputeForm" action="[%URL page:'account' type:'warranty'/%]" method="post">
 		<input type="hidden" name="id" value="[@dispute_id@]">
 		<input type="hidden" name="action" value="proc">
@@ -130,11 +132,11 @@
 				[%/if%]
 			</div>
 			[%dispute_messages id:'[@dispute_id@]'%][%param *header%]
-			<div class="panel panel-default">
-				<div class="panel-heading">
-				<h3 class="panel-title">Message History</h3>
+			<div class="card">
+				<div class="card-header">
+				<h3 class="card-title">Message History</h3>
 				</div>
-				<div class="list-group">
+				<div class="list-group list-group-flush">
 			[%/param%][%param *body%]
 				<div class="list-group-item [%if [@from_name@] eq [@config:company_name@]%]list-group-item-warning[%/if%]">
 					<span class="badge badge-info">[%format type:"date" format:'#d #k #Y (#H:#I)'%][@date_sent@][%/format%]</span>
@@ -143,7 +145,7 @@
 				</div>
 			[%/param%][%param *footer%]
 					[%if ![@dispute_closed@]%]
-						<div class="panel-footer">
+						<div class="card-footer">
 							<div class="row">
 								<div class="col-sm-9  col-md-10">
 									<textarea name="message" class="form-control" rows="1">[%nohtml%][@message@][%/nohtml%]</textarea>

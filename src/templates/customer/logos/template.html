@@ -1,9 +1,11 @@
 <div class="col-12">
-	<ul id="breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-		<li><a href="[@URL@]">Manage Logo's</a></li>
-	</ul>
+		<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<ol id="breadcrumb" class="breadcrumb">
+			<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+			<li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+			<li class="breadcrumb-item"><a href="[@URL@]">Manage Logo's</a></li>
+		</ol>
+	</nav>
 	<h1>Manage Logo's</h1>
 	Sorry, you need to be logged in to manage your logo's. Either login, or create an account.
 </div>

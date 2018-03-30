@@ -1,10 +1,10 @@
 <div class="col-12">
-	<!-- Start Breadcrumb -->
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-	<li><a href="[@config:home_url@]">Home</a></li>
-	<li><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-	</ul>
-	<!-- End Breadcrumb -->
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'/%]">My Account</a></li>
+		</ol>
+	</nav>
 	<div class="page-header"><h1>Vouchers &amp; Rewards</h1></div>
 	[%active_vouchers%]
 	[%param *header%]

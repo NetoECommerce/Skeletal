@@ -1,8 +1,10 @@
 <div class="col-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%url page:'account'/%]">My Account</a></li>
-	</ul>
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'/%]">My Account</a></li>
+		</ol>
+	</nav>
 	<div class="page-header"><h1>View Quote</h1></div>
 	<script language="javascript" type="text/javascript">
 		function print_quote() {
@@ -11,7 +13,7 @@
 	</script>
 	<div class="row">
 		<div class="col-12">
-			<input type="button" class="btn btn-default pull-left" value="Print Quote" onClick="print_quote()">&nbsp;
+			<input type="button" class="btn btn-outline-secondary pull-left" value="Print Quote" onClick="print_quote()">&nbsp;
 			[%if [@config:allow_quote_approval@]%]
 				<a href="[%url page:'account' type:'approve_quote'/%]" class="btn btn-success pull-right"><i class="fa fa-check icon-white"></i> Approve Quote</a>
 			[%/if%]
