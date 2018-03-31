@@ -361,3 +361,28 @@
 	@extend .form-control;
 	@extend select.form-control;
 }
+// Search Dropdown
+.nsearchinput-pl.well {
+	position: absolute;
+	z-index: 100001;
+	padding:0;
+	width: 100%;
+	border-color: $dropdown-border-color;
+	background-color: white;
+	margin-top: 44px !important;
+	li {
+		position: relative;
+		display: block;
+		a{
+			position: relative;
+			display: block;
+			padding: 10px 15px;
+			&:hover, &:focus {
+				background: $dropdown-link-hover-bg;
+			}
+		}
+		img {
+			margin-right: 10px;
+		}
+	}
+}
