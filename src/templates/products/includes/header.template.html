@@ -28,10 +28,10 @@
 				<span class="caret"></span>
 			</button>
 			<ul id="shareDropdown[@sku@]" class="dropdown-menu" aria-labelledby="dropdownMenu[@sku@]">
-				<li><a class="js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i> Facebook</a></li>
-				<li><a class="js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i> Twitter</a></li>
-				<li><a class="js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
-				<li><a class="js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i> Google+</a></li>
+				<li><a class="dropdown-item js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i> Facebook</a></li>
+				<li><a class="dropdown-item js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i> Twitter</a></li>
+				<li><a class="dropdown-item js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+				<li><a class="dropdown-item js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i> Google+</a></li>
 			</ul>
 		</div>
 	</div>
@@ -43,10 +43,10 @@
 					[%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productrrp text-muted" aria-label="RRP Price">
-						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
+					<div class="productrrp text-muted small" aria-label="RRP Price">
+						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
 					</div>
-					<div class="productsave" aria-label="Save Price">
+					<div class="productsave small text-danger" aria-label="Save Price">
 						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
@@ -55,19 +55,19 @@
 					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productrrp muted" aria-label="RRP Price">
-						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
+					<div class="productrrp text-muted small" aria-label="RRP Price">
+						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
 					</div>
 				[%/if%]
 				<div class="productpromo" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
 					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productsave" aria-label="Save Price">
+					<div class="productsave small text-danger" aria-label="Save Price">
 						SAVE [%format type:'percent'%][@save@][%/format%]!
 					</div>
 				[%/if%]
-				<div class="productsavetext">
+				<div class="productsavetext small text-danger">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
 				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">

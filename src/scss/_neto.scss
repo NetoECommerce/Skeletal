@@ -197,6 +197,9 @@
 .btn-default{
 	@extend .btn-outline-secondary;
 }
+.hidden{
+	@extend .d-none;
+}
 // npopup
 .successaddmessage {
 	padding: 0!important;
@@ -354,7 +357,7 @@
 		margin-top: 5px;
 	}
 }
-#suburb_sl{
+#suburb_sl, ._itmspec_opt{
 	@extend .form-control;
 	@extend select.form-control;
 }

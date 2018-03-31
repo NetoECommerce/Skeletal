@@ -115,7 +115,7 @@
 				[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Backorder</button>
 				[%ELSE%]
-				<a class="btn btn-info btn-lg btn-block" title="Notify Me When [@model@] Is Back In Stock" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
+				<a class="btn btn-info btn-lg btn-block" href title="Notify Me When [@model@] Is Back In Stock" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
 				[%END IF%]
 			</div>
 			<div class="col-12 col-md-4">
