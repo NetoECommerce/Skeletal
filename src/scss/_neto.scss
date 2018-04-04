@@ -144,6 +144,15 @@
 .price_range {
 	color: inherit !important;
 }
+.ui-widget-header {
+	background: $gray-500 !important;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover, .ui-state-focus,
+.ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+	border: 1px solid $gray-600 !important;
+	background: $gray-500 !important;
+}
 // Shopping Cart Popup
 #neto-dropdown {
 	width: 250px;
@@ -190,15 +199,6 @@
 			clear:none;
 		}
 	}
-}
-.float_right{
-	float: right !important;
-}
-.btn-default{
-	@extend .btn-outline-secondary;
-}
-.hidden{
-	@extend .d-none;
 }
 // npopup
 .successaddmessage {
@@ -306,16 +306,6 @@
 			margin-bottom: 10px;
 		}
 	}
-}
-//Generic disable activity class
-.disable-interactivity {
-	pointer-events: none;
-}
-.btn .fa {
-	pointer-events:none;
-}
-.nactivity{
-	display: none;
 }
 // Product page main image
 .main-image a > .zoom {
@@ -431,16 +421,21 @@
 .text-right {text-align:right !important;}
 .float_right {float:right !important;}
 .float_left {float:left !important;}
+.disable-interactivity { pointer-events: none; }
+.btn .fa { pointer-events:none; }
+.nactivity{ display: none; }
+.btn-default{
+	@extend .btn-outline-secondary;
+}
+.hidden{
+	@extend .d-none;
+}
 // logo
 .logo {
 	max-width: 100%;
 }
 .wrapper-logo {
 	text-align: center;
-}
-// Fix for jquery UI
-.price_range {
-	color: inherit !important;
 }
 // Ad Placeholders
 .neto-placeholder {
@@ -449,21 +444,20 @@
 }
 .neto-placeholder-rotator {
 	display: block;
-	background: $gray-100;
-	color: $gray-200;
+	background: $gray-200;
+	color: $gray-600;
 	text-align: center;
 	&:hover {
-		color: $gray-200;
+		color: $gray-500;
 		text-decoration: none;
 	}
 }
-// Fix for bootstrap carousel so that font awesome icons get centered
-.carousel-control .fa {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	z-index: 5;
-	display: inline-block;
+// Add Bootstrap3 text shadow for carousel
+.carousel-caption{
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+	.btn {
+		text-shadow: none;
+	}
 }
 // Auto hide google conversion frames
 [name="google_conversion_frame"] {
@@ -479,9 +473,7 @@
 #credit_apply_display, #_cpy_login_pl_login,
 #_cpy_login_pl_none, #_cpy_login_pl_register,
 #_cpy_checkout_pl, #_cpy_checkout_pl,
-#_cpy_login_pl, #_cpy_goback_pl {
-	display: none;
-}
+#_cpy_login_pl, #_cpy_goback_pl,
 ._cpy_voucher, ._cpy_credit_table,
 ._cpy_thirdparty_msg, ._cpy_paydesc,
 ._cpy_plandesc, ._cpy_comment,

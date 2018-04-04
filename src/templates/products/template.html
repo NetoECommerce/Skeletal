@@ -42,7 +42,7 @@
 					[%param header%]
 						<div class="col-12">
 						<div class="alert alert-success">
-							<h3>BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
+							<h3 class="h2">BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
 								<div class="row">
 						[%/param%]
 						[%param *body%]
@@ -50,7 +50,7 @@
 									<div class="card">
 										<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="card-img-top"><img src="[@thumb@]" alt="[@name@]"></a>
 										<div class="card-body">
-											<p class="card-title h5"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
+											<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 											<div class="text-success"><strong>FREE</strong> With This Item!</div>
 										</div>
 									</div>
@@ -66,7 +66,7 @@
 					[%param *header%]
 						<div class="col-12">
 						<div class="alert alert-success">
-							<h3>FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
+							<h3 class="h2">FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
 								<div class="row">
 					[%/param%]
 					[%param *body%]
@@ -74,7 +74,7 @@
 								<div class="card">
 									<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="card-img-top"><img src="[@thumb@]" alt="[@name@]"></a>
 									<div class="card-body">
-										<p class="card-title h5"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
+										<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 										<div class="text-success"><strong>FREE</strong> With This Item!</div>
 									</div>
 								</div>
@@ -94,7 +94,7 @@
 					[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 						[%param header%]
 						<hr aria-hidden="true"/>
-						<h3>We Also Recommend</h3>
+						<h3 class="h2">We Also Recommend</h3>
 						<div class="row products-row">
 						[%/param%]
 						[%param footer%]
@@ -104,7 +104,7 @@
 					[%crosssell id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 						[%param header%]
 						<hr aria-hidden="true"/>
-						<h3>You May Also Like</h3>
+						<h3 class="h2">You May Also Like</h3>
 						<div class="row products-row">
 						[%/param%]
 						[%param footer%]
@@ -114,7 +114,7 @@
 					[%related_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
 						[%param header%]
 						<hr aria-hidden="true"/>
-						<h3>Others Also Bought</h3>
+						<h3 class="h2">Others Also Bought</h3>
 						<div class="row products-row">
 						[%/param%]
 						[%param footer%]
@@ -124,7 +124,7 @@
 					[%thumb_list type:'products' sortby:'random' filter_category:'[@content_id@]' template:'' filter_exsku1:'[@sku@]' limit:'[@config:upsell_limit@]'%]
 						[%param *header%]
 						<hr aria-hidden="true"/>
-						<h3>More From This Category</h3>
+						<h3 class="h2">More From This Category</h3>
 						<div class="row products-row">
 						[%/param%][%param footer%]
 						</div>
@@ -135,7 +135,7 @@
 					[%product_history limit:'[@config:phistory_limit@]' template:''%]
 						[%param header%]
 						<hr aria-hidden="true"/>
-						<h3>Your Browsing History</h3>
+						<h3 class="h2">Your Browsing History</h3>
 						<div class="row products-row">
 						[%/param%]
 						[%param footer%]
