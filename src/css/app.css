@@ -7706,3 +7706,7 @@ input[readonly] {
 
 ._cpy_credit_table TD {
   vertical-align: top; }
+
+@media (max-width: 767.98px) {
+  .wrapper-footer {
+    text-align: center; } }

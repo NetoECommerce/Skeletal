@@ -8,7 +8,7 @@
 				<nav class="row" aria-label="Footer menu">
 					[%menu id:'web_footer'%]
 						[%param *level_1%]
-							<div class="col-12 col-sm-4 text-center text-sm-left">
+							<div class="col-12 col-sm-4 text-sm-left">
 								<ul class="nav flex-column">
 									<li class="nav-item"><h4 class="nav-link">[@name@]</h4></li>
 									[@next_level@]
@@ -21,7 +21,7 @@
 					[%/menu%]
 				</nav>
 			</div>
-			<div class="col-12 col-sm-4 text-center text-sm-left">
+			<div class="col-12 col-sm-4 text-sm-left">
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
 					<p>Subscribe to our newsletter:</p>
@@ -219,7 +219,7 @@
 					[%/param%]
 				[%/payment_methods%]
 			</div>
-			<div class="col-12 col-sm-3 text-center text-sm-left">
+			<div class="col-12 col-sm-3 text-sm-left">
 				<address role="contentinfo" aria-label="Company details">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]

@@ -507,3 +507,9 @@
 ._sh_post_sel li { padding:2px;}
 input[readonly] {background:#EFEFEF; color:666;}
 ._cpy_credit_table TD { vertical-align:top;}
+// Footer
+.wrapper-footer{
+	@include media-breakpoint-down(sm) {
+		text-align: center;
+	}
+}
