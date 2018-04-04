@@ -5,11 +5,11 @@
 				'loadtmplates': ['_buying_options', '_images','_header'],
 				'fns' : {
 					'onLoad' : function () {
-						$('.addtocart').button("loading");
+						$('.btn-ajax-loads').button("loading");
 						$('.variation-wrapper').addClass('disable-interactivity');
 					},
 					'onReady' : function () {
-						$('.addtocart').button("reset");
+						$('.btn-ajax-loads').button("reset");
 						$('.zoom').zoom();
 						$('.variation-wrapper').removeClass('disable-interactivity');
 						$("#sale-end").countdown({

@@ -109,13 +109,13 @@
 			</div>
 			<div class="col-xs-12 col-md-4">
 				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
 				[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-success btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-success btn-block btn-lg btn-loads btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
 				[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Backorder</button>
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Backorder</button>
 				[%ELSE%]
-				<a class="btn btn-info btn-lg btn-block" title="Notify Me When [@model@] Is Back In Stock" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
+				<a class="btn btn-info btn-block btn-lg btn-loads btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" title="Notify Me When [@model@] Is Back In Stock" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
 				[%END IF%]
 			</div>
 			<div class="col-xs-12 col-md-4">
