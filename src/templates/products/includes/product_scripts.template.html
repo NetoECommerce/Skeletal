@@ -10,6 +10,13 @@
 					},
 					'onReady' : function () {
 						$('.btn-ajax-loads').button("reset");
+						$(".btn-ajax-loads").click(function(){
+							$(this).button("loading");
+							var pendingbutton=this;
+							setTimeout(function(){
+								$(pendingbutton).button("reset");
+							},3000);
+						});
 						$('.zoom').zoom();
 						$('.variation-wrapper').removeClass('disable-interactivity');
 						$("#sale-end").countdown({
