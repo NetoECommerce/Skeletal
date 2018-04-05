@@ -9,7 +9,7 @@
 	<h1> Forgot Password? </h1>
 </div>
 <!--##[%DATA id:'error' if:'ne' value:''%]##-->
-<div class="alert alert-error"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
+<div class="alert alert-danger" role="alert"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
 <!--##[%END DATA%]##-->
 <form method="post" action="[%URL page:'account' type:'forgotpwd'%][%END URL%]">
 	<input type="hidden" name="fn" value="proc" />
