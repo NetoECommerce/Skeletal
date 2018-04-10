@@ -3,7 +3,7 @@
 <head itemscope itemtype="http://schema.org/WebSite">
 	[%load_template file:'headers/includes/head.template.html'/%]
 	<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
-	<!-- <link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/> -->
+	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -81,7 +81,7 @@
 					[%/param%]
 				[%/menu%]
 			[%/ cache%]
-	    </ul>
+		</ul>
 		<ul class="navbar-nav navbar-right" role="navigation" aria-label="Accounts menu">
 			<li class="nav-item dropdown">
 				<a href="[%url page:'account'/%]" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span></a>

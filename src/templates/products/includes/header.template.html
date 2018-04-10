@@ -46,7 +46,7 @@
 					<div class="productrrp text-muted small" aria-label="RRP Price">
 						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
 					</div>
-					<div class="productsave small text-danger" aria-label="Save Price">
+					<div class="productsave small" aria-label="Save Price">
 						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
@@ -63,11 +63,11 @@
 					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productsave small text-danger" aria-label="Save Price">
+					<div class="productsave small" aria-label="Save Price">
 						SAVE [%format type:'percent'%][@save@][%/format%]!
 					</div>
 				[%/if%]
-				<div class="productsavetext small text-danger">
+				<div class="productsavetext small">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
 				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">
