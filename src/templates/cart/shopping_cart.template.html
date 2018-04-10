@@ -134,7 +134,7 @@
 		<div class="row">
 			<div class="col-12"><hr aria-hidden="true" /></div>
 			[%if [@config:show_shipping_calc@]%]
-				<div class="col-12 [%if [@config:show_coupon_promo_code_field@]%]col-lg-3[%else%]col-lg-6[%/if%]">
+				<div class="col-12 mb-2 [%if [@config:show_coupon_promo_code_field@]%]col-lg-3[%else%]col-lg-6[%/if%]">
 					<div class="card" role="contentinfo" aria-label="Calculate shipping">
 						<div class="card-header">
 							<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
@@ -162,7 +162,7 @@
 				</div>
 			[%/if%]
 			[%if [@config:show_coupon_promo_code_field@]%]
-				<div class="col-12 [%if [@config:show_shipping_calc@]%]col-lg-3[%else%]col-lg-6[%/if%]">
+				<div class="col-12 mb-2 [%if [@config:show_shipping_calc@]%]col-lg-3[%else%]col-lg-6[%/if%]">
 					<div class="card" role="contentinfo" aria-label="Discount Code">
 						<div class="card-header">
 							<h2 class="card-title mb-0 h4">Discount Code</h2>
@@ -273,7 +273,7 @@
 					[%/param%]
 					[%/ payment_plans%]
 					<div class="row btn-stack">
-						<div class="col-12 col-lg-6 text-center">
+						<div class="col-12 col-lg-6 text-center mb-1">
 							[%if [@config:show_paypal_express_link@]%]
 								<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
 									<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
