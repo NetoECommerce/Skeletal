@@ -26,13 +26,13 @@
 								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 							[%/if%]
 							[%if [@inpromo@]%]
-								<p><span class="badge badge-danger">On Sale</span></p>
+								<p class="mb-1"><span class="badge badge-danger">On Sale</span></p>
 							[%/if%]
 							[%if [@save@] > 0 AND ![@has_child@] %]
-								<p><span class="badge badge-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
+								<p class="mb-1"><span class="badge badge-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
 							[%/if%]
 							[%if [@save@] > 0%]
-								<p><span class="badge badge-secondary">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
+								<p class="mb-1"><span class="badge badge-secondary">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
 							[%/if%]
 						</div>
 						[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Thumbnails' /%][%/if%]

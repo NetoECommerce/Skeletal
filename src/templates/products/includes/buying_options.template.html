@@ -177,7 +177,7 @@
 					</div>
 				[%END PARAM%]
 				[%PARAM *ifempty%]
-					[%if [@ship_zip@]%]<p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to selected location.</p>[%/if%]
+					[%if [@ship_zip@]%]<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to selected location.</p>[%/if%]
 				[%END PARAM%]
 			[%END shipping_methods%]
 		</div>
