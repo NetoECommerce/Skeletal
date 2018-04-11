@@ -4,7 +4,7 @@
 
 
 <!--# Start Breadcrumb# ##-->
-<ul class="breadcrumb" aria-label="Breadcrumb"> 
+<ul class="breadcrumb" aria-label="Breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 </ul>
@@ -22,10 +22,7 @@
 <!--##[%END DATA%]##-->
 
 <!--##[%DATA id:'error' if:'ne' value:''%]##-->
-<div class="alert alert-error">
-  <a class="close" data-dismiss="alert">×</a>
-  [@error@]
-</div>
+<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 <!--##[%END DATA%]##-->
 
 
