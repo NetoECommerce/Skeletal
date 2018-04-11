@@ -7582,11 +7582,14 @@ ul.imagelist li .imagethumb {
 .thumbnail {
   margin-bottom: 10px;
 }
-.thumbnail .caption h3 {
+.thumbnail .caption h3,
+.thumbnail .caption .h3,
+.thumbnail .caption .name {
   font-size: 15px;
   line-height: 1.4;
   height: 4em;
   overflow: hidden;
+  font-weight: 500;
 }
 .navigation-list li {
   width: 24%;
@@ -7654,23 +7657,44 @@ ul.imagelist li .imagethumb {
 }
 .payment-icon-diners {
   margin-top: 7px;
-  height: 15px;
-  background-position: 0px -196px;
+  height: 17px;
+  background-position: 0px -197px;
 }
 .payment-icon-discover {
   margin-top: 10px;
   height: 10px;
-  background-position: 0px -186px;
+  background-position: 0px -187px;
 }
 .payment-icon-afterpay {
   margin-top: 10px;
   height: 13px;
   background-position: 0px -213px;
 }
+.payment-icon-q-card {
+  margin-top: 0px;
+  height: 35px;
+  background-position: 0px -244px;
+}
+.payment-icon-paymark {
+  margin-top: 7px;
+  height: 18px;
+  background-position: 0px -226px;
+}
+.payment-icon-zipmoney {
+  margin-top: 2px;
+  height: 30px;
+  background-position: 0px 30px;
+}
+.payment-icon-zippay {
+  margin-top: 7px;
+  height: 18px;
+  background-position: 0px 49px;
+}
 .savings-container {
   position: absolute;
   top: 0;
   right: 0;
+  text-align: right;
 }
 .list-group > li + .filter > a:before {
   content: '\F096\0020';
@@ -7711,12 +7735,6 @@ ul.imagelist li .imagethumb {
 }
 .productdetails {
   margin-top: 20px;
-}
-.productdetails p:first-child {
-  margin-bottom: 20px;
-  font-size: 21px;
-  font-weight: 200;
-  line-height: 30px;
 }
 #n_product h1 {
   margin-top: 0;
@@ -8072,6 +8090,9 @@ h4 {
 .account-order-card {
   min-height: 85px;
 }
+.disable-interactivity {
+  pointer-events: none;
+}
 .paypal_button {
   background: #E9E9E9;
   padding: 5px;
@@ -8209,4 +8230,14 @@ input[readonly] {
 }
 .nactivity {
   display: none;
+}
+.account-summary h2 {
+  font-size: 24px;
+}
+.account-summary h3 {
+  font-size: 18px;
+  font-weight: normal;
+}
+p.h3 {
+  margin-top: 0;
 }

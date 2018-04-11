@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 
-<ul class="breadcrumb"> 
+<ul class="breadcrumb" aria-label="Breadcrumb"> 
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="[@URL@]">Wish Lists</a></li>
@@ -27,7 +27,7 @@ Wish list '<!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##-->' has 
 <!--##[%PARAM pgnum%][%FORM id:'pgquote'%][%END FORM%][%END PARAM%]##-->
 <!--##[%PARAM header%]##-->
 <table class="table table-striped table-bordered table-condensed">
- <tr> 
+ <tr>
 	<th><b>List Name</b></th>
 	<th class="hidden"><b>Status</b></th>
 	<th class="hidden"><b>Remind Me Every</b></th>
@@ -37,7 +37,7 @@ Wish list '<!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##-->' has 
  </tr>
  <!--##[%END PARAM%]##-->
  <!--##[%PARAM *body%]##-->
- <tr> 
+ <tr>
 	<td><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%END URL%]">[@wishlist_name@]&nbsp;</a></td>
 	<td class="hidden">
   <!--##[%DATA id:'wishlist_active' if:'eq' value:'y'%]
@@ -56,7 +56,7 @@ Wish list '<!--##[%NOHTML%]##-->[@wishlist_name@]<!--##[%END NOHTML%]##-->' has 
  <!--##[%END PARAM%]##-->
  <!--##[%PARAM *footer%]##-->
 </table>
-        
+
 <!--##[%END PARAM%]##-->
 <!--##[%PARAM ifempty%]##-->
 You have no wish lists setup. Please add a new list below.

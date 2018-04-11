@@ -1,17 +1,18 @@
 [%cache type:'list' id:'[@inventory_id@]'%]
-	<div class="col-xs-12">
+	<article class="col-xs-12" role="article" aria-label="Product Thumbnail">
 		<div class="panel panel-default" itemscope itemtype="http://schema.org/Product">
 			<meta itemprop="brand" content="[@brand@]"/>
+			<meta itemprop="mpn" content="[@sku@]"/>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-4 col-sm-3">
 						<a href="[@URL@]" class="thumbnail-image">
-							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="product-image img-responsive" alt="[@model@]" rel="itmimg[@sku@]">
+							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" itemprop="image" class="product-image img-responsive" alt="[@model@]" rel="itmimg[@sku@]">
 						</a>
 					</div>
 					<div class="col-xs-8 col-sm-6">
 						<h3 itemprop="name"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'100' rmhtml:'1'%][@model@][%/format%]</a></h3>
-						<p>[@short_description@]</p>
+						<p itemprop="description">[@short_description@]</p>
 					</div>
 					<div class="col-xs-12 col-sm-3 text-right">
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -34,7 +35,9 @@
 								<p><span class="label label-default">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
 							[%/if%]
 						</div>
+						[%if [@form:disable_scripts@] ne 'true'%]
 						[%tracking_code type:'Thumbnails' /%]
+						[%/if%]
 					</div>
 				</div>
 			</div>
@@ -52,11 +55,11 @@
 						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
 					[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
-					[%elseif%]
-						<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
+					[%else%]
+						<a class="notify_popup btn btn-default btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
 					[%/if%]
 				</form>
 			</div>
 		</div>
-	</div>
+	</article>
 [%/cache%]

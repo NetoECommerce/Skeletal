@@ -1,8 +1,8 @@
 
-<div class="col-xs-12">
+<div class="col-xs-12" >
 
 	<!--# Start Breadcrumb# ##-->
-	<ul class="breadcrumb">
+	<ul class="breadcrumb" aria-label="Breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
 		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 		<li><a href="#">Edit My Account</a></li>
@@ -82,7 +82,7 @@ function getlocation(ta) {
 	var sel = document.getElementById('suburb_sl'+id);
 
 	if(!zip.cvalue || zip.value!=zip.cvalue) {
-		zip.cvalue = zip.value = zip.value.replace(new RegExp('\\D','g'), '');
+		zip.cvalue = zip.value;
 		msg.innerHTML = '<i>Loading...</i>';
 		dis.style.display = 'none';
 		msg.style.display = '';
@@ -105,7 +105,7 @@ function getlocation(ta) {
 				}
 
 				if(!req) {
-					msg.innerHTML = '<i>Error. Please contact our customer support: sales.com.au</i>';
+					msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
 				} else {
 					req.onreadystatechange = function() {
 						if(req.readyState == 4 && req.status == 200) {
@@ -220,7 +220,7 @@ getlocation();
 				<div class="form-group">
 					<label for="bill_country">Country </label>
 					<span class="small text-danger">Required</span>
-					<select class="form-control" name="bill_country" onChange="getlocation()">
+					<select class="form-control" id="bill_country" name="bill_country" onChange="getlocation()">
 						<!--##[%countries sortby:'sortorder,name' %]
 [%PARAM *body%]##-->
 						<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%END DATA%]>[@country_name@]</option>
@@ -231,15 +231,15 @@ getlocation();
 				<div class="form-group">
 					<label for="bill_street1">Address </label>
 					<span class="small text-danger">Required</span>
-					<input class="form-control" type="text" name="bill_street1" value="[@bill_street1@]" maxlength="50">
+					<input class="form-control" type="text" id="bill_street1" name="bill_street1" value="[@bill_street1@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="text" name="bill_street2" value="[@bill_street2@]" maxlength="50">
+					<input class="form-control" type="text" id="bill_street2" name="bill_street2" value="[@bill_street2@]" maxlength="50">
 				</div>
 				<div class="form-group">
 					<label for="bill_zip">Post Code </label>
 					<span class="small text-danger">Required</span>
-					<input class="form-control" type="text" name="bill_zip" id="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
+					<input class="form-control" type="text" id="bill_zip" name="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
 				</div>
 				<div class="form-group n-wrapper-form-control">
 					<label for="suburb_sl">Suburb Selector </label>
@@ -292,7 +292,7 @@ getlocation();
 			<div class="col-xs-12 col-md-6">
 				<h2 name="company" id="Company">Company Information</h2>
 				<div class="form-group">
-					<label for="usercustom2">ABN / ACN</label>
+					<label for="usercustom2">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
 					<input class="form-control" type="text" name="usercustom2" id="usercustom2" size="20" maxlength="25" value="[@usercustom2@]">
 				</div>
 				<div class="form-group">

@@ -133,7 +133,7 @@ Rewards Earned
 		<!--##[%END DATA%]##-->
 		
 		<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
-			<tr><td colspan="2"><strong>GST
+			<tr><td colspan="2"><strong>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%]
 			<!--##[%DATA id:'tax_inc' if:'=' value:'1' %]##--> 
 				Inc.
 			<!--##[%END DATA%]##--></strong></td>		

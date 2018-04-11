@@ -1,5 +1,5 @@
 <!--##[%CACHE type:'box' id:'[@inventory_id@]'%]##-->
-<li class="list-group-item thumbnail-box">
+<li class="list-group-item thumbnail-box" role="article" aria-label="Product Thumbnail">
 	<div class="row">
 		<div class="col-sm-12 col-md-5">
 			<a href="[@URL@]" title="[@model@]">
@@ -10,11 +10,11 @@
 			<!--##[%END IF%]##-->
 		</div>
 		<div class="col-sm-12 col-md-7">
-			<h5 class="title">
+			<p class="title h5">
 				<a href="[@URL@]">
 					<!--##[%format type:'text' maxlength:'50' rmhtml:'1'%]##-->[@model@]<!--##[%END FORMAT%]##-->
 				</a>
-			</h5>
+			</p>
 			<p class="price" itemprop="offers">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 				<!--##[%IF [@has_child@]%]##-->From <!--##[%END IF%]##-->

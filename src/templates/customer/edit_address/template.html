@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
-<ul class="breadcrumb">
+<ul class="breadcrumb" aria-label="Breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 <li><a href="#">Edit Your Address Book</a></li>
@@ -229,8 +229,6 @@ function updloca(oid) {
 		city.readOnly = state.readOnly = false;
 		city.style.color = state.style.color = '#000000';
 	} else {
-		zip.value = zip.value.replace(new RegExp('\\D','g'), '').substr(0,4);
-
 		city.readOnly = state.readOnly = true;
 		city.style.color = state.style.color = '#666666';
 		if( zip.value == '' ) {
