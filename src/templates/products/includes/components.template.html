@@ -19,7 +19,7 @@
 					[%if ![@has_variation@]%]
 						<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
 							<input type="checkbox" id="[@sku@]a" class="hidden" checked>
-							<div class="card components-thumbnail thumbnail component[@group_count@]">
+							<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
 								<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
 								<div class="caption card-body">
 									<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
@@ -44,7 +44,7 @@
 					[%else%]
 							<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
 								[%if [@variation_available@] > '0'%]<input type="checkbox" id="[@sku@]a" class="hidden" checked>[%/if%]
-								<div class="card components-thumbnail thumbnail component[@group_count@]">
+								<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
 									<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
 										<div class="caption card-body">
 											<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
