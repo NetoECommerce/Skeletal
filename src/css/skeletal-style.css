@@ -270,7 +270,7 @@ fieldset[disabled] .btn-info.active {
 
 .breadcrumb > .active,
 .breadcrumb a {
-	color: #006FF5 /*{breadcrumb-text-colour}*/;
+	color: #999 /*{breadcrumb-text-colour}*/;
 }
 
 .pagination .page-link{

@@ -505,3 +505,10 @@ input[readonly] {background:#EFEFEF; color:666;}
 		text-align: center;
 	}
 }
+// Shw filters open for large screens
+#filters {
+	@include media-breakpoint-up(md) {
+		height: auto !important;
+		display: block;
+	}
+}

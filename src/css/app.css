@@ -7709,3 +7709,8 @@ input[readonly] {
 @media (max-width: 767.98px) {
   .wrapper-footer {
     text-align: center; } }
+
+@media (min-width: 768px) {
+  #filters {
+    height: auto !important;
+    display: block; } }

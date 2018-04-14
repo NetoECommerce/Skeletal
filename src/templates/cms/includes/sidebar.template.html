@@ -3,7 +3,7 @@
 		<div class="card mb-2">
 			<div class="card-header border-bottom">
 				<h3 class="h4 mb-0">
-					<a role="button" data-toggle="collapse" aria-expanded="false" href="#filters" aria-controls="#filters">Filter Products <i class="fa fa-caret-down"></i></a>
+					<a class="text-dark" role="button" data-toggle="collapse" aria-expanded="false" href="#filters" aria-controls="#filters">Filter Products</a>
 				</h3>
 			</div>
 			<div id="filters" class="collapse">
@@ -15,12 +15,12 @@
 						[%param *body%]
 							[%if [@selected@]%]
 									<li class="filter-remove filter list-group-item d-flex justify-content-between align-items-center">
-										<a href="[@remove_single_url@]" rel="nofollow"><i class="fa fa-check-square-o"></i> [@name@]</a>
+										<a class="text-dark" href="[@remove_single_url@]" rel="nofollow"><i class="fa fa-check-square-o"></i> [@name@]</a>
 										<span class="badge badge-secondary badge-pill">[@total@]</span>
 									</li>
 							[%else%]
 									<li class="filter list-group-item d-flex justify-content-between align-items-center">
-										<a href="[@url@]"  aria-label="Filter [@filter_name@] to [@name@]"><i class="fa fa-square-o"></i> [@name@]</a>
+										<a class="text-dark" href="[@url@]" aria-label="Filter [@filter_name@] to [@name@]"><i class="fa fa-square-o"></i> [@name@]</a>
 										<span class="badge badge-secondary badge-pill">[@total@]</span>
 									</li>
 							[%/if%]
@@ -33,12 +33,12 @@
 						[%param *body%]
 							[%if [@selected@]%]
 								<li class="filter-remove filter list-group-item d-flex justify-content-between align-items-center">
-									<a href="[@remove_single_url@]" rel="nofollow"><i class="fa fa-check-square-o"></i> [@name@]</a>
+									<a class="text-dark" href="[@remove_single_url@]" rel="nofollow"><i class="fa fa-check-square-o"></i> [@name@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
 							[%else%]
 								<li class="filter list-group-item d-flex justify-content-between align-items-center">
-									<a href="[@url@]" aria-label="Filter [@filter_name@] to [@name@]"><i class="fa fa-square-o"></i> [@name@]</a>
+									<a class="text-dark" href="[@url@]" aria-label="Filter [@filter_name@] to [@name@]"><i class="fa fa-square-o"></i> [@name@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
 							[%/if%]
@@ -51,12 +51,12 @@
 						[%param *body%]
 							[%if [@selected@]%]
 								<li class="filter-remove list-group-item d-flex justify-content-between align-items-center">
-									<a href="[@remove_single_url@]" rel="nofollow">In Stock</a>
+									<a class="text-dark" href="[@remove_single_url@]" rel="nofollow">In Stock</a>
 									<span class="badge badge-secondary badge-pill"><i class="fa fa-check-square-o"></i> [@total@]</span>
 								</li>
 							[%else%]
 								<li class="filter list-group-item d-flex justify-content-between align-items-center">
-									<a href="[@url@]"><i class="fa fa-square-o"></i> In Stock</a>
+									<a class="text-dark" href="[@url@]"><i class="fa fa-square-o"></i> In Stock</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
 							[%/if%]
@@ -69,16 +69,16 @@
 						[%param *body%]
 							[%if [@selected@]%]
 								<li class="filter-remove list-group-item d-l-none d-xl-none d-flex justify-content-between align-items-center">
-									<a href="[@remove_url@]" class="list-group-item" rel="nofollow"><i class="fa fa-check-square-o"></i> [@name@]</a>
+									<a class="text-dark" href="[@remove_url@]" class="list-group-item" rel="nofollow"><i class="fa fa-check-square-o"></i> [@name@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
 							[%else%]
 								[%if [@min@] == 0 AND [@max@] > 0%]
-									<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]"><i class="fa fa-square-o"></i> [%format type:'currency' dp:'0'%][@max@][%/format%] or below</a></li>
+									<li class="filter list-group-item d-l-none d-xl-none"><a class="text-dark" href="[@url@]"><i class="fa fa-square-o"></i> [%format type:'currency' dp:'0'%][@max@][%/format%] or below</a></li>
 								[%elseif [@min@] > 0 AND [@max@] > 0%]
-									<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]"><i class="fa fa-square-o"></i> [%format type:'currency' dp:'0'%][@min@][%/format%] to [%format type:'currency' dp:'0'%][@max@][%/format%]</a></li>
+									<li class="filter list-group-item d-l-none d-xl-none"><a class="text-dark" href="[@url@]"><i class="fa fa-square-o"></i> [%format type:'currency' dp:'0'%][@min@][%/format%] to [%format type:'currency' dp:'0'%][@max@][%/format%]</a></li>
 								[%elseif [@max@] == 0%]
-									<li class="filter list-group-item d-l-none d-xl-none"><a href="[@url@]"><i class="fa fa-square-o"></i> [%format type:'currency' dp:'0'%][@min@][%/format%] or above</a></li>
+									<li class="filter list-group-item d-l-none d-xl-none"><a class="text-dark" href="[@url@]"><i class="fa fa-square-o"></i> [%format type:'currency' dp:'0'%][@min@][%/format%] or above</a></li>
 								[%/if%]
 							[%/if%]
 						[%/param%]
@@ -128,12 +128,12 @@
 						[%param *body%]
 							[%if [@selected@]%]
 								<li class="filter-remove list-group-item d-flex justify-content-between align-items-center">
-									<a href="[@remove_url@]" rel="nofollow"><i class="fa fa-check-square-o"></i> [@brand@]</a>
+									<a class="text-dark" href="[@remove_url@]" rel="nofollow"><i class="fa fa-check-square-o"></i> [@brand@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
 							[%else%]
 								<li class="filter list-group-item d-flex justify-content-between align-items-center">
-									<a href="[@url@]"><i class="fa fa-square-o"></i> [@brand@]</a>
+									<a class="text-dark" href="[@url@]"><i class="fa fa-square-o"></i> [@brand@]</a>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</li>
 							[%/if%]
