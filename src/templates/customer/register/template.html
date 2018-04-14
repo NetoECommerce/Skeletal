@@ -18,14 +18,14 @@
 							<div class="col-12 col-md-6">
 								<div class="form-group ">
 									<label for="username">My E-mail Address is</label>
-									<input type="text" id="username" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com">
+									<input type="text" id="username" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com" required/>
 									<p class="form-text text-muted small d-none"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%/ URL%]">Click Here</a></p>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="password">My Password is</label>
-									<input type="password" id="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off">
+									<input type="password" id="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
 									<p class="form-text text-muted small"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%/ URL%]" aria-label="Click if you forgot your password">Click Here</a></p>
 								</div>
 							</div>
@@ -39,16 +39,11 @@
 			<form id="register" method="post" action="[%URL page:'account' type:'register'%][%/ URL%]">
 				[%SUBMIT_TOKEN%][%/ SUBMIT_TOKEN%]
 				<input type="hidden" name="redirect" value="[@redirect@]">
+				<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%/ random_number%]">
 				<div class="card">
 					<div class="card-body border-bottom"><h3 class="card-title">New Customer? Create an Account.</h3></div>
 					<div class="card-body">
 						<div class="form-row">
-							<div class="d-none col-12 col-md-6">
-								<div class="form-group">
-									<label for="reg_username">Username </label>
-									<input class="form-control" type="text" id="reg_username" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%end random_number%]" size="25" maxlength="20"/>
-								</div>
-							</div>
 							<div class="col-12 col-md-12">
 								<div class="form-group">
 									<label for="reg_email">E-mail Address</label>
