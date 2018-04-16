@@ -221,8 +221,12 @@
 								<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
 							</tr>
 						[%/param%]
-						[%param ifempty%]
-							Enter post code to calculate shipping
+						[%param *ifempty%]
+							[%if [@ship_zip@]%]
+								<b class="text-danger">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</b>
+							[%else%]
+								Enter post code to calculate shipping
+							[%/if%]
 						</td>
 						</tr>
 						[%/param%]
@@ -253,7 +257,7 @@
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
-				<tr class="success">
+				<tr>
 					<th scope="row"><b>Shopping Cart Total</b></th>
 					<td class="text-right" ><p class="h3">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
 				</tr>
