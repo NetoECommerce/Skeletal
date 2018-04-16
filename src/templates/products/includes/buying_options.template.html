@@ -1,6 +1,6 @@
 <div class="extra-options">
 	[%multilevelpricing id:'[@SKU@]'%]
-		[%PARAM *header%]
+		[%param *header%]
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 				<tr>
@@ -10,41 +10,41 @@
 				</tr>
 			</thead>
 			<tbody>
-				[%END PARAM%]
-				[%PARAM *body%]
+				[%/ param%]
+				[%param *body%]
 				<tr>
 				<td width="20%" nowrap="nowrap">
-				<span class="productmultilevelqty">Buy [%FORMAT type:'number' dp:'0' sp:','%][@minqty@][%END FORMAT%]
+				<span class="productmultilevelqty">Buy [%FORMAT type:'number' dp:'0' sp:','%][@minqty@][%/ FORMAT%]
 				[%IF [@maxqty@] > 0%]
-				to [%FORMAT type:'number' dp:'0' sp:','%][@maxqty@][%END FORMAT%]:
+				to [%FORMAT type:'number' dp:'0' sp:','%][@maxqty@][%/ FORMAT%]:
 				</span>
 				</td>
 				[%ELSE%]
 				or more:
 				</span>
 				</td>
-				[%END IF%]
+				[%/ IF%]
 				<td nowrap="nowrap">
-				<span class="productmultilevelprice"> Pay [%FORMAT type:'currency'%][@price@][%END FORMAT%]</span>
+				<span class="productmultilevelprice"> Pay [%FORMAT type:'currency'%][@price@][%/ FORMAT%]</span>
 				</td>
 				</tr>
-				[%END PARAM%]
-				[%PARAM *footer%]
+				[%/ param%]
+				[%param *footer%]
 			</tbody>
 		</table>
-		[%END PARAM%]
-	[%END multilevelpricing%]
+		[%/ param%]
+	[%/ multilevelpricing%]
 	<hr aria-hidden="true"/>
 	<!-- PRODUCT OPTIONS -->
 	[%extra_options id:'[@SKU@]'%]
-		[%PARAM *header%]
+		[%param *header%]
 		<table class="table table-striped table-bordered">
 			<tr>
 				<th colspan="2">
 					Available Options
 				</th>
 			</tr>
-			[%END PARAM%][%PARAM *number_option%]
+			[%/ param%][%param *number_option%]
 				<tr>
 					<td>
 						<label>[@name@]</label>
@@ -53,7 +53,7 @@
 						<input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value="">
 					</td>
 				</tr>
-			[%END PARAM%][%PARAM *text_option%]
+			[%/ param%][%param *text_option%]
 				<tr>
 					<td>
 						<label>[@name@]</label>
@@ -62,8 +62,8 @@
 						<textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea>
 					</td>
 				</tr>
-			[%END PARAM%]
-			[%PARAM *select_option%]
+			[%/ param%]
+			[%param *select_option%]
 				<tr>
 					<td>
 						<label>[@name@]</label>
@@ -74,20 +74,20 @@
 						</select>
 					</td>
 				</tr>
-			[%END PARAM%]
-			[%PARAM *choices%]
+			[%/ param%]
+			[%param *choices%]
 				<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
 				[%DATA id:'price' if:'!=' value:'0'%]
-					(+ [%FORMAT type:'currency'%][@price@][%END FORMAT%])
-				[%END DATA%]
+					(+ [%FORMAT type:'currency'%][@price@][%/ FORMAT%])
+				[%/ DATA%]
 				</option>
-			[%END PARAM%]
-			[%PARAM *footer%]
+			[%/ param%]
+			[%param *footer%]
 			<input type="hidden" name="extras" value="[@total_options@]"/>
 		</table>
 		<hr aria-hidden="true"/>
-		[%END PARAM%]
-	[%END extra_options%]
+		[%/ param%]
+	[%/ extra_options%]
 
 	[%data id:'multiplier_qty' if:'ne' value:'0' %]
 	Order In Lots Of <strong>[@multiplier_qty@]</strong>
@@ -116,19 +116,19 @@
 				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Backorder</button>
 				[%ELSE%]
 				<a class="btn btn-info btn-lg btn-block" href title="Notify Me When [@model@] Is Back In Stock" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
-				[%END IF%]
+				[%/ IF%]
 			</div>
 			<div class="col-12 col-md-4">
 				[%if [@config:show_wishlist@]%]
 					<div class="product-wishlist">
 						[%IN_WISHLIST id:'[@SKU@]' %]
-						[%PARAM if_true%]
+						[%param if_true%]
 							<a class="wishlist_toggle btn btn-lg btn-block btn-warning" href role="button" title="Remove To Wishlist" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fa fa-star" aria-hidden="true"></i></span></a>
-						[%END PARAM%]
-						[%PARAM if_false%]
+						[%/ param%]
+						[%param if_false%]
 							<a class="wishlist_toggle btn btn-outline-secondary btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="fa fa-star-o" aria-hidden="true"></i> Wishlist</span></a>
-						[%END PARAM%]
-						[%END IN_WISHLIST%]
+						[%/ param%]
+						[%/ IN_WISHLIST%]
 					</div>
 				[%/if%]
 			</div>
@@ -148,10 +148,10 @@
 				<div class="col-12 col-md-3">
 					<select id="country" class="form-control" aria-label="Country">
 						[%countries%]
-							[%PARAM *body%]
+							[%param *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
-							[%END PARAM%]
-						[%END countries%]
+							[%/ param%]
+						[%/ countries%]
 					</select>
 				</div>
 				<div class="col-12 col-md-3">
@@ -162,24 +162,24 @@
 				</div>
 			</div>
 			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
-				[%PARAM *header%]
+				[%param *header%]
 					<br />
 					<div role="alert" aria-atomic="true" aria-label="Shipping results">
-				[%END PARAM%]
-				[%PARAM *body%]
+				[%/ param%]
+				[%param *body%]
 					<div role="group" aria-label="Shipping method option">
 					<hr aria-hidden="true"/>
-					<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%END IF%]<br />
+					<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ IF%]<br />
 					<i class="text-muted">[@shipping_description@]</i>
 					</div>
-				[%END PARAM%]
-				[%PARAM *footer%]
+				[%/ param%]
+				[%param *footer%]
 					</div>
-				[%END PARAM%]
-				[%PARAM *ifempty%]
-					[%if [@ship_zip@]%]<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to selected location.</p>[%/if%]
-				[%END PARAM%]
-			[%END shipping_methods%]
+				[%/ param%]
+				[%param *ifempty%]
+					[%if [@ship_zip@]%]<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</p>[%/if%]
+				[%/ param%]
+			[%/ shipping_methods%]
 		</div>
 	</section>
 	[%/if%]
@@ -188,7 +188,7 @@
 	<p itemprop="description" aria-label="Product Short Description">
 	[@short_description@]
 	</p>
-	[%END IF%]
+	[%/ IF%]
 </div>
 
 <div class="modal fade notifymodal" id="notifymodal">
@@ -200,11 +200,11 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Your Name</label>
-					<input placeholder="Jane Smith" name="from_name" id="from_name" type="text" class="form-control" value="[%NOHTML%][@FROM_NAME@][%END NOHTML%]">
+					<input placeholder="Jane Smith" name="from_name" id="from_name" type="text" class="form-control" value="[%NOHTML%][@FROM_NAME@][%/ NOHTML%]">
 				</div>
 				<div class="form-group">
 					<label>Your Email Address</label>
-					<input placeholder="jane.smith@test.com.au" name="from" id="from" type="email" class="form-control" value="[%NOHTML%][@FROM@][%END NOHTML%]">
+					<input placeholder="jane.smith@test.com.au" name="from" id="from" type="email" class="form-control" value="[%NOHTML%][@FROM@][%/ NOHTML%]">
 				</div>
 			</div>
 			<div class="modal-footer">
