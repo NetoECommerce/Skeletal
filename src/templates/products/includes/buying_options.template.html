@@ -134,7 +134,7 @@
 			</div>
 		</div>
 	</form>
-	[%if [@config:show_shipping_calc@]%]
+	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
 	<hr/>
 	<section class="panel panel-default" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
 		<div class="panel-heading">
@@ -177,7 +177,9 @@
 					</div>
 				[%END PARAM%]
 				[%PARAM *ifempty%]
-					[%if [@ship_zip@]%]<p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to selected location.</p>[%/if%]
+					[%if [@ship_zip@]%]
+						<p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</p>
+					[%/if%]
 				[%END PARAM%]
 			[%END shipping_methods%]
 		</div>

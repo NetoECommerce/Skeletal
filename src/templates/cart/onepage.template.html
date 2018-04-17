@@ -9,22 +9,14 @@ $(document).ready(function() {
 <div class="col-xs-12">
 <div class="page-header">
 	<div class="_cpy_thirdparty_msg alert alert-info" ref="paypal"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the PayPal website to checkout.</div>
-	<div class="_cpy_thirdparty_msg alert alert-info" ref="masterpass"><i class="fa fa-spinner fa-spin"></i> You are now being redirected to the MasterPass website to checkout.</div>
 	<div class="row">
 		<div class="col-md-6">
 			<h1>Secure Checkout</h1>
 		</div>
 		<div class="col-md-6 text-right">
 			<h1>
-				[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] || [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
-					[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
-						<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
-					[%END IF%]
-					[%IF [@config:ALLOW_MASTERPASS_CHECKOUT@] %]
-						<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'%][%END URL%]">
-							<img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass">
-						</a>
-					[%END IF%]
+				[%IF [@config:SHOW_PAYPAL_EXPRESS_LINK@] %]
+					<a class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'%][%END URL%]"><img src="[@config:imageurl@]/neto_checkout/btn_xpressCheckout.gif" border="0" alt="Checkout With Paypal"/></a> &nbsp;
 				[%END IF%]
 			</h1>
 		</div>
@@ -561,11 +553,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<!--##[%ELSE%]##-->
-					<!--##[%IF [@processor_type@] eq 'masterpass'%]##-->
-					<div><img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"></div>
-					<!--##[%ELSE%]##-->
 					[@processor_type@]
-					<!--##[%END IF%]##-->
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label>Card Type</label>

@@ -221,8 +221,12 @@
 								<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
 							</tr>
 						[%/param%]
-						[%param ifempty%]
-							Enter post code to calculate shipping
+						[%param *ifempty%]
+							[%if [@ship_zip@]%]
+								<b class="text-danger">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</b>
+							[%else%]
+								Enter post code to calculate shipping
+							[%/if%]
 						</td>
 						</tr>
 						[%/param%]
@@ -253,7 +257,7 @@
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
-				<tr class="success">
+				<tr>
 					<th scope="row"><b>Shopping Cart Total</b></th>
 					<td class="text-right" ><p class="h3">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
 				</tr>
@@ -289,9 +293,6 @@
 						<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
 							<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
 						</a>
-					[%/if%]
-					[%if [@config:allow_masterpass_checkout@]%]
-						<a class="_cpy_thirdparty_btn" ref="masterpass" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=0&payproc=masterpass'/%]"> <img src="https://www.mastercard.com/mc_us/wallet/img/en/AU/mcpp_wllt_btn_chk_147x034px.png" border="0" alt="Buy With MasterPass"> </a>
 					[%/if%]
 				</div>
 				<div class="col-xs-12 col-md-6 text-center">
