@@ -1,6 +1,6 @@
 <div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
-<ul class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+<ul class="breadcrumb" aria-label="Breadcrumb">
 	<li><a href="[@config:home_url@]">Home</a></li>
 	<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 </ul>
@@ -9,7 +9,7 @@
 	<h1> Forgot Password? </h1>
 </div>
 <!--##[%DATA id:'error' if:'ne' value:''%]##-->
-<div class="alert alert-error"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
+<div class="alert alert-danger" role="alert"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
 <!--##[%END DATA%]##-->
 <form method="post" action="[%URL page:'account' type:'forgotpwd'%][%END URL%]">
 	<input type="hidden" name="fn" value="proc" />
@@ -19,7 +19,7 @@
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<label for="email">Email Address</label>
-			<input class="form-control" id="email" name="email" size="30" value="" />
+			<input class="form-control" id="email" name="email" size="30" value="" required/>
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<div class="form-actions"> <br>
