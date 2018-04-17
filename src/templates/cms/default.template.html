@@ -1,7 +1,7 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%PARAM *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" aria-label="Breadcrumb">
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 			</li>
@@ -28,7 +28,7 @@
 <img src="[%asset_url type:'content' thumb:'alt_1' id:'[@content_id@]' default:'[@config:imageurl@]/pixel.gif'/%]"  class="pull-right" alt="[@name@] image"/>
 [%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
 	[%param *header%]
-		<section id="homepageCarousel" class="carousel slide" aria-label="Banner Images">
+		<section id="homepageCarousel" class="carousel slide" aria-label="Banner images">
 			[%if [@total_showing@] > 1%]
 				<ol class="carousel-indicators">
 					[%site_value id:'counter' type:'load'/%]
@@ -47,22 +47,22 @@
 				</a>
 			[%/if%]
 		</section>
-		<hr>
+		<hr aria-hidden="true"/>
 	[%/param%]
 	[%param *ifempty%]
 	[%/param%]
 [%/advert%]
 [%advert type:'product' limit:'8' template:'' ad_group:''%]
 	[%param *header%]
-		<section class="row" aria-label="Featured Products">
+		<section class="row" aria-label="Featured products">
 	[%/param%]
 	[%param footer%]
 		</section>
-		<hr>
+		<hr aria-hidden="true"/>
 	[%/param%]
 [%/advert%]
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
-	<section class="n-responsive-content" aria-label="Short Description">
+	<section class="n-responsive-content" aria-label="Short description">
 		[@content_short_description1@]
 		[@content_short_description2@]
 		[@content_short_description3@]
@@ -78,20 +78,20 @@
 [%/if%]
 [%thumb_list type:'content' content_type:'' template:'' limit:'20'%]
 	[%param *footer%]
-		<ul class="pagination" role="navigation" aria-label="Pagination Navigation">
+		<ul class="pagination" aria-label="Pagination navigation">
 			[%paging limit:'3'%]
-				[%param *previous_page%]<li><a href="[@URL@]" aria-label="Go Back 1 Page">Previous Page</a></li>[%/param%]
-				[%param *goback_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
-				[%param *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li>[%/param%]
-				[%param *gonext_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
-				[%param *next_page%]<li><a href="[@URL@]" aria-label="Go Forward 1 Page">Next Page</a></li>[%/param%]
+				[%param *previous_page%]<li><a href="[@URL@]" aria-label="Go back one page">Previous Page</a></li>[%/param%]
+				[%param *goback_pages%]<li><a href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+				[%param *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/param%]
+				[%param *gonext_pages%]<li><a href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+				[%param *next_page%]<li><a href="[@URL@]" aria-label="Go forward one page">Next Page</a></li>[%/param%]
 			[%/paging%]
 		</ul>
 	[%/param%]
 [%/thumb_list%]
 [%thumb_list type:'products' template:'' limit:'[@config:related_limit@]'%]
 	[%param header%]
-		<hr>
+		<hr aria-hidden="true"/>
 		<section class="row" aria-label="Products">
 	[%/param%]
 	[%param footer%]

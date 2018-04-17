@@ -1,4 +1,3 @@
-
 <div class="col-xs-12">
 	<script language="javascript" type="text/javascript">
 function print_invoice() {
@@ -161,7 +160,7 @@ function print_invoice() {
 
 			<h5>[@config:COMPANY_BANK_NAME@]</h5>
 			<p><b>Name:</b> [@config:COMPANY_BANK_ACC@]</p>
-			<p><b>BSB: </b>[@config:COMPANY_BANK_BSB@]</p>
+			<p><b>[@config:PRIMARY_BSB_LABEL@]: </b>[@config:COMPANY_BANK_BSB@]</p>
 			<p><b>Ac/no:</b>[@config:COMPANY_BANK_NUM@]</p>
 
 			<p>Please leave your order number or last name as a payment reference.</p>
@@ -181,7 +180,7 @@ function print_invoice() {
 			<h4 class="media-heading">Biller Code: [@config:BPAY_BILLER_CODE@]<br>
 			Ref: [@bpay_crn@]</h4>
 			<h5>Telephone &amp; Internet Banking - BPAY</h5>
-			<p>Contact your bank, credit union or building sociey to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
+			<p>Contact your bank, credit union or building sociey to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank" rel="noopener">www.bpay.com.au</a></p>
 		</div>
 	</div>
 
@@ -307,7 +306,7 @@ function print_invoice() {
 		<!--##[%END DATA%]##-->
 		<!--##[%DATA id:'notax' if:'=' value:'0' %]##-->
 		<tr>
-			<td><b>GST<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
+			<td><b>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%]<!--##[%DATA id:'tax_inc' if:'eq' value:'y' %]##--> Inc.<!--##[%END DATA%]##--></b></td>
 			<td style="text-align:right;"><b><!--##[%format type:'currency'%]##-->[@tax_total@]<!--##[%END format%]##--></b></td>
 		</tr>
 		<!--##[%END DATA%]##-->
@@ -331,7 +330,7 @@ function print_invoice() {
 	<!--##[%END show_order%]##-->
 
 	<!--##[%GA_FUNNEL%]/purchase/invoice.html[%END GA_FUNNEL%]##-->
-	<!--##[%load_template file:"trackingcode/PurchaseTracking.html"%][%END load_template%]##-->
+	[%tracking_code type:'Purchase'/%]
 
 
 </div>

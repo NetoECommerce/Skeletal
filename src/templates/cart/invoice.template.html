@@ -140,7 +140,7 @@
 												<h4 class="media-heading">Please deposit your total order amount to :</h4>
 												<h5>[@config:company_bank_name@]</h5>
 												<p><b>Name:</b> [@config:company_bank_acc@]</p>
-												<p><b>BSB: </b>[@config:company_bank_bsb@]</p>
+												<p><b>[@config:PRIMARY_BSB_LABEL@]: </b>[@config:company_bank_bsb@]</p>
 												<p><b>Ac/no:</b>[@config:company_bank_num@]</p>
 												<p>Please leave your order number or last name as a payment reference.</p>
 												<p>Once you have deposited the full amount, please email [@config:company_email@] with your order number to confirm your payment.</p>
@@ -156,7 +156,7 @@
 												<h4 class="media-heading">Biller Code: [@config:bpay_biller_code@]<br>
 												Ref: [@bpay_crn@]</h4>
 												<h5>Telephone &amp; Internet Banking - BPAY</h5>
-												<p>Contact your bank, credit union or building sociey to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank">www.bpay.com.au</a></p>
+												<p>Contact your bank, credit union or building society to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank" rel="noopener">www.bpay.com.au</a></p>
 											</div>
 										</div>
 									[%/if%]
@@ -262,7 +262,7 @@
 						[%/if%]
 						[%if [@notax@] eq '0'%]
 							<tr>
-								<td><b>GST[%data id:'tax_inc' if:'eq' value:'y' %] Inc.[%/data%]</b></td>
+								<td><b>[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%][%data id:'tax_inc' if:'eq' value:'y' %] Inc.[%/data%]</b></td>
 								<td class="text-right"><b>[%format type:'currency'%][@tax_total@][%/format%]</b></td>
 							</tr>
 						[%/if%]
@@ -282,8 +282,9 @@
 						[%/if%]
 					</table>
 				</div>
+			</div>
 		[%/param%]
 	[%/show_order%]
 	[%ga_funnel%]/purchase/invoice.html[%/ga_funnel%]
-	[%load_template file:"trackingcode/PurchaseTracking.html"/%]
+	[%tracking_code type:'Purchase'/%]
 </div>

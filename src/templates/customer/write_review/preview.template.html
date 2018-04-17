@@ -1,17 +1,8 @@
 <script type="text/javascript" language="javascript">
-function back_to_write_review(){
-	document.preview_review.fn.value = "write";
-	document.preview_review.submit();
-	
-}
-function check_terms_and_conditions(){
-		if (document.getElementById("checkbox_confirm_terms_and_conditions").checked){
-			document.preview_review.checked_terms_and_conditions.value = "1";
-		}
-		else{
-			document.preview_review.checked_terms_and_conditions.value = "0";
-		}
-}
+	function back_to_write_review() {
+		document.preview_review.fn.value = "write";
+		document.preview_review.submit();
+	}
 </script>
 <div class="col-xs-12">
 	<h1 class="page-header">Preview [@model@] Review </h1>
@@ -51,7 +42,14 @@ function check_terms_and_conditions(){
 			</blockquote>
 		</div>
 		<p>
-			<input class="btn btn-success btn-lg" type="submit" value="Post Review"> <input class="btn btn-warning btn-lg" type="button" value="Edit Review" onclick="back_to_write_review();"/>
+			<button class="btn btn-success btn-lg" type="submit">
+				<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+				Post Review
+			</button>
+			<button class="btn btn-warning btn-lg" type="button" onclick="back_to_write_review();">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				Edit Review
+			</button>
 		</p>
 	</form>
 </div>
