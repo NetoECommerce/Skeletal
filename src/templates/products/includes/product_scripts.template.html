@@ -19,7 +19,18 @@
 				}
 			});
 			[%if [@has_components@]%]
-				$.kit_variationInit({});
+				$.kit_variationInit({
+					'fns' : {
+						'onLoad' : function () {
+							$('.addtocart').button("loading");
+							$('.component.selector').addClass('disable-interactivity');
+						},
+						'onReady' : function () {
+							$('.addtocart').button("reset");
+							$('.component.selector').removeClass('disable-interactivity');
+						},
+					}
+				});
 			[%/if%]
 		});
 	</script>
