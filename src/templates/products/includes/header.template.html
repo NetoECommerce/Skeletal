@@ -6,28 +6,8 @@
 			<h3 class="text-muted" role="heading" aria-label="Product Subtitle">[@subtitle@]</h3>
 		[%/if%]
 
-		[%if [@parent_sku@] and [@config:SHOW_CHILD_PRODUCT_REVIEWS@]%]
-			[%product sku:'[@parent_sku@]'%]
-				[%param *body%]
-					[%set [@^reviews@] %][@reviews@][%/set%]
-					[%set [@^rating@] %][@rating@][%/set%]
-				[%/param%]
-			[%/product%]
-		[%/if%]
-		[%if [@reviews@] > 0%]
-			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-				[%set [@ratings-count@] = 1 /%]
-				[%while [@ratings-count@] <= [@rating@]%]
-					[%set [@ratings-count@] = [@ratings-count@]+1 /%]
-					<i class="fa fa-star"></i>
-				[%/ while%]
-				[%while [@ratings-count@] <= 5%]
-					[%set [@ratings-count@] = [@ratings-count@]+1 /%]
-					<i class="fa fa-star-o"></i>
-				[%/while%]
-				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> review[%if [@reviews@] > 1%]s[%/if%].
-			</span>
-		[%/if%]
+		[%set [@review-sku@]%][%if [@parent_sku@] and [@config:SHOW_CHILD_PRODUCT_REVIEWS@]%][@parent_sku@][%else%][@sku@][%/if%][%/set%]
+		[%load_ajax_template id:'_header_reviews' type:'item' template:'header.reviews' preload:'1' tmpl_sku:'[@review-sku@]' /%]
 
 		<div class="dropdown">
 			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-controls="shareDropdown[@sku@]" aria-label="Share product">
