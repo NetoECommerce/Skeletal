@@ -67,7 +67,10 @@
 									[%param *body%]
 										<li>
 											<input type="hidden" name="compsku[@count@]_[@component_count@]" value="[@SKU@]">
-											<label>[@model@] x </label>
+											<label>[@model@] x </label><br />
+											[%if [@preorder@]%]
+										        	<span class="label label-warning">On pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span><br />
+										    	[%/if%]
 											<input type="number" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly [%/if%] value="[@qty@]" size="3">
 										</li>
 									[%/param%]
