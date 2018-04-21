@@ -7508,6 +7508,9 @@ a.text-dark:hover, a.text-dark:focus {
   color: #fff;
   text-align: center; }
 
+#header-cart {
+  z-index: 1030; }
+
 .savings-container {
   position: absolute;
   top: 0;
