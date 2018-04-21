@@ -148,28 +148,29 @@
 		[%param header%]
 			<div class="card d-none d-md-block mb-2">
 				<div class="card-header"><h3 class="h4 mb-0">Categories</h3></div>
-				<ul class="list-group list-group-flush" role="navigation" aria-label="Category menu">
-				[%/param%]
-				[%param *level_1%]
-					<li class="list-group-item  [%if [@next_level@]%] dropdown dropdown-hover[%/if%]"><a class="text-dark" href="[@url@]">[@name@]</a>
-						[%if [@next_level@]%]
-							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
-						[%/if%]
-					</li>
-				[%/param%]
-				[%param *level_2%]
-					<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
-						<a class="dropdown-item" href="[@url@]">[@name@]</a>
-						[%if [@next_level@]%]
-							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
-						[%/if%]
-					</li>
-				[%/param%]
-				[%param *level_3%]
-					<li><a class="dropdown-item" href="[@url@]">[@name@]</a></li>
-				[%/param%]
-				[%param footer%]
-				</ul>
+				<div class="list-group list-group-flush" role="navigation" aria-label="Category menu">
+		[%/param%]
+		[%param *level_1%]
+			<div class="position-relative border-bottom [%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
+				<a class="text-dark list-group-item list-group-item-action" href="[@url@]">[@name@]</a>
+				[%if [@next_level@]%]
+					<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
+				[%/if%]
+			</div>
+		[%/param%]
+		[%param *level_2%]
+				<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
+					<a class="dropdown-item" href="[@url@]">[@name@]</a>
+					[%if [@next_level@]%]
+						<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
+					[%/if%]
+				</li>
+		[%/param%]
+		[%param *level_3%]
+				<li><a class="dropdown-item" href="[@url@]">[@name@]</a></li>
+		[%/param%]
+		[%param footer%]
+				</div>
 			</div>
 		[%/param%]
 	[%/CATEGORYMENU%]
@@ -189,30 +190,31 @@
 	[%/CONFIG%]
 	[%MENU id:'web_information'%]
 		[%param header%]
-		<div class="card d-none d-md-block my-2">
-			<div class="card-header"><h3 class="h4 mb-0">Information</h3></div>
-			<ul class="list-group list-group-flush" role="navigation" aria-label="Information menu">
-				[%/param%]
-				[%param *level_1%]
-					<li class="list-group-item  [%if [@next_level@]%] dropdown dropdown-hover[%/if%]"><a class="text-dark" href="[@url@]">[@name@]</a>
-						[%if [@next_level@]%]
-							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
-						[%/if%]
-					</li>
-				[%/param%]
-				[%param *level_2%]
-					<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
-						<a class="dropdown-item" href="[@url@]">[@name@]</a>
-						[%if [@next_level@]%]
-							<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
-						[%/if%]
-					</li>
-				[%/param%]
-				[%param *level_3%]
-					<li><a class="dropdown-item" href="[@url@]">[@name@]</a></li>
-				[%/param%]
-				[%param footer%]
-			</ul>
+			<div class="card d-none d-md-block my-2">
+				<div class="card-header"><h3 class="h4 mb-0">Information</h3></div>
+				<div class="list-group list-group-flush" role="navigation" aria-label="Information menu">
+		[%/param%]
+		[%param *level_1%]
+			<div class="position-relative border-bottom [%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
+				<a class="text-dark list-group-item list-group-item-action" href="[@url@]">[@name@]</a>
+				[%if [@next_level@]%]
+					<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
+				[%/if%]
+			</div>
+		[%/param%]
+		[%param *level_2%]
+			<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
+				<a class="dropdown-item" href="[@url@]">[@name@]</a>
+				[%if [@next_level@]%]
+					<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
+				[%/if%]
+			</li>
+		[%/param%]
+		[%param *level_3%]
+			<li><a class="dropdown-item" href="[@url@]">[@name@]</a></li>
+		[%/param%]
+		[%param footer%]
+			</div>
 		</div>
 		[%/param%]
 	[%/MENU%]

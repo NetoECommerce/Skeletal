@@ -18,7 +18,7 @@
 	}
 }
 .dropdown-menu-horizontal {
-	top: -8px;
+	top: -1px;
 	left: 100%;
 }
 // Social icons
@@ -514,5 +514,12 @@ input[readonly] {background:#EFEFEF; color:666;}
 	@include media-breakpoint-up(md) {
 		height: auto !important;
 		display: block;
+	}
+}
+.list-group{
+	.position-relative.border-bottom{
+		&:last-of-type{
+			border-bottom: none !important;
+		}
 	}
 }

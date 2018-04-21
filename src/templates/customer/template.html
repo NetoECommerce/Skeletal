@@ -175,7 +175,7 @@
 		[%param *body%]
 				<article class="col-12 col-md-6 col-lg-4 mb-3" role="article" aria-label="Order">
 					<div class="card card-body">
-						<p>
+						<p class="mb-0">
 							<a href="[%url page:'account' type:'view_order' id:'[@order_id@]'/%]" aria-label="Order [@order_id@]">[@order_id@]</a>
 							<span class="badge pull-right
 								[%if [@order_status@] eq 'On Hold' or [@order_status@] eq 'Backorder Approved' or [@order_status@] eq 'New Backorder'%]
