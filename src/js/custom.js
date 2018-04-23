@@ -126,8 +126,7 @@ var netoCustom = {
 			// Pass in the target node, as well as the observer options
 			if(popUp){ popUpObserver.observe(popUp, config);}
 		},
-		buttonLoading: function(e){
-			e.preventDefault();
+		buttonLoading: function(){
 			var loadingText = $(this).attr('data-loading-text');
 			var originalText = $(this).html();
 			$(this).html(loadingText).addClass('disabled').prop('disabled', true);
