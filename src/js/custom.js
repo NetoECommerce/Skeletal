@@ -93,84 +93,90 @@
 	});
 })(jQuery);
 
+var netoCustom = {
+	vars : {
+		focused : $('body'),
+		lastFocused : $('body')
+	},
+	funcs : {
+		// Capture the last item focused
+		updateFocused: function(){
+			netoCustom.vars.lastFocused = netoCustom.vars.focused;
+		},
+		// Place focus on popup
+		popupFocus: function(){
+			var popUp = document.getElementById('npopupDesc');
+			// Configures the observer
+			var config = {childList: true};
+			// Create an observer instance
+			var popUpObserver = new MutationObserver(function(mutations) {
+				mutations.forEach(function(mutation) {
+					// Initial observer
+					if(mutation.addedNodes["0"]){
+						netoCustom.funcs.updateFocused();
+						// focus on the popup
+						$(popUp).attr('tabindex', '-1').focus();
+					}else{
+						$(popUp).attr('tabindex', '').blur();
+						// Observer closing popup
+						$(netoCustom.vars.lastFocused).focus();
+					}
+				});
+			});
+			// Pass in the target node, as well as the observer options
+			if(popUp){ popUpObserver.observe(popUp, config);}
+		},
+		buttonLoading: function(){
+			var $this = $(this);
+			var loadingText = $this.data('loading-text');
+			if ($this.html() !== loadingText) {
+				$this.data('original-text', $(this).html());
+				$this.html(loadingText);
+			}
+			setTimeout(function(){
+				$this.html($this.data('original-text'));
+			},3000);
+		},
+		windowPopup: function(url, width, height) {
+			// Calculate the position of the popup so
+			// it’s centered on the screen.
+			var left = (screen.width / 2) - (width / 2),
+				top = (screen.height / 2) - (height / 2);
+			window.open(url,"","menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left);
+		}
+	}
+}
+
 $(document).ready(function() {
+	// Neto functionalty
+	$.initPageFuncs();
+	netoCustom.funcs.popupFocus();
 	// Popup Credit Card CCV Description At Checkout
 	$("#card_ccv").fancybox();
-
 	// Popup Terms At Checkout
-	$("#terms").fancybox({
-		'width' : 850,
-		'height': 650
-	});
-
+	$("#terms").fancybox({ 'width' : 850,'height': 650});
 	// Jquery Ui Date Picker
 	$(".datepicker").datepicker({ dateFormat: "dd/mm/yy" });
-	$.initPageFuncs();
-
 	// Carousel
 	$('.carousel').carousel();
-
-});
-
-$(".btn-loads").click(function(){
-	$(this).button("loading");
-	var pendingbutton=this;
-	setTimeout(function(){
-		$(pendingbutton).button("reset");
-	},3000);
-});
-
-// Fancybox
-$(document).ready(function() {
+	// Fancybox
 	$(".fancybox").fancybox();
 });
-
 // Tooltip
 $('.tipsy').tooltip({trigger:'hover',placement:'bottom'});
-
-// Who needs AddThis?
-function windowPopup(url, width, height) {
-	// Calculate the position of the popup so
-	// it’s centered on the screen.
-	var left = (screen.width / 2) - (width / 2),
-		top = (screen.height / 2) - (height / 2);
-	window.open(url,"","menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left);
-}
+// Capture the current element the user focused in
+$(document).on('focusin', function(){
+	netoCustom.vars.focused = document.activeElement;
+});
+// Btn loading state
+$(".btn-loads").click(netoCustom.funcs.buttonLoading);
+// Social media share
 $(".js-social-share").on("click", function(e) {
 	e.preventDefault();
-	windowPopup($(this).attr("href"), 500, 300);
+	netoCustom.funcs.windowPopup($(this).attr("href"), 500, 300);
 });
-
+// Mobile menu
 $('.nToggleMenu').click(function(){
 	var toggleTarget = $(this).attr('data-target')
 	$(toggleTarget).slideToggle();
-});
-var focused = $('body');
-var lastFocused = $('body');
-// Capture the current element the user focused in
-$(document).on('focusin', function(){ focused = document.activeElement; });
-// Capture the last item focused
-function updateFocused(){ lastFocused = focused; };
-// Place focus on popup
-$(document).ready(function(){
-	var popUp = document.getElementById('npopupDesc');
-	// Configuration of the observer:
-	var config = {childList: true};
-	// Create an observer instance
-	var popUpObserver = new MutationObserver(function(mutations) {
-	mutations.forEach(function(mutation) {
-		// Initial observer
-		if(mutation.addedNodes["0"]){
-			updateFocused();
-			// focus on the popup
-			$(popUp).attr('tabindex', '-1').focus();
-		}else{
-			$(popUp).attr('tabindex', '').blur();
-			// Observer closing popup
-			$(lastFocused).focus();
-		}
-	  });
-	});
-	// Pass in the target node, as well as the observer options
-	if(popUp){ popUpObserver.observe(popUp, config);}
 });
