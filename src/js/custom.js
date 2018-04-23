@@ -126,20 +126,18 @@ var netoCustom = {
 			// Pass in the target node, as well as the observer options
 			if(popUp){ popUpObserver.observe(popUp, config);}
 		},
-		buttonLoading: function(){
-			var $this = $(this);
-			var loadingText = $this.data('loading-text');
-			if ($this.html() !== loadingText) {
-				$this.data('original-text', $(this).html());
-				$this.html(loadingText);
-			}
+		buttonLoading: function(e){
+			e.preventDefault();
+			var loadingText = $(this).attr('data-loading-text');
+			var originalText = $(this).html();
+			$(this).html(loadingText).addClass('disabled').prop('disabled', true);
+			var pendingButton = this;
 			setTimeout(function(){
-				$this.html($this.data('original-text'));
-			},3000);
+				$(pendingButton).html(originalText).removeClass('disabled').removeAttr('disabled');
+			}, 3000);
 		},
 		windowPopup: function(url, width, height) {
-			// Calculate the position of the popup so
-			// it’s centered on the screen.
+			// Calculate the position of the popup so it’s centered on the screen.
 			var left = (screen.width / 2) - (width / 2),
 				top = (screen.height / 2) - (height / 2);
 			window.open(url,"","menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left);
@@ -169,7 +167,7 @@ $(document).on('focusin', function(){
 	netoCustom.vars.focused = document.activeElement;
 });
 // Btn loading state
-$(".btn-loads").click(netoCustom.funcs.buttonLoading);
+$(document).on("click", ".btn-loads", netoCustom.funcs.buttonLoading);
 // Social media share
 $(".js-social-share").on("click", function(e) {
 	e.preventDefault();
