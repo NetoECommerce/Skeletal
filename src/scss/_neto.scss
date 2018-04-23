@@ -9,6 +9,9 @@
 	right: 0;
 	text-align: right;
 }
+.thumbnail.card-body{
+	padding: 0.55rem;
+}
 // dropdown hover support
 @include media-breakpoint-up(md) {
 	.dropdown-hover{
@@ -332,6 +335,7 @@
 .products-row{
 	@extend .justify-content-center;
 	@extend .justify-content-sm-start;
+	@extend .align-items-center;
 }
 // Cart
 .cartTable {
@@ -522,4 +526,7 @@ input[readonly] {background:#EFEFEF; color:666;}
 			border-bottom: none !important;
 		}
 	}
+}
+.navbar{
+	border-radius: $border-radius;
 }

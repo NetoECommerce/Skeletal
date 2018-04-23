@@ -14,7 +14,7 @@
 				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>
-		<div class="col-12 col-sm-8 col-lg-4">
+		<div class="col-12 col-sm-8 col-md-4 col-lg-4">
 			<div class="header-search pt-2 pt-md-0">
 				<form name="productsearch" method="get" action="/" role="search" aria-label="Product Search">
 					<input type="hidden" name="rf" value="kw"/>
@@ -27,10 +27,10 @@
 				</form>
 			</div>
 		</div>
-		<div class="d-none d-lg-block col-lg-4 text-right">
+		<div class="d-none d-md-block col-md-4 col-lg-4 text-right">
 			<div id="header-cart" class="btn-group" role="group">
 				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-outline-secondary" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="d-none d-lg-inline">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
 				</a>
 				<a href="#" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Shopping cart dropdown">
 					<span class="sr-only">Toggle Dropdown</span>
@@ -48,7 +48,7 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<i class="fa fa-bars fa-lg" aria-hidden="true"></i>
 		</button>
-		<a class="navbar-toggler" href="[%url page:'checkout' type:'cart'/%]" aria-label="Shopping cart">
+		<a class="navbar-toggler d-sm-block d-md-none" href="[%url page:'checkout' type:'cart'/%]" aria-label="Shopping cart">
 			<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
 		</a>
 	  <div class="collapse navbar-collapse" id="navbarMainMenu">

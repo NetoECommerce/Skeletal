@@ -4730,7 +4730,7 @@ button.bg-dark:focus {
       -ms-flex-align: end !important;
           align-items: flex-end !important; }
 
-.align-items-center {
+.align-items-center, .products-row {
   -webkit-box-align: center !important;
       -ms-flex-align: center !important;
           align-items: center !important; }
@@ -7517,6 +7517,10 @@ a.text-dark:hover, a.text-dark:focus {
   right: 0;
   text-align: right; }
 
+.thumbnail.card-body {
+  padding: 8.8px;
+  padding: 0.55rem; }
+
 @media (min-width: 768px) {
   .dropdown-hover:hover > .dropdown-menu {
     display: block; } }
@@ -8019,3 +8023,6 @@ input[readonly] {
 
 .list-group .position-relative.border-bottom:last-of-type {
   border-bottom: none !important; }
+
+.navbar {
+  border-radius: 0.25rem; }
