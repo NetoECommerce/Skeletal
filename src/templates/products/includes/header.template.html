@@ -51,7 +51,7 @@
 					</div>
 				[%/if%]
 			[%else%]
-				<div class="productwasprice" aria-label="Was price">
+				<div class="productwasprice h3" aria-label="Was price">
 					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
@@ -59,7 +59,7 @@
 						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
 					</div>
 				[%/if%]
-				<div class="productpromo" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
+				<div class="productpromo h1" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
 					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
@@ -67,7 +67,7 @@
 						SAVE [%format type:'percent'%][@save@][%/format%]!
 					</div>
 				[%/if%]
-				<div class="productsavetext small">
+				<div class="productsavetext text-danger font-weight-bold">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
 				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">

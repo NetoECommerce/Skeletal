@@ -3,9 +3,12 @@
 // Color system
 //
 $gray-100: #f8f9fa;
+$gray-200: #ebebeb;
+
 $blue:    #006FF5;
 $theme-colors: (
-    "primary": $blue
+	"primary": $blue,
+	"secondary": $gray-200
 );
 // Fonts
 $font-size-base:              0.875rem; // Assumes the browser default, typically `1rem==16px`

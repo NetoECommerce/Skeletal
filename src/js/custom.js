@@ -8,8 +8,8 @@
 			$.addToWishList({
 				'class': 'wishlist_toggle',
 				'textclass': 'wishlist_text',
-				'htmlon': 'Remove From Wishlist',
-				'htmloff': 'Add To Wishlist',
+				'htmlon': '<i class="fa fa-star" aria-hidden="true"></i>',
+				'htmloff': '<i class="fa fa-star-o" aria-hidden="true"></i> Wishlist',
 				'tooltip_css': 'whltooltips'
 			});
 			// Ajax Add To Cart

@@ -65,9 +65,9 @@ h5,
 .btn-outline-secondary:active,
 .btn-outline-secondary.active,
 .open .dropdown-toggle.btn-outline-secondary {
-	color: #fff /*{btn-default-text-colour-hover}*/;
-	background-color: #6c757d /*{btn-default-bg-colour-hover}*/;
-	border-color: #6c757d /*{btn-default-border-colour-hover}*/;
+	color: #333 /*{btn-default-text-colour-hover}*/;
+	background-color: #ebebeb /*{btn-default-bg-colour-hover}*/;
+	border-color: #adadad /*{btn-default-border-colour-hover}*/;
 }
 
 .btn-outline-secondary.disabled,
@@ -293,7 +293,7 @@ fieldset[disabled] .btn-info.active {
 }
 
 .badge-secondary {
-	background-color: #6c757d /*{label-default-bg}*/;
+	background-color: #ebebeb /*{label-default-bg}*/;
 }
 .badge-primary {
 	background-color: #006FF5 /*{label-primary-bg}*/;
