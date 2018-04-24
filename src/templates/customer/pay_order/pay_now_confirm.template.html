@@ -1,43 +1,4 @@
 <div class="col-12">
-	<script language="javascript" type="text/javascript">
-		function showPD() {
-			var f = document.itemForm;
-			var obj = f['card_type'];
-			var pl = document.getElementById('payccpl');
-			if(obj && pl){
-				var val= obj.options[obj.selectedIndex].value;
-				pl.style.display = (val.indexOf(':cc')>0? '': 'none');
-			}
-		}
-
-		function proc_pay() {
-			var f = document.itemForm;
-			if(f) {
-				var r = f['amount_paid'];
-				var rv = parseFloat(r.value);
-				if(!isNaN(rv) && rv > 0) {
-					var cdt = f['card_type'];
-
-					if(cdt.selectedIndex > 0) {
-						var pn = cdt.options[cdt.selectedIndex].text;
-						var received = f['amount_paid'];
-						if(confirm('You are about to authorise [@config:moneysign@]'+received.value+' received from \''+pn+'\' to this order.\n'+
-							'\nDo you wish to continue?')) {
-							var s = document.getElementById('processing');
-							if(s) {
-								s.style.display='block';
-							}
-							f.submit();
-						}
-					} else {
-						alert('Please select a payment method.');
-					}
-				} else {
-					alert('Please enter a payment amount.');
-				}
-			}
-		}
-	</script>
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
@@ -72,23 +33,16 @@
 			<div class="col-12 col-md-6 offset-md-2">
 				<div id="payccpl">
 					<div class="card card-body">
-						<div class="row">
-							<div class="col-12">
-							<div class="form-group">
-								<label>Card Holder</label>
-								<input placeholder="John Smith" class="form-control" name="card_holder" size="30" maxlength="40" value="">
-							</div>
-							</div>
-							<div class="col-12">
-							<div class="form-group">
-								<label>Card Number</label>
-								<input placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control" name="card_number" size="16" maxlength="16" value="">
-								<p class="help-text">(only digits)</p>
-							</div>
-							</div>
-						</div>
-						<div class="row">
 						<div class="form-group">
+							<label>Card Holder</label>
+							<input placeholder="John Smith" class="form-control" name="card_holder" size="30" maxlength="40" value="">
+						</div>
+						<div class="form-group">
+							<label>Card Number</label>
+							<input placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control" name="card_number" size="16" maxlength="16" value="">
+							<p class="help-text">(only digits)</p>
+						</div>
+						<div class="form-group row mb-0">
 							<div class="col-12">
 								<label>Card Expiration Date</label>
 							</div>
@@ -116,20 +70,56 @@
 								<p class="help-text">(3-4 digit security code)</p>
 							</div>
 						</div>
-						</div>
-						</div>
-						<div class="form-group">
-							<label>Enter Amount You Want To Pay Now</label>
-							<input placeholder="[@config:moneysign@]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
-						</div>
+					</div>
+					<div class="form-group mt-2">
+						<label>Enter Amount You Want To Pay Now</label>
+						<input placeholder="[@config:moneysign@]0.00" class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15">
+					</div>
 					<input type="button" class="btn btn-block btn-success" onclick="proc_pay()" value="Process Credit Card Payment">
 				</div>
 			</div>
 		</div>
-	</div>
 	</form>
 	<hr>
-	<script type="text/javascript" language="javascript">showPD();</script>
+	<script language="javascript" type="text/javascript">
+		function showPD() {
+			var f = document.itemForm;
+			var obj = f['card_type'];
+			var pl = document.getElementById('payccpl');
+			if(obj && pl){
+				var val= obj.options[obj.selectedIndex].value;
+				pl.style.display = (val.indexOf(':cc')>0? '': 'none');
+			}
+		}
+		function proc_pay() {
+			var f = document.itemForm;
+			if(f) {
+				var r = f['amount_paid'];
+				var rv = parseFloat(r.value);
+				if(!isNaN(rv) && rv > 0) {
+					var cdt = f['card_type'];
+
+					if(cdt.selectedIndex > 0) {
+						var pn = cdt.options[cdt.selectedIndex].text;
+						var received = f['amount_paid'];
+						if(confirm('You are about to authorise [@config:moneysign@]'+received.value+' received from \''+pn+'\' to this order.\n'+
+							'\nDo you wish to continue?')) {
+							var s = document.getElementById('processing');
+							if(s) {
+								s.style.display='block';
+							}
+							f.submit();
+						}
+					} else {
+						alert('Please select a payment method.');
+					}
+				} else {
+					alert('Please enter a payment amount.');
+				}
+			}
+		}
+		showPD();
+	</script>
 	<div align="center" id="processing" style=" display:none; border:#060 solid 4px; padding:8px; font-size:18px; font-weight:bold; position:absolute; z-index:10; background-color:#E6FEAB; width:600px; left: 300px; top: 349px;"> Payment Processing.<br />
 		Please do not refresh or close this page.<br />
 		<img src="[@config:imageurl@]/loading.gif" alt="Loading"/>

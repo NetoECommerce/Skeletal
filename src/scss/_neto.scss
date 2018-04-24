@@ -360,7 +360,8 @@
 	}
 }
 // Fixing issues with inputs
-#suburb_sl, ._itmspec_opt, .n-wrapper-form-control select{
+#suburb_sl, ._itmspec_opt, .n-wrapper-form-control select,
+#stloc_selector_cysel, #stloc_state_sel{
 	@extend .form-control;
 	@extend select.form-control;
 }
@@ -463,8 +464,17 @@
 // Add Bootstrap3 text shadow for carousel
 .carousel-caption{
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+	@include media-breakpoint-down(sm) {
+		bottom: 5px;
+		padding-bottom: 5px;
+	}
 	.btn {
 		text-shadow: none;
+	}
+}
+.carousel-indicators{
+	@include media-breakpoint-down(sm) {
+		display: none;
 	}
 }
 // Auto hide google conversion frames

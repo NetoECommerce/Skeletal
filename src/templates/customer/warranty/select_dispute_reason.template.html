@@ -36,10 +36,10 @@
 		<input type="hidden" name="type" value="[%NOHTML%][@type@][%/NOHTML%]">
 		[%dispute_reasons type:'[@type@]'%]
 			[%PARAM header%]
-			<div class="row">
+			<div class="row align-items-center">
 			[%/PARAM%]
 			[%PARAM *body%]
-				<div class="col-12 col-md-6">
+				<div class="col-12 col-md-6 pb-2">
 					<div class="card card-body">
 						<div class="form-check">
 							<input type="radio" class="form-check-input" name="reason" value="[@dispute_reason_id@]" id="[@dispute_reason_id@]"  [%DATA id:'reason' if:'eq' value:'[@dispute_reason_id@]'%]checked[%/DATA%] >
@@ -84,10 +84,10 @@
 			<div class="col-12 col-md-3">
 				<button name="button" type="button" onClick="cancalAction()" class="btn btn-block btn-danger" value="Cancel"> <i class="fa fa-remove icon-white"></i> Cancel </button>
 			</div>
-			<div class="col-12 col-md-3 offset-md-3">
+			<div class="col-12 col-md-3 offset-md-2 offset-lg-3">
 				<button name="button" type="button" onClick="goBack()" class="btn btn-outline-secondary btn-block" value="Go Back"><i class="fa fa-chevron-left"></i> Go Back </button>
 			</div>
-			<div class="col-12 col-md-3">
+			<div class="col-12 col-md-4 col-lg-3">
 				<button type="submit" class="btn btn-success btn-block" >Continue to Next Step <i class="fa fa-chevron-right icon-white"></i></button>
 			</div>
 		</div>

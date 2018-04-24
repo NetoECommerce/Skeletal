@@ -55,7 +55,7 @@ h5,
 	font-size: 13.124px /*{header-5-font-size}*/;
 }
 
-.btn-outline-secondary {
+.btn-outline-secondary, .btn-default {
 	color: #333 /*{btn-default-text-colour}*/;
 	background-color: #fff /*{btn-default-bg-colour}*/;
 	border-color: #ccc /*{btn-default-border-colour}*/;
@@ -64,7 +64,12 @@ h5,
 .btn-outline-secondary:focus,
 .btn-outline-secondary:active,
 .btn-outline-secondary.active,
-.open .dropdown-toggle.btn-outline-secondary {
+.open .dropdown-toggle.btn-outline-secondary,
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
 	color: #333 /*{btn-default-text-colour-hover}*/;
 	background-color: #ebebeb /*{btn-default-bg-colour-hover}*/;
 	border-color: #adadad /*{btn-default-border-colour-hover}*/;
@@ -84,7 +89,22 @@ fieldset[disabled] .btn-outline-secondary:focus,
 fieldset[disabled] .btn-outline-secondary:active,
 .btn-outline-secondary.disabled.active,
 .btn-outline-secondary[disabled].active,
-fieldset[disabled] .btn-outline-secondary.active {
+fieldset[disabled] .btn-outline-secondary.active,
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
 	background-color: #cccccc /*{btn-default-disabled-bg-colour}*/;
 	border-color: #cccccc /*{btn-default-disabled-border-colour}*/;
 }
