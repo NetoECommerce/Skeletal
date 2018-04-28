@@ -43,16 +43,14 @@
 						<div class="col-12">
 						<div class="alert alert-success">
 							<h3 class="h2">BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
-								<div class="row">
+								<div class="row products-row">
 						[%/param%]
 						[%param *body%]
 								<div class="col-8 col-sm-6 col-md-3">
-									<div class="card">
-										<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="card-img-top"><img src="[@thumb@]" alt="[@name@]"></a>
-										<div class="card-body">
+									<div class="card thumbnail card-body">
+											<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image pb-2"><img src="[@thumb@]" class="img-fluid" alt="[@name@]"></a>
 											<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 											<div class="text-success"><strong>FREE</strong> With This Item!</div>
-										</div>
 									</div>
 								</div>
 						[%/param%]
@@ -67,16 +65,14 @@
 						<div class="col-12">
 						<div class="alert alert-success">
 							<h3 class="h2">FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
-								<div class="row">
+								<div class="row products-row">
 					[%/param%]
 					[%param *body%]
 							<div class="col-8 col-sm-6 col-md-3">
-								<div class="card">
-									<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="card-img-top"><img src="[@thumb@]" alt="[@name@]"></a>
-									<div class="card-body">
+								<div class="card thumbnail card-body">
+									<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image pb-2"><img src="[@thumb@]" class="img-fluid" alt="[@name@]"></a>
 										<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 										<div class="text-success"><strong>FREE</strong> With This Item!</div>
-									</div>
 								</div>
 							</div>
 					[%/param%]

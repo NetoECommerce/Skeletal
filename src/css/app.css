@@ -7587,6 +7587,8 @@ a.text-dark:hover, a.text-dark:focus {
 .thumbnail.card-body {
   padding: 8.8px;
   padding: 0.55rem; }
+  .thumbnail.card-body img {
+    width: 100%; }
 
 @media (min-width: 768px) {
   .dropdown-hover:hover > .dropdown-menu {
@@ -7894,7 +7896,7 @@ a.text-dark:hover, a.text-dark:focus {
   width: 100%;
   border-color: rgba(0, 0, 0, .15);
   background-color: white;
-  margin-top: 44px !important; }
+  margin-top: 35px !important; }
   .nsearchinput-pl.well ul {
     display: block;
     margin-bottom: 0;
@@ -7962,9 +7964,6 @@ a.text-dark:hover, a.text-dark:focus {
 
 .logo {
   max-width: 100%; }
-
-.wrapper-logo {
-  text-align: center; }
 
 .neto-placeholder {
   padding: 110px 0;
@@ -8086,6 +8085,22 @@ input[readonly] {
 
 ._cpy_credit_table TD {
   vertical-align: top; }
+
+.wrapper-header .navbar-toggler {
+  position: relative; }
+  .wrapper-header .navbar-toggler .badge {
+    position: absolute;
+    top: -5px;
+    right: -1px;
+    font-size: 11px; }
+
+@media (max-width: 767.98px) {
+  .wrapper-header nav.navbar {
+    padding: 0; } }
+
+@media (max-width: 767.98px) {
+  .wrapper-header nav.navbar #navbarMainMenu {
+    padding: 0.5rem 1rem; } }
 
 @media (max-width: 767.98px) {
   .wrapper-footer {

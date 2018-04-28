@@ -11,6 +11,9 @@
 }
 .thumbnail.card-body{
 	padding: 0.55rem;
+	img{
+		width: 100%;
+	}
 }
 // dropdown hover support
 @include media-breakpoint-up(md) {
@@ -378,7 +381,7 @@
 	width: 100%;
 	border-color: $dropdown-border-color;
 	background-color: white;
-	margin-top: 44px !important;
+	margin-top: 35px !important;
 	ul{
 		display: block;
 		margin-bottom: 0;
@@ -443,9 +446,7 @@
 .logo {
 	max-width: 100%;
 }
-.wrapper-logo {
-	text-align: center;
-}
+
 // Ad Placeholders
 .neto-placeholder {
 	padding: 110px 0;
@@ -517,6 +518,28 @@
 ._sh_post_sel li { padding:2px;}
 input[readonly] {background:#EFEFEF; color:666;}
 ._cpy_credit_table TD { vertical-align:top;}
+// Header
+.wrapper-header{
+	.navbar-toggler{
+		position: relative;
+		.badge{
+			position: absolute;
+			top: -5px;
+			right: -1px;
+			font-size: 11px;
+		}
+	}
+	nav.navbar{
+		@include media-breakpoint-down(sm) {
+			padding: 0;
+		}
+		#navbarMainMenu{
+			@include media-breakpoint-down(sm) {
+				padding: $navbar-padding-y $navbar-padding-x;
+			}
+		}
+	}
+}
 // Footer
 .wrapper-footer{
 	@include media-breakpoint-down(sm) {
