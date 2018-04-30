@@ -7848,7 +7848,7 @@ a.text-dark:hover, a.text-dark:focus {
   display: inline-block; }
 
 @media (min-width: 768px) {
-  .cartTable--column-image, .cartTable--heading-price, .cartTable--heading-quantity {
+  .cartTable--column-image, .cartTable--heading-price, .cartTable--heading-quantity, .cartTable--heading-remove {
     width: 100px; } }
 
 .price_range {
@@ -7922,57 +7922,57 @@ a.text-dark:hover, a.text-dark:focus {
     background-position: 0 -17px;
     margin-top: 6px; }
   .payment-icon-moneyorder {
-    margin-top: 3px;
     height: 22px;
-    background-position: 0 -35px; }
+    background-position: 0 -35px;
+    margin-top: 3px; }
   .payment-icon-cheque {
-    margin-top: 8px;
     height: 13px;
-    background-position: 0 -58px; }
+    background-position: 0 -58px;
+    margin-top: 8px; }
   .payment-icon-directdeposit {
-    margin-top: -4px;
     height: 38px;
-    background-position: 0 -72px; }
+    background-position: 0 -72px;
+    margin-top: -4px; }
   .payment-icon-americanexpress {
-    margin-top: 5px;
     height: 21px;
-    background-position: 0 -110px; }
+    background-position: 0 -110px;
+    margin-top: 5px; }
   .payment-icon-mastercard {
-    margin-top: -3px;
     height: 36px;
-    background-position: 0 -132px; }
+    background-position: 0 -132px;
+    margin-top: -3px; }
   .payment-icon-visa {
-    margin-top: 6px;
     height: 18px;
-    background-position: 0 -168px; }
+    background-position: 0 -168px;
+    margin-top: 6px; }
   .payment-icon-diners {
-    margin-top: 7px;
     height: 17px;
-    background-position: 0 -197px; }
+    background-position: 0 -197px;
+    margin-top: 7px; }
   .payment-icon-discover {
-    margin-top: 10px;
     height: 10px;
-    background-position: 0 -187px; }
+    background-position: 0 -187px;
+    margin-top: 10px; }
   .payment-icon-afterpay {
-    margin-top: 10px;
     height: 13px;
-    background-position: 0 -213px; }
+    background-position: 0 -213px;
+    margin-top: 10px; }
   .payment-icon-q-card {
-    margin-top: 0;
     height: 35px;
-    background-position: 0 -244px; }
+    background-position: 0 -244px;
+    margin-top: 0px; }
   .payment-icon-paymark {
-    margin-top: 7px;
     height: 18px;
-    background-position: 0 -226px; }
+    background-position: 0 -226px;
+    margin-top: 7px; }
   .payment-icon-zipmoney {
-    margin-top: 2px;
     height: 30px;
-    background-position: 0 30px; }
+    background-position: 0 30px;
+    margin-top: 2px; }
   .payment-icon-zippay {
-    margin-top: 7px;
     height: 18px;
-    background-position: 0 49px; }
+    background-position: 0 49px;
+    margin-top: 7px; }
 
 .ir {
   display: block;

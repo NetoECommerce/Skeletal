@@ -1,3 +1,35 @@
+$static-assets:(
+	payment-icon: "//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg",
+	npopup-close: "/assets/npopup_sprite.png",
+	ajax-loader: "/assets/icons/ajax-loader.gif"
+);
+$social-icons:(
+	facebook: #3b5998,
+	twitter: #00acee,
+	google-plus: #dd4b39,
+	youtube: #c4302b,
+	instagram: #3f729b,
+	pinterest: #c8232c,
+	tumblr: #34526f,
+	linkedin: #0e76a8,
+);
+$payment-icon:(
+	paypal: (16px, 0 0, 8px),
+	bpay: (18px, 0 -17px, 6px),
+	moneyorder: (22px, 0 -35px, 3px),
+	cheque: (13px, 0 -58px, 8px),
+	directdeposit: (38px, 0 -72px, -4px),
+	americanexpress: (21px, 0 -110px, 5px),
+	mastercard: (36px, 0 -132px, -3px),
+	visa: (18px, 0 -168px, 6px),
+	diners: (17px, 0 -197px, 7px),
+	discover: (10px, 0 -187px, 10px),
+	afterpay: (13px, 0 -213px, 10px),
+	q-card: (35px, 0 -244px, 0px),
+	paymark: (18px, 0 -226px, 7px),
+	zipmoney: (30px, 0 30px, 2px),
+	zippay: (18px, 0 49px, 7px)
+);
 //
 // Header
 //
@@ -148,7 +180,8 @@
 	}
 	&--column-image,
 	&--heading-price,
-	&--heading-quantity {
+	&--heading-quantity,
+	&--heading-remove {
 		@include media-breakpoint-up(md) {
 			width: 100px;
 		}
@@ -192,29 +225,10 @@
 }
 // Social icons colours
 .text{
-	&-facebook {
-		color: #3b5998;
-	}
-	&-twitter {
-		color: #00acee;
-	}
-	&-google-plus {
-		color: #dd4b39;
-	}
-	&-youtube {
-		color: #c4302b;
-	}
-	&-instagram {
-		color: #3f729b;
-	}
-	&-pinterest {
-		color: #c8232c;
-	}
-	&-tumblr {
-		color: #34526f;
-	}
-	&-linkedin {
-		color: #0e76a8;
+	@each $name, $colour in $social-icons {
+		&-#{$name} {
+			color: $colour;
+		}
 	}
 }
 // Payment icons
@@ -227,82 +241,17 @@
 }
 .payment-icon {
 	width: 60px;
-	background-image: url("//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg");
+	background-image: url(map-get($static-assets, payment-icon));
 	background-size: 60px;
-	&-paypal {
-		height: 16px;
-		background-position: 0 0;
-		margin-top: 8px;
-	}
-	&-bpay {
-		height: 18px;
-		background-position: 0 -17px;
-		margin-top: 6px;
-	}
-	&-moneyorder {
-		margin-top: 3px;
-		height: 22px;
-		background-position: 0 -35px;
-	}
-	&-cheque {
-		margin-top: 8px;
-		height: 13px;
-		background-position: 0 -58px;
-	}
-	&-directdeposit {
-		margin-top: -4px;
-		height: 38px;
-		background-position: 0 -72px;
-	}
-	&-americanexpress {
-		margin-top: 5px;
-		height: 21px;
-		background-position: 0 -110px;
-	}
-	&-mastercard {
-		margin-top: -3px;
-		height: 36px;
-		background-position: 0 -132px;
-	}
-	&-visa {
-		margin-top: 6px;
-		height: 18px;
-		background-position: 0 -168px;
-	}
-	&-diners {
-		margin-top: 7px;
-		height: 17px;
-		background-position: 0 -197px;
-	}
-	&-discover {
-		margin-top: 10px;
-		height: 10px;
-		background-position: 0 -187px;
-	}
-	&-afterpay {
-		margin-top: 10px;
-		height: 13px;
-		background-position: 0 -213px;
-	}
-	&-q-card {
-		margin-top: 0;
-		height: 35px;
-		background-position: 0 -244px;
-	}
-	&-paymark {
-		margin-top: 7px;
-		height: 18px;
-		background-position: 0 -226px;
-	}
-	&-zipmoney {
-		margin-top: 2px;
-		height: 30px;
-		background-position: 0 30px;
-	}
-	&-zippay {
-		margin-top: 7px;
-		height: 18px;
-		background-position: 0 49px;
+	@each $name, $styles in $payment-icon {
+		$height: nth($styles, 1);
+		$background-position: nth($styles, 2);
+		$margin-top: nth($styles, 3);
+		&-#{$name} {
+			height: $height;
+			background-position: $background-position;
+			margin-top: $margin-top;
+		}
 	}
 }
 //
@@ -541,7 +490,7 @@ input[readonly] {
 		height: 36px;
 		cursor: pointer;
 		z-index: 8040;
-		background-image: url("/assets/npopup_sprite.png");
+		background-image: url(map-get($static-assets, npopup-close));
 	}
 	&-continue {
 		margin-right: 10px;
@@ -590,7 +539,7 @@ input[readonly] {
 //
 // Checkout styles
 .ajaxloader {
-	background: #CCC url("/assets/icons/ajax-loader.gif") no-repeat 50% 50%;
+	background: #CCC url(map-get($static-assets, ajax-loader)) no-repeat 50% 50%;
 	border-radius: 5px;
 	opacity: 0.7;
 }
