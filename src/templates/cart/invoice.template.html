@@ -25,7 +25,14 @@
 					[%if [@user:username@]%]
 						<p><button type="button" value="Print Receipt" onClick="print_invoice()" class="btn btn-default"><i class="fa fa-print"></i> Print Receipt</button></p>
 					[%else%]
-						<p><a class="btn btn-default" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a></p>
+						<p>
+							<form action="[%url page:'account' type:'nr_view_order'/%]" method="post">
+								<input type="hidden" name="id" value="[@order_id@]">
+								<input type="hidden" name="email" value="[%escape%][@email@][%/escape%]">
+								<input type="hidden" name="zip" value="[%escape%][@ship_zip@][%/escape%]">
+								<button class="btn btn-default" type="submit"><i class="fa fa-print"></i> Print Receipt</button>
+							</form>
+						</p>
 					[%/if%]
 				</div>
 				<div class="col-xs-12 col-md-8">
