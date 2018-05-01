@@ -14,11 +14,11 @@
 				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>
-		<div class="col-5 d-block d-md-none text-right">
+		<div class="col-5 col-sm-8 d-block d-md-none text-right">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fa fa-bars fa-lg" aria-hidden="true"></i>
 			</button>
-			<a class="navbar-toggler d-sm-block d-md-none" href="[%url page:'checkout' type:'cart'/%]" aria-label="Shopping cart">
+			<a class="navbar-toggler d-sm-inline-block d-md-none" href="[%url page:'checkout' type:'cart'/%]" aria-label="Shopping cart">
 				<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
 				<span class="badge badge-pill badge-secondary" rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>
 			</a>

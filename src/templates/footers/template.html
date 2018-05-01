@@ -4,11 +4,11 @@
 	<div class="container">
 		<div class="row"><div class="col-12"><hr aria-hidden="true" /></div></div>
 		<div class="row">
-			<div class="col-12 col-sm-8">
+			<div class="col-12 col-md-8">
 				<nav class="row" aria-label="Footer menu">
 					[%menu id:'web_footer'%]
 						[%param *level_1%]
-							<div class="col-12 col-sm-4 text-sm-left">
+							<div class="col-12 col-md-4 text-md-left">
 								<ul class="nav flex-column">
 									<li class="nav-item"><h4 class="nav-link py-0">[@name@]</h4></li>
 									[@next_level@]
@@ -21,7 +21,7 @@
 					[%/menu%]
 				</nav>
 			</div>
-			<div class="col-12 col-sm-4 text-sm-left">
+			<div class="col-12 col-md-4 text-md-left">
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
 					<p>Subscribe to our newsletter:</p>
@@ -38,7 +38,7 @@
 						</div>
 					</form>
 				[%/if%]
-				<ul class="nav list-social justify-content-center justify-content-sm-start pt-2" itemscope itemtype="http://schema.org/Organization" role="contentinfo" aria-label="Social media">
+				<ul class="nav list-social justify-content-center justify-content-md-start pt-2" itemscope itemtype="http://schema.org/Organization" role="contentinfo" aria-label="Social media">
 					<meta itemprop="url" content="[@config:home_url@]"/>
 					<meta itemprop="logo" content="[@config:home_url@][@config:imageurl@]/website_logo.png"/>
 					<meta itemprop="name" content="[@config:company_name@]"/>
@@ -72,7 +72,7 @@
 		</div>
 		<div class="row"><div class="col-12"><hr aria-hidden="true"/></div></div>
 		<div class="row">
-			<div class="col-9 d-none d-sm-block">
+			<div class="col-12 col-md-9 d-none d-sm-block">
 				[%payment_methods ignore_balance:'1'%]
 					[%param header%]
 						<ul class="list-inline d-flex flex-wrap" role="contentinfo" aria-label="Accepted payment methods">
@@ -219,7 +219,7 @@
 					[%/param%]
 				[%/payment_methods%]
 			</div>
-			<div class="col-12 col-sm-3 text-sm-left">
+			<div class="col-12 col-md-3 text-md-left">
 				<address role="contentinfo" aria-label="Company details">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]

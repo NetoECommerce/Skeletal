@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row"><div class="col-12"><hr /></div></div>
 		<div class="row">
-			<div class="col-9 d-none d-block-md">
+			<div class="col-12 col-md-9 d-none d-sm-block">
 				[%payment_methods ignore_balance:'1'%]
 					[%param header%]
 						<ul class="list-inline">
@@ -86,7 +86,7 @@
 					[%/param%]
 				[%/payment_methods%]
 			</div>
-			<div class="col-3">
+			<div class="col-12 col-md-3 text-md-left">
 				<address>
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
