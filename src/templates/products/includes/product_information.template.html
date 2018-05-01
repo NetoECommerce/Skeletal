@@ -1,29 +1,29 @@
 <div class="tabbable">
   <ul class="nav nav-tabs" role="tablist">
-    <li class="active" id="tabDescription" role="tab" aria-controls="description" aria-selected="true">
-      <a href="#description" data-toggle="tab">Description</a>
+    <li class="nav-item" id="tabDescription" role="tab" aria-controls="description" aria-selected="true">
+      <a class="nav-link active" href="#description" data-toggle="tab">Description</a>
     </li>
     [%if [@warranty@]%]
-      <li id="tabWarranty" role="tab" aria-controls="warranty" aria-selected="false">
-        <a href="#warranty" data-toggle="tab">Warranty</a>
+      <li class="nav-item" id="tabWarranty" role="tab" aria-controls="warranty" aria-selected="false">
+        <a class="nav-link" href="#warranty" data-toggle="tab">Warranty</a>
       </li>
     [%/if%]
     [%if [@features@]%]
-      <li id="tabFeatures" role="tab" aria-controls="features" aria-selected="false">
-        <a href="#features" data-toggle="tab">Features</a>
+      <li class="nav-item" id="tabFeatures" role="tab" aria-controls="features" aria-selected="false">
+        <a class="nav-link" href="#features" data-toggle="tab">Features</a>
       </li>
     [%/if%]
-    <li id="tabSpecifications" role="tab" aria-controls="specifications" aria-selected="false">
-      <a href="#specifications" data-toggle="tab">Specifications</a>
+    <li class="nav-item" id="tabSpecifications" role="tab" aria-controls="specifications" aria-selected="false">
+      <a class="nav-link" href="#specifications" data-toggle="tab">Specifications</a>
     </li>
     [%if [@tnc@]%]
-      <li id="tabTermsConditions" role="tab" aria-controls="termsConditions" aria-selected="false">
-        <a href="#termsConditions" data-toggle="tab">Terms and Conditions</a>
+      <li class="nav-item" id="tabTermsConditions" role="tab" aria-controls="termsConditions" aria-selected="false">
+        <a class="nav-link" href="#termsConditions" data-toggle="tab">Terms and Conditions</a>
       </li>
     [%/if%]
     [%if [@config:show_product_reviews@]%]
-    <li id="tabReviews" role="tab" aria-controls="reviews" aria-selected="false">
-      <a class="reviews" href="#reviews" data-toggle="tab">
+    <li class="nav-item" id="tabReviews" role="tab" aria-controls="reviews" aria-selected="false">
+      <a class="nav-link" class="reviews" href="#reviews" data-toggle="tab">
         Reviews
         [%set [@data:ratings-count@] = 1 /%]
         [%while [@data:ratings-count@] <= [@data:rating@]%]
@@ -38,7 +38,7 @@
     </li>
     [%/if%]
   </ul>
-  <div class="tab-content">
+  <div class="tab-content pt-3">
     <div role="tabpanel" aria-labelledby="tabDescription" class="tab-pane active" id="description">
       <section class="productdetails n-responsive-content" aria-label="Product Description">
         [@description@]

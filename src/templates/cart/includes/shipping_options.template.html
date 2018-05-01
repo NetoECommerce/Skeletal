@@ -1,6 +1,6 @@
 [%cart_addresses ship_mode:'[@ship_mode@]'%]
 [%PARAM *body%]
-<div class="well">
+<div class="card card-body">
 	<h4>Shipping Options For [%NOHTML%][@ship_title@][%/NOHTML%]
 		[%NOHTML%][%TRIM%][@ship_state@][@ship_zip@][%/TRIM%][%/NOHTML%]</h4>
 		<hr>
@@ -18,7 +18,7 @@
 				<input type="hidden" id="delivery_on[@addr_id@]_[@id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y'%][@delivery_date@][%/FORMAT%]" />
 				<input type="hidden" id="delivery_exc[@addr_id@]_[@id@]" value="[@exclude_delivery_days@]" />
 				<input type="hidden" id="delivery_only[@addr_id@]_[@id@]" value="[@only_delivery_days@]" />
-				<h4>
+				<h4 class="d-inline">
 				[%if [@shipping_quote@]%] P.O.A
 				[%else%]
 					[%if [@cost@] == 0%]
@@ -63,12 +63,12 @@
 			<hr>
 			<h4>Select Your Preferred Delivery Date</h4>
 			<div class="row">
-			<div class="col-xs-12 col-lg-7">
+			<div class="col-12 col-lg-7">
 			<div class="_delivery_picker">
 				<div id="delivery_picker[@addr_id@]"></div>
 				&nbsp; </div>
 			</div>
-			<div class="col-xs-12 col-lg-5">
+			<div class="col-12 col-lg-5">
 			<div class="_delivery_select">
 				<label>Your selected date</label>
 					<input type="text" class="form-control" readonly id="delivery_date[@addr_id@]" name="delivery_date[@addr_id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y' default:''%][@order_delivery_date@][%/FORMAT%]" placeholder="Select Date" />
@@ -102,4 +102,5 @@
 		</div>
 	</div>
 </div>
-[%/param%][%/cart_addresses%]
+[%/param%]
+[%/cart_addresses%]

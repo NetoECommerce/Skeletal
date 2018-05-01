@@ -7,125 +7,123 @@
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
-<header class="container wrapper-header" aria-label="Header container">
-	<div class="row row-padded">
-		<div class="col-xs-12 col-sm-4 wrapper-logo">
+<header class="container wrapper-header py-3" aria-label="Header container">
+	<div class="row pb-2 align-items-center">
+		<div class="col-7 col-sm-4 wrapper-logo text-sm-left">
 			<a href="[@config:homeurl@]" title="[@config:company_name@]">
 				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>
-		<div class="col-xs-12 col-sm-4">
-			<div class="header-search">
-				<form name="productsearch" method="get" action="/" role="search" aria-label="Product Search">
+		<div class="col-5 d-block d-md-none text-right">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainMenu" aria-controls="navbarMainMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+			</button>
+			<a class="navbar-toggler d-sm-block d-md-none" href="[%url page:'checkout' type:'cart'/%]" aria-label="Shopping cart">
+				<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+				<span class="badge badge-pill badge-secondary" rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>
+			</a>
+		</div>
+		<div class="d-none d-md-block col-12 col-sm-8 col-md-4 col-lg-4">
+			<div class="header-search pt-2 pt-md-0">
+				<form name="productsearch" method="get" action="/" role="search" aria-label="Product search">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
 						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
-						<span class="input-group-btn">
-							<button type="submit" value="Search" class="btn btn-default" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
-						</span>
+						<div class="input-group-append">
+							<button type="submit" value="Search" class="btn btn-outline-secondary" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
+						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="hidden-xs col-sm-4 text-right">
-			<div id="header-cart" class="btn-group">
-				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-default" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="visible-lg visible-inline-lg">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+		<div class="d-none d-md-block col-md-4 col-lg-4 text-right">
+			<div id="header-cart" class="btn-group" role="group">
+				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-outline-secondary" id="cartcontentsheader">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="d-none d-lg-inline">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
 				</a>
-				<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-label="Shopping cart dropdown"><span class="caret"></span></a>
-				<ul class="dropdown-menu">
+				<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Shopping cart dropdown">
+					<span class="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-right pull-right">
 					<li class="box" id="neto-dropdown">
-						<div class="body padding" id="cartcontents"></div>
+						<div class="body" id="cartcontents"></div>
 						<div class="footer"></div>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header">
-					<ul class="navigation-list list-inline visible-xs nMobileNav" role="navigation" aria-label="Mobile menu">
-						<li><a href="#" role="button" class="nToggleMenu" data-target=".navbar-responsive-collapse" data-toggle="collapse">
-							<span class="icon" aria-hidden="true"><i class="fa fa-bars"></i></span><br>Menu
-						</a></li>
-						<li><a href="/products">
-							<span class="icon" aria-hidden="true"><i class="fa fa-gift"></i></span><br>Shop
-						</a></li>
-						<li><a href="[%url page:'checkout' type:'cart'/%]">
-							<span class="icon" aria-hidden="true"><i class="fa fa-shopping-cart"></i></span><br>Cart (<span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>)
-						</a></li>
-						<li><a href="/_myacct/">
-							<span class="icon" aria-hidden="true"><i class="fa fa-user"></i></span><br>Account
-						</a></li>
-					</ul>
+	<nav class="navbar navbar-expand-md navbar-light bg-light mt-0 mt-md-2">
+	  <div class="collapse navbar-collapse" id="navbarMainMenu">
+			<form class="d-block d-md-none" name="productsearch" method="get" action="/" role="search" aria-label="Product search">
+				<input type="hidden" name="rf" value="kw"/>
+				<div class="input-group">
+					<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
+					<div class="input-group-append">
+						<button type="submit" value="Search" class="btn btn-outline-secondary" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
+					</div>
 				</div>
-				<div class="navbar-collapse collapse navbar-responsive-collapse">
-					<ul class="nav navbar-nav" role="navigation" aria-label="Main menu">
-						[%cache type:'menu' id:'header-content-menu'%]
-							[%menu id:'web_header'%]
-								[%param *level_1%]
-									<li class="[%if [@next_level@]%]dropdown dropdown-hover [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]" [%if [@next_level@]%]class="dropdown-toggle"[%/if%]>[@name@] [%if [@next_level@]%]<span class="caret"></span>[%/if%]</a>
-										[%if [@next_level@]%]
-											<ul class="dropdown-menu">
-												[@next_level@]
-											</ul>
-										[%/if%]
-									</li>
-									[%/param%]
-								[%param *level_2%]
-									<li class="[%if [@next_level@]%]dropdown dropdown-hover [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]" class="nuhover dropdown-toggle">[@name@]</a>
-										[%if [@next_level@]%]
-											<ul class="dropdown-menu dropdown-menu-horizontal">
-												[@next_level@]
-											</ul>
-										[%/if%]
-									</li>
-									[%/param%]
-								[%param *level_3%]
-									<li class="[%if [@next_level@]%]dropdown dropdown-hover [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]">[@name@]</a>
-										[%if [@next_level@]%]
-											<ul class="dropdown-menu dropdown-menu-horizontal">
-												[@next_level@]
-											</ul>
-										[%/if%]
-									</li>
-								[%/param%]
-							[%/menu%]
-						[%/ cache%]
-					</ul>
-					<ul class="nav navbar-nav navbar-right hidden-xs" role="navigation" aria-label="Accounts menu">
-						<li class="lv1-li navbar-right dropdown dropdown-hover"> <a href="[%url page:'account'/%]" [%if [@next_level@]%]class="dropdown-toggle" data-toggle="dropdown"[%/if%] aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span> <span class="caret"></span></a>
-							<ul class="dropdown-menu pull-right">
-								<li><a href="[%url page:'account'/%]">Account Home</a></li>
-								<li><a href="[%url page:'account'/%]#orders">Orders</a></li>
-								[%if [@config:allow_user_quote@]%]
-								<li><a href="[%url page:'account'/%]#quotes">Quotes</a></li>
-								[%/ if%]
-								<li><a href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
-								<li><a href="[%url page:'account' type:'favourites'/%]">Reorder</a></li>
-								[%if [@config:show_wishlist@]%]
-								<li><a href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
-								[%/if%]
-								<li><a href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
-								<li><a href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
-								<li><a href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
-								<li class="divider"></li>
-								[%if [@user:username@]%]
-									<li> <a href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
-									<li> <a href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log Out</a> </li>
-								[%else%]
-									<li> <a href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
-									<li> <a href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
-								[%/if%]
-							</ul>
+			</form>
+	    <ul class="navbar-nav mr-auto" role="navigation" aria-label="Main menu">
+			[%cache type:'menu' id:'header-content-menu'%]
+				[%menu id:'web_header'%]
+					[%param *level_1%]
+						<li class="nav-item [%if [@next_level@]%] dropdown [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]">
+							<a href="[@url@]" class="nav-link [%if [@next_level@]%] dropdown-toggle[%/if%]" [%if [@next_level@]%]role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"[%/if%]>[@name@]</a>
+							[%if [@next_level@]%]
+								<ul class="dropdown-menu">
+									[@next_level@]
+								</ul>
+							[%/if%]
 						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</div>
+						[%/param%]
+					[%param *level_2%]
+						<li class="[%if [@next_level@]%] dropdown dropdown-hover [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]"> <a href="[@url@]" class="nuhover dropdown-item">[@name@]</a>
+							[%if [@next_level@]%]
+								<ul class="dropdown-menu dropdown-menu-horizontal">
+									[@next_level@]
+								</ul>
+							[%/if%]
+						</li>
+						[%/param%]
+					[%param *level_3%]
+						<li class="[%if [@css_class@]%] [@css_class@][%/if%]">
+							<a class="dropdown-item" href="[@url@]">[@name@]</a>
+						</li>
+					[%/param%]
+				[%/menu%]
+			[%/ cache%]
+		</ul>
+		<ul class="navbar-nav navbar-right" role="navigation" aria-label="Accounts menu">
+			<li class="nav-item dropdown">
+				<a href="[%url page:'account'/%]" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span></a>
+				<ul class="dropdown-menu dropdown-menu-right pull-right">
+					<li><a class="dropdown-item" href="[%url page:'account'/%]">Account Home</a></li>
+					<li><a class="dropdown-item" href="[%url page:'account'/%]#orders">Orders</a></li>
+					[%if [@config:allow_user_quote@]%]
+					<li><a class="dropdown-item" href="[%url page:'account'/%]#quotes">Quotes</a></li>
+					[%/ if%]
+					<li><a class="dropdown-item" href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
+					<li><a class="dropdown-item" href="[%url page:'account' type:'favourites'/%]">Reorder</a></li>
+					[%if [@config:show_wishlist@]%]
+					<li><a class="dropdown-item" href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
+					[%/if%]
+					<li><a class="dropdown-item" href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
+					<li><a class="dropdown-item" href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
+					<li><a class="dropdown-item" href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
+					<li class="divider"><div class="dropdown-divider"></div></li>
+					[%if [@user:username@]%]
+						<li> <a class="dropdown-item" href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
+						<li> <a class="dropdown-item" href="[%url page:'account' type:'logout'/%]"><i class="fa fa-off"></i> Log Out</a> </li>
+					[%else%]
+						<li> <a class="dropdown-item" href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
+						<li> <a class="dropdown-item" href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
+					[%/if%]
+				</ul>
+			</li>
+		</ul>
+	  </div>
+	</nav>
 </header>
 <div id="main-content" class="container" role="main">
 	<div class="row">
