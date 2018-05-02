@@ -52,7 +52,7 @@ $payment-icon:(
 		}
 		& > .navbar-collapse {
 			@include media-breakpoint-down(sm) {
-				padding: $navbar-padding-y $navbar-padding-x;
+				padding: $navbar-padding-y;
 			}
 		}
 	}

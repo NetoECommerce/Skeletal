@@ -7724,7 +7724,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 @media (max-width: 767.98px) {
   .wrapper-header .navbar > .navbar-collapse {
-    padding: 0.5rem 1rem; } }
+    padding: 0.5rem; } }
 
 @media (min-width: 768px) {
   .dropdown-hover:hover > .dropdown-menu {

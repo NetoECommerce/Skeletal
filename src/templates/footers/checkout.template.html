@@ -7,7 +7,7 @@
 			<div class="col-12 col-md-9 d-none d-sm-block">
 				[%payment_methods ignore_balance:'1'%]
 					[%param header%]
-						<ul class="list-inline">
+						<ul class="list-inline d-flex flex-wrap">
 					[%/param%]
 					[%param *body%]
 						[%if [@name@] like 'American Express'%]
@@ -87,7 +87,7 @@
 				[%/payment_methods%]
 			</div>
 			<div class="col-12 col-md-3 text-md-left">
-				<address>
+				<address role="contentinfo" aria-label="Company details">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
 					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]

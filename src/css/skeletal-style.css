@@ -290,7 +290,7 @@ fieldset[disabled] .btn-info.active {
 
 .breadcrumb > .active,
 .breadcrumb a {
-	color: #999 /*{breadcrumb-text-colour}*/;
+	color: #696969 /*{breadcrumb-text-colour}*/;
 }
 
 .pagination .page-link{
@@ -345,7 +345,7 @@ fieldset[disabled] .btn-info.active {
 }
 
 .wrapper-header .navbar-toggler {
-	color: #777 /*{navbar-default-link-colour}*/;
+	color: #696969 /*{navbar-default-link-colour}*/;
 }
 
 .wrapper-header .navbar {
@@ -353,7 +353,7 @@ fieldset[disabled] .btn-info.active {
 }
 
 .wrapper-header .navbar .navbar-nav .nav-link {
-	color: #777 /*{navbar-default-link-colour}*/;
+	color: #696969 /*{navbar-default-link-colour}*/;
 }
 
 .wrapper-header .navbar-nav .nav-link:hover,
