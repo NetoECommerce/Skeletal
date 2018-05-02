@@ -35,8 +35,7 @@
 				'category_footer'	: '</ul>'
 			});
 		},
-
-// For child product multi-add to cart function
+		// For child product multi-add to cart function
 		checkValidQty: function() {
 			var found = 0;
 			$("#multiitemadd :input").each(function() {
@@ -52,7 +51,6 @@
 			}
 			return true;
 		},
-
 		modQtyByMulti: function(obj,act) {
 			var mul = 1;
 			var maxm;
@@ -86,14 +84,13 @@
 						cur = minm;
 					}
 				}
-
 				$('#qty'+objid).val(cur);
 			}
 		}
 	});
 })(jQuery);
 
-var netoCustom = {
+var nCustom = {
 	vars : {
 		focused : $('body'),
 		lastFocused : $('body')
@@ -101,7 +98,7 @@ var netoCustom = {
 	funcs : {
 		// Capture the last item focused
 		updateFocused: function(){
-			netoCustom.vars.lastFocused = netoCustom.vars.focused;
+			nCustom.vars.lastFocused = nCustom.vars.focused;
 		},
 		// Place focus on popup
 		popupFocus: function(){
@@ -113,13 +110,13 @@ var netoCustom = {
 				mutations.forEach(function(mutation) {
 					// Initial observer
 					if(mutation.addedNodes["0"]){
-						netoCustom.funcs.updateFocused();
+						nCustom.funcs.updateFocused();
 						// focus on the popup
 						$(popUp).attr('tabindex', '-1').focus();
 					}else{
 						$(popUp).attr('tabindex', '').blur();
 						// Observer closing popup
-						$(netoCustom.vars.lastFocused).focus();
+						$(nCustom.vars.lastFocused).focus();
 					}
 				});
 			});
@@ -140,6 +137,14 @@ var netoCustom = {
 			var left = (screen.width / 2) - (width / 2),
 				top = (screen.height / 2) - (height / 2);
 			window.open(url,"","menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left);
+		},
+		// Will remove/add class from element
+		classToggle: function (element, css, type){
+			if(type){
+				type == 'add'
+					? $(element).addClass(css)
+					: $(element).removeClass(css)
+			}
 		}
 	}
 }
@@ -147,7 +152,7 @@ var netoCustom = {
 $(document).ready(function() {
 	// Neto functionalty
 	$.initPageFuncs();
-	netoCustom.funcs.popupFocus();
+	nCustom.funcs.popupFocus();
 	// Popup Credit Card CCV Description At Checkout
 	$("#card_ccv").fancybox();
 	// Popup Terms At Checkout
@@ -163,17 +168,26 @@ $(document).ready(function() {
 $('.tipsy').tooltip({trigger:'hover',placement:'bottom'});
 // Capture the current element the user focused in
 $(document).on('focusin', function(){
-	netoCustom.vars.focused = document.activeElement;
+	nCustom.vars.focused = document.activeElement;
 });
 // Btn loading state
-$(document).on("click", ".btn-loads", netoCustom.funcs.buttonLoading);
+$(document).on("click", ".btn-loads", nCustom.funcs.buttonLoading);
 // Social media share
 $(".js-social-share").on("click", function(e) {
 	e.preventDefault();
-	netoCustom.funcs.windowPopup($(this).attr("href"), 500, 300);
+	nCustom.funcs.windowPopup($(this).attr("href"), 500, 300);
 });
 // Mobile menu
 $('.nToggleMenu').click(function(){
 	var toggleTarget = $(this).attr('data-target')
 	$(toggleTarget).slideToggle();
+});
+// Invoice page
+$("#cart_items").on("click", "[data-body-add]", function(e){
+	e.preventDefault();
+	nCustom.funcs.classToggle('body', $(this).attr('data-body-add'), 'add');
+});
+$("#cart_items").on("click", "[data-body-remove]", function(e){
+	e.preventDefault();
+	nCustom.funcs.classToggle('body', $(this).attr('data-body-remove'), 'remove');
 });
