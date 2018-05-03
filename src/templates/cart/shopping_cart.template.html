@@ -8,7 +8,7 @@
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
-				<a class="btn btn-outline-secondary" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i> Edit extra options</a>
+				<a class="btn btn-outline-secondary" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil-alt icon-white"></i> Edit extra options</a>
 			[%/if%] -->
 		</div>
 		<div class="col-12 col-md-4 col-lg-3">
@@ -43,7 +43,7 @@
 								<p class="small">
 									[@extra@]
 									[%if [@config:checkout_upsell_extra@]%]
-										<a class="btn btn-outline-secondary btn-sm" role="link" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white" aria-hidden="true"></i></a>
+										<a class="btn btn-outline-secondary btn-sm" role="link" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil-alt icon-white" aria-hidden="true"></i></a>
 									[%/if%]
 								</p>
 								[%if [@aff_id@] eq '[@config:AFF_EBAY_ID@]'%]
@@ -110,7 +110,7 @@
 								<p class="h4">[%format type:'currency'%][@subtotal@][%/format%]</p>
 							</td>
 							<td class="d-none d-sm-table-cell">
-								<a role="button" class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+								<a role="button" class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 						[%/param%]
@@ -128,7 +128,7 @@
 				<button type="button" role="link" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-outline-secondary btn-block" title="Continue shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
 			</div>
 			<div class="col-12 col-md-4 offset-md-4 col-lg-3 offset-lg-6">
-				<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-refresh" aria-hidden="true"></i> Update My Changes</button>
+				<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-sync" aria-hidden="true"></i> Update My Changes</button>
 			</div>
 		</div>
 		<div class="row">

@@ -109,11 +109,11 @@
 			</div>
 			<div class="col-12 col-md-4">
 				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Pre-Order Now</button>
 				[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
 				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
 				[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Backorder</button>
+				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Backorder</button>
 				[%ELSE%]
 				<a href title="Notify Me When [@model@] Is Back In Stock" class="btn btn-info btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
 				[%/ IF%]
@@ -123,10 +123,10 @@
 					<div class="product-wishlist">
 						[%IN_WISHLIST id:'[@SKU@]' %]
 						[%param if_true%]
-							<a class="wishlist_toggle btn btn-lg btn-block btn-warning" href role="button" title="Remove From Wishlist" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fa fa-star" aria-hidden="true"></i></span></a>
+							<a class="wishlist_toggle btn btn-lg btn-block btn-warning" href role="button" title="Remove From Wishlist" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fas fa-star" aria-hidden="true"></i></span></a>
 						[%/ param%]
 						[%param if_false%]
-							<a class="wishlist_toggle btn btn-outline-secondary btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="fa fa-star-o" aria-hidden="true"></i> Wishlist</span></a>
+							<a class="wishlist_toggle btn btn-outline-secondary btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="far fa-star" aria-hidden="true"></i> Wishlist</span></a>
 						[%/ param%]
 						[%/ IN_WISHLIST%]
 					</div>
@@ -158,7 +158,7 @@
 					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post code">
 				</div>
 				<div class="col-12 col-md-3">
-					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-refresh" aria-hidden="true"></i> Calculate</button>
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-sync" aria-hidden="true"></i> Calculate</button>
 				</div>
 			</div>
 			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
