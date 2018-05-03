@@ -5,6 +5,7 @@
 </script>
 <div class="col-12 col-lg-7">
 	[%set [@total_cart_items@]%]0[%/set%]
+	[%set [@total_cart_price@]%]0[%/set%]
 	[%load_template file:"cart/cart.error.html"/%]
 	[%payment_confirmation%]
 		[%param *body%]
@@ -15,292 +16,314 @@
 			[%/if%]
 		[%/param%]
 	[%/payment_confirmation%]
-	[%show_order id:'[@order_id@]'%]
-		[%param *header%]
-			<p class="mb-1">Your Order ID: [@order_id@]</p>
-			<p class="mb-1">Confirmation sent to [@bill_email@]</p>
-			<div class="card card-body mb-3">
-				[%if [@user:username@]%]
-					<h2>Order Tracking:</h2>
-					<p>
-						You will be updated by e-mail as to your orders progress.<br/>
-						To track the progress of your order online, please go to <a href="[%url page:'account'/%]">your account</a> and select the order you wish to track.<
-					</p>
-				[%else%]
-					<h2>Activate Your [@config:company_name@] Account</h2>
-					<p>
-						So that you can shop faster in the future and track past orders, we have generated a [@config:company_name@] account for you.<br/>
-						Click on the button below to activate this account and create an account password. Activation details have also been sent to your email address.
-					</p>
-					<p class="mb-0"><a href="[%url page:'account' type:'resetpwd' id:'[@logincode@]'/%]" class="btn btn-primary d-inline-block">Activate account and create password</a></p>
-					<p class="small text-muted mt-1 mb-0"><strong>Note:</strong> Activating your [@config:company_name@] account is optional.</p>
+	<p class="mb-1">Order ID: [%show_order id:'[@order_id@]'%][%param *header%]<span> [@order_id@] </span>[%/param%][%/show_order%]</p>
+	<p class="mb-1">Confirmation sent to [@bill_email@]</p>
+	<div class="card card-body mb-3">
+		[%if [@user:username@]%]
+			<h2>Order tracking</h2>
+			<p>
+				You will be updated by e-mail as to your orders progress.<br/>
+				To track the progress of your order online, please go to <a href="[%url page:'account'/%]">your account</a> and select the order you wish to track.<
+			</p>
+		[%else%]
+			<h2>Activate your [@config:company_name@] account</h2>
+			<p>
+				So that you can shop faster in the future and track past orders, we have generated a [@config:company_name@] account for you.<br/>
+				Click on the button below to activate this account and create an account password. Activation details have also been sent to your email address.
+			</p>
+			<p class="mb-0"><a href="[%url page:'account' type:'resetpwd' id:'[@logincode@]'/%]" class="btn btn-primary d-inline-block">Activate account and create password</a></p>
+			<p class="small text-muted mt-1 mb-0"><strong>Note:</strong> Activating your [@config:company_name@] account is optional.</p>
+		[%/if%]
+	</div>
+	[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
+		[%param *body%]
+			[%if [@name@] like 'Cheque'%]
+				<div class="card mb-3">
+					<div class="card-body">
+						<h2>Payment Instructions</h2>
+						<div class="media">
+							<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-cheque"></div></div>
+							<div class="media-body">
+								<h4 class="media-heading">Please send your Cheque to:</h4>
+								<p>[@config:company_name@]</p>
+								<p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
+								<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			[%/if%]
+			[%if [@name@] like 'Money Order'%]
+				<div class="card mb-3">
+					<div class="card-body">
+						<h2>Payment Instructions</h2>
+						<div class="media">
+							<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-moneyorder"></div></div>
+							<div class="media-body">
+								<h4 class="media-heading">Please send your money order to:</h4>
+								<p>[@config:company_name@]</p>
+								<p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
+								<p>Please include your full name and order number so that we can easily locate your order.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			[%/if%]
+			[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]
+				<div class="card mb-3">
+					<div class="card-body">
+						<h2>Payment Instructions</h2>
+						<div class="media">
+							<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-directdeposit"></div></div>
+							<div class="media-body">
+								<h4 class="media-heading">Please deposit your total order amount to:</h4>
+								<h5>[@config:company_bank_name@]</h5>
+								<p>
+									<b>Name:</b> [@config:company_bank_acc@]<br/>
+									<b>[@config:PRIMARY_BSB_LABEL@]: </b>[@config:company_bank_bsb@]<br/>
+									<b>Ac/no:</b>[@config:company_bank_num@]
+								</p>
+								<p>
+									Please leave your order number or last name as a payment reference.<br/>
+									Email [@config:company_email@] with your order number to confirm your payment.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			[%/if%]
+			[%if [@name@] like 'bpay'%]
+				<div class="card mb-3">
+					<div class="card-body">
+						<h2>Payment Instructions</h2>
+						<div class="media">
+							<div class="media-body">
+								<h4 class="media-heading">Biller Code: [@config:bpay_biller_code@]<br>
+								Ref: [@bpay_crn@]</h4>
+								<h5>Telephone &amp; Internet Banking - BPAY</h5>
+								<p>Contact your bank, credit union or building society to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank" rel="noopener">www.bpay.com.au</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			[%/if%]
+		[%/param%]
+	[%/payment_methods%]
+	<div class="card card-body mb-3">
+		<h2>Customer information</h2>
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<h3>Billing details</h3>
+				[@bill_first_name@] [@bill_last_name@]<br/>
+				[@bill_street1@] [@bill_street2@]<br/>
+				[@bill_city@] [@bill_state@] [@bill_zip@]<br/>
+				[@bill_country@]
+			</div>
+			<div class="col-12 col-md-6">
+				<h3>Payment method</h3>
+				[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
+					[%param *body%]
+						[%if [@name@] like 'American Express'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-americanexpress"></div></div>
+								<div class="media-body"><h4 class="media-heading">American Express</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Visa'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-visa"></div></div>
+								<div class="media-body"><h4 class="media-heading">Visa</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Master Card' OR [@name@] like 'MasterCard'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-mastercard"></div></div>
+								<div class="media-body"><h4 class="media-heading">Master Card</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Discover'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-discover"></div></div>
+								<div class="media-body"><h4 class="media-heading">Discover</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Cheque'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-cheque"></div></div>
+								<div class="media-body"><h4 class="media-heading">Cheque</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Money Order'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-moneyorder"></div></div>
+								<div class="media-body"><h4 class="media-heading">Money Order</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-directdeposit"></div></div>
+								<div class="media-body"><h4 class="media-heading">Direct Deposit</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'bpay'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-bpay"></div></div>
+								<div class="media-body"><h4 class="media-heading">BPAY</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'PayPal'%]
+							<div class="media">
+								<div class="payment-icon-container mr-3"><div class="payment-icon payment-icon-paypal"></div></div>
+								<div class="media-body"><h4 class="media-heading">Paypal</h4></div>
+							</div>
+						[%/if%]
+						[%if [@name@] like 'Account'%]
+							<h3>[@config:company_name@] Account </h3>
+						[%/if%]
+					[%/param%]
+					[%param *ifempty%]
+						<h3>No Payment method has been selected.</h3>
+					[%/param%]
+				[%/payment_methods%]
+				[%if [@payment_terms_type@] and [@payment_terms_type@] ne 'once'%]
+					<p>Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order.</p>
 				[%/if%]
 			</div>
-			<div class="card mb-3">
-				<div class="card-body">
-					<h2>Payment Instructions</h2>
-					[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
-						[%param *body%]
-							<h4>Your chosen payment method is [@name@]</h4>
-							[%if [@name@] like 'American Express'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-americanexpress"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Your American Express Card has already been processed.</h4>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Visa'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-visa"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Your Visa Card has already been processed.</h4>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Master Card' OR [@name@] like 'MasterCard'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-mastercard"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Your Master Card has already been processed.</h4>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Discover'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-discover"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Your credit card has already been processed.</h4>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Cheque'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-cheque"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Please send your Cheque to:</h4>
-										<p>[@config:company_name@]</p>
-										<p>
-											[%if [@CONFIG:COMPANY_POADDR@]%]
-												[@CONFIG:COMPANY_POADDR@]
-											[%else%]
-												[@CONFIG:COMPANY_ADDR@]
-											[%/if%]
-										</p>
-										<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Money Order'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-moneyorder"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Please send your money order to :</h4>
-										<p>[@config:company_name@]</p>
-										<p>
-											[%if [@CONFIG:COMPANY_POADDR@]%]
-												[@CONFIG:COMPANY_POADDR@]
-											[%else%]
-												[@CONFIG:COMPANY_ADDR@]
-											[%/if%]
-										</p>
-										<p>Please include your full name and order number so that we can easily locate your order.</p>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-directdeposit"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Please deposit your total order amount to:</h4>
-										<h5>[@config:company_bank_name@]</h5>
-										<p>
-											<b>Name:</b> [@config:company_bank_acc@]<br/>
-											<b>[@config:PRIMARY_BSB_LABEL@]: </b>[@config:company_bank_bsb@]<br/>
-											<b>Ac/no:</b>[@config:company_bank_num@]
-										</p>
-										<p>
-											Please leave your order number or last name as a payment reference.<br/>
-											Email [@config:company_email@] with your order number to confirm your payment.
-										</p>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'bpay'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-bpay"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Biller Code: [@config:bpay_biller_code@]<br>
-										Ref: [@bpay_crn@]</h4>
-										<h5>Telephone &amp; Internet Banking - BPAY</h5>
-										<p>Contact your bank, credit union or building society to make this payment from your cheque, savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank" rel="noopener">www.bpay.com.au</a></p>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'PayPal'%]
-								<div class="media">
-									<div class="payment-icon-container mr-3">
-										<div class="payment-icon payment-icon-paypal"></div>
-									</div>
-									<div class="media-body">
-										<h4 class="media-heading">Your Paypal payment has been processed. No further action is required by you at this stage.</h4>
-									</div>
-								</div>
-							[%/if%]
-							[%if [@name@] like 'Account'%]
-								<h3>[@config:company_name@] Account </h3>
-							[%/if%]
-						[%/param%]
-						[%param *ifempty%]
-							<h3>No Payment method has been selected.</h3>
-						[%/param%]
-					[%/payment_methods%]
-					[%if [@ship_comment@]%]
-						<h4>Special Delivery Instructions For These Items:</h4>
-						<p>[@ship_comment@]</p>
-					[%/if%]
-					[%if [@payment_terms_type@] and [@payment_terms_type@] ne 'once'%]
-						<p>Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order.</p>
-					[%/if%]
-				</div>
-			</div>
+		</div>
+	</div>
+	[%show_order id:'[@order_id@]'%]
+		[%param *header%]
 			<div class="card card-body mb-3">
-				<h2>Customer information</h2>
+				<h2>Shipping information <span class="text-muted small">[@order_id@]</span></h2>
 				<div class="row">
 					<div class="col-12 col-md-6">
-						<h3>Billing details</h3>
-						[@bill_first_name@] [@bill_last_name@]<br/>
-						[@bill_street1@] [@bill_street2@]<br/>
-						[@bill_city@] [@bill_state@] [@bill_zip@]<br/>
-						[@bill_country@]
+						<h3>Shipping address</h3>
+						[@ship_street1@] [@ship_street2@]<br/>
+						[@ship_city@] [@ship_state@] [@ship_zip@]<br/>
+						[@ship_country@]
 					</div>
 					<div class="col-12 col-md-6">
-						<h3>Payment method</h3>
+						<h3>Shipping method</h3>
+						[@shipping_method@]
 					</div>
-				</div>
-			</div>
-			<a href="[@config:homeurl@]" class="btn btn-outline-secondary">Continue shopping</a>
-		</div>
-		<div id="cart_items" class="col-12 col-lg-5">
-			<div class="order-summary-d">
-				<div class="order-summary">
-					<div class="card mb-1">
-						<div class="card-body">
-							<div class="mb-2 d-flex justify-content-between align-items-start">
-								<h3 class="d-md-inline">
-									<button type="button" class="close order-summary-close d-lg-none" aria-label="Close" data-body-remove="fixed-body"><span aria-hidden="true">&times;</span></button>
-									Order Summary
-								</h3>
-								[%if [@user:username@]%]
-									<button type="button" value="Print Receipt" onClick="print_invoice()" class="edit-order-link float-right"><i class="fa fa-print"></i> Print Receipt</button>
-								[%else%]
-									<a class="print-order-link float-right" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a>
-								[%/if%]
-							</div>
-			[%/param%]
-			[%param *body%]
-					[%set [@^total_cart_items@]%][%calc [@total_cart_items@] + [@qty@] /%][%/set%]
-					<div class="media mb-2">
-						<div class="product-img">
-							<span class="badge badge-pill badge-light">[@qty@]</span>
-							<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" width="50px" height="50px" alt="[@model@] image" />
-						</div>
-						<div class="media-body">
-							<span class="float-right">[%format type:'currency'%][@subtotal@][%/ format%]</span>
-							<p class="m-0">[@model@]</p>
-							<small class="text-muted">[@extra@]</small>
-							[%if [@aff_id@] eq '[@config:aff_rental_id@]'%]&nbsp; <b>Rental</b>[%/if%]
-							[%if [@aff_id@] eq '[@config:aff_ebay_id@]'%]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/if%]
-							[%if [@aff_id@] eq '[@config:aff_free_id@]'%]&nbsp; <b>Free Gift</b>[%/if%]
-							[%if [@has_components@] == 1%]
-							[%CART_ITEM_COMPONENTS counter:'[@counter@]'%]
-								[%param header%]<small class="text-muted">[%/ param%]
-								[%param *body%][@qty@] x [@model@]<br/>[%/ param%]
-								[%param footer%]</small>[%/ param%]
-							[%/ CART_ITEM_COMPONENTS%]
-							[%/ if%]
-						</div>
-					</div>
-					<!-- <tr>
-						<td>[@qty@]x [@sku@]</td>
-						<td>
-							[@model@] <i>[@extra@]</i>
-							[%if [@aff_id@] eq '[@config:aff_rental_id@]'%]&nbsp; <b>Rental</b>[%/if%]
-							[%if [@aff_id@] eq '[@config:aff_ebay_id@]'%]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/if%]
-							[%if [@aff_id@] eq '[@config:aff_free_id@]'%]&nbsp; <b>Free Gift</b>[%/if%]
-						</td>
-						<td>[%format type:'currency'%][@price@][%/format%] [%data id:'discount' if:'>' value:'0' %]( Discount - [%format type:'currency'%]-[@discount@][%/format%] )[%/data%]</td>
-						<td>[%format type:'currency'%][@subtotal@][%/format%]</td>
-					</tr> -->
-			[%/param%]
-			[%param *footer%]
-							</div>
-							<ul class="list-group list-group-flush">
-								[%if [@shipping_method_id@]%]
-									[%if [@shipping_quote@]%]
-									<li class="list-group-item border-bottom-0">Delivery Method <span class="float-right">[@shipping_method@] - P.O.A</span></li>
-									[%else%]
-									<li class="list-group-item border-bottom-0">Delivery Method <span class="float-right">[@shipping_method@] [%if [@shipping_price@] > 0%][%format type:'currency'%][@shipping_price@][%/format%][%/if%]</span></li>
-									<!-- [%if [@shipping_total@] > 0%][%format type:'currency'%][@shipping_total@][%/format%][%/if%][%data id:'shipping_discount' if:'>' value:'0' %] ( Discount - [%format type:'currency'%]-[@shipping_discount@][%/format%] )[%/data%] -->
-									[%/if%]
-								[%/if%]
-								[%if [@couponcode@]%]
-									<li class="list-group-item border-0">Special Pricing Arrangements / Discounts  <span class="float-right">[@couponcode@]</span></li>
-								[%/if%]
-									<li class="list-group-item border-0">Order Subtotal <span class="float-right">[%format type:'currency'%][@product_total@][%/format%]</span></li>
-								[%if ![@shipping_quote@]%]
-									<li class="list-group-item border-0">Total Shipping <span class="float-right">[%if [@shipping_total@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@shipping_total@][%/format%] [%/if%]</span></li>
-								[%/if%]
-								[%if [@discount_total@] > '0'%]
-									<li class="list-group-item border-0">Total Discount <span class="float-right">-[%format type:'currency'%][@discount_total@][%/format%]</span></li>
-								[%/if%]
-								[%if [@surcharge_total@] > '0'%]
-									<li class="list-group-item border-0">Surcharge ([%format type:'percent' dc:'2'%][@surcharge_percent@][%/format%]) <span class="float-right">[%format type:'currency'%][@surcharge_total@][%/format%]</span></li>
-								[%/if%]
-								[%if [@notax@] eq '0'%]
-									<li class="list-group-item border-0">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@] [%else%]GST [%/if%][%data id:'tax_inc' if:'eq' value:'y' %] inc.[%/data%]<span class="float-right">[%format type:'currency'%][@tax_total@][%/format%]</span></li>
-								[%/if%]
-									<li class="list-group-item border-0">Order Total <span class="float-right">[%format type:'currency'%][@grand_total@][%/format%]</span></li>
-								[%if [@credit_apply@] > '0'%]
-									<li class="list-group-item border-top-0">Amount Paid <span class="float-right text-danger">-[%format type:'currency'%][@amount_paid@][%/format%]</span></li>
-									<li id="balance" style="display:none;" class="list-group-item border-bottom-0">Balance Due <span class="float-right">[%format type:'currency'%][@owed_total@][%/format%]</span></li>
-								[%/if%]
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="order-summary-m">
-					<div class="card">
-						<a data-body-add="fixed-body" href="#" class="card-body">
-							<span class="text-dark"><i class="fa fa-shopping-cart"></i>
-								<strong>[@total_cart_items@] items</strong><br/>
-								<span class="link">Show order summary</span>
-							</span>
-							<span class="float-right">
-								<span class="small text-muted">[@CONFIG:DEFAULTCURRENCY@]</span>
-								<span class="text-dark h4 _cpy_balancedue">[%format type:'currency'%][@grand_total@][%/ format%]</span>
-							</span>
-						</a>
+					<div class="col-12 col-md-6">
+						[%if [@ship_comment@]%]
+							<h3>Special delivery instructions</h3>
+							<p>[@ship_comment@]</p>
+						[%/if%]
 					</div>
 				</div>
 			</div>
 		[%/param%]
 	[%/show_order%]
+	<a href="[@config:homeurl@]" class="btn btn-outline-secondary">Continue shopping</a>
+</div>
+<div id="cart_items" class="col-12 col-lg-5">
+	<div class="order-summary-d">
+		<div class="order-summary">
+		[%show_order id:'[@order_id@]'%]
+		[%param *header%]
+			<div class="card mb-1">
+				<div class="card-body">
+					<div class="mb-2 d-flex justify-content-between align-items-start">
+						<h3 class="d-md-inline">
+							<button type="button" class="close order-summary-close d-lg-none" aria-label="Close" data-body-remove="fixed-body"><span aria-hidden="true">&times;</span></button>
+							Order Summary <span class="text-muted small">[@order_id@]</span>
+						</h3>
+						[%if [@user:username@]%]
+							<button class="edit-order-link float-right" type="button" value="Print Receipt" onClick="print_invoice()"><i class="fa fa-print"></i> Print Receipt</button>
+						[%else%]
+							<a class="print-order-link float-right" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a>
+						[%/if%]
+					</div>
+		[%/param%]
+		[%param *body%]
+				[%set [@^total_cart_items@]%][%calc [@total_cart_items@] + [@qty@] /%][%/set%]
+				[%set [@^total_cart_price@]%][%calc [@total_cart_price@] + [@grand_total@] /%][%/set%]
+				<div class="media mb-2">
+					<div class="product-img">
+						<span class="badge badge-pill badge-light">[@qty@]</span>
+						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" width="50px" height="50px" alt="[@model@] image" />
+					</div>
+					<div class="media-body">
+						<span class="float-right">[%format type:'currency'%][@subtotal@][%/ format%]</span>
+						<p class="m-0">[@model@]</p>
+						<small class="text-muted">[@extra@]</small>
+						[%if [@aff_id@] eq '[@config:aff_rental_id@]'%]&nbsp; <b>Rental</b>[%/if%]
+						[%if [@aff_id@] eq '[@config:aff_ebay_id@]'%]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/if%]
+						[%if [@aff_id@] eq '[@config:aff_free_id@]'%]&nbsp; <b>Free Gift</b>[%/if%]
+						[%if [@has_components@] == 1%]
+						[%CART_ITEM_COMPONENTS counter:'[@counter@]'%]
+							[%param header%]<small class="text-muted">[%/ param%]
+							[%param *body%][@qty@] x [@model@]<br/>[%/ param%]
+							[%param footer%]</small>[%/ param%]
+						[%/ CART_ITEM_COMPONENTS%]
+						[%/ if%]
+					</div>
+				</div>
+		[%/param%]
+		[%param *footer%]
+				</div>
+				<ul class="list-group list-group-flush">
+					[%if [@shipping_method_id@]%]
+						[%if [@shipping_quote@]%]
+						<li class="list-group-item border-bottom-0">Delivery Method <span class="float-right">[@shipping_method@] - P.O.A</span></li>
+						[%else%]
+						<li class="list-group-item border-bottom-0">Delivery Method <span class="float-right">[@shipping_method@] [%if [@shipping_price@] > 0%][%format type:'currency'%][@shipping_price@][%/format%][%/if%]</span></li>
+						<!-- [%if [@shipping_total@] > 0%][%format type:'currency'%][@shipping_total@][%/format%][%/if%][%data id:'shipping_discount' if:'>' value:'0' %] ( Discount - [%format type:'currency'%]-[@shipping_discount@][%/format%] )[%/data%] -->
+						[%/if%]
+					[%/if%]
+					[%if [@couponcode@]%]
+						<li class="list-group-item border-0">Special Pricing Arrangements / Discounts  <span class="float-right">[@couponcode@]</span></li>
+					[%/if%]
+						<li class="list-group-item border-0">Order Subtotal <span class="float-right">[%format type:'currency'%][@product_total@][%/format%]</span></li>
+					[%if ![@shipping_quote@]%]
+						<li class="list-group-item border-0">Total Shipping <span class="float-right">[%if [@shipping_total@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@shipping_total@][%/format%] [%/if%]</span></li>
+					[%/if%]
+					[%if [@discount_total@] > '0'%]
+						<li class="list-group-item border-0">Total Discount <span class="float-right">-[%format type:'currency'%][@discount_total@][%/format%]</span></li>
+					[%/if%]
+					[%if [@surcharge_total@] > '0'%]
+						<li class="list-group-item border-0">Surcharge ([%format type:'percent' dc:'2'%][@surcharge_percent@][%/format%]) <span class="float-right">[%format type:'currency'%][@surcharge_total@][%/format%]</span></li>
+					[%/if%]
+					[%if [@notax@] eq '0'%]
+						<li class="list-group-item border-0">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@] [%else%]GST [%/if%][%data id:'tax_inc' if:'eq' value:'y' %] inc.[%/data%]<span class="float-right">[%format type:'currency'%][@tax_total@][%/format%]</span></li>
+					[%/if%]
+						<li class="list-group-item border-0">Order Total <span class="float-right">[%format type:'currency'%][@grand_total@][%/format%]</span></li>
+					[%if [@credit_apply@] > '0'%]
+						<li class="list-group-item border-top-0">Amount Paid <span class="float-right text-danger">-[%format type:'currency'%][@amount_paid@][%/format%]</span></li>
+						<li id="balance" style="display:none;" class="list-group-item border-bottom-0">Balance Due <span class="float-right">[%format type:'currency'%][@owed_total@][%/format%]</span></li>
+					[%/if%]
+				</ul>
+			</div>
+		[%/param%]
+		[%/show_order%]
+			<div class="card mb-1">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Grand total
+						<span class="float-right">
+							<span class="small text-muted _order_total">[@CONFIG:DEFAULTCURRENCY@]</span>
+							<span class="h2">[%format type:'currency'%][@total_cart_price@][%/ format%]</span>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="order-summary-m">
+		<div class="card">
+			<a data-body-add="fixed-body" href="#" class="card-body">
+				<span class="text-dark"><i class="fa fa-shopping-cart"></i>
+					<strong>[@total_cart_items@] items</strong><br/>
+					<span class="link">Show order summary</span>
+				</span>
+				<span class="float-right">
+					<span class="small text-muted">[@CONFIG:DEFAULTCURRENCY@]</span>
+					<span class="text-dark h4 _cpy_balancedue">[%format type:'currency'%][@total_cart_price@][%/ format%]</span>
+				</span>
+			</a>
+		</div>
+	</div>
+</div>
 [%ga_funnel%]/purchase/invoice.html[%/ga_funnel%]
 [%tracking_code type:'Purchase'/%]
