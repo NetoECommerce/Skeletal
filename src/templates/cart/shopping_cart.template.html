@@ -259,7 +259,7 @@
 				[%/if%]
 				[%if ![@notax@]%]
 				<tr>
-					<th scope="row">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%] [%if [@tax_inc@]%]Inc.[%/if%]</th>
+					<th scope="row">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%][%if [@tax_inc@]%]&nbsp;Inc.[%/if%]</th>
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
