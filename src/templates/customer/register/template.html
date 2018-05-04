@@ -103,13 +103,11 @@
 							[%/param%]
 							[%param *boolean_option%]
 								[%site_value id:'register_checkboxes'%]
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
-											[@field_name@]
-										</label>
+									<label class="d-block">
+										<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+										[@field_name@]
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-									</div>
+									</label>
 								[%/site_value%]
 							[%/param%]
 							[%param *date_option%]
@@ -140,15 +138,12 @@
 							[%site_value id:'register_textareas' type:'load'/%]
 							<div class="clear"></div>
 							<div class="col-12">
-								<div class="form-group">
-									[%site_value id:'register_checkboxes' type:'load'/%]
-									<div class="checkbox">
-										<label>
-											<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time."/>
-											Subscribe To Newsletter
-										</label>
-									</div>
-								</div>
+								[%site_value id:'register_checkboxes' type:'load'/%]
+								<label class="d-block">
+									<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time."/>
+									Subscribe To Newsletter
+									<span class="text-muted small">optional</span>
+								</label>
 							</div>
 							<div class="col-12">
 								<div class="form-group">

@@ -185,13 +185,11 @@
 	[%/param%]
 	[%param *boolean_option%]
 		[%site_value id:'register_checkboxes'%]
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
-					[@field_name@]
-				</label>
-				[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-			</div>
+			<label class="d-block">
+				<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+				[@field_name@]
+				[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]					
+			</label>
 		[%/site_value%]
 	[%/param%]
 	[%param *date_option%]
@@ -234,19 +232,17 @@
 	</div>
 
 	[%site_value id:'register_checkboxes' type:'load'/%]
-	<div>
-		<label>
-			<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]> 
-			Subscribe to the [@config:company_name@] newsletter.
-		</label>
-	</div>
-	<div>
-		<label>
-			<input type="checkbox" name="agree" value="y" required>
-			I agree to the [@config:company_name@] terms of trade.
-		</label>
-	</div>
+	<label class="d-block">
+		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]> 
+		Subscribe to the [@config:company_name@] newsletter
+		<span class="text-muted small">optional</span>
+	</label>
+	<label class="d-block">
+		<input type="checkbox" name="agree" value="y" required>
+		I agree to the [@config:company_name@] terms of trade.
+	</label>
 </div>
+
 	<input type="submit" class="btn btn-lg btn-primary" value="Register">
 </form>
 
