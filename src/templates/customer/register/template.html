@@ -1,15 +1,15 @@
 <div class="col-12">
 	<div class="page-header"><h1>My Account</h1></div>
-	[%TRIM inner:'1'%]
+	[%trim inner:'1'%]
 		[%param body%]
 		[%show_message severity:'error'%]
-			[%param *body%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a><i class="fa fa-exclamation-triangle"></i> [@info_msg@]</div>[%/ param%]
-		[%/ show_message%]
-		[%/ param%]
-	[%/ TRIM%]
+			[%param *body%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a><i class="fa fa-exclamation-triangle"></i> [@info_msg@]</div>[%/param%]
+		[%/show_message%]
+		[%/param%]
+	[%/trim%]
 	<div class="row">
 		<div class="col-12 col-md-6">
-			<form id="login" method="post" action="[%URL page:'account' type:'login'%][%/ URL%]">
+			<form id="login" method="post" action="[%url page:'account' type:'login'%][%/url%]">
 				<input type="hidden" name="redirect" value="[@redirect@]">
 				<div class="card">
 					<div class="card-body border-bottom"><h3 class="card-title">Returning Customer? Log In. </h3></div>
@@ -19,14 +19,14 @@
 								<div class="form-group ">
 									<label for="username">My E-mail Address is</label>
 									<input type="text" id="username" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com" required/>
-									<p class="form-text text-muted small d-none"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%/ URL%]">Click Here</a></p>
+									<p class="form-text text-muted small d-none"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%url page:'account' type:'forgotusr'%][%/url%]">Click Here</a></p>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="password">My Password is</label>
 									<input type="password" id="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
-									<p class="form-text text-muted small"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%/ URL%]" aria-label="Click if you forgot your password">Click Here</a></p>
+									<p class="form-text text-muted small"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%url page:'account' type:'forgotpwd'%][%/url%]" aria-label="Click if you forgot your password">Click Here</a></p>
 								</div>
 							</div>
 						</div>
@@ -36,10 +36,10 @@
 			</form>
 		</div>
 		<div class="col-12 col-md-6">
-			<form id="register" method="post" action="[%URL page:'account' type:'register'%][%/ URL%]">
-				[%SUBMIT_TOKEN%][%/ SUBMIT_TOKEN%]
+			<form id="register" method="post" action="[%url page:'account' type:'register'%][%/url%]">
+				[%SUBMIT_TOKEN%][%/SUBMIT_TOKEN%]
 				<input type="hidden" name="redirect" value="[@redirect@]">
-				<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%/ random_number%]">
+				<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/format%][%random_number length:'6'%][%/random_number%]">
 				<div class="card">
 					<div class="card-body border-bottom"><h3 class="card-title">New Customer? Create an Account.</h3></div>
 					<div class="card-body">
@@ -47,7 +47,7 @@
 							<div class="col-12 col-md-12">
 								<div class="form-group">
 									<label for="reg_email">E-mail Address</label>
-									<input class="form-control" type="email" id="reg_email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%/ FORM%][%end nohtml%]" size="25" required/>
+									<input class="form-control" type="email" id="reg_email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%/FORM%][%end nohtml%]" size="25" required/>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
@@ -62,80 +62,86 @@
 									<input class="form-control" type="password" id="reg_password2" name="reg_password2" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
 								</div>
 							</div>
-							[%EXTRA_CUSTOMER_FIELDS%]
+							[%extra_customer_fields%]
 							[%param *integer_option%]
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%/NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
-							[%/ param%]
+							[%/param%]
 							[%param *text_option%]
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="[@field_id@]">[@field_name@]</label>
-										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+								[%site_value id:'register_textareas'%]
+									<div class="col-12">
+										<div class="form-group">
+											<label for="[@field_id@]">[@field_name@]</label>
+											[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
+											<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%/NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										</div>
 									</div>
-								</div>
-							[%/ param%]
+								[%/site_value%]
+							[%/param%]
 							[%param *short_text_option%]
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%/NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
-							[%/ param%]
+							[%/param%]
 							[%param *descimal_option%]
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%/NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
-							[%/ param%]
+							[%/param%]
 							[%param *boolean_option%]
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label for="[@field_id@]">[@field_name@]</label>
+								[%site_value id:'register_checkboxes'%]
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+											[@field_name@]
+										</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%/ DATA%] [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
-								</div>
-							[%/ param%]
+								[%/site_value%]
+							[%/param%]
 							[%param *date_option%]
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input class="datepicker" class="form-control" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input class="form-control datepicker" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%/NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
-							[%/ param%]
+							[%/param%]
 							[%param *selection_header%]
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
 										<select id="[@field_id@]" name="[@field_id@]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
-							[%/ param%]
+							[%/param%]
 							[%param *selection_body%]
 										<option value="[@option_value@]">[@option_value@]</option>
-							[%/ param%]
+							[%/param%]
 							[%param *selection_footer%]
 										</select>
 									</div>
 								</div>
-							[%/ param%]
-							[%/ EXTRA_CUSTOMER_FIELDS%]
+							[%/param%]
+							[%/extra_customer_fields%]
+							[%site_value id:'register_textareas' type:'load'/%]
 							<div class="clear"></div>
 							<div class="col-12">
 								<div class="form-group">
+									[%site_value id:'register_checkboxes' type:'load'/%]
 									<div class="checkbox">
 										<label>
 											<input name="regoptin" type="checkbox" value="Y" checked="checked" data-message="You can unsubscribe at any time."/>
@@ -157,4 +163,4 @@
 		</div>
 	</div>
 </div>
-[%GA_FUNNEL%]/user/login.html[%/ GA_FUNNEL%]
+[%GA_FUNNEL%]/user/login.html[%/GA_FUNNEL%]
