@@ -184,15 +184,15 @@
 		</div>
 	[%/param%]
 	[%param *boolean_option%]
-		<div class="form-group row">
-			<label class="control-label col-md-3">
-				[@field_name@]
-				[%if [@required_field@]%]<span style="color:red;">*</span>[%/if%]
-			</label>
-			<div class="col-md-9">
-				<input type="checkbox" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] class="form-control" [%if [@required_field@]%]required[%/if%]>
+		[%site_value id:'register_checkboxes'%]
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+					[@field_name@]
+				</label>
+				[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
 			</div>
-		</div>
+		[%/site_value%]
 	[%/param%]
 	[%param *date_option%]
 		<div class="form-group row">
@@ -227,18 +227,25 @@
 	[%/param%]
 [%/extra_customer_fields%]
 
-<div class="">
+<div>
 	<h3>&nbsp;Terms &amp; Conditions Of Trade</h3>
 	<div style="width:100%; border:1px solid #CCCCCC; height: 150px; overflow:scroll; text-align:left; padding:10px;">
 		[%content_zone id:'wholesale_terms'%][%end content_zone%]
 	</div>
-	<p>
-		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]>  Subscribe to the [@config:company_name@] newsletter.
-	</p>
-	<p>
-		<input type="checkbox" name="agree" value="y" required>
-		I agree to the [@config:company_name@] terms of trade.
-	</p>
+
+	[%site_value id:'register_checkboxes' type:'load'/%]
+	<div>
+		<label>
+			<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]> 
+			Subscribe to the [@config:company_name@] newsletter.
+		</label>
+	</div>
+	<div>
+		<label>
+			<input type="checkbox" name="agree" value="y" required>
+			I agree to the [@config:company_name@] terms of trade.
+		</label>
+	</div>
 </div>
 	<input type="submit" class="btn btn-lg btn-primary" value="Register">
 </form>
