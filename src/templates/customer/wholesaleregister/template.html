@@ -230,7 +230,9 @@
 	<div style="width:100%; border:1px solid #CCCCCC; height: 150px; overflow:scroll; text-align:left; padding:10px;">
 		[%content_zone id:'wholesale_terms'%][%end content_zone%]
 	</div>
+</div>
 
+<div class="form-group">
 	[%site_value id:'register_checkboxes' type:'load'/%]
 	<label class="d-block">
 		<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]> 
@@ -239,10 +241,10 @@
 	</label>
 	<label class="d-block">
 		<input type="checkbox" name="agree" value="y" required>
-		I agree to the [@config:company_name@] terms of trade.
+		I agree to the [@config:company_name@] Terms &amp; Conditions Of Trade
 	</label>
 </div>
-
+	
 	<input type="submit" class="btn btn-lg btn-primary" value="Register">
 </form>
 
