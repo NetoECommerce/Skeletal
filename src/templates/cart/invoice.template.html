@@ -111,10 +111,10 @@
 						[%if [@name@] like 'Master Card' OR [@name@] like 'MasterCard'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Master Card</p>[%/if%]
 						[%if [@name@] like 'Discover'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Discover</p>[%/if%]
 						[%if [@name@] like 'Diners'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Diners</p>[%/if%]
-						[%if [@name@] like 'Cheque'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Cheque</p>[%/if%]
-						[%if [@name@] like 'Money Order'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Money Order</p>[%/if%]
-						[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Direct Deposit</p>[%/if%]
-						[%if [@name@] like 'bpay'%]<p class="mb-1"><i class="fa fa-credit-card"></i> BPAY</p>[%/if%]
+						[%if [@name@] like 'Cheque'%]<p class="mb-1">Cheque</p>[%/if%]
+						[%if [@name@] like 'Money Order'%]<p class="mb-1">Money Order</p>[%/if%]
+						[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]<p class="mb-1">Direct Deposit</p>[%/if%]
+						[%if [@name@] like 'bpay'%]<p class="mb-1">BPAY</p>[%/if%]
 						[%if [@name@] like 'PayPal' OR [@name@] like 'paypal'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Paypal</p>[%/if%]
 						[%if [@name@] like 'afterpay'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Afterpay</p>[%/if%]
 						[%if [@name@] like 'Q Card' OR [@name@] like 'QCard'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Q Card</p>[%/if%]
@@ -138,6 +138,8 @@
 				<div class="row">
 					<div class="col-12 col-sm-6">
 						<h4>Shipping address</h4>
+						[@ship_first_name@] [@ship_last_name@]<br/>
+						[%if [@ship_company@] ne ''%][@ship_company@]<br/>[%/ if%]
 						[@ship_street1@] [@ship_street2@]<br/>
 						[@ship_city@], [@ship_state@] [@ship_zip@]<br/>
 						[@ship_country@]
