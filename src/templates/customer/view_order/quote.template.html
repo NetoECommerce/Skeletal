@@ -13,9 +13,9 @@
 	</script>
 	<div class="row">
 		<div class="col-12">
-			<input type="button" class="btn btn-outline-secondary pull-left" value="Print Quote" onClick="print_quote()">&nbsp;
+			<input type="button" class="btn btn-outline-secondary float-left" value="Print Quote" onClick="print_quote()">&nbsp;
 			[%if [@config:allow_quote_approval@]%]
-				<a href="[%url page:'account' type:'approve_quote'/%]" class="btn btn-success pull-right"><i class="fa fa-check icon-white"></i> Approve Quote</a>
+				<a href="[%url page:'account' type:'approve_quote'/%]" class="btn btn-success float-right"><i class="fa fa-check icon-white"></i> Approve Quote</a>
 			[%/if%]
 		</div>
 	</div>

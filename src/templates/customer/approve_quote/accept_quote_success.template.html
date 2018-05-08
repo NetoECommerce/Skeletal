@@ -14,8 +14,8 @@
 	<h1>Approve Quote</h1>
 	<p>Congratulations! Quote #[@order_id@] has been approved and changed to an order. You can pay for this order now by clicking on the pay now button below.</p>
 	<div>
-		<input class="btn btn-default pull-right" type="button" value="Print Invoice" onClick="print_invoice()">
-		<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success pull-left">Pay Now</button>
+		<input class="btn btn-default float-right" type="button" value="Print Invoice" onClick="print_invoice()">
+		<button onclick="location.href='[%URL page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%END URL%]'" class="btn btn-success float-left">Pay Now</button>
 	</div>
 	[%print_order id:'[@order_id@]'%][%/ print_order%]
 </div>
