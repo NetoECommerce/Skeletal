@@ -252,6 +252,14 @@
 				</div>
 			[%/param%]
 		[%/extra_customer_fields%]
+		<div class="form-group">
+			[%site_value id:'register_checkboxes' type:'load'/%]
+			<label class="d-block">
+				<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]> 
+				Subscribe to the [@config:company_name@] newsletter
+				<span class="text-muted small">optional</span>
+			</label>
+		</div>
 
 		<div class="form-group">
 			<h3 class="my-4">Terms &amp; Conditions Of Trade</h3>
@@ -261,12 +269,6 @@
 		</div>
 
 		<div class="form-group">
-			[%site_value id:'register_checkboxes' type:'load'/%]
-			<label class="d-block">
-				<input type="checkbox" name="regoptin" value="Y" [%FORM id:'regoptin' if:'eq' value:'Y'%]checked[%END FORM%]> 
-				Subscribe to the [@config:company_name@] newsletter
-				<span class="text-muted small">optional</span>
-			</label>
 			<label class="d-block">
 				<input type="checkbox" name="agree" value="y" required>
 				I agree to the [@config:company_name@] Terms &amp; Conditions Of Trade
