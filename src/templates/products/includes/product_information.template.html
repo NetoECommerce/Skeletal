@@ -28,11 +28,11 @@
         [%set [@data:ratings-count@] = 1 /%]
         [%while [@data:ratings-count@] <= [@data:rating@]%]
           [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
         [%/while%]
         [%while [@data:ratings-count@] <= 5%]
           [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-          <i class="fa fa-star-o" aria-hidden="true"></i>
+          <i class="far fa-star" aria-hidden="true"></i>
         [%/while%]
       </a>
     </li>
@@ -200,11 +200,11 @@
           [%set [@data:ratings-count@] = 1 /%]
           [%while [@data:ratings-count@] <= [@data:score@]%]
             [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-            <i class="fa fa-star"></i>
+            <i class="fas fa-star"></i>
           [%/while%]
           [%while [@data:ratings-count@] <= 5%]
             [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-            <i class="fa fa-star-o"></i>
+            <i class="far fa-star"></i>
           [%/while%]
           ([@score@])
           [%if [@review_response@]%]
@@ -221,12 +221,12 @@
     [%/thumb_list%]
     [%if [@reviews@] > 0%]
       <p>
-        <a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a>
+        <a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="far fa-edit"></i> Write a product review</a>
       </p>
     [%else%]
       <h4>Be The First To Review This Product!</h4>
       <p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
-      <p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a></p>
+      <p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="far fa-edit"></i> Write a product review</a></p>
     [%/if%]
     </div><!--/.tab-pane-->
     [%/if%]

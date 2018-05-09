@@ -29,21 +29,21 @@
 				[%SET [@data:ratings-count@] = 1 /%]
 				[%WHILE [@data:ratings-count@] <= [@form:rating_value@]%]
 					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fa fa-star fa-3x"></i>
+					<i class="fas fa-star fa-3x"></i>
 				[%/ WHILE%]
 				[%WHILE [@data:ratings-count@] <= 5%]
 					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fa fa-star-o fa-3x"></i>
+					<i class="far fa-star fa-3x"></i>
 				[%/ WHILE%]
 			</blockquote>
 		</div>
 		<p>
 			<button class="btn btn-success btn-lg" type="submit">
-				<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+				<i class="far fa-paper-plane" aria-hidden="true"></i>
 				Post Review
 			</button>
 			<button class="btn btn-warning btn-lg" type="button" onclick="back_to_write_review();">
-				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				<i class="far fa-" aria-hidden="true"></i>
 				Edit Review
 			</button>
 		</p>
