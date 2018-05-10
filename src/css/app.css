@@ -10,12 +10,12 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 @-ms-viewport {
   width: device-width; }
 
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
 body {
@@ -132,7 +132,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em; }
 
 pre {
@@ -413,12 +413,6 @@ mark,
 .figure-caption {
   font-size: 90%;
   color: #6c757d; }
-
-code,
-kbd,
-pre,
-samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 code {
   font-size: 87.5%;
@@ -1635,10 +1629,10 @@ pre {
   #stloc_state_sel:disabled,
   #suburb_sl:disabled,
   ._itmspec_opt:disabled,
-  .n-wrapper-form-control select:disabled, .form-control[readonly], [readonly]#stloc_selector_cysel,
-  [readonly]#stloc_state_sel,
-  [readonly]#suburb_sl,
-  [readonly]._itmspec_opt,
+  .n-wrapper-form-control select:disabled, .form-control[readonly], #stloc_selector_cysel[readonly],
+  #stloc_state_sel[readonly],
+  #suburb_sl[readonly],
+  ._itmspec_opt[readonly],
   .n-wrapper-form-control select[readonly] {
     background-color: #ebebeb;
     opacity: 1; }
@@ -1697,18 +1691,18 @@ select.form-control:focus::-ms-value, #stloc_selector_cysel:focus::-ms-value,
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0; }
-  .form-control-plaintext.form-control-sm, .input-group-sm > .form-control-plaintext.form-control, .input-group-sm > .form-control-plaintext#stloc_selector_cysel, .input-group-sm >
-  .form-control-plaintext#stloc_state_sel, .input-group-sm >
-  .form-control-plaintext#suburb_sl, .input-group-sm >
-  .form-control-plaintext._itmspec_opt,
+  .form-control-plaintext.form-control-sm, .input-group-sm > .form-control-plaintext.form-control, .input-group-sm > .form-control-plaintext#stloc_selector_cysel,
+  .input-group-sm > .form-control-plaintext#stloc_state_sel,
+  .input-group-sm > .form-control-plaintext#suburb_sl,
+  .input-group-sm > .form-control-plaintext._itmspec_opt,
   .n-wrapper-form-control .input-group-sm > select.form-control-plaintext,
   .input-group-sm > .input-group-prepend > .form-control-plaintext.input-group-text,
   .input-group-sm > .input-group-append > .form-control-plaintext.input-group-text,
   .input-group-sm > .input-group-prepend > .form-control-plaintext.btn,
-  .input-group-sm > .input-group-append > .form-control-plaintext.btn, .form-control-plaintext.form-control-lg, .input-group-lg > .form-control-plaintext.form-control, .input-group-lg > .form-control-plaintext#stloc_selector_cysel, .input-group-lg >
-  .form-control-plaintext#stloc_state_sel, .input-group-lg >
-  .form-control-plaintext#suburb_sl, .input-group-lg >
-  .form-control-plaintext._itmspec_opt,
+  .input-group-sm > .input-group-append > .form-control-plaintext.btn, .form-control-plaintext.form-control-lg, .input-group-lg > .form-control-plaintext.form-control, .input-group-lg > .form-control-plaintext#stloc_selector_cysel,
+  .input-group-lg > .form-control-plaintext#stloc_state_sel,
+  .input-group-lg > .form-control-plaintext#suburb_sl,
+  .input-group-lg > .form-control-plaintext._itmspec_opt,
   .n-wrapper-form-control .input-group-lg > select.form-control-plaintext,
   .input-group-lg > .input-group-prepend > .form-control-plaintext.input-group-text,
   .input-group-lg > .input-group-append > .form-control-plaintext.input-group-text,
@@ -1717,10 +1711,10 @@ select.form-control:focus::-ms-value, #stloc_selector_cysel:focus::-ms-value,
     padding-right: 0;
     padding-left: 0; }
 
-.form-control-sm, .input-group-sm > .form-control, .input-group-sm > #stloc_selector_cysel, .input-group-sm >
-#stloc_state_sel, .input-group-sm >
-#suburb_sl, .input-group-sm >
-._itmspec_opt,
+.form-control-sm, .input-group-sm > .form-control, .input-group-sm > #stloc_selector_cysel,
+.input-group-sm > #stloc_state_sel,
+.input-group-sm > #suburb_sl,
+.input-group-sm > ._itmspec_opt,
 .n-wrapper-form-control .input-group-sm > select,
 .input-group-sm > .input-group-prepend > .input-group-text,
 .input-group-sm > .input-group-append > .input-group-text,
@@ -1733,10 +1727,10 @@ select.form-control:focus::-ms-value, #stloc_selector_cysel:focus::-ms-value,
   line-height: 1.5;
   border-radius: 0.2rem; }
 
-select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]), .input-group-sm > #stloc_selector_cysel:not([size]):not([multiple]), .input-group-sm >
-#stloc_state_sel:not([size]):not([multiple]), .input-group-sm >
-#suburb_sl:not([size]):not([multiple]), .input-group-sm >
-._itmspec_opt:not([size]):not([multiple]),
+select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]), .input-group-sm > #stloc_selector_cysel:not([size]):not([multiple]),
+.input-group-sm > #stloc_state_sel:not([size]):not([multiple]),
+.input-group-sm > #suburb_sl:not([size]):not([multiple]),
+.input-group-sm > ._itmspec_opt:not([size]):not([multiple]),
 .n-wrapper-form-control .input-group-sm > select:not([size]):not([multiple]),
 .input-group-sm > .input-group-prepend > select.input-group-text:not([size]):not([multiple]),
 .input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]),
@@ -1744,10 +1738,10 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
 .input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]) {
   height: calc(1.64844rem + 2px); }
 
-.form-control-lg, .input-group-lg > .form-control, .input-group-lg > #stloc_selector_cysel, .input-group-lg >
-#stloc_state_sel, .input-group-lg >
-#suburb_sl, .input-group-lg >
-._itmspec_opt,
+.form-control-lg, .input-group-lg > .form-control, .input-group-lg > #stloc_selector_cysel,
+.input-group-lg > #stloc_state_sel,
+.input-group-lg > #suburb_sl,
+.input-group-lg > ._itmspec_opt,
 .n-wrapper-form-control .input-group-lg > select,
 .input-group-lg > .input-group-prepend > .input-group-text,
 .input-group-lg > .input-group-append > .input-group-text,
@@ -1760,10 +1754,10 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
   line-height: 1.5;
   border-radius: 0.3rem; }
 
-select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]), .input-group-lg > #stloc_selector_cysel:not([size]):not([multiple]), .input-group-lg >
-#stloc_state_sel:not([size]):not([multiple]), .input-group-lg >
-#suburb_sl:not([size]):not([multiple]), .input-group-lg >
-._itmspec_opt:not([size]):not([multiple]),
+select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]), .input-group-lg > #stloc_selector_cysel:not([size]):not([multiple]),
+.input-group-lg > #stloc_state_sel:not([size]):not([multiple]),
+.input-group-lg > #suburb_sl:not([size]):not([multiple]),
+.input-group-lg > ._itmspec_opt:not([size]):not([multiple]),
 .n-wrapper-form-control .input-group-lg > select:not([size]):not([multiple]),
 .input-group-lg > .input-group-prepend > select.input-group-text:not([size]):not([multiple]),
 .input-group-lg > .input-group-append > select.input-group-text:not([size]):not([multiple]),
@@ -1853,12 +1847,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   background-color: rgba(40, 167, 69, .8);
   border-radius: .2rem; }
 
-.was-validated .form-control:valid, .was-validated #stloc_selector_cysel:valid, .was-validated
-#stloc_state_sel:valid, .was-validated
-#suburb_sl:valid, .was-validated
-._itmspec_opt:valid, .was-validated
-.n-wrapper-form-control select:valid,
-.n-wrapper-form-control .was-validated select:valid, .form-control.is-valid, .is-valid#stloc_selector_cysel,
+.was-validated .form-control:valid, .was-validated #stloc_selector_cysel:valid,
+.was-validated #stloc_state_sel:valid,
+.was-validated #suburb_sl:valid,
+.was-validated ._itmspec_opt:valid,
+.was-validated .n-wrapper-form-control select:valid, .n-wrapper-form-control .was-validated select:valid, .form-control.is-valid, .is-valid#stloc_selector_cysel,
 .is-valid#stloc_state_sel,
 .is-valid#suburb_sl,
 .is-valid._itmspec_opt,
@@ -1866,12 +1859,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .custom-select:valid,
 .custom-select.is-valid {
   border-color: #28a745; }
-  .was-validated .form-control:valid:focus, .was-validated #stloc_selector_cysel:valid:focus, .was-validated
-  #stloc_state_sel:valid:focus, .was-validated
-  #suburb_sl:valid:focus, .was-validated
-  ._itmspec_opt:valid:focus, .was-validated
-  .n-wrapper-form-control select:valid:focus,
-  .n-wrapper-form-control .was-validated select:valid:focus, .form-control.is-valid:focus, .is-valid#stloc_selector_cysel:focus,
+  .was-validated .form-control:valid:focus, .was-validated #stloc_selector_cysel:valid:focus,
+  .was-validated #stloc_state_sel:valid:focus,
+  .was-validated #suburb_sl:valid:focus,
+  .was-validated ._itmspec_opt:valid:focus,
+  .was-validated .n-wrapper-form-control select:valid:focus, .n-wrapper-form-control .was-validated select:valid:focus, .form-control.is-valid:focus, .is-valid#stloc_selector_cysel:focus,
   .is-valid#stloc_state_sel:focus,
   .is-valid#suburb_sl:focus,
   .is-valid._itmspec_opt:focus,
@@ -1881,29 +1873,16 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-color: #28a745;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, .25);
             box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, .25); }
-  .was-validated .form-control:valid ~ .valid-feedback, .was-validated #stloc_selector_cysel:valid ~ .valid-feedback, .was-validated
-  #stloc_state_sel:valid ~ .valid-feedback, .was-validated
-  #suburb_sl:valid ~ .valid-feedback, .was-validated
-  ._itmspec_opt:valid ~ .valid-feedback, .was-validated
-  .n-wrapper-form-control select:valid ~ .valid-feedback,
-  .n-wrapper-form-control .was-validated select:valid ~ .valid-feedback,
+  .was-validated .form-control:valid ~ .valid-feedback, .was-validated #stloc_selector_cysel:valid ~ .valid-feedback, .was-validated #stloc_state_sel:valid ~ .valid-feedback, .was-validated #suburb_sl:valid ~ .valid-feedback, .was-validated ._itmspec_opt:valid ~ .valid-feedback, .was-validated .n-wrapper-form-control select:valid ~ .valid-feedback, .n-wrapper-form-control .was-validated select:valid ~ .valid-feedback,
   .was-validated .form-control:valid ~ .valid-tooltip,
   .was-validated #stloc_selector_cysel:valid ~ .valid-tooltip,
-  .was-validated
-  #stloc_state_sel:valid ~ .valid-tooltip,
-  .was-validated
-  #suburb_sl:valid ~ .valid-tooltip,
-  .was-validated
-  ._itmspec_opt:valid ~ .valid-tooltip,
-  .was-validated
-  .n-wrapper-form-control select:valid ~ .valid-tooltip,
-  .n-wrapper-form-control
-  .was-validated select:valid ~ .valid-tooltip, .form-control.is-valid ~ .valid-feedback, .is-valid#stloc_selector_cysel ~ .valid-feedback,
-  .is-valid#stloc_state_sel ~ .valid-feedback,
-  .is-valid#suburb_sl ~ .valid-feedback,
-  .is-valid._itmspec_opt ~ .valid-feedback,
-  .n-wrapper-form-control select.is-valid ~ .valid-feedback,
-  .form-control.is-valid ~ .valid-tooltip, .is-valid#stloc_selector_cysel ~ .valid-tooltip,
+  .was-validated #stloc_state_sel:valid ~ .valid-tooltip,
+  .was-validated #suburb_sl:valid ~ .valid-tooltip,
+  .was-validated ._itmspec_opt:valid ~ .valid-tooltip,
+  .was-validated .n-wrapper-form-control select:valid ~ .valid-tooltip,
+  .n-wrapper-form-control .was-validated select:valid ~ .valid-tooltip, .form-control.is-valid ~ .valid-feedback, .is-valid#stloc_selector_cysel ~ .valid-feedback, .is-valid#stloc_state_sel ~ .valid-feedback, .is-valid#suburb_sl ~ .valid-feedback, .is-valid._itmspec_opt ~ .valid-feedback, .n-wrapper-form-control select.is-valid ~ .valid-feedback,
+  .form-control.is-valid ~ .valid-tooltip,
+  .is-valid#stloc_selector_cysel ~ .valid-tooltip,
   .is-valid#stloc_state_sel ~ .valid-tooltip,
   .is-valid#suburb_sl ~ .valid-tooltip,
   .is-valid._itmspec_opt ~ .valid-tooltip,
@@ -1914,6 +1893,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   .custom-select.is-valid ~ .valid-feedback,
   .custom-select.is-valid ~ .valid-tooltip {
     display: block; }
+
+.was-validated .form-control-file:valid ~ .valid-feedback,
+.was-validated .form-control-file:valid ~ .valid-tooltip, .form-control-file.is-valid ~ .valid-feedback,
+.form-control-file.is-valid ~ .valid-tooltip {
+  display: block; }
 
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
   color: #28a745; }
@@ -1979,12 +1963,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   background-color: rgba(220, 53, 69, .8);
   border-radius: .2rem; }
 
-.was-validated .form-control:invalid, .was-validated #stloc_selector_cysel:invalid, .was-validated
-#stloc_state_sel:invalid, .was-validated
-#suburb_sl:invalid, .was-validated
-._itmspec_opt:invalid, .was-validated
-.n-wrapper-form-control select:invalid,
-.n-wrapper-form-control .was-validated select:invalid, .form-control.is-invalid, .is-invalid#stloc_selector_cysel,
+.was-validated .form-control:invalid, .was-validated #stloc_selector_cysel:invalid,
+.was-validated #stloc_state_sel:invalid,
+.was-validated #suburb_sl:invalid,
+.was-validated ._itmspec_opt:invalid,
+.was-validated .n-wrapper-form-control select:invalid, .n-wrapper-form-control .was-validated select:invalid, .form-control.is-invalid, .is-invalid#stloc_selector_cysel,
 .is-invalid#stloc_state_sel,
 .is-invalid#suburb_sl,
 .is-invalid._itmspec_opt,
@@ -1992,12 +1975,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .custom-select:invalid,
 .custom-select.is-invalid {
   border-color: #dc3545; }
-  .was-validated .form-control:invalid:focus, .was-validated #stloc_selector_cysel:invalid:focus, .was-validated
-  #stloc_state_sel:invalid:focus, .was-validated
-  #suburb_sl:invalid:focus, .was-validated
-  ._itmspec_opt:invalid:focus, .was-validated
-  .n-wrapper-form-control select:invalid:focus,
-  .n-wrapper-form-control .was-validated select:invalid:focus, .form-control.is-invalid:focus, .is-invalid#stloc_selector_cysel:focus,
+  .was-validated .form-control:invalid:focus, .was-validated #stloc_selector_cysel:invalid:focus,
+  .was-validated #stloc_state_sel:invalid:focus,
+  .was-validated #suburb_sl:invalid:focus,
+  .was-validated ._itmspec_opt:invalid:focus,
+  .was-validated .n-wrapper-form-control select:invalid:focus, .n-wrapper-form-control .was-validated select:invalid:focus, .form-control.is-invalid:focus, .is-invalid#stloc_selector_cysel:focus,
   .is-invalid#stloc_state_sel:focus,
   .is-invalid#suburb_sl:focus,
   .is-invalid._itmspec_opt:focus,
@@ -2007,29 +1989,16 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     border-color: #dc3545;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, .25);
             box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, .25); }
-  .was-validated .form-control:invalid ~ .invalid-feedback, .was-validated #stloc_selector_cysel:invalid ~ .invalid-feedback, .was-validated
-  #stloc_state_sel:invalid ~ .invalid-feedback, .was-validated
-  #suburb_sl:invalid ~ .invalid-feedback, .was-validated
-  ._itmspec_opt:invalid ~ .invalid-feedback, .was-validated
-  .n-wrapper-form-control select:invalid ~ .invalid-feedback,
-  .n-wrapper-form-control .was-validated select:invalid ~ .invalid-feedback,
+  .was-validated .form-control:invalid ~ .invalid-feedback, .was-validated #stloc_selector_cysel:invalid ~ .invalid-feedback, .was-validated #stloc_state_sel:invalid ~ .invalid-feedback, .was-validated #suburb_sl:invalid ~ .invalid-feedback, .was-validated ._itmspec_opt:invalid ~ .invalid-feedback, .was-validated .n-wrapper-form-control select:invalid ~ .invalid-feedback, .n-wrapper-form-control .was-validated select:invalid ~ .invalid-feedback,
   .was-validated .form-control:invalid ~ .invalid-tooltip,
   .was-validated #stloc_selector_cysel:invalid ~ .invalid-tooltip,
-  .was-validated
-  #stloc_state_sel:invalid ~ .invalid-tooltip,
-  .was-validated
-  #suburb_sl:invalid ~ .invalid-tooltip,
-  .was-validated
-  ._itmspec_opt:invalid ~ .invalid-tooltip,
-  .was-validated
-  .n-wrapper-form-control select:invalid ~ .invalid-tooltip,
-  .n-wrapper-form-control
-  .was-validated select:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback, .is-invalid#stloc_selector_cysel ~ .invalid-feedback,
-  .is-invalid#stloc_state_sel ~ .invalid-feedback,
-  .is-invalid#suburb_sl ~ .invalid-feedback,
-  .is-invalid._itmspec_opt ~ .invalid-feedback,
-  .n-wrapper-form-control select.is-invalid ~ .invalid-feedback,
-  .form-control.is-invalid ~ .invalid-tooltip, .is-invalid#stloc_selector_cysel ~ .invalid-tooltip,
+  .was-validated #stloc_state_sel:invalid ~ .invalid-tooltip,
+  .was-validated #suburb_sl:invalid ~ .invalid-tooltip,
+  .was-validated ._itmspec_opt:invalid ~ .invalid-tooltip,
+  .was-validated .n-wrapper-form-control select:invalid ~ .invalid-tooltip,
+  .n-wrapper-form-control .was-validated select:invalid ~ .invalid-tooltip, .form-control.is-invalid ~ .invalid-feedback, .is-invalid#stloc_selector_cysel ~ .invalid-feedback, .is-invalid#stloc_state_sel ~ .invalid-feedback, .is-invalid#suburb_sl ~ .invalid-feedback, .is-invalid._itmspec_opt ~ .invalid-feedback, .n-wrapper-form-control select.is-invalid ~ .invalid-feedback,
+  .form-control.is-invalid ~ .invalid-tooltip,
+  .is-invalid#stloc_selector_cysel ~ .invalid-tooltip,
   .is-invalid#stloc_state_sel ~ .invalid-tooltip,
   .is-invalid#suburb_sl ~ .invalid-tooltip,
   .is-invalid._itmspec_opt ~ .invalid-tooltip,
@@ -2040,6 +2009,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   .custom-select.is-invalid ~ .invalid-feedback,
   .custom-select.is-invalid ~ .invalid-tooltip {
     display: block; }
+
+.was-validated .form-control-file:invalid ~ .invalid-feedback,
+.was-validated .form-control-file:invalid ~ .invalid-tooltip, .form-control-file.is-invalid ~ .invalid-feedback,
+.form-control-file.is-invalid ~ .invalid-tooltip {
+  display: block; }
 
 .was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
   color: #dc3545; }
@@ -2120,12 +2094,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
           -ms-flex-align: center;
               align-items: center;
       margin-bottom: 0; }
-    .form-inline .form-control, .form-inline #stloc_selector_cysel, .form-inline
-    #stloc_state_sel, .form-inline
-    #suburb_sl, .form-inline
-    ._itmspec_opt, .form-inline
-    .n-wrapper-form-control select,
-    .n-wrapper-form-control .form-inline select {
+    .form-inline .form-control, .form-inline #stloc_selector_cysel,
+    .form-inline #stloc_state_sel,
+    .form-inline #suburb_sl,
+    .form-inline ._itmspec_opt,
+    .form-inline .n-wrapper-form-control select, .n-wrapper-form-control .form-inline select {
       display: inline-block;
       width: auto;
       vertical-align: middle; }
@@ -2992,10 +2965,10 @@ input[type="button"].btn-block {
       -ms-flex-align: stretch;
           align-items: stretch;
   width: 100%; }
-  .input-group > .form-control, .input-group > #stloc_selector_cysel, .input-group >
-  #stloc_state_sel, .input-group >
-  #suburb_sl, .input-group >
-  ._itmspec_opt,
+  .input-group > .form-control, .input-group > #stloc_selector_cysel,
+  .input-group > #stloc_state_sel,
+  .input-group > #suburb_sl,
+  .input-group > ._itmspec_opt,
   .n-wrapper-form-control .input-group > select,
   .input-group > .custom-select,
   .input-group > .custom-file {
@@ -3005,118 +2978,80 @@ input[type="button"].btn-block {
             flex: 1 1 auto;
     width: 1%;
     margin-bottom: 0; }
-    .input-group > .form-control:focus, .input-group > #stloc_selector_cysel:focus, .input-group >
-    #stloc_state_sel:focus, .input-group >
-    #suburb_sl:focus, .input-group >
-    ._itmspec_opt:focus,
+    .input-group > .form-control:focus, .input-group > #stloc_selector_cysel:focus,
+    .input-group > #stloc_state_sel:focus,
+    .input-group > #suburb_sl:focus,
+    .input-group > ._itmspec_opt:focus,
     .n-wrapper-form-control .input-group > select:focus,
     .input-group > .custom-select:focus,
     .input-group > .custom-file:focus {
       z-index: 3; }
-    .input-group > .form-control + .form-control, .input-group > #stloc_selector_cysel + .form-control, .input-group >
-    #stloc_state_sel + .form-control, .input-group >
-    #suburb_sl + .form-control, .input-group >
-    ._itmspec_opt + .form-control,
-    .n-wrapper-form-control .input-group > select + .form-control, .input-group > .form-control + #stloc_selector_cysel, .input-group > #stloc_selector_cysel + #stloc_selector_cysel, .input-group >
-    #stloc_state_sel + #stloc_selector_cysel, .input-group >
-    #suburb_sl + #stloc_selector_cysel, .input-group >
-    ._itmspec_opt + #stloc_selector_cysel,
-    .n-wrapper-form-control .input-group > select + #stloc_selector_cysel, .input-group > .form-control +
-    #stloc_state_sel, .input-group > #stloc_selector_cysel +
-    #stloc_state_sel, .input-group >
-    #stloc_state_sel +
-    #stloc_state_sel, .input-group >
-    #suburb_sl +
-    #stloc_state_sel, .input-group >
-    ._itmspec_opt +
-    #stloc_state_sel,
-    .n-wrapper-form-control .input-group > select +
-    #stloc_state_sel, .input-group > .form-control +
-    #suburb_sl, .input-group > #stloc_selector_cysel +
-    #suburb_sl, .input-group >
-    #stloc_state_sel +
-    #suburb_sl, .input-group >
-    #suburb_sl +
-    #suburb_sl, .input-group >
-    ._itmspec_opt +
-    #suburb_sl,
-    .n-wrapper-form-control .input-group > select +
-    #suburb_sl, .input-group > .form-control +
-    ._itmspec_opt, .input-group > #stloc_selector_cysel +
-    ._itmspec_opt, .input-group >
-    #stloc_state_sel +
-    ._itmspec_opt, .input-group >
-    #suburb_sl +
-    ._itmspec_opt, .input-group >
-    ._itmspec_opt +
-    ._itmspec_opt,
-    .n-wrapper-form-control .input-group > select +
-    ._itmspec_opt,
+    .input-group > .form-control + .form-control, .input-group > #stloc_selector_cysel + .form-control, .input-group > #stloc_state_sel + .form-control, .input-group > #suburb_sl + .form-control, .input-group > ._itmspec_opt + .form-control, .n-wrapper-form-control .input-group > select + .form-control, .input-group > .form-control + #stloc_selector_cysel, .input-group > #stloc_selector_cysel + #stloc_selector_cysel, .input-group > #stloc_state_sel + #stloc_selector_cysel, .input-group > #suburb_sl + #stloc_selector_cysel, .input-group > ._itmspec_opt + #stloc_selector_cysel, .n-wrapper-form-control .input-group > select + #stloc_selector_cysel,
+    .input-group > .form-control + #stloc_state_sel,
+    .input-group > #stloc_selector_cysel + #stloc_state_sel,
+    .input-group > #stloc_state_sel + #stloc_state_sel,
+    .input-group > #suburb_sl + #stloc_state_sel,
+    .input-group > ._itmspec_opt + #stloc_state_sel,
+    .n-wrapper-form-control .input-group > select + #stloc_state_sel,
+    .input-group > .form-control + #suburb_sl,
+    .input-group > #stloc_selector_cysel + #suburb_sl,
+    .input-group > #stloc_state_sel + #suburb_sl,
+    .input-group > #suburb_sl + #suburb_sl,
+    .input-group > ._itmspec_opt + #suburb_sl,
+    .n-wrapper-form-control .input-group > select + #suburb_sl,
+    .input-group > .form-control + ._itmspec_opt,
+    .input-group > #stloc_selector_cysel + ._itmspec_opt,
+    .input-group > #stloc_state_sel + ._itmspec_opt,
+    .input-group > #suburb_sl + ._itmspec_opt,
+    .input-group > ._itmspec_opt + ._itmspec_opt,
+    .n-wrapper-form-control .input-group > select + ._itmspec_opt,
     .n-wrapper-form-control .input-group > .form-control + select,
     .n-wrapper-form-control .input-group > #stloc_selector_cysel + select,
-    .n-wrapper-form-control .input-group >
-    #stloc_state_sel + select,
-    .n-wrapper-form-control .input-group >
-    #suburb_sl + select,
-    .n-wrapper-form-control .input-group >
-    ._itmspec_opt + select, .n-wrapper-form-control .input-group > select + select,
+    .n-wrapper-form-control .input-group > #stloc_state_sel + select,
+    .n-wrapper-form-control .input-group > #suburb_sl + select,
+    .n-wrapper-form-control .input-group > ._itmspec_opt + select,
+    .n-wrapper-form-control .input-group > select + select,
     .input-group > .form-control + .custom-select,
     .input-group > #stloc_selector_cysel + .custom-select,
-    .input-group >
-    #stloc_state_sel + .custom-select,
-    .input-group >
-    #suburb_sl + .custom-select,
-    .input-group >
-    ._itmspec_opt + .custom-select,
-    .n-wrapper-form-control
-    .input-group > select + .custom-select,
+    .input-group > #stloc_state_sel + .custom-select,
+    .input-group > #suburb_sl + .custom-select,
+    .input-group > ._itmspec_opt + .custom-select,
+    .n-wrapper-form-control .input-group > select + .custom-select,
     .input-group > .form-control + .custom-file,
     .input-group > #stloc_selector_cysel + .custom-file,
-    .input-group >
-    #stloc_state_sel + .custom-file,
-    .input-group >
-    #suburb_sl + .custom-file,
-    .input-group >
-    ._itmspec_opt + .custom-file,
-    .n-wrapper-form-control
-    .input-group > select + .custom-file,
+    .input-group > #stloc_state_sel + .custom-file,
+    .input-group > #suburb_sl + .custom-file,
+    .input-group > ._itmspec_opt + .custom-file,
+    .n-wrapper-form-control .input-group > select + .custom-file,
     .input-group > .custom-select + .form-control,
     .input-group > .custom-select + #stloc_selector_cysel,
-    .input-group > .custom-select +
-    #stloc_state_sel,
-    .input-group > .custom-select +
-    #suburb_sl,
-    .input-group > .custom-select +
-    ._itmspec_opt,
-    .n-wrapper-form-control
-    .input-group > .custom-select + select,
+    .input-group > .custom-select + #stloc_state_sel,
+    .input-group > .custom-select + #suburb_sl,
+    .input-group > .custom-select + ._itmspec_opt,
+    .n-wrapper-form-control .input-group > .custom-select + select,
     .input-group > .custom-select + .custom-select,
     .input-group > .custom-select + .custom-file,
     .input-group > .custom-file + .form-control,
     .input-group > .custom-file + #stloc_selector_cysel,
-    .input-group > .custom-file +
-    #stloc_state_sel,
-    .input-group > .custom-file +
-    #suburb_sl,
-    .input-group > .custom-file +
-    ._itmspec_opt,
-    .n-wrapper-form-control
-    .input-group > .custom-file + select,
+    .input-group > .custom-file + #stloc_state_sel,
+    .input-group > .custom-file + #suburb_sl,
+    .input-group > .custom-file + ._itmspec_opt,
+    .n-wrapper-form-control .input-group > .custom-file + select,
     .input-group > .custom-file + .custom-select,
     .input-group > .custom-file + .custom-file {
       margin-left: -1px; }
-  .input-group > .form-control:not(:last-child), .input-group > #stloc_selector_cysel:not(:last-child), .input-group >
-  #stloc_state_sel:not(:last-child), .input-group >
-  #suburb_sl:not(:last-child), .input-group >
-  ._itmspec_opt:not(:last-child),
+  .input-group > .form-control:not(:last-child), .input-group > #stloc_selector_cysel:not(:last-child),
+  .input-group > #stloc_state_sel:not(:last-child),
+  .input-group > #suburb_sl:not(:last-child),
+  .input-group > ._itmspec_opt:not(:last-child),
   .n-wrapper-form-control .input-group > select:not(:last-child),
   .input-group > .custom-select:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0; }
-  .input-group > .form-control:not(:first-child), .input-group > #stloc_selector_cysel:not(:first-child), .input-group >
-  #stloc_state_sel:not(:first-child), .input-group >
-  #suburb_sl:not(:first-child), .input-group >
-  ._itmspec_opt:not(:first-child),
+  .input-group > .form-control:not(:first-child), .input-group > #stloc_selector_cysel:not(:first-child),
+  .input-group > #stloc_state_sel:not(:first-child),
+  .input-group > #suburb_sl:not(:first-child),
+  .input-group > ._itmspec_opt:not(:first-child),
   .n-wrapper-form-control .input-group > select:not(:first-child),
   .input-group > .custom-select:not(:first-child) {
     border-top-left-radius: 0;
@@ -3132,8 +3067,7 @@ input[type="button"].btn-block {
     .input-group > .custom-file:not(:last-child) .custom-file-label::after {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0; }
-    .input-group > .custom-file:not(:first-child) .custom-file-label,
-    .input-group > .custom-file:not(:first-child) .custom-file-label::after {
+    .input-group > .custom-file:not(:first-child) .custom-file-label {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0; }
 
@@ -3238,12 +3172,14 @@ input[type="button"].btn-block {
       background-color: #ebebeb; }
 
 .custom-control-label {
+  position: relative;
   margin-bottom: 0; }
   .custom-control-label::before {
     position: absolute;
     top: 4px;
     top: 0.25rem;
-    left: 0;
+    left: -24px;
+    left: -1.5rem;
     display: block;
     width: 16px;
     width: 1rem;
@@ -3260,7 +3196,8 @@ input[type="button"].btn-block {
     position: absolute;
     top: 4px;
     top: 0.25rem;
-    left: 0;
+    left: -24px;
+    left: -1.5rem;
     display: block;
     width: 16px;
     width: 1rem;
@@ -5042,13 +4979,16 @@ button.close {
   .bs-popover-top .arrow, .bs-popover-auto[x-placement^="top"] .arrow {
     bottom: calc(-0.5rem + -1px); }
   .bs-popover-top .arrow::before, .bs-popover-auto[x-placement^="top"] .arrow::before,
-  .bs-popover-top .arrow::after, .bs-popover-auto[x-placement^="top"] .arrow::after {
+  .bs-popover-top .arrow::after,
+  .bs-popover-auto[x-placement^="top"] .arrow::after {
     border-width: 8px 8px 0;
     border-width: 0.5rem 0.5rem 0; }
   .bs-popover-top .arrow::before, .bs-popover-auto[x-placement^="top"] .arrow::before {
     bottom: 0;
     border-top-color: rgba(0, 0, 0, .25); }
-  .bs-popover-top .arrow::after, .bs-popover-auto[x-placement^="top"] .arrow::after {
+  
+  .bs-popover-top .arrow::after,
+  .bs-popover-auto[x-placement^="top"] .arrow::after {
     bottom: 1px;
     border-top-color: #fff; }
 
@@ -5064,13 +5004,16 @@ button.close {
     margin: 4.8px 0;
     margin: 0.3rem 0; }
   .bs-popover-right .arrow::before, .bs-popover-auto[x-placement^="right"] .arrow::before,
-  .bs-popover-right .arrow::after, .bs-popover-auto[x-placement^="right"] .arrow::after {
+  .bs-popover-right .arrow::after,
+  .bs-popover-auto[x-placement^="right"] .arrow::after {
     border-width: 8px 8px 8px 0;
     border-width: 0.5rem 0.5rem 0.5rem 0; }
   .bs-popover-right .arrow::before, .bs-popover-auto[x-placement^="right"] .arrow::before {
     left: 0;
     border-right-color: rgba(0, 0, 0, .25); }
-  .bs-popover-right .arrow::after, .bs-popover-auto[x-placement^="right"] .arrow::after {
+  
+  .bs-popover-right .arrow::after,
+  .bs-popover-auto[x-placement^="right"] .arrow::after {
     left: 1px;
     border-right-color: #fff; }
 
@@ -5080,13 +5023,16 @@ button.close {
   .bs-popover-bottom .arrow, .bs-popover-auto[x-placement^="bottom"] .arrow {
     top: calc(-0.5rem + -1px); }
   .bs-popover-bottom .arrow::before, .bs-popover-auto[x-placement^="bottom"] .arrow::before,
-  .bs-popover-bottom .arrow::after, .bs-popover-auto[x-placement^="bottom"] .arrow::after {
+  .bs-popover-bottom .arrow::after,
+  .bs-popover-auto[x-placement^="bottom"] .arrow::after {
     border-width: 0 8px 8px 8px;
     border-width: 0 0.5rem 0.5rem 0.5rem; }
   .bs-popover-bottom .arrow::before, .bs-popover-auto[x-placement^="bottom"] .arrow::before {
     top: 0;
     border-bottom-color: rgba(0, 0, 0, .25); }
-  .bs-popover-bottom .arrow::after, .bs-popover-auto[x-placement^="bottom"] .arrow::after {
+  
+  .bs-popover-bottom .arrow::after,
+  .bs-popover-auto[x-placement^="bottom"] .arrow::after {
     top: 1px;
     border-bottom-color: #fff; }
   .bs-popover-bottom .popover-header::before, .bs-popover-auto[x-placement^="bottom"] .popover-header::before {
@@ -5113,13 +5059,16 @@ button.close {
     margin: 4.8px 0;
     margin: 0.3rem 0; }
   .bs-popover-left .arrow::before, .bs-popover-auto[x-placement^="left"] .arrow::before,
-  .bs-popover-left .arrow::after, .bs-popover-auto[x-placement^="left"] .arrow::after {
+  .bs-popover-left .arrow::after,
+  .bs-popover-auto[x-placement^="left"] .arrow::after {
     border-width: 8px 0 8px 8px;
     border-width: 0.5rem 0 0.5rem 0.5rem; }
   .bs-popover-left .arrow::before, .bs-popover-auto[x-placement^="left"] .arrow::before {
     right: 0;
     border-left-color: rgba(0, 0, 0, .25); }
-  .bs-popover-left .arrow::after, .bs-popover-auto[x-placement^="left"] .arrow::after {
+  
+  .bs-popover-left .arrow::after,
+  .bs-popover-auto[x-placement^="left"] .arrow::after {
     right: 1px;
     border-left-color: #fff; }
 
@@ -5314,6 +5263,7 @@ button.close {
     margin-right: 3px;
     margin-left: 3px;
     text-indent: -999px;
+    cursor: pointer;
     background-color: rgba(255, 255, 255, .5); }
     .carousel-indicators li::before {
       position: absolute;
@@ -7745,7 +7695,17 @@ a.text-dark:hover, a.text-dark:focus {
       background-color: #fff !important; }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #dee2e6 !important; } }
+    border: 1px solid #dee2e6 !important; }
+  .table-dark {
+    color: inherit; }
+    .table-dark th,
+    .table-dark td,
+    .table-dark thead th,
+    .table-dark tbody + tbody {
+      border-color: #dee2e6; }
+  .table .thead-dark th {
+    color: inherit;
+    border-color: #dee2e6; } }
 
 .navbar {
   border-radius: 0.25rem; }
@@ -7764,7 +7724,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 @media (max-width: 767.98px) {
   .wrapper-header .navbar > .navbar-collapse {
-    padding: 0.5rem 1rem; } }
+    padding: 0.5rem; } }
 
 @media (min-width: 768px) {
   .dropdown-hover:hover > .dropdown-menu {
@@ -8265,3 +8225,84 @@ input[readonly] {
 
 ._order_total {
   color: #090; }
+
+.order-summary-m {
+  display: none;
+  opacity: 0; }
+  @media (max-width: 991.98px) {
+    .order-summary-m {
+      display: block;
+      opacity: 1;
+      position: fixed;
+      bottom: 2%;
+      right: 2%;
+      left: 2%;
+      z-index: 1030; } }
+  .order-summary-m .card-body {
+    padding: 12px;
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none; }
+    .order-summary-m .card-body .link {
+      color: #006FF5; }
+
+@media (max-width: 991.98px) {
+  .order-summary-d {
+    display: none;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .8);
+    position: fixed;
+    z-index: 1030;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; } }
+
+@media (max-width: 991.98px) {
+  .order-summary-d .order-summary {
+    overflow-y: auto;
+    margin: 0 auto;
+    max-width: 80%;
+    min-height: 0;
+    position: absolute;
+    top: 1%;
+    bottom: 2%;
+    right: 0;
+    left: 0; } }
+
+@media (max-width: 767.98px) {
+  .order-summary-d .order-summary {
+    right: 2%;
+    left: 2%;
+    max-width: 96%;
+    min-height: 96vh; } }
+
+.order-summary-d .order-summary-close {
+  float: left;
+  padding-right: 5px; }
+
+.order-summary-d .print-order-link {
+  min-width: 61px; }
+
+.order-summary-d .product-img {
+  position: relative; }
+  .order-summary-d .product-img .badge {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: -7px;
+    right: 7px; }
+  .order-summary-d .product-img img {
+    border: 1px solid rgba(204, 204, 204, 0.50196); }
+
+@media (max-width: 991.98px) {
+  body.fixed-body {
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%; }
+    body.fixed-body .order-summary-d {
+      display: block;
+      opacity: 1; }
+    body.fixed-body .order-summary-m {
+      display: none;
+      opacity: 0; } }

@@ -15,7 +15,7 @@
 	<h1>Dismiss Quote</h1>
 	</div>
 	<div>
-		<input class="btn pull-right" type="button" value="Print Quote" onClick="print_quote()">
+		<input class="btn float-right" type="button" value="Print Quote" onClick="print_quote()">
 		<form name="dismissForm" method="post" action="[%URL page:'account' type:'approve_quote'  id:'[@order_id@]' fn:'confirm'%][%END URL%]">
 			<input type="hidden" name="order_email" value="[@order_email@]" />
 			<input type="hidden" name="action"value="dismiss" />

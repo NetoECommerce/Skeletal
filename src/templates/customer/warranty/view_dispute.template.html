@@ -151,7 +151,7 @@
 									<textarea name="message" class="form-control" rows="1">[%nohtml%][@message@][%/nohtml%]</textarea>
 								</div>
 								<div class="col-sm-3 col-md-2">
-									<button type="button" class="btn btn-block btn-success pull-right" onclick="sendMessage()"> <i class="fa fa-envelope icon-white"></i> Send</button>
+									<button type="button" class="btn btn-block btn-success float-right" onclick="sendMessage()"> <i class="fa fa-envelope icon-white"></i> Send</button>
 								</div>
 							</div>
 						</div>
@@ -162,7 +162,7 @@
 			[%if ![@dispute_closed@]%]
 				<div class="row">
 					<div class="col-md-3 offset-md-9">
-						<button type="button" class="btn btn-lg btn-danger btn-block" onclick="closeDispute()"><i class="fa fa-remove icon-white"></i> Close This Dispute </button>
+						<button type="button" class="btn btn-lg btn-danger btn-block" onclick="closeDispute()"><i class="fas fa-times icon-white"></i> Close This Dispute </button>
 					</div>
 				</div>
 			[%/if%]

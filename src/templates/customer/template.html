@@ -60,7 +60,7 @@
 		[%/if%]
 		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Edit My Contact Details">
 			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_account'/%]#contact">
-				<h3><i class="fa fa-pencil" aria-hidden="true"></i> Edit My Contact Details</h3>
+				<h3><i class="fa fa-pencil-alt" aria-hidden="true"></i> Edit My Contact Details</h3>
 				<p class="small mb-0 text-truncate" title="Change your name, phone number and more">Change your name, phone number and more</p>
 			</a>
 		</div>
@@ -94,7 +94,7 @@
 			[%param *body%]
 				<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My Standing Orders">
 					<a class="btn btn-outline-secondary btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
-						<h3><i class="fa fa-refresh" aria-hidden="true"></i> My Standing Orders</h3>
+						<h3><i class="fas fa-sync" aria-hidden="true"></i> My Standing Orders</h3>
 						<p class="small mb-0 text-truncate" title="View or edit your recurring orders.">View or edit your recurring orders.</p>
 					</a>
 				</div>
@@ -102,7 +102,7 @@
 		[%/thumb_list%]
 		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My Quotes">
 			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account'/%]#quotes">
-				<h3><i class="fa fa-folder-o" aria-hidden="true"></i> My Quotes</h3>
+				<h3><i class="fa fa-folder" aria-hidden="true"></i> My Quotes</h3>
 				<p class="small mb-0 text-truncate" title="View or print any outstanding quotes.">View or print any outstanding quotes.</p>
 			</a>
 		</div>
@@ -177,7 +177,7 @@
 					<div class="card card-body">
 						<p class="mb-0">
 							<a href="[%url page:'account' type:'view_order' id:'[@order_id@]'/%]" aria-label="Order [@order_id@]">[@order_id@]</a>
-							<span class="badge pull-right
+							<span class="badge float-right
 								[%if [@order_status@] eq 'On Hold' or [@order_status@] eq 'Backorder Approved' or [@order_status@] eq 'New Backorder'%]
 										badge-warning
 									[%elseif [@order_status@] eq 'Pick' or [@order_status@] eq 'Pack'%]
@@ -379,7 +379,7 @@
 							<span class="d-none"> / [%format type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/format%]</span>
 						</td>
 						<td>
-							<a class="btn btn-block btn-danger" href="[%url page:'account' type:'wishlist' id:'[@wishlist_id@]' qs:'proc=deletelist' /%]"><i class="fa fa-trash-o"></i> Delete</a>
+							<a class="btn btn-block btn-danger" href="[%url page:'account' type:'wishlist' id:'[@wishlist_id@]' qs:'proc=deletelist' /%]"><i class="far fa-trash-alt"></i> Delete</a>
 						</td>
 						<td>
 							<a class="btn btn-block btn-primary" href="[%url page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'/%]"><i class="fa fa-edit"></i> Edit</a>

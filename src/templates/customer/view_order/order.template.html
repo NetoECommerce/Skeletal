@@ -13,15 +13,15 @@
 	</script>
 	<div class="row">
 		<div class="col-12">
-			<input type="button" class="btn btn-outline-secondary pull-left" value="Print Order / Invoice" onClick="print_invoice()">
+			<input type="button" class="btn btn-outline-secondary float-left" value="Print Order / Invoice" onClick="print_invoice()">
 			[%show_order id:'[@order_id@]'%]
 				[%param *header%]
 					[%if [@amount_owed@] > 0%]
-						<button class="btn btn-success pull-right" onclick="location.href='[%url page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'/%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
+						<button class="btn btn-success float-right" onclick="location.href='[%url page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'/%]'"><i class="fa fa-check icon-white"></i> Pay Now</button>
 					[%/if%]
+					[%print_order id:'[@order_id@]'/%]
 				[%/param%]
 			[%/show_order%]
 		</div>
 	</div>
-	[%print_order id:'[@order_id@]'/%]
 </div>

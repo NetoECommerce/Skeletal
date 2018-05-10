@@ -110,12 +110,10 @@
 		.inputtext {}
 		.inputtext_count {
 			display: none;
-			font-size: 8px;
 		}
 		.submit_btn {}
 		.sherror {
 			color: #CC0000;
-			font-size: 8px;
 			display: none;
 		}
 		INPUT.datefield,
@@ -147,77 +145,82 @@
 					[%/ param%][%/ DATA%]
 				</h4>
 				<div class="form-group row">
-					<div class="col-sm-6">
-						Sender Name<span class="text-danger">*</span>
-						<p class="muted">The name of the person sending the voucher</p>
+					<div class="col-12 col-sm-6">
+						<label for="voucher_sender[@reward_id@]">Sender Name<span class="text-danger">*</span></label>
+						<p class="text-muted small">The name of the person sending the voucher</p>
 					</div>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" name="voucher_sender[@reward_id@]" value="[%NOHTML%][@sender_name@][%/ NOHTML%]">
-						<span class="sherror" ref="voucher_sender[@reward_id@]">* Required</span>
-					</div>
-				</div>
-				<div class="form-group row">
-					<div class="col-sm-6">
-						Recipient Name<span class="text-danger">*</span>
-						<p class="muted">The name of the person receiving the voucher</p>
-					</div>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" name="voucher_name[@reward_id@]" value="[%NOHTML%][@recipient_name@][%/ NOHTML%]">
-						<span class="sherror" ref="voucher_name[@reward_id@]">* Required</span>
+					<div class="col-12 col-sm-6">
+						<input type="text" class="form-control" id="voucher_sender[@reward_id@]" name="voucher_sender[@reward_id@]" value="[%NOHTML%][@sender_name@][%/ NOHTML%]">
+						<span class="sherror small" ref="voucher_sender[@reward_id@]">* Required</span>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-sm-6">Recipient Email<span class="text-danger">*</span>
-						<p class="muted">The e-voucher will be sent to this email address</p>
+					<div class="col-12 col-sm-6">
+						<label for="voucher_name[@reward_id@]">Recipient Name<span class="text-danger">*</span></label>
+						<p class="text-muted small">The name of the person receiving the voucher</p>
 					</div>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" name="voucher_email[@reward_id@]" value="[%NOHTML%][@recipient_email@][%/ NOHTML%]">
-						<span class="sherror" ref="voucher_email[@reward_id@]">* Required</span>
-						<span class="sherror" ref="invalid_voucher_email[@reward_id@]">* Invalid</span>
+					<div class="col-12 col-sm-6">
+						<input type="text" class="form-control" id="voucher_name[@reward_id@]" name="voucher_name[@reward_id@]" value="[%NOHTML%][@recipient_name@][%/ NOHTML%]">
+						<span class="sherror small" ref="voucher_name[@reward_id@]">* Required</span>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-sm-6">Send Voucher On This Date &amp; Time:
-						<p class="muted">Leave blank to send ASAP or select a date and time</p>
+					<div class="col-12 col-sm-6">
+						<label for="voucher_email[@reward_id@]">Recipient Email<span class="text-danger">*</span></label>
+						<p class="text-muted small">The e-voucher will be sent to this email address</p>
 					</div>
-					<div class="btn-stack">
-						<div class="col-sm-2 col-12">
-							<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%/ NOHTML%]" placeholder="Select Date">
+					<div class="col-12 col-sm-6">
+						<input type="text" class="form-control" id="voucher_email[@reward_id@]" name="voucher_email[@reward_id@]" value="[%NOHTML%][@recipient_email@][%/ NOHTML%]">
+						<span class="sherror small" ref="voucher_email[@reward_id@]">* Required</span>
+						<span class="sherror small" ref="invalid_voucher_email[@reward_id@]">* Invalid</span>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-12 col-sm-6">
+						<label>Send Voucher On This Date &amp; Time:</label>
+						<p class="text-muted small">Leave blank to send ASAP or select a date and time</p>
+					</div>
+					<div class="col-12 col-sm-6">
+						<div class="row btn-stack">
+							<div class="col-12 col-md-4">
+								<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%/ NOHTML%]" placeholder="Select Date">
+							</div>
+							<div class="col-12 col-md-4">
+								<select class="form-control" name="voucher_rdate[@reward_id@]_hr">
+									<option value=""></option>
+									<option value="1" [%DATA id:'required_date_12hr' if:'=' value:'1'%]selected[%/ DATA%]>1</option>
+									<option value="2" [%DATA id:'required_date_12hr' if:'=' value:'2'%]selected[%/ DATA%]>2</option>
+									<option value="3" [%DATA id:'required_date_12hr' if:'=' value:'3'%]selected[%/ DATA%]>3</option>
+									<option value="4" [%DATA id:'required_date_12hr' if:'=' value:'4'%]selected[%/ DATA%]>4</option>
+									<option value="5" [%DATA id:'required_date_12hr' if:'=' value:'5'%]selected[%/ DATA%]>5</option>
+									<option value="6" [%DATA id:'required_date_12hr' if:'=' value:'6'%]selected[%/ DATA%]>6</option>
+									<option value="7" [%DATA id:'required_date_12hr' if:'=' value:'7'%]selected[%/ DATA%]>7</option>
+									<option value="8" [%DATA id:'required_date_12hr' if:'=' value:'8'%]selected[%/ DATA%]>8</option>
+									<option value="9" [%DATA id:'required_date_12hr' if:'=' value:'9'%]selected[%/ DATA%]>9</option>
+									<option value="10" [%DATA id:'required_date_12hr' if:'=' value:'10'%]selected[%/ DATA%]>10</option>
+									<option value="11" [%DATA id:'required_date_12hr' if:'=' value:'11'%]selected[%/ DATA%]>11</option>
+									<option value="12" [%DATA id:'required_date_12hr' if:'=' value:'12'%]selected[%/ DATA%]>12</option>
+								</select>
+							</div>
+							<div class="col-12 col-md-4">
+								<select class="form-control" name="voucher_rdate[@reward_id@]_am">
+									<option value=""></option>
+									<option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%/ DATA%]>am</option>
+									<option value="pm" [%DATA id:'required_date_am' if:'eq' value:'pm'%]selected[%/ DATA%]>pm</option>
+								</select>
+							</div>
 						</div>
-						<div class="col-sm-2 col-12">
-							<select class="form-control" name="voucher_rdate[@reward_id@]_hr">
-								<option value=""></option>
-								<option value="1" [%DATA id:'required_date_12hr' if:'=' value:'1'%]selected[%/ DATA%]>1</option>
-								<option value="2" [%DATA id:'required_date_12hr' if:'=' value:'2'%]selected[%/ DATA%]>2</option>
-								<option value="3" [%DATA id:'required_date_12hr' if:'=' value:'3'%]selected[%/ DATA%]>3</option>
-								<option value="4" [%DATA id:'required_date_12hr' if:'=' value:'4'%]selected[%/ DATA%]>4</option>
-								<option value="5" [%DATA id:'required_date_12hr' if:'=' value:'5'%]selected[%/ DATA%]>5</option>
-								<option value="6" [%DATA id:'required_date_12hr' if:'=' value:'6'%]selected[%/ DATA%]>6</option>
-								<option value="7" [%DATA id:'required_date_12hr' if:'=' value:'7'%]selected[%/ DATA%]>7</option>
-								<option value="8" [%DATA id:'required_date_12hr' if:'=' value:'8'%]selected[%/ DATA%]>8</option>
-								<option value="9" [%DATA id:'required_date_12hr' if:'=' value:'9'%]selected[%/ DATA%]>9</option>
-								<option value="10" [%DATA id:'required_date_12hr' if:'=' value:'10'%]selected[%/ DATA%]>10</option>
-								<option value="11" [%DATA id:'required_date_12hr' if:'=' value:'11'%]selected[%/ DATA%]>11</option>
-								<option value="12" [%DATA id:'required_date_12hr' if:'=' value:'12'%]selected[%/ DATA%]>12</option>
-							</select>
-						</div>
-						<div class="col-sm-2 col-12">
-							<select class="form-control" name="voucher_rdate[@reward_id@]_am">
-								<option value=""></option>
-								<option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%/ DATA%]>am</option>
-								<option value="pm" [%DATA id:'required_date_am' if:'eq' value:'pm'%]selected[%/ DATA%]>pm</option>
-							</select>
-						</div>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-sm-6">Gift Voucher Message<span class="text-danger">*</span>
-						<p class="muted">The message that appears on the gift voucher email</p>
+					<div class="col-12 col-sm-6">
+						<label for="voucher_msg[@reward_id@]">Gift Voucher Message<span class="text-danger">*</span></label>
+						<p class="text-muted small">The message that appears on the gift voucher email</p>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-12 col-sm-6">
 						<textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft">[%NOHTML%][@gift_message@][%/ NOHTML%]</textarea>
-						<div class="inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> Character(s) Left</div>
-						<span class="sherror" ref="voucher_msg[@reward_id@]">*Required</span>
+						<div class="small inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> Character(s) Left</div>
+						<span class="sherror small" ref="voucher_msg[@reward_id@]">*Required</span>
 					</div>
 				</div>
 				[%DATA id:'count' if:'eq' value:'0'%]
@@ -229,7 +232,7 @@
 		[%/ param%]
 		[%/ cart_vouchers%]
 </div>
-<div class="col-12"><input class="submit_btn btn btn-success btn-large pull-right" type="button" value="Continue To Checkout" /></div>
+<div class="col-12"><input class="submit_btn btn btn-success btn-large float-right" type="button" value="Continue To Checkout" /></div>
 </form>
 
 <br /> [%GA_FUNNEL%]/purchase/voucher.html[%/ GA_FUNNEL%]

@@ -1,6 +1,6 @@
 [%cart_vouchers type:'voucher'%]
 	[%param header%]
-		<div class="card card-body">
+		<div class="card card-body my-2">
 			<h4><i class="fa fa-gift"></i>  Gift Voucher Details</h4>
 			<table cellpadding="4" cellspacing="0" width="100%" border="0">
 	[%/ param%]
@@ -22,7 +22,7 @@
 					<tr><td>Delivery Date:</td><td>[%FORMAT type:'date' format:'#d #k #Y (#g#a)' default:'Today'%][@required_date@][%/ FORMAT%]</td></tr>
 				</table>
 				Gift Message:<br />
-				[%FORMAT type:'text' nohtml:'1' addbr:'1'%][@gift_message@][%/ FORMAT%] <a href="[%url page:'checkout' fn:'voucher'%][%/ url%]#voucher[@reward_id@]" title="Edit" rel="no-follow"><i class="fa fa-pencil"></i> Edit</a>
+				[%FORMAT type:'text' nohtml:'1' addbr:'1'%][@gift_message@][%/ FORMAT%] <a href="[%url page:'checkout' fn:'voucher'%][%/ url%]#voucher[@reward_id@]" title="Edit" rel="no-follow"><i class="fa fa-pencil-alt"></i> Edit</a>
 			</div>
 			</td>
 		</tr>

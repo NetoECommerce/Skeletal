@@ -8,7 +8,7 @@
 			[%/if%]
 			<!-- Uncomment if you'd like a "Edit gift messages" button above the cart summary. Requires checkout_upsell_extra to be configured correctly.
 			[%if [@config:checkout_upsell_extra@]%]
-				<a class="btn btn-outline-secondary" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white"></i> Edit extra options</a>
+				<a class="btn btn-outline-secondary" type="button" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil-alt icon-white"></i> Edit extra options</a>
 			[%/if%] -->
 		</div>
 		<div class="col-12 col-md-4 col-lg-3">
@@ -43,7 +43,7 @@
 								<p class="small">
 									[@extra@]
 									[%if [@config:checkout_upsell_extra@]%]
-										<a class="btn btn-outline-secondary btn-sm" role="link" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil icon-white" aria-hidden="true"></i></a>
+										<a class="btn btn-outline-secondary btn-sm" role="link" href="[%url page:'checkout' fn:'upsell'/%]" title="Edit extra options"> <i class="fa fa-pencil-alt icon-white" aria-hidden="true"></i></a>
 									[%/if%]
 								</p>
 								[%if [@aff_id@] eq '[@config:AFF_EBAY_ID@]'%]
@@ -84,7 +84,7 @@
 										[%PARAM *body%]
 											<div class="col-12 col-md-4">
 												<div class="card card-body">
-													<a href="[%url type:'item' id:'[@SKU@]'/%]" class="thumbnail-image"><img width="120" height="120" src="[@thumb@]" alt="[@model@]" /> </a>
+													<a href="[%url type:'item' id:'[@SKU@]'/%]" class="thumbnail-image mx-auto"><img width="120" height="120" src="[@thumb@]" alt="[@model@]" /> </a>
 													<p class="card-title h5"><a href="[%url type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'70' rmhtml:'1'%][@model@][%/format%]</a></p>
 													<p><a class="btn btn-success btn-block" href="[%url page:'checkout' qs:'sku=[@SKU@]&gift=[@counter@]'/%]">Add to Cart</a></p>
 												</div>
@@ -110,7 +110,7 @@
 								<p class="h4">[%format type:'currency'%][@subtotal@][%/format%]</p>
 							</td>
 							<td class="d-none d-sm-table-cell">
-								<a role="button" class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+								<a role="button" class="btn btn-block btn-danger" title="Remove [@model@] From Shopping Cart" href="javascript:rmcart('qty[@count@]');"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 						[%/param%]
@@ -128,7 +128,7 @@
 				<button type="button" role="link" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-outline-secondary btn-block" title="Continue shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
 			</div>
 			<div class="col-12 col-md-4 offset-md-4 col-lg-3 offset-lg-6">
-				<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-refresh" aria-hidden="true"></i> Update My Changes</button>
+				<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-sync" aria-hidden="true"></i> Update My Changes</button>
 			</div>
 		</div>
 		<div class="row">
@@ -195,7 +195,7 @@
 							[%param *body%]
 								<div class="form-group">
 								<label class="d-block" for="[@id@]">
-									<input class="pull-left" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
+									<input class="float-left" type="radio" onclick="document.SHsummary.submit()" name="ship" value="[@id@]" id="[@id@]" [%if [@id@] == [@shipping_method_id@]%]checked[%/if%]>
 									<h4>&nbsp;[@shipping_method@] - [%if [@shipping_quote@]%] P.O.A [%else%] [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%/if%] </h4>
 									[%if [@delivery_time@] >= 1%]
 									<p>Estimated arrival of [%format type:'number' tl_unit:'day' tl_plural:'days'%][@delivery_time@][%/format%]</p>

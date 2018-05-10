@@ -4,11 +4,11 @@
 	<div class="container">
 		<div class="row"><div class="col-12"><hr aria-hidden="true" /></div></div>
 		<div class="row">
-			<div class="col-12 col-sm-8">
+			<div class="col-12 col-md-8">
 				<nav class="row" aria-label="Footer menu">
 					[%menu id:'web_footer'%]
 						[%param *level_1%]
-							<div class="col-12 col-sm-4 text-sm-left">
+							<div class="col-12 col-md-4 text-md-left">
 								<ul class="nav flex-column">
 									<li class="nav-item"><h4 class="nav-link py-0">[@name@]</h4></li>
 									[@next_level@]
@@ -21,7 +21,7 @@
 					[%/menu%]
 				</nav>
 			</div>
-			<div class="col-12 col-sm-4 text-sm-left">
+			<div class="col-12 col-md-4 text-md-left">
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
 					<p>Subscribe to our newsletter:</p>
@@ -38,41 +38,41 @@
 						</div>
 					</form>
 				[%/if%]
-				<ul class="nav list-social justify-content-center justify-content-sm-start pt-2" itemscope itemtype="http://schema.org/Organization" role="contentinfo" aria-label="Social media">
+				<ul class="nav list-social justify-content-center justify-content-md-start pt-2" itemscope itemtype="http://schema.org/Organization" role="contentinfo" aria-label="Social media">
 					<meta itemprop="url" content="[@config:home_url@]"/>
 					<meta itemprop="logo" content="[@config:home_url@][@config:imageurl@]/website_logo.png"/>
 					<meta itemprop="name" content="[@config:company_name@]"/>
 					<li class="nav-item px-1"><a href="[%url type:'page' id:'contact_us'/%]" target="_blank" title="Email us" rel="noopener" aria-label="Email us"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
 					[%if [@config:facebook_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook" rel="noopener"><i class="fa fa-lg fa-facebook-square text-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:facebook_account_id@]" target="_blank" title="[@config:company_name@] on Facebook" rel="noopener"><i class="fab fa-facebook text-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
 					[%/if%]
 					[%if [@config:twitter_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank" title="[@config:company_name@] on Twitter" rel="noopener"><i class="fa fa-lg fa-twitter-square text-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:twitter_account_id@]" target="_blank" title="[@config:company_name@] on Twitter" rel="noopener"><i class="fab fa-twitter text-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a></li>
 					[%/if%]
 					[%if [@config:googleplus_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank" title="[@config:company_name@] on Google Plus" rel="noopener"><i class="fa fa-lg fa-google-plus-square text-google-plus" aria-hidden="true"></i><span class="sr-only">Google Plus</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:googleplus_account_id@]" target="_blank" title="[@config:company_name@] on Google Plus" rel="noopener"><i class="fab fa-google-plus text-google-plus" aria-hidden="true"></i><span class="sr-only">Google Plus</span></a></li>
 					[%/if%]
 					[%if [@config:youtube_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank" title="[@config:company_name@] on Youtube" rel="noopener"><i class="fa fa-lg fa-youtube-square text-youtube" aria-hidden="true"></i><span class="sr-only">Youtube</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:youtube_account_id@]" target="_blank" title="[@config:company_name@] on Youtube" rel="noopener"><i class="fab fa-youtube text-youtube" aria-hidden="true"></i><span class="sr-only">Youtube</span></a></li>
 					[%/if%]
 					[%if [@config:instagram_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank" title="[@config:company_name@] on Instagram" rel="noopener"><i class="fa fa-lg fa-instagram text-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:instagram_account_id@]" target="_blank" title="[@config:company_name@] on Instagram" rel="noopener"><i class="fab fa-instagram text-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
 					[%/if%]
 					[%if [@config:pinterest_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank" title="[@config:company_name@] on Pinterest" rel="noopener"><i class="fa fa-lg fa-pinterest-square text-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:pinterest_account_id@]" target="_blank" title="[@config:company_name@] on Pinterest" rel="noopener"><i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i><span class="sr-only">Pinterest</span></a></li>
 					[%/if%]
 					[%if [@config:tumblr_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank" title="[@config:company_name@] on Tumblr" rel="noopener"><i class="fa fa-lg fa-tumblr-square text-tumblr" aria-hidden="true"></i><span class="sr-only">Tumblr</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:tumblr_account_id@]" target="_blank" title="[@config:company_name@] on Tumblr" rel="noopener"><i class="fab fa-tumblr text-tumblr" aria-hidden="true"></i><span class="sr-only">Tumblr</span></a></li>
 					[%/if%]
 					[%if [@config:linkedin_account_id@]%]
-					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank" title="[@config:company_name@] on Linkedin" rel="noopener"><i class="fa fa-lg fa-linkedin-square text-linkedin" aria-hidden="true"></i><span class="sr-only">Linkedin</span></a></li>
+					<li class="nav-item px-1"><a itemprop="sameAs" href="[@config:linkedin_account_id@]" target="_blank" title="[@config:company_name@] on Linkedin" rel="noopener"><i class="fab fa-linkedin-in text-linkedin" aria-hidden="true"></i><span class="sr-only">Linkedin</span></a></li>
 					[%/if%]
 				</ul>
 			</div>
 		</div>
 		<div class="row"><div class="col-12"><hr aria-hidden="true"/></div></div>
 		<div class="row">
-			<div class="col-9 d-none d-sm-block">
+			<div class="col-12 col-md-9 d-none d-sm-block">
 				[%payment_methods ignore_balance:'1'%]
 					[%param header%]
 						<ul class="list-inline d-flex flex-wrap" role="contentinfo" aria-label="Accepted payment methods">
@@ -219,7 +219,7 @@
 					[%/param%]
 				[%/payment_methods%]
 			</div>
-			<div class="col-12 col-sm-3 text-sm-left">
+			<div class="col-12 col-md-3 text-md-left">
 				<address role="contentinfo" aria-label="Company details">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
