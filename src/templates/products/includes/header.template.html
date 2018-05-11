@@ -77,7 +77,7 @@
 			[%if [@form:disable_scripts@] ne 'true'%]
 			[%tracking_code type:'BuyingOptions' /%]
 			[%/if%]
-			[%if [@store_quantity@] > 0 AND [@preorder@] %]
+			[%if [@available_preorder_quantity@] > 0 AND [@preorder@] %]
 				<span itemprop="availability" content="http://schema.org/PreOrder" class="badge badge-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
 				<span itemprop="availability" content="http://schema.org/InStock" class="badge badge-success">In Stock</span>

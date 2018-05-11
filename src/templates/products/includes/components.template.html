@@ -140,12 +140,12 @@
 </div>
 <div class="row">
 	<div class="col-12 col-md-5">
-		[%if [@preorder@]%]
+		[%if [@available_preorder_quantity@] > 0 AND [@preorder@]%]
 			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-Order Now</button>
+		[%elseif [@store_quantity@] > 0%]
+			<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to Cart</button>
 		[%else%]
-			[%if [@store_quantity@] >= '1'%]
-				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to Cart</button>
-			[%/if%]
+			<button type="button" title="Out of stock" class="btn btn-outline-dark btn-block btn-lg" disabled>Out Of Stock</button>
 		[%/if%]
 	</div>
 	<div class="col-12"><hr></div>
