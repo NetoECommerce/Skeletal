@@ -146,9 +146,11 @@ $payment-icon:(
 }
 .thumbnail.card-body {
 	padding: 0.55rem;
-
 	img {
 		width: 100%;
+	}
+	.card-title{
+		min-height: 40px;
 	}
 }
 // Product page main image
