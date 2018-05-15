@@ -280,6 +280,20 @@ getlocation();
 					<input class="form-control" type="text" name="email" id="email" size="50" value="[@email@]">
 				</div>
 				<div class="form-group">
+					<label>
+						<input type='checkbox' id="subscribe-checkbox" [%if [@opt_in_newsletter@]%]checked[%/if%]>
+						<input type="hidden" name="opt_in" value="[@opt_in_newsletter@]">
+						Subscribe To Newsletter
+						[%site_value id:'footer_javascript'%]
+							<script>
+								$('#subscribe-checkbox').change(function() {
+									$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
+								});
+							</script>
+						[%/site_value%]
+					</label>
+				</div>
+				<div class="form-group">
 					<label for="phone">Phone Number </label>
 					<span class="small text-danger">Required</span>
 					<input class="form-control" type="text" name="phone" id="phone" size="50" value="[@phone@]">
