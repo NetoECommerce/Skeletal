@@ -193,7 +193,7 @@ function setSuburbSl(data, ta) {
 }
 getlocation();
 
-$('#subscribe-checkbox').change(function() {
+$('#subscribe_newsletter').change(function() {
 	$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
 });
 </script>
@@ -285,7 +285,7 @@ $('#subscribe-checkbox').change(function() {
 				</div>
 				<div class="form-group">
 					<label>
-						<input type='checkbox' id="subscribe-checkbox" [%if [@opt_in_newsletter@]%]checked[%/if%]>
+						<input type='checkbox' id="subscribe_newsletter" [%if [@opt_in_newsletter@]%]checked[%/if%]>
 						<input type="hidden" name="opt_in" value="[@opt_in_newsletter@]">
 						Subscribe To Newsletter
 					</label>
