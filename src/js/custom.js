@@ -112,13 +112,15 @@ $(document).ready(function() {
 
 });
 
-$(".btn-loads").click(function(){
+// Show button loading animation for 3 seconds
+function buttonLoading() {
 	$(this).button("loading");
 	var pendingbutton=this;
 	setTimeout(function(){
 		$(pendingbutton).button("reset");
 	},3000);
-});
+}
+$(".btn-loads").click(buttonLoading);
 
 // Fancybox
 $(document).ready(function() {

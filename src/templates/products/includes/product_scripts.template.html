@@ -5,11 +5,11 @@
 				'loadtmplates': ['_buying_options', '_images','_header'],
 				'fns' : {
 					'onLoad' : function () {
-						$('.addtocart').button("loading");
+						$('.btn-ajax-loads').button("loading");
 						$('.variation-wrapper').addClass('disable-interactivity');
 					},
 					'onReady' : function () {
-						$('.addtocart').button("reset");
+						$('.btn-ajax-loads').button("reset");
 						$('.zoom').zoom();
 						$('.variation-wrapper').removeClass('disable-interactivity');
 						$("#sale-end").countdown({
@@ -59,6 +59,7 @@
 				tabpan.attr("aria-hidden","false");  // show our panel
 			 });
 		})
+		$(document).on("click", ".btn-ajax-loads", buttonLoading);
 		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){e.preventDefault();})
 	</script>
 [%/site_value%]
