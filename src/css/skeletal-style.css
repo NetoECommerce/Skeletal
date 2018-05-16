@@ -156,8 +156,8 @@ fieldset[disabled] .btn-warning:active,
 .btn-warning.disabled.active,
 .btn-warning[disabled].active,
 fieldset[disabled] .btn-warning.active {
-	background-color: #428bca /*{btn-warning-disabled-bg-colour}*/;
-	border-color: #357ebd /*{btn-warning-disabled-border-colour}*/;
+	background-color: #f0ad4e /*{btn-warning-disabled-bg-colour}*/;
+	border-color: #eea236 /*{btn-warning-disabled-border-colour}*/;
 }
 
 .btn-danger {
