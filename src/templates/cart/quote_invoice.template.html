@@ -81,7 +81,12 @@
 						[%if [@user:username@]%]
 							<a class="print-order-link float-right" href="javascript:void(0);" onClick="print_invoice()"><i class="fa fa-print"></i> Print Receipt</a>
 						[%else%]
-							<a class="print-order-link float-right" href="[%url page:'account' type:'nr_view_order' id:'[@order_id@]' qs:'email=[@email@]&zip=[@ship_zip@]'%][%/url%]"><i class="fa fa-print"></i> Print Receipt</a>
+							<form name="viewOrder" action="[%url page:'account' type:'nr_view_order'/%]" method="post">
+								<input type="hidden" name="id" value="[@order_id@]">
+								<input type="hidden" name="email" value="[%escape%][@email@][%/escape%]">
+								<input type="hidden" name="zip" value="[%escape%][@ship_zip@][%/escape%]">
+								<a class="print-order-link float-right" href="javascript:void(0);" onclick="document.viewOrder.submit();"><i class="fa fa-print"></i> Print Receipt</a>
+							</form>
 						[%/if%]
 					</div>
 		[%/ param%]

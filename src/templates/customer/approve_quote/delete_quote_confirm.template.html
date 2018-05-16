@@ -1,7 +1,7 @@
 <div class="col-12">
 	<script language="javascript" type="text/javascript">
 		function print_quote() {
-			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/ URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}
 	</script>
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -11,19 +11,20 @@
 		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
 		</ol>
 	</nav>
-	<div class="page-header">
 	<h1>Dismiss Quote</h1>
-	</div>
-	<div>
-		<input class="btn float-right" type="button" value="Print Quote" onClick="print_quote()">
-		<form name="dismissForm" method="post" action="[%URL page:'account' type:'approve_quote'  id:'[@order_id@]' fn:'confirm'%][%END URL%]">
-			<input type="hidden" name="order_email" value="[@order_email@]" />
-			<input type="hidden" name="action"value="dismiss" />
-			<label>Dismissal Reason</label>
-			<textarea name="comment" cols="20" rows="4" placeholder="Enter your dismissal reasons here">[@comment@]</textarea>
-			<div class="clear"></div>
-			<button onclick="document.dismissForm.submit();" class="btn btn-success">Confirm &amp; Dismiss Quote</button>
-		</form>
-	</div>
+	<form name="dismissForm" method="post" action="[%URL page:'account' type:'approve_quote'  id:'[@order_id@]' fn:'confirm'%][%END URL%]">
+		<input type="hidden" name="order_email" value="[%escape%][@order_email@][%/escape%]" />
+		<input type="hidden" name="action"value="dismiss" />
+		<div class="row">
+			<div class="col-12 col-sm-6">
+				<label for="comment">Dismissal Reason</label>
+				<textarea name="comment" id="comment" class="form-control" cols="20" rows="4" placeholder="Enter your dismissal reasons here">[%escape%][@comment@][%/escape%]</textarea>
+			</div>
+			<div class="col-12 mt-2">
+				<button class="btn btn-danger" type="submit">Confirm &amp; Dismiss Quote</button>
+				<input class="btn btn-outline-secondary float-right" type="button" value="Print Quote" onClick="print_quote()">
+			</div>
+		</div>
+	</form>
 	[%print_order id:'[@order_id@]'%][%/ print_order%]
 </div>

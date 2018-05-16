@@ -35,17 +35,30 @@
 		[%/ param%]
 		[%param *body%]
 			<tr>
-				<td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]' qs:'filter_1=[@email@]'%][%/ URL%]">[@order_id@]</a></td>
+				<td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]' /%]">[@order_id@]</a></td>
 				<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/ format%]</td>
-				<td>[@email@]</td>
-				<td><button class="btn btn-success" onclick="location.href='[%URL page:'account' type:'approve_quote' qs:'action=approve&order_email=[@email@]' id:'[@order_id@]'%][%/ URL%]'">Approve Quote</button></td>
-				<td><button class="btn btn-danger" onclick="location.href='[%URL page:'account' type:'approve_quote' qs:'action=dismiss&order_email=[@email@]' id:'[@order_id@]'%][%/ URL%]'">Dismiss Quote</button></td>
+				<td>[%escape%][@email@][%/escape%]</td>
+				<td>
+					<form action="[%url page:'account' type:'approve_quote'/%]" method="post">
+						<input type="hidden" name="id" value="[@order_id@]">
+						<input type="hidden" name="action" value="approve">
+						<input type="hidden" name="order_email" value="[%escape%][@email@][%/escape%]">
+						<button class="btn btn-success" type="submit">Approve Quote</button>
+					</form>
+				</td>
+				<td>
+					<form action="[%url page:'account' type:'approve_quote'/%]" method="post">
+						<input type="hidden" name="id" value="[@order_id@]">
+						<input type="hidden" name="action" value="dismiss">
+						<input type="hidden" name="order_email" value="[%escape%][@email@][%/escape%]">
+						<button class="btn btn-danger" type="submit">Dismiss Quote</button>
+					</form>
+				</td>
 			</tr>
 		[%/ param%]
 		[%param *footer%]
 				</tbody>
 			</table>
-			<br style="clear:both;">
 		[%/ param%]
 		[%param ifempty%]No quotes found.[%/ param%]
 	[%/ thumb_list%]
