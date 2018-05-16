@@ -36,11 +36,11 @@
 		<h1>
 			[%url_info name:'page_heading' if:'eq' value:''%]
 				[%param if_true%][@name@][%/param%]
-				[%param if_false%][%url_info name:'page_heading'%][%end url_info%][%/param%]
+				[%param if_false%][%url_info name:'page_heading'/%][%/param%]
 			[%/url_info%]
-			[%DATA ID:'id' if:'eq' value:''%]
+			[%if [@id@] eq ''%]
 				[%filter ID:'keywords' if:'ne' value:''%][%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%][%/filter%]
-			[%/DATA%]
+			[%/if%]
 		</h1>
 	[%/filter%]
 	[%filter ID:'keywords' if:'ne' value:' '%]
