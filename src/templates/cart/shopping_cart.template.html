@@ -251,9 +251,15 @@
 					<td class="text-right">-[%format type:'currency'%][@discount_total@][%/format%]</td>
 				</tr>
 				[%/if%]
+				[%if [@surcharge_total@] > 0%]
+				<tr>
+					<th scope="row">Surcharge ([%format type:'percent' dc:'2'%][@surcharge_percent@][%/format%])</th>
+					<td class="text-right">[%format type:'currency'%][@surcharge_total@][%/format%]</td>
+				</tr>
+				[%/if%]
 				[%if ![@notax@]%]
 				<tr>
-					<th scope="row">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%] [%if [@tax_inc@]%]Inc.[%/if%]</th>
+					<th scope="row">[%if [@config:PRIMARY_TAX_LABEL@]%][@config:PRIMARY_TAX_LABEL@][%else%]GST[%/if%][%if [@tax_inc@]%]&nbsp;Inc.[%/if%]</th>
 					<td class="text-right">[%format type:'currency'%][@tax_total@][%/format%]</td>
 				</tr>
 				[%/if%]
