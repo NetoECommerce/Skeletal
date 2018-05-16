@@ -19,7 +19,18 @@
 				}
 			});
 			[%if [@has_components@]%]
-				$.kit_variationInit({});
+				$.kit_variationInit({
+					'fns' : {
+						'onLoad' : function () {
+							$('.btn-ajax-loads').button("loading");
+							$('.component-wrapper').addClass('disable-interactivity');
+						},
+						'onReady' : function () {
+							$('.btn-ajax-loads').button("reset");
+							$('.component-wrapper').removeClass('disable-interactivity');
+						},
+					}
+				});
 			[%/if%]
 		});
 	</script>
