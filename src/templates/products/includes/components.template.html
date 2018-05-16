@@ -1,6 +1,6 @@
 <hr aria-hidden="true"/>
 <h2>Customise Your Purchase</h2>
-<div class="component selector">
+<div class="component selector component-wrapper">
 	[%ITEM_KITTING id:'[@SKU@]' variation_kitting:1%]
 		[%PARAM *group_header%]
 			<input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
@@ -141,11 +141,11 @@
 <div class="row">
 	<div class="col-12 col-md-5">
 		[%if [@available_preorder_quantity@] > 0 AND [@preorder@]%]
-			<button type="button" title="Add to Cart" class="addtocart btn btn-block btn-warning btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-time icon-white"></i> Pre-Order Now</button>
+			<button type="button" title="Pre-Order Now" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Pre-Order Now</button>
 		[%elseif [@store_quantity@] > 0%]
-			<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg" rel="[@rndm@][@SKU@]"><i class="icon-shopping-cart icon-white"></i> Add to Cart</button>
+			<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Add to Cart</button>
 		[%else%]
-			<button type="button" title="Out of stock" class="btn btn-outline-dark btn-block btn-lg" disabled>Out Of Stock</button>
+			<button type="button" title="Out Of Stock" class="btn btn-outline-dark btn-block btn-lg" disabled>Out Of Stock</button>
 		[%/if%]
 	</div>
 	<div class="col-12"><hr></div>

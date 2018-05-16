@@ -7,8 +7,7 @@
 					'onLoad' : function () {
 						$('.btn-ajax-loads')
 							.html($('.btn-ajax-loads').attr('data-loading-text'))
-							.addClass('disabled')
-							.prop('disabled', true);
+							.addClass('disabled').prop('disabled', true);
 						$('.variation-wrapper').addClass('disable-interactivity');
 					},
 					'onReady' : function () {
@@ -21,7 +20,22 @@
 				}
 			});
 			[%if [@has_components@]%]
-				$.kit_variationInit({});
+				$.kit_variationInit({
+					'fns' : {
+						'onLoad' : function () {
+							$('.btn-ajax-loads')
+								.html($('.btn-ajax-loads').attr('data-loading-text'))
+								.addClass('disabled').prop('disabled', true);
+							$('.component-wrapper').addClass('disable-interactivity');
+						},
+						'onReady' : function () {
+							$('.btn-ajax-loads')
+								.html($('.btn-ajax-loads').attr('title'))
+								.removeClass('disabled').prop('disabled', false);
+							$('.component-wrapper').removeClass('disable-interactivity');
+						},
+					}
+				});
 			[%/if%]
 		});
 	</script>

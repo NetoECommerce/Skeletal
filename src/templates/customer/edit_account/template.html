@@ -186,6 +186,9 @@
 
 			}
 			getlocation();
+			$('#subscribe_newsletter').change(function() {
+				$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
+			});
 			</script>
 		[%/ SITE_VALUE%]
 
@@ -268,6 +271,13 @@
 					<label for="email">Email Address</label>
 					<span class="small text-danger">Required</span>
 					<input class="form-control" type="text" name="email" id="email" size="50" value="[@email@]">
+				</div>
+				<div class="form-group">
+					<label>
+						<input type='checkbox' id="subscribe_newsletter" [%if [@opt_in_newsletter@]%]checked[%/if%]>
+						<input type="hidden" name="opt_in" value="[@opt_in_newsletter@]">
+						Subscribe To Newsletter
+					</label>
 				</div>
 				<div class="form-group">
 					<label for="phone">Phone Number </label>
