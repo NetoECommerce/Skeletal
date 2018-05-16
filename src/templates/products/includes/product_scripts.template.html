@@ -22,12 +22,12 @@
 				$.kit_variationInit({
 					'fns' : {
 						'onLoad' : function () {
-							$('.addtocart').button("loading");
-							$('.component.selector').addClass('disable-interactivity');
+							$('.btn-ajax-loads').button("loading");
+							$('.component-wrapper').addClass('disable-interactivity');
 						},
 						'onReady' : function () {
-							$('.addtocart').button("reset");
-							$('.component.selector').removeClass('disable-interactivity');
+							$('.btn-ajax-loads').button("reset");
+							$('.component-wrapper').removeClass('disable-interactivity');
 						},
 					}
 				});
