@@ -606,18 +606,26 @@ $(document).ready(function() {
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									<h4 class="modal-title">Terms &amp; Conditions</h4>
 								</div>
-								<div class="modal-body">
-									[%content_zone id:'terms'/%]
+								<div class="modal-body">[%content_zone id:'terms'/%]</div>
+								<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="privacyModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h4 class="modal-title">Privay Policy</h4>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
+								<div class="modal-body">[%show_content id:'2'%][%param *body%][@content_description1@][%/param%][%/show_content%]</div>
+								<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
 							</div>
 						</div>
 					</div>
 					<p>
 						<input type="hidden" name="agreement" value="y">
-						Agree To <a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions?</a>
+						By checking this box you confirm that you have read and agree to our <a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a>, and that you have read our <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
 						<input type="checkbox" name="agree" value="y" class="terms_box" [%if [@agree@]%]checked[%/if%] required/>
 					</p>
 				[%/if%]
