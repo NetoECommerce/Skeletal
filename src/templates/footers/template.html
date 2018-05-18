@@ -28,18 +28,22 @@
 			<div class="col-xs-12 col-sm-4">
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
-					<p>Subscribe to our newsletter:</p>
+					<p>Subscribe to our newsletter and we'll keep you up to date on our products and services.</p>
 					<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]" aria-label="Newsletter subscribe form">
 						<input type="hidden" name="list_id" value="1">
 						<input type="hidden" name="opt_in" value="y">
-						<div class="input-group" role="group">
-							<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required aria-label="Email Address"/>
-							<input name="inp-submit" type="hidden" value="y" />
-							<input name="inp-opt_in" type="hidden" value="y" />
-							<span class="input-group-btn">
-								<input class="btn btn-default" type="submit" value="Subscribe" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"/>
-							</span>
+						<input name="inp-submit" type="hidden" value="y" />
+						<input name="inp-opt_in" type="hidden" value="y" />
+						<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required aria-label="Email Address"/>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" value="y" class="terms_box" required/>
+								I have read and agree to
+								<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a> and
+								<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
+							</label>
 						</div>
+						<input class="btn btn-default" type="submit" value="Subscribe" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"/>
 					</form>
 				[%/if%]
 				<ul class="list-inline list-social" itemscope itemtype="http://schema.org/Organization" role="contentinfo" aria-label="Social media">
@@ -238,6 +242,30 @@
 		</div>
 	</div>
 </footer>
+<div class="modal fade" id="termsModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Terms &amp; Conditions</h4>
+			</div>
+			<div class="modal-body">[%content_zone id:'terms'/%]</div>
+			<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="privacyModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Privay Policy</h4>
+			</div>
+			<div class="modal-body">[%show_content id:'2'%][%param *body%][@content_description1@][%/param%][%/show_content%]</div>
+			<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+		</div>
+	</div>
+</div>
 <!-- Required Neto Scripts - DO NOT REMOVE -->
 [%load_template file:'footers/includes/scripts.template.html'/%]
 </body>

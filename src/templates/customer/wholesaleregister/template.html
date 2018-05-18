@@ -237,30 +237,18 @@
 	<div class="checkbox">
 		<label>
 			<input name="regoptin" type="checkbox" value="N" data-message="You can unsubscribe at any time."/>
-			By checking this, you would like to subscribe to [@config:company_name@] newsletter and recieve more information about [@config:company_name@] product/services, events and offers.
+			Subscribe to our newsletter and we'll keep you up to date on our products and services.
 		</label>
 	</div>
 	[%set [@wholesale_terms@] %][%content_zone id:'wholesale_terms' /%][%/set%]
 	<div class="checkbox">
 		<label>
 			<input type="checkbox" name="agree" value="y" class="terms_box" required/>
-			By checking this, you confirm that you have read and agree to [@config:company_name@]
-			<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a>,
-			[%if [@wholesale_terms@] ne ''%] our <a href="#" data-toggle="modal" data-target="#tradeModal">Terms of Trade</a>, [%/if%]
-			and that you have read our <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
+			I have read and agree to
+			<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a>
+			[%if [@wholesale_terms@] ne ''%], our <a href="#" data-toggle="modal" data-target="#tradeModal">Terms of Trade</a> [%/if%] and
+			<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
 		</label>
-	</div>
-	<div class="modal fade" id="termsModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Terms &amp; Conditions</h4>
-				</div>
-				<div class="modal-body">[%content_zone id:'terms'/%]</div>
-				<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-			</div>
-		</div>
 	</div>
 	[%if [@wholesale_terms@] ne ''%]
 	<div class="modal fade" id="tradeModal">
@@ -276,18 +264,6 @@
 		</div>
 	</div>
 	[%/if%]
-	<div class="modal fade" id="privacyModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Privay Policy</h4>
-				</div>
-				<div class="modal-body">[%show_content id:'2'%][%param *body%][@content_description1@][%/param%][%/show_content%]</div>
-				<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-			</div>
-		</div>
-	</div>
 </div>
 
 	<input type="submit" class="btn btn-lg btn-primary" value="Register">
