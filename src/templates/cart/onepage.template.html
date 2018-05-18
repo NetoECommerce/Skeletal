@@ -625,8 +625,10 @@ $(document).ready(function() {
 					</div>
 					<p>
 						<input type="hidden" name="agreement" value="y">
-						By checking this box you confirm that you have read and agree to our <a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a>, and that you have read our <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
 						<input type="checkbox" name="agree" value="y" class="terms_box" [%if [@agree@]%]checked[%/if%] required/>
+						I have read and agree to
+						<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a> and
+						<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
 					</p>
 				[%/if%]
 				<p class="form-actions">
