@@ -544,25 +544,35 @@
 				<div ref="other" class="_cpy_paydesc alert alert-info"> Our bank details will be provided after you confirm your order below. </div>
 				[%if [@config:checkout_req_agree_terms@] eq '1'%]
 					<div class="modal fade" id="termsModal">
-						<div class="modal-dialog">
+						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 									<h4 class="modal-title">Terms &amp; Conditions</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								</div>
-								<div class="modal-body">
-									[%content_zone id:'terms'/%]
+								<div class="modal-body">[%content_zone id:'terms'/%]</div>
+								<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="privacyModal">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">Privacy Policy</h4>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
+								<div class="modal-body">[%show_content id:'2'%][%param *body%][@content_description1@][%/param%][%/show_content%]</div>
+								<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
 							</div>
 						</div>
 					</div>
 					<p>
 						<input type="hidden" name="agreement" value="y">
-						Agree To <a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions?</a>
 						<input type="checkbox" name="agree" value="y" class="terms_box" [%if [@agree@]%]checked[%/if%] required/>
+						I have read and agree to
+						<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a> and
+						<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
 					</p>
 				[%/if%]
 				<p class="form-actions">

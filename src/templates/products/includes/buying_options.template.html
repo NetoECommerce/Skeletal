@@ -206,10 +206,19 @@
 					<label>Your Email Address</label>
 					<input placeholder="jane.smith@test.com.au" name="from" id="from" type="email" class="form-control" value="[%NOHTML%][@FROM@][%/ NOHTML%]">
 				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="y" class="terms_box" required/>
+						I have read and agree to
+						<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a> and
+						<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
+					</label>
+					<span class="help-block hidden">Please tick this box to proceed.</span>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<input class="btn btn-danger" type="button" data-dismiss="modal" value="Cancel">
-				<input class="btn btn-success" type="button" data-dismiss="modal" value="Save My Details" onClick="javascript:$.addNotifyBackInStock('[@SKU@]', '');">
+				<input class="btn btn-success js-notifymodal-in-stock" data-sku="[@sku@]" type="button" value="Save My Details">
 			</div>
 		</div><!-- /.modal-content -->
 	</div>
