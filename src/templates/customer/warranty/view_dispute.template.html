@@ -26,7 +26,13 @@ function sendMessage() {
 	[%if [@error@]%]
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 	[%/if%]
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
 	<form name="disputeForm" action="[%URL page:'account' type:'warranty'/%]" method="post">
+		<input type="hidden" name="csrf_token" value="[%csrf_token id:'warranty'/%]">
 		<input type="hidden" name="id" value="[@dispute_id@]">
 		<input type="hidden" name="action" value="proc">
 		<input type="hidden" name="closedispute" value="">

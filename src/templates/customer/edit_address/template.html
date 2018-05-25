@@ -45,6 +45,7 @@ ship-to addresses. You can then choose your appropriate address for each order y
 
 
 <form class="well" method="POST" name="shipping" action="[%URL page:'account' type:'edit_address'%][%END URL%]">
+<input type="hidden" name="csrf_token" value="[%csrf_token id:'edit_address'/%]">
 <label class="lead">Add a new address or edit an existing address</label>
 <select class="form-control input-lg" type="text" name="addr_id" id="addr_id">
 <option value="">Add or Edit</option>
@@ -60,6 +61,7 @@ ship-to addresses. You can then choose your appropriate address for each order y
 </form>
 
 <form method="POST" name="itemForm" action="[%URL page:'account' type:'edit_address'%][%END URL%]">
+<input type="hidden" name="csrf_token" value="[%csrf_token id:'edit_address'/%]">
 <input name="update" type="hidden" value="update">
 <input type="hidden" name="addr_id" value="[@id@]">
 
@@ -181,6 +183,7 @@ ship-to addresses. You can then choose your appropriate address for each order y
 <!--#Do not edit below this line# ##-->
 <!--##[%SITE_VALUE id:'footer_javascript'%]##-->
 <script language="javascript" type="text/javascript">
+var csrfTokenAddressBook = "[%csrf_token id:'addressbook'/%]";
 $(document).ready(function() {
 	$.addressbook_select();
 });

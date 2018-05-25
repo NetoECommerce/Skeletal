@@ -13,6 +13,12 @@
         <div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@error@]</div>
     [%END DATA%]
 
+    [%show_message severity:'error'%]
+        [%param *body%]
+            <div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+        [%/param%]
+    [%/show_message%]
+
     [%SITE_VALUE id:'footer_javascript'%]
     	<script src="https://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
     	<script type="text/javascript" language="javascript">
@@ -79,6 +85,7 @@
     [%END SITE_VALUE%]
 
     <form enctype="multipart/form-data" action="[%URL page:'account' type:'mystore'%][%END URL%]" method="post" name="itemForm">
+        <input type="hidden" name="csrf_token" value="[%csrf_token id:'mystore'/%]">
         <input name="id" type="hidden" value="[@stloc_id@]"/>
         <input name="proc" type="hidden" value="edit"/>
         <input name="fn" type="hidden" value="edit"/>

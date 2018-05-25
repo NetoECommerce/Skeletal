@@ -22,3 +22,11 @@
 [%if [@form:disable_scripts@] ne 'true'%]
 	[%tracking_code type:'Declaration'/%]
 [%/if%]
+<script>
+    var csrfTokenAddToCart = "[%csrf_token id:'addtocart'/%]";
+    var csrfTokenAjaxLoader = "[%csrf_token id:'ajax_loader'/%]";
+    var csrfTokenWishList = "[%csrf_token id:'wishlist'/%]";
+    var csrfTokenNotifyMe = "[%csrf_token id:'notifyme'/%]";
+    var csrfTokenMultiAddrCart = "[%csrf_token id:'multiaddrcart'/%]";
+    var csrfTokenCartTrack = "[%csrf_token id:'cart_track'/%]";
+</script>

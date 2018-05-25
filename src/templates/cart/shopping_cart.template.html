@@ -26,7 +26,8 @@
 	[%param header%]
 	<div class="row" role="contentinfo" aria-label="Products in shopping cart">
 		<div class="col-xs-12">
-			<form method="post" name="checkout" action="[%url page:'checkout'/%]">
+			<form method="post" name="checkout" action="[%url page:'checkout' type:'cart/%]">
+				<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
 				<input type="hidden" name="recal" value="1" />
 				<table class="table table-bordered table-striped cartTable">
 					<thead>
@@ -149,7 +150,8 @@
 					<h2 class="panel-title">Shipping Calculator</h2>
 				</div>
 				<div class="panel-body">
-					<form method="post" action="[%url page:'checkout'/%]">
+					<form method="post" action="[%url page:'checkout' type:'cart/%]">
+						<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
 						<p>Enter your post code to calculate.</p>
 						<div class="form-group">
 							<select class="form-control" name="ship_country">
@@ -177,7 +179,8 @@
 					<h2 class="panel-title">Discount Code</h2>
 				</div>
 				<div class="panel-body">
-					<form method="post" action="[%url page:'checkout'/%]">
+					<form method="post" action="[%url page:'checkout' type:'cart/%]">
+						<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
 						<p>If you have a coupon or discount code enter it below</p>
 						<div class="form-group">
 							<label class="sr-only" for="addcpn">Coupon code</label>
@@ -199,7 +202,8 @@
 					<td colspan="2" >
 					[%shipping_methods country:'[@ship_country@]' zip:'[@ship_zip@]'%]
 						[%param header%]
-						<form method="post" name="SHsummary" action="[%url page:'checkout'/%]">
+						<form method="post" name="SHsummary" action="[%url page:'checkout' type:'cart/%]">
+							<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
 						[%/param%]
 						[%param *body%]
 							<div class="form-group">
@@ -268,7 +272,8 @@
 					<td class="text-right" ><p class="h3">[%format type:'currency'%][@grand_total@][%/format%]</p></td>
 				</tr>
 			</table>
-			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty'/%]">
+			<form method="post"  name="paypal" action="[%url page:'checkout' fn:'3rdparty' type:'cart/%]">
+				<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
 				<input type="hidden" name="payment" value="6"/>
 				[%payment_plans type:'[@order_type@]' sortby:'sortorder,name'%]
 					[%param *header%]

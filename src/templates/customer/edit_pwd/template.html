@@ -1,4 +1,4 @@
-<div class="col-xs-12"> 
+<div class="col-xs-12">
 <!--# Start Breadcrumb# ##-->
 <ul class="breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
@@ -18,9 +18,16 @@
 </div>
 <!--##[%END DATA%]##-->
 
+[%show_message severity:'error'%]
+  [%param *body%]
+    <div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+  [%/param%]
+[%/show_message%]
+
 <p>Please enter your current and new password below in order to change your password.</p>
 
 <form method="POST" action="[%URL page:'account' type:'edit_pwd'%][%END URL%]">
+<input type="hidden" name="csrf_token" value="[%csrf_token id:'edit_pwd'/%]">
 <input type="hidden" name="fn" value="proc">
 <div class="row">
 

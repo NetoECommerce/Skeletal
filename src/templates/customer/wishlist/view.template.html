@@ -12,7 +12,14 @@
 	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> Wishlist has been updated. </div>
 	<!--##[%END DATA%]##-->
 
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
+
 	<form NAME="wishlist_update" method="POST" action="[%URL page:'account' type:'wishlist' fn:'view'%][%END URL%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token id:'wishlist'/%]">
 		<input type="hidden" name="id" value="[@wishlist_id@]" />
 		<input type="hidden" name="proc" value="update" />
 		<div class="panel panel-default">

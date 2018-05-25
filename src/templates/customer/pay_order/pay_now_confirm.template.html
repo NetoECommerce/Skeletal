@@ -57,7 +57,14 @@ function proc_pay() {
 	<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>
 	<!--##[%END DATA%]##-->
 
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
+
 	<form action="[%URL page:'account' type:'pay_order'%][%END URL%]" method="post" name="itemForm">
+		<input type="hidden" name="csrf_token" value="[%csrf_token id:'pay_order'/%]">
 		<input type="hidden" name="id" value="[@order_id@]">
 		<input type="hidden" name="order_email" value="[@order_email@]">
 		<input type="hidden" name="fn" value="confirm">

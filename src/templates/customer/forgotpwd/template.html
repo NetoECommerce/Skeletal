@@ -11,7 +11,13 @@
 <!--##[%DATA id:'error' if:'ne' value:''%]##-->
 <div class="alert alert-danger" role="alert"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>
 <!--##[%END DATA%]##-->
+[%show_message severity:'error'%]
+	[%param *body%]
+		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+	[%/param%]
+[%/show_message%]
 <form method="post" action="[%URL page:'account' type:'forgotpwd'%][%END URL%]">
+	<input type="hidden" name="csrf_token" value="[%csrf_token id:'forgotpwd'/%]">
 	<input type="hidden" name="fn" value="proc" />
 	<div class="row">
 		<div class="col-xs-12 col-md-4"> <br>
