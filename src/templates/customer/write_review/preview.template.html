@@ -29,8 +29,7 @@
 				[%SET [@data:ratings-count@] = 1 /%]
 				[%WHILE [@data:ratings-count@] <= [@form:rating_value@]%]
 					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fas 
-				star fa-3x"></i>
+					<i class="fas fa-star fa-3x"></i>
 				[%/ WHILE%]
 				[%WHILE [@data:ratings-count@] <= 5%]
 					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
