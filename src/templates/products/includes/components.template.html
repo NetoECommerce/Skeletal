@@ -70,11 +70,11 @@
 													[%/if%]
 												[%list_item_variations id:'[@current_sku@]'%]
 													[%PARAM *variation_header%]
-															<select class="component-var-opt form-control component-config-input" component-id="[@component_count@]" ref="[@specific_id@]">
-																<option value="" disabled selected>[@specific_name@]</option>
+															<label for="specific[@specific_id@]">[@specific_name@]</label>
+															<select class="component-var-opt form-control component-config-input" component-id="[@component_count@]" ref="[@specific_id@]" id="specific[@specific_id@]">
 													[%/PARAM%]
 													[%PARAM *variation_body%]
-																<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
+																<option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@] [%IF ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
 													[%/PARAM%]
 													[%PARAM *variation_footer%]
 																</select>
