@@ -17,7 +17,7 @@
 </div>
 <div class="col-xs-12 col-sm-6">
 	<form method="POST" action="[%url page:'account' type:'resetpwd'/%]">
-		<input type="hidden" name="csrf_token" value="[%csrf_token id:'resetpwd'/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 		<input type="hidden" name="fn" value="proc">
 		<input type="hidden" name="id" value="[@logincode@]">
 		<div class="form-group">

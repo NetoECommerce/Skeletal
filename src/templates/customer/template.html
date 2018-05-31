@@ -404,7 +404,7 @@
 			[%/param%]
 		[%/thumb_list%]
 		<form class="form-inline" method="POST" action="[%url page:'account' type:'wishlist'/%]">
-			<input type="hidden" name="csrf_token" value="[%csrf_token id:'wishlist'/%]">
+			<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 			<input type="hidden" name="proc" value="addlist"/>
 			<div class="row">
 				<label for="wh_name" class="col-xs-12 col-md-2 control-label">New Wishlist</label>

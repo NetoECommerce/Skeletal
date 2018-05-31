@@ -194,7 +194,7 @@
 	<h2>Please do not refresh or close this page</h2>
 	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
-		<input type="hidden" name="csrf_token" value="[%csrf_token id:'payrec'/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
 		<h3>My Account Details</h3>

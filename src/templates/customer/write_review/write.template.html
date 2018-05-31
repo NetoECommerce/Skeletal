@@ -41,7 +41,7 @@
 		</div>
 		<div class="panel-body">
 			<form name="edit_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
-				<input type="hidden" name="csrf_token" value="[%csrf_token id:'write_review'/%]">
+				<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 				<input type="hidden" name="fn" value="preview">
 				<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]">
 				[%if [@username@]%]

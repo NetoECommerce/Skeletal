@@ -7,7 +7,7 @@
 		[%/param%]
 	[%/show_message%]
 	<form name="preview_review" method="post" action="[%url page:'account' type:'write_contentreview'/%]">
-		<input type="hidden" name="csrf_token" value="[%csrf_token id:'write_contentreview'/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 		<input type="hidden" name="fn" value="confirm">
 		<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]">
 		<input type="hidden" name="review_text" value="[%nohtml%][@form:review_text@][%/nohtml%]">

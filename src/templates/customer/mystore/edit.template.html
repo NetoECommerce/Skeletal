@@ -85,7 +85,7 @@
     [%END SITE_VALUE%]
 
     <form enctype="multipart/form-data" action="[%URL page:'account' type:'mystore'%][%END URL%]" method="post" name="itemForm">
-        <input type="hidden" name="csrf_token" value="[%csrf_token id:'mystore'/%]">
+        <input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
         <input name="id" type="hidden" value="[@stloc_id@]"/>
         <input name="proc" type="hidden" value="edit"/>
         <input name="fn" type="hidden" value="edit"/>

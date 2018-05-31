@@ -113,7 +113,7 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 <!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
 
 <form method="post" enctype="multipart/form-data" action="[%URL page:'checkout' type:'cart'%][%END URL%]" id="upsellcartform">
-<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
+<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 <input type="hidden" name="fn" id="fn" value="payment" />
 <input type="hidden" name="voucher" value="y" />
 
@@ -228,4 +228,3 @@ Recipient Name<span class="text-danger">*</span>
 <br />
 
 <!--##[%GA_FUNNEL%]/purchase/voucher.html[%END GA_FUNNEL%]##-->
-

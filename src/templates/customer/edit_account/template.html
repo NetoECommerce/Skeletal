@@ -16,7 +16,7 @@
 	[%/show_message%]
 
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%END URL%]">
-	<input type="hidden" name="csrf_token" value="[%csrf_token id:'edit_account'/%]">
+	<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 	<div class="page-header">
 		<h1>Edit Your [@config:company_name@] Account Details</h1>
 		<!-- This block will give them a description on what fields are missing -->

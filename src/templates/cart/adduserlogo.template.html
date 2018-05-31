@@ -28,7 +28,7 @@ function remlogo() {
 <body>
 
 <form method="post" name="adduserlogo" id="_adduser_form" enctype="multipart/form-data" action="[%URL page:'checkout' type:'cart'%][%END URL%]">
-<input type="hidden" name="csrf_token" value="[%csrf_token id:'cart'/%]">
+<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 <input type="hidden" name="fn" id="fn" value="adduserlogo" />
 <input type="hidden" name="templatehead" value="empty" />
 <input type="hidden" name="templatefoot" value="empty" />

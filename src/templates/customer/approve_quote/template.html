@@ -48,7 +48,7 @@
     <td>[%escape%][@email@][%/escape%]</td>
     <td>
         <form action="[%url page:'account' type:'approve_quote'/%]" method="post">
-            <input type="hidden" name="csrf_token" value="[%csrf_token id:'approve_quote'/%]">
+            <input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
             <input type="hidden" name="id" value="[@order_id@]">
             <input type="hidden" name="action" value="approve">
             <input type="hidden" name="order_email" value="[%escape%][@email@][%/escape%]">
@@ -57,7 +57,7 @@
     </td>
     <td>
         <form action="[%url page:'account' type:'approve_quote'/%]" method="post">
-            <input type="hidden" name="csrf_token" value="[%csrf_token id:'approve_quote'/%]">
+            <input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
             <input type="hidden" name="id" value="[@order_id@]">
             <input type="hidden" name="action" value="dismiss">
             <input type="hidden" name="order_email" value="[%escape%][@email@][%/escape%]">

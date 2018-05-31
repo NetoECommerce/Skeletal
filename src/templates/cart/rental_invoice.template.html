@@ -22,7 +22,7 @@ function print_invoice() {
 		<!--##[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]##-->
 		<p>
 			<form action="[%url page:'account' type:'nr_view_order'/%]" method="post">
-				<input type="hidden" name="csrf_token" value="[%csrf_token id:'nr_view_order'/%]">
+				<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 				<input type="hidden" name="id" value="[@order_id@]">
 				<input type="hidden" name="email" value="[%escape%][@email@][%/escape%]">
 				<input type="hidden" name="zip" value="[%escape%][@ship_zip@][%/escape%]">

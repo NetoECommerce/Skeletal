@@ -25,7 +25,7 @@ function print_quote() {
 <form action="[%url page:'account' type:'approve_quote' id:'[@order_id@]' fn:'confirm'/%]" method="post">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
-			<input type="hidden" name="csrf_token" value="[%csrf_token id:'approve_quote'/%]">
+			<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 			<input type="hidden" name="order_email" value="[%escape%][@order_email@][%/escape%]" />
 			<input type="hidden" name="action"value="dismiss" />
 			<div class="form-group">

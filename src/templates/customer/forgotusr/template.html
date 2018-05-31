@@ -18,7 +18,7 @@
 	[%/show_message%]
 	<p class="help-block"> Please enter your e-mail address below and we will send you your username by e-mail.</p>
 	<form method="POST" action="[%url page:'account' type:'forgotusr' /%]">
-		<input type="hidden" name="csrf_token" value="[%csrf_token id:'forgotusr'/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
 		<input type="hidden" name="fn" value="proc">
 		<div class="row">
 			<div class="form-group col-md-6">
