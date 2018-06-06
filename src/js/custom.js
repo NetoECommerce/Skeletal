@@ -143,10 +143,6 @@ $(".js-social-share").on("click", function(e) {
 	windowPopup($(this).attr("href"), 500, 300);
 });
 
-$('.nToggleMenu').click(function(){
-	var toggleTarget = $(this).attr('data-target')
-	$(toggleTarget).slideToggle();
-});
 var focused = $('body');
 var lastFocused = $('body');
 // Capture the current element the user focused in
