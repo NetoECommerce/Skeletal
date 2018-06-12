@@ -64,7 +64,7 @@ function proc_pay() {
 	[%/show_message%]
 
 	<form action="[%URL page:'account' type:'pay_order'%][%END URL%]" method="post" name="itemForm">
-		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="id" value="[@order_id@]">
 		<input type="hidden" name="order_email" value="[@order_email@]">
 		<input type="hidden" name="fn" value="confirm">

@@ -39,7 +39,7 @@ function showOrder() {
 }
 </script>
 	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create' %][%END URL%]" method="post">
-		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="step" value="proc">
 		<input type="hidden" name="type" value="[%NOHTML%][@type@][%END NOHTML%]">
 		<input type="hidden" name="reason" value="[%NOHTML%][@reason@][%END NOHTML%]">

@@ -32,7 +32,7 @@ function sendMessage() {
 		[%/param%]
 	[%/show_message%]
 	<form name="disputeForm" action="[%URL page:'account' type:'warranty'/%]" method="post">
-		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="id" value="[@dispute_id@]">
 		<input type="hidden" name="action" value="proc">
 		<input type="hidden" name="closedispute" value="">

@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<form method="post" enctype="multipart/form-data" action="[%url page:'checkout' type:'cart/%]" id="upsellcartform">
-			<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
+			<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 			<input type="hidden" name="fn" id="fn" value="payment">
 			<input type="hidden" name="upsell" value="y">
 			<div id="productoptions">

@@ -14,7 +14,7 @@
 
 <form name="adduser" id="adduser" method="POST" action="[%url page:'account' type:'wholesaleregister'%][%END url%]" class="form-horizontal">
 	<!--##[%SUBMIT_TOKEN%][%END SUBMIT_TOKEN%]##-->
-	<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
+	<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 	<input type="hidden" name="fn" value="proc">
 	<input type="hidden" name="redirect" value="[@redirect@]">
 

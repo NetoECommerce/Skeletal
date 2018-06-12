@@ -19,7 +19,7 @@
 	[%/show_message%]
 
 	<form NAME="wishlist_update" method="POST" action="[%URL page:'account' type:'wishlist' fn:'view'%][%END URL%]">
-		<input type="hidden" name="csrf_token" value="[%csrf_token_ws/%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="id" value="[@wishlist_id@]" />
 		<input type="hidden" name="proc" value="update" />
 		<div class="panel panel-default">
