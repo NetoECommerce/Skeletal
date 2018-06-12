@@ -11,7 +11,7 @@
 	[%if [@error@]%]
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 	[%/if%]
-	<form name="disputeForm" action="[%url page:'account' type:'warranty' fn:'create'/%]" method="post">
+	<form name="disputeForm" action="[%url page:'account' type:'warranty' fn:'create'/%]" method="get">
 		[%dispute_types%]
 			[%PARAM header%]
 				<div class="row">

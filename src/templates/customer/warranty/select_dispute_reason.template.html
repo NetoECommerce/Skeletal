@@ -29,7 +29,7 @@
 	[%if [@error@]%]
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 	[%/if%]
-	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create'/%]" method="post">
+	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create'/%]" method="get">
 		<input type="hidden" name="step" value="order">
 		<input type="hidden" name="type" value="[%NOHTML%][@type@][%/NOHTML%]">
 		[%dispute_reasons type:'[@type@]'%]

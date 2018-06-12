@@ -17,13 +17,13 @@ mid = mid.replace('voucher_'+arr[i], '');
 if(arr[i] == 'rdate') {
 	var txt = mid.replace(/^\d+/, '');
 	fval = $('[name="voucher_'+arr[i]+id+txt+'"]').val();
-	
+
 	mid = mid.replace(/_.+$/, '');
 	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
 	if(id != mid) {
 		$(this).val(fval);
 	}
-	
+
 } else {
 	mid = parseInt(mid); if(isNaN(mid)) { mid=-1; }
 	if(id != mid) {
@@ -89,10 +89,10 @@ $.fancybox("Please complete all the required fields indicated with a *", {showCl
 
 $('.submit_btn').click(function(e){
 $.sumbit_form();
-});			
+});
 
 $('.copy_btn').click(function(e){
-$.copy_values($(this).attr('ref'));	
+$.copy_values($(this).attr('ref'));
 });
 
 $.init_text_count('inputtext');
@@ -112,7 +112,8 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 
 <!--##[%load_template file:"cart/cart.error.html"%][%END load_template%]##-->
 
-<form method="post" enctype="multipart/form-data" action="[%URL page:'checkout'%][%END URL%]" id="upsellcartform">
+<form method="post" enctype="multipart/form-data" action="[%URL page:'checkout' type:'cart'%][%END URL%]" id="upsellcartform">
+<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 <input type="hidden" name="fn" id="fn" value="payment" />
 <input type="hidden" name="voucher" value="y" />
 
@@ -124,7 +125,7 @@ INPUT.datefield,SELECT.datefield,.datefield { font-size:9px; height:20px; }
 <hr />
 <div>
 <a name="voucher[@reward_id@]"></a>
-<h4>#[@item_count@] &nbsp; [@vprogram_title@] - 
+<h4>#[@item_count@] &nbsp; [@vprogram_title@] -
 <!--##[%DATA id:'show_points' if:'==' value:'1'%][%PARAM if_true%]##-->
 <!--##[%format type:'number' dp:'0' sp:','%]##-->[@reward_points@]<!--##[%END format%]##-->pts
 <!--##[%END PARAM%][%PARAM if_false%]##-->
@@ -216,7 +217,7 @@ Recipient Name<span class="text-danger">*</span>
 </div>
 
 <!--##[%END PARAM%]
-[%END cart_vouchers%]##-->	
+[%END cart_vouchers%]##-->
 </div>
 
 <div class="col-xs-12">
@@ -227,4 +228,3 @@ Recipient Name<span class="text-danger">*</span>
 <br />
 
 <!--##[%GA_FUNNEL%]/purchase/voucher.html[%END GA_FUNNEL%]##-->
-

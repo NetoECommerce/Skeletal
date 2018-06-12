@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 
 <!--# Start Breadcrumb# ##-->
-<ul class="breadcrumb" aria-label="Breadcrumb"> 
+<ul class="breadcrumb" aria-label="Breadcrumb">
 <li><a href="[@config:home_url@]">Home</a></li>
 <li><span class="divider">/</span> <a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
 </ul>
@@ -39,8 +39,14 @@ $(document).ready(function() {
 <h1>Manage Logo</h1>
 </div>
 
+[%show_message severity:'error'%]
+    [%param *body%]
+        <div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+    [%/param%]
+[%/show_message%]
 
 <form enctype="multipart/form-data" method="POST" name="updatelogo" id="updatelogo" action="[%URL page:'account' type:'logos'%][%END URL%]">
+<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 <div class="selcardpl">
 </div>
 <div class="float_left"><div class="selcardpl">

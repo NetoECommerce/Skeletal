@@ -10,10 +10,16 @@
 		<li><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
 	</ul>
 	<h1>Approve Quote</h1>
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
 	<div class="row">
 		<div class="col-xs-12">
 			<input class="pull-right btn btn-default" type="button" value="Print Quote" onClick="print_quote()">
 			<form action="[%url page:'account' type:'approve_quote' id:'[@order_id@]' fn:'confirm'/%]" method="post">
+				<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 				<input type="hidden" name="action" value="approve">
 				<input type="hidden" name="order_email" value="[%escape%][@order_email@][%/escape%]">
 				<button class="btn btn-success pull-left" type="submit">Confirm &amp; Approve Quote</button>

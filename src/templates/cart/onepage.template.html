@@ -48,7 +48,8 @@ $(document).ready(function() {
 <div class="col-xs-12 col-md-8">
 	<hr>
 	<div id="_cpy_checkout_pl">
-		<form class="form-horizontal" method="post" id="_cpy_checkout_form" action="[%URL page:'checkout'%][%END URL%]">
+		<form class="form-horizontal" method="post" id="_cpy_checkout_form" action="[%URL page:'checkout' type:'cart%][%END URL%]">
+			<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 			<input type="hidden" name="submited" id="submited" value="0" />
 			<input type="hidden" name="fn" value="finalize" />
 			<div class="row">

@@ -20,6 +20,11 @@
 		[%if [@user:credit@]%]
 			<p>Available Credit: <strong>[%format type:'currency'%][@credit@][%/format%]</strong></p>
 		[%/if%]
+		[%show_message severity:'error'%]
+			[%param *body%]
+				<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+			[%/param%]
+		[%/show_message%]
 	</div>
 </div>
 <section class="col-xs-12" aria-label="Account Options">
@@ -399,6 +404,7 @@
 			[%/param%]
 		[%/thumb_list%]
 		<form class="form-inline" method="POST" action="[%url page:'account' type:'wishlist'/%]">
+			<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 			<input type="hidden" name="proc" value="addlist"/>
 			<div class="row">
 				<label for="wh_name" class="col-xs-12 col-md-2 control-label">New Wishlist</label>

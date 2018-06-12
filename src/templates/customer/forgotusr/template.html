@@ -11,8 +11,14 @@
 		<p>[@error@]</p>
 	</div>
 	[%/if%]
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
 	<p class="help-block"> Please enter your e-mail address below and we will send you your username by e-mail.</p>
 	<form method="POST" action="[%url page:'account' type:'forgotusr' /%]">
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="fn" value="proc">
 		<div class="row">
 			<div class="form-group col-md-6">

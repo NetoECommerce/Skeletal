@@ -139,8 +139,14 @@
 	[%/param%]
 [%/thumb_list%]
 <h3>Leave a comment</h3>
+[%show_message severity:'error'%]
+	[%param *body%]
+		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+	[%/param%]
+[%/show_message%]
 <form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%/URL%]">
 	<fieldset>
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="fn" value="confirm">
 		<input type="hidden" name="item" value="[@content_id@]">
 		<input type="hidden" name="checked_terms_and_conditions" value="1">

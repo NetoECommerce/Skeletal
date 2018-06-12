@@ -184,11 +184,17 @@
 			[@msg@]
 		</div>
 	[%/if%]
+	[%show_message severity:'error'%]
+		[%param *body%]
+			<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+		[%/param%]
+	[%/show_message%]
 <div id="processing" style="display:none;" class="alert alert-danger">
 	<h2>Payment Processing</h2>
 	<h2>Please do not refresh or close this page</h2>
 	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
+		<input type="hidden" name="csrf_token" value="[%csrf_token/%]">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
 		<h3>My Account Details</h3>

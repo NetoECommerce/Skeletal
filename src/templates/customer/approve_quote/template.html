@@ -6,6 +6,12 @@
 
 <h1>Approve Quotes</h1>
 
+[%show_message severity:'error'%]
+    [%param *body%]
+        <div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@info_msg@]</div>
+    [%/param%]
+[%/show_message%]
+
 <!-- Search Quotes
 <form method="get" action="[%URL page:'account' type:'search_orders'%][%END URL%]">
 <label>Invoice/Quote #</label>
@@ -42,6 +48,7 @@
     <td>[%escape%][@email@][%/escape%]</td>
     <td>
         <form action="[%url page:'account' type:'approve_quote'/%]" method="post">
+            <input type="hidden" name="csrf_token" value="[%csrf_token/%]">
             <input type="hidden" name="id" value="[@order_id@]">
             <input type="hidden" name="action" value="approve">
             <input type="hidden" name="order_email" value="[%escape%][@email@][%/escape%]">
@@ -50,6 +57,7 @@
     </td>
     <td>
         <form action="[%url page:'account' type:'approve_quote'/%]" method="post">
+            <input type="hidden" name="csrf_token" value="[%csrf_token/%]">
             <input type="hidden" name="id" value="[@order_id@]">
             <input type="hidden" name="action" value="dismiss">
             <input type="hidden" name="order_email" value="[%escape%][@email@][%/escape%]">
