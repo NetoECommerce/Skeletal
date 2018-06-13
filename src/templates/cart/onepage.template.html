@@ -466,26 +466,22 @@
 					</div>
 					<div class="col-12">
 						<div class="row">
-							<div class="form-group">
-								<div class="col-12">
-									<label>Card Expiration Date</label>
-								</div>
-								<div class="col-xs-6">
-									<select class="form-control col-xs-6"  id="card_exp_month" name="card_exp_month">
-										<option value=""></option>
-										[%months%][%PARAM *body%]
-										<option class="input-small" value="[@month@]">[@month@]</option>
-										[%/ PARAM%][%/ months%]
-									</select>
-								</div>
-								<div class="col-xs-6">
-									<select class="form-control"  name="card_exp_year">
-										<option value=""></option>
-										[%years from:'+0' to:'+10'%][%PARAM *body%]
-										<option value="[@year@]">[@year@]</option>
-										[%/ PARAM%][%/ years%]
-									</select>
-								</div>
+							<div class="col-12"><label>Card Expiration Date</label></div>
+							<div class="form-group col-md-6">
+								<select class="form-control"  id="card_exp_month" name="card_exp_month">
+									<option value=""></option>
+									[%months%][%PARAM *body%]
+									<option class="input-small" value="[@month@]">[@month@]</option>
+									[%/ PARAM%][%/ months%]
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<select class="form-control"  name="card_exp_year">
+									<option value=""></option>
+									[%years from:'+0' to:'+10'%][%PARAM *body%]
+									<option value="[@year@]">[@year@]</option>
+									[%/ PARAM%][%/ years%]
+								</select>
 							</div>
 						</div>
 					</div>
