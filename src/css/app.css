@@ -7935,6 +7935,16 @@ a.text-dark:hover, a.text-dark:focus {
     height: 18px;
     background-position: 0 49px;
     margin-top: 7px; }
+  .payment-icon-slim {
+    padding: 5px;
+    border: 1px solid #EFEFEF;
+    border-radius: 3px; }
+
+svg.icon {
+  width: 50px;
+  height: 25px;
+  vertical-align: middle;
+  fill: #444; }
 
 .ir {
   display: block;

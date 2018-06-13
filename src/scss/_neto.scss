@@ -254,6 +254,17 @@ $payment-icon:(
 			margin-top: $margin-top;
 		}
 	}
+	&-slim{
+		padding: 5px;
+		border: 1px solid #EFEFEF;
+		border-radius: 3px;
+	}
+}
+svg.icon{
+	width: 50px;
+	height: 25px;
+	vertical-align: middle;
+	fill: #444;
 }
 //
 // Utility

@@ -78,148 +78,27 @@
 		<div class="row">
 			<div class="col-12 col-md-9 d-none d-sm-block">
 				[%payment_methods ignore_balance:'1'%]
-					[%param header%]
-						<ul class="list-inline d-flex flex-wrap" role="contentinfo" aria-label="Accepted payment methods">
+					[%param *header%]
+						[%set [@payment_icons_available@] /%]
+						[%set [@payment_icons_zip@] /%]
 					[%/param%]
 					[%param *body%]
-						[%if [@name@] like 'American Express'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-americanexpress">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Visa'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-visa">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'MasterCard' OR [@name@] like 'Master Card'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-mastercard">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Discover'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-discover">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Diners'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-diners">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Cheque'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-cheque">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Money Order'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-moneyorder">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Direct Deposit' || [@name@] like 'Bank Deposit'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-directdeposit">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'bpay'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-bpay">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'paypal'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-paypal">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'afterpay'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-afterpay">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Q Card' OR [@name@] like 'QCard'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-q-card">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Paymark Online Eftpos' OR [@name@] like 'Paymark'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-paymark">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'zipMoney'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-zipmoney">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'zipPay'%]
-							<li class="mr-1">
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-zippay">
-										<span class="sr-only">[@name@]</span>
-									</div>
-								</div>
-							</li>
-						[%/if%]
+						[%if [@payment_icons_available@] not like [@name@] AND [@name@] not like 'zip'%][%set [@^payment_icons_available@]%][@payment_icons_available@][@name@],[%/set%][%/if%]
+						[%if [@name@] like 'zip'%][%set [@^payment_icons_zip@]%]true[%/set%][%/if%]
 					[%/param%]
 					[%param *footer%]
-						</ul>
+						[%if [@payment_icons_zip@]%][%set [@^payment_icons_available@]%][@payment_icons_available@]zip[%/set%][%/if%]
+						[%set [@^payment_icons_available@]%][%format type:'text' case:'lower' trim:'a'%][@payment_icons_available@][%/format%][%/set%]
+						[%split delimiter:','%]
+							[%param data1%][@payment_icons_available@][%/param%]
+							[%param header%]<ul class="list-inline d-flex flex-wrap" role="contentinfo" aria-label="Accepted payment methods">[%/param%]
+							[%param *body%]
+								<li class="mr-1 mb-1">
+									<div class="payment-icon-slim payment-[@data1@]">[%load_template file:'footers/includes/icon-[@data1@].template.html'/%]</div>
+								</li>
+							[%/param%]
+							[%param footer%]</ul>[%/param%]
+						[%/split%]
 					[%/param%]
 				[%/payment_methods%]
 			</div>
