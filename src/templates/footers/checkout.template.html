@@ -1,106 +1,13 @@
 	</div>
 </div>
-<div class="wrapper-footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<hr />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-9 hidden-xs">
-				[%payment_methods ignore_balance:'1'%]
-					[%param header%]
-						<ul class="list-inline">
-					[%/param%]
-					[%param *body%]
-						[%if [@name@] like 'American Express'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-americanexpress"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Visa'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-visa"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Master Card' || [@name@] like 'MasterCard'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-mastercard"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Discover'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-discover"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Diners'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-diners"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Cheque'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-cheque"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Money Order'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-moneyorder"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'Direct Deposit' || [@name@] like 'Bank Deposit'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-directdeposit"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'bpay'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-bpay"></div>
-								</div>
-							</li>
-						[%/if%]
-						[%if [@name@] like 'paypal'%]
-							<li>
-								<div class="payment-icon-container">
-									<div class="payment-icon payment-icon-paypal"></div>
-								</div>
-							</li>
-						[%/if%]
-					[%/param%]
-					[%param *footer%]
-						</ul>
-					[%/param%]
-				[%/payment_methods%]
-			</div>
-			<div class="col-sm-3">
-				<address>
-					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@]</strong><br>
-					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
-					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
-					[%if [@config:show_platform_branding@]%]<p class="small"><a href="https://www.netohq.com" title="Neto E-commerce Retail Management Platform" target="_blank" rel="noopener">E-commerce software by Neto</a></p>[%/if%]
-				</address>
-			</div>
-		</div>
-	</div>
-</div>
+<footer class="container pt-4 pb-5 pb-lg-2 mb-5 mb-lg-0 text-muted small">
+	Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@].
+	[%if [@config:show_platform_branding@] %]
+		<a href="https://www.netohq.com" title="Neto E-commerce Retail Management Platform" target="_blank" rel="noopener">E-commerce software by Neto</a> <br/>
+	[%/if%]
+	[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@] [%/ if%]
+	[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
+</footer>
 <!-- Required Neto Scripts - DO NOT REMOVE -->
 [%load_template file:'footers/includes/scripts.template.html'/%]
 </body>

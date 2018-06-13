@@ -10,28 +10,28 @@
 				[%set [@data:ratings-count@] = 1 /%]
 				[%while [@data:ratings-count@] <= [@data:rating@]%]
 					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fa fa-star"></i>
+					<i class="fas fa-star"></i>
 				[%/ while%]
 				[%while [@data:ratings-count@] <= 5%]
 					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fa fa-star-o"></i>
+					<i class="far fa-star"></i>
 				[%/while%]
 				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> reviews.
 			</span>
 		[%/if%]
 		<div class="dropdown">
-			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-controls="shareDropdown[@sku@]" aria-label="Share product">
-				Share: <i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i>
-				<i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i>
-				<i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i>
-				<i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i>
+			<button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-controls="shareDropdown[@sku@]" aria-label="Share product">
+				Share: <i class="fab fa-facebook text-facebook" aria-hidden="true"></i>
+				<i class="fab fa-twitter text-twitter" aria-hidden="true"></i>
+				<i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i>
+				<i class="fab fa-google-plus text-google-plus" aria-hidden="true"></i>
 				<span class="caret"></span>
 			</button>
 			<ul id="shareDropdown[@sku@]" class="dropdown-menu" aria-labelledby="dropdownMenu[@sku@]">
-				<li><a class="js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook" aria-hidden="true"></i> Facebook</a></li>
-				<li><a class="js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter" aria-hidden="true"></i> Twitter</a></li>
-				<li><a class="js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
-				<li><a class="js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus" aria-hidden="true"></i> Google+</a></li>
+				<li><a class="dropdown-item js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-facebook text-facebook" aria-hidden="true"></i> Facebook</a></li>
+				<li><a class="dropdown-item js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-twitter text-twitter" aria-hidden="true"></i> Twitter</a></li>
+				<li><a class="dropdown-item js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+				<li><a class="dropdown-item js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-google-plus text-google-plus" aria-hidden="true"></i> Google+</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,35 +39,35 @@
 		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing col-sm-4">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			[%if ![@inpromo@]%]
-				<div class="productprice productpricetext" itemprop="price" content="[@store_price@]" aria-label="Store Price">
+				<div class="h1" itemprop="price" content="[@store_price@]" aria-label="Store Price">
 					[%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productrrp text-muted" aria-label="RRP Price">
-						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
+					<div class="productrrp text-muted small" aria-label="RRP Price">
+						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
 					</div>
-					<div class="productsave" aria-label="Save Price">
+					<div class="productsave small" aria-label="Save Price">
 						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
 					</div>
 				[%/if%]
 			[%else%]
-				<div class="productwasprice" aria-label="Was price">
+				<div class="productwasprice h3" aria-label="Was price">
 					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productrrp muted" aria-label="RRP Price">
-						RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]
+					<div class="productrrp text-muted small" aria-label="RRP Price">
+						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
 					</div>
 				[%/if%]
-				<div class="productpromo" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
+				<div class="productpromo h1" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
 					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
 				</div>
 				[%if [@save@] > 0%]
-					<div class="productsave" aria-label="Save Price">
+					<div class="productsave small" aria-label="Save Price">
 						SAVE [%format type:'percent'%][@save@][%/format%]!
 					</div>
 				[%/if%]
-				<div class="productsavetext">
+				<div class="productsavetext text-danger font-weight-bold">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
 				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">
@@ -77,14 +77,14 @@
 			[%if [@form:disable_scripts@] ne 'true'%]
 			[%tracking_code type:'BuyingOptions' /%]
 			[%/if%]
-			[%if [@store_quantity@] > 0 AND [@preorder@] %]
-				<span itemprop="availability" content="http://schema.org/PreOrder" class="label label-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
+			[%if [@available_preorder_quantity@] > 0 AND [@preorder@] %]
+				<span itemprop="availability" content="http://schema.org/PreOrder" class="badge badge-warning">Pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-				<span itemprop="availability" content="http://schema.org/InStock" class="label label-success">In Stock</span>
+				<span itemprop="availability" content="http://schema.org/InStock" class="badge badge-success">In Stock</span>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<span itemprop="availability" content="http://schema.org/LimitedAvailability" class="label label-danger">Sold Out - Backorder Available</span>
+				<span itemprop="availability" content="http://schema.org/LimitedAvailability" class="badge badge-danger">Sold Out - Backorder Available</span>
 			[%else%]
-				<span itemprop="availability" content="http://schema.org/OutOfStock" class="label label-danger">Sold Out</span>
+				<span itemprop="availability" content="http://schema.org/OutOfStock" class="badge badge-danger">Sold Out</span>
 			[%/if%]
 			[%if [@availability_description@]%]
 				<div class="availability_description">
