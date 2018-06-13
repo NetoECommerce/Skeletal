@@ -7,10 +7,6 @@
 	[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
 	<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
 	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
-	[%site_value id:'footer_javascript'%]
-		[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
-		<script> $(document).ready(function() { $("#card_ccv").fancybox({ 'width' : 850,'height': 650}); }); </script>
-	[%/site_value%]
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <header class="container wrapper-header py-3" aria-label="Header container">
