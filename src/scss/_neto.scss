@@ -1,5 +1,5 @@
 $static-assets:(
-	payment-icon: "//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg",
+	payment-icon: "//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons02.svg",
 	npopup-close: "/assets/npopup_sprite.png",
 	ajax-loader: "/assets/icons/ajax-loader.gif"
 );
@@ -27,8 +27,8 @@ $payment-icon:(
 	afterpay: (13px, 0 -213px, 10px),
 	q-card: (35px, 0 -244px, 0px),
 	paymark: (18px, 0 -226px, 7px),
-	zipmoney: (30px, 0 30px, 2px),
-	zippay: (18px, 0 49px, 7px)
+	zipmoney: (27px, 0 27px, 2px),
+	zippay: (27px, 0 27px, 2px)
 );
 //
 // Header
@@ -235,7 +235,7 @@ $payment-icon:(
 // Payment icons
 .payment-icon-container {
 	padding: 10px;
-	background: #EFEFEF;
+	border: 1px solid #EFEFEF;
 	border-radius: 3px;
 	display: inline-block;
 	height: 50px;

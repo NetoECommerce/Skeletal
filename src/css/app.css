@@ -7866,14 +7866,14 @@ a.text-dark:hover, a.text-dark:focus {
 
 .payment-icon-container {
   padding: 10px;
-  background: #EFEFEF;
+  border: 1px solid #EFEFEF;
   border-radius: 3px;
   display: inline-block;
   height: 50px; }
 
 .payment-icon {
   width: 60px;
-  background-image: url("//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons.svg");
+  background-image: url("//cdn.neto.com.au/assets/neto-cdn/skeletal/3.1.0/paymenticons02.svg");
   background-size: 60px; }
   .payment-icon-paypal {
     height: 16px;
@@ -7928,13 +7928,13 @@ a.text-dark:hover, a.text-dark:focus {
     background-position: 0 -226px;
     margin-top: 7px; }
   .payment-icon-zipmoney {
-    height: 30px;
-    background-position: 0 30px;
+    height: 27px;
+    background-position: 0 27px;
     margin-top: 2px; }
   .payment-icon-zippay {
-    height: 18px;
-    background-position: 0 49px;
-    margin-top: 7px; }
+    height: 27px;
+    background-position: 0 27px;
+    margin-top: 2px; }
 
 .ir {
   display: block;
