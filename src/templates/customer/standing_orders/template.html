@@ -1,10 +1,11 @@
-[%load_template file:"includes/sidebar.template.html"/%]
-<div class="col-xs-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
-		<li><a href="[%url page:'account' type:'standing_orders'/%]">Standing orders</a></li>
-	</ul>
+<div class="col-12">
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+			<li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My account</a></li>
+			<li class="breadcrumb-item"><a href="[%url page:'account' type:'standing_orders'/%]">Standing orders</a></li>
+		</ol>
+	</nav>
 	<h1>Standing orders</h1>
 	<hr/>
 	[%thumb_list type:'standing_orders' limit:'20'%]
@@ -15,8 +16,8 @@
 				[%/param%]
 		[%param *body%]
 			<div class="col-md-4">
-				<div class="panel [%if [@order_status@] like 'Stopped'%]panel-danger[%else%]panel-default[%/if%]">
-					<div class="panel-heading"><h3 class="panel-title">Standing order #[@storder_id@]</h3></div>
+				<div class="card [%if [@order_status@] like 'Stopped'%]bg-danger[%else%]bg-light[%/if%]">
+					<div class="card-header"><h3 class="card-title mb-0">Standing order #[@storder_id@]</h3></div>
 					<table class="table">
 						<tbody>
 							<tr>
@@ -40,8 +41,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="panel-body">
-						<a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]" class="btn btn-default">View order</a>
+						<a href="[%url page:'account' type:'standing_orders' id:'[@storder_id@]'/%]" class="btn btn-outline-secondary">View order</a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 		</div>
 		[%/param%]
 		[%param *ifempty%]
-		<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a>No Standing Orders Found.</div>
+		<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>No Standing Orders Found.</div>
 		[%/param%]
 	[%/thumb_list%]
 </div>
