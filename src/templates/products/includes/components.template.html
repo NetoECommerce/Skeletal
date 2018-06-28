@@ -140,7 +140,7 @@
 </div>
 <div class="row">
 	<div class="col-12 col-md-5">
-		[%if [@available_preorder_quantity@] > 0 AND [@preorder@]%]
+		[%if [@store_quantity@] > 0 AND [@preorder@]%]
 			<button type="button" title="Pre-Order Now" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Pre-Order Now</button>
 		[%elseif [@store_quantity@] > 0%]
 			<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Add to Cart</button>

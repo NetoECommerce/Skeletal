@@ -97,7 +97,7 @@
     						<td>
                                 [%IF [@extra@] or [@has_child@] %]
                                 <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
-    							[%ELSEIF [@available_preorder_quantity@] > 0 AND [@preorder@] %]
+    							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
                                 <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
                                 <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
                                 <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
@@ -129,7 +129,7 @@
     							<div class="child-price">[%format type:'currency'%][@price@][%END format%]</div>
     							[%IF [@extra@] or [@has_child@] %]
     							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
-    							[%ELSEIF [@available_preorder_quantity@] > 0 AND [@preorder@] %]
+    							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
     							<span class="badge badge-warning">Pre-Order</span>
     							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
     							<span class="badge badge-success">In stock</span>

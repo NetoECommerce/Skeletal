@@ -108,7 +108,7 @@
 				<input type="number" min="[@min_qty@]" class="form-control qty form-control-lg" id="qty[@rndm@][@SKU@]" name="qty" aria-label="[@model@] quantity field" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]" size="2"/>
 			</div>
 			<div class="col-12 col-md-4">
-				[%IF [@available_preorder_quantity@] > 0 AND [@preorder@] %]
+				[%IF [@store_quantity@] > 0 AND [@preorder@] %]
 				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Pre-Order Now</button>
 				[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
 				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
