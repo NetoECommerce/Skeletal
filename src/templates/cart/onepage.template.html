@@ -466,26 +466,22 @@
 					</div>
 					<div class="col-12">
 						<div class="row">
-							<div class="form-group">
-								<div class="col-12">
-									<label>Card Expiration Date</label>
-								</div>
-								<div class="col-xs-6">
-									<select class="form-control col-xs-6"  id="card_exp_month" name="card_exp_month">
-										<option value=""></option>
-										[%months%][%PARAM *body%]
-										<option class="input-small" value="[@month@]">[@month@]</option>
-										[%/ PARAM%][%/ months%]
-									</select>
-								</div>
-								<div class="col-xs-6">
-									<select class="form-control"  name="card_exp_year">
-										<option value=""></option>
-										[%years from:'+0' to:'+10'%][%PARAM *body%]
-										<option value="[@year@]">[@year@]</option>
-										[%/ PARAM%][%/ years%]
-									</select>
-								</div>
+							<div class="col-12"><label>Card Expiration Date</label></div>
+							<div class="form-group col-md-6">
+								<select class="form-control"  id="card_exp_month" name="card_exp_month">
+									<option value=""></option>
+									[%months%][%PARAM *body%]
+									<option class="input-small" value="[@month@]">[@month@]</option>
+									[%/ PARAM%][%/ months%]
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<select class="form-control"  name="card_exp_year">
+									<option value=""></option>
+									[%years from:'+0' to:'+10'%][%PARAM *body%]
+									<option value="[@year@]">[@year@]</option>
+									[%/ PARAM%][%/ years%]
+								</select>
 							</div>
 						</div>
 					</div>
@@ -493,7 +489,7 @@
 						<div class="form-group">
 							<label>Card Security Code</label>
 							<input type="text" name="card_ccid" class="form-control" />
-							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+							<span class="help-inline">3-4 digit security code (<a href="#" data-toggle="modal" data-target="#ccvModal">What is this?</a>)</span>
 						</div>
 					</div>
 					[%ELSE%]
@@ -515,7 +511,7 @@
 						<div class="form-group">
 							<label>Enter your [@processor_card_brand@] CCV</label>
 							<input type="text" name="card_ccid" class="form-control" />
-							<span class="help-inline">3-4 digit security code (<a href="#ccv" id="card_ccv">What is this?</a>)</span>
+							<span class="help-inline">3-4 digit security code (<a href="#" data-toggle="modal" data-target="#ccvModal">What is this?</a>)</span>
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -575,6 +571,18 @@
 						<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
 					</p>
 				[%/if%]
+				<div class="modal fade" id="ccvModal">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">CCV</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="modal-body">For <b>Visa</b>, <b>MasterCard</b>, and <b>Discover cards</b>, the card security code is the last <b>3 digit</b> number located on the BACK of your card on or above your signature line. For an <b>American Express</b> card, it is the <b>4 digits</b> on the FRONT above the end of your card number. </div>
+							<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+						</div>
+					</div>
+				</div>
 				<p class="form-actions">
 					<button type="submit" class="btn btn-success btn-lg btn-block">Confirm &amp; Process Order <i class="fa fa-chevron-right icon-white"></i></button>
 				</p>
