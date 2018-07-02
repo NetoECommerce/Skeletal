@@ -31,4 +31,6 @@ gulp.task('watch', ['sass'], function() {
 	gulp.watch([config.SCSS + '/*.scss', config.SCSS + '/_*.scss'], ['sass']);
 });
 
+gulp.task('build', ['sass', 'js']);
+
 gulp.task('default', ['watch']);
