@@ -1,13 +1,11 @@
-<div class="col-xs-12">
-    <!--# Start Breadcrumb# ##-->
-    <ul class="breadcrumb" aria-label="Breadcrumb">
-        <li><a href="[@config:home_url@]">Home</a></li>
-        <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-    </ul>
-    <!--# End Breadcrumb# ##-->
-    <div class="page-header">
-        <h1>Password Reset Confirmation</h1>
-    </div>
-    <p>If we find an account registered for [%ESCAPE%][@EMAIL@][%/ESCAPE%], instructions have been sent to this email address.</p>
-    <p><a href="[%URL page:'account' type:'login'%][%END URL%]" class="btn btn-success btn-large">Continue To Login</a></p>
+<div class="col-12">
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		</ol>
+	</nav>
+	<div class="page-header"><h1>Password Reset Confirmation</h1></div>
+	<p>If we find an account registered for [%ESCAPE%][@EMAIL@][%/ESCAPE%], instructions have been sent to this email address.</p>
+	<p><a href="[%URL page:'account' type:'login'%][%/ URL%]" class="btn btn-success btn-lg">Continue To Login</a></p>
 </div>

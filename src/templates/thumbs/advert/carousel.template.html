@@ -1,9 +1,9 @@
-<div id="[@count@]" class="item [%if [@count@] eq '0'%]active[%/if%]">
+<div id="[@count@]" class="carousel-item [%if [@count@] eq '0'%]active[%/if%]">
 	<a href="[@url@]">
-		<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="home-banner-item" alt="[@headline@]" border="0" >
+		<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="d-block w-100" alt="[@headline@]" />
 		[%if [@headline@] or [@description@] or [@linktext@]%]
 			<div class="carousel-caption">
-				[%if [@headline@]%]<h2 class="h3">[@headline@]</h2>[%/if%]
+				[%if [@headline@]%]<h2>[@headline@]</h2>[%/if%]
 				[%if [@description@]%]<p>[@description@]</p>[%/if%]
 				[%if [@linktext@]%]<p><span class="btn btn-primary btn-lg">[@linktext@]</span></p>[%/if%]
 			</div>

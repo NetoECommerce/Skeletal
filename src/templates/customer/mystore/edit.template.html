@@ -1,11 +1,11 @@
-<div class="col-xs-12">
-    <!-- Start Breadcrumb -->
-    <ul class="breadcrumb" aria-label="Breadcrumb">
-        <li><a href="[@config:home_url@]">Home</a></li>
-        <li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-        <li><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
-    </ul>
-    <!-- End Breadcrumb -->
+<div class="col-12">
+  <nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+      <li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+      <li class="breadcrumb-item"><a href="[%URL page:'account' type:'mystore'%][%END URL%]">My Stores</a></li>
+    </ol>
+	</nav>
     [%DATA id:'msg' if:'ne' value:''%]
         <div class="alert alert-success"><a class="close" data-dismiss="alert">×</a> [@msg@]</div>
     [%END DATA%]
@@ -85,20 +85,20 @@
         <input name="updcategory" type="hidden" value="y"/>
         <div class="page-header"><h1>Edit My Store</h1></div>
         <div class="row">
-        	<div class="col-xs-12">
+        	<div class="col-12">
         		<h4>Details</h4>
         		<div class="content">
-                    <div class="form-group">
-                        <label for="stloc_name">Store Name <span class="required text-danger">*</span></label>
-                        <input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
-                    </div>
-                    <div class="form-group">
-                        <label for="stloc_name">Status</label>
-                        <select name="active" class="form-control">
-                            <option value="y" [%DATA id:'active' if:'eq' value:'y'%]selected[%END DATA%]>Active</option>
-                            <option value="n" [%DATA id:'active' if:'eq' value:'n'%]selected[%END DATA%]>Inactive</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="stloc_name">Store Name <span class="required text-danger">*</span></label>
+                    <input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%NOHTML%][@stloc_name@][%END NOHTML%]" />
+                </div>
+                <div class="form-group">
+                    <label for="stloc_name">Status</label>
+                    <select name="active" class="form-control">
+                        <option value="y" [%DATA id:'active' if:'eq' value:'y'%]selected[%END DATA%]>Active</option>
+                        <option value="n" [%DATA id:'active' if:'eq' value:'n'%]selected[%END DATA%]>Inactive</option>
+                    </select>
+                </div>
         		</div>
         	</div>
         </div>
@@ -107,7 +107,7 @@
             [%EXTRA_STORE_FIELDS%]
                 [%PARAM *header%][%END PARAM%]
                 [%PARAM *integer_option%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -116,7 +116,7 @@
                     </div>
                 [%END PARAM%]
                 [%PARAM *text_option%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -125,7 +125,7 @@
                     </div>
                 [%END PARAM%]
                 [%PARAM *short_text_option%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -134,7 +134,7 @@
                     </div>
                 [%END PARAM%]
                 [%PARAM *descimal_option%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -143,7 +143,7 @@
                     </div>
                 [%END PARAM%]
                 [%PARAM *boolean_option%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -152,7 +152,7 @@
                     </div>
                 [%END PARAM%]
                 [%PARAM *date_option%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -161,7 +161,7 @@
                     </div>
                 [%END PARAM%]
                 [%PARAM *selection_header%]
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="[@field_id@]">[@field_name@]</label>
                             [%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
@@ -179,7 +179,7 @@
         </div>
         <hr />
         <div class="row">
-        	<div class="col-xs-12 col-md-6">
+        	<div class="col-12 col-md-6">
         		<h4>Address</h4>
                 <div class="form-group">
             		<label for="stloc_country">Country <span class="required text-danger">*</span></label>
@@ -199,7 +199,6 @@
             		<label for="stloc_street1">Address line 2</label>
             		<input type="text" class="form-control" name="stloc_street2" size="50" maxlength="50" value="[%NOHTML%][@stloc_street2@][%END NOHTML%]" />
                 </div>
-
                 <div class="form-group">
                     <label for="stloc_zip">Postal Code <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" id="stloc_zip" name="stloc_zip" size="50" value="[%NOHTML%][@stloc_zip@][%END NOHTML%]" maxlength="10" />
@@ -218,13 +217,13 @@
                     <input id="geo_getloc_btn" type="button" class="btn btn-default" value="Get the Latitude and Longitude for the above address">
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="stloc_lat">Latitude:</label>
                             <input type="text" name="stloc_lat" class="readonly form-control" readonly value="[%NOHTML%][@stloc_lat@][%END NOHTML%]" size="15" />
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="stloc_lng">Longitude:</label>
                             <input type="text" name="stloc_lng" class="readonly form-control" readonly value="[%NOHTML%][@stloc_lng@][%END NOHTML%]" size="15" />
@@ -244,13 +243,13 @@
                     <input type="text" class="form-control" name="stloc_email" size="30" maxlength="50" value="[%NOHTML%][@stloc_email@][%END NOHTML%]" />
                 </div>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <div id="geo_map"></div>
             </div>
         </div>
         <hr />
         <div class="row">
-        	<div class="col-xs-12 col-md-6">
+        	<div class="col-12 col-md-6">
                 <h4>Product Range</h4>
         		[%CATEGORYMENU sortby:'sortorder,name' show_empty:'1' category:'0'%]
         			[%PARAM header%]
@@ -271,7 +270,7 @@
         			[%END PARAM%]
         		[%/ CATEGORYMENU%]
         	</div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
         		<h4>Images</h4>
         		<p class="small">Store Logos will be re-sized and thumbnails will be created automatically. Uploaded images should not exceed 500kb in size.</p>
                 <ul class="imagelist list-unstyled">
@@ -295,7 +294,7 @@
         </div>
         <hr/>
         <div class="row">
-        	<div class="col-xs-12">
+        	<div class="col-12">
         		<div class="form-actions">
         			<input type="button" class="btn btn-default" value="Reset" onclick="location.href='[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%END URL%]'"> &nbsp;
         			<input type="submit" class="btn btn-success" value="Save Changes">
