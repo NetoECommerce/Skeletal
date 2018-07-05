@@ -2,58 +2,54 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 	[%breadcrumb%]
 		[%param *header%]
-			<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
-				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 				</li>
 		[%/param%]
 		[%param *body%]
-			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
 			</li>
 		[%/param%]
 		[%param *footer%]
-			</ul>
+			</ol>
+		</nav>
 		[%/param%]
 	[%/breadcrumb%]
-	[%FILTER ID:'keywords' if:'ne' value:''%]
-		<h1 class="page-header">
-			Search [@config:website_name@]
-		</h1>
+	[%filter ID:'keywords' if:'ne' value:''%]
+		<h1 class="display-4">Search [@config:website_name@]</h1>
 		<div class="search-results-search">
 			<form class="" name="productsearch" method="get" action="/">
 				<input type="hidden" name="rf" value="kw" />
-				<div class="input-group">
-					<input class="form-control input-lg ajax_search" id="name_search" autocomplete="off" name="kw" value="[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]" type="search"/>
-					<span class="input-group-btn">
-						<button type="submit" value="Search" class="btn btn-lg btn-default"><i class="fa fa-search"></i></button>
+				<div class="input-group input-group-lg">
+					<input class="form-control ajax_search" id="name_search-results" autocomplete="off" name="kw" value="[%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%]" type="search"/>
+					<span class="input-group-append">
+						<button type="submit" value="Search" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
 					</span>
 				</div>
 			</form>
 		</div>
-	[%/FILTER%]
-	[%FILTER ID:'keywords' if:'eq' value:''%]
+	[%/filter%]
+	[%filter ID:'keywords' if:'eq' value:''%]
 		<h1>
 			[%url_info name:'page_heading' if:'eq' value:''%]
-				[%PARAM if_true%]
-					[@name@]
-				[%/PARAM%]
-				[%PARAM if_false%]
-					[%url_info name:'page_heading'%][%end url_info%]
-				[%/PARAM%]
+				[%param if_true%][@name@][%/param%]
+				[%param if_false%][%url_info name:'page_heading'/%][%/param%]
 			[%/url_info%]
-			[%DATA ID:'id' if:'eq' value:''%]
-				[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%][%/FILTER%]
-			[%/DATA%]
+			[%if [@id@] eq ''%]
+				[%filter ID:'keywords' if:'ne' value:''%][%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%][%/filter%]
+			[%/if%]
 		</h1>
-	[%/FILTER%]
-	[%FILTER ID:'keywords' if:'ne' value:' '%]
-		[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
-			[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
-				[%PARAM *header%]
-					<hr/>
+	[%/filter%]
+	[%filter ID:'keywords' if:'ne' value:' '%]
+		[%thumb_list type:'products' limit:'[@config:THUMB_LIMIT@]'%]
+			[%param template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/param%]
+				[%param *header%]
+					<hr aria-hidden="true"/>
 					<div class="row sort_container">
-						<div class="col-xs-4 col-sm-7 col-md-4">
+						<div class="col-4 col-md-7 col-lg-4">
 							<script language="javascript" type="text/javascript">
 								function viewtype(view) {
 									var f=document.viewForm;
@@ -66,19 +62,19 @@
 								<input name="viewby" type="hidden" value="" />
 							</form>
 							<div class="viewby btn-group">
-								<a href="javascript:viewtype('');" class="btn btn-default [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
-								<a href="javascript:viewtype('list');" class="btn btn-default [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
+								<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
+								<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
 							</div>
 						</div>
-						<div class="col-md-4 hidden-xs hidden-sm">
+						<div class="col-4 d-none d-lg-block">
 							<div class="btn-text"><strong>[@total_results@]</strong> Products Found</div>
 						</div>
-						<div class="col-xs-8 col-sm-5 col-md-4">
+						<div class="col-8 col-md-5 col-lg-4">
 							<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
 								<input name="rf" type="hidden" value="[%filter_code/%]" >
-								<div class="form-group">
-									<label class="control-label col-xs-2">Sort</label>
-									<div class="col-xs-10">
+								<div class="form-row">
+									<label class="col-2 col-form-label" for="sortby">Sort</label>
+									<div class="col-10">
 										<select name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
 											<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
 											<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
@@ -92,48 +88,48 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12"><hr></div>
+						<div class="col-12"><hr></div>
 					</div>
 					<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
-						<div class="row">
-					[%/PARAM%]
-					[%PARAM *footer%]
+						<div class="row products-row">
+					[%/param%]
+					[%param *footer%]
 						</div>
 					</div>
 					[%IF [@total_results@] > [@config:thumb_limit@]%]
 						<div class="row">
-							<div class="col-xs-12">
-								<hr />
-								<div class="text-center">
-									<ul class="pagination" role="navigation" aria-label="Pagination Navigation">
+							<div class="col-12">
+								<hr aria-hidden="true"/>
+								<nav aria-label="Page navigation">
+									<ul class="pagination justify-content-center">
 										[%paging limit:'3'%]
-											[%PARAM *previous_page%]<li><a href="[@URL@]" aria-label="Go Back 1 Page"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
-											[%PARAM *goback_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/PARAM%]
-											[%PARAM *current_page%]<li class="active"><a href="[@URL@]" aria-label="Current Page">[@PAGE@]</a></li>[%/PARAM%]
-											[%PARAM *gonext_pages%]<li><a href="[@URL@]" aria-label="Go To Page [@PAGE@]">[@PAGE@]</a></li>[%/PARAM%]
-											[%PARAM *next_page%]<li><a href="[@URL@]" aria-label="Go Forward 1 Page"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
+											[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go back one page"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>[%/param%]
+											[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go to page [@page@]">[@page@]</a></li>[%/param%]
+											[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@url@]" aria-label="Current page">[@page@]</a></li>[%/param%]
+											[%param *gonext_pages%]<li class="page-item"><a href="[@url@]" class="page-link" aria-label="Go to page [@page@]">[@page@]</a></li>[%/param%]
+											[%param *next_page%]<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go forward one page"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>[%/param%]
 										[%/paging%]
 									</ul>
-								</div>
-								<hr />
+								</nav>
+								<hr aria-hidden="true"/>
 							</div>
 						</div>
 					[%/IF%]
-				[%/PARAM%]
-				[%PARAM *ifempty%]
+				[%/param%]
+				[%param *ifempty%]
 					<div class="row">
-						<div class="col-xs-12">
-							[%FILTER ID:'keywords' if:'ne' value:''%]
-								<p>Search was unable to find any product results for '[%NOHTML%][%FILTER ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
-							[%/FILTER%]
-							[%FILTER ID:'keywords' if:'eq' value:''%]
+						<div class="col-12">
+							[%filter ID:'keywords' if:'ne' value:''%]
+								<p>Search was unable to find any product results for '[%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
+							[%/filter%]
+							[%filter ID:'keywords' if:'eq' value:''%]
 								<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
-							[%/FILTER%]
-							<hr />
+							[%/filter%]
+							<hr aria-hidden="true"/>
 						</div>
 					</div>
-				[%/PARAM%]
-			[%/THUMB_LIST%]
+				[%/param%]
+			[%/thumb_list%]
 		</div>
-	[%/FILTER%]
+	[%/filter%]
 </div>

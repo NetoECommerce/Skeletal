@@ -1,66 +1,156 @@
-<!--##[%DISPLAY_CHILD_PRODUCTS id:'[@SKU@]' sortby:'sortorder,name'%]
-	[%PARAM *header%]##-->
+<form autocomplete="off" class="variation-wrapper">
+  [%list_item_variations id:'[@current_sku@]'%]
+    [%param header%]
+    <input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
+    <hr aria-hidden="true"/>
+    <div class="row" role="contentinfo" aria-label="Product variation selection">
+    [%/param%]
+    [%param *variation_header%]
+        <div class="_itmspec_listopt col-12 col-lg-6" ref="[@specific_id@]" role="group" aria-label="[@specific_name@] variation selection">
+          <div class="variation-name" aria-label="[@specific_name@] variation">
+            <strong>[@specific_name@]</strong>
+          </div>
+          <div class="specific">
+            <input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+  [%/param%]
+  [%param *variation_body%]
+            <div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]" aria-label="[@specific_name@] - [@value_name@] option">
+              <a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+                [%if [@value_image@]%]
+                  <img src="[@value_image@]" alt="[@value_name@]" />
+                [%/if%]
+                [%if [@value_name@]%]
+                  [@value_name@]
+                [%ELSE%]
+                  [@value_description@]
+                [%/if%]
+              </a>
+            </div>
+  [%/param%]
+  [%param *variation_body_radio%]
+            <label class="_itmspec_listitm btn btn-default" ref="[@specific_id@]_[@value_id@]">
+              <input class="_itmspec_radio" type="radio" name="_itmspec_radio[@specific_id@]" value="[@value_id@]" ref="[@specific_id@]_[@value_id@]" [%if [@selected@]%]checked[%/if%]> [@value_name@]
+            </label>
+  [%/param%]
+  [%param *variation_body_image%]
+            <span class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
+              <a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
+                [%if [@value_image@]%]
+                    <img src="[@value_image@]" alt="[@value_name@]">
+                  [%else%]
+                    [@value_name@]
+                [%/if%]
+              </a>
+            </span>
+  [%/param%]
+  [%param *variation_footer%]
+            <div class="clear"></div>
+          </div>
+        </div>
+  [%/param%]
+  [%param *variation_header_select%]
+        <div class="_itmspec_listopt col-12 col-lg-6" ref="[@specific_id@]" aria-label="[@specific_name@] variation selection">
+          <div class="variation-name">
+            <label for="[@specific_id@]_itmspec_opt">[@specific_name@]</label>
+          </div>
+            <div class="specific">
+              <input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
+              <div class="n-wrapper-form-control">
+                <span class="_itmspec_optpl" ref="[@specific_id@]">
+                  <select id="[@specific_id@]_itmspec_opt" name="[@specific_id@]_itmspec_opt" class="_itmspec_opt form-control" ref="[@specific_id@]">
+    [%/param%]
+    [%param *variation_body_select%]
+                    <option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@] [%if [@variation_qty@] < 1 %] (Out of Stock) [%/if%]</option>
+    [%/param%]
+    [%param *variation_footer_select%]
+                  </select>
+                </span>
+              </div>
+            </div>
+        </div>
+    [%/param%]
+    [%param footer%]
+      </div>
+    [%/param%]
+  [%/list_item_variations%]
+  [%if ![@has_variation@]%]
+    [%DISPLAY_CHILD_PRODUCTS id:'[@SKU@]' sortby:'sortorder,name'%]
+    	[%PARAM *header%]
         <hr />
-		<h4>Buying Options</h4>
-		<div id="multiitemadd">
-			<a name="child" id="child"></a>
-			<div id="buy-child-list">
-				<table class="table table-bordered" cellspacing="0">
-					<thead>
-						<tr>
-							<th width="1">Quantity</th>
-							<th width="72">Image</th>
-							<th>Name</th>
-							<th width="47">Price</th>
-						</tr>
-					</thead>
-					<tbody>
-				<!--##[%END PARAM%]
-				[%PARAM *body%]##-->
-					<tr>
-						<td>
-							<!--##[%IF [@store_quantity@] > 0 AND ![@has_child@] or [@CONFIG:ALLOW_NOSTOCK_CHECKOUT@] or [@preorder@]%]##-->
-							<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
-							<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
-							<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
-							<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
-							<!--##[%ELSE%]##-->
-							<input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
-							<!--##[%END IF%]##-->
-						</td>
-						<td>
-							<img border="0" rel="itmimg[@SKU@]" src="[@thumb@]" alt="[@name@]" width="50px" height="50px"/>
-						</td>
-						<td>
-							[@name@]
-							<!--##[%IF [@subtitle@]%]##-->
-							<div class="text-muted">[@subtitle@]</div>
-							<!--##[%END IF%]##-->
-						</td>
-						<td>
-							<div class="child-price"><!--##[%format type:'currency'%]##-->[@price@]<!--##[%END format%]##--></div>
-							<!--##[%IF [@extra@] or [@has_child@] %]##-->
-							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
-							<!--##[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]##-->
-							<span class="label label-warning">Pre-Order</span>
-							<!--##[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]##-->
-							<span class="label label-success">In stock</span>
-							<!--##[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]##-->
-							<span class="label label-warning">Back Order</span>
-							<!--##[%ELSE%]##-->
-							<span class="label label-danger">Sold Out</span>
-							<!--##[%END IF%]##-->
-						</td>
-					</tr>
-				<!--##[%END PARAM%]
-				[%PARAM *footer%]##-->
-					</tbody>
-				</table>
-			</div>
-			<div class="cta-area">
-				<a href="#" onclick="javascript:if ($.checkValidQty()) { $.addMultipleCartItems('multiitemadd'); return false; }" rel="nofollow" class="multi-add btn btn-success" title="Add [@model@] to Cart"><i class="fa fa-shopping-cart"></i> Add Selected to Cart</a>
-				<span id="a2c_loading"></span>
-			</div>
-		</div>
-	<!--##[%END PARAM%]
-[%END DISPLAY_CHILD_PRODUCTS%]##-->
+    		<h4>Buying Options</h4>
+    		<div id="multiitemadd">
+    			<a name="child" id="child"></a>
+    			<div id="buy-child-list">
+    				<table class="table table-bordered" cellspacing="0">
+    					<thead>
+    						<tr>
+    							<th width="1">Quantity</th>
+    							<th width="72">Image</th>
+    							<th>Name</th>
+    							<th width="47">Price</th>
+    						</tr>
+    					</thead>
+    					<tbody>
+  		[%/ PARAM%]
+  		[%PARAM *body%]
+    					<tr>
+    						<td>
+                                [%IF [@extra@] or [@has_child@] %]
+                                <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
+    							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
+                                <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+                                <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+                                <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+                                <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+    							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
+                                <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+                                <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+                                <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+                                <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+    							[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+                                <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+                                <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+                                <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+                                <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+    							[%ELSE%]
+                                <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
+    							[%/ IF%]
+    						</td>
+    						<td>
+    							<img border="0" rel="itmimg[@SKU@]" src="[@thumb@]" alt="[@name@]" width="50px" height="50px"/>
+    						</td>
+    						<td>
+    							[@name@]
+    							[%if [@subtitle@]%]
+    							<div class="text-muted">[@subtitle@]</div>
+    							[%/ if%]
+    						</td>
+    						<td>
+    							<div class="child-price">[%format type:'currency'%][@price@][%END format%]</div>
+    							[%IF [@extra@] or [@has_child@] %]
+    							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
+    							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
+    							<span class="badge badge-warning">Pre-Order</span>
+    							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
+    							<span class="badge badge-success">In stock</span>
+    							[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+    							<span class="badge badge-warning">Back Order</span>
+    							[%ELSE%]
+    							<span class="badge badge-danger">Sold Out</span>
+    							[%/ IF%]
+    						</td>
+    					</tr>
+  		[%/ PARAM%]
+  		[%PARAM *footer%]
+    					</tbody>
+    				</table>
+    			</div>
+    			<div class="cta-area">
+    				<a href="#" onclick="javascript:if ($.checkValidQty()) { $.addMultipleCartItems('multiitemadd'); return false; }" rel="nofollow" class="multi-add btn btn-success" title="Add [@model@] to Cart"><i class="fa fa-shopping-cart"></i> Add Selected to Cart</a>
+    				<span id="a2c_loading"></span>
+    			</div>
+    		</div>
+    	[%/ PARAM%]
+    [%/ DISPLAY_CHILD_PRODUCTS%]
+  [%/if%]
+</form>

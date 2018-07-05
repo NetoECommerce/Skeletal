@@ -1,13 +1,13 @@
-<div class="col-xs-12">
-  <ul class="breadcrumb">
-    <li><a href="[@config:home_url@]">Home</a></li>
-    <li><a href="[%url page:'account' /%]">My Account</a></li>
-  </ul>
+<div class="col-12">
+  <nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+    <li class="breadcrumb-item"><a href="[%url page:'account' /%]">My Account</a></li>
+    </ol>
+  </nav>
   [%show_order id:'[@order_id@]'%]
     [%param *header%]
-      <div class="page-header">
-        <h1>Track Order #[@order_id@]</h1>
-      </div>
+      <div class="page-header"><h1>Track Order #[@order_id@]</h1></div>
       <div class="row">
         <div class="col-md-4">
           <strong>Status:</strong> <span class="label label-success">[@order_status@]</span>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
           <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -60,7 +60,7 @@
                   [%else%]
                     <p>Tracking not yet available</p>
                   [%/if%]
-                  [%if [@tracking_url@]%]<p><a href="[@tracking_url@]" target="_blank" rel="noopener" class="btn btn-small">Track Online <i class="fa fa-share"></i></a></p>[%/if%]
+                  [%if [@tracking_url@]%]<p><a href="[@tracking_url@]" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">Track Online <i class="fa fa-share"></i></a></p>[%/if%]
                 </td>
               </tr>
     [%/param%]

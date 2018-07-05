@@ -1,0 +1,69 @@
+[%site_value id:'footer_javascript'%]
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+			$.product_variationInit({
+				'loadtmplates': ['_buying_options', '_images','_header'],
+				'fns' : {
+					'onLoad' : function () {
+						$('.btn-ajax-loads')
+							.html($('.btn-ajax-loads').attr('data-loading-text'))
+							.addClass('disabled').prop('disabled', true);
+						$('.variation-wrapper').addClass('disable-interactivity');
+					},
+					'onReady' : function () {
+						$('.zoom').zoom();
+						$('.variation-wrapper').removeClass('disable-interactivity');
+						$("#sale-end").countdown({
+							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+						});
+					},
+				}
+			});
+			[%if [@has_components@]%]
+				$.kit_variationInit({
+					'fns' : {
+						'onLoad' : function () {
+							$('.btn-ajax-loads')
+								.html($('.btn-ajax-loads').attr('data-loading-text'))
+								.addClass('disabled').prop('disabled', true);
+							$('.component-wrapper').addClass('disable-interactivity');
+						},
+						'onReady' : function () {
+							$('.btn-ajax-loads')
+								.html($('.btn-ajax-loads').attr('title'))
+								.removeClass('disabled').prop('disabled', false);
+							$('.component-wrapper').removeClass('disable-interactivity');
+						},
+					}
+				});
+			[%/if%]
+		});
+	</script>
+	[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'zoom' version:'1.4'%]jquery.zoom-min.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'jcountdown' version:'1.4'%]jquery.jcountdown.min.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// Product image zoom
+			$('.zoom').zoom();
+			// Sales countdown
+			$("#sale-end").countdown({
+				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
+			});
+			// Fancybox
+			$(".fancybox").fancybox();
+			// Tab a11y
+			$("li[role='tab']").click(function(){
+				$("li[role='tab']").attr("aria-selected","false"); //deselect all the tabs
+				$(this).attr("aria-selected","true");  // select this tab
+				var tabpanid= $(this).attr("aria-controls"); //find out what tab panel this tab controls
+				var tabpan = $("#"+tabpanid);
+				$("div[role='tabpanel']").attr("aria-hidden","true"); //hide all the panels
+				tabpan.attr("aria-hidden","false");  // show our panel
+			 });
+		});
+		$(document).on("click", ".btn-ajax-loads", nCustom.funcs.buttonLoading);
+		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){e.preventDefault();});
+	</script>
+[%/site_value%]

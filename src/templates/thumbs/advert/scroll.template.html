@@ -1,12 +1,14 @@
-<div id="[@count@]" class="item [%DATA id:'count' if:'==' value:'0'%]active[%END DATA%]">
+<div id="[@count@]" class="carousel-item [%if [@count@] eq '0'%]active[%/if%]">
 	<a href="[@url@]">
-		<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="[@img_width@]px" height="[@img_height@]px" alt="[@headline@]" border="0" >
+		<img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="[@img_width@]px" height="[@img_height@]px" alt="[@headline@]" />
 	</a>
+	[%if [@headline@] or [@description@]%]
 	<div class="carousel-caption">
-        <h3>[@headline@]</h3>
-        <p><!--##[%format type:'text' nohtml:'1' trim:'LE2R' wordlength:'27'%][@description@][%END format%]##--></p>
-    </div>
+		<h3>[@headline@]</h3>
+		<p>[%format type:'text' nohtml:'1' trim:'LE2R' wordlength:'27'%][@description@][%END format%]</p>
+	</div>
+	[%/if%]
 </div>
-<!--##[%SITE_VALUE id:'counter'%]##-->
+[%SITE_VALUE id:'counter'%]
 <li data-target="#myCarouselBanner" data-slide-to="[@count@]" [%DATA id:'count' if:'==' value:'0'%]class="active"[%END DATA%]></li>
-<!--##[%END SITE_VALUE%]##-->
+[%/ SITE_VALUE%]

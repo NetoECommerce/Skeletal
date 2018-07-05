@@ -1,13 +1,14 @@
-<section class="account-summary">
-<div class="col-xs-12">
-	<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
-		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<div class="col-12">
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 			<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 		</li>
-		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 			<a href="[%url page:'account'/%]" itemprop="item"><span itemprop="name">My Account</span></a>
 		</li>
-	</ul>
+	</ol>
+	</nav>
 	<div class="page-header">
 		<h1>Account Summary</h1>
 		<p>
@@ -22,125 +23,117 @@
 		[%/if%]
 	</div>
 </div>
-<section class="col-xs-12" aria-label="Account Options">
+<section class="col-12" aria-label="Account Options">
 	<h2 class="sr-only">Account Options</h2>
 	<div class="row">
 		[%if ![@user:email@]%]
-			<div class="col-xs-12">
-				<div class="alert alert-danger">
+			<div class="col-12">
+				<div class="alert alert-danger" role="alert">
 					<a class="close" data-dismiss="alert">×</a> You are required to enter your email address to order from our website and receive email notifications. <br />
 					<a href="[%url page:'account' type:'edit_account'/%]">Enter your email address.</a>
 				</div>
 			</div>
 		[%/if%]
 		[%if [@unresolve_dispute@]%]
-			<div class="col-xs-12">
-				<div class="alert alert-warning"> <a class="close" data-dismiss="alert">×</a> You have [@unresolve_dispute@] unresolved dispute(s) your resolution centre.<br />
+			<div class="col-12">
+				<div class="alert alert-warning" role="alert">
+					<a class="close" data-dismiss="alert">×</a> You have [@unresolve_dispute@] unresolved dispute(s) your resolution centre.<br />
 					<a href="[%url page:'account' type:'warranty'/%]">View  or close your unresolved disputes.</a>
 				</div>
 			</div>
 		[%/if%]
 		[%if [@config:allow_quote_approval@]%]
-			<div class="col-xs-12 col-md-4">
-				<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'approve_quote'/%]">
-					<p><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approve Quotes </p>
-					<p class="text-muted small">Manage and approve quotes on account</p>
+			<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" arai-label="Approve quotes">
+				<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'approve_quote'/%]">
+					<h3><i class="fa fa-thumbs-up" aria-hidden="true"></i> Approve Quotes </h3>
+					<p class="small mb-0 text-truncate" title="Manage and approve quotes on account">Manage and approve quotes on account</p>
 				</a>
-				<br>
 			</div>
 		[%/if%]
 		[%if [@config:customer_view_docs@]%]
-			<div class="col-xs-12 col-md-4" role="article" aria-label="My Files">
-				<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'documents'/%]">
+			<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My files">
+				<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'documents'/%]">
 					<h3><i class="fa fa-folder-open" aria-hidden="true"></i> My Files</h3>
-					<p class="text-muted small">View and download your files</p>
+					<p class="small mb-0 text-truncate" title="View and download your files">View and download your files</p>
 				</a>
-				<br>
 			</div>
 		[%/if%]
-		<div class="col-xs-12 col-md-4" role="article" aria-label="Edit My Contact Details">
-			<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'edit_account'/%]#contact">
-				<h3><i class="fa fa-pencil" aria-hidden="true"></i> Edit My Contact Details</h3>
-				<p class="text-muted small">Change your name, phone number and more</p>
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Edit My Contact Details">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_account'/%]#contact">
+				<h3><i class="fa fa-pencil-alt" aria-hidden="true"></i> Edit My Contact Details</h3>
+				<p class="small mb-0 text-truncate" title="Change your name, phone number and more">Change your name, phone number and more</p>
 			</a>
-			<br>
 		</div>
-		<div class="col-xs-12 col-md-4" role="article" aria-label="Edit My Address Book">
-			<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'edit_address'/%]">
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Edit My Address Book">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_address'/%]">
 				<h3><i class="fa fa-book" aria-hidden="true"></i> Edit My Address Book</h3>
-				<p class="text-muted small">Change or add your shipping address</p>
+				<p class="small mb-0 text-truncate" title="Change or add your shipping address">Change or add your shipping address</p>
 			</a>
-			<br>
 		</div>
-		<div class="col-xs-12 col-md-4" role="article" aria-label="Change My Password">
-			<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'edit_pwd'/%]">
-			<h3><i class="fa fa-lock" aria-hidden="true"></i> Change My Password</h3>
-			<p class="text-muted small">Set something you'll remember!</p>
-			</a><br>
-		</div>
-		<div class="col-xs-12 col-md-4" role="article" aria-label="Pay Invoices Online">
-		<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'payrec'/%]">
-			<h3><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Invoices Online</h3>
-			<p class="text-muted small">Pay your outstanding balance</p>
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Change My Password">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'edit_pwd'/%]">
+				<h3><i class="fa fa-lock" aria-hidden="true"></i> Change My Password</h3>
+				<p class="small mb-0 text-truncate" title="Set something you'll remember!">Set something you'll remember!</p>
 			</a>
-			<br>
 		</div>
-		<div class="col-xs-12 col-md-4" role="article" aria-label="My Orders">
-			<a class="btn btn-default btn-lg btn-block" href="[%url page:'account'/%]#orders">
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Pay Invoices Online">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'payrec'/%]">
+				<h3><i class="fa fa-credit-card" aria-hidden="true"></i> Pay Invoices Online</h3>
+				<p class="small mb-0 text-truncate" title="Pay your outstanding balance">Pay your outstanding balance</p>
+			</a>
+		</div>
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My Orders">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account'/%]#orders">
 				<h3><i class="fa fa-folder" aria-hidden="true"></i> My Orders</h3>
-				<p class="text-muted small">View, print and track orders you have placed.</p>
+				<p class="small mb-0 text-truncate" title="View, print and track orders you have placed.">View, print and track orders you have placed.</p>
 			</a>
-			<br>
 		</div>
 		[%thumb_list type:'standing_orders' limit:'1'%]
 			[%param filter_1%][%form id:'ord'/%][%/param%]
 			[%param filter_2%][%form id:'sts'/%][%/param%]
 			[%param *body%]
-				<div class="col-xs-12 col-md-4" role="article" aria-label="My Standing Orders"> <a class="btn btn-default btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
-					<h3><i class="fa fa-refresh" aria-hidden="true"></i> My Standing Orders</h3>
-					<p class="text-muted small">View or edit your recurring orders.</p>
+				<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My Standing Orders">
+					<a class="btn btn-outline-secondary btn-lg btn-block"  href="[%url page:'account' type:'standing_orders'/%]">
+						<h3><i class="fas fa-sync" aria-hidden="true"></i> My Standing Orders</h3>
+						<p class="small mb-0 text-truncate" title="View or edit your recurring orders.">View or edit your recurring orders.</p>
 					</a>
-					<br>
 				</div>
 			[%/param%]
 		[%/thumb_list%]
-		<div class="col-xs-12 col-md-4" role="article" aria-label="My Quotes">
-		<a class="btn btn-default btn-lg btn-block" href="[%url page:'account'/%]#quotes">
-			<h3><i class="fa fa-folder-o" aria-hidden="true"></i> My Quotes</h3>
-			<p class="text-muted small">View or print any outstanding quotes.</p>
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My Quotes">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account'/%]#quotes">
+				<h3><i class="fa fa-folder" aria-hidden="true"></i> My Quotes</h3>
+				<p class="small mb-0 text-truncate" title="View or print any outstanding quotes.">View or print any outstanding quotes.</p>
 			</a>
-			<br>
 		</div>
 		[%if [@config:show_wishlist@]%]
-			<div class="col-xs-12 col-md-4" role="article" aria-label="My Wishlists">
-				<a class="btn btn-default btn-lg btn-block"  href="[%url page:'account' type:'wishlist'/%]">
+			<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="My Wishlists">
+				<a class="btn btn-outline-secondary btn-lg btn-block"  href="[%url page:'account' type:'wishlist'/%]">
 					<h3><i class="fa fa-star" aria-hidden="true"></i> My Wishlists</h3>
-					<p class="text-muted small">View, create or edit your wishlist(s)</p>
+					<p class="small mb-0 text-truncate" title="View, create or edit your wishlist(s)">View, create or edit your wishlist(s)</p>
 				</a>
-				<br>
 			</div>
 		[%/if%]
-		<div class="col-xs-12 col-md-4" role="article" aria-label="Resolution Centre">
-			<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'warranty'/%]">
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Resolution Centre">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'warranty'/%]">
 				<h3><i class="fa fa-info-circle" aria-hidden="true"></i> Resolution Centre</strong></h3>
-				<p class="text-muted small">Problems with a product or order?</p>
+				<p class="small mb-0 text-truncate" title="Problems with a product or order?">Problems with a product or order?</p>
 			</a>
-			<br>
 		</div>
-		<div class="col-xs-12 col-md-4" role="article" aria-label="Reorder Items">
-			<a class="btn btn-default btn-lg btn-block" href="[%url page:'account' type:'favourites'/%]">
+		<div class="col-12 col-md-6 col-lg-4 mb-1" role="article" aria-label="Reorder Items">
+			<a class="btn btn-outline-secondary btn-lg btn-block" href="[%url page:'account' type:'favourites'/%]">
 				<h3><i class="fa fa-truck" aria-hidden="true"></i> Reorder Items</h3>
-				<p class="text-muted small">Reorder from a list of past purchases.</p>
+				<p class="small mb-0 text-truncate" title="Reorder from a list of past purchases.">Reorder from a list of past purchases.</p>
 			</a>
-			<br>
 		</div>
 	</div>
 </section>
 [%active_vouchers%]
 	[%param *header%]
-		<div class="col-xs-12">
+		<div class="col-12">
 			<hr>
 			<h2>Vouchers &amp; Rewards</h2>
+			<div class="table-responsive">
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -151,27 +144,28 @@
 				<tbody>
 	[%/param%]
 	[%param *body%]
-					<tr>
-						<td width="90%">
-							<strong>[@vprogram_title@]</strong><br />
-							[%if [@vprogram_subtitle@]%][@vprogram_subtitle@]<br />[%/if%]
-							([@voucher_code@])
-						</td>
-						<td>
-							[%format type:'currency'%][@reward_amount@][%/format%]
-							[%if [@show_points@] == 1%]([%format type:'number' dp:'0' sp:','%][@reward_points@][%/format%] pts)[%/if%]
-						</td>
-					</tr>
+				<tr>
+					<td width="90%">
+						<strong>[@vprogram_title@]</strong><br />
+						[%if [@vprogram_subtitle@]%][@vprogram_subtitle@]<br />[%/if%]
+						([@voucher_code@])
+					</td>
+					<td>
+						[%format type:'currency'%][@reward_amount@][%/format%]
+						[%if [@show_points@] == 1%]([%format type:'number' dp:'0' sp:','%][@reward_points@][%/format%] pts)[%/if%]
+					</td>
+				</tr>
 	[%/param%]
 	[%param *footer%]
 			</table>
+			</div>
 		</div>
 	[%/param%]
 [%/active_vouchers%]
-<section class="col-xs-12" aria-label="My Orders">
+<section class="col-12" aria-label="My Orders">
 	<hr />
 	<h2 id="orders">My Orders</h2>
-	[%thumb_list type:'orders' limit:'10'%]
+	[%thumb_list type:'orders' limit:'9'%]
 		[%param filter_1%]
 			[%form id:'ord'/%]
 		[%/param%]
@@ -179,23 +173,23 @@
 			<div class="row">
 		[%/param%]
 		[%param *body%]
-				<article class="col-xs-12 col-md-4" role="article" aria-label="Order">
-					<div class="well">
-						<p>
+				<article class="col-12 col-md-6 col-lg-4 mb-3" role="article" aria-label="Order">
+					<div class="card card-body">
+						<p class="mb-0">
 							<a href="[%url page:'account' type:'view_order' id:'[@order_id@]'/%]" aria-label="Order [@order_id@]">[@order_id@]</a>
-							<span class="label pull-right
+							<span class="badge float-right
 								[%if [@order_status@] eq 'On Hold' or [@order_status@] eq 'Backorder Approved' or [@order_status@] eq 'New Backorder'%]
-										label-warning
+										badge-warning
 									[%elseif [@order_status@] eq 'Pick' or [@order_status@] eq 'Pack'%]
-										label-info
+										badge-info
 									[%elseif [@order_status@] eq 'New'%]
-										label-primary
+										badge-primary
 									[%elseif [@order_status@] eq 'Dispatched'%]
-										label-success
+										badge-success
 									[%elseif [@order_status@] eq 'Cancelled'%]
-										label-danger
+										badge-danger
 									[%else%]
-										label-default
+										badge-secondary
 								[%/if%]
 								">
 								[@order_status@]
@@ -217,20 +211,20 @@
 							[%/if%]
 						</div>
 						<div class="row btn-stack">
-							<div class="col-xs-12 col-md-4">
+							<div class="col-12 col-md-4">
 								<button type="button" title="Track Order Number [@order_id@]" class="btn btn-block btn-info" onclick="window.location='[%url page:'account' type:'track_order' id:'[@order_id@]'/%]'">
 									<i class="fa fa-road icon-white" aria-hidden="true"></i> Track
 								</button>
 							</div>
 							[%if [@amount_owed@] > 0 and [@order_status@] ne 'Cancelled'%]
-								<div class="col-xs-12 col-md-4">
+								<div class="col-12 col-md-4">
 									<button type="button" title="Pay Order Number [@order_id@]" class="btn btn-block btn-success" onclick="location.href='[%url page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'/%]'">
 										<i class="fa fa-check icon-white" aria-hidden="true"></i> Pay
 									</button>
 								</div>
 							[%/if%]
-							<div class="col-xs-12 col-md-4">
-								<button type="button" title="Print Order Number [@order_id@]" class="btn btn-default btn-block" onclick="window.location='[%url page:'account' type:'print'/%]/invoice/[@order_id@]'">
+							<div class="col-12 col-md-4">
+								<button type="button" title="Print Order Number [@order_id@]" class="btn btn-outline-secondary btn-block" onclick="window.location='[%url page:'account' type:'print'/%]/invoice/[@order_id@]'">
 									<i class="fa fa-print" aria-hidden="true"></i> Print
 								</button>
 							</div>
@@ -240,28 +234,28 @@
 		[%/param%]
 		[%param *footer%]
 			</div>
-			[%if [@total_results@] > 15%]
-				<div class="text-center">
-					<ul class="pagination" role="navigation" aria-label="Orders Pagination Navigation">
+			[%if [@total_results@] > [@limit@]%]
+				<nav aria-label="Orders page navigation">
+					<ul class="pagination justify-content-center mt-3" aria-label="Orders pagination navigation">
 						[%paging limit:'3'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]" aria-label="Go Back 1 Page">Previous Page</a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go back one page">Previous Page</a></li>
 							[%/param%]
 							[%param *goback_pages%]
-								<li><a href="[@url@]" aria-label="Go To Page [@PAGE@]">[@page@]</a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *current_page%]
-								<li class="active"><a href="[@url@]" aria-label="Current Page">[@page@]</a></li>
+								<li class="page-item active"><a class="page-link" href="[@url@]" aria-label="Current page">[@page@]</a></li>
 							[%/param%]
 							[%param *gonext_pages%]
-								<li><a href="[@url@]" aria-label="Go To Page [@PAGE@]">[@page@]</a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]" aria-label="Go Forward 1 Page">Next Page</a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go forward one page">Next Page</a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
-				</div>
+				</nav>
 			[%/if%]
 		[%/param%]
 		[%param ifempty%]
@@ -269,14 +263,15 @@
 		[%/param%]
 	[%/thumb_list%]
 </section>
-<section class="col-xs-12" aria-label="My Quotes">
+<section class="col-12" aria-label="My Quotes">
 	<hr />
 	<h2 id="quotes">My Quotes</h2>
-	[%thumb_list limit:'5' type:'quotes'%]
+	[%thumb_list limit:'10' type:'quotes'%]
 		[%param pgnum%]
 			[%form id:'pgquote'/%]
 		[%/param%]
 		[%param header%]
+			<div class="table-responsive">
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -301,46 +296,45 @@
 						[%if [@config:allow_quote_approval@]%]
 							<td><a href="[%url page:'account' type:'approve_quote'/%]" class="btn btn-success"><i class="fa fa-check icon-white" aria-hidden="true"></i> Approve Quote</a></td>
 						[%/if%]
-						<td><button type="button" class="btn btn-default" onclick="window.location='[%url page:'account' type:'print'/%]/invoice/[@order_id@]'"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
+						<td><button type="button" class="btn btn-outline-secondary" onclick="window.location='[%url page:'account' type:'print'/%]/invoice/[@order_id@]'"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
 							</a></td>
 					</tr>
 		[%/param%]
 		[%param *footer%]
 				</tbody>
 			</table>
-			[%if [@total_results@] > 10%]
-				<div class="text-center">
-					<ul class="pagination" role="navigation" aria-label="Quotes Pagination Navigation">
-						[%paging limit:'3'%]
+			</div>
+			[%if [@total_results@] > [@limit@]%]
+				<nav aria-label="Orders page navigation">
+					<ul class="pagination justify-content-center mt-3">
+						[%paging limit:'3' qs_name:'pgquote'%]
 							[%param *previous_page%]
-								<li><a href="[@url@]"><i class="fa fa-chevron-left"></i></a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go back one page">Previous Page</a></li>
 							[%/param%]
 							[%param *goback_pages%]
-								<li><a href="[@url@]">[@page@]</a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *current_page%]
-								<li class="active"><a href="[@url@]">[@page@]</a></li>
+								<li class="page-item active"><a class="page-link" href="[@url@]" aria-label="Current page">[@page@]</a></li>
 							[%/param%]
 							[%param *gonext_pages%]
-								<li><a href="[@url@]">[@page@]</a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go to page [@PAGE@]">[@page@]</a></li>
 							[%/param%]
 							[%param *next_page%]
-								<li><a href="[@url@]"><i class="fa fa-chevron-right"></i></a></li>
+								<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go forward one page">Next Page</a></li>
 							[%/param%]
 						[%/paging%]
 					</ul>
-				</div>
+				</nav>
 			[%/if%]
 		[%/param%]
 		[%param ifempty%]
-			<p>No quotes have been placed on this account. </p>
-		[%/param%]
-		[%param *footer%]
+			<p>No quotes have been placed on this account.</p>
 		[%/param%]
 	[%/thumb_list%]
 </section>
 [%if [@config:show_wishlist@]%]
-	<section class="col-xs-12" aria-label="My Wishlists">
+	<section class="col-12" aria-label="My Wishlists">
 		<hr />
 		<h2>My Wishlists</h2>
 		[%thumb_list limit:'10' type:'list_wishlists'%]
@@ -348,12 +342,13 @@
 				[%form id:'pgquote'/%]
 			[%/param%]
 			[%param header%]
+				<div class="table-responsive">
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>List Name</th>
-							<th class="hidden">Status / Visibility</th>
-							<th class="hidden">Remind Me Every</th>
+							<th class="d-none">Status / Visibility</th>
+							<th class="d-none">Remind Me Every</th>
 							<th>Created Date</th>
 							<th colspan="2">&nbsp;</th>
 						</tr>
@@ -361,57 +356,56 @@
 					<tbody>
 			[%/param%]
 			[%param *body%]
-						<tr>
-							<td><a href="[%url page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'/%]">[@wishlist_name@]</a></td>
-							<td class="hidden">
-								[%DATA id:'wishlist_active' if:'eq' value:'y'%]
-									[%param if_true%]<span class="label label-success">Active</span>[%/param%]
-									[%param if_false%]<span class="label label-important">Inactive</span>[%/param%]
-								[%/DATA%]
-								[%DATA id:'wishlist_private' if:'eq' value:'y'%]
-									[%param if_true%]<span class="label">Private</span>[%/param%]
-									[%param if_false%]<span class="label label-success">Public</span>[%/param%]
-								[%/DATA%]
-							</td>
-							<td class="hidden">
-								[%DATA id:'reminder_inc_days' if:'>' value:'0'%]
-									[%param if_true%][@reminder_inc_days@] Day(s)[%/param%]
-									[%param if_false%]-[%/param%]
-								[%/DATA%]
-							</td>
-							<td>
-								[%format type:'date' format:'#d #k #Y' default:'-'%][@date_created@][%/format%]
-								<span class="hidden"> / [%format type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/format%]</span>
-							</td>
-							<td>
-								<a class="btn btn-block btn-danger" href="[%url page:'account' type:'wishlist' id:'[@wishlist_id@]' qs:'proc=deletelist' /%]"><i class="fa fa-trash-o"></i> Delete</a>
-							</td>
-							<td>
-								<a class="btn btn-block btn-primary" href="[%url page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'/%]"><i class="fa fa-edit"></i> Edit</a>
-							</td>
-						</tr>
+					<tr>
+						<td><a href="[%url page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'/%]">[@wishlist_name@]</a></td>
+						<td class="d-none">
+							[%DATA id:'wishlist_active' if:'eq' value:'y'%]
+								[%param if_true%]<span class="badge-success">Active</span>[%/param%]
+								[%param if_false%]<span class="badge-important">Inactive</span>[%/param%]
+							[%/DATA%]
+							[%DATA id:'wishlist_private' if:'eq' value:'y'%]
+								[%param if_true%]<span class="badge">Private</span>[%/param%]
+								[%param if_false%]<span class="badge-success">Public</span>[%/param%]
+							[%/DATA%]
+						</td>
+						<td class="d-none">
+							[%DATA id:'reminder_inc_days' if:'>' value:'0'%]
+								[%param if_true%][@reminder_inc_days@] Day(s)[%/param%]
+								[%param if_false%]-[%/param%]
+							[%/DATA%]
+						</td>
+						<td>
+							[%format type:'date' format:'#d #k #Y' default:'-'%][@date_created@][%/format%]
+							<span class="d-none"> / [%format type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/format%]</span>
+						</td>
+						<td>
+							<a class="btn btn-block btn-danger" href="[%url page:'account' type:'wishlist' id:'[@wishlist_id@]' qs:'proc=deletelist' /%]"><i class="far fa-trash-alt"></i> Delete</a>
+						</td>
+						<td>
+							<a class="btn btn-block btn-primary" href="[%url page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'/%]"><i class="fa fa-edit"></i> Edit</a>
+						</td>
+					</tr>
 			[%/param%]
 			[%param *footer%]
 					</tbody>
 				</table>
+				</div>
 			[%/param%]
 			[%param ifempty%]
 				<p>You have not added a wishlist. Add a new wishlist below. </p>
 			[%/param%]
 		[%/thumb_list%]
-		<form class="form-inline" method="POST" action="[%url page:'account' type:'wishlist'/%]">
+		<form method="POST" action="[%url page:'account' type:'wishlist'/%]">
 			<input type="hidden" name="proc" value="addlist"/>
-			<div class="row">
-				<label for="wh_name" class="col-xs-12 col-md-2 control-label">New Wishlist</label>
-				<div class="col-xs-12 col-md-3">
-					<input class="form-control" type="text" name="wh_name" id="wh_name" placeholder="Wishlist Name"/>
-					<br>
-				</div>
-				<div class="col-xs-12 col-md-3">
-					<input class="btn btn-block btn-success" type="submit" name="submit" value="Add New Wishlist" />
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="wh_name">New Wishlist</label>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="wh_name" id="wh_name" placeholder="Wishlist Name" />
+						<div class="input-group-append"><button class="btn btn-block btn-success" type="submit" name="submit" value="Add New Wishlist">Add New Wishlist</button></div>
+					</div>
 				</div>
 			</div>
 		</form>
 	</section>
 [%/if%]
-</section>
