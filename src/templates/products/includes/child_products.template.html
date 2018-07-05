@@ -57,7 +57,7 @@
               <input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
               <div class="n-wrapper-form-control">
                 <span class="_itmspec_optpl" ref="[@specific_id@]">
-                  <select id="[@specific_id@]_itmspec_opt" name="[@specific_id@]_itmspec_opt" class="_itmspec_opt form-control" ref="[@specific_id@]">
+                  <select id="[@specific_id@]_itmspec_opt" autocomplete="off" name="[@specific_id@]_itmspec_opt" class="_itmspec_opt form-control" ref="[@specific_id@]">
     [%/param%]
     [%param *variation_body_select%]
                     <option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@] [%if [@variation_qty@] < 1 %] (Out of Stock) [%/if%]</option>
