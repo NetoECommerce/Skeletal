@@ -46,9 +46,10 @@ If you are compiling `.scss` files for the purpose of contributing to Skeletal, 
 _Note that steps 1 and 2 only need to be completed once per system, so no need to repeat them again._
 
 1. Install [node.js](https://nodejs.org/),
-2. Install Gulp globally with `npm i -g gulp` in your terminal, if you have not already,
-3. CD into your local folder of Skeletal and run the `npm i` command to install all relevant dependencies,
-4. Run `gulp` — this will now watch your `.scss` files and compile them as they change.
+2. CD into your local folder of Skeletal and run the `npm i` command to install all relevant dependencies,
+3. Run either of these two commands:
+    - `npm run build` — this will compile your `.scss` files.
+    - `npm run watch` — this will watch your `.scss` files and compile them as they change.
 
 ## Testing
 
