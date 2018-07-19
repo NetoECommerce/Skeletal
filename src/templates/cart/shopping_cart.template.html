@@ -285,9 +285,30 @@
 					<div class="row btn-stack">
 						<div class="col-12 col-lg-6 text-center mb-1">
 							[%if [@config:show_paypal_express_link@]%]
-								<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
-									<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
-								</a>
+								[%checkout_payment type:'[@order_type@]' reload:'1' distinct:'1'%]
+									[%param *body%]
+										[%if [@payment_desc_type@] eq 'paypalexpress'%]
+											[%if [@config:PAYPAL_MERCHANT_ID@] ne ''%]
+												[%SITE_VALUE id:'footer_javascript'%]
+													<script>
+														window.paypalCheckoutReady = function() {
+															paypal.checkout.setup(
+																"[%nohtml%][@config:paypal_merchant_id@][%/nohtml%]", {
+																	environment: "[%if [@config:paypal_api_environment@] eq 'sandbox'%]sandbox[%else%]live[%/if%]",
+																	button: 'paypal'
+																}
+															);
+														};
+													</script>
+													<script src="//www.paypalobjects.com/api/checkout.js" async></script>
+												[%/ SITE_VALUE%]
+											[%/if%]
+											<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
+												<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
+											</a>
+										[%/if%]
+									[%/param%]
+								[%/checkout_payment%]
 							[%/if%]
 						</div>
 						<div class="col-12 col-lg-6 text-center">
@@ -307,18 +328,4 @@
 <script type="text/javascript" language="javascript">
 	function rmcart (id) { var obj = document.getElementById(id); if(obj) { obj.value="0"; document.checkout.submit(); } }
 </script>
-[%site_value id:'footer_javascript'%]
-	<script>
-		window.paypalCheckoutReady = function () {
-			paypal.checkout.setup(
-				"[%nohtml%][@config:paypal_merchant_id@][%/nohtml%]",
-				{
-					environment: "[%IF [@config:paypal_api_environment@] eq 'sandbox'%]sandbox[%else%]live[%/if%]",
-					button: 'paypal'
-				}
-			);
-		};
-	</script>
-	<script src="//www.paypalobjects.com/api/checkout.js" async></script>
-[%/site_value%]
 [%ga_funnel%]/purchase/shopping_cart.html[%/ga_funnel%]
