@@ -10,7 +10,9 @@
 				'textclass': 'wishlist_text',
 				'htmlon': '<i class="fas fa-star" aria-hidden="true"></i>',
 				'htmloff': '<i class="far fa-star" aria-hidden="true"></i> Wishlist',
-				'tooltip_css': 'whltooltips'
+				'tooltip_css': 'whltooltips',
+				'imageon': '',
+				'imageoff': ''
 			});
 			// Ajax Add To Cart
 			$.addToCartInit({
