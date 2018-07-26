@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var cssnext = require('postcss-cssnext');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
 
 var config = {};
 config.src = './src';
@@ -22,7 +23,8 @@ gulp.task('sass', function() {
 
 // Move the javascript files into our /src/js folder
 gulp.task('js', function() {
-	return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/popper.js/dist/umd/popper.min.js'])
+	return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper.js/dist/umd/popper.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
+		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest(config.JS))
 });
 
