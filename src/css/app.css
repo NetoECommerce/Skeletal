@@ -7879,6 +7879,10 @@ a.text-dark:hover, a.text-dark:focus {
     height: 16px;
     background-position: 0 0;
     margin-top: 8px; }
+  .payment-icon-paypalexpress {
+    height: 16px;
+    background-position: 0 0;
+    margin-top: 8px; }
   .payment-icon-bpay {
     height: 18px;
     background-position: 0 -17px;
@@ -7888,6 +7892,10 @@ a.text-dark:hover, a.text-dark:focus {
     background-position: 0 -35px;
     margin-top: 3px; }
   .payment-icon-cheque {
+    height: 13px;
+    background-position: 0 -58px;
+    margin-top: 8px; }
+  .payment-icon-bankcheque {
     height: 13px;
     background-position: 0 -58px;
     margin-top: 8px; }
@@ -7911,6 +7919,10 @@ a.text-dark:hover, a.text-dark:focus {
     height: 17px;
     background-position: 0 -197px;
     margin-top: 7px; }
+  .payment-icon-dinersclub {
+    height: 17px;
+    background-position: 0 -197px;
+    margin-top: 7px; }
   .payment-icon-discover {
     height: 10px;
     background-position: 0 -187px;
@@ -7927,14 +7939,18 @@ a.text-dark:hover, a.text-dark:focus {
     height: 18px;
     background-position: 0 -226px;
     margin-top: 7px; }
+  .payment-icon-paymarkonlineeftpos {
+    height: 18px;
+    background-position: 0 -226px;
+    margin-top: 7px; }
   .payment-icon-zipmoney {
-    height: 30px;
-    background-position: 0 30px;
+    height: 27px;
+    background-position: 0 27px;
     margin-top: 2px; }
   .payment-icon-zippay {
-    height: 18px;
-    background-position: 0 49px;
-    margin-top: 7px; }
+    height: 27px;
+    background-position: 0 27px;
+    margin-top: 2px; }
 
 .ir {
   display: block;
