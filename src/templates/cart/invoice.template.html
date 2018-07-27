@@ -16,7 +16,7 @@
 			[%/if%]
 		[%/param%]
 	[%/payment_confirmation%]
-	<p class="mb-1">Order [%show_order id:'[@order_id@]'%][%param *header%]<span> #[@order_id@] </span>[%/param%][%/show_order%]</p>
+	<p class="mb-1">Order [%show_order id:'[@order_id@]'%][%param *header%]<span data-test-id="order-id"> #[@order_id@] </span>[%/param%][%/show_order%]</p>
 	<p class="mb-3">Confirmation sent to [%if [@user:username@]%][@user:email@][%else%][@bill_email@][%/if%]</p>
 	<div class="card card-body mb-2">
 		[%if [@user:username@]%]
@@ -28,7 +28,7 @@
 		[%else%]
 			<h2>Activate your [@config:company_name@] account</h2>
 			<p>So that you can shop faster in the future and track past orders, we have generated a [@config:company_name@] account for you.</p>
-			<p class="mb-0"><a href="[%url page:'account' type:'resetpwd' id:'[@logincode@]'/%]" class="btn btn-primary d-inline-block">Activate account and create password</a></p>
+			<p class="mb-0"><a href="[%url page:'account' type:'resetpwd' id:'[@logincode@]'/%]" class="btn btn-primary d-inline-block" data-test-id="activate-account">Activate account and create password</a></p>
 			<p class="small text-muted mt-1 mb-0"><strong>Note:</strong> Activating your [@config:company_name@] account is optional.</p>
 		[%/if%]
 	</div>
