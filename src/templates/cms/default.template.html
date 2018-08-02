@@ -121,15 +121,15 @@
 		[%param *body%]
 			<div itemprop="review" itemscope itemtype="http://schema.org/Review">
 				<blockquote>
-					<h4 itemprop="name"><i>[%nohtml%][@title@][%/nohtml%]</i></h4>
+					<h4 itemprop="name"><i>[%format type:'text' rmhtml:'1'%][@title@][%/format%]</i></h4>
 					<div>
 						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
 					</div>
-					<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span>
+					<span itemprop="description">[%format type:'text' rmhtml:'1'%][@review@][%/format%]</span>
 					[%if [@review_response@]%]
 						<br /><br />
 						<blockquote>
-							<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
+							<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%format type:'text' rmhtml:'1'%][@review_response@][%/format%]</span>
 						</blockquote>
 					[%/if%]
 				</blockquote> <hr />
