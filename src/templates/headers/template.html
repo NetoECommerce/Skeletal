@@ -59,14 +59,49 @@
 	  <div class="collapse navbar-collapse" id="navbarMainMenu">
 			<form class="d-block d-md-none" name="productsearch" method="get" action="/" role="search" aria-label="Product search">
 				<input type="hidden" name="rf" value="kw"/>
-				<div class="input-group">
+				<div class="input-group search-wrapper">
 					<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search-xs" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
 					<div class="input-group-append">
 						<button type="submit" value="Search" class="btn btn-outline-secondary" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
 					</div>
 				</div>
 			</form>
-	    <ul class="navbar-nav mr-auto" role="navigation" aria-label="Main menu">
+		<ul class="navbar-nav mr-auto d-block d-md-none border-bottom py-2" role="navigation" aria-label="Category Menu">
+			[%cache type:'menu' id:'category-menu-mobile'%]
+				[%content_menu type:'category' sortby:'sortorder,name' show_empty:'1'%]
+					[%param *level_1%]
+						<li class="nav-item">
+							<a [%IF [@next_level@] %]data-toggle="collapse" data-parent="#mob-menu" href="#mob-menu-[@id@]" class="nav-link collapsed dropdown-toggle"[%ELSE%]href="[@url@]" class="nav-link"[%/IF%]>
+								[@name@]
+							</a>
+							[%if [@next_level@]%]
+								<ul id="mob-menu-[@id@]" class="collapse list-unstyled">
+									[@next_level@]
+								</ul>
+							[%/if%]
+						</li>
+					[%/param%]
+					[%param *level_2%]
+						<li class="nav-item pl-3">
+							<a [%IF [@next_level@] %]data-toggle="collapse" data-parent="#mob-menu" href="#mob-menu-[@id@]" class="nav-link collapsed dropdown-toggle"[%ELSE%]href="[@url@]" class="nav-link"[%/IF%]>
+								[@name@]
+							</a>
+							[%if [@next_level@]%]
+								<ul id="mob-menu-[@id@]" class="collapse list-unstyled">
+									[@next_level@]
+								</ul>
+							[%/if%]
+						</li>
+					[%/param%]
+					[%param *level_3%]
+						<li class="nav-item pl-3">
+							<a href="[@url@]" class="nav-link">[@name@]</a>
+						</li>
+					[%/param%]
+				[%/content_menu%]
+			[%/ cache%]
+		</ul>
+	    <ul class="navbar-nav main-menu mr-auto" role="navigation" aria-label="Main menu">
 			[%cache type:'menu' id:'header-content-menu'%]
 				[%menu id:'web_header'%]
 					[%param *level_1%]
@@ -96,34 +131,35 @@
 				[%/menu%]
 			[%/ cache%]
 		</ul>
-		<ul class="navbar-nav navbar-right" role="navigation" aria-label="Accounts menu">
-			<li class="nav-item dropdown">
-				<a href="[%url page:'account'/%]" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span></a>
-				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a class="dropdown-item" href="[%url page:'account'/%]">Account Home</a></li>
-					<li><a class="dropdown-item" href="[%url page:'account'/%]#orders">Orders</a></li>
-					[%if [@config:allow_user_quote@]%]
-					<li><a class="dropdown-item" href="[%url page:'account'/%]#quotes">Quotes</a></li>
-					[%/ if%]
-					<li><a class="dropdown-item" href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
-					<li><a class="dropdown-item" href="[%url page:'account' type:'favourites'/%]">Reorder</a></li>
-					[%if [@config:show_wishlist@]%]
-					<li><a class="dropdown-item" href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
-					[%/if%]
-					<li><a class="dropdown-item" href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
-					<li><a class="dropdown-item" href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
-					<li><a class="dropdown-item" href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
-					<li class="divider"><div class="dropdown-divider"></div></li>
-					[%if [@user:username@]%]
-						<li> <a class="dropdown-item" href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
-						<li> <a class="dropdown-item" href="[%url page:'account' type:'logout'/%]"><i class="fa fa-power-off"></i> Log Out</a> </li>
-					[%else%]
-						<li> <a class="dropdown-item" href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
-						<li> <a class="dropdown-item" href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
-					[%/if%]
-				</ul>
-			</li>
-		</ul>
+
+			<ul class="navbar-nav account navbar-right" role="navigation" aria-label="Accounts menu">
+				<li class="nav-item dropdown">
+					<a href="[%url page:'account'/%]" role="button" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Account dropdown"><i class="fa fa-user"></i> <span class="visible-lg visible-inline-lg">My Account</span></a>
+					<ul class="dropdown-menu account dropdown-menu-right">
+						<li><a class="dropdown-item" href="[%url page:'account'/%]">Account Home</a></li>
+						<li><a class="dropdown-item" href="[%url page:'account'/%]#orders">Orders</a></li>
+						[%if [@config:allow_user_quote@]%]
+						<li><a class="dropdown-item" href="[%url page:'account'/%]#quotes">Quotes</a></li>
+						[%/ if%]
+						<li><a class="dropdown-item" href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
+						<li><a class="dropdown-item" href="[%url page:'account' type:'favourites'/%]">Reorder</a></li>
+						[%if [@config:show_wishlist@]%]
+						<li><a class="dropdown-item" href="[%url page:'account' type:'wishlist'/%]">Wishlists</a></li>
+						[%/if%]
+						<li><a class="dropdown-item" href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
+						<li><a class="dropdown-item" href="[%url page:'account' type:'edit_account'/%]">Edit My Details</a></li>
+						<li><a class="dropdown-item" href="[%url page:'account' type:'edit_address'/%]">Edit My Address Book</a></li>
+						<li class="divider"><div class="dropdown-divider"></div></li>
+						[%if [@user:username@]%]
+							<li> <a class="dropdown-item" href="[%url page:'account' type:'edit_pwd'/%]"><i class="fa fa-lock"></i> Change My Password</a> </li>
+							<li> <a class="dropdown-item" href="[%url page:'account' type:'logout'/%]"><i class="fa fa-power-off"></i> Log Out</a> </li>
+						[%else%]
+							<li> <a class="dropdown-item" href="[%url page:'account' type:'login'/%]" title="Login">Login</a> </li>
+							<li> <a class="dropdown-item" href="[%url page:'account' type:'register'/%]" title="Register">Register</a> </li>
+						[%/if%]
+					</ul>
+				</li>
+			</ul>
 	  </div>
 	</nav>
 </header>
