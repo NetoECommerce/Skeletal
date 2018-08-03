@@ -738,3 +738,38 @@ body.fixed-body{
 		}
 	}
 }
+.tabbable {
+	.nav-tabs {
+		display: none;
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+	.card-header {
+		padding: 0.25rem 0.5rem;
+		@include media-breakpoint-up(md) {
+			display: none;
+		}
+	}
+}
+@include media-breakpoint-up(md) {
+	.tabbable {
+		.card {
+        	border: none;
+    	}
+   		.collapse {
+        	display: block;
+		}
+		.card-body {
+			padding: 0;
+		}
+	}
+}
+@include media-breakpoint-down(sm) {
+    .tabbable {
+		.tab-pane {
+        	display: block !important;
+			opacity: 1;
+		}
+    }
+}

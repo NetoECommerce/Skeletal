@@ -8324,3 +8324,31 @@ input[readonly] {
     body.fixed-body .order-summary-m {
       display: none;
       opacity: 0; } }
+
+.tabbable .nav-tabs {
+  display: none; }
+  @media (min-width: 768px) {
+    .tabbable .nav-tabs {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+
+.tabbable .card-header {
+  padding: 4px 8px;
+  padding: 0.25rem 0.5rem; }
+  @media (min-width: 768px) {
+    .tabbable .card-header {
+      display: none; } }
+
+@media (min-width: 768px) {
+  .tabbable .card {
+    border: none; }
+  .tabbable .collapse {
+    display: block; }
+  .tabbable .card-body {
+    padding: 0; } }
+
+@media (max-width: 767.98px) {
+  .tabbable .tab-pane {
+    display: block !important;
+    opacity: 1; } }
