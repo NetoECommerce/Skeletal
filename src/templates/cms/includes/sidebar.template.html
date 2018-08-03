@@ -3,7 +3,7 @@
 		[%site_value id:'footer_javascript'%]
 			<script>
 			$(document).ready(function() {
-				var seperator = window.location.href.includes("?") ? "&" : "?";
+				var seperator = window.location.href.indexOf("?") > -1 ? "&" : "?";
 				var url = `${window.location.href}${seperator}templatebody=filters&templatehead=none&templatefoot=none`;
 
 				$.get(url, function(data) {
