@@ -60,6 +60,19 @@ $payment-icon:(
 			}
 		}
 	}
+	// Mobile Menu
+	@include media-breakpoint-down(sm) {
+		.navbar-nav{
+			&.main-menu {
+				padding-top: 0.5rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid #dee2e6;
+			}
+			&.account {
+				padding-top: 0.5rem;
+			}
+		}
+	}
 }
 // dropdown hover support
 @include media-breakpoint-up(md) {
@@ -736,38 +749,5 @@ body.fixed-body{
 			display: none;
 			opacity: 0;
 		}
-	}
-}
-
-// Mobile Menu Refinements
-@include media-breakpoint-down(sm) {
-	.dropdown-menu.account {
-		border: none;
-		background-color: initial;
-		padding-top: 0;
-		padding-left: 1rem;
-		a.dropdown-item {
-			padding: 0.5rem 1rem 0.5rem 0;
-			&:hover {
-				background-color: transparent;
-			}
-		}
-	}
-	.navbar-nav{
-		&.main-menu {
-			padding-top: 0.5rem;
-			padding-bottom: 0.5rem;
-			border-bottom: 1px solid #dee2e6;
-		}
-		&.account {
-			padding-top: 0.5rem;
-			padding-bottom: 0.5rem;
-		}
-	}
-	.search-wrapper {
-		margin-top: 0.5rem;
-	}
-	.wrapper-header .navbar > .navbar-collapse {
-		padding: 0 0.5rem;
 	}
 }
