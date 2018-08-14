@@ -1,21 +1,21 @@
 <hr aria-hidden="true"/>
 <h2>Customise Your Purchase</h2>
 <div class="component selector component-wrapper">
-	[%ITEM_KITTING id:'[@SKU@]' variation_kitting:1%]
-		[%PARAM *group_header%]
-			<input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
-			<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
-			<input class="input-tiny btn-large" id="qty[@rndm@][@SKU@]" name="qty" value="[%if [@min_qty@]%][@min_qty@][%else%]1[%/if%]" size="2" type="hidden">
-			<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
-			<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@QTY@]">
-			<div class="card mb-2">
-				[%if [@assemble_group_fullname@]%]
-					<div class="card-header"><h3 class="card-title">[@assemble_group_fullname@]</h3></div>
-				[%/if%]
-				<div class="card-body">
-					<div class="row">
-		[%/PARAM%]
-		[%PARAM *body%]
+    [%ITEM_KITTING id:'[@SKU@]' variation_kitting:1%]
+        [%PARAM *group_header%]
+            <input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
+            <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
+            <input class="input-tiny btn-large" id="qty[@rndm@][@SKU@]" name="qty" value="[%if [@min_qty@]%][@min_qty@][%else%]1[%/if%]" size="2" type="hidden">
+            <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@SKU@]">
+            <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku" value="[@QTY@]">
+            <div class="card mb-2">
+                [%if [@assemble_group_fullname@]%]
+                    <div class="card-header"><h3 class="card-title">[@assemble_group_fullname@]</h3></div>
+                [%/if%]
+                <div class="card-body">
+                    <div class="row">
+        [%/PARAM%]
+        [%PARAM *body%]
             [%if ![@has_variation@]%]
                 <div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
                     <input type="checkbox" id="[@sku@]a" class="hidden" checked>
@@ -88,65 +88,65 @@
                     </div>
                 </div>
             [%/if%]
-		[%/PARAM%]
-		[%PARAM *group_footer%]
-						</div>
-					</div>
-				</div>
-		[%/PARAM%]
-	[%/ITEM_KITTING%]
-	[%extra_options id:'[@SKU@]'%]
-		[%PARAM *header%]
-		<table class="table table-striped table-bordered">
-			<tr>
-				<th colspan="2">Available Options</th>
-			</tr>
-			[%/ PARAM%]
-			[%PARAM *number_option%]
-				<tr>
-					<td><label>[@name@]</label></td>
-					<td><input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value=""></td>
-				</tr>
-			[%/ PARAM%]
-			[%PARAM *text_option%]
-				<tr>
-					<td><label>[@name@]</label></td>
-					<td><textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea></td>
-				</tr>
-			[%/ PARAM%]
-			[%PARAM *select_option%]
-				<tr>
-					<td><label>[@name@]</label></td>
-					<td>
-						<select name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]">
-							[@choices@]
-						</select>
-					</td>
-				</tr>
-			[%/ PARAM%]
-			[%PARAM *choices%]
-				<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
-				[%DATA id:'price' if:'!=' value:'0'%]
-					(+ [%FORMAT type:'currency'%][@price@][%/ FORMAT%])
-				[%/ DATA%]
-				</option>
-			[%/ PARAM%]
-			[%PARAM *footer%]
-			<input type="hidden" name="extras" value="[@total_options@]"/>
-		</table>
-		<hr />
-		[%/ PARAM%]
-	[%/ extra_options%]
+        [%/PARAM%]
+        [%PARAM *group_footer%]
+                    </div>
+                </div>
+            </div>
+        [%/PARAM%]
+    [%/ITEM_KITTING%]
+    [%extra_options id:'[@SKU@]'%]
+        [%PARAM *header%]
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th colspan="2">Available Options</th>
+                </tr>
+                [%/ PARAM%]
+                [%PARAM *number_option%]
+                    <tr>
+                        <td><label>[@name@]</label></td>
+                        <td><input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value=""></td>
+                    </tr>
+                [%/ PARAM%]
+                [%PARAM *text_option%]
+                    <tr>
+                        <td><label>[@name@]</label></td>
+                        <td><textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea></td>
+                    </tr>
+                [%/ PARAM%]
+                [%PARAM *select_option%]
+                    <tr>
+                        <td><label>[@name@]</label></td>
+                        <td>
+                            <select name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]">
+                                [@choices@]
+                            </select>
+                        </td>
+                    </tr>
+                [%/ PARAM%]
+                [%PARAM *choices%]
+                    <option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
+                    [%DATA id:'price' if:'!=' value:'0'%]
+                        (+ [%FORMAT type:'currency'%][@price@][%/ FORMAT%])
+                    [%/ DATA%]
+                    </option>
+                [%/ PARAM%]
+                [%PARAM *footer%]
+                <input type="hidden" name="extras" value="[@total_options@]"/>
+            </table>
+            <hr />
+        [%/ PARAM%]
+    [%/ extra_options%]
 </div>
 <div class="row">
-	<div class="col-12 col-md-5">
-		[%if [@store_quantity@] > 0 AND [@preorder@]%]
-			<button type="button" title="Pre-Order Now" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Pre-Order Now</button>
-		[%elseif [@store_quantity@] > 0%]
-			<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Add to Cart</button>
-		[%else%]
-			<button type="button" title="Out Of Stock" class="btn btn-outline-dark btn-block btn-lg" disabled>Out Of Stock</button>
-		[%/if%]
-	</div>
-	<div class="col-12"><hr></div>
+    <div class="col-12 col-md-5">
+        [%if [@store_quantity@] > 0 AND [@preorder@]%]
+            <button type="button" title="Pre-Order Now" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Pre-Order Now</button>
+        [%elseif [@store_quantity@] > 0%]
+            <button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]">Add to Cart</button>
+        [%else%]
+            <button type="button" title="Out Of Stock" class="btn btn-outline-dark btn-block btn-lg" disabled>Out Of Stock</button>
+        [%/if%]
+    </div>
+    <div class="col-12"><hr></div>
 </div>
