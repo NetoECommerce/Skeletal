@@ -1,10 +1,10 @@
-<div class="col-md-6 col-lg-6">
+<div class="col-12 col-md-6">
 	<div class="thumbnail">
-		<a class="image pull-left" href="[@url@]"><img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" width="100%" alt="[@headline@]" border="0" ></a>
+		<a class="image float-left" href="[@url@]"><img src="[%asset_url type:'adw' id:'[@ad_id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" width="100%" alt="[@headline@]" /></a>
 		<div class="caption">
-			<h5 class="headline"><a href="[@url@]"><!--##[@headline@]##--></a></h5>
-			<p><!--##[%format type:'text' nohtml:'1' trim:'LE2R' wordlength:'27'%][@description@][%END format%]##--> <br/>
-			<a href="[@url@]"><!--##[@linktext@]##--></a></p>
+			<h5 class="headline"><a href="[@url@]">[@headline@]</a></h5>
+			<p>[%format type:'text' nohtml:'1' trim:'LE2R' wordlength:'27'%][@description@][%/ format%] <br/>
+			<a href="[@url@]">[@linktext@]</a></p>
 		</div>
 	</div>
 </div>

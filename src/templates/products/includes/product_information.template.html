@@ -1,44 +1,44 @@
 <div class="tabbable">
   <ul class="nav nav-tabs" role="tablist">
-    <li class="active" id="tabDescription" role="tab" aria-controls="description" aria-selected="true">
-      <a href="#description" data-toggle="tab">Description</a>
+    <li class="nav-item" id="tabDescription" role="tab" aria-controls="description" aria-selected="true">
+      <a class="nav-link active" href="#description" data-toggle="tab">Description</a>
     </li>
     [%if [@warranty@]%]
-      <li id="tabWarranty" role="tab" aria-controls="warranty" aria-selected="false">
-        <a href="#warranty" data-toggle="tab">Warranty</a>
+      <li class="nav-item" id="tabWarranty" role="tab" aria-controls="warranty" aria-selected="false">
+        <a class="nav-link" href="#warranty" data-toggle="tab">Warranty</a>
       </li>
     [%/if%]
     [%if [@features@]%]
-      <li id="tabFeatures" role="tab" aria-controls="features" aria-selected="false">
-        <a href="#features" data-toggle="tab">Features</a>
+      <li class="nav-item" id="tabFeatures" role="tab" aria-controls="features" aria-selected="false">
+        <a class="nav-link" href="#features" data-toggle="tab">Features</a>
       </li>
     [%/if%]
-    <li id="tabSpecifications" role="tab" aria-controls="specifications" aria-selected="false">
-      <a href="#specifications" data-toggle="tab">Specifications</a>
+    <li class="nav-item" id="tabSpecifications" role="tab" aria-controls="specifications" aria-selected="false">
+      <a class="nav-link" href="#specifications" data-toggle="tab">Specifications</a>
     </li>
     [%if [@tnc@]%]
-      <li id="tabTermsConditions" role="tab" aria-controls="termsConditions" aria-selected="false">
-        <a href="#termsConditions" data-toggle="tab">Terms and Conditions</a>
+      <li class="nav-item" id="tabTermsConditions" role="tab" aria-controls="termsConditions" aria-selected="false">
+        <a class="nav-link" href="#termsConditions" data-toggle="tab">Terms and Conditions</a>
       </li>
     [%/if%]
     [%if [@config:show_product_reviews@]%]
-    <li id="tabReviews" role="tab" aria-controls="reviews" aria-selected="false">
-      <a class="reviews" href="#reviews" data-toggle="tab">
+    <li class="nav-item" id="tabReviews" role="tab" aria-controls="reviews" aria-selected="false">
+      <a class="nav-link" class="reviews" href="#reviews" data-toggle="tab">
         Reviews
         [%set [@data:ratings-count@] = 1 /%]
         [%while [@data:ratings-count@] <= [@data:rating@]%]
           [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fas fa-star" aria-hidden="true"></i>
         [%/while%]
         [%while [@data:ratings-count@] <= 5%]
           [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-          <i class="fa fa-star-o" aria-hidden="true"></i>
+          <i class="far fa-star" aria-hidden="true"></i>
         [%/while%]
       </a>
     </li>
     [%/if%]
   </ul>
-  <div class="tab-content">
+  <div class="tab-content pt-3">
     <div role="tabpanel" aria-labelledby="tabDescription" class="tab-pane active" id="description">
       <section class="productdetails n-responsive-content" aria-label="Product Description">
         [@description@]
@@ -200,11 +200,11 @@
           [%set [@data:ratings-count@] = 1 /%]
           [%while [@data:ratings-count@] <= [@data:score@]%]
             [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-            <i class="fa fa-star"></i>
+            <i class="fas fa-star"></i>
           [%/while%]
           [%while [@data:ratings-count@] <= 5%]
             [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-            <i class="fa fa-star-o"></i>
+            <i class="far fa-star"></i>
           [%/while%]
           ([@score@])
           [%if [@review_response@]%]
@@ -221,12 +221,12 @@
     [%/thumb_list%]
     [%if [@reviews@] > 0%]
       <p>
-        <a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a>
+        <a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="far fa-edit"></i> Write a product review</a>
       </p>
     [%else%]
       <h4>Be The First To Review This Product!</h4>
       <p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
-      <p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> Write a product review</a></p>
+      <p><a href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]" class="btn btn-default"><i class="far fa-edit"></i> Write a product review</a></p>
     [%/if%]
     </div><!--/.tab-pane-->
     [%/if%]
