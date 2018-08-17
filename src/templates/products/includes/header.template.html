@@ -6,8 +6,8 @@
 			<h3 class="text-muted" role="heading" aria-label="Product Subtitle">[@subtitle@]</h3>
 		[%/if%]
 
-		[%set [@review-sku@]%][%if [@parent_sku@] and [@config:SHOW_CHILD_PRODUCT_REVIEWS@]%][@parent_sku@][%else%][@sku@][%/if%][%/set%]
-		[%load_ajax_template id:'_header_reviews' type:'item' template:'header.reviews' preload:'1' tmpl_sku:'[@review-sku@]' /%]
+		[%set [@review_sku@]%][%if [@parent_sku@] and [@config:show_child_product_reviews@]%][@parent_sku@][%else%][@sku@][%/if%][%/set%]
+		[%load_ajax_template id:'_reviews' type:'item' template:'reviews' preload:'1' tmpl_sku:'[@review_sku@]' /%]
 
 		<div class="dropdown">
 			<button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-controls="shareDropdown[@sku@]" aria-label="Share product">
