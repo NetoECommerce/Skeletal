@@ -175,6 +175,31 @@ $payment-icon:(
 		width: 100%;
 	}
 }
+// Product page tabs
+.tabbable {
+	.nav-tabs {
+		display: none;
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+	@include media-breakpoint-up(md) {
+		.card {
+			border: none;
+		}
+		.collapse {
+			display: block;
+		}
+		.card-header {
+			display: none;
+		}
+	}
+	@include media-breakpoint-down(sm) {
+		.tab-pane {
+			display: block;
+		}
+	}
+}
 // Cart table
 .cartTable {
 	tbody tr td {
