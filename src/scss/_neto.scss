@@ -751,25 +751,21 @@ body.fixed-body{
 			display: none;
 		}
 	}
-}
-@include media-breakpoint-up(md) {
-	.tabbable {
+	@include media-breakpoint-up(md) {
 		.card {
-        	border: none;
-    	}
-   		.collapse {
-        	display: block;
+			border: none;
+		}
+		.collapse {
+			display: block;
 		}
 		.card-body {
 			padding: 0;
 		}
 	}
-}
-@include media-breakpoint-down(sm) {
-    .tabbable {
+	@include media-breakpoint-down(sm) {
 		.tab-pane {
-        	display: block !important;
+			display: block !important;
 			opacity: 1;
 		}
-    }
+	}
 }
