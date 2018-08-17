@@ -57,14 +57,6 @@ We have a simple testing guide located [here](/testing.md).
 
 ## Contribute
 
-Have you found an issue on Skeletal but don't know exactly how to fix it? [Raise an issue here](https://github.com/NetoECommerce/Skeletal/issues), but please respect the following restrictions:
-
-- Please do not use the issue tracker for personal support requests,
-- Keep the issues discussion on topic and respect the opinions of others,
-- Please try to be as detailed as possible in your report.
-
-Do you know a fix for a current Skeletal issue? Do you know have a feature request for Skeletal? Make a pull request with your new code!
-
 <img src="http://design.neto.com.au/assets/uploads/howtogit01.jpg" width="500">
 
 ### Clone latest version of Skeletal
@@ -92,10 +84,6 @@ Branching name should be prefixed with how the pull request is helping Skeletal.
 Is this pull request adding a new feature or enhancement?
 
 `git checkout -b "feature/branch-title"`
-
-Is there an associated issue on the repo?
-
-`git checkout -b "issue-number/branch-title"`
 
 ### Make changes and comment
 
