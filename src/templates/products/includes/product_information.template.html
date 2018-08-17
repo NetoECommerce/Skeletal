@@ -41,7 +41,7 @@
     <div class="tab-content pt-3">
         <div class="tab-pane active" id="description" role="tabpanel" aria-labelledby="tabDescription">
             <div class="card">
-                <div class="card-header" id="headingDescription">
+                <div class="card-header py-1 px-2" id="headingDescription">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionDescription" aria-expanded="true" aria-controls="accordionDescription">
                             Description
@@ -49,7 +49,7 @@
                     </h5>
                 </div>
                 <div id="accordionDescription" class="collapse" aria-labelledby="headingDescription">
-                    <div class="card-body">
+                    <div class="card-body p-md-0">
                         <section class="productdetails n-responsive-content" aria-label="Product Description">
                             [@description@]
                         </section>
@@ -60,11 +60,30 @@
                 </div>
             </div>
         </div>
-
+        [%if [@warranty@]%]
+            <div class="tab-pane" id="warranty" role="tabpanel" aria-labelledby="tabWarranty">
+                <div class="card">
+                    <div class="card-header py-1 px-2" id="headingWarranty">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionWarranty" aria-expanded="true" aria-controls="accordionWarranty">
+                                Warranty
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="accordionWarranty" class="collapse" aria-labelledby="headingWarranty">
+                        <div class="card-body p-md-0">
+                            <div class="n-responsive-content">
+                                [@warranty@]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        [%/if%]
         [%if [@features@]%]
             <div class="tab-pane" id="features" role="tabpanel" aria-labelledby="tabFeatures">
                 <div class="card">
-                    <div class="card-header" id="headingFeatures">
+                    <div class="card-header py-1 px-2" id="headingFeatures">
                         <h5 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionFeatures" aria-expanded="true" aria-controls="accordionFeatures">
                                 Features
@@ -72,7 +91,7 @@
                         </h5>
                     </div>
                     <div id="accordionFeatures" class="collapse" aria-labelledby="headingFeatures">
-                        <div class="card-body">
+                        <div class="card-body p-md-0">
                             <div class="n-responsive-content">
                                 [@features@]
                             </div>
@@ -81,29 +100,9 @@
                 </div>
             </div>
         [%/if%]
-        [%if [@tnc@]%]
-            <div class="tab-pane" id="termsConditions" role="tabpanel" aria-labelledby="tabTermsConditions">
-                <div class="card">
-                    <div class="card-header" id="headingTnc">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionTnc" aria-expanded="true" aria-controls="accordionTnc">
-                                Terms and Conditions
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="accordionTnc" class="collapse" aria-labelledby="headingTnc">
-                        <div class="card-body">
-                            <div class="n-responsive-content">
-                                [@tnc@]
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        [%/if%]
         <div class="tab-pane" id="specifications" role="tabpanel" aria-labelledby="tabSpecifications">
             <div class="card">
-                <div class="card-header" id="headingSpecificatoin">
+                <div class="card-header py-1 px-2" id="headingSpecificatoin">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionSpecifications" aria-expanded="true" aria-controls="accordionSpecifications">
                             Specifications
@@ -111,7 +110,7 @@
                     </h5>
                 </div>
                 <div id="accordionSpecifications" class="collapse" aria-labelledby="headingSpecificatoin">
-                    <div class="card-body">
+                    <div class="card-body p-md-0">
                         [%if [@specifications@]%]
                             <div class="n-responsive-content">
                                 [@specifications@]
@@ -219,20 +218,20 @@
                 </div>
             </div>
         </div>
-        [%if [@warranty@]%]
-            <div class="tab-pane" id="warranty" role="tabpanel" aria-labelledby="tabWarranty">
+        [%if [@tnc@]%]
+            <div class="tab-pane" id="termsConditions" role="tabpanel" aria-labelledby="tabTermsConditions">
                 <div class="card">
-                    <div class="card-header" id="headingWarranty">
+                    <div class="card-header py-1 px-2" id="headingTnc">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionWarranty" aria-expanded="true" aria-controls="accordionWarranty">
-                                Warranty
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionTnc" aria-expanded="true" aria-controls="accordionTnc">
+                                Terms and Conditions
                             </button>
                         </h5>
                     </div>
-                    <div id="accordionWarranty" class="collapse" aria-labelledby="headingWarranty">
-                        <div class="card-body">
+                    <div id="accordionTnc" class="collapse" aria-labelledby="headingTnc">
+                        <div class="card-body p-md-0">
                             <div class="n-responsive-content">
-                                [@warranty@]
+                                [@tnc@]
                             </div>
                         </div>
                     </div>
@@ -242,7 +241,7 @@
         [%if [@config:show_product_reviews@]%]
             <div class="tab-pane" id="reviews" role="tabpanel" aria-labelledby="tabReviews">
                 <div class="card">
-                    <div class="card-header" id="headingReviews">
+                    <div class="card-header py-1 px-2" id="headingReviews">
                         <h5 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordionReviews" aria-expanded="true" aria-controls="accordionReviews">
                                 Reviews
@@ -259,7 +258,7 @@
                         </h5>
                     </div>
                     <div id="accordionReviews" class="collapse" aria-labelledby="headingReviews">
-                        <div class="card-body">
+                        <div class="card-body p-md-0">
                             [%thumb_list type:'product_reviews' limit:'5'%]
                                 [%param filter_1%][@SKU@][%/param%]
                                 [%param *body%]

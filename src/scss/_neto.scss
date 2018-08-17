@@ -175,6 +175,31 @@ $payment-icon:(
 		width: 100%;
 	}
 }
+// Product page tabs
+.tabbable {
+	.nav-tabs {
+		display: none;
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+	@include media-breakpoint-up(md) {
+		.card {
+			border: none;
+		}
+		.collapse {
+			display: block;
+		}
+		.card-header {
+			display: none;
+		}
+	}
+	@include media-breakpoint-down(sm) {
+		.tab-pane {
+			display: block;
+		}
+	}
+}
 // Cart table
 .cartTable {
 	tbody tr td {
@@ -735,37 +760,6 @@ body.fixed-body{
 		.order-summary-m{
 			display: none;
 			opacity: 0;
-		}
-	}
-}
-.tabbable {
-	.nav-tabs {
-		display: none;
-		@include media-breakpoint-up(md) {
-			display: flex;
-		}
-	}
-	.card-header {
-		padding: 0.25rem 0.5rem;
-		@include media-breakpoint-up(md) {
-			display: none;
-		}
-	}
-	@include media-breakpoint-up(md) {
-		.card {
-			border: none;
-		}
-		.collapse {
-			display: block;
-		}
-		.card-body {
-			padding: 0;
-		}
-	}
-	@include media-breakpoint-down(sm) {
-		.tab-pane {
-			display: block !important;
-			opacity: 1;
 		}
 	}
 }
