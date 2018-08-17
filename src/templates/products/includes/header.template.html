@@ -6,7 +6,7 @@
 			<h3 class="text-muted" role="heading" aria-label="Product Subtitle">[@subtitle@]</h3>
 		[%/if%]
 
-		[%set [@review_sku@]%][%if [@parent_sku@] and [@config:show_child_product_reviews@]%][@parent_sku@][%else%][@sku@][%/if%][%/set%]
+		[%set [@review_sku@]%][%if [@parent_sku@]%][@parent_sku@][%else%][@sku@][%/if%][%/set%]
 		[%load_ajax_template id:'_reviews' type:'item' template:'reviews' preload:'1' tmpl_sku:'[@review_sku@]' /%]
 
 		<div class="dropdown">
