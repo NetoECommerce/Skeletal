@@ -2,8 +2,8 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%param *header%]
-		<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-			<ol class="breadcrumb">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
 					<meta itemprop="position" content="0" />
