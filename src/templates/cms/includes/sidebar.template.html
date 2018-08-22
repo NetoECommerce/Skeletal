@@ -3,17 +3,16 @@
 		[%site_value id:'footer_javascript'%]
 			<script>
 			$(document).ready(function() {
-				var seperator = window.location.href.indexOf("?") > -1 ? "&" : "?";
-				var url = window.location.href + seperator + "templatebody=filters&templatehead=none&templatefoot=none"
+				let seperator = window.location.href.indexOf("?") > -1 ? "&" : "?";
+				let url = window.location.href + seperator + "templatebody=filters&templatehead=none&templatefoot=none"
 
 				$.get(url, function(data) {
 					$('#filters').html(data);
 
 					// Init price slider
-					var dataset = document.querySelector('#price-filter').dataset
-					var vals = [
-						parseInt(dataset.min),
-						parseInt(dataset.max)
+					let vals = [
+						parseInt($('#price-filter').data('min')),
+						parseInt($('#price-filter').data('max'))
 					];
 					$("#price-range").slider({
 						range: true,
