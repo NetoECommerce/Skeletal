@@ -35,24 +35,24 @@
 				<input type="hidden" name="fn" value="preview">
 				<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]">
 				[%if [@username@]%]
-					<input type="hidden" name="customername" id="customername" value="[%nohtml%][@bill_first_name@][%/nohtml%]" />
+					<input type="hidden" name="customername" id="customername" value="[%nohtml%][@bill_first_name@][%/nohtml%]"/>
 				[%else%]
 					<div class="form-group">
 						<label>Enter your name:</label>
-						<input size="70" type="text" name="customername" class="form-control" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" />
+						<input type="text" name="customername" class="form-control" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" required/>
 					</div>
 					<div class="form-group">
 						<label>Enter your e-mail address:</label>
-						<input size="70" type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" />
+						<input type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" required/>
 					</div>
 				[%/if%]
 				<div class="form-group">
 					<label>Title For Review</label>
-					<input type="text" name="review_title" class="form-control" value="[%nohtml%][@form:review_title@][%/nohtml%]"/>
+					<input type="text" name="review_title" class="form-control" value="[%nohtml%][@form:review_title@][%/nohtml%]" required/>
 				</div>
 				<div class="form-group">
 					<label>Review</label>
-					<textarea name="review_text" style="width:100%" class="form-control">[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
+					<textarea name="review_text" style="width:100%" class="form-control" required>[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
 					<span id="rating_status"></span>
 					<span id="rating_saved"></span>
 				</div>
