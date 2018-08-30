@@ -32,8 +32,8 @@
 		</div>
 		<div class="card-body">
 			<form name="edit_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
-				<input type="hidden" name="fn" value="preview">
-				<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]">
+				<input type="hidden" name="fn" value="preview"/>
+				<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]"/>
 				[%if [@username@]%]
 					<input type="hidden" name="customername" id="customername" value="[%nohtml%][@bill_first_name@][%/nohtml%]"/>
 				[%else%]
