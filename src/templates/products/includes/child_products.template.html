@@ -6,7 +6,7 @@
     <div class="row" role="contentinfo" aria-label="Product variation selection">
     [%/param%]
     [%param *variation_header%]
-        <div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]" role="group" aria-label="[@specific_name@] variation selection">
+        <div class="_itmspec_listopt col-12 col-lg-6" ref="[@specific_id@]" role="group" aria-label="[@specific_name@] variation selection">
           <div class="variation-name" aria-label="[@specific_name@] variation">
             <strong>[@specific_name@]</strong>
           </div>
@@ -49,7 +49,7 @@
         </div>
   [%/param%]
   [%param *variation_header_select%]
-        <div class="_itmspec_listopt col-xs-12 col-md-6" ref="[@specific_id@]" aria-label="[@specific_name@] variation selection">
+        <div class="_itmspec_listopt col-12 col-lg-6" ref="[@specific_id@]" aria-label="[@specific_name@] variation selection">
           <div class="variation-name">
             <label for="[@specific_id@]_itmspec_opt">[@specific_name@]</label>
           </div>
@@ -95,37 +95,49 @@
   		[%PARAM *body%]
     					<tr>
     						<td>
-    							[%IF [@store_quantity@] > 0 AND ![@has_child@] or [@CONFIG:ALLOW_NOSTOCK_CHECKOUT@] or [@preorder@]%]
-    							<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
-    							<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
-    							<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
-    							<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+                                [%IF [@extra@] or [@has_child@] %]
+                                <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
+    							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
+                                <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+                                <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+                                <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+                                <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+    							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
+                                <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+                                <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+                                <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+                                <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
+    							[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+                                <input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
+                                <input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
+                                <input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
+                                <input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
     							[%ELSE%]
-    							<input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
-    							[%END IF%]
+                                <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
+    							[%/ IF%]
     						</td>
     						<td>
     							<img border="0" rel="itmimg[@SKU@]" src="[@thumb@]" alt="[@name@]" width="50px" height="50px"/>
     						</td>
     						<td>
     							[@name@]
-    							[%IF [@subtitle@]%]
+    							[%if [@subtitle@]%]
     							<div class="text-muted">[@subtitle@]</div>
-    							[%END IF%]
+    							[%/ if%]
     						</td>
     						<td>
     							<div class="child-price">[%format type:'currency'%][@price@][%END format%]</div>
     							[%IF [@extra@] or [@has_child@] %]
     							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
     							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
-    							<span class="label label-warning">Pre-Order</span>
+    							<span class="badge badge-warning">Pre-Order</span>
     							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
-    							<span class="label label-success">In stock</span>
+    							<span class="badge badge-success">In stock</span>
     							[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-    							<span class="label label-warning">Back Order</span>
+    							<span class="badge badge-warning">Back Order</span>
     							[%ELSE%]
-    							<span class="label label-danger">Sold Out</span>
-    							[%END IF%]
+    							<span class="badge badge-danger">Sold Out</span>
+    							[%/ IF%]
     						</td>
     					</tr>
   		[%/ PARAM%]
