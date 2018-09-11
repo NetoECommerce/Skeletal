@@ -7794,7 +7794,8 @@ a.text-dark:hover, a.text-dark:focus {
   .main-image a > .zoom {
     pointer-events: none; }
   #n_product .fancybox-nav span {
-    visibility: visible; } }
+    visibility: visible; } 
+  }
 
 #n_product .qty {
   text-align: center; }
