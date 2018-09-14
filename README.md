@@ -1,6 +1,6 @@
 [![Build status](https://badge.buildkite.com/5a56074c3e84be99497d29dced76a15755a02cf00c642e7855.svg)](https://buildkite.com/neto-ecommerce/skeletal)
 
-<img width="407" src="http://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
+<img width="407" src="https://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
 
 Skeletal is the development theme for Neto. This theme contains all of our supported front-end features, so we build all new custom websites and themes with Skeletal as the starting point. Skeletal is built on Bootstrap 4.
 
@@ -57,7 +57,7 @@ We have a simple testing guide located [here](/testing.md).
 
 ## Contribute
 
-<img src="http://design.neto.com.au/assets/uploads/howtogit01.jpg" width="500">
+<img src="https://design.neto.com.au/assets/uploads/howtogit01.jpg" width="500">
 
 ### Clone latest version of Skeletal
 
@@ -107,7 +107,7 @@ A pull request will need a description on what it is trying to achieve with this
 
 ## Review a pull request
 
-<img src="http://design.neto.com.au/assets/uploads/howtogit02.jpg" width="500">
+<img src="https://design.neto.com.au/assets/uploads/howtogit02.jpg" width="500">
 
 ### Read pull request description
 
