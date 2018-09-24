@@ -10,7 +10,7 @@ Skeletal is the development theme for Neto. This theme contains all of our suppo
 - [Documentation](#documentation)
 - [Testing](#testing)
 - [Contribute](#contribute)
-- [Bootstrap 3 (legacy)](#bootstrap-3-legacy)
+- [Support](#support)
 - [Creators](#creators)
 
 ## Installation
@@ -168,9 +168,13 @@ If a pull requested is approval then an admin user will be notified and will be 
 
 The person that submitted the pull request will be notified on your feedback and will address the issues before requesting the branch to be reviewed again.
 
-## Bootstrap 3 (legacy)
+## Support
 
-We no longer maintain the Bootstrap 3 version of Skeletal, however you can view it for historical purposes by checking out the [`v3` branch](https://github.com/NetoECommerce/Skeletal/tree/v3). 
+The current version of Skeletal will only work on websites running Neto 6+. For older websites, you will need to install from a previous [release](https://github.com/NetoECommerce/Skeletal/releases/tag/2.4.0).
+
+### Bootstrap 3 (legacy)
+
+We no longer maintain the Bootstrap 3 version of Skeletal, however you can view it for historical purposes by checking out the [`v3` branch](https://github.com/NetoECommerce/Skeletal/tree/v3).
 
 ## Creators
 
