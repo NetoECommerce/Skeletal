@@ -172,9 +172,9 @@ The person that submitted the pull request will be notified on your feedback and
 
 The current version of Skeletal will only work on websites running Neto 6+. For older websites, you will need to install from a previous [release](https://github.com/NetoECommerce/Skeletal/releases/tag/2.4.0).
 
-### Bootstrap 3 (legacy)
+### Bootstrap 3
 
-We no longer maintain the Bootstrap 3 version of Skeletal, however you can view it for historical purposes by checking out the [`v3` branch](https://github.com/NetoECommerce/Skeletal/tree/v3).
+Release `#18.7.0` updated the CSS framework from Bootstrap 3.3.6 to 4.1 We no longer add features to the Bootstrap 3 version of Skeletal, however you can view it by checking out the [`v3` branch](https://github.com/NetoECommerce/Skeletal/tree/v3).
 
 ## Creators
 
