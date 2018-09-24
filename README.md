@@ -1,6 +1,6 @@
 [![Build status](https://badge.buildkite.com/5a56074c3e84be99497d29dced76a15755a02cf00c642e7855.svg)](https://buildkite.com/neto-ecommerce/skeletal)
 
-<img width="407" src="http://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
+<img width="407" src="https://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
 
 Skeletal is the development theme for Neto. This theme contains all of our supported front-end features, so we build all new custom websites and themes with Skeletal as the starting point. Skeletal is built on Bootstrap 4.
 
@@ -57,7 +57,7 @@ We have a simple testing guide located [here](/testing.md).
 
 ## Contribute
 
-<img src="http://design.neto.com.au/assets/uploads/howtogit01.jpg" width="500">
+<img src="https://design.neto.com.au/assets/uploads/howtogit01.jpg" width="500">
 
 ### Clone latest version of Skeletal
 
@@ -107,7 +107,7 @@ A pull request will need a description on what it is trying to achieve with this
 
 ## Review a pull request
 
-<img src="http://design.neto.com.au/assets/uploads/howtogit02.jpg" width="500">
+<img src="https://design.neto.com.au/assets/uploads/howtogit02.jpg" width="500">
 
 ### Read pull request description
 
@@ -171,6 +171,10 @@ The person that submitted the pull request will be notified on your feedback and
 ## Support
 
 The current version of Skeletal will only work on websites running Neto 6+. For older websites, you will need to install from a previous [release](https://github.com/NetoECommerce/Skeletal/releases/tag/2.4.0).
+
+### Bootstrap 3
+
+Release `#18.7.0` updated the CSS framework from Bootstrap 3.3.6 to 4.1. We no longer add features to the Bootstrap 3 version of Skeletal, however you can view it by checking out the [`v3` branch](https://github.com/NetoECommerce/Skeletal/tree/v3).
 
 ## Creators
 
