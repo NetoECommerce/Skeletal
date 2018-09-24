@@ -1,26 +1,36 @@
 {
-  "name": "Skeletal",
-  "version": "2.3.1",
-  "description": "Skeletal is the development theme for Neto. It is the base framework that contains all of our front-end features. Skeletal is built on Bootstrap 3 and needs to be installed on a Neto 5 system to work at all.",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NetoECommerce/Skeletal.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NetoECommerce/Skeletal/issues"
-  },
-  "homepage": "https://github.com/NetoECommerce/Skeletal",
-  "devDependencies": {
-    "gulp": "~3.9.0",
-    "gulp-less": "~3.0.3"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.6"
-  }
+	"name": "Skeletal",
+	"version": "4.0.0",
+	"description": "Skeletal is the development theme for Neto. It is the base framework that contains all of our front-end features. Skeletal is built on Bootstrap 4 and needs to be installed on a Neto 6 system to work at all.",
+	"main": "gulpfile.js",
+	"scripts": {
+		"compile": "node_modules/.bin/ntheme compile",
+		"build": "gulp build",
+		"watch": "gulp watch",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NetoECommerce/Skeletal.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/NetoECommerce/Skeletal/issues"
+	},
+	"homepage": "https://github.com/NetoECommerce/Skeletal",
+	"devDependencies": {
+		"gulp": "^3.9.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-postcss": "^7.0.1",
+		"gulp-sass": "^4.0.1",
+		"ntheme": "^1.7.0",
+		"postcss-cssnext": "^3.1.0",
+		"simple-github-release": "git://github.com/brandonsheppard/simple-github-release.git"
+	},
+	"dependencies": {
+		"bootstrap": "^4.1.1",
+		"jquery": "1.11.3",
+		"popper.js": "^1.14.3"
+	}
 }

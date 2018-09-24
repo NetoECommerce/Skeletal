@@ -1,38 +1,36 @@
 [%SET [@page_type@]='category'/%]
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
-	[%PARAM *header%]
-		<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-			</li>
-	[%/PARAM%]
-	[%PARAM *body%]
-		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
-		</li>
-	[%/PARAM%]
-	[%PARAM *footer%]
-		</ul>
-	[%/PARAM%]
+	[%param *header%]
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+					<meta itemprop="position" content="0" />
+				</li>
+	[%/param%]
+	[%param *body%]
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+					<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
+				</li>
+	[%/param%]
+	[%param *footer%]
+			</ol>
+		</nav>
+	[%/param%]
 [%/breadcrumb%]
 <h1 class="page-header">
-	[%url_info name:'page_heading' if:'eq' value:''%]
-		[%PARAM if_true%]
-			[@content_name@]
-		[%/PARAM%]
-		[%PARAM if_false%]
-			[%url_info name:'page_heading'%][%end url_info%]
-		[%/PARAM%]
-	[%end url_info%]
+	[%url_info name:'page_heading' default:'[@content_name@]'/%]
 	[%IF [@keywords@] == ''%]
 		[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'%][%/FILTER%][%/NOHTML%][%/FILTER%]
 	[%/IF%]
 </h1>
+<hr aria-hidden="true" />
 [%if ![@form:pgnum@] OR [@form:pgnum@] eq '1'%]
 	[%advert type:'text' template:'carousel' inherit:'n' limit:'10' ad_group:''%]
 		[%param *header%]
-			<div id="homepageCarousel" class="carousel slide">
+			<section id="homepageCarousel" class="carousel slide" data-ride="carousel" aria-label="Banner images">
 				[%if [@total_showing@] > 1%]
 					<ol class="carousel-indicators">
 						[%site_value id:'counter' type:'load'/%]
@@ -43,45 +41,47 @@
 		[%param *footer%]
 				</div>
 				[%if [@total_showing@] > 1%]
-					<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
-						<span class="fa fa-chevron-left"></span>
+					<a class="carousel-control-prev" href="#homepageCarousel" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
 					</a>
-					<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
-						<span class="fa fa-chevron-right"></span>
+					<a class="carousel-control-next" href="#homepageCarousel" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
 					</a>
 				[%/if%]
-			</div>
-			<hr>
-		[%/param%]
-		[%param *ifempty%]
+			</section>
+			<hr aria-hidden="true" />
 		[%/param%]
 	[%/advert%]
 	[%advert type:'product' limit:'8' template:'' inherit:'n' ad_group:''%]
 		[%param *header%]
-			<div class="row">
+			<section class="row products-row" aria-label="Featured products">
 		[%/param%]
 		[%param footer%]
-			</div>
-			<hr>
+			</section>
+			<hr aria-hidden="true" />
 		[%/param%]
 	[%/advert%]
 	[%if [@content_short_description1@] or [@content_short_description2@] or [@content_short_description3@] or [@content_description1@] or [@content_description2@] or [@content_description3@]%]
-		<p>
+		<section class="n-responsive-content" aria-label="Short Description">
 			[@content_short_description1@]
 			[@content_short_description2@]
 			[@content_short_description3@]
-		</p>
-		[@content_description1@]
-		[@content_description2@]
-		[@content_description3@]
-		<hr>
+		</section>
+		<section class="n-responsive-content" aria-label="Description">
+			[@content_description1@]
+			[@content_description2@]
+			[@content_description3@]
+		</section>
+		<hr aria-hidden="true" />
 	[%/if%]
 [%/if%]
-[%THUMB_LIST type:'products' limit:'[@config:THUMB_LIMIT@]'%]
-	[%PARAM template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/PARAM%]
-	[%PARAM *header%]
+[%thumb_list type:'products' limit:'[@config:THUMB_LIMIT@]'%]
+	[%param template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/param%]
+	[%param *header%]
 	<div class="row sort_container">
-		<div class="col-xs-4 col-sm-7 col-md-4">
+		<div class="col-4 col-md-7 col-lg-4">
 			<script language="javascript" type="text/javascript">
 				function viewtype(view) {
 					var f=document.viewForm;
@@ -94,41 +94,27 @@
 				<input name="viewby" type="hidden" value=""/>
 			</form>
 			<div class="viewby btn-group">
-				<a href="javascript:viewtype('');" class="btn btn-default [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow">
-					<i class="fa fa-th"></i>
-				</a>
-				<a href="javascript:viewtype('list');" class="btn btn-default [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow">
-					<i class="fa fa-th-list"></i>
-				</a>
+				<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
+				<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
 			</div>
 		</div>
-		<div class="col-md-4 hidden-xs hidden-sm">
+		<div class="col-4 d-none d-lg-block">
 			<div class="btn-text">
 				<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
 			</div>
 		</div>
-		<div class="col-xs-8 col-sm-5 col-md-4">
-			<form method="get" class="form-horizontal" action="[@config:CURRENT_URL@]">
+		<div class="col-8 col-md-5 col-lg-4">
+			<form method="get" action="[@config:CURRENT_URL@]">
 				<input name="rf" type="hidden" value="[%FILTER_CODE%][%/FILTER_CODE%]">
-				<div class="form-group">
-					<label class="control-label col-xs-2">Sort</label>
-					<div class="col-xs-10">
-						<select name="sortby" onChange="return this.form.submit();" class="form-control">
-							<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>
-								Most Popular
-							</option>
-							<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>
-								Name
-							</option>
-							<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>
-								SKU
-							</option>
-							<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>
-								Lowest Price
-							</option>
-							<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>
-								Highest Price
-							</option>
+				<div class="form-row">
+					<label class="col-2 col-form-label" for="sortby">Sort</label>
+					<div class="col-10">
+						<select id="sortby" name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
+							<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
+							<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
+							<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>SKU</option>
+							<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>Lowest Price</option>
+							<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>Highest Price</option>
 						</select>
 					</div>
 				</div>
@@ -136,42 +122,42 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
-			<hr>
+		<div class="col-12">
+			<hr aria-hidden="true" />
 		</div>
 	</div>
 	<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
-		<div class="row">
-		[%/PARAM%]
-		[%PARAM *footer%]
-		</div>
+		<section class="row products-row" aria-label="Products in category">
+		[%/param%]
+		[%param *footer%]
+		</section>
 	</div>
 	[%IF [@total_results@] > [@config:thumb_limit@]%]
 		<div class="row">
-			<div class="col-xs-12">
-				<hr />
-				<div class="text-center">
-					<ul class="pagination">
+			<div class="col-12">
+				<hr aria-hidden="true"/>
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center">
 						[%paging limit:'3'%]
-							[%PARAM *previous_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-left"></i></a></li>[%/PARAM%]
-							[%PARAM *goback_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
-							[%PARAM *current_page%]<li class="active"><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
-							[%PARAM *gonext_pages%]<li><a href="[@URL@]">[@PAGE@]</a></li>[%/PARAM%]
-							[%PARAM *next_page%]<li><a href="[@URL@]"><i class="fa fa-chevron-right"></i></a></li>[%/PARAM%]
+							[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go back one page"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>[%/param%]
+							[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go to page [@page@]">[@page@]</a></li>[%/param%]
+							[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@url@]" aria-label="Current page">[@page@]</a></li>[%/param%]
+							[%param *gonext_pages%]<li><a href="[@url@]" class="page-link" aria-label="Go to page [@page@]">[@page@]</a></li>[%/param%]
+							[%param *next_page%]<li class="page-item"><a class="page-link" href="[@url@]" aria-label="Go forward one page"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>[%/param%]
 						[%/paging%]
 					</ul>
-				</div>
-				<hr />
+				</nav>
+				<hr aria-hidden="true"/>
 			</div>
 		</div>
 	[%/IF%]
-	[%/PARAM%]
-	[%PARAM *ifempty%]
+	[%/param%]
+	[%param *ifempty%]
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>
 			</div>
 		</div>
-	[%/PARAM%]
-[%/THUMB_LIST%]
+	[%/param%]
+[%/thumb_list%]
 </div>

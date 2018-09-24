@@ -1,0 +1,11 @@
+[%cdn_asset html:'1' type:'js' library:'skeletal' version:'4.0.0'%]vendor.js[%/cdn_asset%]
+[%cdn_asset html:'1' type:'js' library:'jquery_ui' version:'1.11.1'%]js/jquery-ui-1.8.18.custom.min.js[%/cdn_asset%]
+[%NETO_JS html:'1' id:'main' /%]
+<script type="text/javascript" src="[%ntheme_asset%]js/custom.js[%/ntheme_asset%]"></script>
+[%SITE_VALUE id:'footer_javascript' type:'load'/%]
+[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Visitor' /%][%/if%]
+<div class="npopup" style="" role="alertdialog" aria-atomic="true" aria-label="Popup" aria-describedby="npopupDesc" tabindex="-1">
+	<a href="javascript:void(0);" class="npopup-btn-close" role="button" aria-label="Close popup"></a>
+	<div class="npopup-body" id="npopupDesc"></div>
+</div>
+<div class="nactivity"><i class="fa fa-spinner fa-spin fa-inverse fa-3x fa-fw"></i></div>

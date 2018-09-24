@@ -2,7 +2,7 @@
 	[%if [@config:show_home_ads@]%]
 		[%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
 			[%param *header%]
-				<div id="homepageCarousel" class="carousel slide">
+				<section id="homepageCarousel" class="carousel slide" data-ride="carousel" aria-label="Banner images">
 					[%if [@total_showing@] > 1%]
 						<ol class="carousel-indicators">
 							[%site_value id:'counter' type:'load'/%]
@@ -13,14 +13,16 @@
 			[%param *footer%]
 					</div>
 					[%if [@total_showing@] > 1%]
-						<a class="left carousel-control" href="#homepageCarousel" data-slide="prev">
-							<span class="fa fa-chevron-left"></span>
+						<a class="carousel-control-prev" href="#homepageCarousel" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
 						</a>
-						<a class="right carousel-control" href="#homepageCarousel" data-slide="next">
-							<span class="fa fa-chevron-right"></span>
+						<a class="carousel-control-next" href="#homepageCarousel" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
 						</a>
 					[%/if%]
-				</div>
+				</section>
 			[%/param%]
 			[%param *ifempty%]
 				<a class="neto-placeholder neto-placeholder-rotator btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" href="[@config:home_url@]/_cpanel?item=adw&page=view&id=New&plan_id=1">
@@ -29,25 +31,27 @@
 			[%/param%]
 		[%/advert%]
 	[%/if%]
-	<hr>
-	<div id="homepage-content">[@page_content@]</div>
+	<hr aria-hidden="true" />
+	<section id="homepage-content" class="n-responsive-content" aria-label="Main description">[@page_content@]</section>
 	[%if [@config:show_home_ads@]%]
 		[%advert type:'product' limit:'8' template:'' ad_group:''%]
 			[%param *header%]
-				<hr />
-				<div class="row">
+				<hr aria-hidden="true"/>
+				<h2 class="sr-only">Featured products</h2>
+				<section class="row products-row" aria-label="Featured products">
 			[%/param%]
 			[%param footer%]
-				</div>
+				</section>
 			[%/param%]
 			[%param *ifempty%]
-				[%random_products category:'0' template:'' limit:'8'%]
+				[%random_products filter_category:'' template:'' limit:'8'%]
 					[%param *header%]
-						<hr />
-						<div class="row">
+						<hr aria-hidden="true"/>
+						<h2 class="sr-only">Featured products</h2>
+						<section class="row products-row" aria-label="Featured products">
 					[%/param%]
 					[%param *footer%]
-						</div>
+						</section>
 					[%/param%]
 				[%/random_products%]
 			[%/param%]

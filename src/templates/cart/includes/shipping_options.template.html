@@ -1,6 +1,6 @@
 [%cart_addresses ship_mode:'[@ship_mode@]'%]
 [%PARAM *body%]
-<div class="well">
+<div class="card card-body">
 	<h4>Shipping Options For [%NOHTML%][@ship_title@][%/NOHTML%]
 		[%NOHTML%][%TRIM%][@ship_state@][@ship_zip@][%/TRIM%][%/NOHTML%]</h4>
 		<hr>
@@ -18,23 +18,20 @@
 				<input type="hidden" id="delivery_on[@addr_id@]_[@id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y'%][@delivery_date@][%/FORMAT%]" />
 				<input type="hidden" id="delivery_exc[@addr_id@]_[@id@]" value="[@exclude_delivery_days@]" />
 				<input type="hidden" id="delivery_only[@addr_id@]_[@id@]" value="[@only_delivery_days@]" />
-				<h4>
-				[%DATA id:'shipping_quote' if:'=' value:'1'%]
-					[%PARAM if_true%]P.O.A.[%/PARAM%]
-		[%PARAM if_false%]
-				[%DATA id:'cost' if:'=' value:'0' %]
-			[%PARAM if_true%]
-				[%DATA id:'na' if:'=' value:'0' %]
-				[%PARAM if_true%]FREE[%/PARAM%]
-				[%PARAM if_false%]N/A[%/PARAM%]
-			[%/DATA%]
-				[%/PARAM%]
-			[%PARAM if_false%]
-				[%format type:"currency"%][@cost@][%/format%]
-				[%/PARAM%]
-		[%/DATA%]
-				[%/PARAM%]
-	[%/DATA%] - [@shipping_method@] </h4></label>
+				<h4 class="d-inline">
+				[%if [@shipping_quote@]%] P.O.A
+				[%else%]
+					[%if [@cost@] == 0%]
+						[%if [@na@] == 0%]
+							[%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@]
+							[%else%] Free
+							[%/if%]
+						[%else%] Not Applicable
+						[%/if%]
+					[%else%] [%format type:'currency'%][@cost@][%/format%]
+					[%/if%]
+				[%/if%] - [@shipping_method@]
+				</h4></label>
 	<p class="help-block">[@shipping_description@]</p>
 	</td>
 		</tr>
@@ -59,19 +56,19 @@
 					[%end if%]
 				</div>
 				<div class="col-md-6">
-					<p class="help-block" id="_cpy_comment_ct[@addr_id@]">&nbsp;</p>
+					<p class="help-block small text-muted" id="_cpy_comment_ct[@addr_id@]">&nbsp;</p>
 				</div>
 			</div>
 			[%if [@config:checkout_show_deliverydate@]%]
 			<hr>
 			<h4>Select Your Preferred Delivery Date</h4>
 			<div class="row">
-			<div class="col-xs-12 col-lg-7">
+			<div class="col-12 col-lg-7">
 			<div class="_delivery_picker">
 				<div id="delivery_picker[@addr_id@]"></div>
 				&nbsp; </div>
 			</div>
-			<div class="col-xs-12 col-lg-5">
+			<div class="col-12 col-lg-5">
 			<div class="_delivery_select">
 				<label>Your selected date</label>
 					<input type="text" class="form-control" readonly id="delivery_date[@addr_id@]" name="delivery_date[@addr_id@]" value="[%FORMAT type:'date' format:'#D/#M/#Y' default:''%][@order_delivery_date@][%/FORMAT%]" placeholder="Select Date" />
@@ -85,7 +82,7 @@
 				<hr>
 				<label>Event Name</label>
 				<input type="text"  class="form-control" id="reminder_title[@addr_id@]" name="reminder_title[@addr_id@]" value="[%NOHTML%][@reminder_title@][%/NOHTML%]" maxlength="50" size="25" placeholder="e.g. Dad's Birthday">
-					<p class="help-block small">Please note that you will be reminded via email 2 week prior to the event.</p>
+					<p class="help-block small text-muted">Please note that you will be reminded via email 2 week prior to the event.</p>
 					</div>
 			</div>
 			</div>
@@ -105,4 +102,5 @@
 		</div>
 	</div>
 </div>
-[%/param%][%/cart_addresses%]
+[%/param%]
+[%/cart_addresses%]

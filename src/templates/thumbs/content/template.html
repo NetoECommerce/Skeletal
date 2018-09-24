@@ -1,31 +1,38 @@
-<div class="" itemtype="http://schema.org/Article">
-	<h4><a href="[@URL@]" itemprop="url">[@content_name@]</a></h4>
-		<p class="text-muted">
-			[%IF [@content_author@]%]
-			Author: [@content_author@] &nbsp;
-			[%END IF%]
-			[%IF [@date_posted@] != 0000-00-00 00:00:00%]
-			Date Posted: [%FORMAT type:'date'%][@date_posted@][%END FORMAT%]
-			[%END IF%]
-		</p>
-	<p class="clearfix">[@content_short_description2@]</p>
+<article class="border-bottom mb-2" itemtype="http://schema.org/Article" role="article" aria-label="[@content_name@]">
+	<span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+		<meta itemprop="url" content="[@config:homeurl@]"/>
+		<meta itemprop="name" content="[@config:company_name@]"/>
+		<span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="[@config:homeurl@][@config:imageurl@]/website_logo.png"></span>
+	</span>
+	<h4 itemprop="headline" content="[@content_name@]"><a href="[@url@]" itemprop="url">[@content_name@]</a></h4>
+	<p class="text-muted">
+		[%IF [@content_author@]%]
+		<span itemprop="author" itemscope itemtype="https://schema.org/Person">
+			Author: <span itemprop="name">[@content_author@]</span>
+		</span>&nbsp;
+		[%/ IF%]
+		[%IF [@date_posted@] != 0000-00-00 00:00:00%]
+		<meta itemprop="datePublished" content="[%format type:'date' format:'#Y-#M-#d'%][@date_posted@][%/format%]"/>
+		Date Posted: [%FORMAT type:'date'%][@date_posted@][%/ FORMAT%]
+		[%/ IF%]
+	</p>
+	<p class="clearfix" itemprop="description">[@content_short_description2@]</p>
 	<p>
-		[%IF [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="text-muted">([@reviews@])</span>[%END IF%]
+		[%IF [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="badge badge-pill badge-secondary">[@reviews@]</span>[%/ IF%]
 		<div class="dropdown">
-			<button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				Share: <i class="fa fa-facebook-square text-facebook"></i>
-				<i class="fa fa-twitter-square text-twitter"></i>
-				<i class="fa fa-pinterest-square text-pinterest"></i>
-				<i class="fa fa-google-plus-square text-google-plus"></i>
+			<button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu[@content_id@]" data-toggle="dropdown" aria-controls="dropdownMenu[@content_id@]" aria-label="Share content">
+				Share: <i class="fab fa-facebook text-facebook" aria-hidden="true"></i>
+				<i class="fab fa-twitter text-twitter" aria-hidden="true"></i>
+				<i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i>
+				<i class="fab fa-google-plus text-google-plus" aria-hidden="true"></i>
 				<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-facebook-square text-facebook"></i> Facebook</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-twitter-square text-twitter"></i> Twitter</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fa fa-pinterest-square text-pinterest"></i> Pinterest</a></li>
-				<li role="presentation"><a class="js-social-share" role="menuitem" tabindex="-1" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fa fa-google-plus-square text-google-plus"></i> Google+</a></li>
+			<ul id="dropdownMenu[@content_id@]" class="dropdown-menu" aria-labelledby="dropdownMenu[@content_id@]">
+				<li><a class="dropdown-item js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-facebook text-facebook" aria-hidden="true"></i> Facebook</a></li>
+				<li><a class="dropdown-item js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-twitter text-twitter" aria-hidden="true"></i> Twitter</a></li>
+				<li><a class="dropdown-item js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+				<li><a class="dropdown-item js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-google-plus text-google-plus" aria-hidden="true"></i> Google+</a></li>
 			</ul>
 		</div>
 	</p>
-	<hr/>
-</div>
+</article>

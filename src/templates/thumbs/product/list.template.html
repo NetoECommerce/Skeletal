@@ -1,42 +1,46 @@
 [%cache type:'list' id:'[@inventory_id@]'%]
-	<div class="col-xs-12">
-		<div class="panel panel-default" itemscope itemtype="http://schema.org/Product">
-			<div class="panel-body">
+	<article class="col-12 pb-2" role="article" aria-label="Product Thumbnail">
+		<div class="card" itemscope itemtype="http://schema.org/Product">
+			<meta itemprop="brand" content="[@brand@]"/>
+			<meta itemprop="mpn" content="[@sku@]"/>
+			<div class="card-body">
 				<div class="row">
-					<div class="col-xs-3">
+					<div class="col-4 col-md-3">
 						<a href="[@URL@]" class="thumbnail-image">
-							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="product-image img-responsive" alt="[@model@]" rel="itmimg[@sku@]">
+							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@sku@]">
 						</a>
 					</div>
-					<div class="col-xs-6">
+					<div class="col-8 col-md-6">
 						<h3 itemprop="name"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'100' rmhtml:'1'%][@model@][%/format%]</a></h3>
-						<p>[@short_description@]</p>
+						<p itemprop="description">[@short_description@]</p>
 					</div>
-					<div class="col-xs-3 text-right">
+					<div class="col-12 col-md-3 text-right">
 						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 							[%if [@inpromo@]%]
 								<strong>Now [%if [@has_child@]%]from [%/if%]</strong>
+								<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
 								<span class="text-success" itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 							[%else%]
 								[%if [@has_child@]%]From&nbsp;[%/if%]
 								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
 							[%/if%]
 							[%if [@inpromo@]%]
-								<p><span class="label label-danger">On Sale</span></p>
+								<p class="mb-1"><span class="badge badge-danger">On Sale</span></p>
 							[%/if%]
 							[%if [@save@] > 0 AND ![@has_child@] %]
-								<p><span class="label label-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
+								<p class="mb-1"><span class="badge badge-warning">[%format type:'percent'%][@save@][%/format%] OFF</span></p>
 							[%/if%]
 							[%if [@save@] > 0%]
-								<p><span class="label label-default">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
+								<p class="mb-1"><span class="badge badge-secondary">RRP [%format type:'currency'%][@retail@][%/format%]</span></p>
 							[%/if%]
 						</div>
+						[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Thumbnails' /%][%/if%]
 					</div>
 				</div>
 			</div>
-			<div class="panel-footer text-right">
-				<form class="form-inline buying-options">
+			<div class="card-footer">
+				<form class="form-inline buying-options float-right">
 					<input type="hidden" id="sku[@rndm@][@sku@]" name="sku[@rndm@][@sku@]" value="[@sku@]">
 					<input type="hidden" id="model[@rndm@][@sku@]" name="model[@rndm@][@sku@]" value="[@model@]">
 					<input type="hidden" id="thumb[@rndm@][@sku@]" name="thumb[@rndm@][@sku@]" value="[@thumb@]">
@@ -49,11 +53,11 @@
 						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
 					[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
-					[%elseif%]
-						<a class="notify_popup btn btn-default btn-block btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
+					[%else%]
+						<a class="notify_popup btn btn-outline-secondary btn-loads" href="[@url@]" title="Notify Me When Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
 					[%/if%]
 				</form>
 			</div>
 		</div>
-	</div>
+	</article>
 [%/cache%]

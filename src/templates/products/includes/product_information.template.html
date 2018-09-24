@@ -1,0 +1,321 @@
+<div class="tabbable">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" id="tabDescription" role="tab" aria-controls="description" aria-selected="true">
+            <a class="nav-link active" href="#description" data-toggle="tab">Description</a>
+        </li>
+        [%if [@warranty@]%]
+            <li class="nav-item" id="tabWarranty" role="tab" aria-controls="warranty" aria-selected="false">
+                <a class="nav-link" href="#warranty" data-toggle="tab">Warranty</a>
+            </li>
+        [%/if%]
+        [%if [@features@]%]
+            <li class="nav-item" id="tabFeatures" role="tab" aria-controls="features" aria-selected="false">
+                <a class="nav-link" href="#features" data-toggle="tab">Features</a>
+            </li>
+        [%/if%]
+        <li class="nav-item" id="tabSpecifications" role="tab" aria-controls="specifications" aria-selected="false">
+            <a class="nav-link" href="#specifications" data-toggle="tab">Specifications</a>
+        </li>
+        [%if [@tnc@]%]
+            <li class="nav-item" id="tabTermsConditions" role="tab" aria-controls="termsConditions" aria-selected="false">
+                <a class="nav-link" href="#termsConditions" data-toggle="tab">Terms and Conditions</a>
+            </li>
+        [%/if%]
+        [%if [@config:show_product_reviews@]%]
+            <li class="nav-item" id="tabReviews" role="tab" aria-controls="reviews" aria-selected="false">
+                <a class="nav-link reviews" href="#reviews" data-toggle="tab">
+                    Reviews
+                    [%set [@data:ratings-count@] = 1 /%]
+                    [%while [@data:ratings-count@] <= [@data:rating@]%]
+                        [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    [%/while%]
+                    [%while [@data:ratings-count@] <= 5%]
+                        [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+                        <i class="far fa-star" aria-hidden="true"></i>
+                    [%/while%]
+                </a>
+            </li>
+        [%/if%]
+    </ul>
+    <div class="tab-content pt-3">
+        <div class="tab-pane active" id="description" role="tabpanel" aria-labelledby="tabDescription">
+            <div class="card">
+                <div class="card-header py-1 px-2" id="headingDescription">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#accordionDescription" aria-expanded="true" aria-controls="accordionDescription">
+                            Description
+                        </button>
+                    </h5>
+                </div>
+                <div id="accordionDescription" class="collapse" aria-labelledby="headingDescription">
+                    <div class="card-body p-md-0">
+                        <section class="productdetails n-responsive-content" aria-label="Product Description">
+                            [@description@]
+                        </section>
+                        <p class="small">
+                            (<span itemprop="productID">[@SKU@]</span>)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        [%if [@warranty@]%]
+            <div class="tab-pane" id="warranty" role="tabpanel" aria-labelledby="tabWarranty">
+                <div class="card">
+                    <div class="card-header py-1 px-2" id="headingWarranty">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#accordionWarranty" aria-expanded="true" aria-controls="accordionWarranty">
+                                Warranty
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="accordionWarranty" class="collapse" aria-labelledby="headingWarranty">
+                        <div class="card-body p-md-0">
+                            <div class="n-responsive-content">
+                                [@warranty@]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        [%/if%]
+        [%if [@features@]%]
+            <div class="tab-pane" id="features" role="tabpanel" aria-labelledby="tabFeatures">
+                <div class="card">
+                    <div class="card-header py-1 px-2" id="headingFeatures">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#accordionFeatures" aria-expanded="true" aria-controls="accordionFeatures">
+                                Features
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="accordionFeatures" class="collapse" aria-labelledby="headingFeatures">
+                        <div class="card-body p-md-0">
+                            <div class="n-responsive-content">
+                                [@features@]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        [%/if%]
+        <div class="tab-pane" id="specifications" role="tabpanel" aria-labelledby="tabSpecifications">
+            <div class="card">
+                <div class="card-header py-1 px-2" id="headingSpecificatoin">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#accordionSpecifications" aria-expanded="true" aria-controls="accordionSpecifications">
+                            Specifications
+                        </button>
+                    </h5>
+                </div>
+                <div id="accordionSpecifications" class="collapse" aria-labelledby="headingSpecificatoin">
+                    <div class="card-body p-md-0">
+                        [%if [@specifications@]%]
+                            <div class="n-responsive-content">
+                                [@specifications@]
+                            </div>
+                        [%/if%]
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>SKU</strong></td>
+                                    <td>[@SKU@]</td>
+                                </tr>
+                                [%if [@manufacturer_model@]%]
+                                    <tr>
+                                        <td><strong>Model #</strong></td>
+                                        <td>[@manufacturer_model@]</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@barcode@]%]
+                                    <tr>
+                                        <td><strong>Barcode #</strong></td>
+                                        <td>[@barcode@]</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@brand@]%]
+                                    <tr>
+                                        <td><strong>Brand</strong></td>
+                                        <td>[@brand@]</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@artist_author@]%]
+                                    <tr>
+                                        <td><strong>Artist / Author</strong></td>
+                                        <td>[@artist_author@]</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@weight@] > '0'%]
+                                    <tr>
+                                        <td><strong>Shipping Weight</strong></td>
+                                        <td>[@weight@]kg</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@width@] > '0'%]
+                                    <tr>
+                                        <td><strong>Shipping Width</strong></td>
+                                        <td>[@width@]m</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@height@] > '0'%]
+                                    <tr>
+                                        <td><strong>Shipping Height</strong></td>
+                                        <td>[@height@]m</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@length@] > '0'%]
+                                    <tr>
+                                        <td><strong>Shipping Length</strong></td>
+                                        <td>[@length@]m</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@cubic@] > '0'%]
+                                    <tr>
+                                        <td><strong>Shipping Cubic</strong></td>
+                                        <td>[@cubic@]m3</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@unit@]%]
+                                    <tr>
+                                        <td><strong>Unit Of Measure</strong></td>
+                                        <td>[@unit@]</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@actual_length@] > '0'%]
+                                    <tr>
+                                        <td><strong>Assembled Length</strong></td>
+                                        <td>[@actual_length@]m</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@actual_height@] > '0'%]
+                                    <tr>
+                                        <td><strong>Assembled Height</strong></td>
+                                        <td>[@actual_height@]m</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@actual_width@] > '0'%]
+                                    <tr>
+                                        <td><strong>Assembled Width</strong></td>
+                                        <td>[@actual_width@]m</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@product_type@]%]
+                                    <tr>
+                                        <td><strong>Type</strong></td>
+                                        <td>[@product_type@]</td>
+                                    </tr>
+                                [%/if%]
+                                [%if [@format@]%]
+                                    <tr>
+                                        <td><strong>Format</strong></td>
+                                        <td>[@format@]</td>
+                                    </tr>
+                                [%/if%]
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        [%if [@tnc@]%]
+            <div class="tab-pane" id="termsConditions" role="tabpanel" aria-labelledby="tabTermsConditions">
+                <div class="card">
+                    <div class="card-header py-1 px-2" id="headingTnc">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#accordionTnc" aria-expanded="true" aria-controls="accordionTnc">
+                                Terms and Conditions
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="accordionTnc" class="collapse" aria-labelledby="headingTnc">
+                        <div class="card-body p-md-0">
+                            <div class="n-responsive-content">
+                                [@tnc@]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        [%/if%]
+        [%if [@config:show_product_reviews@]%]
+            <div class="tab-pane" id="reviews" role="tabpanel" aria-labelledby="tabReviews">
+                <div class="card">
+                    <div class="card-header py-1 px-2" id="headingReviews">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#accordionReviews" aria-expanded="true" aria-controls="accordionReviews">
+                                Reviews
+                                [%set [@data:ratings-count@] = 1 /%]
+                                [%while [@data:ratings-count@] <= [@data:rating@]%]
+                                    [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                [%/while%]
+                                [%while [@data:ratings-count@] <= 5%]
+                                    [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+                                    <i class="far fa-star" aria-hidden="true"></i>
+                                [%/while%]
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="accordionReviews" class="collapse" aria-labelledby="headingReviews">
+                        <div class="card-body p-md-0">
+                            [%thumb_list type:'product_reviews' limit:'5'%]
+                                [%param filter_1%][@SKU@][%/param%]
+                                [%param *body%]
+                                    <div itemprop="review" itemscope itemtype="http://schema.org/Review">
+                                        <meta itemprop="itemReviewed" content="[@name@]">
+                                        <meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]">
+                                        <blockquote>
+                                            <h4 itemprop="name">[%nohtml%][@title@][%/nohtml%]</h4>
+                                            <div>
+                                                <strong>
+                                                    [%if [@reviewname@]%]
+                                                        By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[%nohtml%][@reviewname@][%/nohtml%]</span></span> on
+                                                    [%/if%]
+                                                    <meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]
+                                                </strong>
+                                            </div>
+                                            <span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span><br />
+                                            <div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                                                <meta itemprop="worstRating" content = "1">
+                                                <meta itemprop="ratingValue" content = "[@score@]">
+                                                <meta itemprop="bestRating" content = "5">
+                                            </div>
+                                            [%set [@data:ratings-count@] = 1 /%]
+                                            [%while [@data:ratings-count@] <= [@data:score@]%]
+                                                [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+                                                <i class="fas fa-star"></i>
+                                            [%/while%]
+                                            [%while [@data:ratings-count@] <= 5%]
+                                                [%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+                                                <i class="far fa-star"></i>
+                                            [%/while%]
+                                            ([@score@])
+                                            [%if [@review_response@]%]
+                                                <br /><br />
+                                                <blockquote>
+                                                    <span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
+                                                </blockquote>
+                                            [%/if%]
+                                        </blockquote>
+                                    </div>
+                                [%/param%]
+                                [%param *ifempty%]
+                                [%/param%]
+                            [%/thumb_list%]
+                            [%if [@reviews@] > 0%]
+                                <p>
+                                    <a class="btn btn-default" href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]"><i class="far fa-edit"></i> Write a product review</a>
+                                </p>
+                            [%else%]
+                                <h4>Be The First To Review This Product!</h4>
+                                <p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
+                                <p><a class="btn btn-default" href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]"><i class="far fa-edit"></i> Write a product review</a></p>
+                            [%/if%]
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.tab-pane-->
+        [%/if%]
+    </div><!--/.tab-content-->
+</div><!--/.tabbable-->

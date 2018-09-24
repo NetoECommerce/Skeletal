@@ -1,0 +1,27 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="[%url_info name:'meta_keywords'/%]"/>
+<meta name="description" content="[%url_info name:'meta_description'/%]"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:homeurl@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:homeurl@]/assets/website_logo.png[%/if%]"/>
+<meta property="og:title" content="[%url_info name:'page_title'/%]"/>
+<meta property="og:site_name" content="[@config:website_name@]"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="[@config:canonical_url@]"/>
+<meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
+[@config:GOOGLE_VERIFICATION_CODE@]
+<title itemprop='name'>[%url_info name:'page_title'/%]</title>
+<link rel="canonical" href="[@config:canonical_url@]" itemprop="url"/>
+<link rel="shortcut icon" href="/assets/favicon_logo.png?[@config:neto_css_version@]"/>
+<!-- Neto Assets -->
+<link rel="dns-prefetch preconnect" href="//cdn.neto.com.au">
+<link rel="dns-prefetch" href="//use.fontawesome.com">
+<link rel="dns-prefetch" href="//google-analytics.com">
+[%cdn_asset html:'1' type:'css' domain:'use.fontawesome.com/releases' library:'' version:'v5.2.0'%]css/all.css[%/cdn_asset%]
+[%cdn_asset html:'1' type:'css' library:'jquery_ui' version:'1.11.1'%]css/custom-theme/jquery-ui-1.8.18.custom.css[%/cdn_asset%]
+<!--[if lte IE 8]>
+	[%cdn_asset html:'1' type:'js' library:'html5shiv' version:'3.7.0'%]html5shiv.js[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'respond.js' version:'1.3.0'%]respond.min.js[%/cdn_asset%]
+<![endif]-->
+[%if [@form:disable_scripts@] ne 'true'%]
+	[%tracking_code type:'Declaration'/%]
+[%/if%]
