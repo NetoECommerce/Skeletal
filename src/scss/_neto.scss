@@ -158,10 +158,13 @@ $payment-icon:(
 	}
 }
 // Product page main image
-.main-image a > .zoom {
-	@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(sm) {
+	.main-image a > .zoom {
 		pointer-events: none;
 	}
+	#n_product .fancybox-nav span {
+		visibility: visible;
+	} 
 }
 // Product page qty input
 #n_product .qty {
