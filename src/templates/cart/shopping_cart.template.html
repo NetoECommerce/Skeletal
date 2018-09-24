@@ -135,7 +135,7 @@
 			<div class="col-12"><hr aria-hidden="true" /></div>
 			[%if [@config:show_shipping_calc@]%]
 				<div class="col-12 mb-2 [%if [@config:show_coupon_promo_code_field@]%]col-lg-3[%else%]col-lg-6[%/if%]">
-					[%load_template file:'cart/includes/shipping/[@config:shipping_calculator@].template.html'/%]
+					[%load_template file:'cart/includes/shipping_calc.template.html'/%]
 				</div>
 			[%/if%]
 			[%if [@config:show_coupon_promo_code_field@]%]

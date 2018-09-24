@@ -135,7 +135,7 @@
 		</div>
 	</form>
 	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
-		[%load_template file:'products/includes/shipping/[@config:shipping_calculator@].template.html'/%]
+		[%load_template file:'products/includes/shipping_calc.template.html'/%]
 	[%/if%]
 	[%IF [@short_description@]%]
 	<p itemprop="description" aria-label="Product Short Description">

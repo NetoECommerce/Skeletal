@@ -1,0 +1,117 @@
+<hr/>
+[%if [@config:shipping_calculator@] eq 'suburb-selector'%]
+	<!-- suburb-selector -->
+	<section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
+		<div class="card-header"><h3 class="mb-0">Calculate Shipping</h3></div>
+		<div class="card-body n-wrapper-form-control">
+			<p>Enter your post code to calculate.</p>
+			<input type="hidden" id="shloc_country" value="AU"/>
+			<input type="hidden" name="shloc_state" id="shloc_state" value="[%SESSION id:'ship_state'%][%/ SESSION%]"/>
+			<div class="row row-padded">
+				<div class="col-sm-4">
+					<input type="text" name="input" id="n_qty" style="width:100%" value="[@qty@]"  class="form-control" placeholder="Qty">
+				</div>
+				<div class="col-sm-4">
+					<input type="text" name="input" id="zip" style="width:100%" value="[%SESSION id:'ship_zip'%][%/ SESSION%]"  class="form-control" placeholder="Post Code">
+				</div>
+				<div class="col-sm-4">
+					<span id="shloc_selector"></span>
+					<input type="text" id="shloc_city" name="shloc_city"  value="[%SESSION id:'ship_city'%][%/ SESSION%]" size="50" maxlength="50"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<button type="button" class="btn btn-secondary-outline btn-block" onClick="refreshCalc()" title="Calculate"><i class="icon-refresh"></i> Calculate Shipping</button>
+				</div>
+			</div>
+			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+				[%param *header%]<p>[%/ param%]
+				[%param *body%]
+					<hr />
+					<b>[@shipping_method@]</b> - [%format type:"currency"%][@cost@][%/ format%]<br />
+					<i>[@shipping_description@]</i>
+				[%/ param%]
+				[%param *footer%]</p>[%/ param%]
+			[%/ shipping_methods%]
+		</div>
+	</section>
+[%elseif [@config:shipping_calculator@] eq 'suburb-search'%]
+	<!-- suburb-search -->
+	<section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
+		<div class="card-header"><h3 class="mb-0">Calculate Shipping</h3></div>
+		<div class="card-body n-wrapper-form-control">
+			<input type="hidden" name="input" id="zip" style="width:100%" value="[%SESSION id:'ship_zip'%][%/ SESSION%]"  class="form-control" placeholder="Post Code">
+			<input type="hidden" id="ship_country" value="AU"/>
+			<input type="hidden" size="5" name="ship_state" id="ship_state" value="[@ship_state@]" />
+			<input type="hidden" name="shloc_state" id="shloc_state" value="[%SESSION id:'ship_state'%][%/ SESSION%]"/>
+			<input type="hidden" name="input" id="n_qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%end data%][%data id:'min_qty' if:'eq' value:'0' %]1[%end data%]">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="ship_selector">Suburb/Post Code</label>
+						<input type="text" id="ship_selector" style="width:100%" class="form-control" value="[%SESSION id:'ship_city'%][%/ SESSION%]" size="50" maxlength="50" autocomplete="off" placeholder="Enter Suburb" /><input type="hidden" name="ship_city" id="ship_city" value="[%SESSION id:'ship_city'%][%/ SESSION%]"/>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<label for="ship_selector">&nbsp;</label>
+					<button type="button" class="btn btn-default btn-block" id="calc_btn" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'qty': $('#n_qty').val() , 'ship_city':$('#ship_selector').val() , 'ship_zip': $('#zip').val(),'ship_state': $('#ship_state').val()});" title="Calculate"><i class="fa fa-refresh"></i> </button>
+				</div>
+			</div>
+			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+				[%param *header%]<p>[%/ param%]
+				[%param *body%]
+					<hr />
+					<b>[@shipping_method@]</b> - [%format type:"currency"%][@cost@][%/ format%]<br />
+					<i>[@shipping_description@]</i>
+				[%/ param%]
+				[%param *footer%]</p>[%/ param%]
+			[%/ shipping_methods%]
+		</div>
+	</section>
+[%else%]
+	<!-- standard -->
+	<section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
+		<div class="card-header"><h3 class="mb-0">Calculate Shipping</h3></div>
+		<div class="card-body">
+			<div class="row btn-stack">
+				<div class="col-12 col-md-3">
+					<input type="number" name="input" min="0" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty" aria-label="qty">
+				</div>
+				<div class="col-12 col-md-3">
+					<select id="country" class="form-control" aria-label="Country">
+						[%countries%]
+							[%param *body%]
+								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+							[%/ param%]
+						[%/ countries%]
+					</select>
+				</div>
+				<div class="col-12 col-md-3">
+					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post code">
+				</div>
+				<div class="col-12 col-md-3">
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-sync" aria-hidden="true"></i> Calculate</button>
+				</div>
+			</div>
+			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+				[%param *header%]
+					<br />
+					<div role="alert" aria-atomic="true" aria-label="Shipping results">
+				[%/ param%]
+				[%param *body%]
+					<div role="group" aria-label="Shipping method option">
+					<hr aria-hidden="true"/>
+					<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ IF%]<br />
+					<i class="text-muted">[@shipping_description@]</i>
+					</div>
+				[%/ param%]
+				[%param *footer%]
+					</div>
+				[%/ param%]
+				[%param *ifempty%]
+					[%if [@ship_zip@]%]<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</p>[%/if%]
+				[%/ param%]
+			[%/ shipping_methods%]
+		</div>
+	</section>
+[%/if%]
