@@ -1,101 +1,82 @@
-[%if [@config:shipping_calculator@] eq 'suburb-selector'%]
-	<!-- suburb-selector -->
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4 class="panel-title">Shipping Calculator</h4>
-		</div>
-		<div class="panel-body n-wrapper-form-control">
-			<form method="post" action="[%URL page:'checkout'%][%END URL%]">
+<div class="card" role="contentinfo" aria-label="Calculate shipping">
+	<div class="card-header">
+		<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
+	</div>
+	<div class="card-body">
+		[%if [@config:shipping_calc_type@] eq 'suburb_selector'%]
+			<!-- suburb selector -->
+			<form method="post" action="[%URL page:'checkout'/%]">
 				<p>Enter your post code to calculate.</p>
 				<input type="hidden" size="5" id="ship_country" name="ship_country" value="AU" />
 				<div class="form-group">
 					<label>Post Code</label>
 					<input type="text" class="form-control" size="5" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
 				</div>
-				<div class="form-group">
+				<div class="form-group n-wrapper-form-control">
 					<label>Suburb</label>
 					<span id="shloc_selector"></span>
-					<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%SESSION id:'ship_city'%][%END SESSION%]" size="50" maxlength="50"/>
-					<input type="hidden"  class="form-control" id="ship_state" name="ship_state"  value="[%SESSION id:'ship_state'%][%END SESSION%]"/>
+					<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%session id:'ship_city'/%]" size="50" maxlength="50"/>
+					<input type="hidden"  class="form-control" id="ship_state" name="ship_state"  value="[%session id:'ship_state'/%]"/>
 				</div>
-				<input type="submit" class="btn btn-default" value="Calculate Shipping" />
+				<input type="submit" class="btn btn-outline-secondary" value="Calculate Shipping" />
 			</form>
-		</div>
-	</div>
-	[%site_value id:'footer_javascript'%]
-		<script>
-			$(document).ready(function() {
-				$.postcode_selectorInit({
-					'id':'shloc_selector',
-					'country_id':'ship_country',
-					'city_id':'ship_city',
-					'zip_id':'ship_zip',
-					'state_id':'ship_state',
-				});
-			});
-		</script>
-	[%/ site_value%]
-[%elseif [@config:shipping_calculator@] eq 'suburb-search'%]
-	<!-- suburb-search -->
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4 class="panel-title">Shipping Calculator</h4>
-		</div>
-		<div class="panel-body">
-			<form method="post" action="[%URL page:'checkout'%][%END URL%]">
-				<p>Enter your Suburb to calculate.</p>
+			[%site_value id:'footer_javascript'%]
+				<script>
+					$(document).ready(function() {
+						$.postcode_selectorInit({
+							'id':'shloc_selector',
+							'country_id':'ship_country',
+							'city_id':'ship_city',
+							'zip_id':'ship_zip',
+							'state_id':'ship_state',
+						});
+					});
+				</script>
+			[%/ site_value%]
+		[%elseif [@config:shipping_calc_type@] eq 'suburb_search'%]
+			<!-- suburb search -->
+			<form method="post" action="[%URL page:'checkout'/%]">
+				<p>Enter your suburb to calculate.</p>
 				<div class="form-group">
 					<select name="ship_country" id="ship_country" class="form-control">
 						[%countries%]
-						[%PARAM *body%]
-						<option class="span3" value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
-						[%END PARAM%]
-						[%END countries%]
+							[%PARAM *body%]
+								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+							[%/param%]
+						[%/countries%]
 					</select>
 				</div>
 				<div class="form-group">
 					<label>Suburb</label>
-					<input type="hidden" size="5" name="ship_zip" id="ship_zip" value="[@ship_zip@]" />
+					<input type="hidden" size="5" name="ship_zip" id="zip" value="[@ship_zip@]" />
 					<input type="hidden" size="5" name="ship_state" id="ship_state" value="[@ship_state@]" />
-					<input type="text" style="width:100%" class="form-control" id="ship_selector" value="[%SESSION id:'ship_city'%][%END SESSION%]" size="50" maxlength="50" autocomplete="off" />
-					<input type="hidden" name="ship_city" id="ship_city" value="[%SESSION id:'ship_city'%][%END SESSION%]"/>
+					<input type="text" class="form-control" id="ship_selector" value="[%session id:'ship_city'/%]" size="50" maxlength="50" autocomplete="off" />
+					<input type="hidden" name="ship_city" id="ship_city" value="[%session id:'ship_city'/%]"/>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-default btn-block form-control" value="Calculate Shipping" />
+					<input type="submit" class="btn btn-outline-secondary btn-block form-control" id="suburb_search_btn" value="Calculate Shipping" />
 				</div>
 			</form>
-		</div>
-	</div>
-	[%site_value id:'footer_javascript'%]
-		<script>
-			$.postcode_selectorInit({
-				'id':'ship_selector',
-				'country_id':'ship_country',
-				'city_id':'ship_city',
-				'state_id':'ship_state',
-				'zip_id':'zip',
-				'page' : {
-					'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
-					'body': '<li><a href="javascript:##script##">##city## (##zip##)</a></li>',
-					'footer': '</ul>'
-				},
-				'items_returned': 100,
-				'closetimer_secs':5000,
-				'fns': {
-					'onChange' : function (){
-						$("#calc_btn").trigger('click');
-					}
-				}
-			});
-		</script>
-	[%/site_value%]
-[%else%]
-	<!-- standard -->
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4 class="panel-title">Shipping Calculator</h4>
-		</div>
-		<div class="panel-body">
+			[%site_value id:'footer_javascript'%]
+				<script>
+					$.postcode_selectorInit({
+						'id':'ship_selector',
+						'country_id':'ship_country',
+						'city_id':'ship_city',
+						'state_id':'ship_state',
+						'zip_id':'zip',
+						'page' : {
+							'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+							'body': '<li class="dropdown"><a class="dropdown-item" href="javascript:##script##">##city## (##zip##)</a></li>',
+							'footer': '</ul>'
+						},
+						'items_returned': 100,
+						'closetimer_secs':5000
+					});
+				</script>
+			[%/site_value%]
+		[%else%]
+			<!-- postcode search -->
 			<form method="post" action="[%url page:'checkout'/%]">
 				<p>Enter your post code to calculate.</p>
 				<div class="form-group">
@@ -111,8 +92,8 @@
 					<label for="ship_zip">Post Code</label>
 					<input class="form-control" type="text" size="5" name="ship_zip" id="ship_zip" value="[@ship_zip@]" />
 				</div>
-				<input type="submit" class="btn btn-default btn-block" value="Calculate Shipping" />
+				<input type="submit" class="btn btn-outline-secondary btn-block" value="Calculate Shipping" />
 			</form>
-		</div>
+		[%/if%]
 	</div>
-[%/if%]
+</div>

@@ -39,7 +39,7 @@
 			[%/if%]
 		});
 	</script>
-	[%if [@config:shipping_calculator@] eq 'suburb-selector'%]
+	[%if [@config:shipping_calc_type@] eq 'suburb_selector'%]
 		<script>
 			var suburbCalcInit = function() {
 				$.postcode_selectorInit({
@@ -67,7 +67,7 @@
 				suburbCalcInit();
 			});
 		</script>
-	[%elseif [@config:shipping_calculator@] eq 'suburb-search'%]
+	[%elseif [@config:shipping_calc_type@] eq 'suburb_search'%]
 		<script>
 			$.postcode_selectorInit({
 				'id':'ship_selector',
@@ -77,14 +77,14 @@
 				'zip_id':'zip',
 				'page' : {
 					'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
-					'body': '<li><a href="javascript:##script##">##city## (##zip##)</a></li>',
+					'body': '<li class="dropdown"><a class="dropdown-item" href="javascript:##script##">##city## (##zip##)</a></li>',
 					'footer': '</ul>'
 				},
 				'items_returned': 100,
 				'closetimer_secs':5000,
 				'fns': {
 					'onChange' : function (){
-						$("#calc_btn").trigger('click');
+						$("#suburb_search_btn").trigger('click');
 					}
 				}
 			});
