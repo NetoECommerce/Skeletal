@@ -78,6 +78,16 @@ $payment-icon:(
 		vertical-align: middle;
 	}
 }
+@include media-breakpoint-down(sm) {
+	.navbar-nav .dropdown-menu{
+		border: 0;
+		padding: 0;
+		padding-left: 0.25rem;
+		&.show .dropdown-menu{
+			display: block;
+		}
+	}
+}
 // Header cart
 #header-cart {
 	z-index: $zindex-fixed;
