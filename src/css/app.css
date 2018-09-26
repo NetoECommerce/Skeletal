@@ -7734,6 +7734,9 @@ a.text-dark:hover, a.text-dark:focus {
   top: -1px;
   left: 100%; }
 
+.dropdown-toggle::before, .dropdown-toggle::after {
+  vertical-align: middle; }
+
 #header-cart {
   z-index: 1030; }
 
@@ -7794,8 +7797,7 @@ a.text-dark:hover, a.text-dark:focus {
   .main-image a > .zoom {
     pointer-events: none; }
   #n_product .fancybox-nav span {
-    visibility: visible; } 
-  }
+    visibility: visible; } }
 
 #n_product .qty {
   text-align: center; }
