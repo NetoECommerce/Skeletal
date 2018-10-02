@@ -73,6 +73,21 @@ $payment-icon:(
 	top: -1px;
 	left: 100%;
 }
+.dropdown-toggle{
+	&::before, &::after{
+		vertical-align: middle;
+	}
+}
+@include media-breakpoint-down(sm) {
+	.navbar-nav .dropdown-menu{
+		border: 0;
+		padding: 0;
+		padding-left: 0.25rem;
+		&.show .dropdown-menu{
+			display: block;
+		}
+	}
+}
 // Header cart
 #header-cart {
 	z-index: $zindex-fixed;
@@ -164,7 +179,7 @@ $payment-icon:(
 	}
 	#n_product .fancybox-nav span {
 		visibility: visible;
-	} 
+	}
 }
 // Product page qty input
 #n_product .qty {
