@@ -2,7 +2,7 @@
 <section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
 	<div class="card-header"><h3 class="mb-0">Calculate Shipping</h3></div>
 	<div class="card-body">
-		[%if [@config:shipping_calc_type@] eq 'suburb_selector'%]
+		[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
 			<!-- suburb selector -->
 			<input type="hidden" id="shloc_country" value="AU"/>
 			<input type="hidden" id="shloc_state" name="shloc_state" value="[%session id:'ship_state'/%]"/>
@@ -23,7 +23,7 @@
 					</button>
 				</div>
 			</div>
-		[%elseif [@config:shipping_calc_type@] eq 'suburb_search'%]
+		[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
 			<!-- suburb search -->
 			<input type="hidden" id="n_qty" name="n_qty" value="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]">
 			<input type="hidden" id="zip" name="zip" value="[%session id:'ship_zip'/%]" />

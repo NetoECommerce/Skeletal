@@ -3,7 +3,7 @@
 		<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
 	</div>
 	<div class="card-body">
-		[%if [@config:shipping_calc_type@] eq 'suburb_selector'%]
+		[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
 			<!-- suburb selector -->
 			<form method="post" action="[%URL page:'checkout'/%]">
 				<p>Enter your post code to calculate.</p>
@@ -33,7 +33,7 @@
 					});
 				</script>
 			[%/ site_value%]
-		[%elseif [@config:shipping_calc_type@] eq 'suburb_search'%]
+		[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
 			<!-- suburb search -->
 			<form method="post" action="[%URL page:'checkout'/%]">
 				<p>Enter your suburb to calculate.</p>

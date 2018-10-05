@@ -39,7 +39,7 @@
 			[%/if%]
 		});
 	</script>
-	[%if [@config:shipping_calc_type@] eq 'suburb_selector'%]
+	[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
 		<script>
 			var suburbCalcInit = function() {
 				$.postcode_selectorInit({
@@ -67,7 +67,7 @@
 				suburbCalcInit();
 			});
 		</script>
-	[%elseif [@config:shipping_calc_type@] eq 'suburb_search'%]
+	[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
 		<script>
 			$.postcode_selectorInit({
 				'id':'ship_selector',
