@@ -68,7 +68,7 @@
 				</div>
 			</div>
 		[%/if%]
-		[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
+		[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' city:'[@ship_city@]' state:'[@ship_state@]' country:'[@ship_country@]'%]
 			[%param *header%]
 				<br />
 				<div role="alert" aria-atomic="true" aria-label="Shipping results">

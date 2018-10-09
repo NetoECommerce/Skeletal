@@ -165,7 +165,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" >
-						[%shipping_methods country:'[@ship_country@]' zip:'[@ship_zip@]'%]
+						[%shipping_methods zip:'[@ship_zip@]' city:'[@ship_city@]' state:'[@ship_state@]' country:'[@ship_country@]'%]
 							[%param header%]
 							<form method="post" name="SHsummary" action="[%url page:'checkout'/%]">
 							[%/param%]
