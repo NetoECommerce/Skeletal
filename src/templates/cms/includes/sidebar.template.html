@@ -143,7 +143,7 @@
 			</div>
 		</div>
 	[%/IF%]
-	[%cache type:'cmenu' id:'sidebar' ttl:'86400'%]
+	[%cache type:'cmenu' id:'sidebar-category' ttl:'86400'%]
 	[%CATEGORYMENU sortby:'sortorder,selected,name' show_empty:'1'%]
 		[%param header%]
 			<div class="card d-none d-md-block mb-2">
@@ -188,6 +188,7 @@
 			[%/param%]
 		[%/PRODUCT_HISTORY%]
 	[%/CONFIG%]
+	[%cache type:'menu' id:'sidebar-info' ttl:'86400'%]
 	[%MENU id:'web_information'%]
 		[%param header%]
 			<div class="card d-none d-md-block my-2">
@@ -218,5 +219,6 @@
 		</div>
 		[%/param%]
 	[%/MENU%]
+	[%/cache%]
 </aside>
 <div class="col-12 col-md-9">
