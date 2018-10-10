@@ -1,5 +1,5 @@
 [%load_template file:"products/includes/product_scripts.template.html"/%]
-[%cache type:'display' id:'[@inventory_id@]'%]
+[%cache type:'display' id:'[@inventory_id@]' ttl:'86400'%]
 	<div class="col-12">
 		[%breadcrumb%]
 			[%param *header%]
@@ -128,7 +128,7 @@
 						</div>
 						[%/param%]
 					[%/thumb_list%]
-				[%/CACHE%]
+				[%/cache%]
 				[%if [@config:phistory_limit@]%]
 					[%product_history limit:'[@config:phistory_limit@]' template:''%]
 						[%param header%]
