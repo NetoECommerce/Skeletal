@@ -21,7 +21,7 @@ The safest way to install Skeletal is through Neto's theme store. Go to **Websto
 
 **Directly install**
 
-To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your Neto website. You should also rename this new `src` directory to whatever you would like your custom theme to be named. You will want to have ran `npm run build` first so you have the compile css. 
+To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your Neto website. You should also rename this new `src` directory to whatever you would like your custom theme to be named. You will want to have ran `npm run build` first so you have the compiled css. 
 
 For the above, you will need FTP access to your Neto website, which you can request [here](http://forms.neto.com.au/design/requestftp.html).
 
