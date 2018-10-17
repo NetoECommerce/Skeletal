@@ -363,6 +363,8 @@ $payment-icon:(
 #suburb_sl,
 ._itmspec_opt,
 .n-wrapper-form-control select {
+	overflow: hidden;
+	text-overflow: ellipsis;
 	@extend .form-control;
 	@extend select.form-control;
 }
