@@ -38,53 +38,37 @@
 				});
 			[%/if%]
 		});
-	</script>
-	[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
-		<script>
-			var suburbCalcInit = function() {
-				$.postcode_selectorInit({
-					'id':'shloc_selector',
-					'country_id':'shloc_country',
-					'city_id':'shloc_city',
-					'state_id':'shloc_state',
-					'zip_id':'zip'
-				});
-			}
-			var refreshCalc = function(){
-				$.load_ajax_template('_buying_options', {
-					'showloading': '1',
-					'qty': $('#n_qty').val() ,
-					'ship_city': $('#shloc_city').val(),
-					'ship_country': $('#shloc_country').val(),
-					'ship_state': $('#shloc_state').val(),
-					'ship_zip': $('#zip').val(),
-
-				},{
-					'onLoad': suburbCalcInit
-				});
+		[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+			var productShippingCalc = {
+				calcInit: function(){
+					$.postcode_selectorInit({
+						'id':'ship_selector',
+						'country_id':'ship_country',
+						'city_id':'ship_city',
+						'state_id':'ship_state',
+						'zip_id':'ship_zip'
+					});
+				}
 			}
 			$(document).ready(function(){
-				suburbCalcInit();
+				productShippingCalc.calcInit();
 			});
-		</script>
-	[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
-		<script>
+		[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
 			$.postcode_selectorInit({
 				'id':'ship_selector',
 				'country_id':'ship_country',
 				'city_id':'ship_city',
 				'state_id':'ship_state',
-				'zip_id':'zip',
+				'zip_id':'ship_zip',
 				'page' : {
 					'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
 					'body': '<li class="dropdown"><a class="dropdown-item" href="javascript:##script##">##city## (##zip##)</a></li>',
 					'footer': '</ul>'
 				},
-				'items_returned': 100,
-				'closetimer_secs':5000
+				'items_returned': 25
 			});
-		</script>
-	[%/if%]
+		[%/if%]
+	</script>
 	[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
 	[%cdn_asset html:'1' type:'js' library:'zoom' version:'1.4'%]jquery.zoom-min.js[%/cdn_asset%]
 	[%cdn_asset html:'1' type:'js' library:'jcountdown' version:'1.4'%]jquery.jcountdown.min.js[%/cdn_asset%]
