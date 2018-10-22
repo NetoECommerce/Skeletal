@@ -92,8 +92,8 @@
 
 			});
 
-			$('.submit_btn').click(function(e) { $.sumbit_form(); });
-			$('.copy_btn').click(function(e) { $.copy_values($(this).attr('ref')); });
+			$('.submit_btn').on('click', function(e) { $.sumbit_form(); });
+			$('.copy_btn').on('click', function(e) { $.copy_values($(this).attr('ref')); });
 			$.init_text_count('inputtext');
 		});
 	</script>

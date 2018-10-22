@@ -48,22 +48,22 @@
 			// Product image zoom
 			$('.zoom').zoom();
 			// Sales countdown
-			$("#sale-end").countdown({
+			$('#sale-end').countdown({
 				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
 			});
 			// Fancybox
-			$(".fancybox").fancybox();
+			$('.fancybox').fancybox();
 			// Tab a11y
-			$("li[role='tab']").click(function(){
-				$("li[role='tab']").attr("aria-selected","false"); //deselect all the tabs
-				$(this).attr("aria-selected","true");  // select this tab
-				var tabpanid= $(this).attr("aria-controls"); //find out what tab panel this tab controls
-				var tabpan = $("#"+tabpanid);
-				$("div[role='tabpanel']").attr("aria-hidden","true"); //hide all the panels
-				tabpan.attr("aria-hidden","false");  // show our panel
+			$('li[role='tab']').on('click', function(){
+				$('li[role="tab"]').attr('aria-selected', 'false'); //deselect all the tabs
+				$(this).attr('aria-selected', 'true');  // select this tab
+				var tabpanid= $(this).attr('aria-controls'); //find out what tab panel this tab controls
+				var tabpan = $('#'+tabpanid);
+				$('div[role="tabpanel"]').attr('aria-hidden', 'true'); //hide all the panels
+				tabpan.attr('aria-hidden', 'false');  // show our panel
 			 });
 		});
-		$(document).on("click", ".btn-ajax-loads", nCustom.funcs.buttonLoading);
-		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){e.preventDefault();});
+		$(document).on('click', '.btn-ajax-loads', nCustom.funcs.buttonLoading);
+		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){ e.preventDefault(); });
 	</script>
 [%/site_value%]

@@ -186,11 +186,11 @@
 
 			}
 			getlocation();
-			$('#subscribe_newsletter').change(function() {
+			$('#subscribe_newsletter').on('change', function() {
 				$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
 			});
-			</script>
-		[%/ SITE_VALUE%]
+		</script>
+	[%/ SITE_VALUE%]
 
 		[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger" role="alert">[@error@]</div>[%/ DATA%]
 		<div class="row">

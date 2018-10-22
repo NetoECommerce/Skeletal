@@ -43,15 +43,12 @@
 				}
 			}
 		});
-
-		$('.upload_btn').click(function(e){
+		$('.upload_btn').on('click', function(e){
 			$.submit_form();
 		});
-
-		$('.card_btn').click(function(e){
+		$('.card_btn').on('click', function(e){
 			$('#updatecard').submit();
 		});
-
 	});
 </script>
 [%/SITE_VALUE%]

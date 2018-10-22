@@ -91,20 +91,20 @@
 							[%SITE_VALUE id:'footer_javascript'%]
 								<script type="text/javascript">
 									$(function() {
-									var vals = ['[@min@]','[@max@]'];
-									for(var i=0; i<vals.length; i++) {vals[i]=parseInt(vals[i]); }
-										$( "#price-range" ).slider({
+										var vals = ['[@min@]','[@max@]'];
+										for(var i=0; i<vals.length; i++) { vals[i]=parseInt(vals[i]); }
+										$('#price-range').slider({
 											range: true,
 											min: vals[0],
 											max: vals[1],
 											values: vals,
 											slide: function( event, ui ) {
-												$( "#price-range-text" ).html( '[@config:currency_symbol@]'+ui.values[0]+' to [@config:currency_symbol@]'+ui.values[1] );
-												$( '#pricesearch input[name="pr"]' ).val( ui.values[0]+'-'+ui.values[1] );
+												$('#price-range-text').html('[@config:currency_symbol@]'+ui.values[0]+' to [@config:currency_symbol@]'+ui.values[1]);
+												$('#pricesearch input[name="pr"]').val( ui.values[0]+'-'+ui.values[1] );
 											},
 											create: function( event, ui ) {
-												$( "#price-range-text" ).html( '[@config:currency_symbol@]'+vals[0]+' to [@config:currency_symbol@]'+vals[1] );
-												$( '#pricesearch input[name="pr"]' ).val( vals[0]+'-'+vals[1] );
+												$('#price-range-text').html('[@config:currency_symbol@]'+vals[0]+' to [@config:currency_symbol@]'+vals[1]);
+												$('#pricesearch input[name="pr"]').val( vals[0]+'-'+vals[1] );
 											}
 										});
 									});
