@@ -185,15 +185,18 @@
 							</form></td>
 								</tr>
 								<tr>
-									<td>Shipping Cost To Post Code [@ship_zip@]</td>
+									<td>
+										Shipping cost to [%if [@ship_zip@]%][@ship_zip@] [%/if%] 
+										[%countries%][%param *body%][%if [@country_code@] eq [@ship_country@]%][@country_name@][%/if%][%/param%][%/countries%]
+									</td>
 									<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
 								</tr>
 							[%/param%]
 							[%param *ifempty%]
-								[%if [@ship_zip@]%]
-									<b class="text-danger">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</b>
+								[%if [@ship_country@]%]
+									<b class="text-danger">Shipping not available to [%if [@ship_zip@]%][@ship_zip@] [%/if%][%countries%][%param *body%][%if [@country_code@] eq [@ship_country@]%][@country_name@][%/if%][%/param%][%/countries%], please try another location.</b>
 								[%else%]
-									Enter post code to calculate shipping
+									Use shipping calculator to calculate shipping
 								[%/if%]
 							</td>
 							</tr>
