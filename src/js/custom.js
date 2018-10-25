@@ -147,7 +147,15 @@ var nCustom = {
 					? $(element).addClass(css)
 					: $(element).removeClass(css)
 			}
-		}
+        },
+        // Checks if shipping calculator is in the DOM
+        hasShippingCalc: function(id){
+            if(!id) { id = '#shipbox'; }
+            if($(id).length > 0){
+                return true;
+            }
+            return false;
+        }
 	}
 }
 

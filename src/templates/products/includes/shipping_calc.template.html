@@ -19,7 +19,7 @@
 				</div>
 				<div class="col-12 col-md-3">
 					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
-						onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.calcInit })">
+						onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
 				</div>
