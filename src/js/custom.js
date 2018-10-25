@@ -48,7 +48,7 @@
 				}
 			});
 			if (found == 0) {
-				$.fancybox('Please specify a quantity before adding to cart');
+				$.nPopupBox('Please specify a quantity before adding to cart');
 				return false;
 			}
 			return true;
@@ -173,4 +173,11 @@ $('#_jstl__buying_options').on('click', '.js-notifymodal-in-stock', function(e){
 		$terms.attr('checked', false);
 		return true;
 	}
+});
+// Multi add child products
+$('.multi-add').on('click', function(){
+    if ($.checkValidQty()) { 
+        $.addMultipleCartItems('multiitemadd'); 
+        return false; 
+    }
 });
