@@ -54,7 +54,7 @@
 			// Fancybox
 			$('.fancybox').fancybox();
 			// Tab a11y
-			$('li[role='tab']').on('click', function(){
+			$('li[role="tab"]').on('click', function(){
 				$('li[role="tab"]').attr('aria-selected', 'false'); //deselect all the tabs
 				$(this).attr('aria-selected', 'true');  // select this tab
 				var tabpanid= $(this).attr('aria-controls'); //find out what tab panel this tab controls
