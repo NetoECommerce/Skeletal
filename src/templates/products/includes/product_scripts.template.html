@@ -41,18 +41,21 @@
 	</script>
 	[%cdn_asset html:'1' type:'js' library:'zoom' version:'1.7.21'%]jquery.zoom.min.js[%/cdn_asset%]
     [%cdn_asset html:'1' type:'js' library:'jcountdown' version:'2.2.0'%]jquery.countdown.min.js[%/cdn_asset%]
-    [%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
+    [%cdn_asset html:'1' type:'css' library:'lightbox' version:'2.10.0'%]css/lightbox.min.css[%/cdn_asset%]
+	[%cdn_asset html:'1' type:'js' library:'lightbox' version:'2.10.0'%]js/lightbox.min.js[%/cdn_asset%]
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// Product image zoom
-			$('.zoom').zoom();
+            $('.zoom').zoom();
+            // Lightbox
+            lightbox.option({
+            'alwaysShowNavOnTouchDevices': true,
+            'wrapAround': true
+            });
 			// Sales countdown
 			$('#sale-end').countdown('[%format type:"date" format:"#M/#D/#Y #H:#I"%][@promo_end@][%/format%]', function(event) {
                 $(this).html(event.strftime('%D days %H:%M:%S'));
             });
-			// Fancybox
-			$('.fancybox').fancybox();
 			// Tab a11y
 			$('li[role="tab"]').on('click', function(){
 				$('li[role="tab"]').attr('aria-selected', 'false'); //deselect all the tabs
