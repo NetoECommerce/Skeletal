@@ -1,7 +1,5 @@
 <div class="col-12">
 	[%SITE_VALUE id:'footer_javascript'%]
-	[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
 	<script type="text/javascript" language="javascript">
 		$(document).ready(function() {
 			$.extend({
@@ -81,12 +79,7 @@
 					if (okay) {
 						$('#upsellcartform').submit();
 					} else {
-						$.fancybox("Please complete all the required fields indicated with a *", {
-							showCloseButton: true,
-							overlayShow: true,
-							centerOnScroll: true,
-							hideOnContentClick: true
-						});
+						$.nPopupBox('Please complete all the required fields indicated with a *');
 					}
 				}
 

@@ -36,9 +36,8 @@
 		$.extend({
 			submit_form: function() {
 				if ($('#upld_logo').val() == '') {
-					$.fancybox("Please select your company logo.", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
-				}
-				else {
+					$.nPopupBox('Please select your company logo.');
+				} else {
 					$('#updatelogo').trigger('submit');
 				}
 			}
