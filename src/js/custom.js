@@ -78,11 +78,11 @@ var nCustom = {
 					if(mutation.addedNodes["0"]){
 						nCustom.funcs.updateFocused();
 						// focus on the popup
-						$(popUp).attr('tabindex', '-1').focus();
+						$(popUp).attr('tabindex', '-1').trigger('focus');
 					}else{
-						$(popUp).attr('tabindex', '').blur();
+						$(popUp).attr('tabindex', '').trigger('focus');
 						// Observer closing popup
-						$(nCustom.vars.lastFocused).focus();
+						$(nCustom.vars.lastFocused).trigger('focus');
 					}
 				});
 			});

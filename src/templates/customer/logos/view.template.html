@@ -39,7 +39,7 @@
 					$.fancybox("Please select your company logo.", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
 				}
 				else {
-					$('#updatelogo').submit();
+					$('#updatelogo').trigger('submit');
 				}
 			}
 		});
@@ -47,7 +47,7 @@
 			$.submit_form();
 		});
 		$('.card_btn').on('click', function(e){
-			$('#updatecard').submit();
+			$('#updatecard').trigger('submit');
 		});
 	});
 </script>
