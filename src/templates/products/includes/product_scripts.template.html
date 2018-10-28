@@ -46,8 +46,16 @@
         [%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
             [%if [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_selector'%]
                 var productShippingCalc = {
+                    // Checks if shipping calculator is in the DOM
+                    hasShippingCalc: function(id){
+                        if(!id) { id = '#shipbox'; }
+                        if($(id).length > 0){
+                            return true;
+                        }
+                        return false;
+                    },
                     suburbSelectorInit: function(){
-                        var hasShippingCalc = nCustom.funcs.hasShippingCalc();
+                        var hasShippingCalc = productShippingCalc.hasShippingCalc();
                         if(hasShippingCalc){
                             $.postcode_selectorInit({
                                 'id':'ship_selector',
