@@ -55,8 +55,8 @@
 					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty" aria-label="qty">
 				</div>
 				<div class="col-12 col-md-6">
-					<label for="country">Country</label>
-					<select id="country" class="form-control" aria-label="Country">
+					<label for="ship_country">Country</label>
+					<select id="ship_country" class="form-control" aria-label="Country">
 						[%countries%]
 							[%PARAM *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
@@ -67,7 +67,7 @@
 				<div class="col-12 col-md-3">
 					<label>&nbsp;</label>
 					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" title="Calculate" 
-						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city':$('#ship_selector').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#country').val()})">
+						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city':$('#ship_selector').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val()})">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
 				</div>
@@ -77,7 +77,7 @@
 					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty" aria-label="qty">
 				</div>
 				<div class="col-12 col-md-3">
-					<select id="country" class="form-control" aria-label="Country">
+					<select id="ship_country" class="form-control" aria-label="Country">
 						[%countries%]
 							[%param *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
@@ -90,7 +90,7 @@
 				</div>
 				<div class="col-12 col-md-3">
 					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
-						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_country': $('#country').val()});">
+						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_country': $('#ship_country').val()});">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
 				</div>
