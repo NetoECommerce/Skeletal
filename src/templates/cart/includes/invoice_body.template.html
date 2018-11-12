@@ -22,7 +22,7 @@
     [%else%]
         <div class="alert alert-success" role="alert">Congratulations - Your [@order_type_title@] Has Been Confirmed!</div>
     [%/if%]
-	<p class="mb-1">[@order_type_title@] [%show_order id:'[@order_id@]'%][%param *header%]<span data-test-id="order-id"> #[@order_id@] </span>[%/param%][%/show_order%]</p>
+	<p class="mb-1">[@order_type_title@] [%show_order id:'[@order_id@]' details:'order_ids'%][%param *header%]<span data-test-id="order-id"> #[@order_id@] </span>[%/param%][%/show_order%]</p>
 	<p class="mb-3">Confirmation sent to [%if [@user:username@]%][@user:email@][%else%][@bill_email@][%/if%]</p>
 	<div class="card card-body mb-2">
 		[%if [@user:username@]%]
@@ -142,7 +142,7 @@
                 </div>
             [%/if%]
 		</div>
-		[%show_order id:'[@order_id@]'%]
+		[%show_order id:'[@order_id@]' details:'shipping'%]
 			[%param *header%]
 				<h3 class="my-2">Shipping information <span class="text-muted small">[@order_id@]</span></h3>
 				<div class="row">
