@@ -77,7 +77,7 @@
 				sumbit_form: function() {
 					var okay = $.check_vouchers();
 					if (okay) {
-						$('#upsellcartform').submit();
+						$('#upsellcartform').trigger('submit');
 					} else {
 						$.nPopupBox('Please complete all the required fields indicated with a *');
 					}
