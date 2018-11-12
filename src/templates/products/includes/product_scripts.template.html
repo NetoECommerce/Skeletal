@@ -8,7 +8,7 @@
 						$('.btn-ajax-loads')
 							.html($('.btn-ajax-loads').attr('data-loading-text'))
 							.addClass('disabled').prop('disabled', true);
-						$('.variation-wrapper').addClass('disable-interactivity');
+                        $('.variation-wrapper').addClass('disable-interactivity');
 					},
 					'onReady' : function () {
 						$('.zoom').zoom();
@@ -16,6 +16,11 @@
                         $('#sale-end').countdown('[%format type:"date" format:"#M/#D/#Y #H:#I"%%][@promo_end@][%/format%]', function(event) {
                             $(this).html(event.strftime('%D days %H:%M:%S'));
                         });
+                        [%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+                            [%if [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+                                productShippingCalc.suburbSelectorInit();
+                            [%/if%]
+                        [%/if%]
 					},
 				}
 			});
@@ -38,11 +43,54 @@
 				});
 			[%/if%]
 		});
-	</script>
-	[%cdn_asset html:'1' type:'js' library:'zoom' version:'1.7.21'%]jquery.zoom.min.js[%/cdn_asset%]
+        [%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+            [%if [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+                var productShippingCalc = {
+                    // Checks if shipping calculator is in the DOM
+                    hasShippingCalc: function(id){
+                        if(!id) { id = '#shipbox'; }
+                        if($(id).length > 0){
+                            return true;
+                        }
+                        return false;
+                    },
+                    suburbSelectorInit: function(){
+                        var hasShippingCalc = productShippingCalc.hasShippingCalc();
+                        if(hasShippingCalc){
+                            $.postcode_selectorInit({
+                                'id':'ship_selector',
+                                'country_id':'ship_country',
+                                'city_id':'ship_city',
+                                'state_id':'ship_state',
+                                'zip_id':'ship_zip'
+                            });
+                        }
+                    }
+                }
+                $(document).ready(function(){
+                    productShippingCalc.suburbSelectorInit();
+                });
+            [%elseif [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_search'%]
+                $.postcode_selectorInit({
+                    'id':'ship_selector',
+                    'country_id':'ship_country',
+                    'city_id':'ship_city',
+                    'state_id':'ship_state',
+                    'zip_id':'ship_zip',
+                    'page' : {
+                        'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+                        'body': '<li class="dropdown"><a class="dropdown-item" href="javascript:##script##">##city## (##zip##)</a></li>',
+                        'footer': '</ul>'
+                    },
+                    'items_returned': 25
+                });
+            [%/if%]
+        [%/if%]
+    </script>
+    [%cdn_asset html:'1' type:'js' library:'zoom' version:'1.7.21'%]jquery.zoom.min.js[%/cdn_asset%]
     [%cdn_asset html:'1' type:'js' library:'jcountdown' version:'2.2.0'%]jquery.countdown.min.js[%/cdn_asset%]
     [%cdn_asset html:'1' type:'css' library:'lightbox' version:'2.10.0'%]css/lightbox.min.css[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'lightbox' version:'2.10.0'%]js/lightbox.min.js[%/cdn_asset%]
+    [%cdn_asset html:'1' type:'js' library:'lightbox' version:'2.10.0'%]js/lightbox.min.js[%/cdn_asset%]
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// Product image zoom

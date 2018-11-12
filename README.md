@@ -21,7 +21,7 @@ The safest way to install Skeletal is through Neto's theme store. Go to **Websto
 
 **Directly install**
 
-To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your Neto website. You should also rename this new `src` directory to whatever you would like your custom theme to be named.
+To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your Neto website. You should also rename this new `src` directory to whatever you would like your custom theme to be named. You will want to have ran `npm run build` first so you have the compiled css. 
 
 For the above, you will need FTP access to your Neto website, which you can request [here](http://forms.neto.com.au/design/requestftp.html).
 
@@ -37,9 +37,7 @@ As Skeletal is built almost entirely upon Bootstrap 4, the [Bootstrap documentat
 
 ## Compiling .scss files
 
-If you are not comfortable working with [SASS](https://sass-lang.com/), you are best off writing all CSS in your own custom CSS file. As our `.scss` files are compiled into `app.css`, avoid modifying `app.css`. Otherwise, if for whatever reason you eventually do need to re-compile the `.scss` files, any changes to `app.css` would be lost.
-
-If you are comfortable with SASS, you're best off developing in you're own `.scss` file and adding it to the imports in `src/scss/app.scss`, which needs to be compiled to `src/css/app.css` using Gulp.
+Skeletal uses [SASS](https://sass-lang.com/) to build its CSS. Our `.scss` files are compiled into `app.css`, avoid modifying `app.css`. Otherwise, if for whatever reason you eventually do need to re-compile the `.scss` files, any changes to `app.css` would be lost. You're best off developing in you're own `.scss` file and adding it to the imports in `src/scss/app.scss`, which needs to be compiled to `src/css/app.css` using Gulp.
 
 If you are compiling `.scss` files for the purpose of contributing to Skeletal, follow these steps:
 

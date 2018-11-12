@@ -135,55 +135,8 @@
 		</div>
 	</form>
 	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
-	<hr/>
-	<section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
-		<div class="card-header">
-			<h3 class="mb-0">Calculate Shipping</h3>
-		</div>
-		<div class="card-body">
-			<div class="row btn-stack">
-				<div class="col-12 col-md-3">
-					<input type="number" name="input" min="0" id="n_qty" value="[@qty@]" size="2" class="form-control" placeholder="Qty" aria-label="qty">
-				</div>
-				<div class="col-12 col-md-3">
-					<select id="country" class="form-control" aria-label="Country">
-						[%countries%]
-							[%param *body%]
-								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
-							[%/ param%]
-						[%/ countries%]
-					</select>
-				</div>
-				<div class="col-12 col-md-3">
-					<input type="text" name="input" id="zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post code">
-				</div>
-				<div class="col-12 col-md-3">
-					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" onClick="javascript:$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@SKU@]', 'qty': $('#n_qty').val() , 'ship_zip': $('#zip').val(), 'ship_country': $('#country').val()}),$(this).button('loading');" title="Calculate"><i class="fa fa-sync" aria-hidden="true"></i> Calculate</button>
-				</div>
-			</div>
-			[%shipping_methods sortby:'delivery_time' sku:'[@SKU@]' qty:'[@qty@]' zip:'[@ship_zip@]' country:'[@ship_country@]'%]
-				[%param *header%]
-					<br />
-					<div role="alert" aria-atomic="true" aria-label="Shipping results">
-				[%/ param%]
-				[%param *body%]
-					<div role="group" aria-label="Shipping method option">
-					<hr aria-hidden="true"/>
-					<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ IF%]<br />
-					<i class="text-muted">[@shipping_description@]</i>
-					</div>
-				[%/ param%]
-				[%param *footer%]
-					</div>
-				[%/ param%]
-				[%param *ifempty%]
-					[%if [@ship_zip@]%]<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</p>[%/if%]
-				[%/ param%]
-			[%/ shipping_methods%]
-		</div>
-	</section>
+		[%load_template file:'products/includes/shipping_calc.template.html'/%]
 	[%/if%]
-	<!-- End Shipping Options -->
 	[%IF [@short_description@]%]
 	<p itemprop="description" aria-label="Product Short Description">
 	[@short_description@]

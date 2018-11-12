@@ -1,0 +1,121 @@
+<hr/>
+<section class="card" id="shipbox" role="contentinfo" aria-label="Calculate shipping">
+	<div class="card-header"><h3 class="mb-0">Calculate Shipping</h3></div>
+	<div class="card-body">
+		<div class="row btn-stack">
+			[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+				<!-- suburb selector -->
+				<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
+				<input type="hidden" id="ship_country" value="AU"/>
+				<div class="col-12 col-md-3">
+					<input type="text" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty">
+				</div>
+				<div class="col-12 col-md-3">
+					<input type="text" id="ship_zip" name="ship_zip" value="[%session id:'ship_zip'/%]" class="form-control" placeholder="Post Code">
+				</div>
+				<div class="col-12 col-md-3 n-wrapper-form-control">
+					<span id="ship_selector"></span>
+					<input type="text" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]" class="form-control" size="50" maxlength="50"/>
+				</div>
+				<div class="col-12 col-md-3">
+					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+						onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })">
+						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
+					</button>
+				</div>
+			[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
+				<!-- suburb search -->
+				<input type="hidden" id="ship_zip" name="ship_zip" value="[%session id:'ship_zip'/%]" />
+				<input type="hidden" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]"/>
+				<input type="hidden" id="ship_state" name="ship_state" value="[@ship_state@]" />
+				<input type="hidden" id="shloc_state" name="shloc_state" value="[%session id:'ship_state'/%]"/>
+				<input type="hidden" id="ship_country" value="AU"/>
+				<div class="col-12 col-md-3">
+					<label for="n_qty">Qty</label>
+					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty">
+				</div>
+				<div class="col-12 col-sm-6">
+					<label for="ship_selector">Suburb/Postal Code</label>
+					<input type="text" id="ship_selector" class="form-control" value="[%session id:'ship_city'/%]" size="50" maxlength="50" autocomplete="off" placeholder="Enter Suburb" />
+				</div>
+				<div class="col-12 col-sm-3">
+					<label>&nbsp;</label>
+					<button type="button" class="btn btn-primary btn-block btn-loads" id="suburb_search_btn" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+							onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city':$('#ship_selector').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() });">
+						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
+					</button>
+				</div>
+			[%elseif [@config:shipping_calculator_type@] eq 'country_search'%]
+				<!-- country search -->
+				<input type="hidden" id="ship_zip" name="ship_zip" value="" />
+				<input type="hidden" id="ship_city" name="ship_city" value=""/>
+				<input type="hidden" id="ship_state" name="ship_state" value="" />
+				<div class="col-12 col-md-3">
+					<label for="n_qty">Qty</label>
+					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty" aria-label="qty">
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="ship_country">Country</label>
+					<select id="ship_country" class="form-control" aria-label="Country">
+						[%countries%]
+							[%PARAM *body%]
+								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+							[%/ PARAM%]
+						[%/ countries%]
+					</select>
+				</div>
+				<div class="col-12 col-md-3">
+					<label>&nbsp;</label>
+					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city':$('#ship_selector').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val()})">
+						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
+					</button>
+				</div>
+			[%else%]
+				<!-- postcode search -->
+				<div class="col-12 col-md-3">
+					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty" aria-label="qty">
+				</div>
+				<div class="col-12 col-md-3">
+					<select id="ship_country" class="form-control" aria-label="Country">
+						[%countries%]
+							[%param *body%]
+								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+							[%/ param%]
+						[%/ countries%]
+					</select>
+				</div>
+				<div class="col-12 col-md-3">
+					<input type="text" id="ship_zip" name="ship_zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post code">
+				</div>
+				<div class="col-12 col-md-3">
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_country': $('#ship_country').val()});">
+						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
+					</button>
+				</div>
+			[%/if%]
+		</div>
+		[%shipping_methods sortby:'delivery_time' sku:'[@sku@]' qty:'[@qty@]' zip:'[@ship_zip@]' city:'[@ship_city@]' state:'[@ship_state@]' country:'[@ship_country@]'%]
+			[%param *header%]
+				<br />
+				<div role="alert" aria-atomic="true" aria-label="Shipping results">
+			[%/ param%]
+			[%param *body%]
+				<div role="group" aria-label="Shipping method option">
+				<hr aria-hidden="true"/>
+				<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ IF%]<br />
+				<i class="text-muted">[@shipping_description@]</i>
+				</div>
+			[%/ param%]
+			[%param *footer%]
+				</div>
+			[%/ param%]
+			[%param *ifempty%]
+				[%if [@ship_country@]%]
+					<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [%if [@ship_zip@]%][@ship_zip@] [%/if%][@ship_country@], please try another location.</p>
+				[%/if%]
+			[%/ param%]
+		[%/ shipping_methods%]
+	</div>
+</section>
