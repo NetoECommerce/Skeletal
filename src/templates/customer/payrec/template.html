@@ -14,7 +14,7 @@
 						if(cdt.selectedIndex > 0) {
 							var pn = cdt.options[cdt.selectedIndex].text;
 							var received = f['amount_paid'];
-							if(confirm('You are about to authorise [@config:moneysign@]'+received.value+' received from \''+pn+'\' to this user.\n'+
+							if(confirm('You are about to authorise [@config:currency_symbol@]'+received.value+' received from \''+pn+'\' to this user.\n'+
 								'\nDo you wish to continue?')) {
 								var s = document.getElementById('processing');
 								if(s) {
@@ -26,7 +26,7 @@
 							alert('Please select a payment method.');
 						}
 					} else {
-						alert('You are [@config:moneysign@]'+tmore.innerHTML+' out of balance.');
+						alert('You are [@config:currency_symbol@]'+tmore.innerHTML+' out of balance.');
 					}
 				} else {
 					alert('Please enter a payment amount.');
@@ -181,7 +181,7 @@
 <div id="processing" style="display:none;" class="alert alert-danger">
 	<h2>Payment Processing</h2>
 	<h2>Please do not refresh or close this page</h2>
-	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
+	<img src="[@config:REL_IMAGES_URL@]/loading.gif" alt="Loading"/></div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
@@ -267,7 +267,7 @@
 		<hr>
 		<div class="row">
 			<div class="col-12 col-md-3">
-				<label>Payment Amount ([@config:moneysign@])</label>
+				<label>Payment Amount ([@config:currency_symbol@])</label>
 				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
 			</div>
 		</div>
@@ -304,14 +304,14 @@
 							<td class="small" nowrap>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@grand_total@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@amount_owed@][%/format%]</td>
-							<td nowrap>[@config:moneysign@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%/DATA%]" size="7" onChange="updAmt(this)"></td>
+							<td nowrap>[@config:currency_symbol@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%/DATA%]" size="7" onChange="updAmt(this)"></td>
 							<td nowrap><input class="btn btn-outline-secondary" type="button" value="Apply" onClick="appAmt([@count@])"></td>
 						</tr>
 					[%/PARAM%]
 					[%PARAM *footer%]
-						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
-						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
-						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_app">0.00</span></td></tr>
+						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_rec">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_more">0.00</span></td></tr>
 					</tbody>
 				</table>
 					[%/PARAM%]
