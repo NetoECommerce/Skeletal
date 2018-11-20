@@ -147,7 +147,7 @@ var nCustom = {
 					? $(element).addClass(css)
 					: $(element).removeClass(css)
 			}
-        }
+		}
 	}
 }
 
