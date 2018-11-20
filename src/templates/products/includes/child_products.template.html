@@ -6,14 +6,17 @@
     <div class="row" role="contentinfo" aria-label="Product variation selection">
     [%/param%]
     [%param *variation_header%]
+	[%if ![@specific_autohide@]%]
         <div class="_itmspec_listopt col-12 col-lg-6" ref="[@specific_id@]" role="group" aria-label="[@specific_name@] variation selection">
           <div class="variation-name" aria-label="[@specific_name@] variation">
             <strong>[@specific_name@]</strong>
           </div>
           <div class="specific">
             <input type="hidden" class="_itmspec_val" ref="[@specific_id@]" value="[@selected_id@]">
-  [%/param%]
-  [%param *variation_body%]
+	[%/if%]
+	[%/param%]
+	[%param *variation_body%]
+	[%if ![@specific_autohide@]%]
             <div class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]" aria-label="[@specific_name@] - [@value_name@] option">
               <a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
                 [%if [@value_image@]%]
@@ -26,13 +29,17 @@
                 [%/if%]
               </a>
             </div>
-  [%/param%]
-  [%param *variation_body_radio%]
+	[%/if%]
+	[%/param%]
+	[%param *variation_body_radio%]
+	[%if ![@specific_autohide@]%]
             <label class="_itmspec_listitm btn btn-default" ref="[@specific_id@]_[@value_id@]">
               <input class="_itmspec_radio" type="radio" name="_itmspec_radio[@specific_id@]" value="[@value_id@]" ref="[@specific_id@]_[@value_id@]" [%if [@selected@]%]checked[%/if%]> [@value_name@]
             </label>
-  [%/param%]
-  [%param *variation_body_image%]
+	[%/if%]
+	[%/param%]
+	[%param *variation_body_image%]
+	[%if ![@specific_autohide@]%]
             <span class="_itmspec_listitm" ref="[@specific_id@]_[@value_id@]">
               <a class="_itmspec_lnk [%if [@selected@]%]_itmspec_selected[%/if%]" href="javascript:void(0);" ref="[@specific_id@]_[@value_id@]">
                 [%if [@value_image@]%]
@@ -42,13 +49,17 @@
                 [%/if%]
               </a>
             </span>
-  [%/param%]
-  [%param *variation_footer%]
+	[%/if%]
+	[%/param%]
+	[%param *variation_footer%]
+	[%if ![@specific_autohide@]%]
             <div class="clear"></div>
           </div>
         </div>
-  [%/param%]
-  [%param *variation_header_select%]
+	[%/if%]
+	[%/param%]
+	[%param *variation_header_select%]
+	[%if ![@specific_autohide@]%]
         <div class="_itmspec_listopt col-12 col-lg-6" ref="[@specific_id@]" aria-label="[@specific_name@] variation selection">
           <div class="variation-name">
             <label for="[@specific_id@]_itmspec_opt">[@specific_name@]</label>
@@ -58,16 +69,21 @@
               <div class="n-wrapper-form-control">
                 <span class="_itmspec_optpl" ref="[@specific_id@]">
                   <select id="[@specific_id@]_itmspec_opt" name="[@specific_id@]_itmspec_opt" class="_itmspec_opt form-control" ref="[@specific_id@]">
+	[%/if%]
     [%/param%]
     [%param *variation_body_select%]
+	[%if ![@specific_autohide@]%]
                     <option value="[@value_id@]" [%if [@selected@]%]selected[%/if%]>[@value_name@] [%if [@variation_qty@] < 1 %] (Out of Stock) [%/if%]</option>
+	[%/if%]
     [%/param%]
     [%param *variation_footer_select%]
+	[%if ![@specific_autohide@]%]
                   </select>
                 </span>
               </div>
             </div>
         </div>
+	[%/if%]
     [%/param%]
     [%param footer%]
       </div>
