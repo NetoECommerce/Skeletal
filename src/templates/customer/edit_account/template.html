@@ -16,23 +16,6 @@
 	</div>
 	[%SITE_VALUE id:'footer_javascript'%]
 		<script language="javascript" type="text/javascript">
-			var httpReq = null;
-			var httpReq2 = null;
-
-			function getXMLHttpRequest() {
-				var client = null;
-				try {
-					client = new XMLHttpRequest();
-				} catch (e) {
-					try {
-						client=new ActiveXObject("Msxml2.XMLHTTP");
-					} catch (e) {
-						client=new ActiveXObject("Microsoft.XMLHTTP");
-					}
-				}
-				return client;
-			}
-
 			function checkPostCode(ta) {
 				var id ='';
 				var zip_id = 'bill_zip';
@@ -88,28 +71,14 @@
 						if( zip.value == '' ) {
 							msg.innerHTML = '<i>Please enter your billing country and postal code above.</i>';
 						} else {
-							var url = '/do/get_locate?zip='+escape(zip.value);
-							var req = null;
-							if(ta && ta=='sh')  {
-								httpReq2 = getXMLHttpRequest();
-								req = httpReq2;
-							} else {
-								httpReq = getXMLHttpRequest();
-								req = httpReq;
-							}
-
-							if(!req) {
-								msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
-							} else {
-								req.onreadystatechange = function() {
-									if(req.readyState == 4 && req.status == 200) {
-										var data = req.responseText.split('\n');
-										setSuburbSl(data, ta);
-									}
-								};
-								req.open("GET",url,true);
-								req.send(null);
-							}
+							$.get('/do/get_locate?zip=' + escape(zip.value), function (data, textStatus) {
+								if (textStatus === 'success') {
+									var suburbArray = data.split("\n");
+									setSuburbSl(suburbArray, ta);
+								} else {
+									msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
+								}
+							});
 						}
 					} else {
 						city_in.disabled = false;
