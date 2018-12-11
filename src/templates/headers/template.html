@@ -67,7 +67,7 @@
 				</div>
 			</form>
 	    <ul class="navbar-nav mr-auto" role="navigation" aria-label="Main menu">
-			[%cache type:'menu' id:'header-content-menu'%]
+			[%cache type:'menu' id:'header-content-menu' ttl:'86400'%]
 				[%menu id:'web_header'%]
 					[%param *level_1%]
 						<li class="nav-item [%if [@next_level@]%] dropdown [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]">
@@ -94,7 +94,7 @@
 						</li>
 					[%/param%]
 				[%/menu%]
-			[%/ cache%]
+			[%/cache%]
 		</ul>
 		<ul class="navbar-nav navbar-right" role="navigation" aria-label="Accounts menu">
 			<li class="nav-item dropdown">
