@@ -8,20 +8,20 @@
 [%set [@order_type_title@]%][%if [@^order_type@] ne 'quote'%]Order[%else%]Quote[%/if%][%/set%]
 [%set [@order_type_text@]%][%if [@^order_type@] ne 'quote'%]order[%else%]quote[%/if%][%/set%]
 <div class="col-12 col-lg-7">
-    [%if [@^order_type@] ne 'quote'%]
-        [%load_template file:"cart/cart.error.html"/%]
-        [%payment_confirmation%]
-            [%param *body%]
-                [%if [@type@] eq 'error'%]
-                    <div class="alert alert-warning" role="alert">[@message@]</div>
-                [%else%]
-                    <div class="alert alert-[@type@]" role="alert">[@message@]</div>
-                [%/if%]
-            [%/param%]
-        [%/payment_confirmation%]
-    [%else%]
-        <div class="alert alert-success" role="alert">Congratulations - Your [@order_type_title@] Has Been Confirmed!</div>
-    [%/if%]
+	[%if [@^order_type@] ne 'quote'%]
+		[%load_template file:"cart/cart.error.html"/%]
+		[%payment_confirmation%]
+			[%param *body%]
+				[%if [@type@] eq 'error'%]
+					<div class="alert alert-warning" role="alert">[@message@]</div>
+				[%else%]
+					<div class="alert alert-[@type@]" role="alert">[@message@]</div>
+				[%/if%]
+			[%/param%]
+		[%/payment_confirmation%]
+	[%else%]
+		<div class="alert alert-success" role="alert">Congratulations - Your [@order_type_title@] Has Been Confirmed!</div>
+	[%/if%]
 	<p class="mb-1">[@order_type_title@] [%show_order id:'[@order_id@]' details:'order_ids'%][%param *header%]<span data-test-id="order-id"> #[@order_id@] </span>[%/param%][%/show_order%]</p>
 	<p class="mb-3">Confirmation sent to [%if [@user:username@]%][@user:email@][%else%][@bill_email@][%/if%]</p>
 	<div class="card card-body mb-2">
@@ -37,69 +37,69 @@
 			<p class="mb-0"><a href="[%url page:'account' type:'resetpwd' id:'[@logincode@]'/%]" class="btn btn-primary d-inline-block" data-test-id="activate-account">Activate account and create password</a></p>
 			<p class="small text-muted mt-1 mb-0"><strong>Note:</strong> Activating your [@config:company_name@] account is optional.</p>
 		[%/if%]
-    </div>
-    [%if [@^order_type@] ne 'quote'%]
-        [%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
-            [%param *body%]
-                [%if [@name@] like 'Cheque'%]
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h2>Payment Instructions</h2>
-                            <h3>Please send your Cheque to:</h3>
-                            <p>[@config:company_name@]</p>
-                            <p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
-                            <p class="mb-0">Please include your full name and order number so that we can easily locate your order for fast processing.</p>
-                        </div>
-                    </div>
-                [%/if%]
-                [%if [@name@] like 'Money Order'%]
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h2>Payment Instructions</h2>
-                            <h3>Please send your money order to:</h3>
-                            <p>[@config:company_name@]</p>
-                            <p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
-                            <p class="mb-0">Please include your full name and order number so that we can easily locate your order.</p>
-                        </div>
-                    </div>
-                [%/if%]
-                [%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h2>Payment Instructions</h2>
-                            <h3>Please deposit your total order amount to:</h3>
-                            <h4>[@config:company_bank_name@]</h4>
-                            <p>
-                                <b>Name:</b> [@config:company_bank_acc@]<br/>
-                                <b>[@config:PRIMARY_BSB_LABEL@]: </b>[@config:company_bank_bsb@]<br/>
-                                <b>Ac/no:</b>[@config:company_bank_num@]
-                            </p>
-                            <p class="mb-0">
-                                Please leave your order number or last name as a payment reference.<br/>
-                                Email [@config:company_email@] with your order number to confirm your payment.
-                            </p>
-                        </div>
-                    </div>
-                [%/if%]
-                [%if [@name@] like 'bpay'%]
-                    <div class="card mb-2">
-                        <div class="card-body">
-                            <h2>Payment Instructions</h2>
-                            <h3>Telephone &amp; Internet Banking - BPAY</h3>
-                            <p>
-                                <b>Biller Code:</b> [@config:bpay_biller_code@]<br/>
-                                <b>Ref:</b> [@bpay_crn@]
-                            </p>
-                            <p class="mb-0">
-                                Contact your bank, credit union or building society to make this payment from your cheque,
-                                savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank" rel="noopener">www.bpay.com.au</a>
-                            </p>
-                        </div>
-                    </div>
-                [%/if%]
-            [%/param%]
-        [%/payment_methods%]
-    [%/if%]
+	</div>
+	[%if [@^order_type@] ne 'quote'%]
+		[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
+			[%param *body%]
+				[%if [@name@] like 'Cheque'%]
+					<div class="card mb-2">
+						<div class="card-body">
+							<h2>Payment Instructions</h2>
+							<h3>Please send your Cheque to:</h3>
+							<p>[@config:company_name@]</p>
+							<p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
+							<p class="mb-0">Please include your full name and order number so that we can easily locate your order for fast processing.</p>
+						</div>
+					</div>
+				[%/if%]
+				[%if [@name@] like 'Money Order'%]
+					<div class="card mb-2">
+						<div class="card-body">
+							<h2>Payment Instructions</h2>
+							<h3>Please send your money order to:</h3>
+							<p>[@config:company_name@]</p>
+							<p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
+							<p class="mb-0">Please include your full name and order number so that we can easily locate your order.</p>
+						</div>
+					</div>
+				[%/if%]
+				[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]
+					<div class="card mb-2">
+						<div class="card-body">
+							<h2>Payment Instructions</h2>
+							<h3>Please deposit your total order amount to:</h3>
+							<h4>[@config:company_bank_name@]</h4>
+							<p>
+								<b>Name:</b> [@config:company_bank_acc@]<br/>
+								<b>[@config:PRIMARY_BSB_LABEL@]: </b>[@config:company_bank_bsb@]<br/>
+								<b>Ac/no:</b>[@config:company_bank_num@]
+							</p>
+							<p class="mb-0">
+								Please leave your order number or last name as a payment reference.<br/>
+								Email [@config:company_email@] with your order number to confirm your payment.
+							</p>
+						</div>
+					</div>
+				[%/if%]
+				[%if [@name@] like 'bpay'%]
+					<div class="card mb-2">
+						<div class="card-body">
+							<h2>Payment Instructions</h2>
+							<h3>Telephone &amp; Internet Banking - BPAY</h3>
+							<p>
+								<b>Biller Code:</b> [@config:bpay_biller_code@]<br/>
+								<b>Ref:</b> [@bpay_crn@]
+							</p>
+							<p class="mb-0">
+								Contact your bank, credit union or building society to make this payment from your cheque,
+								savings or credit card account. More info: <a href="http://www.bpay.com.au" target="_blank" rel="noopener">www.bpay.com.au</a>
+							</p>
+						</div>
+					</div>
+				[%/if%]
+			[%/param%]
+		[%/payment_methods%]
+	[%/if%]
 	<div class="card card-body mb-2">
 		<h2>Customer information</h2>
 		<div class="row">
@@ -109,38 +109,38 @@
 				[@bill_street1@] [@bill_street2@]<br/>
 				[@bill_city@], [@bill_state@] [@bill_zip@]<br/>
 				[@bill_country@]
-            </div>
-            [%if [@^order_type@] ne 'quote'%]
-                <div class="col-12 col-sm-6">
-                    <h4>Payment method</h4>
-                    [%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
-                        [%param *body%]
-                            [%if [@name@] like 'American Express'%]<p class="mb-1"><i class="fa fa-credit-card"></i> American Express</p>[%/if%]
-                            [%if [@name@] like 'Visa'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Visa</p>[%/if%]
-                            [%if [@name@] like 'Master Card' OR [@name@] like 'MasterCard'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Master Card</p>[%/if%]
-                            [%if [@name@] like 'Discover'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Discover</p>[%/if%]
-                            [%if [@name@] like 'Diners'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Diners</p>[%/if%]
-                            [%if [@name@] like 'Cheque'%]<p class="mb-1">Cheque</p>[%/if%]
-                            [%if [@name@] like 'Money Order'%]<p class="mb-1">Money Order</p>[%/if%]
-                            [%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]<p class="mb-1">Direct Deposit</p>[%/if%]
-                            [%if [@name@] like 'bpay'%]<p class="mb-1">BPAY</p>[%/if%]
-                            [%if [@name@] like 'PayPal' OR [@name@] like 'paypal'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Paypal</p>[%/if%]
-                            [%if [@name@] like 'afterpay'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Afterpay</p>[%/if%]
-                            [%if [@name@] like 'Q Card' OR [@name@] like 'QCard'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Q Card</p>[%/if%]
-                            [%if [@name@] like 'Paymark Online Eftpos' OR [@name@] like 'Paymark'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Paymark</p>[%/if%]
-                            [%if [@name@] like 'zipMoney'%]<p class="mb-1"><i class="fa fa-credit-card"></i> zipMoney</p>[%/if%]
-                            [%if [@name@] like 'zipPay'%]<p class="mb-1"><i class="fa fa-credit-card"></i> zipPay</p>[%/if%]
-                            [%if [@name@] like 'Account'%]<p class="mb-1">[@config:company_name@] Account </p>[%/if%]
-                        [%/param%]
-                        [%param *ifempty%]
-                            <p class="mb-1">No Payment method has been selected</p>
-                        [%/param%]
-                    [%/payment_methods%]
-                    [%if [@payment_terms_type@] and [@payment_terms_type@] ne 'once'%]
-                        <p>Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order.</p>
-                    [%/if%]
-                </div>
-            [%/if%]
+			</div>
+			[%if [@^order_type@] ne 'quote'%]
+				<div class="col-12 col-sm-6">
+					<h4>Payment method</h4>
+					[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
+						[%param *body%]
+							[%if [@name@] like 'American Express'%]<p class="mb-1"><i class="fa fa-credit-card"></i> American Express</p>[%/if%]
+							[%if [@name@] like 'Visa'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Visa</p>[%/if%]
+							[%if [@name@] like 'Master Card' OR [@name@] like 'MasterCard'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Master Card</p>[%/if%]
+							[%if [@name@] like 'Discover'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Discover</p>[%/if%]
+							[%if [@name@] like 'Diners'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Diners</p>[%/if%]
+							[%if [@name@] like 'Cheque'%]<p class="mb-1">Cheque</p>[%/if%]
+							[%if [@name@] like 'Money Order'%]<p class="mb-1">Money Order</p>[%/if%]
+							[%if [@name@] like 'Direct Deposit' OR [@name@] like 'Bank Deposit'%]<p class="mb-1">Direct Deposit</p>[%/if%]
+							[%if [@name@] like 'bpay'%]<p class="mb-1">BPAY</p>[%/if%]
+							[%if [@name@] like 'PayPal' OR [@name@] like 'paypal'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Paypal</p>[%/if%]
+							[%if [@name@] like 'afterpay'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Afterpay</p>[%/if%]
+							[%if [@name@] like 'Q Card' OR [@name@] like 'QCard'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Q Card</p>[%/if%]
+							[%if [@name@] like 'Paymark Online Eftpos' OR [@name@] like 'Paymark'%]<p class="mb-1"><i class="fa fa-credit-card"></i> Paymark</p>[%/if%]
+							[%if [@name@] like 'zipMoney'%]<p class="mb-1"><i class="fa fa-credit-card"></i> zipMoney</p>[%/if%]
+							[%if [@name@] like 'zipPay'%]<p class="mb-1"><i class="fa fa-credit-card"></i> zipPay</p>[%/if%]
+							[%if [@name@] like 'Account'%]<p class="mb-1">[@config:company_name@] Account </p>[%/if%]
+						[%/param%]
+						[%param *ifempty%]
+							<p class="mb-1">No Payment method has been selected</p>
+						[%/param%]
+					[%/payment_methods%]
+					[%if [@payment_terms_type@] and [@payment_terms_type@] ne 'once'%]
+						<p>Payment will be processed every <b>[@payment_terms_num_times@] [@payment_terms_type@](s)</b> from time of order.</p>
+					[%/if%]
+				</div>
+			[%/if%]
 		</div>
 		[%show_order id:'[@order_id@]' details:'shipping'%]
 			[%param *header%]

@@ -5,7 +5,7 @@
 <meta property="og:image" content="[%if [@config:current_page_type@] eq 'product'%][@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'full'/%][%ELSEIF [@config:current_page_type@] eq 'content'%][@config:home_url@][%ASSET_url type:'content' id:'[@content_id@]' default:'/assets/website_logo.png'%][%/ASSET_url%][%ELSE%][@config:home_url@]/assets/website_logo.png[%/if%]"/>
 <meta property="og:title" content="[%url_info name:'page_title'/%]"/>
 <meta property="og:site_name" content="[@config:website_name@]"/>
-<meta property="og:type" content="website"/>
+<meta property="og:type" content="[%if [@config:current_page_type@] eq 'product'%]product[%elseif [@config:current_page_type@] eq 'content'%]article[%else%]website[%/if%]"/>
 <meta property="og:url" content="[@config:canonical_url@]"/>
 <meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
 [@config:GOOGLE_VERIFICATION_CODE@]
