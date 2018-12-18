@@ -6,11 +6,10 @@ body {
 	background-color: #fff /*{body-background-colour}*/;
 }
 
-a {
+a, .btn-link{
 	color: #006FF5 /*{link-text-colour}*/;
 }
-a:hover,
-a:focus {
+a:hover, a:active, a:focus, .btn-link:hover{
 	color: #004ca9 /*{link-text-hover-colour}*/;
 }
 
