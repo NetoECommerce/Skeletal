@@ -8,7 +8,7 @@
 <meta property="og:type" content="[%if [@config:current_page_type@] eq 'product'%]product[%elseif [@config:current_page_type@] eq 'content'%]article[%else%]website[%/if%]"/>
 <meta property="og:url" content="[@config:canonical_url@]"/>
 <meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
-[@config:GOOGLE_VERIFICATION_CODE@]
+[%if [@config:GOOGLE_VERIFICATION@] %]<meta name="google-site-verification" content="[@config:GOOGLE_VERIFICATION@]">[%/if%]
 <title itemprop='name'>[%url_info name:'page_title'/%]</title>
 <link rel="canonical" href="[@config:canonical_url@]" itemprop="url"/>
 <link rel="shortcut icon" href="/assets/favicon_logo.png?[@config:neto_css_version@]"/>
