@@ -33,7 +33,7 @@
 			<div class="col-6">
 				<div id="company_logo">
 					<div style="float:left; margin-right:15px;">
-						<img id="comp_logo_img" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:imageurl@]/pixel.gif'%][%END asset_url%]?[@config:current_timestamp@]"><br>
+						<img id="comp_logo_img" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%END asset_url%]?[@config:current_timestamp@]"><br>
 						<a href="#" onClick="javascript:remlogo(); return false;">- Remove this logo</a>
 					</div>
 					<input style="float:left;" type="file" name="logo"><br>

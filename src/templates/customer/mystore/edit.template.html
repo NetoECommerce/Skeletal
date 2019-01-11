@@ -278,7 +278,7 @@
 							<li>
 								<div class="imagethumb">
 						[%DATA id:'full_image' if:'eq' value:''%][%PARAM if_true%]
-								 <img src="[@config:IMAGE_URL@]/pixel.gif" border="0" width="80" height="80">
+								 <img src="[@config:ASSETS_URL@]/pixel.gif" border="0" width="80" height="80">
 						[%END PARAM%][%PARAM if_false%]
 								<a target="_blank" href="[@full_image@]"><img src="[@thumb_image@]" border="0" width="80" height="80"></a>
 								<div>Remove Image On Save? <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
