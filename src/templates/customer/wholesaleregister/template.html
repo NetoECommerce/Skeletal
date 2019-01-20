@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-label col-md-3">Postal code<span class="text-danger">*</span></label>
+				<label class="control-label col-md-3">[%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] code<span class="text-danger">*</span></label>
 				<div class="col-md-3">
 					<input type="text" name="reg_bill_zip" value="[%nohtml%][%FORM id:'reg_bill_zip'%][%END FORM%][%end nohtml%]" size="50" maxlength="10" class="form-control" required>
 				</div>
