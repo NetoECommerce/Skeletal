@@ -90,7 +90,7 @@
 				</div>
 				<div class="col-12 col-md-6">
 					<div class="form-group">
-						<label for="ship_zip">Suburb selector</label><span class="text-danger">*</span>
+						<label for="ship_zip">Suburb/City</label><span class="text-danger">*</span>
 						<div id="suburb_diship">&nbsp;</div>
 						<div style="display:none;" id="suburb_mgship">&nbsp;</div>
 					</div>
@@ -222,7 +222,7 @@
 
 		var count = 0;
 		if(data.length > 0) {
-			var option = '<option value="">-- Select Suburb --</option>';
+			var option = '<option value="">-- Select Suburb/City --</option>';
 			var sel_value = city.value.toUpperCase()+' - '+state.value;
 			for(var i=0; i<data.length; i++) {
 				if(data[i] != '') {
@@ -232,7 +232,7 @@
 			}
 		}
 		if(count <= 0) {
-			msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
+			msg.innerHTML = '<span class="text-danger">Invalid Postal Code.</span>';
 			dis.style.display = 'none';
 			msg.style.display = '';
 		} else {

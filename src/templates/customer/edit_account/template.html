@@ -114,7 +114,7 @@
 					} else {
 						city_in.disabled = false;
 						state_in.disabled = false;
-						msg.innerHTML = '<i>Please enter your billing suburb and state below.</i>';
+						msg.innerHTML = '<i>Please enter your billing suburb/city and state below.</i>';
 					}
 				}
 			}
@@ -160,7 +160,7 @@
 
 				var count = 0;
 				if(data.length > 0) {
-					var option = '<option value="">Select Suburb</option>';
+					var option = '<option value="">Select Suburb/City</option>';
 					var city = document.UPDATEINFO.elements[city_id];
 					var state = document.UPDATEINFO.elements[state_id];
 					var sel_value = city.value+' - '+state.value;
@@ -173,7 +173,7 @@
 				}
 
 				if(count <= 0) {
-					msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
+					msg.innerHTML = '<span class="text-danger">Invalid Postal Code.</span>';
 					dis.style.display = 'none';
 					msg.style.display = '';
 				} else {
@@ -230,10 +230,10 @@
 					<input class="form-control" type="text" id="bill_zip" name="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
 				</div>
 				<div class="form-group n-wrapper-form-control">
-					<label for="suburb_sl">Suburb selector</label><span class="text-danger">*</span>
+					<label for="suburb_sl">Suburb/City</label><span class="text-danger">*</span>
 					<div id="suburb_di">
 						<select class="form-control" id="suburb_sl" onChange="selectSuburb()">
-							<option value="">Select Suburb</option>
+							<option value="">Select Suburb/City</option>
 						</select>
 					</div>
 					<div style="display:none;" id="suburb_mg">&nbsp;</div>
