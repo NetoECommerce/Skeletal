@@ -86,7 +86,7 @@
 						city_in.disabled = true;
 						state_in.disabled = true;
 						if( zip.value == '' ) {
-							msg.innerHTML = '<i>Please enter your billing country and postal code above.</i>';
+							msg.innerHTML = '<i>Please enter your billing country and [%if [@config:defaultcountry@] eq 'US'%]zip [%else%]postal [%/if%] code above.</i>';
 						} else {
 							var url = '/do/get_locate?zip='+escape(zip.value);
 							var req = null;
@@ -281,7 +281,7 @@
 				</div>
 				<!-- Company Information -->
 				<h2 name="company" id="Company">Company Information</h2>
-				[%if [@config:defaultcountry@] eq 'AU'%]
+				[%if [@config:defaultcountry@] eq 'AU' || [@config:PRIMARY_ABN_LABEL@] ne 'ABN'%]
 				<div class="form-group">
 					<label for="usercustom2">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
 					<input class="form-control" type="text" name="usercustom2" id="usercustom2" size="20" maxlength="25" value="[@usercustom2@]">
@@ -295,7 +295,7 @@
 					<!-- Dropshipping Information -->
 					<h2>Dropshipping Information</h2>
 					<b>Customise the documentation we send out with your drop shipped orders.</b>
-					<label>Drop Shipping Documentation Footer (Will be displayed on footer of packing slips, labels etc)</label>
+					<label>Drop Shipping Documentation Footer (will be displayed on footer of packing slips, labels etc)</label>
 					<textarea class="form-control"  name="usercustom7" cols="50">[@usercustom7@]</textarea>
 					<p class="help-block">(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)</p>
 					<hr>

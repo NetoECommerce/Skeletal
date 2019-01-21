@@ -102,7 +102,7 @@
 					</select>
 				</div>
 			</div>
-			[%if [@config:defaultcountry@] eq 'AU'%]
+			[%if [@config:defaultcountry@] eq 'AU' || [@config:PRIMARY_ABN_LABEL@] ne 'ABN'%]
 			<div class="form-group row">
 				<label class="control-label col-md-3">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
 				<div class="col-md-9">
