@@ -36,22 +36,18 @@
 		$.extend({
 			submit_form: function() {
 				if ($('#upld_logo').val() == '') {
-					$.fancybox("Please select your company logo.", {showCloseButton: true, overlayShow: true, centerOnScroll: true, hideOnContentClick: true});
-				}
-				else {
-					$('#updatelogo').submit();
+					$.nPopupBox('Please select your company logo.');
+				} else {
+					$('#updatelogo').trigger('submit');
 				}
 			}
 		});
-
-		$('.upload_btn').click(function(e){
+		$('.upload_btn').on('click', function(e){
 			$.submit_form();
 		});
-
-		$('.card_btn').click(function(e){
-			$('#updatecard').submit();
+		$('.card_btn').on('click', function(e){
+			$('#updatecard').trigger('submit');
 		});
-
 	});
 </script>
 [%/SITE_VALUE%]
