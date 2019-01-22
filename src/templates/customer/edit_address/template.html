@@ -2,8 +2,8 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="#">Edit Your Address Book</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My account</a></li>
+		<li class="breadcrumb-item"><a href="#">Edit your address book</a></li>
 		</ol>
 	</nav>
 <div class="page-header">
@@ -58,19 +58,16 @@
 	<div class="row">
 		<div class="col-12 col-md-6">
 			<div class="form-group">
-				<label for="ship_title">Address Title </label>
-				<span class="small text-danger">Required</span>
-				<span class="help-block">(eg: Work Address)</span>
+				<label for="ship_title">Address title </label><span class="text-danger">*</span>
+				<span class="help-block">(eg: Work address)</span>
 				<input class="form-control" type="text" name="ship_title" id="ship_title" size="50" maxlength="50" value="[@ship_title@]">
 			</div>
 			<div class="form-group">
-				<label for="ship_first_name">First Name</label>
-				<span class="small text-danger">Required</span>
+				<label for="ship_first_name">First name</label><span class="text-danger">*</span>
 				<input class="form-control" type="text" name="ship_first_name" id="ship_first_name" size="50" maxlength="50" value="[@ship_first_name@]">
 			</div>
 			<div class="form-group">
-				<label for="ship_last_name">Last Name</label>
-				<span class="small text-danger">Required</span>
+				<label for="ship_last_name">Last name</label><span class="text-danger">*</span>
 				<input class="form-control" type="text" name="ship_last_name" id="ship_last_name" size="50" maxlength="50" value="[@ship_last_name@]">
 			</div>
 			<div class="form-group">
@@ -80,23 +77,20 @@
 		</div>
 		<div class="col-12 col-md-6">
 			<div class="form-group">
-				<label for="ship_street1">Address</label>
-				<span class="small text-danger">Required</span>
+				<label for="ship_street1">Address</label><span class="text-danger">*</span>
 				<input class="form-control" type="text" name="ship_street1" id="ship_street1" size="50" maxlength="50" value="[@ship_street1@]"><br>
 				<input class="form-control" type="text" name="ship_street2" id="ship_street2" size="50" maxlength="50" value="[@ship_street2@]">
 			</div>
 			<div class="row">
 				<div class="col-12 col-md-6">
 					<div class="form-group">
-						<label for="ship_zip">Zip Code / Postal Code</label>
-						<span class="small text-danger">Required</span>
+						<label for="ship_zip">[%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] code</label><span class="text-danger">*</span>
 						<input class="form-control" type="text" name="ship_zip" id="ship_zip" value="[@ship_zip@]" size="50" maxlength="10" onChange="updloca('ship')" onKeyUp="updloca('ship')">
 					</div>
 				</div>
 				<div class="col-12 col-md-6">
 					<div class="form-group">
-						<label for="ship_zip">Suburb Selector</label>
-						<span class="small text-danger">Required</span>
+						<label for="ship_zip">Suburb/City</label><span class="text-danger">*</span>
 						<div id="suburb_diship">&nbsp;</div>
 						<div style="display:none;" id="suburb_mgship">&nbsp;</div>
 					</div>
@@ -105,22 +99,19 @@
 			<div class="row">
 				<div class="col-12 col-md-6">
 					<div class="form-group">
-						<label for="ship_city">City</label>
-						<span class="small text-danger">Required</span>
+						<label for="ship_city">City</label><span class="text-danger">*</span>
 						<input class="form-control" type="text" name="ship_city" id="ship_city" readonly value="[@ship_city@]" size="50" maxlength="50">
 					</div>
 				</div>
 				<div class="col-12 col-md-6">
 					<div class="form-group">
-						<label for="ship_city">State</label>
-						<span class="small text-danger">Required</span>
+						<label for="ship_city">State</label><span class="text-danger">*</span>
 						<input class="form-control" type="text" name="ship_state" id="ship_state" readonly value="[@ship_state@]" size="50" maxlength="50">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="ship_city">Country</label>
-				<span class="small text-danger">Required</span>
+				<label for="ship_city">Country</label><span class="text-danger">*</span>
 				<select class="form-control" name="ship_country" id="ship_country" onChange="updloca('ship')">
 					[%countries%]
 					[%param *body%]<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/ DATA%]>[@country_name@]</option>[%/ param%]
@@ -128,12 +119,11 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="ship_phone">Phone Number</label>
-				<span class="small text-danger">Required</span>
+				<label for="ship_phone">Phone number</label><span class="text-danger">*</span>
 				<input class="form-control" type="text" name="ship_phone" id="ship_phone" size="50" maxlength="50" value="[@ship_phone@]">
 			</div>
 			<div class="form-group">
-				<label for="ship_phone">Save as My Default Address</label>
+				<label for="ship_phone">Save as my default address</label>
 				<input name="defaddr" type="checkbox" value="1"  [%USER id:'addr_id' if:'==' value:'[@id@]'%]checked[%/ USER%]>
 			</div>
 		</div>
@@ -232,7 +222,7 @@
 
 		var count = 0;
 		if(data.length > 0) {
-			var option = '<option value="">-- Select Suburb --</option>';
+			var option = '<option value="">-- Select Suburb/City --</option>';
 			var sel_value = city.value.toUpperCase()+' - '+state.value;
 			for(var i=0; i<data.length; i++) {
 				if(data[i] != '') {
@@ -242,7 +232,7 @@
 			}
 		}
 		if(count <= 0) {
-			msg.innerHTML = '<span class="text-danger">Invalid Post Code.</span>';
+			msg.innerHTML = '<span class="text-danger">Invalid [%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] Code.</span>';
 			dis.style.display = 'none';
 			msg.style.display = '';
 		} else {
