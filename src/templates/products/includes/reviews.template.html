@@ -1,0 +1,14 @@
+[%if [@reviews@] > 0%]
+	<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		[%set [@ratings-count@] = 1 /%]
+		[%while [@ratings-count@] <= [@rating@]%]
+			[%set [@ratings-count@] = [@ratings-count@]+1 /%]
+			<i class="fas fa-star"></i>
+		[%/ while%]
+		[%while [@ratings-count@] <= 5%]
+			[%set [@ratings-count@] = [@ratings-count@]+1 /%]
+			<i class="far fa-star"></i>
+		[%/while%]
+		Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> review[%if [@reviews@] > 1%]s[%/if%].
+	</span>
+[%/if%]

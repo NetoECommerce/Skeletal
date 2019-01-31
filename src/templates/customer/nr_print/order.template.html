@@ -1,13 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="author" content="The Neto E-commerce Website Development Team">
-<link rel="stylesheet" type="text/css" href="[@config:imageurl@]/css/styles.css">
-<title>Print Invoice [@order_id@]</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="author" content="The Neto E-commerce Website Development Team">
+	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
+	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
+	<title>Print Invoice [@order_id@]</title>
 </head>
 <body>
-<!--##[%print_order id:'[@order_id@]'%][%END print_order%]##-->
-<script>window.print();</script>
+	[%print_order id:'[@order_id@]'%][%/ print_order%]
+	<script>window.print();</script>
 </body>
 </html>

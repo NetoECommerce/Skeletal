@@ -14,7 +14,7 @@
 						if(cdt.selectedIndex > 0) {
 							var pn = cdt.options[cdt.selectedIndex].text;
 							var received = f['amount_paid'];
-							if(confirm('You are about to authorise [@config:moneysign@]'+received.value+' received from \''+pn+'\' to this user.\n'+
+							if(confirm('You are about to authorise [@config:currency_symbol@]'+received.value+' received from \''+pn+'\' to this user.\n'+
 								'\nDo you wish to continue?')) {
 								var s = document.getElementById('processing');
 								if(s) {
@@ -26,7 +26,7 @@
 							alert('Please select a payment method.');
 						}
 					} else {
-						alert('You are [@config:moneysign@]'+tmore.innerHTML+' out of balance.');
+						alert('You are [@config:currency_symbol@]'+tmore.innerHTML+' out of balance.');
 					}
 				} else {
 					alert('Please enter a payment amount.');
@@ -163,31 +163,25 @@
 	</script>
 	<script type="text/javascript" language="javascript">showPD();updAmt();</script>
 [%/SITE_VALUE%]
-<div class="col-xs-12">
-	<ul class="breadcrumb" aria-label="Breadcrumb">
-		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
-		<li><a href="#">Pay Outstanding Orders and Invoices</a></li>
-	</ul>
-	<div class="page-header">
-		<h1>Pay Outstanding Orders &amp; Invoices</h1>
-	</div>
+<div class="col-12">
+	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="#">Pay Outstanding Orders and Invoices</a></li>
+		</ol>
+	</nav>
+	<div class="page-header"><h1>Pay Outstanding Orders &amp; Invoices</h1></div>
 	[%if [@error@]%]
-		<div class="alert alert-danger">
-			<a class="close" data-dismiss="alert">×</a>
-			[@error@]
-		</div>
+		<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>[@error@]</div>
 	[%/if%]
 	[%if [@msg@]%]
-		<div class="alert alert-success">
-			<a class="close" data-dismiss="alert">×</a>
-			[@msg@]
-		</div>
+		<div class="alert alert-success" role="alert"><a class="close" data-dismiss="alert">×</a>[@msg@]</div>
 	[%/if%]
 <div id="processing" style="display:none;" class="alert alert-danger">
 	<h2>Payment Processing</h2>
 	<h2>Please do not refresh or close this page</h2>
-	<img src="[@config:imageurl@]/loading.gif" alt="Loading"/></div>
+	<img src="[@config:ASSETS_URL@]/loading.gif" alt="Loading"/></div>
 	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
@@ -202,7 +196,7 @@
 		</p>
 		<br />
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
+			<div class="col-12 col-md-6">
 				<label>Select Payment Method</label>
 				<select class="form-control" name="card_type" onChange="showPD()">
 					<option value="">Select an option</option>
@@ -216,9 +210,9 @@
 		</div>
 		<div style="display:none;" id="payccpl">
 			<div class="row">
-				<div class="col-xs-12 col-md-6">
+				<div class="col-12 col-md-6">
 					<hr>
-					<div class="well">
+					<div class="card card-body">
 						<div class="form-group">
 							<label>Card Holder</label>
 							<input class="form-control" type="text" name="card_holder" size="30" maxlength="40" value="">
@@ -226,10 +220,10 @@
 						<div class="form-group">
 							<label>Card Number</label>
 							<input class="form-control" type="text" name="card_number" size="16" maxlength="16" value="">
-							<p class="help-block">(only digits)</p>
+							<p class="small text-muted">(only digits)</p>
 						</div>
 						<div class="row">
-							<div class="col-xs-12">
+							<div class="col-12">
 								<label>Card Expiration Date</label>
 							</div>
 							<div class="col-xs-6">
@@ -262,7 +256,7 @@
 								<div class="form-group">
 									<label>Card CCID</label>
 									<input class="form-control" type="text"  name="card_ccid" size="5">
-									<p class="help-block">(3-4 digit security code)</p>
+									<p class="small text-muted">(3-4 digit security code)</p>
 								</div>
 							</div>
 						</div>
@@ -272,8 +266,8 @@
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-xs-12 col-md-3">
-				<label>Payment Amount ([@config:moneysign@])</label>
+			<div class="col-12 col-md-3">
+				<label>Payment Amount ([@config:currency_symbol@])</label>
 				<input class="form-control" type="text" name="amount_paid" value="[@amount_paid@]" size="15"  onChange="updAmt()">
 			</div>
 		</div>
@@ -310,14 +304,14 @@
 							<td class="small" nowrap>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@grand_total@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@amount_owed@][%/format%]</td>
-							<td nowrap>[@config:moneysign@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%/DATA%]" size="7" onChange="updAmt(this)"></td>
-							<td nowrap><input class="btn btn-default" type="button" value="Apply" onClick="appAmt([@count@])"></td>
+							<td nowrap>[@config:currency_symbol@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%/DATA%]" size="7" onChange="updAmt(this)"></td>
+							<td nowrap><input class="btn btn-outline-secondary" type="button" value="Apply" onClick="appAmt([@count@])"></td>
 						</tr>
 					[%/PARAM%]
 					[%PARAM *footer%]
-						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_app">0.00</span></td></tr>
-						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_rec">0.00</span></td></tr>
-						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:moneysign@]<span id="total_more">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_app">0.00</span></td></tr>
+						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_rec">0.00</span></td></tr>
+						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_more">0.00</span></td></tr>
 					</tbody>
 				</table>
 					[%/PARAM%]
@@ -327,16 +321,12 @@
 				[%/thumb_list%]
 				<div class="clear"></div>
 				<div class="form-actions"></div>
+				<div class="row"><div class="col-12"><hr></div></div>
 				<div class="row">
-					<div class="col-xs-12">
-						<hr>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-md-3">
+					<div class="col-12 col-md-3">
 						<input type="button" value="Reset" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%URL page:'account' type:'payrec'%][%/URL%]'"><br>
 					</div>
-					<div class="col-xs-12 col-md-3 col-md-offset-6">
+					<div class="col-12 col-md-3 offset-md-6">
 						<input type="button" onclick="proc_pay()" value="Process Payment" class="btn btn-success btn-lg btn-block">
 					</div>
 				</div>

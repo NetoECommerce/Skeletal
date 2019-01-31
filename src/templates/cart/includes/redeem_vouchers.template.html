@@ -3,16 +3,16 @@
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">x</a>[@info_msg@]</div>
 	[%/param%]
 [%/show_message%]
-<div class="panel panel-default">
-	<div class="panel-heading" role="tab">
-		<h4 class="panel-title">
+<div class="card panel panel-default">
+	<div class="card-header panel-heading" role="tab">
+		<h4 class="panel-title mb-0">
 		<a data-toggle="collapse" href="#voucherAccordion" aria-expanded="true" aria-controls="voucherAccordion">
 			Redeem a Gift Voucher
 		</a>
 		</h4>
 	</div>
 	<div id="voucherAccordion" class="panel-collapse collapse" role="tabpanel">
-		<div class="panel-body">
+		<div class="card-body panel-body">
 			<label>Voucher Code</label>
 			<input class="form-control" type="text" name="addvoucher" id="addvoucher" size="35" />
 			<label>Secret Code</label>
@@ -47,7 +47,7 @@
 				[%/if%]
 			</td>
 			<td nowrap>
-				<input type="hidden"  placeholder="[@config:moneysign@]" name="vapplyid[@count@]" id="vapplyid[@count@]" value="[@voucher_id@]"/>
+				<input type="hidden"  placeholder="[@config:currency_symbol@]" name="vapplyid[@count@]" id="vapplyid[@count@]" value="[@voucher_id@]"/>
 				<input type="text" class="form-control" value="[@apply_amount@]" name="vcredit[@count@]" id="vcredit[@count@]" size="8"/>
 				<input type="hidden" id="_cpy_vhbalance[@count@]" name="_cpy_vhbalance[@count@]" value="[@voucher_balance@]"/>
 			</td>
@@ -65,7 +65,7 @@
 	<tr>
 		<td><strong>Account Credit</strong></td>
 		<td nowrap><a class="_cpy_crapplyall" ref="cr" href="javascript:void(0);">[%format type:'currency'%][@user:credit@][%/format%]</a></td>
-		<td nowrap><input placeholder="[@config:moneysign@]" type="text" class="form-control" name="apply_credit" id="apply_credit" size="8"/><input type="hidden" id="_cpy_crbalance" value="[%USER id:'credit'%][%/USER%]"/></td>
+		<td nowrap><input placeholder="[@config:currency_symbol@]" type="text" class="form-control" name="apply_credit" id="apply_credit" size="8"/><input type="hidden" id="_cpy_crbalance" value="[%USER id:'credit'%][%/USER%]"/></td>
 	</tr>
 [%/if%]
 </table>
