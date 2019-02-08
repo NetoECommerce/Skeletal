@@ -47,19 +47,18 @@
 				[%/ countries%]
 			</select>
 		</div>
-		[%set [@distance_measurement@]%][%if [@config:defaultcountry@] eq 'US'%]mi[%else%]km[%/if%][%/set%]
 		<div class="form-group">
 			<label>Show stores within...</label>
 			<select id="geo_radius" class="form-control">
-				<option value="1">1 [@distance_measurement@]</option>
-				<option value="2">2 [@distance_measurement@]</option>
-				<option value="5">5 [@distance_measurement@]</option>
-				<option value="15">15 [@distance_measurement@]</option>
-				<option value="25" selected>25 [@distance_measurement@]</option>
-				<option value="50">50 [@distance_measurement@]</option>
-				<option value="75">75 [@distance_measurement@]</option>
-				<option value="100">100 [@distance_measurement@]</option>
-				<option value="200">200 [@distance_measurement@]</option>
+				<option value="1">1 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="2">2 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="5">5 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="15">15 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="25" selected>25 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="50">50 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="75">75 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="100">100 [@config:DISPLAY_DISTANCE_UNIT@]</option>
+				<option value="200">200 [@config:DISPLAY_DISTANCE_UNIT@]</option>
 			</select>
 		</div>
 		<div class="form-group">
@@ -85,7 +84,7 @@
 				body: '<li class="##item_class## list-group-item" ref="##count##">##IF:thumb##<div class="thumb"><img width="40px" src="##thumb##" border="0"></div>##END IF:thumb##'+
 					'<a href="javascript:##script##">##name##</a><br>'+
 					'<span class="address">##street##, ##city##, ##state## ##zip##</span><br>'+
-					'<span class="distance">(##distance##km from your location)</span><br>'+
+					'<span class="distance">(##distance##[@config:DISPLAY_DISTANCE_UNIT@] from your location)</span><br>'+
 					'##IF:phone##<span class="contact"><b>PH:</b> ##phone##</span><br>##END IF:phone##'+
 					'##IF:fax##<span class="contact"><b>Fax:</b> ##fax##</span><br>##END IF:fax##'+
 					'##IF:email##<span class="contact"><b>Email:</b> ##email##</span><br>##END IF:email##'+
@@ -95,7 +94,7 @@
 					'<div class="##info_class##">##IF:thumb##<div class="thumb"><img src="##thumb##" border="0"></div>##END IF:thumb##'+
 					'<a href="##url##">##name##</a><br>'+
 					'<span class="address">##street##, ##city##, ##state## ##zip##</span><br>'+
-					'<span class="distance">(##distance##km from your location)</span><br>'+
+					'<span class="distance">(##distance##[@config:DISPLAY_DISTANCE_UNIT@] from your location)</span><br>'+
 					'##IF:phone##<span class="contact"><b>PH:</b> ##phone##</span><br>##END IF:phone##'+
 					'##IF:fax##<span class="contact"><b>Fax:</b> ##fax##</span><br>##END IF:fax##'+
 					'##IF:email##<span class="contact"><b>Email:</b> ##email##</span><br>##END IF:email##'+
