@@ -43,6 +43,7 @@ $enable-transitions:        true;
 $enable-hover-media-query:  false; // Deprecated, no longer affects any compiled CSS
 $enable-grid-classes:       true;
 $enable-print-styles:       true;
+$enable-validation-icons:   false;
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -80,7 +81,3 @@ $link-hover-decoration:     underline;
 // Breadcrumbs
 //
 $breadcrumb-bg:               $gray-100;
-
-// Import Bootstrap
-//
-@import "node_modules/bootstrap/scss/bootstrap";
