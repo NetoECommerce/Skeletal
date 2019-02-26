@@ -19,22 +19,19 @@
 			<div class="col-12 col-md-6">
 				<h2 name="billing" id="billing">Billing Information</h2>
 				<div class="form-group">
-					<label for="bill_first_name">First Name </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_first_name">First name</label><span class="text-danger">*</span>
 					<input type="text" class="form-control" name="bill_first_name" id="bill_first_name" value="[@bill_first_name@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_last_name">Last Name </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_last_name">Last name</label><span class="text-danger">*</span>
 					<input type="text" class="form-control" name="bill_last_name" id="bill_last_name" value="[@bill_last_name@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_company">Company Name</label>
+					<label for="bill_company">Company name</label>
 					<input type="text" class="form-control" name="bill_company" id="bill_company" value="[@bill_company@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_country">Country </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_country">Country</label><span class="text-danger">*</span>
 					<select class="form-control" id="bill_country" name="bill_country">
 						[%countries sortby:'sortorder,name' %]
 						[%PARAM *body%]
@@ -44,24 +41,21 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="bill_street1">Address </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_street1">Address</label><span class="text-danger">*</span>
 					<input class="form-control" type="text" id="bill_street1" name="bill_street1" value="[@bill_street1@]" maxlength="50">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" id="bill_street2" name="bill_street2" value="[@bill_street2@]" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="bill_zip">Postal Code </label>
-					<span class="small text-danger">Required</span>
+					<label for="bill_zip">[%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] code</label><span class="text-danger">*</span>
 					<input class="form-control" type="text" id="bill_zip" name="bill_zip" value="[@bill_zip@]" size="50" maxlength="10">
 				</div>
 				<div class="form-group n-wrapper-form-control">
-					<label for="suburb_sl">Suburb Selector </label>
-					<span class="small text-danger">Required</span>
+					<label for="suburb_sl">Suburb/City</label><span class="text-danger">*</span>
 					<div id="suburb_di">
 						<select class="form-control" id="suburb_sl">
-							<option value="">Select Suburb</option>
+							<option value="">Select Suburb/City</option>
 						</select>
 					</div>
 					<div style="display:none;" id="suburb_mg">&nbsp;</div>
@@ -71,8 +65,7 @@
 					<input type="hidden" name="bill_state" value="[@bill_state@]">
 				</div>
 				<div class="form-group">
-					<label for="card_type">Preferred Payment Method </label>
-					<span class="small text-danger">Required</span>
+					<label for="card_type">Preferred payment method</label><span class="text-danger">*</span>
 					<select class="form-control" name="card_type" id="card_type">
 						<option value="">Select Payment Type</option>
 						[%payment_methods sortby:'sortorder,name' ignore_balance:'1' %]
@@ -90,46 +83,46 @@
 			<div class="col-12 col-md-6">
 				<h2 name="contact" id="contact">Contact Information</h2>
 				<div class="form-group">
-					<label for="email">Email Address</label>
-					<span class="small text-danger">Required</span>
+					<label for="email">Email address</label><span class="text-danger">*</span>
 					<input class="form-control" type="text" name="email" id="email" size="50" value="[@email@]">
 				</div>
 				<div class="form-group">
 					<label>
 						<input type='checkbox' id="subscribe_newsletter" [%if [@opt_in_newsletter@]%]checked[%/if%]>
 						<input type="hidden" name="opt_in" value="[@opt_in_newsletter@]">
-						Subscribe To Newsletter
+						Subscribe to newsletter
 					</label>
 				</div>
 				<div class="form-group">
-					<label for="phone">Phone Number </label>
-					<span class="small text-danger">Required</span>
+					<label for="phone">Phone number</label><span class="text-danger">*</span>
 					<input class="form-control" type="text" name="phone" id="phone" size="50" value="[@phone@]">
 				</div>
 				<div class="form-group">
-					<label for="fax">Fax Number</label>
+					<label for="fax">Fax number</label>
 					<input class="form-control" type="text" name="fax" id="fax" size="50" value="[@fax@]">
 				</div>
 				<!-- Company Information -->
 				<h2 name="company" id="Company">Company Information</h2>
+				[%if [@config:defaultcountry@] eq 'AU' || [@config:PRIMARY_ABN_LABEL@] ne 'ABN'%]
 				<div class="form-group">
 					<label for="usercustom2">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
 					<input class="form-control" type="text" name="usercustom2" id="usercustom2" size="20" maxlength="25" value="[@usercustom2@]">
 				</div>
+				[%/if%]
 				<div class="form-group">
-					<label for="usercustom3">Your Web Site URL</label>
+					<label for="usercustom3">Web site url</label>
 					<input class="form-control"  type="text" name="usercustom3" id="usercustom3" size="100" maxlength="255" value="[@usercustom3@]">
 				</div>
 				[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]
 					<!-- Dropshipping Information -->
 					<h2>Dropshipping Information</h2>
-					<h4>Customise the documentation we send out with your drop shipped orders.</h4>
-					<label>Drop Shipping Documentation Footer (Will be displayed on footer of packing slips, labels etc)</label>
+					<b>Customise the documentation we send out with your drop shipped orders.</b>
+					<label>Drop Shipping Documentation Footer (will be displayed on footer of packing slips, labels etc)</label>
 					<textarea class="form-control"  name="usercustom7" cols="50">[@usercustom7@]</textarea>
 					<p class="help-block">(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)</p>
 					<hr>
-					<label>Dropshipping Company Logo (Will be displayed on header of packing slips, labels etc)</label>
-					<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:imageurl@]/pixel.gif'%][%/ asset_url%]?[@config:current_timestamp@]"><br>
+					<label>Dropshipping company logo (will be displayed on header of packing slips, labels etc)</label>
+					<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/ asset_url%]?[@config:current_timestamp@]"><br>
 					<input type="file" name="logo">
 					<p class="help-block">(Instructions: Click browse to search
 						your local computer for your company logo. Your logo
@@ -156,11 +149,11 @@
 	var editAccount = {
 		vars:{
 			loadingMsg: 'Loading...',
-			countryPostalCodeMsg: 'Please enter your billing country and postal code above.',
+			countryPostalCodeMsg: 'Please enter your billing country and [%if [@config:defaultcountry@] eq 'US'%]zip [%else%]postal [%/if%] code above.',
 			errorMsg: 'Error. Please contact our customer support: [@config:COMPANY_EMAIL@]',
-			suburbStateMsg: 'Please enter your billing suburb and state above.',
-			selectSuburbMsg: 'Select suburb',
-			invalidPostalCodeMsg: 'Invalid postal code.'
+			suburbStateMsg: 'Please enter your billing suburb/city and state below.',
+			selectSuburbMsg: 'Select suburb/city',
+			invalidPostalCodeMsg: 'Invalid [%if [@config:defaultcountry@] eq 'US'%]zip [%else%]postal [%/if%] code.'
 		},
 		checkPostCode: function(ta) {
 			var id ='';

@@ -1,5 +1,5 @@
 <div class="main-image text-center">
-	<a href="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" title="Product main image" class="fancybox" rel="product_images">
+	<a href="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" data-lightbox="product-lightbox" data-title="Product main image" rel="product_images">
 		<div class="zoom">
 			<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" class="d-none" aria-hidden="true">
 			<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" rel="itmimg[@SKU@]" alt="Product main image" border="0" id="main-image" itemprop="image">
@@ -7,20 +7,18 @@
 	</a>
 </div>
 <br />
-<div class="row">
+<div class="row align-items-center">
 [%THUMBNAILS id:'[@SKU@]' check_parent:'y'%]
 	[%param *body%]
 		<div class="col-6 col-md-3">
-			<a href="[@full_image@]" class="fancybox" rel="product_images" title="[%if [@count@] eq 0%]Product main image[%else%]Product alt image [@count@][%/if%]">
-				<img src="[@thumb_image@]" border="0" class="img-fluid product-image-small" alt="[%if [@count@] eq 0%]Product main image[%else%]Product alt image [@count@][%/if%]">
+			<a href="[@full_image@]" data-lightbox="product-lightbox" data-title="Product image" rel="product_images">
+				<img src="[@thumb_image@]" class="img-fluid product-image-small">
 			</a>
 		</div>
 	[%/ param%]
 	[%param *brochure%]
 		<div class="col-6 col-md-3">
-			<a href="[@file@]" target="_blank" rel="noopener">
-				<img src="[@config:imageurl@]/pdf_brochure.gif" alt="View PDF brochure for [%NOHTML%][@name@][%END NOHTML%]" width="45" height="45">
-			</a>
+			<a class="display-4" href="[@file@]" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i></a>
 		</div>
 	[%/ param%]
 [%/ THUMBNAILS%]

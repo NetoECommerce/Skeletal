@@ -15,8 +15,8 @@
 	</script>
 	<title></title>
 	<!-- Template Style Sheets -->
-    <link href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]">
-    <link href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]">
+	<link href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]">
+	<link href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]">
 </head>
 <body>
 	<form method="post" name="adduserlogo" id="_adduser_form" enctype="multipart/form-data" action="[%URL page:'checkout'%][%END URL%]">
@@ -33,7 +33,7 @@
 			<div class="col-6">
 				<div id="company_logo">
 					<div style="float:left; margin-right:15px;">
-						<img id="comp_logo_img" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:imageurl@]/pixel.gif'%][%END asset_url%]?[@config:current_timestamp@]"><br>
+						<img id="comp_logo_img" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%END asset_url%]?[@config:current_timestamp@]"><br>
 						<a href="#" onClick="javascript:remlogo(); return false;">- Remove this logo</a>
 					</div>
 					<input style="float:left;" type="file" name="logo"><br>
