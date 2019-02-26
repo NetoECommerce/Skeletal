@@ -301,8 +301,11 @@
 				}
 			}
 		}
-	}
-	editAccount.getLocation();
+	};
+	// // Events
+	$(document).ready(function() {
+		editAccount.getLocation();
+	});
 	$('#subscribe_newsletter').on('change', function() {
 		$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
 	});
