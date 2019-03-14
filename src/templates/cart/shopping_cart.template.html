@@ -268,21 +268,7 @@
 								[%checkout_payment type:'[@order_type@]' reload:'1' distinct:'1'%]
 									[%param *body%]
 										[%if [@payment_desc_type@] eq 'paypalexpress'%]
-											[%if [@config:PAYPAL_MERCHANT_ID@] ne ''%]
-												[%SITE_VALUE id:'footer_javascript'%]
-													<script>
-														window.paypalCheckoutReady = function() {
-															paypal.checkout.setup(
-																"[%nohtml%][@config:paypal_merchant_id@][%/nohtml%]", {
-																	environment: "[%if [@config:paypal_api_environment@] eq 'sandbox'%]sandbox[%else%]live[%/if%]",
-																	button: 'paypal'
-																}
-															);
-														};
-													</script>
-													<script src="//www.paypalobjects.com/api/checkout.js" async></script>
-												[%/ SITE_VALUE%]
-											[%/if%]
+											[%site_value id:'footer_javascript'%][%paypal_express_js /%][%/site_value%]
 											<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
 												<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
 											</a>
