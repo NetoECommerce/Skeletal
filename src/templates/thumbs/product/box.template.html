@@ -13,13 +13,12 @@
 			<p class="title mb-1">
 				<a href="[@URL@]">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/ FORMAT%]</a>
 			</p>
-			<p class="price" itemprop="offers">
-			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
+			<p class="price">
 				[%if [@has_child@]%]From [%/ if%]
 				[%if [@inpromo@]%]
 					[%format type:'currency'%][@promo_price@][%/ format%]
 				[%else%]
-					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/ format%]</span>
+					[%format type:'currency'%][@store_price@][%/ format%]
 				[%/ if%]
 				[%if [@save@] > 0 AND ![@has_child@]%]
 					<span class="small text-danger d-block">[%format type:'percent'%][@save@][%/ format%] OFF</span>

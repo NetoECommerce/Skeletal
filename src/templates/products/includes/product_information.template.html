@@ -54,7 +54,7 @@
 							[@description@]
 						</section>
 						<p class="small">
-							(<span itemprop="productID">[@SKU@]</span>)
+							([@SKU@])
 						</p>
 					</div>
 				</div>
@@ -262,43 +262,34 @@
 							[%thumb_list type:'product_reviews' limit:'5'%]
 								[%param filter_1%][@SKU@][%/param%]
 								[%param *body%]
-									<div itemprop="review" itemscope itemtype="http://schema.org/Review">
-										<meta itemprop="itemReviewed" content="[@name@]">
-										<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]">
-										<blockquote>
-											<h4 itemprop="name">[%nohtml%][@title@][%/nohtml%]</h4>
-											<div>
-												<strong>
-													[%if [@reviewname@]%]
-														By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[%nohtml%][@reviewname@][%/nohtml%]</span></span> on
-													[%/if%]
-													<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]
-												</strong>
-											</div>
-											<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span><br />
-											<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-												<meta itemprop="worstRating" content = "1">
-												<meta itemprop="ratingValue" content = "[@score@]">
-												<meta itemprop="bestRating" content = "5">
-											</div>
-											[%set [@data:ratings-count@] = 1 /%]
-											[%while [@data:ratings-count@] <= [@data:score@]%]
-												[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-												<i class="fas fa-star"></i>
-											[%/while%]
-											[%while [@data:ratings-count@] <= 5%]
-												[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-												<i class="far fa-star"></i>
-											[%/while%]
-											([@score@])
-											[%if [@review_response@]%]
-												<br /><br />
-												<blockquote>
-													<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
-												</blockquote>
-											[%/if%]
-										</blockquote>
-									</div>
+									<blockquote>
+										<h4>[%nohtml%][@title@][%/nohtml%]</h4>
+										<div>
+											<strong>
+												[%if [@reviewname@]%]
+													By: [%nohtml%][@reviewname@][%/nohtml%] on
+												[%/if%]
+												[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]
+											</strong>
+										</div>
+										[%nohtml%][@review@][%/nohtml%]<br />
+										[%set [@data:ratings-count@] = 1 /%]
+										[%while [@data:ratings-count@] <= [@data:score@]%]
+											[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+											<i class="fas fa-star"></i>
+										[%/while%]
+										[%while [@data:ratings-count@] <= 5%]
+											[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+											<i class="far fa-star"></i>
+										[%/while%]
+										([@score@])
+										[%if [@review_response@]%]
+											<br /><br />
+											<blockquote>
+												<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
+											</blockquote>
+										[%/if%]
+									</blockquote>
 								[%/param%]
 								[%param *ifempty%]
 								[%/param%]

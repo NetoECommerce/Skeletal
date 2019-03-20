@@ -1,30 +1,26 @@
 [%cache type:'list' id:'[@inventory_id@]'%]
 	<article class="col-12 pb-2" role="article" aria-label="Product Thumbnail">
 	[%load_template file:'schema/product_thumb.template.html' /%]
-		<div class="card" itemscope itemtype="http://schema.org/Product">
-			<meta itemprop="brand" content="[@brand@]"/>
-			<meta itemprop="mpn" content="[@sku@]"/>
+		<div class="card">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-4 col-md-3">
 						<a href="[@URL@]" class="thumbnail-image">
-							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@sku@]">
+							<img src="[%asset_url type:'product' thumb:'thumb' id:'[@sku@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@sku@]">
 						</a>
 					</div>
 					<div class="col-8 col-md-6">
-						<h3 itemprop="name"><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'100' rmhtml:'1'%][@model@][%/format%]</a></h3>
-						<p itemprop="description">[@short_description@]</p>
+						<h3><a href="[@URL@]" title="[@model@]">[%format type:'text' maxlength:'100' rmhtml:'1'%][@model@][%/format%]</a></h3>
+						<p>[@short_description@]</p>
 					</div>
 					<div class="col-12 col-md-3 text-right">
-						<div class="price lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-							<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
+						<div class="price lead">
 							[%if [@inpromo@]%]
 								<strong>Now [%if [@has_child@]%]from [%/if%]</strong>
-								<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
-								<span class="text-success" itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
+								<span class="text-success">[%format type:'currency'%][@promo_price@][%/format%]</span>
 							[%else%]
 								[%if [@has_child@]%]From&nbsp;[%/if%]
-								<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
+								[%format type:'currency'%][@store_price@][%/format%]
 							[%/if%]
 							[%if [@inpromo@]%]
 								<p class="mb-1"><span class="badge badge-danger">On Sale</span></p>

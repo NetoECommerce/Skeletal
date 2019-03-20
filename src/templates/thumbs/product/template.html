@@ -1,23 +1,19 @@
 [%cache type:'gallery' id:'[@inventory_id@]'%]
 <article class="col-8 col-sm-6 col-lg-4 col-xl-3 pb-2" role="article" aria-label="Product thumbnail">
 [%load_template file:'schema/product_thumb.template.html' /%]
-	<div class="card thumbnail card-body" itemscope itemtype="http://schema.org/Product">
-		<meta itemprop="brand" content="[@brand@]"/>
-		<meta itemprop="mpn" content="[@sku@]"/>
+	<div class="card thumbnail card-body">
 		<a href="[@URL@]" class="thumbnail-image pb-2">
-			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@SKU@]">
+			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@SKU@]">
 		</a>
-		<p class="card-title h4" itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%]</a></p>
-		<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[@model@] price">
+		<p class="card-title h4"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%]</a></p>
+		<p class="price" aria-label="[@model@] price">
 			[%if [@inpromo@]%]
 				Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
-				<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
-				<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
+				[%format type:'currency'%][@promo_price@][%/format%]
 			[%else%]
 				[%if [@has_child@]%]From&nbsp;[%/if%]
-				<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
+				[%format type:'currency'%][@store_price@][%/format%]
 			[%/if%]
-			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 		</p>
 		[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Thumbnails' /%][%/if%]
 		<!-- Purchase Logic -->
