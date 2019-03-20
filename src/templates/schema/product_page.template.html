@@ -1,0 +1,82 @@
+
+<script type="application/ld+json">
+[%product sku:'[@sku@]'%]
+	[%param *body%]
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "[@name@]",
+  [%set [@image_thumb@]%][%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y' default:'' /%][%/set%]
+  [%if [@image_thumb@] ne ''%]
+  "image": [
+    "[@config:home_url@][@image_thumb@]",
+    "[@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL' check_parent:'y' default:'' /%]",
+    "[@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y' default:'' /%]"
+  ],
+  [%/if%]
+  [%if [@short_description@]%]"description": "[@short_description@]",[%/if%]
+  "sku": "[@sku@]",
+  "mpn": "[@sku@]",
+  "brand": {
+    "@type": "Thing",
+    "name": "[@brand@]"
+  },
+  [%thumb_list type:'product_reviews' limit:'25'%]
+    [%param filter_1%][@SKU@][%/param%]
+    [%param header%]
+  "review": [
+    [%/param%]
+    [%param *body%]
+    [%if [@count@] != 0%],[%/if%]{
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "[@score@]",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "[%nohtml%][@reviewname@][%/nohtml%]"
+      }
+    }
+    [%/param%]
+    [%param footer%]
+  ],
+    [%/param%]
+  [%/thumb_list%]
+  [%if [@reviews@] > 0%]
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "[@rating@]",
+    "reviewCount": "[@reviews@]"
+  },
+  [%/if%]
+  "offers": {
+	"@type": "Offer",
+    "itemCondition": "https://schema.org/NewCondition",	
+    "url": "[@url@]",
+    "priceCurrency": "[@config:defaultcurrency@]",
+	[%if [@inpromo@]%]
+    "price": "[@promo_price@]",
+    "priceValidUntil": "[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]",
+	[%else%]
+    "price": "[@store_price@]",
+	[%/if%]
+	[%if [@store_quantity@] > 0 AND [@preorder@] %]
+    "availability": "http://schema.org/PreOrder",
+	[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+    "availability": "http://schema.org/InStock",
+	[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+    "availability": "http://schema.org/LimitedAvailability",
+	[%else%]
+    "availability": "http://schema.org/OutOfStock",
+	[%/if%]
+    "seller": {
+      "@type": "Organization",
+      "name": "[@config:company_name@]"
+    }
+  }
+}
+	[%/param%]
+[%/product%]
+</script>

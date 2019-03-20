@@ -1,5 +1,6 @@
 [%cache type:'gallery' id:'[@inventory_id@]'%]
 <article class="col-8 col-sm-6 col-lg-4 col-xl-3 pb-2" role="article" aria-label="Product thumbnail">
+[%load_template file:'schema/product_thumb.template.html' /%]
 	<div class="card thumbnail card-body" itemscope itemtype="http://schema.org/Product">
 		<meta itemprop="brand" content="[@brand@]"/>
 		<meta itemprop="mpn" content="[@sku@]"/>
