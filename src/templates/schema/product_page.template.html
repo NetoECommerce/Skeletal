@@ -6,14 +6,7 @@
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": "[@name@]",
-  [%set [@image_thumb@]%][%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y' default:'' /%][%/set%]
-  [%if [@image_thumb@] ne ''%]
-  "image": [
-    "[@config:home_url@][@image_thumb@]",
-    "[@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL' check_parent:'y' default:'' /%]",
-    "[@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y' default:'' /%]"
-  ],
-  [%/if%]
+  "image": "[@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y' default:'' /%]",
   [%if [@short_description@]%]"description": "[@short_description@]",[%/if%]
   "sku": "[@sku@]",
   "mpn": "[@sku@]",
