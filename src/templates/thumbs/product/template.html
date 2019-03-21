@@ -1,6 +1,5 @@
 [%cache type:'gallery' id:'[@inventory_id@]'%]
 <article class="col-8 col-sm-6 col-lg-4 col-xl-3 pb-2" role="article" aria-label="Product thumbnail">
-[%load_template file:'schema/product_thumb.template.html' /%]
 	<div class="card thumbnail card-body">
 		<a href="[@URL@]" class="thumbnail-image pb-2">
 			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@SKU@]">
