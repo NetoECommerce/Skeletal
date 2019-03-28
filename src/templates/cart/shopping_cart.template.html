@@ -193,7 +193,7 @@
 								</tr>
 							[%/param%]
 							[%param *ifempty%]
-								[%if [@ship_country@]%]
+								[%if [@ship_zip@]%]
 									<b class="text-danger">Shipping not available to [%if [@ship_zip@]%][@ship_zip@] [%/if%][%countries%][%param *body%][%if [@country_code@] eq [@ship_country@]%][@country_name@][%/if%][%/param%][%/countries%], please try another location.</b>
 								[%else%]
 									Use shipping calculator to calculate shipping
