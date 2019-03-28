@@ -112,7 +112,7 @@
 				</div>
 			[%/ param%]
 			[%param *ifempty%]
-				[%if [@ship_country@]%]
+				[%if [@ship_zip@]%]
 					<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [%if [@ship_zip@]%][@ship_zip@] [%/if%][@ship_country@], please try another location.</p>
 				[%/if%]
 			[%/ param%]
