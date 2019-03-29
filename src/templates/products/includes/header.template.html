@@ -1,24 +1,17 @@
 <div class="row">
+	<meta itemprop="itemCondition" content="NewCondition">
 	<meta itemprop="brand" content="[@brand@]"/>
 	<div class="wrapper-product-title col-sm-8">
-		<h1 itemprop="name" aria-label="Product Name">[@name@]</h1>
+		<h1 itemprop="name" aria-label="Product Name">
+			[%url_info type:'product' id:'[@inventory_id@]' name:'page_heading' default:'[@name@]'/%]
+		</h1>
 		[%if [@subtitle@]%]
 			<h3 class="text-muted" role="heading" aria-label="Product Subtitle">[@subtitle@]</h3>
 		[%/if%]
-		[%if [@reviews@] > 0%]
-			<span class="small" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-				[%set [@data:ratings-count@] = 1 /%]
-				[%while [@data:ratings-count@] <= [@data:rating@]%]
-					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="fas fa-star"></i>
-				[%/ while%]
-				[%while [@data:ratings-count@] <= 5%]
-					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
-					<i class="far fa-star"></i>
-				[%/while%]
-				Rated <span itemprop="ratingValue">[@rating@]</span>/<span itemprop="bestRating">5</span> based on <span itemprop="ratingCount">[@reviews@]</span> reviews.
-			</span>
-		[%/if%]
+
+		[%set [@review_sku@]%][%if [@parent_sku@]%][@parent_sku@][%else%][@sku@][%/if%][%/set%]
+		[%load_ajax_template id:'_reviews' type:'item' template:'reviews' preload:'1' tmpl_sku:'[@review_sku@]' /%]
+
 		<div class="dropdown">
 			<button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu[@sku@]" data-toggle="dropdown" aria-controls="shareDropdown[@sku@]" aria-label="Share product">
 				Share: <i class="fab fa-facebook text-facebook" aria-hidden="true"></i>
@@ -30,7 +23,7 @@
 			<ul id="shareDropdown[@sku@]" class="dropdown-menu" aria-labelledby="dropdownMenu[@sku@]">
 				<li><a class="dropdown-item js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-facebook text-facebook" aria-hidden="true"></i> Facebook</a></li>
 				<li><a class="dropdown-item js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-twitter text-twitter" aria-hidden="true"></i> Twitter</a></li>
-				<li><a class="dropdown-item js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:homeurl@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+				<li><a class="dropdown-item js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;media=[%url_encode%][@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'/%][%/url_encode%]&amp;description=[%url_encode%][@name@][%/url_encode%]"><i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
 				<li><a class="dropdown-item js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-google-plus text-google-plus" aria-hidden="true"></i> Google+</a></li>
 			</ul>
 		</div>

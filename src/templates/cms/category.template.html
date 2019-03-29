@@ -2,27 +2,26 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 [%breadcrumb%]
 	[%param *header%]
-	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-			</li>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+					<meta itemprop="position" content="0" />
+				</li>
 	[%/param%]
 	[%param *body%]
-		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
-		</li>
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+					<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
+				</li>
 	[%/param%]
 	[%param *footer%]
-		</ol>
-	</nav>
+			</ol>
+		</nav>
 	[%/param%]
 [%/breadcrumb%]
 <h1 class="page-header">
-	[%url_info name:'page_heading' if:'eq' value:''%]
-		[%param if_true%][@content_name@][%/param%]
-		[%param if_false%][%url_info name:'page_heading'/%][%/param%]
-	[%/ url_info%]
+	[%url_info name:'page_heading' default:'[@content_name@]'/%]
 	[%IF [@keywords@] == ''%]
 		[%FILTER ID:'keywords' if:'ne' value:''%][%NOHTML%][%FILTER ID:'keywords'%][%/FILTER%][%/NOHTML%][%/FILTER%]
 	[%/IF%]

@@ -1,23 +1,27 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
-[%breadcrumb%]
-	[%PARAM *header%]
-		<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-		<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-			</li>
-	[%/PARAM%]
-	[%PARAM *body%]
-		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-			<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
-		</li>
-	[%/PARAM%]
-	[%PARAM *footer%]
-		</ol>
-		</nav>
-	[%/PARAM%]
-[%/breadcrumb%]
-<h1 class="display-4">[@content_name@]</h1>
+	[%breadcrumb%]
+		[%param *header%]
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+						<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+						<meta itemprop="position" content="0" />
+					</li>
+		[%/param%]
+		[%param *body%]
+					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+						<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+						<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
+					</li>
+		[%/param%]
+		[%param *footer%]
+				</ol>
+			</nav>
+		[%/param%]
+	[%/breadcrumb%]
+<h1 class="display-4">
+	[%url_info name:'page_heading' default:'[@content_name@]'/%]
+</h1>
 <p class="text-muted">
 	[%if [@content_author@]%]Author: [@content_author@] &nbsp;[%/if%]
 	[%if [@date_posted@] != 0000-00-00 00:00:00%]Date Posted:[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]&nbsp;[%/if%]
@@ -72,7 +76,7 @@
 		[%/parse%]
 	</section>
 [%/if%]
-[%thumb_list type:'content' content_type:'' template:'' limit:'20'%]
+[%thumb_list type:'content' content_type:'' template:'' show_next_level:'[@content_level@]' limit:'20'%]
 	[%param *footer%]
 		<nav aria-label="Page navigation">
 			<ul class="pagination">
@@ -121,15 +125,15 @@
 		[%param *body%]
 			<div itemprop="review" itemscope itemtype="http://schema.org/Review">
 				<blockquote>
-					<h4 itemprop="name"><i>[%nohtml%][@title@][%/nohtml%]</i></h4>
+					<h4 itemprop="name"><i>[%format type:'text' rmhtml:'1'%][@title@][%/format%]</i></h4>
 					<div>
 						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
 					</div>
-					<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span>
+					<span itemprop="description">[%format type:'text' rmhtml:'1'%][@review@][%/format%]</span>
 					[%if [@review_response@]%]
 						<br /><br />
 						<blockquote>
-							<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
+							<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%format type:'text' rmhtml:'1'%][@review_response@][%/format%]</span>
 						</blockquote>
 					[%/if%]
 				</blockquote> <hr />

@@ -1,7 +1,0 @@
----
-  - type: "waiter"
-
-  - name: "Compile and upload"
-    command: "bin/compile && buildkite-scripts/bin/upload_themes dist/*.zip"
-    agents:
-      queue: production

@@ -16,125 +16,125 @@
 					<div class="row">
 		[%/PARAM%]
 		[%PARAM *body%]
-					[%if ![@has_variation@]%]
-						<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
-							<input type="checkbox" id="[@sku@]a" class="hidden" checked>
-							<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
-								<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
-								<div class="caption card-body">
-									<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
-									<p class="price">
-										[%if [@itm_price@] AND [@itm_price@] >= 0 %]
-											[%format type:'currency'%][@itm_price@][%/ format%]
-										[%else%]
-											[%if [@inpromo@]%]
-												<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
-											[%else%]
-												[%format type:'currency'%][@store_price@][%/format%]
-											[%/if%]
-										[%/if%]
-									</p>
-									<div class="input-group">
-										<div class="input-group-prepend"><span class="input-group-text">QTY</span></div>
-										<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%]max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" value="[@qty@]" ref="[@sku@]" class="component-config-input form-control" [%if [@fixed_assemble@]%]readonly[%/if%]>
-									</div>
-								</div>
+			[%if ![@has_variation@]%]
+				<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
+					<input type="checkbox" id="[@sku@]a" class="hidden" checked>
+					<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
+						<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
+						<div class="caption card-body">
+							<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
+							<p class="price">
+								[%if [@itm_price@] AND [@itm_price@] >= 0 %]
+									[%format type:'currency'%][@itm_price@][%/ format%]
+								[%else%]
+									[%if [@inpromo@]%]
+										<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
+									[%else%]
+										[%format type:'currency'%][@store_price@][%/format%]
+									[%/if%]
+								[%/if%]
+							</p>
+							<div class="input-group">
+								<div class="input-group-prepend"><span class="input-group-text">QTY</span></div>
+								<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%]max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" value="[@qty@]" ref="[@sku@]" class="component-config-input form-control" [%if [@fixed_assemble@]%]readonly[%/if%]>
 							</div>
-						</div>
-					[%else%]
-							<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
-								[%if [@variation_available@] > '0'%]<input type="checkbox" id="[@sku@]a" class="hidden" checked>[%/if%]
-								<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
-									<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
-										<div class="caption card-body">
-											<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
-											<p class="price">
-												[%if [@itm_price@] AND [@itm_price@] >= 0 %]
-													[%format type:'currency'%][@itm_price@][%/ format%]
-												[%else%]
-													[%if [@inpromo@]%]
-														<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
-													[%else%]
-														[%format type:'currency'%][@store_price@][%/format%]
-													[%/if%]
-												[%/if%]
-											</p>
-											[%if [@variation_available@] < '1'%]
-												<select disabled class="component-var-opt form-control component-config-input">
-													<option selected>Out Of Stock</option>
-												</select>
-											[%/if%]
-										[%list_item_variations id:'[@current_sku@]'%]
-											[%PARAM *variation_header%]
-													<select class="component-var-opt form-control component-config-input" component-id="[@component_count@]" ref="[@specific_id@]">
-														<option value="" disabled selected>[@specific_name@]</option>
-											[%/PARAM%]
-											[%PARAM *variation_body%]
-														<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
-											[%/PARAM%]
-											[%PARAM *variation_footer%]
-														</select>
-											[%/PARAM%]
-										[%/list_item_variations%]
-										<div class="input-group">
-											<div class="input-group-prepend"><span class="input-group-text">QTY</span></div>
-											[%if [@variation_available@] > '0'%]
-												<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%] max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" value="[@qty@]" ref="[@current_sku@]" component-id="[@component_count@]" component-sku="[@SKU@]" class="component-var-sku form-control component-config-input [%if [@fixed_assemble@]%]readonly[%/if%]" [%if [@fixed_assemble@]%] readonly[%/if%]>
-											[%else%]
-												<input type="number" readonly value="0" class="form-control readonly">
-											[%/if%]
-										</div>
-									</div>
-								</div>
-							</div>
-					[%/if%]
-		[%/PARAM%]
-		[%PARAM *group_footer%]
 						</div>
 					</div>
 				</div>
+			[%else%]
+				<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
+					[%if [@variation_available@] > '0'%]<input type="checkbox" id="[@sku@]a" class="hidden" checked>[%/if%]
+					<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
+						<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
+						<div class="caption card-body">
+							<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
+							<p class="price">
+								[%if [@itm_price@] AND [@itm_price@] >= 0 %]
+									[%format type:'currency'%][@itm_price@][%/ format%]
+								[%else%]
+									[%if [@inpromo@]%]
+										<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
+									[%else%]
+										[%format type:'currency'%][@store_price@][%/format%]
+									[%/if%]
+								[%/if%]
+							</p>
+							[%if [@variation_available@] < '1'%]
+								<select disabled class="component-var-opt form-control component-config-input">
+									<option selected>Out Of Stock</option>
+								</select>
+							[%/if%]
+							[%list_item_variations id:'[@current_sku@]'%]
+								[%PARAM *variation_header%]
+										<select class="component-var-opt form-control component-config-input" component-id="[@component_count@]" ref="[@specific_id@]">
+											<option value="" disabled selected>[@specific_name@]</option>
+								[%/PARAM%]
+								[%PARAM *variation_body%]
+											<option value="[@value_id@]">[@value_name@] [%IF ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
+								[%/PARAM%]
+								[%PARAM *variation_footer%]
+											</select>
+								[%/PARAM%]
+							[%/list_item_variations%]
+							<div class="input-group">
+								<div class="input-group-prepend"><span class="input-group-text">QTY</span></div>
+								[%if [@variation_available@] > '0'%]
+									<input type="number" min="[@min_assemble@]" [%if [@max_assemble@]%] max="[@max_assemble@]" [%/if%] id="productkitting[@rndm@][@kitting_sku@][@component_count@]" value="[@qty@]" ref="[@current_sku@]" component-id="[@component_count@]" component-sku="[@SKU@]" class="component-var-sku form-control component-config-input [%if [@fixed_assemble@]%]readonly[%/if%]" [%if [@fixed_assemble@]%] readonly[%/if%]>
+								[%else%]
+									<input type="number" readonly value="0" class="form-control readonly">
+								[%/if%]
+							</div>
+						</div>
+					</div>
+				</div>
+			[%/if%]
+		[%/PARAM%]
+		[%PARAM *group_footer%]
+					</div>
+				</div>
+			</div>
 		[%/PARAM%]
 	[%/ITEM_KITTING%]
 	[%extra_options id:'[@SKU@]'%]
 		[%PARAM *header%]
-		<table class="table table-striped table-bordered">
-			<tr>
-				<th colspan="2">Available Options</th>
-			</tr>
-			[%/ PARAM%]
-			[%PARAM *number_option%]
+			<table class="table table-striped table-bordered">
 				<tr>
-					<td><label>[@name@]</label></td>
-					<td><input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value=""></td>
+					<th colspan="2">Available Options</th>
 				</tr>
-			[%/ PARAM%]
-			[%PARAM *text_option%]
-				<tr>
-					<td><label>[@name@]</label></td>
-					<td><textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea></td>
-				</tr>
-			[%/ PARAM%]
-			[%PARAM *select_option%]
-				<tr>
-					<td><label>[@name@]</label></td>
-					<td>
-						<select name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]">
-							[@choices@]
-						</select>
-					</td>
-				</tr>
-			[%/ PARAM%]
-			[%PARAM *choices%]
-				<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
-				[%DATA id:'price' if:'!=' value:'0'%]
-					(+ [%FORMAT type:'currency'%][@price@][%/ FORMAT%])
-				[%/ DATA%]
-				</option>
-			[%/ PARAM%]
-			[%PARAM *footer%]
-			<input type="hidden" name="extras" value="[@total_options@]"/>
-		</table>
-		<hr />
+				[%/ PARAM%]
+				[%PARAM *number_option%]
+					<tr>
+						<td><label>[@name@]</label></td>
+						<td><input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value=""></td>
+					</tr>
+				[%/ PARAM%]
+				[%PARAM *text_option%]
+					<tr>
+						<td><label>[@name@]</label></td>
+						<td><textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea></td>
+					</tr>
+				[%/ PARAM%]
+				[%PARAM *select_option%]
+					<tr>
+						<td><label>[@name@]</label></td>
+						<td>
+							<select name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]">
+								[@choices@]
+							</select>
+						</td>
+					</tr>
+				[%/ PARAM%]
+				[%PARAM *choices%]
+					<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
+					[%DATA id:'price' if:'!=' value:'0'%]
+						(+ [%FORMAT type:'currency'%][@price@][%/ FORMAT%])
+					[%/ DATA%]
+					</option>
+				[%/ PARAM%]
+				[%PARAM *footer%]
+				<input type="hidden" name="extras" value="[@total_options@]"/>
+			</table>
+			<hr />
 		[%/ PARAM%]
 	[%/ extra_options%]
 </div>

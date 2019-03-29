@@ -2,6 +2,8 @@
 <html lang="en">
 <head itemscope itemtype="http://schema.org/WebSite">
 	[%load_template file:'headers/includes/head.template.html'/%]
+	<link rel="preload" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" as="style">
+	<link rel="preload" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" as="style">
 	<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
 	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
 </head>
@@ -9,7 +11,7 @@
 <header class="container wrapper-header py-3" aria-label="Header container">
 	<div class="row pb-2 align-items-center">
 		<div class="col-12 col-sm-4 wrapper-logo text-sm-left">
-			<a href="[@config:homeurl@]" title="[@config:company_name@]">
+			<a href="[@config:home_url@]" title="[@config:company_name@]">
 				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>

@@ -15,20 +15,24 @@ $social-icons:(
 );
 $payment-icon:(
 	paypal: (16px, 0 0, 8px),
+	paypalexpress: (16px, 0 0, 8px),
 	bpay: (18px, 0 -17px, 6px),
 	moneyorder: (22px, 0 -35px, 3px),
 	cheque: (13px, 0 -58px, 8px),
+	bankcheque: (13px, 0 -58px, 8px),
 	directdeposit: (38px, 0 -72px, -4px),
 	americanexpress: (21px, 0 -110px, 5px),
 	mastercard: (36px, 0 -132px, -3px),
 	visa: (18px, 0 -168px, 6px),
 	diners: (17px, 0 -197px, 7px),
+	dinersclub: (17px, 0 -197px, 7px),
 	discover: (10px, 0 -187px, 10px),
 	afterpay: (13px, 0 -213px, 10px),
 	q-card: (35px, 0 -244px, 0px),
 	paymark: (18px, 0 -226px, 7px),
-	zipmoney: (30px, 0 30px, 2px),
-	zippay: (18px, 0 49px, 7px)
+	paymarkonlineeftpos: (18px, 0 -226px, 7px),
+	zipmoney: (27px, 0 27px, 2px),
+	zippay: (27px, 0 27px, 2px)
 );
 //
 // Header
@@ -68,6 +72,21 @@ $payment-icon:(
 .dropdown-menu-horizontal {
 	top: -1px;
 	left: 100%;
+}
+.dropdown-toggle{
+	&::before, &::after{
+		vertical-align: middle;
+	}
+}
+@include media-breakpoint-down(sm) {
+	.navbar-nav .dropdown-menu{
+		border: 0;
+		padding: 0;
+		padding-left: 0.25rem;
+		&.show .dropdown-menu{
+			display: block;
+		}
+	}
 }
 // Header cart
 #header-cart {
@@ -154,8 +173,8 @@ $payment-icon:(
 	}
 }
 // Product page main image
-.main-image a > .zoom {
-	@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(sm) {
+	.main-image a > .zoom {
 		pointer-events: none;
 	}
 }
@@ -169,6 +188,31 @@ $payment-icon:(
 
 	&.component-var-thumb {
 		width: 100%;
+	}
+}
+// Product page tabs
+.tabbable {
+	.nav-tabs {
+		display: none;
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+	@include media-breakpoint-up(md) {
+		.card {
+			border: none;
+		}
+		.collapse {
+			display: block;
+		}
+		.card-header {
+			display: none;
+		}
+	}
+	@include media-breakpoint-down(sm) {
+		.tab-pane {
+			display: block;
+		}
 	}
 }
 // Cart table
@@ -316,6 +360,8 @@ $payment-icon:(
 #suburb_sl,
 ._itmspec_opt,
 .n-wrapper-form-control select {
+	overflow: hidden;
+	text-overflow: ellipsis;
 	@extend .form-control;
 	@extend select.form-control;
 }
