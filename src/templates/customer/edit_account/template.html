@@ -1,197 +1,19 @@
 <div class="col-12" >
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My account</a></li>
-		<li class="breadcrumb-item"><a href="#">Edit my account</a></li>
-	</ol>
+			<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
+			<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My account</a></li>
+			<li class="breadcrumb-item"><a href="#">Edit my account</a></li>
+		</ol>
 	</nav>
 	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%/ URL%]">
-	<div class="page-header">
-		<h1>Edit Your [@config:company_name@] Account Details</h1>
-		<!-- This block will give them a description on what fields are missing -->
-		[%DATA id:'updated' if:'=' value:'0'%]
-			<p>Please complete all the required fields below before continuing.</p>
-		[%/ DATA%]
-	</div>
-	[%SITE_VALUE id:'footer_javascript'%]
-		<script language="javascript" type="text/javascript">
-			var httpReq = null;
-			var httpReq2 = null;
-
-			function getXMLHttpRequest() {
-				var client = null;
-				try {
-					client = new XMLHttpRequest();
-				} catch (e) {
-					try {
-						client=new ActiveXObject("Msxml2.XMLHTTP");
-					} catch (e) {
-						client=new ActiveXObject("Microsoft.XMLHTTP");
-					}
-				}
-				return client;
-			}
-
-			function checkPostCode(ta) {
-				var id ='';
-				var zip_id = 'bill_zip';
-				var country_id = 'bill_country';
-				if(ta && ta=='sh') {
-					id = '_'+ta;
-					zip_id = 'ship_zip';
-					country_id = 'ship_country';
-				}
-
-				var zip = document.UPDATEINFO.elements[zip_id];
-				var country = document.UPDATEINFO.elements[country_id];
-				if(country.options[country.selectedIndex].value == 'AU') {
-					zip.value = zip.value.replace(new RegExp('\\D','g'), '');
-				}
-			}
-
-			function getlocation(ta) {
-				var id ='';
-				var city_id = 'bill_city';
-				var state_id = 'bill_state';
-				var zip_id = 'bill_zip';
-				var country_id = 'bill_country';
-				if(ta && ta=='sh') {
-					id = '_'+ta;
-					city_id = 'ship_city';
-					state_id = 'ship_state';
-					zip_id = 'ship_zip';
-					country_id = 'ship_country';
-				}
-				checkPostCode(ta);
-				var dis = document.getElementById('suburb_di'+id);
-				var msg = document.getElementById('suburb_mg'+id);
-				var frame = document.getElementById('suburb_sh'+id);
-				var zip = document.UPDATEINFO.elements[zip_id];
-				var country = document.UPDATEINFO.elements[country_id];
-				var city = document.UPDATEINFO.elements[city_id];
-				var city_in = document.getElementById('city_in'+id);
-				var state = document.UPDATEINFO.elements[state_id];
-				var state_in = document.getElementById('state_in'+id);
-				var sel = document.getElementById('suburb_sl'+id);
-
-				if(!zip.cvalue || zip.value!=zip.cvalue) {
-					zip.cvalue = zip.value;
-					msg.innerHTML = '<i>Loading...</i>';
-					dis.style.display = 'none';
-					msg.style.display = '';
-					if(country.options[country.selectedIndex].value == 'AU') {
-						city_in.value ='';
-						state_in.value ='';
-						city_in.disabled = true;
-						state_in.disabled = true;
-						if( zip.value == '' ) {
-							msg.innerHTML = '<i>Please enter your billing country and [%if [@config:defaultcountry@] eq 'US'%]zip [%else%]postal [%/if%] code above.</i>';
-						} else {
-							var url = '/do/get_locate?zip='+escape(zip.value);
-							var req = null;
-							if(ta && ta=='sh')  {
-								httpReq2 = getXMLHttpRequest();
-								req = httpReq2;
-							} else {
-								httpReq = getXMLHttpRequest();
-								req = httpReq;
-							}
-
-							if(!req) {
-								msg.innerHTML = '<i>Error. Please contact our customer support: [@config:COMPANY_EMAIL@]</i>';
-							} else {
-								req.onreadystatechange = function() {
-									if(req.readyState == 4 && req.status == 200) {
-										var data = req.responseText.split('\n');
-										setSuburbSl(data, ta);
-									}
-								};
-								req.open("GET",url,true);
-								req.send(null);
-							}
-						}
-					} else {
-						city_in.disabled = false;
-						state_in.disabled = false;
-						msg.innerHTML = '<i>Please enter your billing suburb/city and state below.</i>';
-					}
-				}
-			}
-
-			function selectSuburb(ta) {
-				var id ='';
-				var city_id = 'bill_city';
-				var state_id = 'bill_state';
-				if(ta && ta=='sh') {
-					id = '_'+ta;
-					city_id = 'ship_city';
-					state_id = 'ship_state';
-				}
-
-				var sel = document.getElementById('suburb_sl'+id);
-				var city = document.UPDATEINFO.elements[city_id];
-				var city_in = document.getElementById('city_in'+id);
-				var state = document.UPDATEINFO.elements[state_id];
-				var state_in = document.getElementById('state_in'+id);
-				if(sel) {
-					if(sel.selectedIndex > 0) {
-						var sp = sel.options[sel.selectedIndex].value.split(' - ');
-						if( sp.length > 1 ) {
-							state_in.value =state.value = sp[sp.length-1];
-							city_in.value =city.value = (sp.slice(0,sp.length-1)).join(' - ');
-						}
-					}
-				}
-			}
-
-			function setSuburbSl(data, ta) {
-				var id ='';
-				var city_id = 'bill_city';
-				var state_id = 'bill_state';
-				if(ta && ta=='sh') {
-					id = '_'+ta;
-					city_id = 'ship_city';
-					state_id = 'ship_state';
-				}
-
-				var dis = document.getElementById('suburb_di'+id);
-				var msg = document.getElementById('suburb_mg'+id);
-
-				var count = 0;
-				if(data.length > 0) {
-					var option = '<option value="">Select Suburb/City</option>';
-					var city = document.UPDATEINFO.elements[city_id];
-					var state = document.UPDATEINFO.elements[state_id];
-					var sel_value = city.value+' - '+state.value;
-					for(var i=0; i<data.length; i++) {
-						if(data[i] != '') {
-							option += '<option value="'+data[i]+'"'+(data[i] == sel_value? ' selected':'')+'>'+data[i]+'</option>';
-							count++;
-						}
-					}
-				}
-
-				if(count <= 0) {
-					msg.innerHTML = '<span class="text-danger">Invalid [%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] Code.</span>';
-					dis.style.display = 'none';
-					msg.style.display = '';
-				} else {
-					dis.innerHTML = '<select id="suburb_sl'+id+'" onChange="selectSuburb('+(ta && ta=='sh'?'\'sh\'':'')+')">'+option+'</select>';
-					msg.style.display = 'none';
-					dis.style.display = '';
-
-					selectSuburb(ta);
-				}
-
-			}
-			getlocation();
-			$('#subscribe_newsletter').on('change', function() {
-				$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
-			});
-		</script>
-	[%/ SITE_VALUE%]
-
+		<div class="page-header">
+			<h1>Edit Your [@config:company_name@] Account Details</h1>
+			<!-- This block will give them a description on what fields are missing -->
+			[%DATA id:'updated' if:'=' value:'0'%]
+				<p>Please complete all the required fields below before continuing.</p>
+			[%/ DATA%]
+		</div>
 		[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger" role="alert">[@error@]</div>[%/ DATA%]
 		<div class="row">
 			<div class="col-12 col-md-6">
@@ -210,7 +32,7 @@
 				</div>
 				<div class="form-group">
 					<label for="bill_country">Country</label><span class="text-danger">*</span>
-					<select class="form-control" id="bill_country" name="bill_country" onChange="getlocation()">
+					<select class="form-control" id="bill_country" name="bill_country">
 						[%countries sortby:'sortorder,name' %]
 						[%PARAM *body%]
 						<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%/ DATA%]>[@country_name@]</option>
@@ -227,12 +49,12 @@
 				</div>
 				<div class="form-group">
 					<label for="bill_zip">[%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] code</label><span class="text-danger">*</span>
-					<input class="form-control" type="text" id="bill_zip" name="bill_zip" value="[@bill_zip@]" size="50" maxlength="10" onChange="getlocation()" onKeyUp="getlocation()">
+					<input class="form-control" type="text" id="bill_zip" name="bill_zip" value="[@bill_zip@]" size="50" maxlength="10">
 				</div>
 				<div class="form-group n-wrapper-form-control">
 					<label for="suburb_sl">Suburb/City</label><span class="text-danger">*</span>
 					<div id="suburb_di">
-						<select class="form-control" id="suburb_sl" onChange="selectSuburb()">
+						<select class="form-control" id="suburb_sl">
 							<option value="">Select Suburb/City</option>
 						</select>
 					</div>
@@ -316,9 +138,179 @@
 			<div class="col-12"><hr></div>
 			<div class="col-12 col-md-3 offset-md-9 text-md-right">
 				<input type="hidden" name="update" value="1">
-				<input type="SUBMIT" class="btn btn-lg btn-success" value="Save Changes">
+				<input type="submit" class="btn btn-lg btn-success" value="Save Changes">
 			</div>
 		</div>
 	</form>
 </div>
-</div>
+
+[%SITE_VALUE id:'footer_javascript'%]
+<script language="javascript" type="text/javascript">
+	var editAccount = {
+		vars:{
+			loadingMsg: 'Loading...',
+			countryPostalCodeMsg: 'Please enter your billing country and [%if [@config:defaultcountry@] eq 'US'%]zip [%else%]postal [%/if%] code above.',
+			errorMsg: 'Error. Please contact our customer support: [@config:COMPANY_EMAIL@]',
+			suburbStateMsg: 'Please enter your billing suburb/city and state below.',
+			selectSuburbMsg: 'Select suburb/city',
+			invalidPostalCodeMsg: 'Invalid [%if [@config:defaultcountry@] eq 'US'%]zip [%else%]postal [%/if%] code.'
+		},
+		checkPostCode: function(ta) {
+			var id ='';
+			var zip_id = 'bill_zip';
+			var country_id = 'bill_country';
+
+			if(ta && ta=='sh') {
+				id = '_'+ta;
+				zip_id = 'ship_zip';
+				country_id = 'ship_country';
+			}
+			var zip = document.UPDATEINFO.elements[zip_id];
+			var country = document.UPDATEINFO.elements[country_id];
+
+			if(country.options[country.selectedIndex].value == 'AU') {
+				zip.value = zip.value.replace(new RegExp('\\D','g'), '');
+			}
+		},
+		getLocation: function(ta) {
+			var id ='';
+			var city_id = 'bill_city';
+			var state_id = 'bill_state';
+			var zip_id = 'bill_zip';
+			var country_id = 'bill_country';
+
+			if(ta && ta=='sh') {
+				id = '_'+ta;
+				city_id = 'ship_city';
+				state_id = 'ship_state';
+				zip_id = 'ship_zip';
+				country_id = 'ship_country';
+			}
+			editAccount.checkPostCode(ta);
+			var dis = document.getElementById('suburb_di'+id);
+			var msg = document.getElementById('suburb_mg'+id);
+			var frame = document.getElementById('suburb_sh'+id);
+			var zip = document.UPDATEINFO.elements[zip_id];
+			var country = document.UPDATEINFO.elements[country_id];
+			var city = document.UPDATEINFO.elements[city_id];
+			var city_in = document.getElementById('city_in'+id);
+			var state = document.UPDATEINFO.elements[state_id];
+			var state_in = document.getElementById('state_in'+id);
+			var sel = document.getElementById('suburb_sl'+id);
+
+			if(!zip.cvalue || zip.value!=zip.cvalue) {
+				zip.cvalue = zip.value;
+				msg.innerHTML = '<i>'+editAccount.vars.loadingMsg+'</i>';
+				dis.style.display = 'none';
+				msg.style.display = '';
+				if(country.options[country.selectedIndex].value == 'AU') {
+					city_in.value ='';
+					state_in.value ='';
+					city_in.disabled = true;
+					state_in.disabled = true;
+					if( zip.value == '' ) {
+						msg.innerHTML = '<i>'+editAccount.vars.countryPostalCodeMsg+'</i>';
+					} else {
+						$.get('/do/get_locate?zip=' + escape(zip.value), function (data, textStatus) {
+							if (textStatus === 'success') {
+								var suburbArray = data.split("\n");
+								editAccount.setSuburbSl(suburbArray, ta);
+							} else {
+								msg.innerHTML = '<i>'+editAccount.vars.errorMsg+'</i>';
+							}
+						});
+					}
+				} else {
+					city_in.disabled = false;
+					state_in.disabled = false;
+					msg.innerHTML = '<i>'+editAccount.vars.suburbStateMsg+'</i>';
+				}
+			}
+		},
+		selectSuburb: function(ta) {
+			var id ='';
+			var city_id = 'bill_city';
+			var state_id = 'bill_state';
+
+			if(ta && ta=='sh') {
+				id = '_'+ta;
+				city_id = 'ship_city';
+				state_id = 'ship_state';
+			}
+
+			var sel = document.getElementById('suburb_sl'+id);
+			var city = document.UPDATEINFO.elements[city_id];
+			var city_in = document.getElementById('city_in'+id);
+			var state = document.UPDATEINFO.elements[state_id];
+			var state_in = document.getElementById('state_in'+id);
+
+			if(sel) {
+				if(sel.selectedIndex > 0) {
+					var sp = sel.options[sel.selectedIndex].value.split(' - ');
+					if( sp.length > 1 ) {
+						state_in.value =state.value = sp[sp.length-1];
+						city_in.value =city.value = (sp.slice(0,sp.length-1)).join(' - ');
+					}
+				}
+			}
+		},
+		setSuburbSl: function(data, ta) {
+			var id ='';
+			var city_id = 'bill_city';
+			var state_id = 'bill_state';
+
+			if(ta && ta=='sh') {
+				id = '_'+ta;
+				city_id = 'ship_city';
+				state_id = 'ship_state';
+			}
+
+			var dis = document.getElementById('suburb_di'+id);
+			var msg = document.getElementById('suburb_mg'+id);
+			var count = 0;
+
+			if(data.length > 0) {
+				var option = '<option value="">'+editAccount.vars.selectSuburbMsg+'</option>';
+				var city = document.UPDATEINFO.elements[city_id];
+				var state = document.UPDATEINFO.elements[state_id];
+				var sel_value = city.value+' - '+state.value;
+				for(var i=0; i<data.length; i++) {
+					if(data[i] != '') {
+						option += '<option value="'+data[i]+'"'+(data[i] == sel_value? ' selected':'')+'>'+data[i]+'</option>';
+						count++;
+					}
+				}
+			}
+			if(count <= 0) {
+				msg.innerHTML = '<span class="text-danger">'+editAccount.vars.invalidPostalCodeMsg+'</span>';
+				dis.style.display = 'none';
+				msg.style.display = '';
+			} else {
+				dis.innerHTML = '<select id="suburb_sl'+id+'">'+option+'</select>';
+				msg.style.display = 'none';
+				dis.style.display = '';
+				editAccount.selectSuburb(ta);
+
+				$('#suburb_sl'+id).off('change');
+				if(ta && ta == 'sh'){
+					$('#suburb_sl'+id).on('change', function(){
+						editAccount.selectSuburb('sh');
+					});
+				}else{
+					$('#suburb_sl'+id).on('change', editAccount.selectSuburb);	
+				}
+			}
+		}
+	};
+	// // Events
+	$(document).ready(function() {
+		editAccount.getLocation();
+	});
+	$('#subscribe_newsletter').on('change', function() {
+		$('input[name="opt_in"]').val(this.checked ? 'y' : 'n');
+	});
+	$('#bill_country').on('change', editAccount.getLocation);
+	$('#bill_zip').on('change keyup', editAccount.getLocation);
+	$('#suburb_sl').on('change', editAccount.selectSuburb);
+</script>
+[%/ SITE_VALUE%]
