@@ -6,7 +6,7 @@
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": "[@name@]",
-  "image": "[@config:home_url@][%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y' default:'' /%]",
+  "image": "[%asset_url type:'product' id:'[@sku@]' thumb:'full' check_parent:'y' header:'[@config:home_url@]' /%]",
   [%if [@short_description@]%]"description": "[@short_description@]",[%/if%]
   "sku": "[@sku@]",
   "mpn": "[@sku@]",
@@ -16,7 +16,7 @@
   },
   [%if [@config:show_product_reviews@]%]
   [%thumb_list type:'product_reviews' limit:'25'%]
-    [%param filter_1%][@SKU@][%/param%]
+    [%param filter_1%][@sku@][%/param%]
     [%param header%]
   "review": [
     [%/param%]
@@ -53,7 +53,7 @@
     "priceCurrency": "[@config:defaultcurrency@]",
 	[%if [@inpromo@]%]
     "price": "[@promo_price@]",
-    "priceValidUntil": "[%format type:'date' format:'#Y-#M-#D'%][@promo_end@][%END format%]",
+    "priceValidUntil": "[%format type:'date' format:'#Y-#M-#D'%][@promo_end@][%/format%]",
 	[%else%]
     "price": "[@store_price@]",
 	[%/if%]
@@ -71,7 +71,7 @@
       "name": "[@config:company_name@]",
       "logo": {
         "@type": "ImageObject",
-        "url": "[@config:imageurl@]/website_logo.png"
+        "url": "[%asset_url type:'logo' thumb:'website' header:'[@config:home_url@]' /%]"
       }
     }
   }
