@@ -8,10 +8,12 @@
   [%if [@short_description@]%]"description": "[@short_description@]",[%/if%]
   "sku": "[@sku@]",
   "mpn": "[@sku@]",
+  [%if [@brand@]%]
   "brand": {
     "@type": "Thing",
     "name": "[@brand@]"
   },
+  [%/if%]
   [%if [@config:show_product_reviews@]%]
   [%thumb_list type:'product_reviews' limit:'25'%]
     [%param filter_1%][@sku@][%/param%]
