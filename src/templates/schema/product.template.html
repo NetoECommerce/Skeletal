@@ -53,7 +53,7 @@
     "priceCurrency": "[@config:defaultcurrency@]",
 	[%if [@inpromo@]%]
     "price": "[@promo_price@]",
-    "priceValidUntil": "[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]",
+    "priceValidUntil": "[%format type:'date' format:'#Y-#M-#D'%][@promo_end@][%END format%]",
 	[%else%]
     "price": "[@store_price@]",
 	[%/if%]
