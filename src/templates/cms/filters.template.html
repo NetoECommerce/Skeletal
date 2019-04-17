@@ -1,4 +1,3 @@
-
         <div class="list-group list-group-flush" role="group">
             [%product_filter type:'variations' autohide:'0' sortoption:'sortorder'%]
                 [%param *header%]
@@ -24,7 +23,7 @@
                 [%/param%]
                 [%param *body%]
                     [%if [@selected@]%]
-                        <a class="filter-remove filter text-dark list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="[@remove_single_url@]" rel="nofollow">
+                        <a class="filter-remove filter text-dark list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="[@remove_url@]" rel="nofollow">
                             <span><i class="fa fa-check-square"></i> [@name@]</span>
                             <span class="badge badge-secondary badge-pill">[@total@]</span>
                         </a>
@@ -42,7 +41,7 @@
                 [%/param%]
                 [%param *body%]
                     [%if [@selected@]%]
-                        <a class="filter-remove filter text-dark list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="[@remove_single_url@]" rel="nofollow">
+                        <a class="filter-remove filter text-dark list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="[@remove_url@]" rel="nofollow">
                             <span><i class="fa fa-check-square"></i> In Stock</span>
                             <span class="badge badge-secondary badge-pill">[@total@]</span>
                         </a>

@@ -1,0 +1,104 @@
+<div class="card" role="contentinfo" aria-label="Calculate shipping">
+	<div class="card-header">
+		<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
+	</div>
+	<div class="card-body">
+		<form method="post" action="[%URL page:'checkout'/%]">
+			[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+				<!-- suburb selector -->
+				<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
+				<input type="hidden" id="ship_country" name="ship_country" value="AU" />
+				<p>Enter your post code to calculate.</p>
+				<div class="form-group">
+					<label>Postal Code</label>
+					<input type="text" class="form-control" size="5" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
+				</div>
+				<div class="form-group n-wrapper-form-control">
+					<label>Suburb</label>
+					<span id="ship_selector"></span>
+					<input type="text"  class="form-control" id="ship_city" name="ship_city"  value="[%session id:'ship_city'/%]" size="50" maxlength="50"/>
+				</div>
+				<input type="submit" class="btn btn-outline-secondary btn-block" value="Calculate Shipping" />
+				[%site_value id:'footer_javascript'%]
+					<script>
+						$(document).ready(function() {
+							$.postcode_selectorInit({
+								'id': 'ship_selector',
+								'country_id': 'ship_country',
+								'city_id': 'ship_city',
+								'zip_id': 'ship_zip',
+								'state_id': 'ship_state',
+							});
+						});
+					</script>
+				[%/ site_value%]
+			[%elseif [@config:shipping_calculator_type@] eq 'suburb_search'%]
+				<!-- suburb search -->
+				<input type="hidden" id="ship_zip" name="ship_zip" value="[@ship_zip@]" />
+				<input type="hidden" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]"/>
+				<input type="hidden" id="ship_state" name="ship_state" value="[@ship_state@]" />
+				<input type="hidden" id="ship_country" value="AU"/>
+				<p>Enter your suburb/postal code to calculate.</p>
+				<div class="form-group">
+					<label>Suburb/Postal Code</label>
+					<input type="text" class="form-control" id="ship_selector" value="[%session id:'ship_city'/%]" size="50" maxlength="50" autocomplete="off" />
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-outline-secondary btn-block" id="suburb_search_btn" value="Calculate Shipping" />
+				</div>
+				[%site_value id:'footer_javascript'%]
+					<script>
+						$(document).ready(function() {
+							$.postcode_selectorInit({
+								'id': 'ship_selector',
+								'country_id': 'ship_country',
+								'city_id': 'ship_city',
+								'state_id': 'ship_state',
+								'zip_id': 'ship_zip',
+								'page': {
+									'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+									'body': '<li class="dropdown"><a class="dropdown-item" href="javascript:##script##">##city## (##zip##)</a></li>',
+									'footer': '</ul>'
+								},
+								'items_returned': 25
+							});
+						});
+					</script>
+				[%/site_value%]
+			[%elseif [@config:shipping_calculator_type@] eq 'country_search'%]
+				<!-- country search -->
+				<input type="hidden" id="ship_zip" name="ship_zip" value="" />
+				<input type="hidden" id="ship_city" name="ship_city" value=""/>
+				<input type="hidden" id="ship_state" name="ship_state" value="" />
+				<p>Enter your country to calculate.</p>
+				<div class="form-group">
+					<select class="form-control" name="ship_country">
+					[%countries%]
+						[%PARAM *body%]
+							<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+						[%/param%]
+					[%/countries%]
+					</select>
+				</div>
+				<input type="submit" class="btn btn-outline-secondary btn-block" value="Calculate Shipping" />
+			[%else%]
+				<!-- postcode search -->
+				<p>Enter your postal code to calculate.</p>
+				<div class="form-group">
+					<select class="form-control" name="ship_country">
+					[%countries%]
+						[%PARAM *body%]
+							<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
+						[%/param%]
+					[%/countries%]
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="ship_zip">Post Code</label>
+					<input class="form-control" type="text" size="5" name="ship_zip" id="ship_zip" value="[@ship_zip@]" />
+				</div>
+				<input type="submit" class="btn btn-outline-secondary btn-block" value="Calculate Shipping" />
+			[%/if%]
+		</form>
+	</div>
+</div>

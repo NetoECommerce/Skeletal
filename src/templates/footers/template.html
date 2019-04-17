@@ -6,19 +6,21 @@
 		<div class="row">
 			<div class="col-12 col-md-8">
 				<nav class="row" aria-label="Footer menu">
-					[%menu id:'web_footer'%]
-						[%param *level_1%]
-							<div class="col-12 col-md-4 text-md-left">
-								<ul class="nav flex-column">
-									<li class="nav-item"><h4 class="nav-link py-0">[@name@]</h4></li>
-									[@next_level@]
-								</ul>
-							</div>
-						[%/param%]
-						[%param *level_2%]
-							<li class="nav-item"><a href="[@url@]" class="nav-link">[@name@]</a></li>
-						[%/param%]
-					[%/menu%]
+					[%cache type:'menu' id:'footer-content-menu' ttl:'86400'%]
+						[%menu id:'web_footer'%]
+							[%param *level_1%]
+								<div class="col-12 col-md-4 text-md-left">
+									<ul class="nav flex-column">
+										<li class="nav-item"><h4 class="nav-link py-0">[@name@]</h4></li>
+										[@next_level@]
+									</ul>
+								</div>
+							[%/param%]
+							[%param *level_2%]
+								<li class="nav-item"><a href="[@url@]" class="nav-link">[@name@]</a></li>
+							[%/param%]
+						[%/menu%]
+					[%/cache%]
 				</nav>
 			</div>
 			<div class="col-12 col-md-4 text-md-left">
@@ -96,7 +98,7 @@
 				[%/checkout_pay_icons%]
 			</div>
 			<div class="col-12 col-md-4 text-md-left">
-				<p class="small">
+				<p class="small" data-test-id="address">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@].</strong>
 					[%if [@config:show_platform_branding@]%]<a href="https://www.netohq.com" title="Neto E-commerce Retail Management Platform" target="_blank" rel="noopener">E-commerce software by Neto</a>[%/if%]<br/>
 					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]

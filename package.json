@@ -1,10 +1,10 @@
 {
 	"name": "Skeletal",
-	"version": "4.0.0",
+	"version": "4.3.0",
 	"description": "Skeletal is the development theme for Neto. It is the base framework that contains all of our front-end features. Skeletal is built on Bootstrap 4 and needs to be installed on a Neto 6 system to work at all.",
 	"main": "gulpfile.js",
 	"scripts": {
-		"compile": "node_modules/.bin/ntheme compile",
+		"compile": "npm run build && node_modules/.bin/ntheme compile",
 		"build": "gulp build",
 		"watch": "gulp watch",
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -20,17 +20,18 @@
 	},
 	"homepage": "https://github.com/NetoECommerce/Skeletal",
 	"devDependencies": {
-		"gulp": "^3.9.1",
+		"gulp": "^4.0.0",
 		"gulp-concat": "^2.6.1",
-		"gulp-postcss": "^7.0.1",
-		"gulp-sass": "^4.0.1",
-		"ntheme": "^1.7.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^8.0.0",
+		"gulp-sass": "^4.0.2",
+		"ntheme": "^1.9.0",
 		"postcss-cssnext": "^3.1.0",
-		"simple-github-release": "git://github.com/brandonsheppard/simple-github-release.git"
+		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
 	},
 	"dependencies": {
-		"bootstrap": "^4.1.1",
-		"jquery": "1.11.3",
-		"popper.js": "^1.14.3"
+		"bootstrap": "4.3.1",
+		"jquery": "3.3.1",
+		"popper.js": "1.14.7"
 	}
 }

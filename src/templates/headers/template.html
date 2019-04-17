@@ -12,7 +12,7 @@
 <header class="container wrapper-header py-3" aria-label="Header container">
 	<div class="row pb-2 align-items-center">
 		<div class="col-7 col-sm-4 wrapper-logo text-sm-left">
-			<a href="[@config:homeurl@]" title="[@config:company_name@]">
+			<a href="[@config:home_url@]" title="[@config:company_name@]">
 				<img class="logo" src="[@config:imageurl@]/website_logo.png?[@config:neto_css_version@]" alt="[@config:company_name@] logo"/>
 			</a>
 		</div>
@@ -56,7 +56,7 @@
 		</div>
 	</div>
 	<nav class="navbar navbar-expand-md navbar-light bg-light mt-0 mt-md-2">
-	  <div class="collapse navbar-collapse" id="navbarMainMenu">
+		<div class="collapse navbar-collapse" id="navbarMainMenu">
 			<form class="d-block d-md-none" name="productsearch" method="get" action="/" role="search" aria-label="Product search">
 				<input type="hidden" name="rf" value="kw"/>
 				<div class="input-group">
@@ -66,8 +66,8 @@
 					</div>
 				</div>
 			</form>
-	    <ul class="navbar-nav mr-auto" role="navigation" aria-label="Main menu">
-			[%cache type:'menu' id:'header-content-menu'%]
+		<ul class="navbar-nav mr-auto" role="navigation" aria-label="Main menu">
+			[%cache type:'menu' id:'header-content-menu' ttl:'86400'%]
 				[%menu id:'web_header'%]
 					[%param *level_1%]
 						<li class="nav-item [%if [@next_level@]%] dropdown [%/if%] [%if [@css_class@]%] [@css_class@][%/if%]">
@@ -90,11 +90,11 @@
 						[%/param%]
 					[%param *level_3%]
 						<li class="[%if [@css_class@]%] [@css_class@][%/if%]">
-							<a class="dropdown-item" href="[@url@]">[@name@]</a>
+							<a class="dropdown-item pl-5 pl-sm-4" href="[@url@]">[@name@]</a>
 						</li>
 					[%/param%]
 				[%/menu%]
-			[%/ cache%]
+			[%/cache%]
 		</ul>
 		<ul class="navbar-nav navbar-right" role="navigation" aria-label="Accounts menu">
 			<li class="nav-item dropdown">

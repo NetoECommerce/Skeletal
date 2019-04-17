@@ -125,7 +125,7 @@
 		</div>
 		<div class="row btn-stack">
 			<div class="col-12 col-md-4 col-lg-3">
-				<button type="button" role="link" onclick="window.location='[%last_visited default:'[@config:homeurl@]'/%]';" class="btn btn-outline-secondary btn-block" title="Continue shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
+				<button type="button" role="link" onclick="window.location='[%last_visited default:'[@config:home_url@]'/%]';" class="btn btn-outline-secondary btn-block" title="Continue shopping"><i class="fa fa-reply" aria-hidden="true"></i> Continue Shopping</button>
 			</div>
 			<div class="col-12 col-md-4 offset-md-4 col-lg-3 offset-lg-6">
 				<button type="button" class="btn btn-primary btn-block" onclick="javascript:document.checkout.submit();" title="Update changes"><i class="fa fa-sync" aria-hidden="true"></i> Update My Changes</button>
@@ -135,30 +135,7 @@
 			<div class="col-12"><hr aria-hidden="true" /></div>
 			[%if [@config:show_shipping_calc@]%]
 				<div class="col-12 mb-2 [%if [@config:show_coupon_promo_code_field@]%]col-lg-3[%else%]col-lg-6[%/if%]">
-					<div class="card" role="contentinfo" aria-label="Calculate shipping">
-						<div class="card-header">
-							<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
-						</div>
-						<div class="card-body">
-							<form method="post" action="[%url page:'checkout'/%]">
-								<p>Enter your post code to calculate.</p>
-								<div class="form-group">
-									<select class="form-control" name="ship_country">
-									[%countries%]
-										[%PARAM *body%]
-											<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
-										[%/param%]
-									[%/countries%]
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="ship_zip">Post Code</label>
-									<input class="form-control" type="text" size="5" name="ship_zip" id="ship_zip" value="[@ship_zip@]" />
-								</div>
-								<input type="submit" class="btn btn-outline-secondary btn-block" value="Calculate Shipping" />
-							</form>
-						</div>
-					</div>
+					[%load_template file:'cart/includes/shipping_calc.template.html'/%]
 				</div>
 			[%/if%]
 			[%if [@config:show_coupon_promo_code_field@]%]
@@ -188,7 +165,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" >
-						[%shipping_methods country:'[@ship_country@]' zip:'[@ship_zip@]'%]
+						[%shipping_methods zip:'[@ship_zip@]' city:'[@ship_city@]' state:'[@ship_state@]' country:'[@ship_country@]'%]
 							[%param header%]
 							<form method="post" name="SHsummary" action="[%url page:'checkout'/%]">
 							[%/param%]
@@ -208,15 +185,18 @@
 							</form></td>
 								</tr>
 								<tr>
-									<td>Shipping Cost To Post Code [@ship_zip@]</td>
+									<td>
+										Shipping cost to [%if [@ship_zip@]%][@ship_zip@] [%/if%] 
+										[%countries%][%param *body%][%if [@country_code@] eq [@ship_country@]%][@country_name@][%/if%][%/param%][%/countries%]
+									</td>
 									<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
 								</tr>
 							[%/param%]
 							[%param *ifempty%]
 								[%if [@ship_zip@]%]
-									<b class="text-danger">Shipping not available to [@ship_zip@] [@ship_country@], please try another location.</b>
+									<b class="text-danger">Shipping not available to [%if [@ship_zip@]%][@ship_zip@] [%/if%][%countries%][%param *body%][%if [@country_code@] eq [@ship_country@]%][@country_name@][%/if%][%/param%][%/countries%], please try another location.</b>
 								[%else%]
-									Enter post code to calculate shipping
+									Use shipping calculator to calculate shipping
 								[%/if%]
 							</td>
 							</tr>
@@ -288,21 +268,7 @@
 								[%checkout_payment type:'[@order_type@]' reload:'1' distinct:'1'%]
 									[%param *body%]
 										[%if [@payment_desc_type@] eq 'paypalexpress'%]
-											[%if [@config:PAYPAL_MERCHANT_ID@] ne ''%]
-												[%SITE_VALUE id:'footer_javascript'%]
-													<script>
-														window.paypalCheckoutReady = function() {
-															paypal.checkout.setup(
-																"[%nohtml%][@config:paypal_merchant_id@][%/nohtml%]", {
-																	environment: "[%if [@config:paypal_api_environment@] eq 'sandbox'%]sandbox[%else%]live[%/if%]",
-																	button: 'paypal'
-																}
-															);
-														};
-													</script>
-													<script src="//www.paypalobjects.com/api/checkout.js" async></script>
-												[%/ SITE_VALUE%]
-											[%/if%]
+											[%site_value id:'footer_javascript'%][%paypal_express_js /%][%/site_value%]
 											<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
 												<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
 											</a>

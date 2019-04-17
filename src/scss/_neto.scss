@@ -73,6 +73,21 @@ $payment-icon:(
 	top: -1px;
 	left: 100%;
 }
+.dropdown-toggle{
+	&::before, &::after{
+		vertical-align: middle;
+	}
+}
+@include media-breakpoint-down(sm) {
+	.navbar-nav .dropdown-menu{
+		border: 0;
+		padding: 0;
+		padding-left: 0.25rem;
+		&.show .dropdown-menu{
+			display: block;
+		}
+	}
+}
 // Header cart
 #header-cart {
 	z-index: $zindex-fixed;
@@ -158,8 +173,8 @@ $payment-icon:(
 	}
 }
 // Product page main image
-.main-image a > .zoom {
-	@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(sm) {
+	.main-image a > .zoom {
 		pointer-events: none;
 	}
 }
@@ -173,6 +188,31 @@ $payment-icon:(
 
 	&.component-var-thumb {
 		width: 100%;
+	}
+}
+// Product page tabs
+.tabbable {
+	.nav-tabs {
+		display: none;
+		@include media-breakpoint-up(md) {
+			display: flex;
+		}
+	}
+	@include media-breakpoint-up(md) {
+		.card {
+			border: none;
+		}
+		.collapse {
+			display: block;
+		}
+		.card-header {
+			display: none;
+		}
+	}
+	@include media-breakpoint-down(sm) {
+		.tab-pane {
+			display: block;
+		}
 	}
 }
 // Cart table
@@ -320,6 +360,8 @@ $payment-icon:(
 #suburb_sl,
 ._itmspec_opt,
 .n-wrapper-form-control select {
+	overflow: hidden;
+	text-overflow: ellipsis;
 	@extend .form-control;
 	@extend select.form-control;
 }

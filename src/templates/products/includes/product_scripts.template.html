@@ -13,9 +13,14 @@
 					'onReady' : function () {
 						$('.zoom').zoom();
 						$('.variation-wrapper').removeClass('disable-interactivity');
-						$("#sale-end").countdown({
-							date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
-						});
+                        $('#sale-end').countdown('[%format type:"date" format:"#M/#D/#Y #H:#I"%%][@promo_end@][%/format%]', function(event) {
+                            $(this).html(event.strftime('%D days %H:%M:%S'));
+                        });
+                        [%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+                            [%if [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+                                productShippingCalc.suburbSelectorInit();
+                            [%/if%]
+                        [%/if%]
 					},
 				}
 			});
@@ -38,32 +43,78 @@
 				});
 			[%/if%]
 		});
-	</script>
-	[%cdn_asset html:'1' type:'css' library:'fancybox' version:'2.1.5'%]jquery.fancybox.css[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'zoom' version:'1.4'%]jquery.zoom-min.js[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'jcountdown' version:'1.4'%]jquery.jcountdown.min.js[%/cdn_asset%]
-	[%cdn_asset html:'1' type:'js' library:'fancybox' version:'2.1.5'%]jquery.fancybox.pack.js[%/cdn_asset%]
+        [%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+            [%if [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_selector'%]
+                var productShippingCalc = {
+                    // Checks if shipping calculator is in the DOM
+                    hasShippingCalc: function(id){
+                        if(!id) { id = '#shipbox'; }
+                        if($(id).length > 0){
+                            return true;
+                        }
+                        return false;
+                    },
+                    suburbSelectorInit: function(){
+                        var hasShippingCalc = productShippingCalc.hasShippingCalc();
+                        if(hasShippingCalc){
+                            $.postcode_selectorInit({
+                                'id':'ship_selector',
+                                'country_id':'ship_country',
+                                'city_id':'ship_city',
+                                'state_id':'ship_state',
+                                'zip_id':'ship_zip'
+                            });
+                        }
+                    }
+                }
+                $(document).ready(function(){
+                    productShippingCalc.suburbSelectorInit();
+                });
+            [%elseif [@config:show_shipping_calc@] and [@config:shipping_calculator_type@] eq 'suburb_search'%]
+                $.postcode_selectorInit({
+                    'id':'ship_selector',
+                    'country_id':'ship_country',
+                    'city_id':'ship_city',
+                    'state_id':'ship_state',
+                    'zip_id':'ship_zip',
+                    'page' : {
+                        'header': '<ul class="_sh_post_sel dropdown-menu" style="display:block">',
+                        'body': '<li class="dropdown"><a class="dropdown-item" href="javascript:##script##">##city## (##zip##)</a></li>',
+                        'footer': '</ul>'
+                    },
+                    'items_returned': 25
+                });
+            [%/if%]
+        [%/if%]
+    </script>
+    [%cdn_asset html:'1' type:'js' library:'zoom' version:'1.7.21'%]jquery.zoom.min.js[%/cdn_asset%]
+    [%cdn_asset html:'1' type:'js' library:'jcountdown' version:'2.2.0'%]jquery.countdown.min.js[%/cdn_asset%]
+    [%cdn_asset html:'1' type:'css' library:'lightbox' version:'2.10.0'%]css/lightbox.min.css[%/cdn_asset%]
+    [%cdn_asset html:'1' type:'js' library:'lightbox' version:'2.10.0'%]js/lightbox.min.js[%/cdn_asset%]
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// Product image zoom
-			$('.zoom').zoom();
+            $('.zoom').zoom();
+            // Lightbox
+            lightbox.option({
+            'alwaysShowNavOnTouchDevices': true,
+            'wrapAround': true
+            });
 			// Sales countdown
-			$("#sale-end").countdown({
-				date: "[%format type:'date' format:'#K #d, #Y  #H:#I'%][@promo_end@][%/format%]"
-			});
-			// Fancybox
-			$(".fancybox").fancybox();
+			$('#sale-end').countdown('[%format type:"date" format:"#M/#D/#Y #H:#I"%][@promo_end@][%/format%]', function(event) {
+                $(this).html(event.strftime('%D days %H:%M:%S'));
+            });
 			// Tab a11y
-			$("li[role='tab']").click(function(){
-				$("li[role='tab']").attr("aria-selected","false"); //deselect all the tabs
-				$(this).attr("aria-selected","true");  // select this tab
-				var tabpanid= $(this).attr("aria-controls"); //find out what tab panel this tab controls
-				var tabpan = $("#"+tabpanid);
-				$("div[role='tabpanel']").attr("aria-hidden","true"); //hide all the panels
-				tabpan.attr("aria-hidden","false");  // show our panel
+			$('li[role="tab"]').on('click', function(){
+				$('li[role="tab"]').attr('aria-selected', 'false'); //deselect all the tabs
+				$(this).attr('aria-selected', 'true');  // select this tab
+				var tabpanid= $(this).attr('aria-controls'); //find out what tab panel this tab controls
+				var tabpan = $('#'+tabpanid);
+				$('div[role="tabpanel"]').attr('aria-hidden', 'true'); //hide all the panels
+				tabpan.attr('aria-hidden', 'false');  // show our panel
 			 });
 		});
-		$(document).on("click", ".btn-ajax-loads", nCustom.funcs.buttonLoading);
-		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){e.preventDefault();});
+		$(document).on('click', '.btn-ajax-loads', nCustom.funcs.buttonLoading);
+		$('#_jstl__buying_options').on('click', '.wishlist_toggle', function(e){ e.preventDefault(); });
 	</script>
 [%/site_value%]
