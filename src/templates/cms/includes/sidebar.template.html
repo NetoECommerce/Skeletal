@@ -1,13 +1,51 @@
 <aside class="col-12 col-md-3" id="left-sidebar">
 	[%IF [@page_type@] eq 'category' and [@config:show_filters@]%]
 		[%site_value id:'footer_javascript'%]
-			<script>
-			$(document).ready(function() {
-				let seperator = window.location.href.indexOf("?") > -1 ? "&" : "?";
-				let url = window.location.href + seperator + "templatebody=filters&templatehead=none&templatefoot=none"
+			<style>
+			#filters, #thumb_list {
+				position: relative;
+			}
+			.loading > .loading-overlay {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background-color: rgba(255,255,255,0.7);
+				z-index: 99999;
+			}
+			</style>
 
-				$.get(url, function(data) {
+			<script>
+
+			function reloadAjax(url) {
+				let seperator = url.indexOf("?") > -1 ? "&" : "?";
+				url = url + seperator + "templatehead=none&templatefoot=none"
+
+				$('#thumb_list').addClass("loading");
+				$('#filters').addClass("loading");
+
+				$.get(url + "&templatebody=thumb_list", function(data) {
+					$('#thumb_list').html(data);
+					$('#thumb_list').removeClass("loading");
+
+					$('#thumb_list .pagination a').click(function(event) {
+						window.history.pushState({}, "title", this.href);
+						reloadAjax(this.href);
+						event.preventDefault();
+					});
+				});
+
+				$.get(url + "&templatebody=filters", function(data) {
 					$('#filters').html(data);
+					$('#filters').removeClass("loading");
+
+					$('#filters a').click(function(event) {
+						$(this).find("i").removeClass().addClass("fas fa-spinner fa-spin");
+						window.history.pushState({}, "title", this.href);
+						reloadAjax(this.href);
+						event.preventDefault();
+					});
 
 					// Init price slider
 					let vals = [
@@ -29,7 +67,14 @@
 						}
 					});
 				});
-			});
+			}
+
+			reloadAjax(window.location.href);
+
+			window.onpopstate = function(event) {
+				reloadAjax(window.location.href);
+			};
+
 			</script>
 		[%/site_value%]
 		<div class="card mb-2">
