@@ -82,9 +82,9 @@
 											<div class="row">
 										[%/param%]
 										[%PARAM *body%]
-											<div class="col-12 col-md-4">
+											<div class="col-12 col-lg-4">
 												<div class="card card-body">
-													<a href="[%url type:'item' id:'[@SKU@]'/%]" class="thumbnail-image mx-auto"><img width="120" height="120" src="[@thumb@]" alt="[@model@]" /> </a>
+													<a href="[%url type:'item' id:'[@SKU@]'/%]" class="thumbnail-image mx-auto"><img src="[@thumb@]" alt="[@model@]" class="img-fluid" /> </a>
 													<p class="card-title h5"><a href="[%url type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'70' rmhtml:'1'%][@model@][%/format%]</a></p>
 													<p><a class="btn btn-success btn-block" href="[%url page:'checkout' qs:'sku=[@SKU@]&gift=[@counter@]'/%]">Add to Cart</a></p>
 												</div>
@@ -263,7 +263,7 @@
 					[%/param%]
 					[%/ payment_plans%]
 					<div class="row btn-stack">
-						<div class="col-12 col-lg-6 text-center mb-1">
+						<div class="col-12 col-lg-6 text-center text-md-left mb-1">
 							[%if [@config:show_paypal_express_link@]%]
 								[%checkout_payment type:'[@order_type@]' reload:'1' distinct:'1'%]
 									[%param *body%]
