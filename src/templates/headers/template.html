@@ -2,10 +2,10 @@
 <html lang="en">
 <head itemscope itemtype="http://schema.org/WebSite">
 	[%load_template file:'headers/includes/head.template.html'/%]
-	<link rel="preload" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" as="style">
-	<link rel="preload" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" as="style">
-	<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]" media="all"/>
-	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]" media="all"/>
+	<link rel="preload" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]&[%cache id:'css_purge' type:'default' ttl:'2591999'%][%format type:'date' format:'#u'%]now[%/format%][%/cache%]" as="style">
+	<link rel="preload" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]&[%cache id:'css_purge' type:'default' ttl:'2591999'%][%format type:'date' format:'#u'%]now[%/format%][%/cache%]" as="style">
+	<link class="theme-selector" rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/app.css[%/ntheme_asset%]&[%cache id:'css_purge' type:'default' ttl:'2591999'%][%format type:'date' format:'#u'%]now[%/format%][%/cache%]" media="all"/>
+	<link rel="stylesheet" type="text/css" href="[%ntheme_asset%]css/style.css[%/ntheme_asset%]&[%cache id:'css_purge' type:'default' ttl:'2591999'%][%format type:'date' format:'#u'%]now[%/format%][%/cache%]" media="all"/>
 </head>
 <body id="n_[@config:current_page_type@]" class="n_[@CONFIG:TEMPLATELANG@]">
 <a href="#main-content" class="sr-only sr-only-focusable">Skip to main content</a>
