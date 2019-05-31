@@ -1,10 +1,11 @@
 // -------------------- Required modules --------------------
 var { task, src, dest, watch, series, parallel } = require('gulp'),
 	concat = require('gulp-concat'),
-	cssnext = require('postcss-cssnext'),
 	plumber = require('gulp-plumber'),
 	postcss = require('gulp-postcss'),
-	sass = require('gulp-sass');
+	sass = require('gulp-sass'),
+	autoprefixer = require('autoprefixer'),
+	cssnano = require('cssnano');
 
 // -------------------- Configure object --------------------
 var config = {};
@@ -18,7 +19,10 @@ config.jsFiles = ['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper
 //  -------------------- Gulp Tasks --------------------
 // Compile SASS into CSS
 task('sass', function() {
-	var plugins = [ cssnext ];
+	var plugins = [ 
+		autoprefixer({browsers: ['last 1 version']}),
+		cssnano()
+	];
 	return src(config.SCSS +'/*.scss')
 		.pipe(plumber())
 		.pipe(sass())
