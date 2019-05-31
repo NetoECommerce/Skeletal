@@ -5,7 +5,7 @@
   "@type": "Product",
   "name": "[@name@]",
   "image": "[%asset_url type:'product' id:'[@sku@]' thumb:'full' check_parent:'y' header:'[@config:home_url@]' /%]",
-  [%if [@short_description@]%]"description": "[@short_description@]",[%/if%]
+  [%if [@short_description@]%]"description": "[%format type:'text' noeol:'1' rmhtml:'1'%][@short_description@][%/format%]",[%/if%]
   "sku": "[@sku@]",
   "mpn": "[@sku@]",
   [%if [@brand@]%]
