@@ -1,6 +1,7 @@
 // -------------------- Required modules --------------------
 var { task, src, dest, watch, series, parallel } = require('gulp'),
 	concat = require('gulp-concat'),
+	chmod = require('gulp-chmod'),
 	plumber = require('gulp-plumber'),
 	postcss = require('gulp-postcss'),
 	sass = require('gulp-sass'),
@@ -27,6 +28,7 @@ task('sass', function() {
 		.pipe(plumber())
 		.pipe(sass())
 		.pipe(postcss(plugins))
+		.pipe(chmod(0o755))
 		.pipe(dest(config.CSS))
 });
 
