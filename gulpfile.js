@@ -20,7 +20,7 @@ config.jsFiles = ['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper
 // Compile SASS into CSS
 task('sass', function() {
 	var plugins = [ 
-		autoprefixer({browsers: ['last 1 version']}),
+		autoprefixer(),
 		cssnano()
 	];
 	return src(config.SCSS +'/*.scss')
