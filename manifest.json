@@ -1,0 +1,21 @@
+{
+    "short_name": "Skeletal",
+    "name": "Skeletal theme for Neto",
+    "icons": [
+        {
+            "src": "/assets/favicon_logo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/assets/website_logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "https://devphil.neto.com.au/",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#006ff5"
+}
+  
