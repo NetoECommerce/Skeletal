@@ -47,7 +47,9 @@
 					<input type="hidden" id="qty[@rndm@][@sku@]" name="qty[@rndm@][@sku@]" value="[%if [@min_qty@] > 0%][@min_qty@][%else%]1[%/if%]" placeholder="Qty" class="input-tiny">
 					[%if [@extra@] or [@has_child@] %]
 						<a href="[@URL@]" title="Buying Options" class="btn btn-primary btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Buying Options</a>
-					[%elseif [@available_preorder_quantity@] > 0 AND [@preorder@] %]
+					[%elseif [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
+						<button type="button" title="Pre-Order Now!" class="addtocart btn btn-warning btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
+					[%elseif [@store_quantity@] > 0 AND [@preorder@] AND ![@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
 						<button type="button" title="Pre-Order Now!" class="addtocart btn btn-warning btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
 					[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
 						<button type="button" title="Add to Cart" class="addtocart btn-primary btn btn-loads" rel="[@rndm@][@sku@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>

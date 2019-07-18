@@ -95,26 +95,26 @@
   		[%PARAM *body%]
     					<tr>
     						<td>
-                  [%IF [@extra@] or [@has_child@] %]
+                  [%if [@extra@] or [@has_child@] %]
                     <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
-    							[%ELSEIF [@store_quantity@] > 0 AND [@preorder@] %]
+                  [%elseif [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
 										<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
 										<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
 										<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
 										<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
-    							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
+    							[%elseif [@store_quantity@] > 0 %]
 										<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
 										<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
 										<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
 										<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
-    							[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+    							[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
 										<input type="text" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="" placeholder="Qty" class="form-control">
 										<input type="hidden" id="sku[@rndm@][@SKU@]" name="sku[@rndm@][@SKU@]" value="[@SKU@]">
 										<input type="hidden" id="model[@rndm@][@SKU@]" name="model[@rndm@][@SKU@]" value="[@model@]">
 										<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
-    							[%ELSE%]
+    							[%else%]
                     <input type="text" value="" id="nov[@rndm@][@SKU@]" name="nov[@rndm@][@SKU@]" placeholder="Qty" class="form-control" disabled>
-    							[%/ IF%]
+    							[%/ if%]
     						</td>
     						<td>
     							<img border="0" rel="itmimg[@SKU@]" src="[@thumb@]" alt="[@name@]" width="50px" height="50px"/>
@@ -127,17 +127,19 @@
     						</td>
     						<td>
     							<div class="child-price">[%format type:'currency'%][@price@][%END format%]</div>
-    							[%IF [@extra@] or [@has_child@] %]
-    							<a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
-    							[%ELSEIF [@available_preorder_quantity@] > 0 AND [@preorder@] %]
-    							<span class="badge badge-warning">Pre-Order</span>
-    							[%ELSEIF [@store_quantity@] > 0 AND ![@preorder@] %]
-    							<span class="badge badge-success">In stock</span>
-    							[%ELSEIF [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-    							<span class="badge badge-warning">Back Order</span>
-    							[%ELSE%]
-    							<span class="badge badge-danger">Sold Out</span>
-    							[%/ IF%]
+    							[%if [@extra@] or [@has_child@] %]
+    							  <a href="[@URL@]" title="Buying Options" class="btn btn-primary">See Buying Options</a>
+    							[%elseif [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
+                    <span class="badge badge-warning">Pre-Order</span>
+                  [%elseif [@store_quantity@] > 0 AND [@preorder@] AND ![@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
+                    <span class="badge badge-warning">Pre-Order</span>
+    							[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
+    							  <span class="badge badge-success">In stock</span>
+    							[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
+    							  <span class="badge badge-warning">Back Order</span>
+    							[%else%]
+    							  <span class="badge badge-danger">Sold Out</span>
+    							[%/ if%]
     						</td>
     					</tr>
   		[%/ PARAM%]
