@@ -118,7 +118,7 @@
 							<p class="mb-1">
 								[%if [@charge_type@] eq 'web' OR [@charge_type@] eq 'cc'%]<i class="fa fa-credit-card"></i> [%/if%]
 								[%if [@charge_type@] eq 'acc'%][@config:company_name@] [%/if%]
-								[@name@]
+								[%escape%][@name@][%/escape%]
 							</p>
 						[%/param%]
 						[%param *ifempty%]
