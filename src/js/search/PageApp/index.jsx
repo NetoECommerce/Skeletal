@@ -14,8 +14,9 @@ import {
 // Custom Components
 import {
     Header,
-    Body
-} from './components'
+    Body,
+    Footer
+} from './page'
 
 const PageApp = ({ token }) => {
 
@@ -23,10 +24,9 @@ const PageApp = ({ token }) => {
 
     return (
         <Provider search={{ pipeline, values }} searchOnLoad>
-            <div className="container">
-                <Header/>
-                <Body/>
-            </div>
+            <Header />
+            <Body />
+            <Footer/>
         </Provider>
     )
 }

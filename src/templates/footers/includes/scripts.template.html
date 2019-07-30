@@ -9,8 +9,10 @@
 	<div class="npopup-body" id="npopupDesc"></div>
 </div>
 <div class="nactivity"><i class="fa fa-spinner fa-spin fa-inverse fa-3x fa-fw"></i></div>
-[%if [@config:search_dev_mode@] eq 'true'%]
+[%if [@form:kw@] ne '' AND [@form:rf@] like 'kw'%]
+	[%if [@config:search_dev_mode@]%]
 <script type="text/javascript" src="[%ntheme_asset%]js/search.dev.js[%/ntheme_asset%]"></script>
-[%else%]
+	[%else%]
 <script type="text/javascript" src="[%ntheme_asset%]js/search.prod.js[%/ntheme_asset%]"></script>
+	[%/if%]
 [%/if%]

@@ -1,3 +1,5 @@
-export { default as Body } from './Body'
-export { default as Footer } from './Footer'
-export { default as Header } from './Header'
+export { default as ContentFilter } from './ContentFilter'
+export { default as PriceFilter } from './PriceFilter'
+export { default as SpecificFilter } from './SpecificFilter'
+export { default as StockFilter } from './StockFilter'
+export { default as Sort } from './Sort'

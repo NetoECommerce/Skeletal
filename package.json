@@ -41,6 +41,7 @@
 		"vinyl-source-stream": "^2.0.0"
 	},
 	"dependencies": {
+		"@material-ui/styles": "^4.3.0",
 		"@sajari/sdk-react": "^2.8.1",
 		"bootstrap": "4.3.1",
 		"classnames": "^2.2.6",
