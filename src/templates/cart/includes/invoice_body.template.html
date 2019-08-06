@@ -113,7 +113,7 @@
 			[%if [@^order_type@] ne 'quote'%]
 				<div class="col-12 col-sm-6">
 					<h4>Payment method</h4>
-					[%payment_methods id:'[@payment_method@]'%]
+					[%payment_methods id:'[@payment_method@]' show_webpayments:'1'%]
 						[%param *body%]
 							<p class="mb-1">
 								[%if [@charge_type@] eq 'web' OR [@charge_type@] eq 'cc'%]<i class="fa fa-credit-card"></i> [%/if%]
