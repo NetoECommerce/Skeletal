@@ -21,12 +21,6 @@
 				'image_rel': 'itmimg'
 			});
 
-			$('.disp_ajax_templ').off();
-			$('.disp_ajax_templ').on('change', function() {
-				var sku = $(this).val();
-				var rel = $(this).attr('rel');
-				$.load_ajax_template(rel, { 'sku': sku, 'showloading': true, 'procdata':'n' }, { onLoad: function(){ $.initPageFuncs(); }});
-			});
 			// This renders the instant search results - edit design of ajax results here
 			$.initSearchField({
 				'result_header'		: '<ul class="nav nav-list">',
