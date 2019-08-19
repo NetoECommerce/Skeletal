@@ -18,7 +18,8 @@
 			$.addToCartInit({
 				'cart_id' :  'cartcontents',
 				'target_id': 'cartcontentsheader',
-				'image_rel': 'itmimg'
+				'image_rel': 'itmimg',
+				'async': true
 			});
 
 			$('.disp_ajax_templ').off();
