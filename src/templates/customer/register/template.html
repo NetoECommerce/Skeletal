@@ -37,7 +37,6 @@
 		</div>
 		<div class="col-12 col-md-6">
 			<form id="register" method="post" action="[%URL page:'account' type:'register'%][%/ URL%]">
-				[%SUBMIT_TOKEN%][%/ SUBMIT_TOKEN%]
 				<input type="hidden" name="redirect" value="[@redirect@]">
 				<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%/ random_number%]">
 				<div class="card">
