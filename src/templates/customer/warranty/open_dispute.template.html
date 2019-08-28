@@ -12,7 +12,7 @@
 	</div>
 
 	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/ DATA%]
-	<script language="javascript" type="text/javascript">
+	<script>
 		function goBack() {
 			var f = document.disputeForm;
 			f['step'].value = 'reason';
@@ -117,7 +117,7 @@
 			</div>
 		</div>
 	</form>
-	<script language="javascript" type="text/javascript">
+	<script>
 		showOrder();
 	</script>
 </div>

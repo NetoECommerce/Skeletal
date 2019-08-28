@@ -8,7 +8,7 @@
 	<div class="page-header">
 		<h1>View Order / Invoice</h1>
 	</div>
-	<script language="javascript" type="text/javascript">
+	<script>
 		function print_invoice() {
 			var win = window.open('[%url page:'account' type:'print' fn:'invoice' id:'[@order_id@]' qs:'code=[@code@]'/%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}
