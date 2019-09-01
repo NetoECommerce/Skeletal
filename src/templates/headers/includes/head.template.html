@@ -10,7 +10,7 @@
 <meta property="og:url" content="[@config:canonical_url@]"/>
 <meta property="og:description" content="[%url_info name:'meta_description'/%]"/>
 [%if [@config:GOOGLE_VERIFICATION@] %]<meta name="google-site-verification" content="[@config:GOOGLE_VERIFICATION@]">[%/if%]
-[%if [@config:current_page_type@] eq 'checkout' OR [@config:current_page_type@] eq 'customer'%]
+[%if [@config:current_page_type@] eq 'checkout' OR [@config:current_page_type@] eq 'customer' OR [@config:canonical_url@] like 'google-categories'%]
     <meta name="robots" content="noindex, nofollow">
 [%/if%]
 <title itemprop='name'>[%url_info name:'page_title'/%]</title>
