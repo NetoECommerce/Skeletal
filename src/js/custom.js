@@ -1,8 +1,12 @@
 // NOTICE!! THIS IS REQUIRED TO MAKE YOUR NETO SHOPPING CART WORK
 // DO NOT REMOVE UNLESS YOU REALLY KNOW WHAT YOU ARE DOING
 
-(function($) {
-	$.extend({
+var nCustom = {
+	vars : {
+		focused : $('body'),
+		lastFocused : $('body')
+	},
+	funcs : {
 		initPageFuncs: function() {
 			// Ajax Wish List
 			$.addToWishList({
@@ -21,7 +25,7 @@
 				'image_rel': 'itmimg'
 			});
 
-			// This renders the instant search results - edit design of ajax results here
+			// Renders the instant search results - edit design of ajax results here
 			$.initSearchField({
 				'result_header'		: '<ul class="nav nav-list">',
 				'result_body'		: '<li><a href="##url##" search-keyword="##keyword##"><img border="0" src="##thumb##" width="36" height="36"/><span class="title">##model##</span></a></li>',
@@ -46,16 +50,7 @@
 				return false;
 			}
 			return true;
-		}
-	});
-})(jQuery);
-
-var nCustom = {
-	vars : {
-		focused : $('body'),
-		lastFocused : $('body')
-	},
-	funcs : {
+		},
 		// Capture the last item focused
 		updateFocused: function(){
 			nCustom.vars.lastFocused = nCustom.vars.focused;
@@ -111,7 +106,7 @@ var nCustom = {
 
 $(document).ready(function() {
 	// Neto functionalty
-	$.initPageFuncs();
+	nCustom.funcs.initPageFuncs();
 	nCustom.funcs.popupFocus();
 	// Jquery Ui Date Picker
 	$('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
@@ -170,7 +165,7 @@ $('#_jstl__buying_options').on('click', '.js-notifymodal-in-stock', function(e){
 });
 // Multi add child products
 $('.multi-add').on('click', function(){
-    if ($.checkValidQty()) { 
+    if (nCustom.funcs.checkValidQty()) { 
         $.addMultipleCartItems('multiitemadd'); 
         return false; 
     }
