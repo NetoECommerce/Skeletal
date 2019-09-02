@@ -9,7 +9,7 @@
 	[%if [@error@]%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/if%]
 	[%if [@msg@]%]<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a>[@msg@]</div>[%/if%]
 	<p>Your payment order has been processed.</p>
-	<script language="javascript" type="text/javascript">
+	<script>
 		function print_invoice() {
 			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"/%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}

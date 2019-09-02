@@ -1,5 +1,5 @@
 [%SITE_VALUE id:'footer_javascript'%]
-	<script language="javascript" type="text/javascript">
+	<script>
 		function proc_pay() {
 			var f = document.itemForm;
 			var tmore = document.getElementById("total_more");
@@ -160,8 +160,10 @@
 				pl.style.display = (val.indexOf(':cc')>0? '': 'none');
 			}
 		}
+
+		showPD();
+		updAmt();
 	</script>
-	<script type="text/javascript" language="javascript">showPD();updAmt();</script>
 [%/SITE_VALUE%]
 <div class="col-12">
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">

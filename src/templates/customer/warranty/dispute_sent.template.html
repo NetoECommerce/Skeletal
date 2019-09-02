@@ -8,7 +8,7 @@
 	</nav>
 	<div class="page-header"><h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1></div>
 	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/ DATA%]
-	<script language="javascript" type="text/javascript">
+	<script>
 		function cancalAction() {
 			window.location.href = '[%URL page:"account" type:"warranty"%][%END URL%]';
 		}
