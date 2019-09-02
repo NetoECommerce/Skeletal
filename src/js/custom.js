@@ -24,7 +24,6 @@ var nCustom = {
 				'target_id': 'cartcontentsheader',
 				'image_rel': 'itmimg'
 			});
-
 			// Renders the instant search results - edit design of ajax results here
 			$.initSearchField({
 				'result_header'		: '<ul class="nav nav-list">',
@@ -112,9 +111,9 @@ $(document).ready(function() {
 	$('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
 	// Carousel
 	$('.carousel').carousel();
+	// Tooltip
+	$('[data-toggle="tooltip"]').tooltip();
 });
-// Tooltip
-$('.tipsy').tooltip({ trigger: 'hover',placement: 'bottom' });
 // Capture the current element the user focused in
 $(document).on('focusin', function(){
 	nCustom.vars.focused = document.activeElement;
