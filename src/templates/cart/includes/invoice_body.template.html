@@ -193,7 +193,7 @@
 					<div class="media-body">
 						<span class="float-right">[%format type:'currency'%][@subtotal@][%/ format%]</span>
 						<p class="m-0">[@model@]</p>
-						<small class="text-muted">[@extra@]</small>
+						<small class="text-muted text-break">[@extra@]</small>
 						[%if [@aff_id@] eq '[@config:aff_rental_id@]'%]&nbsp; <b>Rental</b>[%/if%]
 						[%if [@aff_id@] eq '[@config:aff_ebay_id@]'%]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/if%]
 						[%if [@aff_id@] eq '[@config:aff_free_id@]'%]&nbsp; <b>Free Gift</b>[%/if%]
