@@ -262,26 +262,14 @@
 						</div>
 					[%/param%]
 					[%/ payment_plans%]
-					<div class="row btn-stack">
-						<div class="col-12 col-lg-6 text-center text-md-left mb-1">
-							[%if [@config:show_paypal_express_link@]%]
-								[%checkout_payment type:'[@order_type@]' reload:'1' distinct:'1'%]
-									[%param *body%]
-										[%if [@payment_desc_type@] eq 'paypalexpress'%]
-											[%site_value id:'footer_javascript'%][%paypal_express_js /%][%/site_value%]
-											<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
-												<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
-											</a>
-										[%/if%]
-									[%/param%]
-								[%/checkout_payment%]
-							[%/if%]
-						</div>
-						<div class="col-12 col-lg-6 text-center mb-1">
-							<button class="btn btn-success btn-lg btn-block" role="link" type="button" onclick="window.location='[%url page:'checkout' fn:'payment'/%]';" title="Checkout now">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout Now
-							</button>
-						</div>
+					<div class="checkout-buttons">
+						[%checkout_buttons%]
+							[%param *default_button%]
+								<button class="btn btn-success btn-lg ml-1" role="link" type="button" onclick="[@checkout_url@]" title="Checkout now">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout Now
+								</button>
+							[%/param%]
+						[%/ checkout_buttons%]
 					</div>
 				</form>
 				[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'CartCTA' /%][%/if%]
