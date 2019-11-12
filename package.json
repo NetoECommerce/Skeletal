@@ -5,7 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "less": "./node_modules/.bin/gulp less",
-    "watch": "./node_modules/.bin/gulp",
+	"watch": "./node_modules/.bin/gulp",
+	"compile": "./node_modules/.bin/ntheme compile -b \"v3\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,8 @@
   "homepage": "https://github.com/NetoECommerce/Skeletal",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1"
+    "gulp-less": "^4.0.1",
+    "ntheme": "^1.11.0"
   },
   "dependencies": {
     "bootstrap": "^3.4.1"
