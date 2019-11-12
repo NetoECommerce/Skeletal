@@ -54,52 +54,12 @@
 					<hr />
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Payment Instructions</h3>
+							<h3 class="panel-title">Payment Information</h3>
 						</div>
 						<div class="panel-body">
-							[%payment_methods id:'[@payment_method@]' ignore_balance:'1'%]
+							[%payment_methods id:'[@payment_method@]' ignore_balance:'1' show_webpayments:'1'%]
 								[%param *body%]
 									<h4>Your chosen payment method is [@name@]</h4>
-									[%if [@name@] like 'American Express'%]
-										<div class="media">
-											<div class="payment-icon-container pull-left">
-												<div class="payment-icon payment-icon-americanexpress"></div>
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">Your American Express Card has already been processed.</h4>
-											</div>
-										</div>
-									[%/if%]
-									[%if [@name@] like 'Visa'%]
-										<div class="media">
-											<div class="payment-icon-container pull-left">
-												<div class="payment-icon payment-icon-visa"></div>
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">Your Visa Card has already been processed.</h4>
-											</div>
-										</div>
-									[%/if%]
-									[%if [@name@] like 'Master Card' OR [@name@] like 'MasterCard'%]
-										<div class="media">
-											<div class="payment-icon-container pull-left">
-												<div class="payment-icon payment-icon-mastercard"></div>
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">Your Master Card has already been processed.</h4>
-											</div>
-										</div>
-									[%/if%]
-									[%if [@name@] like 'Discover'%]
-										<div class="media">
-											<div class="payment-icon-container pull-left">
-												<div class="payment-icon payment-icon-discover"></div>
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">Your credit card has already been processed.</h4>
-											</div>
-										</div>
-									[%/if%]
 									[%if [@name@] like 'Cheque'%]
 										<div class="media">
 											<div class="payment-icon-container pull-left">
@@ -108,13 +68,7 @@
 											<div class="media-body">
 												<h4 class="media-heading">Please send your Cheque to:</h4>
 												<p>[@config:company_name@]</p>
-												<p>
-													[%if [@CONFIG:COMPANY_POADDR@]%]
-														[@CONFIG:COMPANY_POADDR@]
-													[%else%]
-														[@CONFIG:COMPANY_ADDR@]
-													[%/if%]
-												</p>
+												<p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
 												<p>Please include your full name and order number so that we can easily locate your order for fast processing.</p>
 											</div>
 										</div>
@@ -127,13 +81,7 @@
 											<div class="media-body">
 												<h4 class="media-heading">Please send your money order to :</h4>
 												<p>[@config:company_name@]</p>
-												<p>
-													[%if [@CONFIG:COMPANY_POADDR@]%]
-														[@CONFIG:COMPANY_POADDR@]
-													[%else%]
-														[@CONFIG:COMPANY_ADDR@]
-													[%/if%]
-												</p>
+												<p>[%if [@CONFIG:COMPANY_POADDR@]%][@CONFIG:COMPANY_POADDR@][%else%][@CONFIG:COMPANY_ADDR@][%/if%]</p>
 												<p>Please include your full name and order number so that we can easily locate your order.</p>
 											</div>
 										</div>
@@ -167,22 +115,6 @@
 											</div>
 										</div>
 									[%/if%]
-									[%if [@name@] like 'PayPal'%]
-										<div class="media">
-											<div class="payment-icon-container pull-left">
-												<div class="payment-icon payment-icon-paypal"></div>
-											</div>
-											<div class="media-body">
-												<h4 class="media-heading">Your Paypal payment has been processed. No further action is required by you at this stage.</h4>
-											</div>
-										</div>
-									[%/if%]
-									[%if [@name@] like 'Account'%]
-										<h3>[@config:company_name@] Account </h3>
-									[%/if%]
-								[%/param%]
-								[%param *ifempty%]
-									<h3>No Payment method has been selected.</h3>
 								[%/param%]
 							[%/payment_methods%]
 							[%if [@ship_comment@]%]
