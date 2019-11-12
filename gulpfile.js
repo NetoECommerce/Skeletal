@@ -1,21 +1,24 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var path = require('path');
-var fs = require('fs');
+// -------------------- Required modules --------------------
+var { task, src, dest, watch, series } = require('gulp'),
+	less = require('gulp-less'),
+	path = require('path'),
+	fs = require('fs');
 
-gulp.task('less', function () {
+//  -------------------- Gulp Tasks --------------------
+// Compile LESS into CSS
+task('less', function () {
 	fs.stat('./src/css/less/app.less', function(err, stat) {
-		if(err != null) {
-			console.log('Error:' + err.code);
-		}
+		if(err != null) { console.log('Error:' + err.code); }
 	});
-	gulp.src('./src/css/less/app.less')
-	.pipe(less({
-		paths: [ path.join(__dirname, 'less', 'includes') ]
-	}))
-	.pipe(gulp.dest('./src/css/'));
+	return src('./src/css/less/app.less')
+		.pipe(less({ paths: [ path.join(__dirname, 'less', 'includes') ] }))
+		.pipe(dest('./src/css/'));
 });
 
-gulp.task('default', function () {
-	gulp.watch(['./src/css/less/*.less', './src/css/less/_*.less'], ['less']);
-});
+// Watches less files
+task('watch', series('less', function(done) {
+	watch(['./src/css/less/*.less', './src/css/less/_*.less'], series('less'));
+	done();
+}));
+
+task('default', series('watch'));
