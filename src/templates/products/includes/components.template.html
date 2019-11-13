@@ -155,12 +155,14 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 col-md-5">
-		[%if [@preorder@]%]
-			<button type="button" title="Add to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+		[%if [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
+		<button type="button" title="Pre-Order Now" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+		[%elseif [@store_quantity@] > 0 AND [@preorder@] AND ![@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
+			<button type="button" title="Pre-Order Now" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock-o icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+		[%elseif [@store_quantity@] > 0%]
+			<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
 		[%else%]
-			[%if [@store_quantity@] >= '1'%]
-				<button type="button" title="Add to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
-			[%/if%]
+			<button type="button" title="Out Of Stock" class="btn btn-default btn-block btn-lg" disabled>Out Of Stock</button>
 		[%/if%]
 	</div>
 </div>
