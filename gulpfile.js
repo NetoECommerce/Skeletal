@@ -8,6 +8,8 @@ var { task, src, dest, watch, series, parallel } = require('gulp'),
 	autoprefixer = require('autoprefixer'),
 	cssnano = require('cssnano');
 
+sass.compiler = require('node-sass');
+
 // -------------------- Configure object --------------------
 var config = {};
 config.src = './src';

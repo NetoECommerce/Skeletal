@@ -28,6 +28,7 @@
 		"gulp-plumber": "^1.2.1",
 		"gulp-postcss": "^8.0.0",
 		"gulp-sass": "^4.0.2",
+		"node-sass": "^4.13.0",
 		"ntheme": "^1.9.0",
 		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
 	},
