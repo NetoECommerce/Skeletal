@@ -52,7 +52,7 @@
 	</form>
 	<h4 class="mt-2"><i class="fa fa-folder-open"></i> [%NOHTML%][@wishlist_name@] Contents[%/ NOHTML%]</h4>
 	<hr />
-	[%thumb_list limit:'100' type:'products' sortby:'wishlist' template:'clist' filter_wishlist:'[@wishlist_id@]'%]
+	[%thumb_list limit:'[@config:thumb_limit@]' type:'products' sortby:'wishlist' template:'clist' filter_wishlist:'[@wishlist_id@]'%]
 		[%param *header%]
 	<div class="btn-text">
 		<strong>[@total_results@]</strong> Product[%if [@total_results@] > 1%]s[%/if%]&nbsp;Found
