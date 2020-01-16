@@ -40,7 +40,7 @@
 			<td>[%FORMAT type:'date' format:'#d #k #Y' default:'-'%][@date_created@][%/ FORMAT%]</td>
 			<td class="d-none">[%FORMAT type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/ FORMAT%]</td>
 			<td>
-				<form method="post" action="[%URL page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%nojs%][@wishlist_name@][%/nojs%]\'?')">
+				<form method="post" action="[%URL page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%escape%][@wishlist_name@][%/escape%]\'?')">
 					<input type="hidden" name="id" value="[@wishlist_id@]">
 					<input type="hidden" name="proc" value="deletelist">
 					<button type="submit" class="btn btn-block btn-danger"><i class="far fa-trash-alt icon-white"></i> Delete</a></button>
