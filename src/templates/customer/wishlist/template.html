@@ -26,7 +26,7 @@
 		 [%/ param%]
 		 [%param *body%]
 		 <tr>
-			<td><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%/ URL%]">[@wishlist_name@]&nbsp;</a></td>
+			<td><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%/ URL%]">[%escape%][@wishlist_name@][%/escape%]&nbsp;</a></td>
 			<td class="d-none">
 		  [%DATA id:'wishlist_active' if:'eq' value:'y'%]
 		[%param if_true%]<span class="badge badge-success">Active</span>[%/ param%]
@@ -39,7 +39,12 @@
 		[%/ DATA%]</td>
 			<td>[%FORMAT type:'date' format:'#d #k #Y' default:'-'%][@date_created@][%/ FORMAT%]</td>
 			<td class="d-none">[%FORMAT type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/ FORMAT%]</td>
-			<td><a class="btn btn-block btn-danger" href="[%URL page:'account' type:'wishlist' id:'[@wishlist_id@]' qs:'proc=deletelist' %][%/ URL%]"><i class="far fa-trash-alt icon-white"></i> Delete</a></td>
+			<td>
+				<form method="post" action="[%URL page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%nojs%][@wishlist_name@][%/nojs%]\'?')">
+					<input type="hidden" name="id" value="[@wishlist_id@]">
+					<input type="hidden" name="proc" value="deletelist">
+					<button type="submit" class="btn btn-block btn-danger"><i class="far fa-trash-alt icon-white"></i> Delete</a></button>
+				</form>
 		 </tr>
 		 [%/ param%]
 		 [%param *footer%]
