@@ -1,0 +1,28 @@
+[%breadcrumb%]
+	[%PARAM *header%]
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "[@config:home_url@]"
+            }
+	[%/PARAM%]
+    [%PARAM *body%]
+            ,{
+                "@type": "ListItem",
+                "position": [%calc [@count@] + 2 /%],
+                "name": "[@name@]",
+                "item": "[@config:home_url@][@url@]"
+            }
+	[%/PARAM%]
+	[%PARAM *footer%]
+            ]
+        }
+    </script>
+    [%/PARAM%]
+[%/breadcrumb%]

@@ -2,16 +2,14 @@
 	[%breadcrumb%]
 		[%param *header%]
 			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-						<meta itemprop="position" content="0" />
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="[@config:home_url@]"><span>Home</span></a>
 					</li>
 		[%/param%]
 		[%param *body%]
-					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
-						<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
+					<li class="breadcrumb-item">
+						<a href="[@url@]"><span>[@name@]</span></a>
 					</li>
 		[%/param%]
 		[%param *footer%]

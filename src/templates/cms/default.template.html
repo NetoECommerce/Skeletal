@@ -2,16 +2,14 @@
 	[%breadcrumb%]
 		[%param *header%]
 			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-						<meta itemprop="position" content="0" />
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item">
+						<a href="[@config:home_url@]"><span>Home</span></a>
 					</li>
 		[%/param%]
 		[%param *body%]
-					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
-						<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
+					<li class="breadcrumb-item">
+						<a href="[@url@]"><span>[@name@]</span></a>
 					</li>
 		[%/param%]
 		[%param *footer%]
@@ -123,13 +121,13 @@
 			<h3>Comments ([@reviews@])</h3>
 		[%/param%]
 		[%param *body%]
-			<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+			<div>
 				<blockquote>
-					<h4 itemprop="name"><i>[%format type:'text' rmhtml:'1'%][@title@][%/format%]</i></h4>
+					<h4><i>[%format type:'text' rmhtml:'1'%][@title@][%/format%]</i></h4>
 					<div>
-						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
+						<strong>[%if [@reviewname@]%]By: <span>[@reviewname@]</span> on [%/ if%]<meta content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
 					</div>
-					<span itemprop="description">[%format type:'text' rmhtml:'1'%][@review@][%/format%]</span>
+					<span>[%format type:'text' rmhtml:'1'%][@review@][%/format%]</span>
 					[%if [@review_response@]%]
 						<br /><br />
 						<blockquote>
