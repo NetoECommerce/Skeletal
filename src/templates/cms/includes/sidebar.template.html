@@ -10,7 +10,7 @@
 				<div class="list-group list-group-flush" role="group">
 					[%product_filter type:'variations' autohide:'0' sortoption:'sortorder'%]
 						[%param *header%]
-							<div class="list-group-item"><h3 class="h4 mb-0">Filter By [@filter_name@]</h3></div>
+							<div class="list-group-item filter-title"><h3 class="h4 mb-0">Filter By [@filter_name@]</h3></div>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -28,7 +28,7 @@
 					[%/product_filter%]
 					[%product_filter type:'category' limit:'100' autohide:'0' filter_parent_content:'1'%]
 						[%param header%]
-							<div class="list-group-item"><h3 class="h4 mb-0">Filter By Category</h3></div>
+							<div class="list-group-item filter-title"><h3 class="h4 mb-0">Filter By Category</h3></div>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -46,7 +46,7 @@
 					[%/product_filter%]
 					[%product_filter type:'instock' autohide:'0'%]
 						[%param header%]
-							<div class="list-group-item"><h3 class="h4 mb-0">Filter By Stock</h3></div>
+							<div class="list-group-item filter-title"><h3 class="h4 mb-0">Filter By Stock</h3></div>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -64,7 +64,7 @@
 					[%/product_filter%]
 					[%product_filter type:'price' limit:'6'%]
 						[%param header%]
-							<div class="list-group-item d-l-none d-xl-none"><h3 class="h4 mb-0">Filter By Price Range</h3></div>
+							<div class="list-group-item filter-title d-l-none d-xl-none"><h3 class="h4 mb-0">Filter By Price Range</h3></div>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
@@ -85,7 +85,7 @@
 					[%/product_filter%]
 					[%product_filter type:'price' limit:'1'%]
 						[%param header%]
-							<div class="list-group-item hidden-sm d-none d-sm-block"><h3 class="h4 mb-0">Filter By Price Range</h3></div>
+							<div class="list-group-item filter-title hidden-sm d-none d-sm-block"><h3 class="h4 mb-0">Filter By Price Range</h3></div>
 						[%/param%]
 						[%param *body%]
 							[%SITE_VALUE id:'footer_javascript'%]
@@ -110,7 +110,7 @@
 									});
 								</script>
 							[%/SITE_VALUE%]
-							<div class="list-group-item hidden-sm d-none d-sm-block">
+							<div class="list-group-item filter-title hidden-sm d-none d-sm-block">
 								<p id="price-range"></p><p id="price-range-text" class="price_range"></p>
 								<form id="pricesearch" method="get" action="[@config:current_url@]">
 									<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
@@ -123,7 +123,7 @@
 					[%/product_filter%]
 					[%product_filter type:'brand' autohide:'0'%]
 						[%param header%]
-							<div class="list-group-item"><h3 class="h4 mb-0">Filter By Brand</h3></div>
+							<div class="list-group-item filter-title"><h3 class="h4 mb-0">Filter By Brand</h3></div>
 						[%/param%]
 						[%param *body%]
 							[%if [@selected@]%]
