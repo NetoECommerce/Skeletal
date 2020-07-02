@@ -7,6 +7,13 @@
 	</nav>
 	<div class="page-header"><h1>Create Account Password</h1></div>
 	<p>So that you can shop faster in the future, print and track past orders, please create an account password below.</p>
+	[%TRIM inner:'1'%]
+		[%param body%]
+		[%show_message severity:'error'%]
+			[%param *body%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a><i class="fa fa-exclamation-triangle"></i> [@info_msg@]</div>[%/ param%]
+		[%/ show_message%]
+		[%/ param%]
+	[%/ TRIM%]
 </div>
 <div class="col-12 col-md-6">
 	<form method="POST" action="[%url page:'account' type:'resetpwd'/%]">
