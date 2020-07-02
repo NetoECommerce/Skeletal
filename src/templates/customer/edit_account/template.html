@@ -116,19 +116,16 @@
 				[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]
 					<!-- Dropshipping Information -->
 					<h2>Dropshipping Information</h2>
-					<b>Customise the documentation we send out with your drop shipped orders.</b>
-					<label>Drop Shipping Documentation Footer (will be displayed on footer of packing slips, labels etc)</label>
+					<p>Customise the documentation we send out with your drop shipped orders.<br/>Ignore this section if you do not drop ship orders.</p>
+					<label><b>Dropshipping documentation footer</b></label>
+					<p>Enter the text you would like to see on the footer of any documentation we send out to your customers. Appears in footer of packing slips, labels etc.</p>
 					<textarea class="form-control"  name="usercustom7" cols="50">[@usercustom7@]</textarea>
-					<p class="help-block">(Instructions: Enter the text you would like to see on the footer of any documentation we send out to your customers. EG: Call 1300 123 567 to re-order. When you are finished click the &quot;save changes I have made&quot; button at the bottom of this page.)</p>
-					<hr>
-					<label>Dropshipping company logo (will be displayed on header of packing slips, labels etc)</label>
-					<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/ asset_url%]?[@config:current_timestamp@]"><br>
+					<br/>
+					<label><b>Dropshipping company logo</b></label>
+					<p>Click browse to select and upload your company logo. Your logo should be in .JPG or .GIF format. Your logo will be displayed on header of packing slips, labels etc.</p>
+					<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/ asset_url%]?[@config:current_timestamp@]">
 					<input type="file" name="logo">
-					<p class="help-block">(Instructions: Click browse to search
-						your local computer for your company logo. Your logo
-						should be in .JPG or .GIF format. When you are finished
-						click the &quot;save changes I have made&quot; button
-						at the bottom of this page.)</p>
+					<br/><br/>
 					<label>Delete logo?</label>
 					<input type="checkbox" name="dellogo" value="1">
 				[%/ CONFIG%]
