@@ -1,5 +1,5 @@
 <div class="col-12">
-	<div class="page-header"><h1>My Account</h1></div>
+	<div class="page-header mb-3"><h1>My Account</h1></div>
 	[%TRIM inner:'1'%]
 		[%param body%]
 		[%show_message severity:'error'%]
@@ -8,26 +8,25 @@
 		[%/ param%]
 	[%/ TRIM%]
 	<div class="row">
-		<div class="col-12 col-md-6">
+		<div class="col-12 col-md-6 mb-4">
 			<form id="login" method="post" action="[%URL page:'account' type:'login'%][%/ URL%]">
 				<input type="hidden" name="redirect" value="[@redirect@]">
 				<div class="card">
-					<div class="card-body border-bottom"><h3 class="card-title">Returning Customer? Log In. </h3></div>
+					<div class="card-header h3 bg-white">Returning Customer? Log In</div>
 					<div class="card-body">
 						<div class="form-row">
 							<div class="col-12 col-md-6">
 								<div class="form-group ">
-									<label for="username">My E-mail Address is</label>
+									<label for="username">E-mail Address</label>
 									<input type="text" id="username" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com" required/>
-									<p class="form-text text-muted small d-none"><i class="fa fa-question-circle"></i> Forgot Your Username <a href="[%URL page:'account' type:'forgotusr'%][%/ URL%]">Click Here</a></p>
+									<p class="form-text text-muted small d-none"><a href="[%URL page:'account' type:'forgotusr'%][%/ URL%]"><i class="fa fa-question-circle"></i> Forgot your username?</a></p>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label for="password">My Password is</label>
+									<label for="password">Password</label>
 									<input type="password" id="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
-									<p class="form-text text-muted small"><i class="fa fa-question-circle"></i> Forgot Your Password <a href="[%URL page:'account' type:'forgotpwd'%][%/ URL%]" aria-label="Click if you forgot your password">Click Here</a></p>
-								</div>
+									<p class="form-text text-muted small"><a href="[%URL page:'account' type:'forgotpwd'%][%/ URL%]" aria-label="Click if you forgot your password"><i class="fa fa-question-circle"></i> Forgot your password?</a></p>								</div>
 							</div>
 						</div>
 						<button name="submit" type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-user"></i> Login Now</button>
@@ -40,7 +39,7 @@
 				<input type="hidden" name="redirect" value="[@redirect@]">
 				<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%/ random_number%]">
 				<div class="card">
-					<div class="card-body border-bottom"><h3 class="card-title">New Customer? Create an Account.</h3></div>
+					<div class="card-header h3 bg-white">New Customer? Create an Account</div>
 					<div class="card-body">
 						<div class="form-row">
 							<div class="col-12 col-md-12">
@@ -134,15 +133,15 @@
 							[%/ EXTRA_CUSTOMER_FIELDS%]
 							<div class="clear"></div>
 							<div class="col-12">
-								<div class="form-group">
+								<div class="form-group mb-0 small">
 									<div class="checkbox">
 										<label>
 											<input name="regoptin" type="checkbox" value="Y" data-message="You can unsubscribe at any time."/>
-											Subscribe to our newsletter and we'll keep you up to date on our products and services.
+											Subscribe to our newsletter and we'll keep you up-to-date on our products and services.
 										</label>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group small">
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" value="y" class="terms_box" required/>
@@ -154,7 +153,7 @@
 								</div>
 							</div>
 							<div class="col-12">
-								<div class="form-group">
+								<div class="form-group mb-0">
 									<input name="fn" type="hidden" value="proc">
 									<button name="submit" type="submit" class="btn btn-lg btn-block btn-success"><i class="fa fa-plus"></i> Register and Continue</button>
 								</div>
