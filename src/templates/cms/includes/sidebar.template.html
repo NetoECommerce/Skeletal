@@ -115,8 +115,8 @@
 								<form id="pricesearch" method="get" action="[@config:current_url@]">
 									<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
 									<input  name="pr" type="hidden" value="">
-									<input type="submit" value="Filter By Price" class="btn btn-outline-secondary btn-sm" />
-									<a href="[@remove_url@]" class="btn btn-outline-secondary btn-sm" rel="nofollow"> Clear</a>
+									<input type="submit" value="Filter Price" class="btn btn-outline-secondary btn-sm" />
+									[%if [@selected@]%]<a href="[@remove_url@]" class="btn btn-outline-secondary btn-sm" rel="nofollow"> Clear</a>[%/if%]
 								</form>
 							</div>
 						[%/param%]
