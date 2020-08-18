@@ -33,7 +33,7 @@
 		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
 	},
 	"dependencies": {
-		"bootstrap": "4.3.1",
+		"bootstrap": "^4.5.2",
 		"jquery": "^3.5.1",
 		"popper.js": "^1.15.0"
 	},
