@@ -1,24 +1,24 @@
 [%load_template file:'cms/includes/sidebar.template.html'/%]
-	[%breadcrumb%]
-		[%param *header%]
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-						<meta itemprop="position" content="0" />
-					</li>
-		[%/param%]
-		[%param *body%]
-					<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-						<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
-						<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
-					</li>
-		[%/param%]
-		[%param *footer%]
-				</ol>
-			</nav>
-		[%/param%]
-	[%/breadcrumb%]
+[%breadcrumb%]
+	[%param *header%]
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+					<meta itemprop="position" content="0" />
+				</li>
+	[%/param%]
+	[%param *body%]
+				<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+					<a href="[@url@]" itemprop="item"><span itemprop="name">[@name@]</span></a>
+					<meta itemprop="position" content="[%calc [@count@] + 1 /%]" />
+				</li>
+	[%/param%]
+	[%param *footer%]
+			</ol>
+		</nav>
+	[%/param%]
+[%/breadcrumb%]
 <h1 class="display-4">
 	[%url_info name:'page_heading' default:'[@content_name@]'/%]
 </h1>
@@ -106,14 +106,12 @@
 			Share: <i class="fab fa-facebook text-facebook" aria-hidden="true"></i>
 			<i class="fab fa-twitter text-twitter" aria-hidden="true"></i>
 			<i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i>
-			<i class="fab fa-google-plus-g text-google-plus" aria-hidden="true"></i>
 			<span class="caret"></span>
 		</button>
 		<ul id="dropdownMenu[@content_id@]" class="dropdown-menu" aria-labelledby="dropdownMenu[@content_id@]">
 			<li><a class="dropdown-item js-social-share" href="//www.facebook.com/sharer/sharer.php?u=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-facebook text-facebook" aria-hidden="true"></i> Facebook</a></li>
 			<li><a class="dropdown-item js-social-share" href="//twitter.com/intent/tweet/?text=[%url_encode%][@content_name@][%/url_encode%]&amp;url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-twitter text-twitter" aria-hidden="true"></i> Twitter</a></li>
 			<li><a class="dropdown-item js-social-share" href="//www.pinterest.com/pin/create/button/?url=[%url_encode%][@url@][%/url_encode%]&amp;description=[%url_encode%][@content_name@][%/url_encode%]"><i class="fab fa-pinterest text-pinterest" aria-hidden="true"></i> Pinterest</a></li>
-			<li><a class="dropdown-item js-social-share" href="//plus.google.com/share?url=[%url_encode%][@url@][%/url_encode%]"><i class="fab fa-google-plus-g text-google-plus" aria-hidden="true"></i> Google+</a></li>
 		</ul>
 	</div>
 	<a id="comments"></a><hr />
@@ -167,7 +165,7 @@
 					</div>
 				[%/if%]
 			[%/ajax_loader%]
-			<p><button type="submit" class="btn btn-success" />Post Comment</button></p>
+			<p><button type="submit" class="btn btn-success">Post Comment</button></p>
 			<p class="text-muted">Comments have to be approved before showing up</p>
 		</fieldset>
 	</form>
