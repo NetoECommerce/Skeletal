@@ -1,50 +1,53 @@
 <div class="extra-options">
 	[%multilevelpricing id:'[@SKU@]'%]
 		[%param *header%]
-		<table class="table table-sm mt-3">
-			<thead>
+			<!-- Multi-level Pricing -->
+			<table class="table table-sm mt-3">
+				<thead>
+					<tr>
+						<th colspan="2">
+							Buy In Bulk &amp; Save!
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+		[%/ param%]
+		[%param *body%]
 				<tr>
-					<th colspan="2">
-						Buy In Bulk &amp; Save!
-					</th>
+					<td width="20%" nowrap="nowrap">
+						<span class="productmultilevelqty">Buy [%FORMAT type:'number' dp:'0' sp:','%][@minqty@][%/ FORMAT%]
+					[%if [@maxqty@] > 0%]
+							to [%FORMAT type:'number' dp:'0' sp:','%][@maxqty@][%/ FORMAT%]:
+						</span>
+					</td>
+					[%else%]
+							or more:
+						</span>
+					</td>
+					[%/ if%]
+					<td nowrap="nowrap">
+						<span class="productmultilevelprice"> Pay [%FORMAT type:'currency'%][@price@][%/ FORMAT%]</span>
+					</td>
 				</tr>
-			</thead>
-			<tbody>
-				[%/ param%]
-				[%param *body%]
-				<tr>
-				<td width="20%" nowrap="nowrap">
-				<span class="productmultilevelqty">Buy [%FORMAT type:'number' dp:'0' sp:','%][@minqty@][%/ FORMAT%]
-				[%IF [@maxqty@] > 0%]
-				to [%FORMAT type:'number' dp:'0' sp:','%][@maxqty@][%/ FORMAT%]:
-				</span>
-				</td>
-				[%ELSE%]
-				or more:
-				</span>
-				</td>
-				[%/ IF%]
-				<td nowrap="nowrap">
-				<span class="productmultilevelprice"> Pay [%FORMAT type:'currency'%][@price@][%/ FORMAT%]</span>
-				</td>
-				</tr>
-				[%/ param%]
-				[%param *footer%]
-			</tbody>
-		</table>
+		[%/ param%]
+		[%param *footer%]
+				</tbody>
+			</table>
 		[%/ param%]
 	[%/ multilevelpricing%]
 	<hr aria-hidden="true"/>
-	<!-- PRODUCT OPTIONS -->
+
 	[%extra_options id:'[@SKU@]'%]
 		[%param *header%]
-		<table class="table table-striped table-bordered">
-			<tr>
-				<th colspan="2">
-					Available Options
-				</th>
-			</tr>
-			[%/ param%][%param *number_option%]
+			<!-- Extra Options -->
+			<table class="table table-striped table-bordered">
+				<tr>
+					<th colspan="2">
+						Available Options
+					</th>
+				</tr>
+		[%/ param%]
+		[%param *number_option%]
 				<tr>
 					<td>
 						<label>[@name@]</label>
@@ -53,7 +56,8 @@
 						<input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value="">
 					</td>
 				</tr>
-			[%/ param%][%param *text_option%]
+		[%/ param%]
+		[%param *text_option%]
 				<tr>
 					<td>
 						<label>[@name@]</label>
@@ -62,8 +66,8 @@
 						<textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea>
 					</td>
 				</tr>
-			[%/ param%]
-			[%param *select_option%]
+		[%/ param%]
+		[%param *select_option%]
 				<tr>
 					<td>
 						<label>[@name@]</label>
@@ -74,30 +78,32 @@
 						</select>
 					</td>
 				</tr>
-			[%/ param%]
-			[%param *choices%]
+		[%/ param%]
+		[%param *choices%]
 				<option type="text" class="form-control" value="[@option_id@]">[%nohtml%][@text@][%end nohtml%]
 				[%DATA id:'price' if:'!=' value:'0'%]
 					(+ [%FORMAT type:'currency'%][@price@][%/ FORMAT%])
 				[%/ DATA%]
 				</option>
-			[%/ param%]
-			[%param *footer%]
-			<input type="hidden" name="extras" value="[@total_options@]"/>
-		</table>
-		<hr aria-hidden="true"/>
+		[%/ param%]
+		[%param *footer%]
+				<input type="hidden" name="extras" value="[@total_options@]"/>
+			</table>
+			<hr aria-hidden="true"/>
 		[%/ param%]
 	[%/ extra_options%]
 
 	[%data id:'multiplier_qty' if:'ne' value:'0' %]
-	Order In Lots Of <strong>[@multiplier_qty@]</strong>
+		Order In Lots Of <strong>[@multiplier_qty@]</strong>
 	[%end data%]
 	[%data id:'min_qty' if:'ne' value:'0' %]
-	Minimum Order Quantity <strong>[@min_qty@]</strong>
+		Minimum Order Quantity <strong>[@min_qty@]</strong>
 	[%end data%]
 	[%data id:'max_qty' if:'ne' value:'0' %]
-	Maximum Order Quantity <strong>[@max_qty@]</strong>
+		Maximum Order Quantity <strong>[@max_qty@]</strong>
 	[%end data%]
+	
+	<!-- Buying Options -->
 	<form class="buying-options" autocomplete="off" role="form" aria-label="Product purchase form">
 		<input type="hidden" id="model[@rndm@][@SKU@]" name="model" value="[@model@]">
 		<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb" value="[@thumb@]">
@@ -109,43 +115,43 @@
 			</div>
 			<div class="col-12 col-md-4">
 				[%if [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+					<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Pre-Order Now</button>
 				[%elseif [@store_quantity@] > 0 AND [@preorder@] AND ![@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Pre-Order Now</button>
+					<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Pre-Order Now</button>
 				[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
+					<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-success btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-shopping-cart icon-white" aria-hidden="true"></i> Add to Cart</button>
 				[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Backorder</button>
+					<button type="button" title="Add [@model@] to Cart" class="addtocart btn btn-warning btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" rel="[@rndm@][@SKU@]"><i class="fa fa-clock icon-white" aria-hidden="true"></i> Backorder</button>
 				[%else%]
-				<a href title="Notify Me When [@model@] Is Back In Stock" class="btn btn-info btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
+					<a href title="Notify Me When [@model@] Is Back In Stock" class="btn btn-info btn-block btn-lg btn-ajax-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>" data-toggle="modal" data-target="#notifymodal"><i class="fa fa-envelope" aria-hidden="true"></i> Notify Me</a>
 				[%/ if%]
 			</div>
 			<div class="col-12 col-md-4">
 				[%if [@config:show_wishlist@]%]
 					<div class="product-wishlist">
 						[%IN_WISHLIST id:'[@SKU@]' %]
-						[%param if_true%]
-							<a class="wishlist_toggle btn btn-lg btn-block btn-warning" href role="button" title="Remove From Wishlist" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fas fa-star" aria-hidden="true"></i></span></a>
-						[%/ param%]
-						[%param if_false%]
-							<a class="wishlist_toggle btn btn-outline-secondary btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="far fa-star" aria-hidden="true"></i> Wishlist</span></a>
-						[%/ param%]
+							[%param if_true%]
+								<a class="wishlist_toggle btn btn-lg btn-block btn-warning" href role="button" title="Remove From Wishlist" rel="[@SKU@]"><span class="remove" rel="wishlist_text[@SKU@]"><i class="fas fa-star" aria-hidden="true"></i></span></a>
+							[%/ param%]
+							[%param if_false%]
+								<a class="wishlist_toggle btn btn-outline-secondary btn-lg btn-block" href role="button" title="Add To Wishlist" rel="[@SKU@]"><span class="add" rel="wishlist_text[@SKU@]"><i class="far fa-star" aria-hidden="true"></i> Wishlist</span></a>
+							[%/ param%]
 						[%/ IN_WISHLIST%]
 					</div>
-				[%/if%]
+				[%/ if%]
 			</div>
 		</div>
 	</form>
 	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
+		<!-- Shipping Calculator -->
 		[%load_template file:'products/includes/shipping_calc.template.html'/%]
-	[%/if%]
-	[%IF [@short_description@]%]
-	<p itemprop="description" aria-label="Product Short Description">
-	[@short_description@]
-	</p>
-	[%/ IF%]
+	[%/ if%]
+	[%if [@short_description@]%]
+		<p itemprop="description" aria-label="Product Short Description">[@short_description@]</p>
+	[%/ if%]
 </div>
 
+<!-- Out of stock modal -->
 <div class="modal fade notifymodal" id="notifymodal">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -175,6 +181,6 @@
 				<input class="btn btn-danger" type="button" data-dismiss="modal" value="Cancel">
 				<input class="btn btn-success js-notifymodal-in-stock" data-sku="[@sku@]" type="button" value="Save My Details">
 			</div>
-		</div><!-- /.modal-content -->
+		</div>
 	</div>
 </div>
