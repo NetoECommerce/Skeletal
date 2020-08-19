@@ -143,11 +143,11 @@
 		</div>
 	</form>
 	[%if [@config:show_shipping_calc@] and [@service_only@] eq 'n'%]
-		<!-- Shipping Calculator -->
+		<!-- shipping_calc template -->
 		[%load_template file:'products/includes/shipping_calc.template.html'/%]
 	[%/ if%]
 	[%if [@short_description@]%]
-		<p itemprop="description" aria-label="Product Short Description">[@short_description@]</p>
+		<p itemprop="description" aria-label="Product Short Description" class="mt-2 mb-0">[@short_description@]</p>
 	[%/ if%]
 </div>
 
@@ -178,7 +178,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<input class="btn btn-danger" type="button" data-dismiss="modal" value="Cancel">
+				<input class="btn btn-default" type="button" data-dismiss="modal" value="Cancel">
 				<input class="btn btn-success js-notifymodal-in-stock" data-sku="[@sku@]" type="button" value="Save My Details">
 			</div>
 		</div>
