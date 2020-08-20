@@ -1,6 +1,7 @@
 <div class="row">
 	<meta itemprop="itemCondition" content="NewCondition">
 	<meta itemprop="brand" content="[@brand@]"/>
+	<meta itemprop="sku" content="[@sku@]"/>
 	<div class="wrapper-product-title col-sm-8">
 		<h1 itemprop="name" aria-label="Product Name">
 			[%url_info type:'product' id:'[@inventory_id@]' name:'page_heading' default:'[@name@]'/%]
@@ -28,6 +29,7 @@
 	</div>
 	[%if ![@has_child@] || [@has_variation@]%]
 		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="wrapper-pricing col-sm-4">
+			<link itemprop="url" href="[@url@]"/>
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			[%if ![@inpromo@]%]
 				<div class="h1" itemprop="price" content="[@store_price@]" aria-label="Store Price">

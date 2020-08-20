@@ -21,127 +21,149 @@
 				</nav>
 			[%/param%]
 		[%/breadcrumb%]
-		<div class="row" itemscope itemtype="http://schema.org/Product">
-			<section class="col-12 col-lg-5" role="contentinfo" aria-label="Product images">
-				[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-			</section>
-			<section class="col-12 col-lg-7" role="contentinfo" aria-label="Products information">
-				[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-				<!-- child products -->
-				[%load_template file:"products/includes/child_products.template.html"/%]
-				[%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
-					<!-- addtocart functionality -->
-					[%load_ajax_template id:'_buying_options' type:'item' template:'buying_options' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
-				[%/if%]
-				[%if [@has_components@]%]
-					<!-- kit components -->
-					[%load_template file:"products/includes/components.template.html"/%]
-				[%/if%]
-			</section>
-		</div>
-		<div class="row mt-2">
+
+		<div itemscope itemtype="http://schema.org/Product">
+			<div class="row">
+				<section class="col-12 col-lg-5" role="contentinfo" aria-label="Product images">
+					<!-- images template -->
+					[%load_ajax_template id:'_images' type:'item' template:'images' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+				</section>
+				<section class="col-12 col-lg-7" role="contentinfo" aria-label="Products information">
+					<!-- header template -->
+					[%load_ajax_template id:'_header' type:'item' template:'header' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+					<!-- child_products template -->
+					[%load_template file:"products/includes/child_products.template.html"/%]
+					[%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
+						<!-- buying_options template -->
+						[%load_ajax_template id:'_buying_options' type:'item' template:'buying_options' preload:'1' tmpl_sku:'[@current_sku@]' tmpl_preview:'y'/%]
+					[%/if%]
+					[%if [@has_components@]%]
+						<!-- components template -->
+						[%load_template file:"products/includes/components.template.html"/%]
+					[%/if%]
+				</section>
+			</div>
+
+			<div class="row mt-4">
 				[%discount_products id:'[@SKU@]' template:'' show_all:'1' limit:'100'%]
 					[%param header%]
+						<!-- Discount products -->
 						<div class="col-12">
-						<div class="alert alert-success">
-							<h3 class="h2">BONUS ITEMS! <small>Buy [@name@] Today &amp; Receive These For FREE!</small></h3>
+							<div class="alert alert-success">
+								<h3 class="h2">BONUS ITEMS! <small>Buy [@name@] &amp; receive these for free!</small></h3>
 								<div class="row products-row">
-						[%/param%]
-						[%param *body%]
-								<div class="col-8 col-sm-6 col-md-3">
-									<div class="card thumbnail card-body">
+					[%/param%]
+					[%param *body%]
+									<div class="col-8 col-sm-6 col-md-3">
+										<div class="card thumbnail card-body">
 											<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image pb-2"><img src="[@thumb@]" class="product-image img-fluid" alt="[@name@]"></a>
 											<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
 											<div class="text-success"><strong>FREE</strong> With This Item!</div>
+										</div>
 									</div>
+					[%/param%]
+					[%param footer%]
 								</div>
-						[%/param%]
-						[%param footer%]
 							</div>
-						</div>
 						</div>
 					[%/param%]
 				[%/discount_products%]
 				[%free_gifts id:'[@SKU@]'%]
 					[%param *header%]
+						<!-- Free gifts -->
 						<div class="col-12">
-						<div class="alert alert-success">
-							<h3 class="h2">FREEBIES! <small>Buy [@name@] Today &amp; Choose From One Of These FREE Gifts!</small></h3>
+							<div class="alert alert-success">
+								<h3 class="h2">FREEBIES! <small>Buy [@name@] &amp; choose from one of these free gifts!</small></h3>
 								<div class="row products-row">
 					[%/param%]
 					[%param *body%]
-							<div class="col-8 col-sm-6 col-md-3">
-								<div class="card thumbnail card-body">
-									<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image pb-2"><img src="[@thumb@]" class="product-image img-fluid" alt="[@name@]"></a>
-										<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
-										<div class="text-success"><strong>FREE</strong> With This Item!</div>
-								</div>
-							</div>
+									<div class="col-8 col-sm-6 col-md-3">
+										<div class="card thumbnail card-body">
+											<a href="[%url type:'item ' id:'[@SKU@]'/%]" class="thumbnail-image pb-2"><img src="[@thumb@]" class="product-image img-fluid" alt="[@name@]"></a>
+											<p class="card-title h4"><a href="[%URL type:'item' id:'[@SKU@]'/%]">[%format type:'text' maxlength:'150' rmhtml:'1'%][@name@][%/FORMAT%]</a></p>
+											<div class="text-success"><strong>FREE</strong> With This Item!</div>
+										</div>
+									</div>
 					[%/param%]
 					[%param *footer%]
+								</div>
 							</div>
-						</div>
 						</div>
 					[%/param%]
 				[%/free_gifts%]
 				<div class="col-12">
+					<!-- product_information template -->
 					[%load_template file:"products/includes/product_information.template.html"/%]
 					[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'ProductDescription' /%][%/if%]
+					<hr aria-hidden="true"/>
 				</div>
-				<div class="col-12">
-					[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
-						[%param header%]
-						<hr aria-hidden="true"/>
-						<h3 class="h2">We Also Recommend</h3>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			[%upsell_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
+				[%param header%]
+					<!-- Upsell products -->
+					<div class="col-12 mb-4">
+						<h3 class="h2 mb-3">We Also Recommend</h3>
 						<div class="row products-row">
-						[%/param%]
-						[%param footer%]
+				[%/param%]
+				[%param footer%]
 						</div>
-						[%/param%]
-					[%/upsell_products%]
-					[%crosssell id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
-						[%param header%]
-						<hr aria-hidden="true"/>
-						<h3 class="h2">You May Also Like</h3>
+					</div>
+				[%/param%]
+			[%/upsell_products%]
+			[%crosssell id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
+				[%param header%]
+					<!-- Crosssell products -->
+					<div class="col-12 mb-4">
+						<h3 class="h2 mb-3">You May Also Like</h3>
 						<div class="row products-row">
-						[%/param%]
-						[%param footer%]
+				[%/param%]
+				[%param footer%]
 						</div>
-						[%/param%]
-					[%/crosssell%]
-					[%related_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
-						[%param header%]
-						<hr aria-hidden="true"/>
-						<h3 class="h2">Others Also Bought</h3>
+					</div>
+				[%/param%]
+			[%/crosssell%]
+			[%related_products id:'[@SKU@]' limit:'[@config:upsell_limit@]' template:'' show_all:'1'%]
+				[%param header%]
+					<!-- Related products -->
+					<div class="col-12 mb-4">
+						<h3 class="h2 mb-3">Others Also Bought</h3>
 						<div class="row products-row">
-						[%/param%]
-						[%param footer%]
+				[%/param%]
+				[%param footer%]
 						</div>
-						[%/param%]
-					[%/related_products%]
-					[%thumb_list type:'products' sortby:'random' filter_category:'[@content_id@]' template:'' filter_exsku1:'[@sku@]' limit:'[@config:upsell_limit@]'%]
-						[%param *header%]
-						<hr aria-hidden="true"/>
-						<h3 class="h2">More From This Category</h3>
+					</div>
+				[%/param%]
+			[%/related_products%]
+			[%thumb_list type:'products' limit:'[@config:upsell_limit@]' template:'' sortby:'random' filter_category:'[@content_id@]' filter_exsku1:'[@sku@]'%]
+				[%param *header%]
+					<!-- Products from the same category -->
+					<div class="col-12 mb-4">
+						<h3 class="h2 mb-3">More From This Category</h3>
 						<div class="row products-row">
-						[%/param%][%param footer%]
+				[%/param%]
+				[%param footer%]
 						</div>
-						[%/param%]
-					[%/thumb_list%]
-				[%/cache%]
-				[%if [@config:phistory_limit@]%]
-					[%product_history limit:'[@config:phistory_limit@]' template:''%]
-						[%param header%]
-						<hr aria-hidden="true"/>
-						<h3 class="h2">Your Browsing History</h3>
-						<div class="row products-row">
-						[%/param%]
-						[%param footer%]
-						</div>
-						[%/param%]
-					[%/product_history%]
-				[%/if%]
-			</div><!--/.col-12-->
-		</div><!--/.row-->
-	</div><!--/.col-12-->
-</div><!--/.row-->
+					</div>
+				[%/param%]
+			[%/thumb_list%]
+		</div>
+	</div>
+[%/cache%]
+
+[%if [@config:phistory_limit@]%]
+	[%product_history limit:'[@config:phistory_limit@]' template:''%]
+		[%param header%]
+			<!-- Browsing history -->
+			<div class="col-12 mb-4">
+				<h3 class="h2 mb-3">Your Browsing History</h3>
+				<div class="row products-row">
+		[%/param%]
+		[%param footer%]
+				</div>
+			</div>
+		[%/param%]
+	[%/product_history%]
+[%/if%]
