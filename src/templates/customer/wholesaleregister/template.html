@@ -155,7 +155,7 @@
 						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
 					</label>
 					<div class="col-md-9">
-						<textarea name="[@field_id@]" class="form-control" cols="20" [%if [@required_field@]%]required[%/if%]>[%NOHTML%][@field_default@][%END NOHTML%]</textarea>
+						<textarea name="[@field_id@]" class="form-control" cols="20" maxlength="255" [%if [@required_field@]%]required[%/if%]>[%NOHTML%][@field_default@][%END NOHTML%]</textarea>
 					</div>
 				</div>
 			[%/param%]
