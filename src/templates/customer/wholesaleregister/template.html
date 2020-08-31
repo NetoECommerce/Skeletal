@@ -1,6 +1,6 @@
-<div class="col-12">
+<div class="col-12 col-md-9">
 	<h1>Wholesale Registration Form</h1>
-	<p>If you already have an account with us, please login at the <a href="[%url page:'account' type:'login'%][%END url%]">login page</a>.</p>
+	<p>If you already have an account with us, please <a href="[%url page:'account' type:'login'%][%END url%]">login here</a>.</p>
 	[%TRIM inner:'1'%]
 	[%PARAM body%]
 		[%show_message severity:'error'%]
@@ -8,90 +8,89 @@
 		[%/ show_message%]
 	[%/ PARAM%]
 	[%/ TRIM%]
-	<form name="adduser" id="adduser" method="POST" action="[%url page:'account' type:'wholesaleregister'%][%END url%]" class="form-horizontal">
+
+	<form name="adduser" id="adduser" method="POST" action="[%url page:'account' type:'wholesaleregister'%][%END url%]">
 		<input type="hidden" name="fn" value="proc">
 		<input type="hidden" name="redirect" value="[@redirect@]">
-		<div>
-			<h3>Your Future Login Details</h3>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Username<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="text"  name="reg_username" size="20" maxlength="15" value="[%nohtml%][%FORM id:'reg_username'%][%END FORM%][%end nohtml%]" class="form-control" required>
-					<p class="text-muted small">(used for future access to your account)</p>
-				</div>
+		<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%/ random_number%]">
+
+		<section class="py-3">
+			<h3>Contact information</h3>
+			<div class="form-group">
+				<label class="control-label">Email address<span class="text-danger">*</span></label>
+				<input type="email" name="reg_email" size="35" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]" class="form-control" required>
+				<p class="text-muted small">Order receipts &amp; invoices will be sent here.</p>
 			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Email address<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="email" name="reg_email" size="35" value="[%nohtml%][%FORM id:'reg_email'%][%END FORM%][%end nohtml%]" class="form-control" required>
-					<p class="text-muted small">(order receipts &amp; invoices will be sent here)</p>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Password<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="password"  name="reg_password" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control" autocomplete="off" required>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Confirm password<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="password"  name="reg_password2" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control" autocomplete="off" required>
-				</div>
-			</div>
-		</div>
-		<div>
-			<h3>Company Information</h3>
-			<div class="form-group row">
-				<label class="control-label col-md-3">First name<span class="text-danger">*</span></label>
-				<div class="col-md-9">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label class="control-label">First name<span class="text-danger">*</span></label>
 					<input type="text" name="reg_bill_first_name" size="50" value="[%nohtml%][%FORM id:'reg_bill_first_name'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control" required>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Last name<span class="text-danger">*</span></label>
-				<div class="col-md-9">
+				<div class="form-group col-md-6">
+					<label class="control-label">Last name<span class="text-danger">*</span></label>
 					<input type="text" name="reg_bill_last_name" size="50" value="[%nohtml%][%FORM id:'reg_bill_last_name'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control" required>
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Company name<span class="text-danger">*</span></label>
-				<div class="col-md-9">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label class="control-label">Phone number<span class="text-danger">*</span></label>
+					<input type="text" name="reg_phone" size="35" value="[%nohtml%][%FORM id:'reg_phone'%][%END FORM%][%end nohtml%]" class="form-control" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="control-label">Fax number</label>
+					<input type="text" name="reg_fax" size="35" value="[%nohtml%][%FORM id:'reg_fax'%][%END FORM%][%end nohtml%]" class="form-control">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label class="control-label">Password<span class="text-danger">*</span></label>
+					<input type="password" name="reg_password" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control" autocomplete="off" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="control-label">Confirm password<span class="text-danger">*</span></label>
+					<input type="password"  name="reg_password2" size="20" maxlength="20" value="[%nohtml%][%end nohtml%]" class="form-control" autocomplete="off" required>
+				</div>
+			</div>
+		</section>
+
+		<section class="pb-3">
+			<h3>Company information</h3>
+			<div class="form-row">
+				<div class="form-group col">
+					<label class="control-label">Company name<span class="text-danger">*</span></label>
 					<input type="text" name="reg_bill_company" size="50" value="[%nohtml%][%FORM id:'reg_bill_company'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control" required>
 				</div>
+				[%if [@config:defaultcountry@] eq 'AU' || [@config:PRIMARY_ABN_LABEL@] ne 'ABN'%]
+					<div class="form-group col-md-6">
+						<label class="control-label">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN [%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
+						<input type="text" name="reg_usercustom2" size="50" value="[%nohtml%][%FORM id:'reg_usercustom2'%][%END FORM%][%end nohtml%]" class="form-control">
+					</div>
+				[%/if%]
 			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Address<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="text" name="reg_bill_street1" size="50" value="[%nohtml%][%FORM id:'reg_bill_street1'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control" required>
-				</div>
+			<div class="form-group">
+				<label class="control-label">Address<span class="text-danger">*</span></label>
+				<input type="text" name="reg_bill_street1" size="50" value="[%nohtml%][%FORM id:'reg_bill_street1'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control" required>
 			</div>
-			<div class="form-group row">
-				<div class="col-md-9 offset-md-3">
-					<input type="text" name="reg_bill_street2" size="50" value="[%nohtml%][%FORM id:'reg_bill_street2'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control">
-				</div>
+			<div class="form-group">
+				<input type="text" name="reg_bill_street2" size="50" value="[%nohtml%][%FORM id:'reg_bill_street2'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control">
 			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">[%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Postal [%/if%] code<span class="text-danger">*</span></label>
-				<div class="col-md-3">
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label class="control-label">[%if [@config:defaultcountry@] eq 'US'%]Zip [%else%]Post[%/if%] code<span class="text-danger">*</span></label>
 					<input type="text" name="reg_bill_zip" value="[%nohtml%][%FORM id:'reg_bill_zip'%][%END FORM%][%end nohtml%]" size="50" maxlength="10" class="form-control" required>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Suburb/City<span class="text-danger">*</span></label>
-				<div class="col-md-9">
+				<div class="form-group col-md-4">
+					<label class="control-label">Suburb/City<span class="text-danger">*</span></label>
 					<input type="text" name="reg_bill_city" size="50" value="[%nohtml%][%FORM id:'reg_bill_city'%][%END FORM%][%end nohtml%]" maxlength="50" class="form-control" required>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">State<span class="text-danger">*</span></label>
-				<div class="col-md-9">
+				<div class="form-group col-md-4">
+					<label class="control-label">State<span class="text-danger">*</span></label>
 					<input type="text" name="reg_bill_state" value="[%nohtml%][%FORM id:'reg_bill_state'%][%END FORM%][%end nohtml%]" size="50" maxlength="50" class="form-control" required>
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Country<span class="text-danger">*</span></label>
-				<div class="col-md-9">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label class="control-label">Country<span class="text-danger">*</span></label>
 					<select name="reg_bill_country" class="form-control" required>
 						[%countries sortby:'sortorder,name' %]
 							[%PARAM *body%]
@@ -100,162 +99,121 @@
 						[%END countries%]
 					</select>
 				</div>
-			</div>
-			[%if [@config:defaultcountry@] eq 'AU' || [@config:PRIMARY_ABN_LABEL@] ne 'ABN'%]
-			<div class="form-group row">
-				<label class="control-label col-md-3">[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%] / [%if [@config:PRIMARY_ACN_LABEL@]%][@config:PRIMARY_ACN_LABEL@][%else%]ACN[%/if%]</label>
-				<div class="col-md-9">
-					<input type="text" name="reg_usercustom2" size="50" value="[%nohtml%][%FORM id:'reg_usercustom2'%][%END FORM%][%end nohtml%]" class="form-control">
-				</div>
-			</div>
-			[%/if%]
-			<div class="form-group row">
-				<label class="control-label col-md-3">Web site url</label>
-				<div class="col-md-9">
+				<div class="form-group col-md-6">
+					<label class="control-label">Website URL</label>
 					<input type="text" name="reg_usercustom3" size="50" value="[%nohtml%][%FORM id:'reg_usercustom3'%][%END FORM%][%end nohtml%]" class="form-control">
 				</div>
 			</div>
-
-		</div>
-		<div>
-			<h3>Contact Information</h3>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Phone number<span class="text-danger">*</span></label>
-				<div class="col-md-9">
-					<input type="text" name="reg_phone" size="35" value="[%nohtml%][%FORM id:'reg_phone'%][%END FORM%][%end nohtml%]" class="form-control" required>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-md-3">Fax number</label>
-				<div class="col-md-9">
-					<input type="text" name="reg_fax" size="35" value="[%nohtml%][%FORM id:'reg_fax'%][%END FORM%][%end nohtml%]" class="form-control">
-				</div>
-			</div>
-		</div>
+		</section>
 		[%extra_customer_fields%]
 			[%param *header%]
-				<div>
-				<h3>Other Details</h3>
+				<section>
+					<h3>Other details</h3>
 			[%/param%]
 			[%param *integer_option%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
+					<div class="form-group">
+						<label class="control-label">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 						<input type="number" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required[%/if%]>
 					</div>
-				</div>
 			[%/param%]
 			[%param *text_option%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
+					<div class="form-group">
+						<label class="control-label">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 						<textarea name="[@field_id@]" class="form-control" cols="20" maxlength="255" [%if [@required_field@]%]required[%/if%]>[%NOHTML%][@field_default@][%END NOHTML%]</textarea>
 					</div>
-				</div>
 			[%/param%]
 			[%param *short_text_option%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
+					<div class="form-group">
+						<label class="control-label">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 						<input type="text" name="[@field_id@]" value="[%NOHTML%][@field_default@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required[%/if%]>
 					</div>
-				</div>
 			[%/param%]
 			[%param *descimal_option%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
+					<div class="form-group">
+						<label class="control-label">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 						<input type="number" name="[@field_id@]" value="[%NOHTML%][@default_value@][%END NOHTML%]" class="form-control" [%if [@required_field@]%]required[%/if%]>
 					</div>
-				</div>
 			[%/param%]
 			[%param *boolean_option%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
-						<input type="checkbox" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] class="form-control" [%if [@required_field@]%]required[%/if%]>
+					<div class="form-check">
+						<input class="form-check-input" id="[@field_id@]" type="checkbox" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%END DATA%] [%if [@required_field@]%]required[%/if%]>
+						<label class="form-check-label" for="[@field_id@]">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 					</div>
-				</div>
 			[%/param%]
 			[%param *date_option%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
+					<div class="form-group">
+						<label class="control-label">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 						<input class="datepicker form-control" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%END NOHTML%]" [%if [@required_field@]%]required[%/if%]>
 					</div>
-				</div>
 			[%/param%]
 			[%param *selection_header%]
-				<div class="form-group row">
-					<label class="control-label col-md-3">
-						[@field_name@]
-						[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
-					</label>
-					<div class="col-md-9">
+					<div class="form-group">
+						<label class="control-label">
+							[@field_name@]
+							[%if [@required_field@]%]<span class="text-danger">*</span>[%/if%]
+						</label>
 						<select class="form-control" name="[@field_id@]" [%if [@required_field@]%]required[%/if%]>
-							[%/param%]
-							[%param *selection_body%]
-								<option value="[@option_value@]">[@option_value@]</option>
-							[%/param%]
-						[%param *selection_footer%]
+			[%/param%]
+			[%param *selection_body%]
+							<option value="[@option_value@]">[@option_value@]</option>
+			[%/param%]
+			[%param *selection_footer%]
 						</select>
 					</div>
-				</div>
 			[%/param%]
 			[%param *footer%]
-				</div>
+				</section>
 			[%/param%]
 		[%/extra_customer_fields%]
-		<div class="row-padded">
-			<div class="checkbox">
-				<label>
-					<input name="regoptin" type="checkbox" value="Y" data-message="You can unsubscribe at any time."/>
-					Subscribe to our newsletter and we'll keep you up to date on our products and services.
-				</label>
+
+		<section class="row-padded pb-3">
+			<div class="form-check">
+				<input class="form-check-input" id="subscribe" name="regoptin" type="checkbox" value="Y" data-message="You can unsubscribe at any time."/>
+				<label class="form-check-label" for="subscribe">Subscribe to our newsletter and we'll keep you up-to-date on our products and services.</label>
 			</div>
 			[%set [@wholesale_terms@] %][%content_zone id:'wholesale_terms' /%][%/set%]
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" name="agree" value="y" class="terms_box" required/>
-					I have read and agree to
-					<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a>[%if [@wholesale_terms@] ne ''%], our <a href="#" data-toggle="modal" data-target="#tradeModal">Terms of Trade</a>[%/if%]&nbsp;and
-					<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
-				</label>
+			<div class="form-check">
+					<input class="form-check-input" id="terms" type="checkbox" name="agree" value="y" class="terms_box" required/>
+					<label class="form-check-label" for="terms">
+						I have read and agree to
+						<a href="#" data-toggle="modal" data-target="#termsModal">Terms &amp; Conditions</a>[%if [@wholesale_terms@] ne ''%], our <a href="#" data-toggle="modal" data-target="#tradeModal">Terms of Trade</a>[%/if%]&nbsp;and
+						<a href="#" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>.
+					</label>
 			</div>
 			[%if [@wholesale_terms@] ne ''%]
-			<div class="modal fade" id="tradeModal">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Terms of Trade</h4>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="modal fade" id="tradeModal">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Terms of Trade</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="modal-body">[%content_zone id:'wholesale_terms'/%]</div>
+							<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
 						</div>
-						<div class="modal-body">[%content_zone id:'wholesale_terms'/%]</div>
-						<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
 					</div>
 				</div>
-			</div>
 			[%/if%]
-		</div>
-		<input type="submit" class="btn btn-lg btn-primary" value="Register">
+		</section>
+		<input type="submit" class="btn btn-lg btn-primary" value="Register for a Wholesale Account">
 	</form>
 </div>
 [%GA_FUNNEL%]/wholesaleregister/form.html[%END GA_FUNNEL%]
