@@ -1,13 +1,13 @@
 <div class="col-12">
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-			<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
-		</li>
-		<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-			<a href="[%url page:'account'/%]" itemprop="item"><span itemprop="name">My Account</span></a>
-		</li>
-	</ol>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<a href="[@config:home_url@]" itemprop="item"><span itemprop="name">Home</span></a>
+			</li>
+			<li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+				<a href="[%url page:'account'/%]" itemprop="item"><span itemprop="name">My Account</span></a>
+			</li>
+		</ol>
 	</nav>
 	<div class="page-header">
 		<h1>Account Summary</h1>
@@ -413,3 +413,4 @@
 		</form>
 	</section>
 [%/if%]
+[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Register' /%][%/if%]

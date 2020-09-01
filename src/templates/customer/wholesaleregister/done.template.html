@@ -1,6 +1,7 @@
 <div class="col-12">
 	<h1>Registration Complete</h1>
-	<p>Thank you [@username@] for registering.</p>
-	<p><a href="[@config:home_url@]">Return to home</a></p>
+	<p>Thank you [@bill_first_name@] [@bill_last_name@] for registering.</p>
+	<p><a class="btn btn-success btn-lg" href="[@config:home_url@]">Return to home</a></p>
 	[%GA_FUNNEL%]/register/done.html[%END GA_FUNNEL%]
+	[%if [@form:disable_scripts@] ne 'true'%][%tracking_code type:'Register' /%][%/if%]
 </div>
