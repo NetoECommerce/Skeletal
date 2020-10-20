@@ -154,7 +154,7 @@ $payment-icon:(
 .products-row {
 	@extend .justify-content-center;
 	@extend .justify-content-sm-start;
-	@extend .align-items-center;
+	@extend .align-items-start;
 }
 // Thumbnail
 .savings-container {
