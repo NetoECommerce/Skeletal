@@ -7,7 +7,7 @@
 		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'%][%/ URL%]">[%NOHTML%][@wishlist_name@][%/ NOHTML%]</a></li>
 	</ol>
 	</nav>
-	<h1>Edit My Wish List</h1>
+	<h1>Edit My Wishlist</h1>
 	<hr />
 	[%DATA id:'msg' if:'eq' value:'LIST_UPDATED'%]<div class="alert alert-success" role="alert"> <a class="close" data-dismiss="alert">×</a> Wishlist has been updated. </div>[%/ DATA%]
 	<form NAME="wishlist_update" method="POST" action="[%URL page:'account' type:'wishlist' fn:'view'%][%/ URL%]">
