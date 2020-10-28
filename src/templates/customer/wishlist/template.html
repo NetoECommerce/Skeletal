@@ -3,14 +3,14 @@
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
 		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="[@URL@]">Wish Lists</a></li>
+		<li class="breadcrumb-item"><a href="[@URL@]">Wishlists</a></li>
 	</ol>
 	</nav>
 
-	[%DATA id:'error' if:'eq' value:'LIST_NOT_FOUND'%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>Cannot find wish list.</div>[%/ DATA%]
-	[%DATA id:'msg' if:'eq' value:'LIST_DELETED'%]<div class="alert alert-success" role="alert"><a class="close" data-dismiss="alert">×</a>Wish list '[%NOHTML%][@wishlist_name@][%/ NOHTML%]' has been deleted.</div>[%/ DATA%]
+	[%DATA id:'error' if:'eq' value:'LIST_NOT_FOUND'%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>Cannot find wishlist.</div>[%/ DATA%]
+	[%DATA id:'msg' if:'eq' value:'LIST_DELETED'%]<div class="alert alert-success" role="alert"><a class="close" data-dismiss="alert">×</a>Wishlist '[%NOHTML%][@wishlist_name@][%/ NOHTML%]' has been deleted.</div>[%/ DATA%]
 
-	<div class="page-header"><h1>My Wish Lists</h1></div>
+	<div class="page-header"><h1>My Wishlists</h1></div>
 	[%thumb_list limit:'10' type:'list_wishlists'%]
 		[%param pgnum%][%FORM id:'pgquote'%][%/ FORM%][%/ param%]
 		[%param header%]
@@ -51,7 +51,7 @@
 		 [%param *footer%]
 		</table>
 		[%/ param%]
-		[%param ifempty%]You have no wish lists setup. Please add a new list below.[%/ param%]
+		[%param ifempty%]You have no wishlists setup. Please add a new list below.[%/ param%]
 	[%/ thumb_list%]
 
 	<h4><i class="fa fa-plus"></i> Add New List</h4>
