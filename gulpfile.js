@@ -22,7 +22,7 @@ config.jsFiles = ['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper
 //  -------------------- Gulp Tasks --------------------
 // Compile SASS into CSS
 task('sass', function() {
-	var plugins = [ 
+	var plugins = [
 		autoprefixer(),
 		cssnano()
 	];
