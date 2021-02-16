@@ -7,8 +7,7 @@ var { task, src, dest, watch, series, parallel } = require('gulp'),
 	sass = require('gulp-sass'),
 	autoprefixer = require('autoprefixer'),
 	cssnano = require('cssnano'),
-	sourcemaps = require('gulp-sourcemaps'),
-	purgeSourcemaps = require('gulp-purge-sourcemaps');
+	removeSourcemaps = require('gulp-remove-sourcemaps');
 
 sass.compiler = require('node-sass');
 
@@ -31,10 +30,7 @@ task('sass', function() {
 	return src(config.SCSS +'/*.scss')
 		.pipe(plumber())
 		.pipe(sass())
-		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(postcss(plugins))
-		.pipe(sourcemaps.write())
-		.pipe(purgeSourcemaps())
 		.pipe(chmod(0o755))
 		.pipe(dest(config.CSS))
 });
@@ -44,6 +40,7 @@ task('js', function() {
 	return src(config.jsFiles)
 		.pipe(plumber())
 		.pipe(concat('vendor.js'))
+		.pipe(removeSourcemaps())
 		.pipe(dest(config.JS))
 });
 
