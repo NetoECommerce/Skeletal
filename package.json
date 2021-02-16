@@ -30,10 +30,13 @@
 		"gulp-sass": "^4.1.0",
 		"node-sass": "^4.14.1",
 		"ntheme": "^1.11.0",
+		"postcss-strip-inline-comments": "^0.1.5",
 		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
 	},
 	"dependencies": {
 		"bootstrap": "^4.6.0",
+		"gulp-purge-sourcemaps": "^1.0.0",
+		"gulp-sourcemaps": "^3.0.0",
 		"jquery": "^3.5.1",
 		"popper.js": "^1.16.1"
 	},
