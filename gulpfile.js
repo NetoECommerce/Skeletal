@@ -39,8 +39,8 @@ task('sass', function() {
 task('js', function() {
 	return src(config.jsFiles)
 		.pipe(plumber())
-		.pipe(concat('vendor.js'))
 		.pipe(removeSourcemaps())
+		.pipe(concat('vendor.js'))
 		.pipe(dest(config.JS))
 });
 
