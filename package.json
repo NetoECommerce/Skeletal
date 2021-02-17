@@ -20,22 +20,26 @@
 	},
 	"homepage": "https://github.com/NetoECommerce/Skeletal",
 	"devDependencies": {
-		"autoprefixer": "^9.6.0",
+		"autoprefixer": "^9.8.6",
 		"cssnano": "^4.1.10",
 		"gulp": "^4.0.2",
 		"gulp-chmod": "^3.0.0",
 		"gulp-concat": "^2.6.1",
 		"gulp-plumber": "^1.2.1",
 		"gulp-postcss": "^8.0.0",
-		"gulp-sass": "^4.0.2",
+		"gulp-purge-sourcemaps": "^1.0.0",
+		"gulp-remove-sourcemaps": "^1.0.0",
+		"gulp-sass": "^4.1.0",
+		"gulp-sourcemaps": "^3.0.0",
 		"node-sass": "^4.14.1",
-		"ntheme": "^1.9.0",
+		"ntheme": "^1.11.0",
+		"postcss-strip-inline-comments": "^0.1.5",
 		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
 	},
 	"dependencies": {
-		"bootstrap": "^4.5.2",
+		"bootstrap": "^4.6.0",
 		"jquery": "^3.5.1",
-		"popper.js": "^1.15.0"
+		"popper.js": "^1.16.1"
 	},
 	"browserslist": [
 		"last 1 version",

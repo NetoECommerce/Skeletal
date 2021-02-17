@@ -6,7 +6,8 @@ var { task, src, dest, watch, series, parallel } = require('gulp'),
 	postcss = require('gulp-postcss'),
 	sass = require('gulp-sass'),
 	autoprefixer = require('autoprefixer'),
-	cssnano = require('cssnano');
+	cssnano = require('cssnano'),
+	removeSourcemaps = require('gulp-remove-sourcemaps');
 
 sass.compiler = require('node-sass');
 
@@ -22,7 +23,7 @@ config.jsFiles = ['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper
 //  -------------------- Gulp Tasks --------------------
 // Compile SASS into CSS
 task('sass', function() {
-	var plugins = [ 
+	var plugins = [
 		autoprefixer(),
 		cssnano()
 	];
@@ -38,6 +39,7 @@ task('sass', function() {
 task('js', function() {
 	return src(config.jsFiles)
 		.pipe(plumber())
+		.pipe(removeSourcemaps())
 		.pipe(concat('vendor.js'))
 		.pipe(dest(config.JS))
 });
