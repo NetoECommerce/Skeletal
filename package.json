@@ -35,11 +35,9 @@
 		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
 	},
 	"dependencies": {
-		"bootstrap": "^4.6.0",
-		"gulp-purge-sourcemaps": "^1.0.0",
-		"gulp-sourcemaps": "^3.0.0",
+		"bootstrap": "^4.5.2",
 		"jquery": "^3.5.1",
-		"popper.js": "^1.16.1"
+		"popper.js": "^1.15.0"
 	},
 	"browserslist": [
 		"last 1 version",
