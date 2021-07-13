@@ -1,4 +1,4 @@
-// NOTICE!! THIS IS REQUIRED TO MAKE YOUR NETO SHOPPING CART WORK
+// NOTICE!! THIS IS REQUIRED TO MAKE YOUR Maropost Commerce Cloud SHOPPING CART WORK
 // DO NOT REMOVE UNLESS YOU REALLY KNOW WHAT YOU ARE DOING
 
 var nCustom = {
@@ -104,7 +104,7 @@ var nCustom = {
 }
 
 $(document).ready(function() {
-	// Neto functionalty
+	// Maropost Commerce Cloud functionalty
 	nCustom.funcs.initPageFuncs();
 	nCustom.funcs.popupFocus();
 	// Jquery Ui Date Picker

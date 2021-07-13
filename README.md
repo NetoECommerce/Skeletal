@@ -2,7 +2,7 @@
 
 <img width="407" src="https://design.neto.com.au/assets/uploads/9LEhG1shTr.png">
 
-Skeletal is the development theme for Neto. This theme contains all of our supported front-end features, so we build all new custom websites and themes with Skeletal as the starting point. Skeletal is built on Bootstrap 4.
+Skeletal is the development theme for Maropost Commerce Cloud. This theme contains all of our supported front-end features, so we build all new custom websites and themes with Skeletal as the starting point. Skeletal is built on Bootstrap 4.
 
 ## Table of content
 
@@ -17,17 +17,17 @@ Skeletal is the development theme for Neto. This theme contains all of our suppo
 
 **Theme editor**
 
-The safest way to install Skeletal is through Neto's theme store. Go to **Webstore** > **Theme editor** in your Neto control panel, hover over _Skeletal_ and click the green _Install_ button.
+The safest way to install Skeletal is through Maropost Commerce Cloud's theme store. Go to **Webstore** > **Theme editor** in your Maropost Commerce Cloud control panel, hover over _Skeletal_ and click the green _Install_ button.
 
 **Directly install**
 
-To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your Neto website. You should also rename this new `src` directory to whatever you would like your custom theme to be named. You will want to have ran `npm run build` first so you have the compiled css. 
+To install the latest version of Skeletal directly from this repository you simply need to upload the `src` directory from this repository into the `httpdocs/assets/themes` directory on your Maropost Commerce Cloud website. You should also rename this new `src` directory to whatever you would like your custom theme to be named. You will want to have ran `npm run build` first so you have the compiled css. 
 
-For the above, you will need FTP access to your Neto website, which you can request [here](http://forms.neto.com.au/design/requestftp.html).
+For the above, you will need FTP access to your Maropost Commerce Cloud website, which you can request [here](http://forms.neto.com.au/design/requestftp.html).
 
 **New theme**
 
-For creating a new Neto theme, you will want to use the [Theme Starter Kit](https://www.npmjs.com/package/ntheme).
+For creating a new Maropost Commerce Cloud theme, you will want to use the [Theme Starter Kit](https://www.npmjs.com/package/ntheme).
 
 ## Documentation
 
@@ -69,7 +69,7 @@ If you already have a local version of Skeletal then you just need to update it 
 
 ### Make a new branch
 
-You do not want your changes to be on master, changes need to be reviewed to ensure it meets Neto standards and you could possible have made mistakes. You make a branch off the master branch so you have all the latest commits and can safely make  changes without affecting live code.
+You do not want your changes to be on master, changes need to be reviewed to ensure it meets Maropost Commerce Cloud standards and you could possible have made mistakes. You make a branch off the master branch so you have all the latest commits and can safely make  changes without affecting live code.
 
 `git checkout -b "BRANCH-NAME"`
 
@@ -101,7 +101,7 @@ You might need to set you the branch to be tracked as it is a new branch you mad
 
 `git push -u origin "BRANCH-NAME"`
 
-A pull request will need a description on what it is trying to achieve with this change and if possible, steps on how to view changes on a Neto site. This is neccessary as someone else will be reviewing your pull request and can't be expected to understand what it is doing/fixing just by reviewing the code.
+A pull request will need a description on what it is trying to achieve with this change and if possible, steps on how to view changes on a Maropost Commerce Cloud site. This is neccessary as someone else will be reviewing your pull request and can't be expected to understand what it is doing/fixing just by reviewing the code.
 
 ## Review a pull request
 
@@ -115,7 +115,7 @@ This might be as simple as a style change and listing out where you can view thi
 
 ### Test out code on dev site and do a code review
 
-You should be able to view a working example of the changes on your Neto dev site based on the pull request description.
+You should be able to view a working example of the changes on your Maropost Commerce Cloud dev site based on the pull request description.
 
 Ensure you have the most up to date version of the Skeletal master repo, then switch to the pull requests branch:
 
@@ -147,7 +147,7 @@ git checkout pull/origin/999
 
 Keep in mind that these branches will be read only and you won't be able to push any changes. Branch name will be `pull/origin/PULL_REQUEST_NUMBER`.
 
-When you have the pull request branch locally, push it into the theme directory to view the changes on your Neto dev site.
+When you have the pull request branch locally, push it into the theme directory to view the changes on your Maropost Commerce Cloud dev site.
 
 `/httpdocs/assets/themes/THEME-NAME`
 
@@ -168,7 +168,7 @@ The person that submitted the pull request will be notified on your feedback and
 
 ## Support
 
-The current version of Skeletal will only work on websites running Neto 6+. For older websites, you will need to install from a previous [release](https://github.com/NetoECommerce/Skeletal/releases/tag/2.4.0).
+The current version of Skeletal will only work on websites running Maropost Commerce Cloud 6+. For older websites, you will need to install from a previous [release](https://github.com/NetoECommerce/Skeletal/releases/tag/2.4.0).
 
 ### Bootstrap 3
 
@@ -176,4 +176,4 @@ Release `#18.7.0` updated the CSS framework from Bootstrap 3.3.6 to 4.1. We no l
 
 ## Creators
 
-Made w/ 🔥 by [Neto E-commerce Solutions](http://neto.com.au).
+Made w/ 🔥 by [Maropost](http://neto.com.au).

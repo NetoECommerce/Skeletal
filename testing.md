@@ -1,10 +1,10 @@
 # Testing Skeletal
-Many features of Neto's front end are controlled by Javascript files that are not included in themes. For this reason, it can be risky making Javascript changes to Sekeletal, or any theme, as you could break something that you cannot fix. This is especially the case when updating dependencies like Bootstrap or JQuery.
+Many features of Maropost Commerce Cloud's front end are controlled by Javascript files that are not included in themes. For this reason, it can be risky making Javascript changes to Sekeletal, or any theme, as you could break something that you cannot fix. This is especially the case when updating dependencies like Bootstrap or JQuery.
 
 In this document is a list of all functions beyond a front-end developers control, and how to test them.
 
 ## Address Book
-Neto features an address book feature which allows users who are logged in to add, edit and remove postage addresses to their account. This can be done both from the checkout and from the accounts page.
+Maropost Commerce Cloud features an address book feature which allows users who are logged in to add, edit and remove postage addresses to their account. This can be done both from the checkout and from the accounts page.
 
 ### Actions to test:
 - Adding an entry to the address book (accounts page and checkout)
@@ -31,7 +31,7 @@ In the sidebar of most themes there are filters. These are influenced by Javascr
 - Price slider
 
 ## Search
-Neto's search feature is powered by AJAX through Neto.js
+Maropost Commerce Cloud's search feature is powered by AJAX through Neto.js
 
 - Standard search
 - Search with AJAX dropdown
@@ -59,15 +59,15 @@ The shipping calculator is also powered by `neto.js`.
 - Recalculate shipping after it has already been calculated
 
 ## Back-in-stock Notifications
-If a product is out of stock Neto lets users automatically be notified when it is back in stock.
+If a product is out of stock Maropost Commerce Cloud lets users automatically be notified when it is back in stock.
 - Add a Back-in-stock notification from thumbnails and product pages
 
 ## Stockist Finder
-Neto has a feature that lets users search through a database of stockists and see them on a map.
+Maropost Commerce Cloud has a feature that lets users search through a database of stockists and see them on a map.
 
 - Search for a stockist and get a successful result
 
 ## Wishlist
-Neto let's users add products to a wishlist so they can purchase them at a later date.
+Maropost Commerce Cloud let's users add products to a wishlist so they can purchase them at a later date.
 - Add product to a wish list
 - Remove product from a wish list
