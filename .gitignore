@@ -2,3 +2,4 @@ node_modules/
 dist/
 src/css/app.css
 .DS_Store
+.idea/

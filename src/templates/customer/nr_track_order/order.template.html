@@ -20,12 +20,12 @@
 			[%DATA id:'customer_po' if:'ne' value:''%]
 			<h4>PO # [%NOHTML%][@customer_po@][%/ NOHTML%]</h4>
 			[%/ DATA%]
-			<h5>Date Placed: [%format type:"date" format:"#D/#M/#Y"%][@date_placed@][%/ format%]</h5>
+			<h5>Date Placed: [%format type:"date" format:"DATE"%][@date_placed@][%/ format%]</h5>
 			[%DATA id:'if_invoiced' if:'=' value:'1'%]
-			<h5>Date Invoiced: [%format type:"date" format:"#D/#M/#Y"%][@date_invoiced@][%/ format%]</h5>
+			<h5>Date Invoiced: [%format type:"date" format:"DATE"%][@date_invoiced@][%/ format%]</h5>
 			[%/ DATA%]
 			[%DATA id:'order_status' if:'like' value:'Completed'%]
-			<h5>Date Completed: [%format type:"date" format:"#D/#M/#Y"%][@date_updated@][%/ format%]</h5>
+			<h5>Date Completed: [%format type:"date" format:"DATE"%][@date_updated@][%/ format%]</h5>
 			[%/ DATA%]
 		</div>
 		<div class="col-12 col-md-6">
@@ -59,7 +59,7 @@
 					[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/ DATA%]
 					[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]&nbsp; <b>Free Gift</b>[%/ DATA%]
 					[%FORMAT type:'date' default:''%][%param *format%]<br>
-					<b>Deliver On</b> #D/#M/#Y (#G:#I#a)[%/ param%][@date_delivery@][%/ FORMAT%]</td>
+					<b>Deliver On</b> #{DATETIME}[%/ param%][@date_delivery@][%/ FORMAT%]</td>
 				<td>[%DATA id:'ship_method' if:'ne' value:'' %]<span class="badge badge-secondary">[@ship_method@]</span><br />[%/ DATA%]
 					[%DATA id:'ship_tracking' if:'ne' value:'' %]Tracking #[@ship_tracking@]<br />[%/ DATA%]
 					[%DATA id:'ship_tracking' if:'eq' value:'' %]Tracking not yet available [%/ DATA%]

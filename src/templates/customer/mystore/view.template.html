@@ -40,7 +40,7 @@
 			[%/ DATA%]
 			</td>
 				<td valign="top" nowrap>
-			[%FORMAT type:'date' format:'#d #k #Y (#H:#I)' default:'-'%][@date_updated@][%/ FORMAT%]
+			[%FORMAT type:'date' format:'DATETIME' default:'-'%][@date_updated@][%/ FORMAT%]
 			</td>
 				<td valign="top" nowrap><a href="[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/ URL%]"><button type="button" class="btn btn-outline-secondary" title="Edit">Edit Store</button></a></td>
 			 </tr>

@@ -21,8 +21,8 @@
 						<div class="form-group">
 							<label>List Name</label>
 							<span class="badge badge-info">Created on
-							[%FORMAT type:'date' default:'' format:'#d #k #Y (#H:#I)'%][@date_created@][%/ FORMAT%].
-							[%FORMAT type:'date' default:'' format:' Last reminder sent on #d #k #Y (#H:#I).'%][@date_reminder@][%/ FORMAT%]
+							[%FORMAT type:'date' default:'' format:'DATETIME'%][@date_created@][%/ FORMAT%].
+							[%FORMAT type:'date' default:'' format:' Last reminder sent on #{DATETIME}.'%][@date_reminder@][%/ FORMAT%]
 							</span>
 							<input class="form-control" type="text" name="wh_name" value="[%NOHTML%][@wishlist_name@][%/ NOHTML%]" maxlength="50" />
 						</div>
@@ -44,7 +44,7 @@
 						<label>Remind about this list every</label>
 						<input class="form-control" type="text" name="wh_reminder_inc_days" value="[%DATA id:'reminder_inc_days' if:'>' value:'0'%][@reminder_inc_days@][%/ DATA%]" size="5" maxlength="5" />
 						<label>day(s) until this list expire on:</label>
-						<input type="text" class="form-control datepicker" id="wh_exp" name="wh_exp" value="[%FORMAT type:'date' default:'' format:'#d/#m/#Y'%][@date_expiry@][%/ FORMAT%]" />
+						<input type="text" class="form-control datepicker" id="wh_exp" name="wh_exp" value="[%FORMAT type:'date' default:'' format:'DATEINPUT'%][@date_expiry@][%/ FORMAT%]" />
 					</div>
 				</div>
 			</div>

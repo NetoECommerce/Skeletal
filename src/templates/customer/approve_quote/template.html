@@ -36,7 +36,7 @@
 		[%param *body%]
 			<tr>
 				<td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]' /%]">[@order_id@]</a></td>
-				<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/ format%]</td>
+				<td>[%format type:"date" default:"-" format:"DATE"%][@date_placed@][%/ format%]</td>
 				<td>[%escape%][@email@][%/escape%]</td>
 				<td>
 					<form action="[%url page:'account' type:'approve_quote'/%]" method="post">

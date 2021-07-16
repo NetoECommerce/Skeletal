@@ -13,9 +13,9 @@
 			<strong>Status:</strong> <span class="label label-success">[@order_status@]</span>
 			<h4>Order #[@order_id@]</h4>
 			[%if [@customer_po@]%]<h4>PO #[@customer_po@]</h4>[%/if%]
-			<h5>Date Placed: [%format type:"date" format:"#D/#M/#Y"%][@date_placed@][%/format%]</h5>
-			[%if [@if_invoiced@] == 1%]<h5>Date Invoiced: [%format type:"date" format:"#D/#M/#Y"%][@date_invoiced@][%/format%]</h5>[%/if%]
-			[%if [@order_status@] like 'Completed'%]<h5>Date Completed: [%format type:"date" format:"#D/#M/#Y"%][@date_updated@][%/format%]</h5>[%/if%]
+			<h5>Date Placed: [%format type:"date" format:"DATE"%][@date_placed@][%/format%]</h5>
+			[%if [@if_invoiced@] == 1%]<h5>Date Invoiced: [%format type:"date" format:"DATE"%][@date_invoiced@][%/format%]</h5>[%/if%]
+			[%if [@order_status@] like 'Completed'%]<h5>Date Completed: [%format type:"date" format:"DATE"%][@date_updated@][%/format%]</h5>[%/if%]
 		</div>
 		<div class="col-md-4">
 			<h4>Ship To:</h4>
@@ -51,7 +51,7 @@
 					[%if [@aff_id@] eq [@config:aff_ebay_id@]%] <span class="text-muted">EBay ID: <strong>[@aff_ref@]</strong></span>[%/if%]
 						[%if [@aff_id@] eq [@config:aff_free_id@]%] <span class="text-muted"><strong>Free Gift</strong></span>[%/if%]
 						[%if [@aff_id@] eq [@config:aff_rental_id@]%] <span class="text-muted">Rental</span>[%/if%]
-					[%format type:'date' default:'' format:'<b>Deliver On</b> #D/#M/#Y (#G:#I#a)'%][@date_delivery@][%/format%]
+					[%format type:'date' default:'' format:'<b>Deliver On</b> #{DATETIME}'%][@date_delivery@][%/format%]
 				</td>
 				<td>
 					[%if [@ship_method@]%]<p>[@ship_method@]</p>[%/if%]
