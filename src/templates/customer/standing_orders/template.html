@@ -22,22 +22,22 @@
 						<tbody>
 							<tr>
 								<th>Date Placed</th>
-								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</td>
+								<td>[%format type:"date" default:"-" format:"DATE"%][@date_placed@][%/format%]</td>
 							</tr>
 								<th>Current Status</th>
 								<td nowrap>[@order_status@] [%if [@request_to_stop@] eq '1'%]<br /><span class="small text-danger">Requesting To Stop</span>[%/if%]</td>
 							</tr>
 								<th>Date Started</th>
-								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_start@][%/format%]</td>
+								<td>[%format type:"date" default:"-" format:"DATE"%][@date_start@][%/format%]</td>
 							</tr>
 								<th>Amount On Order</th>
 								<td>[%format type:"currency"%][@grand_total@][%/format%]</td>
 							</tr>
 								<th>Next Delivery</th>
-								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_next@][%/format%]</td>
+								<td>[%format type:"date" default:"-" format:"DATE"%][@date_next@][%/format%]</td>
 							</tr>
 								<th>Date Fulfilled</th>
-								<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_fulfilled@][%/format%]</td>
+								<td>[%format type:"date" default:"-" format:"DATE"%][@date_fulfilled@][%/format%]</td>
 							</tr>
 						</tbody>
 					</table>

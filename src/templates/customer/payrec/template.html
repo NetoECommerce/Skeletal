@@ -301,9 +301,9 @@
 								<input type="hidden" name="paid[@count@]" value="[@amount_paid@]">
 								<input type="hidden" name="total[@count@]" value="[@grand_total@]">
 							</td>
-							<td class="small" nowrap>[%format type:'date' default:'-' format:'#d #k #Y'%][@date_invoiced@][%/format%]</td>
+							<td class="small" nowrap>[%format type:'date' default:'-' format:'DATE'%][@date_invoiced@][%/format%]</td>
 							<td class="small">[@terms@]</td>
-							<td class="small" nowrap>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</td>
+							<td class="small" nowrap>[%format type:'date' default:'[@date_due_text@]' format:'DATE'%][@date_due@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@grand_total@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@amount_owed@][%/format%]</td>
 							<td nowrap>[@config:currency_symbol@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%/DATA%]" size="7" onChange="updAmt(this)"></td>

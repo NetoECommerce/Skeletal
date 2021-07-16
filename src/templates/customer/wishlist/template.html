@@ -37,8 +37,8 @@
 		[%param if_true%][@reminder_inc_days@] Day(s)[%/ param%]
 		[%param if_false%]-[%/ param%]
 		[%/ DATA%]</td>
-			<td>[%FORMAT type:'date' format:'#d #k #Y' default:'-'%][@date_created@][%/ FORMAT%]</td>
-			<td class="d-none">[%FORMAT type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/ FORMAT%]</td>
+			<td>[%FORMAT type:'date' format:'DATE' default:'-'%][@date_created@][%/ FORMAT%]</td>
+			<td class="d-none">[%FORMAT type:'date' format:'DATE' default:'-'%][@date_expiry@][%/ FORMAT%]</td>
 			<td>
 				<form method="post" action="[%URL page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%escape%][@wishlist_name@][%/escape%]\'?')">
 					<input type="hidden" name="id" value="[@wishlist_id@]">
