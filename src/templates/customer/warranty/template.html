@@ -41,16 +41,16 @@
 				[%/ DATA%]
 			</td>
 			<td>
-				[%format type:"date" default:"-" format:"#d #k #Y"%][@date_disputed@]
+				[%format type:"date" default:"-" format:"DATE"%][@date_disputed@]
 				[%/ format%]
 			</td>
 			<td>[@dispute_type@]</td>
 			<td>[@dispute_reason@]</td>
 			<td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%/ URL%]">[@order_id@]</a></td>
 			<td>
-				[%format type:'date' default:'-' format:'#d #k #Y'%][@date_filed@]
+				[%format type:'date' default:'-' format:'DATE'%][@date_filed@]
 				[%/ format%]/
-				[%format type:'date' default:'-' format:'#d #k #Y'%][@company_reply@]
+				[%format type:'date' default:'-' format:'DATE'%][@company_reply@]
 				[%/ format%]
 			</td>
 		</tr>

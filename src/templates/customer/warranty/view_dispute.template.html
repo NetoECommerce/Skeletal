@@ -139,7 +139,7 @@
 				<div class="list-group list-group-flush">
 			[%/param%][%param *body%]
 				<div class="list-group-item [%if [@from_name@] eq [@config:company_name@]%]list-group-item-warning[%/if%]">
-					<span class="badge badge-info">[%format type:"date" format:'#d #k #Y (#H:#I)'%][@date_sent@][%/format%]</span>
+					<span class="badge badge-info">[%format type:"date" format:'DATETIME'%][@date_sent@][%/format%]</span>
 					<p class="small">[%format type:'text' case:'title'%][@from_name@][%/format%]</p>
 					<p class="list-group-item-text">[@message@]</p>
 				</div>

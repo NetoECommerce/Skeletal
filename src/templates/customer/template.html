@@ -198,9 +198,9 @@
 						</p>
 						<hr>
 						<div class="account-order-card">
-							<p>Date Placed <strong>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</strong></p>
+							<p>Date Placed <strong>[%format type:"date" default:"-" format:"DATE"%][@date_placed@][%/format%]</strong></p>
 							[%if [@order_status@] ne 'Cancelled'%]
-								<p>Date Due <strong>[%format type:'date' default:'[@date_due_text@]' format:'#d #k #Y'%][@date_due@][%/format%]</strong></p>
+								<p>Date Due <strong>[%format type:'date' default:'[@date_due_text@]' format:'DATE'%][@date_due@][%/format%]</strong></p>
 								[%if [@amount_owed@] <= 0%]
 									<p><span class="label label-success">Paid in Full</span></p>
 								[%else%]
@@ -290,7 +290,7 @@
 		[%param *body%]
 					<tr>
 						<td><a href="[%url page:'account' type:'view_order' id:'[@order_id@]'/%]">[@order_id@]</a></td>
-						<td>[%format type:"date" default:"-" format:"#d #k #Y"%][@date_placed@][%/format%]</td>
+						<td>[%format type:"date" default:"-" format:"DATE"%][@date_placed@][%/format%]</td>
 						<td>[@sales_first_name@]&nbsp;[@sales_last_name@]</td>
 						<td>[%format type:"currency"%][@grand_total@][%/format%]</td>
 						[%if [@config:allow_quote_approval@]%]
@@ -375,8 +375,8 @@
 							[%/DATA%]
 						</td>
 						<td>
-							[%format type:'date' format:'#d #k #Y' default:'-'%][@date_created@][%/format%]
-							<span class="d-none"> / [%format type:'date' format:'#d #k #Y' default:'-'%][@date_expiry@][%/format%]</span>
+							[%format type:'date' format:'DATE' default:'-'%][@date_created@][%/format%]
+							<span class="d-none"> / [%format type:'date' format:'DATE' default:'-'%][@date_expiry@][%/format%]</span>
 						</td>
 						<td>
 							<form method="post" action="[%URL page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%escape%][@wishlist_name@][%/escape%]\'?')">

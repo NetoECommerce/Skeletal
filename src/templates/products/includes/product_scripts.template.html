@@ -13,7 +13,7 @@
 					'onReady' : function () {
 						$('.zoom').zoom();
 						$('.variation-wrapper').removeClass('disable-interactivity');
-                        $('#sale-end').countdown('[%format type:"date" format:"#M/#D/#Y #H:#I"%%][@promo_end@][%/format%]', function(event) {
+                        $('#sale-end').countdown('[%format type:"date" format:"#Y/#M/#D #H:#I:#S"%%][@promo_end@][%/format%]', function(event) {
                             $(this).html(event.strftime('%D days %H:%M:%S'));
                         });
                         [%if [@has_variation@] || ![@has_child@] AND ![@has_components@]%]
@@ -101,7 +101,7 @@
             'wrapAround': true
             });
 			// Sales countdown
-			$('#sale-end').countdown('[%format type:"date" format:"#M/#D/#Y #H:#I"%][@promo_end@][%/format%]', function(event) {
+			$('#sale-end').countdown('[%format type:"date" format:"#Y/#M/#D #H:#I:#S"%][@promo_end@][%/format%]', function(event) {
                 $(this).html(event.strftime('%D days %H:%M:%S'));
             });
 			// Tab a11y
