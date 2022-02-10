@@ -31,7 +31,7 @@
 		"gulp-remove-sourcemaps": "^1.0.0",
 		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "^3.0.0",
-		"node-sass": "^4.14.1",
+		"node-sass": "^7.0.0",
 		"ntheme": "^1.11.0",
 		"postcss-strip-inline-comments": "^0.1.5",
 		"simple-github-release": "git+https://github.com/brandonsheppard/simple-github-release.git"
