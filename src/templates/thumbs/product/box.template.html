@@ -11,7 +11,7 @@
 		</div>
 		<div class="col-12 col-lg-7">
 			<p class="title mb-1">
-				<a href="[@URL@]">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/ FORMAT%]</a>
+				<a href="[@URL@]">[%escape%][%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/ FORMAT%][%/escape%]</a>
 			</p>
 			<p class="price" itemprop="offers">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">

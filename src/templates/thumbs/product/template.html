@@ -6,7 +6,7 @@
 		<a href="[@URL@]" class="thumbnail-image pb-2">
 			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@SKU@]">
 		</a>
-		<p class="card-title h4" itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%]</a></p>
+		<p class="card-title h4" itemprop="name"><a href="[@URL@]">[%escape%][%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%][%/escape%]</a></p>
 		<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[@model@] price">
 			[%if [@inpromo@]%]
 				Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
