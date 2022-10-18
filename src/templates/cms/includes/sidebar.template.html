@@ -37,7 +37,7 @@
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</a>
 							[%else%]
-								<a class="filter text-dark list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="[@url@]" aria-label="Filter [@filter_name@] to[%escape%][@name@][%/escape%]" rel="nofollow">
+								<a class="filter text-dark list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="[@url@]" aria-label="Filter [@filter_name@] to [%escape%][@name@][%/escape%]" rel="nofollow">
 									<span><i class="far fa-square"></i> [%escape%][@name@][%/escape%]</span>
 									<span class="badge badge-secondary badge-pill">[@total@]</span>
 								</a>
@@ -152,7 +152,7 @@
 		[%/param%]
 		[%param *level_1%]
 			<div class="position-relative border-bottom [%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
-				<a class="text-dark list-group-item list-group-item-action" href="[@url@]"> [%escape%][@name@][%/escape%]</a>
+				<a class="text-dark list-group-item list-group-item-action" href="[@url@]">[%escape%][@name@][%/escape%]</a>
 				[%if [@next_level@]%]
 					<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
 				[%/if%]
@@ -160,14 +160,14 @@
 		[%/param%]
 		[%param *level_2%]
 				<li class="[%if [@next_level@]%] dropdown dropdown-hover[%/if%]">
-					<a class="dropdown-item" href="[@url@]"> [%escape%][@name@][%/escape%]</a>
+					<a class="dropdown-item" href="[@url@]">[%escape%][@name@][%/escape%]</a>
 					[%if [@next_level@]%]
 						<ul class="dropdown-menu dropdown-menu-horizontal">[@next_level@]</ul>
 					[%/if%]
 				</li>
 		[%/param%]
 		[%param *level_3%]
-				<li><a class="dropdown-item" href="[@url@]"> [%escape%][@name@][%/escape%]</a></li>
+				<li><a class="dropdown-item" href="[@url@]">[%escape%][@name@][%/escape%]</a></li>
 		[%/param%]
 		[%param footer%]
 				</div>
