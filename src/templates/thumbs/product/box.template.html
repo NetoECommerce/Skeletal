@@ -2,7 +2,7 @@
 <li class="list-group-item thumbnail-box border-0" role="article" aria-label="Product Thumbnail">
 	<div class="row">
 		<div class="col-12 col-lg-5">
-			<a href="[@URL@]" title="[@model@]">
+			<a href="[@URL@]" title="[%escape%][@model@][%/escape%]">
 				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/ asset_url%]" class="product-image img-fluid" width="100%" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
 			</a>
 			[%if [@inpromo@]%]
