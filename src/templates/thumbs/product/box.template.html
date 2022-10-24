@@ -2,8 +2,8 @@
 <li class="list-group-item thumbnail-box border-0" role="article" aria-label="Product Thumbnail">
 	<div class="row">
 		<div class="col-12 col-lg-5">
-			<a href="[@URL@]" title="[@model@]">
-				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/ asset_url%]" class="product-image img-fluid" width="100%" alt="[@model@]" rel="itmimg[@SKU@]">
+			<a href="[@URL@]" title="[%escape%][@model@][%/escape%]">
+				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/ asset_url%]" class="product-image img-fluid" width="100%" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
 			</a>
 			[%if [@inpromo@]%]
 				<div class="savings-container"><span class="badge badge-danger">On Sale</span></div>
@@ -11,7 +11,7 @@
 		</div>
 		<div class="col-12 col-lg-7">
 			<p class="title mb-1">
-				<a href="[@URL@]">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/ FORMAT%]</a>
+				<a href="[@URL@]">[%escape%][%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/ FORMAT%][%/escape%]</a>
 			</p>
 			<p class="price" itemprop="offers">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">

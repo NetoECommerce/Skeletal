@@ -4,10 +4,10 @@
 		<meta itemprop="brand" content="[@brand@]"/>
 		<meta itemprop="mpn" content="[@sku@]"/>
 		<a href="[@URL@]" class="thumbnail-image pb-2">
-			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[@model@]" rel="itmimg[@SKU@]">
+			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
 		</a>
-		<p class="card-title h4" itemprop="name"><a href="[@URL@]">[%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%]</a></p>
-		<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[@model@] price">
+		<p class="card-title h4" itemprop="name"><a href="[@URL@]">[%escape%][%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%][%/escape%]</a></p>
+		<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[%escape%][@model@][%/escape%] price">
 			[%if [@inpromo@]%]
 				Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
 				<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]"/>
@@ -26,17 +26,17 @@
 			<input type="hidden" id="thumb[@rndm@][@SKU@]" name="thumb[@rndm@][@SKU@]" value="[@thumb@]">
 			<input type="hidden" id="qty[@rndm@][@SKU@]" name="qty[@rndm@][@SKU@]" value="[%if [@min_qty@] > 0%][@min_qty@][%else%]1[%/if%]" class="input-tiny">
 			[%if [@extra@] or [@has_child@] or [@editable_bundle@]%]
-				<a href="[@URL@]" title="View [@model@] Buying Options" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Options</a>
+				<a href="[@URL@]" title="View [%escape%][@model@][%/escape%] Buying Options" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">See Options</a>
 			[%elseif [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
-				<button type="button" title="Pre-Order [@model@] Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
+				<button type="button" title="Pre-Order [[%escape%][@model@][%/escape%] Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
 			[%elseif [@store_quantity@] > 0 AND [@preorder@] AND ![@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
-				<button type="button" title="Pre-Order [@model@] Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
+				<button type="button" title="Pre-Order [%escape%][@model@][%/escape%] Now!" class="addtocart btn btn-warning btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Pre-Order</button>
 			[%elseif [@store_quantity@] > 0 AND ![@preorder@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
+				<button type="button" title="Add [%escape%][@model@][%/escape%] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Add to Cart</button>
 			[%elseif [@store_quantity@] < 1 AND [@config:ALLOW_NOSTOCK_CHECKOUT@] %]
-				<button type="button" title="Add [@model@] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
+				<button type="button" title="Add [%escape%][@model@][%/escape%] to Cart" class="addtocart btn-primary btn btn-block btn-loads" rel="[@rndm@][@SKU@]" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Backorder</button>
 			[%else%]
-				<a class="notify_popup btn btn-outline-secondary btn-block btn-loads" href="[@url@]" title="Notify Me When [@model@] Is Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
+				<a class="notify_popup btn btn-outline-secondary btn-block btn-loads" href="[@url@]" title="Notify Me When [%escape%][@model@][%/escape%] Is Back In Stock" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>">Out Of Stock</a>
 			[%/if%]
 		</form>
 		<!-- /Purchase Logic -->
