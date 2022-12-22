@@ -188,11 +188,11 @@
 				<div class="media mb-2">
 					<div class="product-img">
 						<span class="badge badge-pill badge-light">[@qty@]</span>
-						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" width="50px" height="50px" alt="[@model@] image" />
+						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" width="50px" height="50px" alt="[%escape%][@model@][%/escape%] image" />
 					</div>
 					<div class="media-body">
 						<span class="float-right">[%format type:'currency'%][@subtotal@][%/ format%]</span>
-						<p class="m-0">[@model@]</p>
+						<p class="m-0">[%escape%][@model@][%/escape%]</p>
 						<small class="text-muted text-break">[@extra@]</small>
 						[%if [@aff_id@] eq '[@config:aff_rental_id@]'%]&nbsp; <b>Rental</b>[%/if%]
 						[%if [@aff_id@] eq '[@config:aff_ebay_id@]'%]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/if%]
@@ -200,7 +200,7 @@
 						[%if [@has_components@] == 1%]
 						[%CART_ITEM_COMPONENTS counter:'[@counter@]'%]
 							[%param header%]<small class="text-muted">[%/ param%]
-							[%param *body%][@qty@] x [@model@]<br/>[%/ param%]
+							[%param *body%][@qty@] x [%escape%][@model@][%/escape%]<br/>[%/ param%]
 							[%param footer%]</small>[%/ param%]
 						[%/ CART_ITEM_COMPONENTS%]
 						[%/ if%]
@@ -220,7 +220,7 @@
 							[%/if%]
 						[%/if%]
 						[%if [@couponcode@]%]
-							<li class="list-group-item border-0">Special Pricing Arrangements / Discounts  <span class="float-right">[@couponcode@]</span></li>
+							<li class="list-group-item border-0">Special Pricing Arrangements / Discounts  <span class="float-right">[%escape%][@couponcode@][%/escape%]</span></li>
 						[%/if%]
 							<li class="list-group-item border-0">Subtotal <span class="float-right">[%format type:'currency'%][@product_total@][%/format%]</span></li>
 						[%if ![@shipping_quote@]%]
