@@ -201,12 +201,12 @@
 			var state_in = document.getElementById('state_in'+id);
 			var sel = document.getElementById('suburb_sl'+id);
 
-			if(!zip.cvalue || zip.value!=zip.cvalue) {
+			if(!zip.cvalue || zip.value!=zip.cvalue || country.value!=country.cvalue) {
 				zip.cvalue = zip.value;
 				msg.innerHTML = '<i>'+editAccount.vars.loadingMsg+'</i>';
 				dis.style.display = 'none';
 				msg.style.display = '';
-				if(country.options[country.selectedIndex].value == 'AU') {
+				if(country.options[country.selectedIndex].value == '[@config:SELECTORCOUNTRY@]') {
 					city_in.value ='';
 					state_in.value ='';
 					city_in.disabled = true;
