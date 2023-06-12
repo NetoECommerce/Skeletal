@@ -137,6 +137,7 @@
 					</div>
 				[%/param%]
 			[%/related_products%]
+			[%if [@content_id@] %]
 			[%thumb_list type:'products' limit:'[@config:upsell_limit@]' template:'' sortby:'random' filter_category:'[@content_id@]' filter_exsku1:'[@sku@]'%]
 				[%param *header%]
 					<!-- Products from the same category -->
@@ -149,6 +150,7 @@
 					</div>
 				[%/param%]
 			[%/thumb_list%]
+			[%/if%]
 		</div>
 	</div>
 [%/cache%]
