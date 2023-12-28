@@ -7,6 +7,7 @@
 		</ol>
 	</nav>
 	<h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1>
+	[%if [@warning@]%]<div class="alert alert-warning" role="alert"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/if%]
 	<p>Dispute #[@dispute_id@] has been updated.</p>
 	<input type="button" class="btn btn-outline-secondary" value="Done" onClick="window.location.replace('[%URL page:account type:warranty id:[@dispute_id@]%][%END URL%]');">
 	<script>

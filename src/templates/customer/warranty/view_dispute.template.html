@@ -24,7 +24,8 @@
 	</nav>
 	<div class="page-header"><h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1></div>
 	[%if [@error@]%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/if%]
-	<form name="disputeForm" action="[%URL page:'account' type:'warranty'/%]" method="post">
+	[%if [@warning@]%]<div class="alert alert-warning" role="alert"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/if%]
+	<form name="disputeForm" action="[%URL page:'account' type:'warranty'/%]" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="[@dispute_id@]">
 		<input type="hidden" name="action" value="proc">
 		<input type="hidden" name="closedispute" value="">
@@ -139,9 +140,18 @@
 				<div class="list-group list-group-flush">
 			[%/param%][%param *body%]
 				<div class="list-group-item [%if [@from_name@] eq [@config:company_name@]%]list-group-item-warning[%/if%]">
-					<span class="badge badge-info">[%format type:"date" format:'DATETIME'%][@date_sent@][%/format%]</span>
-					<p class="small">[%format type:'text' case:'title'%][@from_name@][%/format%]</p>
-					<p class="list-group-item-text">[@message@]</p>
+					<div class="row">
+						<div class="col-md-6">
+							<span class="badge badge-info">[%format type:"date" format:'DATETIME'%][@date_sent@][%/format%]</span>
+							<p class="small">[%format type:'text' case:'title'%][@from_name@][%/format%]</p>
+							<p class="list-group-item-text">[@message@]</p>
+						</div>
+						<div class="col-md-6">
+							<a href="[%asset_url type:'disputes' id:'[@msg_id@]' thumb:'full' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/asset_url%]" target="_blank">
+								<img width="50" height="50" src="[%asset_url type:'disputes' id:'[@msg_id@]' thumb:'thumb' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/asset_url%]">
+							</a>
+						</div>
+					</div>
 				</div>
 			[%/param%][%param *footer%]
 					[%if ![@dispute_closed@]%]
@@ -149,6 +159,10 @@
 							<div class="row">
 								<div class="col-sm-9  col-md-10">
 									<textarea name="message" class="form-control" rows="1">[%nohtml%][@message@][%/nohtml%]</textarea>
+									<br/>
+									<label><b>Upload Image</b></label>
+									<p>Choose file to select and upload.</p>
+									<input type="file" name="disputeImage" accept="image/png, image/jpeg, image/gif">
 								</div>
 								<div class="col-sm-3 col-md-2">
 									<button type="button" class="btn btn-block btn-success float-right" onclick="sendMessage()"> <i class="fa fa-envelope icon-white"></i> Send</button>
