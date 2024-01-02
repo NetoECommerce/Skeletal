@@ -31,7 +31,7 @@
 			}
 		}
 	</script>
-	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create' %][%/ URL%]" method="post">
+	<form name="disputeForm" action="[%URL page:'account' type:'warranty' fn:'create' %][%/ URL%]" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="step" value="proc">
 		<input type="hidden" name="type" value="[%NOHTML%][@type@][%/ NOHTML%]">
 		<input type="hidden" name="reason" value="[%NOHTML%][@reason@][%/ NOHTML%]">
@@ -104,6 +104,10 @@
 		<h4>Detailed Explanation Of Problem</h4>
 		<p>[@dispute_type_title@] <i class="fa fa-arrow-right"></i> [@dispute_reason@]</p>
 		<textarea class="form-control" name="message" rows="5">[%NOHTML%][@message@][%/ NOHTML%]</textarea>
+		<br/>
+		<label><b>Upload Image</b></label>
+		<p>Choose file to select and upload.</p>
+		<input type="file" name="disputeImage" accept="image/png, image/jpeg, image/gif">
 		<hr>
 		<div class="row btn-stack">
 			<div class="col-12 col-md-3">
