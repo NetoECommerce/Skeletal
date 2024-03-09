@@ -98,7 +98,7 @@
 							</td>
 							<td class="options-column">
 								<input name="line[@count@]" type="hidden" value="[@counter@]" />
-								<input id="qty[@count@]"  type="number" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty" [%if [@aff_id@] eq 'free'%] disabled [%/if%] aria-label="[@model@] Quantity"/>
+								<input id="qty[@count@]"  type="number" min="0" name="qty[@count@]" value="[@qty@]" class="form-control cart-qty [%if [@aff_id@] eq 'free'%] readonly [%/if%]" [%if [@aff_id@] eq 'free'%] readonly [%/if%] aria-label="[@model@] Quantity"/>
 							</td>
 							<td class="text-right">
 								[%if [@qty@] > 1%]
