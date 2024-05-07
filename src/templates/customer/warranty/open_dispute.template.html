@@ -80,7 +80,7 @@
 				[%/ PARAM%][%PARAM *body%]
 				<tr>
 					<td><input type="text" name="qty[@counter@]" value="" class="form-control"> of [@qty@]</td>
-					<td><a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%/ url%]"><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%/ asset_url%]"></a> <a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%/ url%]">[@model@] <i>[@extra@]</i></a>
+					<td><a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%/ url%]"><img width="50" height="50" src="[%asset_url type:'item' id:'[@SKU@]' thumb:'thumb'%][%/ asset_url%]"></a> <a target="_blank" href="[%url type:'item' id:'[@SKU@]'%][%/ url%]">[%ESCAPE%][@model@][%/ESCAPE%] <i>[%ESCAPE%][@extra@][%/ESCAPE%]</i></a>
 						[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]&nbsp; <b>FREE*</b>[%/ DATA%]
 						[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/ DATA%]
 						[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]&nbsp; <b>Free Gift</b>[%/ DATA%]
