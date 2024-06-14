@@ -56,22 +56,24 @@
 									<p><span class="badge badge-warning">On pre-order - Released [%format type:'date'%][@arrival_date@][%/format%]</span></p>
 								[%/if%]
 								[%if [@has_components@]%]
-									[%cart_item_components counter:'[@counter@]'%]
-										[%param header%]
-											<ul class="list-unstyled">
-										[%/param%]
-										[%param *body%]
-											<li>
-												<input type="hidden" name="compsku[@count@]_[@component_count@]" value="[@SKU@]">
-												<label>[@model@] x </label>
-												<input type="number" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly [%/if%] value="[@qty@]" size="3">
-											</li>
-										[%/param%]
-										[%param *footer%]
-											</ul>
-											<input type="hidden" name="components[@count@]" value="[@total_components@]">
-										[%/param%]
-									[%/cart_item_components%]
+									[%if [@CONFIG:CHECKOUT_SHOW_KIT_ITEMS@]%]
+										[%cart_item_components counter:'[@counter@]'%]
+											[%param header%]
+												<ul class="list-unstyled">
+											[%/param%]
+											[%param *body%]
+												<li>
+													<input type="hidden" name="compsku[@count@]_[@component_count@]" value="[@SKU@]">
+													<label>[@model@] x </label>
+													<input type="number" min="[@min_assemble@]" max="[@max_assemble@]" name="compqty[@count@]_[@component_count@]" class="form-control [%if [@fixed_assemble@]%]readonly [%/if%]" [%if [@fixed_assemble@]%]readonly [%/if%] value="[@qty@]" size="3">
+												</li>
+											[%/param%]
+											[%param *footer%]
+												</ul>
+												<input type="hidden" name="components[@count@]" value="[@total_components@]">
+											[%/param%]
+										[%/cart_item_components%]
+									[%/if%]
 								[%/if%]
 								[%if [@gifts_available@]%]
 									<p class="h4">Congratulations! The above purchase has made you eligible for [@gifts_available@] of the following FREE Gifts!</p>
