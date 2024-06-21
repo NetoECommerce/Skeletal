@@ -2,6 +2,11 @@
 	<div class="page-header mb-3"><h1>My Account</h1></div>
 	[%TRIM inner:'1'%]
 		[%param body%]
+		[%show_message severity:'msg'%]
+			[%param *body%]
+				<div class="alert alert-success" role="alert"><a class="close" data-dismiss="alert">×</a> [%ESCAPE%][@info_msg@][%/ESCAPE%]</div>
+			[%/param%]
+		[%/show_message%]
 		[%show_message severity:'error'%]
 			[%param *body%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a><i class="fa fa-exclamation-triangle"></i> [@info_msg@]</div>[%/ param%]
 		[%/ show_message%]
