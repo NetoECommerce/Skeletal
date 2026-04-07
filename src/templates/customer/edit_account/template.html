@@ -103,6 +103,15 @@
 					<label for="phone">Phone number</label><span class="text-danger">*</span>
 					<input class="form-control" type="text" name="phone" id="phone" size="50" value="[@phone@]">
 				</div>
+                [% if [@toggle:ecommerce.sms_marketing_feature@] %]
+                <div class="form-group">
+                    <label>
+                        <input type='checkbox' id="subscribe_sms" [%if [@opt_in_sms@]%]checked[%/if%]>
+                        <input type="hidden" name="opt_in_sms" value="[@opt_in_sms@]">
+                        Subscribe to SMS notifications
+                    </label>
+                </div>
+                [%/if%]
 				<div class="form-group">
 					<label for="fax">Fax number</label>
 					<input class="form-control" type="text" name="fax" id="fax" size="50" value="[@fax@]">
