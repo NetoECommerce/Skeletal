@@ -1,0 +1,20 @@
+<h3 class="my-2">Click &amp; collect information</h3>
+<div class="row">
+    <div class="col-12 col-sm-6">
+        <h4>Location</h4>
+        <p class="mb-1">[@warehouse_name@]</p>
+        <p class="mb-1">[@warehouse_address@]</p>
+    </div>
+    <div class="col-12 col-sm-6">
+        <h4>Opening hours <span class="text-muted small">
+        [%if [@warehouse_operation_hours_timezone@] ne ''%]
+        ([@warehouse_operation_hours_timezone@])
+        [%/if%]
+        </span></h4>
+        <p class="mb-1">[@warehouse_operation_hours@]</p>
+    </div>
+    <div class="col-12 col-sm-6 mt-sm-2">
+        <h4>Ready for Collection In Approximately</h4>
+        <p class="mb-1">[@collection_eta@]</p>
+    </div>
+</div>
