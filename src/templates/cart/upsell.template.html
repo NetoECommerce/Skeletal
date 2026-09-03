@@ -46,9 +46,9 @@
 													<td valign="top"><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
 													<td valign="top" width="70%">
 														[%if [@length@] > '100'%]
-															<textarea class="inputtext form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" max="[@length@]" cols="20">[@currentextra@]</textarea>
+															<textarea class="inputtext form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" maxlength="[@length@]" cols="20">[@currentextra@]</textarea>
 														[%else%]
-															<input type="text" class="form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" max="[@length@]" value="[@currentextra@]">
+															<input type="text" class="form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" maxlength="[@length@]" value="[@currentextra@]">
 														[%/if%]
 													</td>
 												</tr>
