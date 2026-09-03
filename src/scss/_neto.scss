@@ -185,10 +185,12 @@ $payment-icon:(
 #main-image {
 	max-width: 100%;
 	height: auto;
-
-	&.component-var-thumb {
-		width: 100%;
-	}
+}
+// Kit component thumbnails
+.component-var-thumb {
+	max-width: 100%;
+	height: auto;
+	width: 100%;
 }
 // Product page tabs
 .tabbable {
