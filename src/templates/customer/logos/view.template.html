@@ -2,11 +2,11 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li><a href="[@config:home_url@]">Home</a></li>
-		<li><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
+		<li><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
 	</ol>
 	</nav>
 	<div class="page-header"><h1>Manage Logo</h1></div>
-	<form enctype="multipart/form-data" method="POST" name="updatelogo" id="updatelogo" action="[%URL page:'account' type:'logos'%][%END URL%]">
+	<form enctype="multipart/form-data" method="POST" name="updatelogo" id="updatelogo" action="[%url page:'account' type:'logos'%][%/ url%]">
 		<input type="hidden" name="upld_logo_sku" value="COMPANY_LOGO">
 		<input type="hidden" id="upld_logo_qty" name="upld_logo_qty" value="0">
 		<div class="selcardpl"></div>
@@ -18,7 +18,7 @@
 				<h3>Upload your logo file here</h3>
 				<table cellpadding="0" cellspacing="2" border="0">
 					<tr><td align="center">
-						<img id="upld_logo_img" width="100px" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/na.gif'%][%END asset_url%]?[%RANDOM_NUMBER timestamp:'1'%][%END RANDOM_NUMBER%]" />
+						<img id="upld_logo_img" width="100px" src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/na.gif'%][%/ asset_url%]?[%random_number timestamp:'1'%][%/ random_number%]" />
 					</td></tr>
 				</table>
 				<div class="choose-file">
@@ -30,7 +30,7 @@
 		</div>
 	</form>
 </div>
-[%SITE_VALUE id:'footer_javascript'%]
+[%site_value id:'footer_javascript'%]
 <script>
 	$(document).ready(function() {
 		$.extend({

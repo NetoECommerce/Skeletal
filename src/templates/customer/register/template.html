@@ -1,20 +1,20 @@
 <div class="col-12">
 	<div class="page-header mb-3"><h1>My Account</h1></div>
-	[%TRIM inner:'1'%]
+	[%trim inner:'1'%]
 		[%param body%]
 		[%show_message severity:'msg'%]
 			[%param *body%]
-				<div class="alert alert-success" role="alert"><a class="close" data-dismiss="alert">×</a> [%ESCAPE%][@info_msg@][%/ESCAPE%]</div>
+				<div class="alert alert-success" role="alert"><a class="close" data-dismiss="alert">×</a> [%escape%][@info_msg@][%/ESCAPE%]</div>
 			[%/param%]
 		[%/show_message%]
 		[%show_message severity:'error'%]
 			[%param *body%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a><i class="fa fa-exclamation-triangle"></i> [@info_msg@]</div>[%/ param%]
 		[%/ show_message%]
 		[%/ param%]
-	[%/ TRIM%]
+	[%/ trim%]
 	<div class="row">
 		<div class="col-12 col-md-6 mb-4">
-			<form id="login" method="post" action="[%URL page:'account' type:'login'%][%/ URL%]">
+			<form id="login" method="post" action="[%url page:'account' type:'login'%][%/ url%]">
 				<input type="hidden" name="redirect" value="[@redirect@]">
 				<div class="card">
 					<div class="card-header h3 bg-white">Returning Customer? Log In</div>
@@ -23,15 +23,15 @@
 							<div class="col-12 col-md-6">
 								<div class="form-group ">
 									<label for="username">E-mail Address</label>
-									<input type="text" id="username" name="username" class="form-control" value="[%nohtml%][@username@][%end nohtml%]" size="25" placeholder="name@example.com" required/>
-									<p class="form-text text-muted small d-none"><a href="[%URL page:'account' type:'forgotusr'%][%/ URL%]"><i class="fa fa-question-circle"></i> Forgot your username?</a></p>
+									<input type="text" id="username" name="username" class="form-control" value="[%escape%][@username@][%/ escape%]" size="25" placeholder="name@example.com" required/>
+									<p class="form-text text-muted small d-none"><a href="[%url page:'account' type:'forgotusr'%][%/ url%]"><i class="fa fa-question-circle"></i> Forgot your username?</a></p>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="password">Password</label>
-									<input type="password" id="password" name="password" class="form-control" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
-									<p class="form-text text-muted small"><a href="[%URL page:'account' type:'forgotpwd'%][%/ URL%]" aria-label="Click if you forgot your password"><i class="fa fa-question-circle"></i> Forgot your password?</a></p>								</div>
+									<input type="password" id="password" name="password" class="form-control" value="[%escape%][%/ escape%]" size="25" autocomplete="off" required/>
+									<p class="form-text text-muted small"><a href="[%url page:'account' type:'forgotpwd'%][%/ url%]" aria-label="Click if you forgot your password"><i class="fa fa-question-circle"></i> Forgot your password?</a></p>								</div>
 							</div>
 						</div>
 						<button name="submit" type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-user"></i> Login Now</button>
@@ -40,7 +40,7 @@
 			</form>
 		</div>
 		<div class="col-12 col-md-6">
-			<form id="register" method="post" action="[%URL page:'account' type:'register'%][%/ URL%]">
+			<form id="register" method="post" action="[%url page:'account' type:'register'%][%/ url%]">
 				<input type="hidden" name="redirect" value="[@redirect@]">
 				<input type="hidden" name="reg_username" value="[%format type:'date' format:'#h#i#s'%]now[%/ format%][%random_number length:'6'%][%/ random_number%]">
 				<div class="card">
@@ -50,28 +50,28 @@
 							<div class="col-12 col-md-12">
 								<div class="form-group">
 									<label for="reg_email">E-mail Address</label>
-									<input class="form-control" type="email" id="reg_email" name="reg_email" value="[%nohtml%][%FORM id:'reg_email'%][%/ FORM%][%end nohtml%]" size="25" required/>
+									<input class="form-control" type="email" id="reg_email" name="reg_email" value="[%escape%][%form id:'reg_email'%][%/ form%][%/ escape%]" size="25" required/>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="reg_password">Password</label>
-									<input class="form-control" type="password" id="reg_password" name="reg_password" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
+									<input class="form-control" type="password" id="reg_password" name="reg_password" value="[%escape%][%/ escape%]" size="25" autocomplete="off" required/>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="reg_password2">Confirm Password</label>
-									<input class="form-control" type="password" id="reg_password2" name="reg_password2" value="[%nohtml%][%end nohtml%]" size="25" autocomplete="off" required/>
+									<input class="form-control" type="password" id="reg_password2" name="reg_password2" value="[%escape%][%/ escape%]" size="25" autocomplete="off" required/>
 								</div>
 							</div>
-							[%EXTRA_CUSTOMER_FIELDS%]
+							[%extra_customer_fields%]
 							[%param *integer_option%]
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@default_value@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
 							[%/ param%]
@@ -80,7 +80,7 @@
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@field_default@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
 							[%/ param%]
@@ -89,7 +89,7 @@
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@field_default@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@field_default@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
 							[%/ param%]
@@ -98,7 +98,7 @@
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%NOHTML%][@default_value@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@default_value@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
 							[%/ param%]
@@ -107,7 +107,7 @@
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%DATA id:'default_value' if:'eq' value:'y'%]checked[%/ DATA%] [%if [@required_field@]%]required="true"[%/if%]>
+										<input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%data id:'default_value' if:'eq' value:'y'%]checked[%/ data%] [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
 							[%/ param%]
@@ -116,7 +116,7 @@
 									<div class="form-group">
 										<label for="[@field_id@]">[@field_name@]</label>
 										[%if [@required_field@] eq 'n'%]<span class="text-muted small">optional</span>[%/if%]
-										<input class="datepicker" class="form-control" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%NOHTML%][@default_value@][%/ NOHTML%]" [%if [@required_field@]%]required="true"[%/if%]>
+										<input class="datepicker" class="form-control" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%escape%][@default_value@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 									</div>
 								</div>
 							[%/ param%]
@@ -135,7 +135,7 @@
 									</div>
 								</div>
 							[%/ param%]
-							[%/ EXTRA_CUSTOMER_FIELDS%]
+							[%/ extra_customer_fields%]
 							<div class="clear"></div>
 							<div class="col-12">
 								<div class="form-group mb-0 small">
@@ -170,4 +170,4 @@
 		</div>
 	</div>
 </div>
-[%GA_FUNNEL%]/user/login.html[%/ GA_FUNNEL%]
+[%ga_funnel%]/user/login.html[%/ ga_funnel%]

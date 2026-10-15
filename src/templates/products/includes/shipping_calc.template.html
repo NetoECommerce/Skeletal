@@ -18,7 +18,7 @@
 					<input type="text" id="ship_city" name="ship_city" value="[%session id:'ship_city'/%]" class="form-control" size="50" maxlength="50"/>
 				</div>
 				<div class="col-12 col-md-3">
-					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate"
 						onClick="$.load_ajax_template('_buying_options', { 'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city': $('#ship_city').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() }, { 'onLoad': productShippingCalc.suburbSelectorInit })">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
@@ -40,7 +40,7 @@
 				</div>
 				<div class="col-12 col-sm-3">
 					<label>&nbsp;</label>
-					<button type="button" class="btn btn-primary btn-block btn-loads" id="suburb_search_btn" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+					<button type="button" class="btn btn-primary btn-block btn-loads" id="suburb_search_btn" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate"
 							onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city':$('#ship_selector').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val() });">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
@@ -58,15 +58,15 @@
 					<label for="ship_country">Country</label>
 					<select id="ship_country" class="form-control" aria-label="Country">
 						[%countries%]
-							[%PARAM *body%]
+							[%param *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
-							[%/ PARAM%]
+							[%/ param%]
 						[%/ countries%]
 					</select>
 				</div>
 				<div class="col-12 col-md-3">
 					<label>&nbsp;</label>
-					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+					<button type="button" class="btn btn-primary btn-block btn-loads" data-loading-text="<i class='fa fa-refresh fa-spin' style='font-size: 14px'></i>" title="Calculate"
 						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_city':$('#ship_selector').val(), 'ship_state': $('#ship_state').val(), 'ship_country': $('#ship_country').val()})">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
@@ -89,7 +89,7 @@
 					<input type="text" id="ship_zip" name="ship_zip" value="[@ship_zip@]" size="5" class="form-control" placeholder="Post Code" aria-label="Post code">
 				</div>
 				<div class="col-12 col-md-3">
-					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate" 
+					<button type="button" class="btn btn-block btn-primary btn-loads" data-loading-text="<i class='fa fa-sync fa-spin' style='font-size: 14px'></i>" title="Calculate"
 						onClick="$.load_ajax_template('_buying_options', {'showloading': '1', 'sku': '[@sku@]', 'qty': $('#n_qty').val(), 'ship_zip': $('#ship_zip').val(), 'ship_country': $('#ship_country').val()});">
 						<i class="fa fa-sync" aria-hidden="true"></i> Calculate
 					</button>
@@ -104,7 +104,7 @@
 			[%param *body%]
 				<div role="group" aria-label="Shipping method option">
 				<hr aria-hidden="true"/>
-				<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%IF [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ IF%]<br />
+				<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%if [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ if%]<br />
 				<i class="text-muted">[@shipping_description@]</i>
 				</div>
 			[%/ param%]

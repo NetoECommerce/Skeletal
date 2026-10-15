@@ -2,12 +2,12 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-			<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My account</a></li>
+			<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My account</a></li>
 			<li class="breadcrumb-item"><a href="#">Edit your address book</a></li>
 		</ol>
 	</nav>
 	<div class="page-header"><h1>Add or Edit Address Book Entry</h1></div>
-	[%TRIM inner:'1'%]
+	[%trim inner:'1'%]
 		[%param body%]
 			[%show_message name:"update_error"%]
 			[%param header%]<div class="errorbox alert alert-danger" role="alert"><ul class="mb-0">[%/ param%]
@@ -15,37 +15,37 @@
 			[%param footer%]</ul></div>[%/ param%]
 			[%/ show_message%]
 		[%/ param%]
-	[%/ TRIM%]
+	[%/ trim%]
 
-	[%TRIM inner:'1'%]
+	[%trim inner:'1'%]
 	[%param body%]
 		[%show_message name:"edit_msg"%]
 		[%param header%]<div class="successbox alert alert-success" role="alert"><ul class="mb-0">[%/ param%]
 		[%param *body%]<li>
-			[%DATA id:'msg' if:'eq' value:'updated' %]Your address '[@ship_title@]' has been updated.[%/ DATA%]
-			[%DATA id:'msg' if:'eq' value:'deleted' %]Your address '[@ship_title@]' has been deleted.[%/ DATA%]
-			[%DATA id:'msg' if:'eq' value:'created' %]Your address '[@ship_title@]' has been created.[%/ DATA%]
+			[%data id:'msg' if:'eq' value:'updated' %]Your address '[@ship_title@]' has been updated.[%/ data%]
+			[%data id:'msg' if:'eq' value:'deleted' %]Your address '[@ship_title@]' has been deleted.[%/ data%]
+			[%data id:'msg' if:'eq' value:'created' %]Your address '[@ship_title@]' has been created.[%/ data%]
 		</li>[%/ param%]
 		[%param footer%]</ul></div>[%/ param%]
 		[%/ show_message%]
 	[%/ param%]
-	[%/ TRIM%]
+	[%/ trim%]
 	<p class="help-block">You can use the Address Book to create and save multiple ship-to addresses. You can then choose your appropriate address for each order you place at checkout.</p>
-	<form class="card card-body mb-3" method="POST" name="shipping" action="[%URL page:'account' type:'edit_address'%][%/ URL%]">
+	<form class="card card-body mb-3" method="POST" name="shipping" action="[%url page:'account' type:'edit_address'%][%/ url%]">
 		<label class="lead">Add a new address or edit an existing address</label>
 		<select class="form-control input-lg" type="text" name="addr_id" id="addr_id">
 			<option value="">Add or Edit</option>
 			<option value="n">Add New Entry</option>
 			[%address_book%]
 				[%param *body%]
-					[%DATA id:'id' if:'ne' value:'b'%]
-						<option value="[@id@]" [%FORM id:'addr_id' if:'eq' value:'[@id@]'%]selected[%/ FORM%]>[@ship_title@] ([@ship_zip@])</option>
-					[%/ DATA%]
+					[%data id:'id' if:'ne' value:'b'%]
+						<option value="[@id@]" [%form id:'addr_id' if:'eq' value:'[@id@]'%]selected[%/ form%]>[@ship_title@] ([@ship_zip@])</option>
+					[%/ data%]
 				[%/ param%]
 			[%/ address_book%]
 		</select>
 	</form>
-	<form method="POST" name="itemForm" action="[%URL page:'account' type:'edit_address'%][%/ URL%]">
+	<form method="POST" name="itemForm" action="[%url page:'account' type:'edit_address'%][%/ url%]">
 		<input name="update" type="hidden" value="update">
 		<input type="hidden" name="addr_id" value="[@id@]">
 		<h2>Address Details</h2>
@@ -108,7 +108,7 @@
 					<label for="ship_country">Country</label><span class="text-danger">*</span>
 					<select class="form-control" name="ship_country" id="ship_country">
 						[%countries%]
-							[%param *body%]<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/ DATA%]>[@country_name@]</option>[%/ param%]
+							[%param *body%]<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/ data%]>[@country_name@]</option>[%/ param%]
 						[%/ countries%]
 					</select>
 				</div>
@@ -117,7 +117,7 @@
 					<input class="form-control" type="text" name="ship_phone" id="ship_phone" size="50" maxlength="50" value="[@ship_phone@]">
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="save_default" name="defaddr" value="1" [%USER id:'addr_id' if:'==' value:'[@id@]'%]checked[%/ USER%]/>
+					<input class="form-check-input" type="checkbox" id="save_default" name="defaddr" value="1" [%user id:'addr_id' if:'==' value:'[@id@]'%]checked[%/ user%]/>
 					<label class="form-check-label" for="save_default">Save as my default address</label>
 				</div>
 				<div class="row mt-4">
@@ -132,7 +132,7 @@
 		</div>
 	</form>
 </div>
-[%SITE_VALUE id:'footer_javascript'%]
+[%site_value id:'footer_javascript'%]
 <script>
 	var editAddress = {
 		vars:{
@@ -252,4 +252,4 @@
 	$('#delete_button').on('click', $.del_addressbook_entry);
 	$('#save_button').on('click', $.add_addressbook_entry)
 </script>
-[%/ SITE_VALUE%]
+[%/ site_value%]

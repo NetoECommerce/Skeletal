@@ -1,4 +1,4 @@
-[%SET [@page_type@]='category'/%]
+[%set [@page_type@]='category'/%]
 [%load_template file:'cms/includes/sidebar.template.html'/%]
 	[%breadcrumb%]
 		[%param *header%]
@@ -26,7 +26,7 @@
 			<form class="" name="productsearch" method="get" action="/">
 				<input type="hidden" name="rf" value="kw" />
 				<div class="input-group input-group-lg">
-					<input class="form-control ajax_search" id="name_search-results" autocomplete="off" name="kw" value="[%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%]" type="search"/>
+					<input class="form-control ajax_search" id="name_search-results" autocomplete="off" name="kw" value="[%escape%][%filter ID:'keywords'/%][%/escape%]" type="search"/>
 					<span class="input-group-append">
 						<button type="submit" value="Search" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
 					</span>
@@ -38,13 +38,13 @@
 		<h1>
 			[%url_info name:'page_heading' default:'[@name@]'/%]
 			[%if [@id@] eq ''%]
-				[%filter ID:'keywords' if:'ne' value:''%][%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%][%/filter%]
+				[%filter ID:'keywords' if:'ne' value:''%][%escape%][%filter ID:'keywords'/%][%/escape%][%/filter%]
 			[%/if%]
 		</h1>
 	[%/filter%]
 	[%filter ID:'keywords' if:'ne' value:' '%]
 		[%thumb_list type:'products' limit:'[@config:THUMB_LIMIT@]'%]
-			[%param template%][%VIEWBY type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/param%]
+			[%param template%][%viewby type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/param%]
 				[%param *header%]
 					<hr aria-hidden="true"/>
 					<div class="row sort_container">
@@ -61,8 +61,8 @@
 								<input name="viewby" type="hidden" value="" />
 							</form>
 							<div class="viewby btn-group">
-								<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
-								<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%VIEWBY type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
+								<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%viewby type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
+								<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%viewby type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
 							</div>
 						</div>
 						<div class="col-4 d-none d-lg-block">
@@ -75,11 +75,11 @@
 									<label class="col-2 col-form-label" for="sortby">Sort</label>
 									<div class="col-10">
 										<select name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
-											<option value="popular" [%SORTBY type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
-											<option value="name" [%SORTBY type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
-											<option value="SKU" [%SORTBY type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>SKU</option>
-											<option value="lowest_price" [%SORTBY type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>Lowest Price</option>
-											<option value="highest_price" [%SORTBY type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>Highest Price</option>
+											<option value="popular" [%sortby type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
+											<option value="name" [%sortby type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
+											<option value="SKU" [%sortby type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>SKU</option>
+											<option value="lowest_price" [%sortby type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>Lowest Price</option>
+											<option value="highest_price" [%sortby type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>Highest Price</option>
 										</select>
 									</div>
 								</div>
@@ -89,13 +89,13 @@
 					<div class="row">
 						<div class="col-12"><hr></div>
 					</div>
-					<div class="[%VIEWBY type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
+					<div class="[%viewby type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
 						<div class="row products-row">
 					[%/param%]
 					[%param *footer%]
 						</div>
 					</div>
-					[%IF [@total_results@] > [@config:thumb_limit@]%]
+					[%if [@total_results@] > [@config:thumb_limit@]%]
 						<div class="row">
 							<div class="col-12">
 								<hr aria-hidden="true"/>
@@ -119,7 +119,7 @@
 					<div class="row">
 						<div class="col-12">
 							[%filter ID:'keywords' if:'ne' value:''%]
-								<p>Search was unable to find any product results for '[%NOHTML%][%filter ID:'keywords'/%][%/NOHTML%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
+								<p>Search was unable to find any product results for '[%escape%][%filter ID:'keywords'/%][%/escape%]' you may have typed your word incorrectly, or are being too specific. Try using a broader search phrase.</p>
 							[%/filter%]
 							[%filter ID:'keywords' if:'eq' value:''%]
 								<p>This category is empty! Please try another category or use our search function to find what you are looking for. If you require further assistance please contact us.</p>

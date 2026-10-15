@@ -24,7 +24,7 @@
 </h1>
 <p class="text-muted">
 	[%if [@content_author@]%]Author: [@content_author@] &nbsp;[%/if%]
-	[%if [@date_posted@] != 0000-00-00 00:00:00%]Date Posted:[%FORMAT type:'date'%][@date_posted@][%/FORMAT%]&nbsp;[%/if%]
+	[%if [@date_posted@] != 0000-00-00 00:00:00%]Date Posted:[%format type:'date'%][@date_posted@][%/FORMAT%]&nbsp;[%/if%]
 </p>
 [%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
 	[%param *header%]
@@ -125,7 +125,7 @@
 				<blockquote>
 					<h4 itemprop="name"><i>[%format type:'text' rmhtml:'1'%][@title@][%/format%]</i></h4>
 					<div>
-						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]</strong>
+						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%format type:'date'%][@insert_date@][%/FORMAT%]">[%format type:'date'%][@insert_date@][%/FORMAT%]</strong>
 					</div>
 					<span itemprop="description">[%format type:'text' rmhtml:'1'%][@review@][%/format%]</span>
 					[%if [@review_response@]%]
@@ -139,7 +139,7 @@
 		[%/param%]
 	[%/thumb_list%]
 	<h3>Leave a comment</h3>
-	<form name="edit_review" method="post" role="form" action="[%URL page:'account' type:'write_contentreview'%][%/URL%]">
+	<form name="edit_review" method="post" role="form" action="[%url page:'account' type:'write_contentreview'%][%/URL%]">
 		<fieldset>
 			<input type="hidden" name="fn" value="confirm">
 			<input type="hidden" name="item" value="[@content_id@]">
@@ -147,21 +147,21 @@
 			<input type="hidden" name="rating_value" id="rating_value" value="5"/>
 			<div class="form-group">
 				<label for="review_title">Title For Comment</label>
-				<input class="form-control" type="text" name="review_title" id="review_title" value="[%nohtml%][@form:review_title@][%/nohtml%]" required/>
+				<input class="form-control" type="text" name="review_title" id="review_title" value="[%escape%][@form:review_title@][%/escape%]" required/>
 			</div>
 			<div class="form-group">
 				<label for="review_text">Your Comment</label>
-				<textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
+				<textarea name="review_text" id="review_text" rows="10" class="form-control" required>[%escape%][@form:review_text@][%/escape%]</textarea>
 			</div>
 			[%ajax_loader%]
 				[%if ![@user:username@] or [@user:username@] eq 'noreg'%]
 					<div class="form-group">
 						<label for="customername">Your Name</label>
-						<input class="form-control" type="text" name="customername" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" required/>
+						<input class="form-control" type="text" name="customername" id="customername" value="[%escape%][@form:customername@][%/escape%]" required/>
 					</div>
 					<div class="form-group">
 						<label for="emailaddress">Your Email Address</label>
-						<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" required/>
+						<input class="form-control" size="70" type="email" name="emailaddress" id="emailaddress" value="[%escape%][@form:emailaddress@][%/escape%]" required/>
 					</div>
 				[%/if%]
 			[%/ajax_loader%]

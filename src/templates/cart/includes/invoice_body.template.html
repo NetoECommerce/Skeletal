@@ -192,7 +192,7 @@
 				<div class="media mb-2">
 					<div class="product-img">
 						<span class="badge badge-pill badge-light">[@qty@]</span>
-						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" width="50px" height="50px" alt="[%escape%][@model@][%/escape%] image" />
+						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/ asset_url%]" width="50px" height="50px" alt="[%escape%][@model@][%/escape%] image" />
 					</div>
 					<div class="media-body">
 						<span class="float-right">[%format type:'currency'%][@subtotal@][%/ format%]</span>
@@ -202,11 +202,11 @@
 						[%if [@aff_id@] eq '[@config:aff_ebay_id@]'%]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/if%]
 						[%if [@aff_id@] eq '[@config:aff_free_id@]'%]&nbsp; <b>Free Gift</b>[%/if%]
 						[%if [@has_components@] == 1%]
-						[%CART_ITEM_COMPONENTS counter:'[@counter@]'%]
+						[%cart_item_components counter:'[@counter@]'%]
 							[%param header%]<small class="text-muted">[%/ param%]
 							[%param *body%][@qty@] x [%escape%][@model@][%/escape%]<br/>[%/ param%]
 							[%param footer%]</small>[%/ param%]
-						[%/ CART_ITEM_COMPONENTS%]
+						[%/ cart_item_components%]
 						[%/ if%]
 					</div>
 				</div>

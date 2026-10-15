@@ -2,7 +2,7 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'/%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'/%]">My Account</a></li>
 		<li class="breadcrumb-item"><a href="#">Resolution Centre</a></li>
 		</ol>
 	</nav>
@@ -15,11 +15,11 @@
 	[%/if%]
 	<form name="disputeForm" action="[%url page:'account' type:'warranty' fn:'create'/%]" method="post">
 		[%dispute_types%]
-			[%PARAM header%]
+			[%param header%]
 				<div class="row align-items-center">
 					<input type="hidden" name="step" value="reason">
-			[%END PARAM%]
-			[%PARAM *body%]
+			[%/ param%]
+			[%param *body%]
 				<div class="col-12 col-md-6 pb-2">
 					<div class="card card-body">
 						<div class="form-check">
@@ -30,11 +30,11 @@
 						</div>
 					</div>
 				</div>
-			[%END PARAM%]
-			[%PARAM *footer%]
+			[%/ param%]
+			[%param *footer%]
 				</div>
-			[%END PARAM%]
-		[%END dispute_types%]
+			[%/ param%]
+		[%/ dispute_types%]
 		<div class="row">
 			<div class="col-12">
 				<hr>

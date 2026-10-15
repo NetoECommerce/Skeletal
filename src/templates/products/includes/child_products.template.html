@@ -2,7 +2,7 @@
 	[%list_item_variations id:'[@current_sku@]'%]
 		[%param header%]
 			<!-- Variations -->
-			<input type="hidden" id="_itmspec_sku" value="[%nohtml%][@SKU@][%/nohtml%]">
+			<input type="hidden" id="_itmspec_sku" value="[%escape%][@SKU@][%/escape%]">
 			<hr aria-hidden="true"/>
 			<div class="row" role="contentinfo" aria-label="Product variation selection">
 		[%/param%]
@@ -90,10 +90,10 @@
 			</div>
 		[%/param%]
 	[%/list_item_variations%]
-	
+
 	[%if ![@has_variation@]%]
-		[%DISPLAY_CHILD_PRODUCTS id:'[@SKU@]' sortby:'sortorder,name'%]
-			[%PARAM *header%]
+		[%display_child_products id:'[@SKU@]' sortby:'sortorder,name'%]
+			[%param *header%]
 				<hr />
 				<!-- Child Products -->
 				<h4>Buying Options</h4>
@@ -110,8 +110,8 @@
 								</tr>
 							</thead>
 							<tbody>
-			[%/ PARAM%]
-			[%PARAM *body%]
+			[%/ param%]
+			[%param *body%]
 							<tr>
 								<td>
 									[%if [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
@@ -143,7 +143,7 @@
 									[%/ if%]
 								</td>
 								<td>
-									<div class="child-price">[%format type:'currency'%][@price@][%END format%]</div>
+									<div class="child-price">[%format type:'currency'%][@price@][%/ format%]</div>
 									[%if [@available_preorder_quantity@] > 0 AND [@preorder@] AND [@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
 										<span class="badge badge-warning">Pre-Order</span>
 									[%elseif [@store_quantity@] > 0 AND [@preorder@] AND ![@config:WEBSTORE_USE_PREORDER_QUANTITY@]%]
@@ -157,8 +157,8 @@
 									[%/ if%]
 								</td>
 							</tr>
-			[%/ PARAM%]
-			[%PARAM *footer%]
+			[%/ param%]
+			[%param *footer%]
 							</tbody>
 						</table>
 					</div>
@@ -167,7 +167,7 @@
 						<span id="a2c_loading"></span>
 					</div>
 				</div>
-			[%/ PARAM%]
-		[%/ DISPLAY_CHILD_PRODUCTS%]
+			[%/ param%]
+		[%/ display_child_products%]
 	[%/ if%]
 </form>

@@ -359,17 +359,17 @@
 					<tr>
 						<td><a href="[%url page:'account' type:'wishlist' fn:'view' id:'[@wishlist_id@]'/%]">[%escape%][@wishlist_name@][%/escape%]</a></td>
 						<td class="d-none">
-							[%DATA id:'wishlist_active' if:'eq' value:'y'%]
+							[%data id:'wishlist_active' if:'eq' value:'y'%]
 								[%param if_true%]<span class="badge-success">Active</span>[%/param%]
 								[%param if_false%]<span class="badge-important">Inactive</span>[%/param%]
 							[%/DATA%]
-							[%DATA id:'wishlist_private' if:'eq' value:'y'%]
+							[%data id:'wishlist_private' if:'eq' value:'y'%]
 								[%param if_true%]<span class="badge">Private</span>[%/param%]
 								[%param if_false%]<span class="badge-success">Public</span>[%/param%]
 							[%/DATA%]
 						</td>
 						<td class="d-none">
-							[%DATA id:'reminder_inc_days' if:'>' value:'0'%]
+							[%data id:'reminder_inc_days' if:'>' value:'0'%]
 								[%param if_true%][@reminder_inc_days@] Day(s)[%/param%]
 								[%param if_false%]-[%/param%]
 							[%/DATA%]
@@ -379,7 +379,7 @@
 							<span class="d-none"> / [%format type:'date' format:'DATE' default:'-'%][@date_expiry@][%/format%]</span>
 						</td>
 						<td>
-							<form method="post" action="[%URL page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%escape%][@wishlist_name@][%/escape%]\'?')">
+							<form method="post" action="[%url page:'account' type:'wishlist'%][%/URL%]" onsubmit="return confirm('Are you sure you want to delete wishlist \'[%escape%][@wishlist_name@][%/escape%]\'?')">
 								<input type="hidden" name="id" value="[@wishlist_id@]">
 								<input type="hidden" name="proc" value="deletelist">
 								<button type="submit" class="btn btn-block btn-danger"><i class="far fa-trash-alt"></i> Delete</a></button>

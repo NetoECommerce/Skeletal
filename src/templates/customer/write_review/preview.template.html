@@ -6,35 +6,35 @@
 </script>
 <div class="col-12">
 	<h1 class="page-header">Preview [@model@] Review </h1>
-	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger erorbox" role="alert">[@error@]</div>[%/ DATA%]
-	<form name="preview_review" method="post" action="[%URL page:'account' type:'write_review'%][%/ url%]">
+	[%data id:'error' if:'ne' value:''%]<div class="alert alert-danger erorbox" role="alert">[@error@]</div>[%/ data%]
+	<form name="preview_review" method="post" action="[%url page:'account' type:'write_review'%][%/ url%]">
 		<input type="hidden" name="fn" value="confirm">
-		<input type="hidden" name="item" value="[%NOHTML%][%FORM id:'item'%][%/ FORM%][%/ NOHTML%]">
-		<input type="hidden" name="review_text" value="[%NOHTML%][%FORM id:'review_text'%][%/ FORM%][%/ NOHTML%]">
-		<input type="hidden" name="rating_value" value="[%NOHTML%][%FORM id:'rating_value'%][%/ FORM%][%/ NOHTML%]">
-		<input type="hidden" name="review_title" value="[%NOHTML%][%FORM id:'review_title'%][%/ FORM%][%/ NOHTML%]">
-		<input type="hidden" name="customername" value="[%NOHTML%][%FORM id:'customername'%][%/ FORM%][%/ NOHTML%]">
-		<input type="hidden" name="emailaddress" value="[%NOHTML%][%FORM id:'emailaddress'%][%/ FORM%][%/ NOHTML%]">
+		<input type="hidden" name="item" value="[%escape%][%form id:'item'%][%/ form%][%/ escape%]">
+		<input type="hidden" name="review_text" value="[%escape%][%form id:'review_text'%][%/ form%][%/ escape%]">
+		<input type="hidden" name="rating_value" value="[%escape%][%form id:'rating_value'%][%/ form%][%/ escape%]">
+		<input type="hidden" name="review_title" value="[%escape%][%form id:'review_title'%][%/ form%][%/ escape%]">
+		<input type="hidden" name="customername" value="[%escape%][%form id:'customername'%][%/ form%][%/ escape%]">
+		<input type="hidden" name="emailaddress" value="[%escape%][%form id:'emailaddress'%][%/ form%][%/ escape%]">
 		<input type="hidden" name="checked_terms_and_conditions" value="1">
 		<div id="review_details">
 			<blockquote>
-				<h2>[%NOHTML%][%FORM id:'review_title'%][%/ FORM%][%/ NOHTML%]</h2>
-				<p>[%NOHTML%][%FORM id:'review_text'%][%/ FORM%][%/ NOHTML%]</p>
-				[%USER id:'username' if:'eq' value:''%][%PARAM if_true%]
+				<h2>[%escape%][%form id:'review_title'%][%/ form%][%/ escape%]</h2>
+				<p>[%escape%][%form id:'review_text'%][%/ form%][%/ escape%]</p>
+				[%user id:'username' if:'eq' value:''%][%param if_true%]
 					<div class="d-none">
-						[%NOHTML%][%FORM id:'customername'%][%/ FORM%][%/ NOHTML%]
-						[%NOHTML%][%FORM id:'emailaddress'%][%/ FORM%][%/ NOHTML%]
+						[%escape%][%form id:'customername'%][%/ form%][%/ escape%]
+						[%escape%][%form id:'emailaddress'%][%/ form%][%/ escape%]
 					</div>
-				[%/ USER%]
-				[%SET [@data:ratings-count@] = 1 /%]
-				[%WHILE [@data:ratings-count@] <= [@form:rating_value@]%]
-					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+				[%/ user%]
+				[%set [@data:ratings-count@] = 1 /%]
+				[%while [@data:ratings-count@] <= [@form:rating_value@]%]
+					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
 					<i class="fas fa-star fa-3x"></i>
-				[%/ WHILE%]
-				[%WHILE [@data:ratings-count@] <= 5%]
-					[%SET [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
+				[%/ while%]
+				[%while [@data:ratings-count@] <= 5%]
+					[%set [@data:ratings-count@] = [@data:ratings-count@]+1 /%]
 					<i class="far fa-star fa-3x"></i>
-				[%/ WHILE%]
+				[%/ while%]
 			</blockquote>
 		</div>
 		<p>

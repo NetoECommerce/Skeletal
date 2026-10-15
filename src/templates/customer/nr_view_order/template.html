@@ -1,11 +1,11 @@
 <div class="col-12">
-	[%FORM id:'id' if:'ne' value:''%]Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service.[%END FORM%]
+	[%form id:'id' if:'ne' value:''%]Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service.[%/ form%]
 	<h1>Retrieve Order Details</h1>
-	<form  method="post" action="[%URL page:'account' type:'nr_view_order'%][%END URL%]">
+	<form  method="post" action="[%url page:'account' type:'nr_view_order'%][%/ url%]">
 		<table width="100%" border="0" cellspacing="0" cellpadding="4">
 			<tr>
 				<td width="1%" nowrap><div align="right"><b>My E-mail Address is:</b></div></td>
-				<td nowrap="nowrap"><input type="text" name="email" value="[%nohtml%][@formemail@][%end nohtml%]" size="25"></td>
+				<td nowrap="nowrap"><input type="text" name="email" value="[%escape%][@formemail@][%/ escape%]" size="25"></td>
 			</tr>
 			<tr>
 				<td width="1%" nowrap><div align="right"><b>Order ID:</b></div></td>

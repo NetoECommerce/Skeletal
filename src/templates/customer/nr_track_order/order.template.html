@@ -1,46 +1,46 @@
 <script>
 	function print_invoice() {
-		var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/ URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+		var win = window.open('[%url page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/ url%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 	}
 </script>
 <div class="col-12">
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
 		</ol>
 	</nav>
 	[%show_order id:'[@order_id@]'%][%param *header%]
 	<div class="page-header">
-		<h1>Track Order #[%NOHTML%][@order_id@][%/ NOHTML%]</h1>
+		<h1>Track Order #[%escape%][@order_id@][%/ escape%]</h1>
 	</div>
 	<div class="row">
 		<div class="col-12 col-md-6"> <strong>Status:</strong> <span class="badge badge-success">[@order_status@]</span>
-			<h4>[%NOHTML%]Order #[@order_id@][%/ NOHTML%]</h4>
-			[%DATA id:'customer_po' if:'ne' value:''%]
-			<h4>PO # [%NOHTML%][@customer_po@][%/ NOHTML%]</h4>
-			[%/ DATA%]
+			<h4>[%escape%]Order #[@order_id@][%/ escape%]</h4>
+			[%data id:'customer_po' if:'ne' value:''%]
+			<h4>PO # [%escape%][@customer_po@][%/ escape%]</h4>
+			[%/ data%]
 			<h5>Date Placed: [%format type:"date" format:"DATE"%][@date_placed@][%/ format%]</h5>
-			[%DATA id:'if_invoiced' if:'=' value:'1'%]
+			[%data id:'if_invoiced' if:'=' value:'1'%]
 			<h5>Date Invoiced: [%format type:"date" format:"DATE"%][@date_invoiced@][%/ format%]</h5>
-			[%/ DATA%]
-			[%DATA id:'order_status' if:'like' value:'Completed'%]
+			[%/ data%]
+			[%data id:'order_status' if:'like' value:'Completed'%]
 			<h5>Date Completed: [%format type:"date" format:"DATE"%][@date_updated@][%/ format%]</h5>
-			[%/ DATA%]
+			[%/ data%]
 		</div>
 		<div class="col-12 col-md-6">
 			<h4>Ship To:</h4>
-			[%NOHTML%][@ship_first_name@] [@ship_last_name@][%/ NOHTML%]<br />
-			[%DATA id:'ship_company' if:'ne' value:''%]
-				[%NOHTML%][@ship_company@][%/ NOHTML%]<br />
-			[%/ DATA%]
-			[%NOHTML%][@ship_street1@][%/ NOHTML%]<br />
-			[%DATA id:'ship_street2' if:'ne' value:''%]
-				[%NOHTML%][@ship_street2@][%/ NOHTML%]<br />
-			[%/ DATA%]
-			[%NOHTML%][@ship_city@], [@ship_state_name@] [@ship_zip@][%/ NOHTML%]<br />
-			[%NOHTML%][@ship_country_name@][%/ NOHTML%]<br />
-			Tel: [%NOHTML%][@ship_phone@][%/ NOHTML%]
+			[%escape%][@ship_first_name@] [@ship_last_name@][%/ escape%]<br />
+			[%data id:'ship_company' if:'ne' value:''%]
+				[%escape%][@ship_company@][%/ escape%]<br />
+			[%/ data%]
+			[%escape%][@ship_street1@][%/ escape%]<br />
+			[%data id:'ship_street2' if:'ne' value:''%]
+				[%escape%][@ship_street2@][%/ escape%]<br />
+			[%/ data%]
+			[%escape%][@ship_city@], [@ship_state_name@] [@ship_zip@][%/ escape%]<br />
+			[%escape%][@ship_country_name@][%/ escape%]<br />
+			Tel: [%escape%][@ship_phone@][%/ escape%]
 		</div>
 	</div>
 	<hr />
@@ -55,16 +55,16 @@
 			[%/ param%][%param *body%]
 			<tr>
 				<td><img border="0" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL'%][%/ asset_url%]" alt="[@model@]" width="50px"  height="50px"> &nbsp; [@qty@] x [@model@]<i>[@extra@]</i>
-					[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]&nbsp; <b>Rental</b>[%/ DATA%]
-					[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/ DATA%]
-					[%DATA id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]&nbsp; <b>Free Gift</b>[%/ DATA%]
-					[%FORMAT type:'date' default:''%][%param *format%]<br>
-					<b>Deliver On</b> #{DATETIME}[%/ param%][@date_delivery@][%/ FORMAT%]</td>
-				<td>[%DATA id:'ship_method' if:'ne' value:'' %]<span class="badge badge-secondary">[@ship_method@]</span><br />[%/ DATA%]
-					[%DATA id:'ship_tracking' if:'ne' value:'' %]Tracking #[@ship_tracking@]<br />[%/ DATA%]
-					[%DATA id:'ship_tracking' if:'eq' value:'' %]Tracking not yet available [%/ DATA%]
-					[%DATA id:'tracking_url' if:'ne' value:'' %]<a href="[@tracking_url@]" target="_blank" rel="noopener" class="btn btn-default btn-sm">Track Online <i class="fa fa-external-link-alt"></i></a>[%/ DATA%]
-					[%DATA id:'tracking_url' if:'eq' value:'' %]&nbsp; [%/ DATA%]
+					[%data id:'aff_id' if:'eq' value:'[@config:AFF_RENTAL_ID@]' %]&nbsp; <b>Rental</b>[%/ data%]
+					[%data id:'aff_id' if:'eq' value:'[@config:AFF_EBAY_ID@]' %]&nbsp; <b>EBay ID: [@aff_ref@]</b>[%/ data%]
+					[%data id:'aff_id' if:'eq' value:'[@config:AFF_FREE_ID@]' %]&nbsp; <b>Free Gift</b>[%/ data%]
+					[%format type:'date' default:''%][%param *format%]<br>
+					<b>Deliver On</b> #{DATETIME}[%/ param%][@date_delivery@][%/ format%]</td>
+				<td>[%data id:'ship_method' if:'ne' value:'' %]<span class="badge badge-secondary">[@ship_method@]</span><br />[%/ data%]
+					[%data id:'ship_tracking' if:'ne' value:'' %]Tracking #[@ship_tracking@]<br />[%/ data%]
+					[%data id:'ship_tracking' if:'eq' value:'' %]Tracking not yet available [%/ data%]
+					[%data id:'tracking_url' if:'ne' value:'' %]<a href="[@tracking_url@]" target="_blank" rel="noopener" class="btn btn-default btn-sm">Track Online <i class="fa fa-external-link-alt"></i></a>[%/ data%]
+					[%data id:'tracking_url' if:'eq' value:'' %]&nbsp; [%/ data%]
 				</td>
 			</tr>
 			[%/ param%]

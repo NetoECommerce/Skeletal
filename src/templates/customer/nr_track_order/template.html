@@ -1,17 +1,17 @@
 <div class="col-12">
-	[%FORM id:'id' if:'ne' value:''%]
+	[%form id:'id' if:'ne' value:''%]
 		<div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> Sorry, the order you are looking for cannot be found. If you require further assistance please contact customer service. </div>
-	[%/ FORM%]
+	[%/ form%]
 	<div class="page-header"><h1>Retrieve Order Tracking Information</h1></div>
 	<p> For security reasons please enter some details related to your order so that we can provide tracking information. </p>
 	<hr>
-	<form  method="post" action="[%URL page:'account' type:'nr_track_order'%][%END URL%]">
+	<form  method="post" action="[%url page:'account' type:'nr_track_order'%][%/ url%]">
 		<div class="row">
 			<div class="col-12 col-md-3">
 				<div class="form-group">
 					<label>Order E-mail Address</label>
 					<span class="small text-danger"> *</span>
-					<input class="form-control" type="text" name="email" value="[%nohtml%][@formemail@][%end nohtml%]" size="25">
+					<input class="form-control" type="text" name="email" value="[%escape%][@formemail@][%/ escape%]" size="25">
 				</div>
 			</div>
 			<div class="col-12 col-md-3">

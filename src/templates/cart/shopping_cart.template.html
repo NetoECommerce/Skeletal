@@ -81,7 +81,7 @@
 										[%param *header%]
 											<div class="row">
 										[%/param%]
-										[%PARAM *body%]
+										[%param *body%]
 											<div class="col-12 col-lg-4">
 												<div class="card card-body">
 													<a href="[%url type:'item' id:'[@SKU@]'/%]" class="thumbnail-image mx-auto"><img src="[@thumb@]" alt="[@model@]" class="img-fluid" /> </a>
@@ -90,7 +90,7 @@
 												</div>
 											</div>
 										[%/param%]
-										[%PARAM *footer%]
+										[%param *footer%]
 											</div>
 										[%/param%]
 									[%/free_gifts%]
@@ -186,7 +186,7 @@
 								</tr>
 								<tr>
 									<td>
-										Shipping cost to [%if [@ship_zip@]%][@ship_zip@] [%/if%] 
+										Shipping cost to [%if [@ship_zip@]%][@ship_zip@] [%/if%]
 										[%countries%][%param *body%][%if [@country_code@] eq [@ship_country@]%][@country_name@][%/if%][%/param%][%/countries%]
 									</td>
 									<td class="text-right">[%format type:'currency'%][@shipping_total@][%/format%]</td>
@@ -269,7 +269,7 @@
 									[%param *body%]
 										[%if [@payment_desc_type@] eq 'paypalexpress'%]
 											[%site_value id:'footer_javascript'%][%paypal_express_js /%][%/site_value%]
-											<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%URL page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
+											<a id="paypal" class="_cpy_thirdparty_btn" ref="paypal" href="[%url page:'checkout' fn:'3rdparty' qs:'payment=6'/%]">
 												<img src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/gold-rect-paypalcheckout-60px.png" alt="Checkout With Paypal" height="46">
 											</a>
 										[%/if%]

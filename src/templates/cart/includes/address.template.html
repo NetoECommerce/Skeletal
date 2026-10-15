@@ -1,19 +1,19 @@
 <div id="ladb_pl" class="col-12">
-	[%USER id:'username' if:'ne' value:''%]
+	[%user id:'username' if:'ne' value:''%]
 	<div class="form-group row modal-row">
 		<label class="control-label col-12 col-sm-4">Choose From Your Address Book</label>
 		<div class="col-12 col-sm-8">
 			<select id="ladb_addr" class="form-control">
 				<option value=""></option>
 				[%address_book%]
-					[%PARAM *body%]
-						<option value="[@id@]" [%DATA id:'id' if:'eq' value:'[@address_book@]'%]selected[%END DATA%]>[@ship_title@] ([@ship_zip@])</option>
-					[%END PARAM%]
-				[%END address_book%]
+					[%param *body%]
+						<option value="[@id@]" [%data id:'id' if:'eq' value:'[@address_book@]'%]selected[%/ data%]>[@ship_title@] ([@ship_zip@])</option>
+					[%/ param%]
+				[%/ address_book%]
 			</select>
 		</div>
 	</div>
-	[%END USER%]
+	[%/ user%]
 	<div class="form-group row modal-row">
 		<label class="control-label col-12 col-sm-4">First Name<div class="small text-danger">Required</div></label>
 		<div class="col-12 col-sm-8">
@@ -35,10 +35,10 @@
 		<div class="col-12 col-sm-8">
 			<select id="_addr_country" class="form-control">
 				[%countries%]
-					[%PARAM *body%]
-						<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%END DATA%]>[@country_name@]</option>
-					[%END PARAM%]
-				[%END countries%]
+					[%param *body%]
+						<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/ data%]>[@country_name@]</option>
+					[%/ param%]
+				[%/ countries%]
 			</select>
 		</div>
 	</div>

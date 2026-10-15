@@ -2,7 +2,7 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
 		</ol>
 	</nav>
 	<div class="page-header"><h1>My Stores</h1></div>
@@ -23,35 +23,35 @@
 			<th width="50px" nowrap>&nbsp;</th>
 		</tr>
 		[%thumb_list type:'storelocation' limit:10%]
-			[%PARAM filter_1%][%USER id:'username'%][%/ USER%][%/ PARAM%]
-			[%PARAM *body%]
+			[%param filter_1%][%user id:'username'%][%/ user%][%/ param%]
+			[%param *body%]
 			<tr>
-				<td valign="top" nowrap><a href="[@url@]">[%NOHTML%][@stloc_name@][%/ NOHTML%]</a></td>
+				<td valign="top" nowrap><a href="[@url@]">[%escape%][@stloc_name@][%/ escape%]</a></td>
 				<td valign="top" nowrap>
-			[%NOHTML%][@stloc_street1@][%/ NOHTML%]
-			[%DATA id:'stloc_street2' if:'ne' value:''%]<br />[%NOHTML%][@stloc_street2@][%/ NOHTML%][%/ DATA%]
-			<br />[%NOHTML%][@stloc_city@][%/ NOHTML%]
-			<br />[%NOHTML%][@stloc_state@], [@stloc_zip@], [@stloc_country@][%/ NOHTML%]
+			[%escape%][@stloc_street1@][%/ escape%]
+			[%data id:'stloc_street2' if:'ne' value:''%]<br />[%escape%][@stloc_street2@][%/ escape%][%/ data%]
+			<br />[%escape%][@stloc_city@][%/ escape%]
+			<br />[%escape%][@stloc_state@], [@stloc_zip@], [@stloc_country@][%/ escape%]
 				</td>
 				<td valign="top" nowrap>
-			[%DATA id:'active' if:'eq' value:'y'%]
-			[%PARAM if_true%]Active[%/ PARAM%]
-			[%PARAM if_false%]Inactive[%/ PARAM%]
-			[%/ DATA%]
+			[%data id:'active' if:'eq' value:'y'%]
+			[%param if_true%]Active[%/ param%]
+			[%param if_false%]Inactive[%/ param%]
+			[%/ data%]
 			</td>
 				<td valign="top" nowrap>
-			[%FORMAT type:'date' format:'DATETIME' default:'-'%][@date_updated@][%/ FORMAT%]
+			[%format type:'date' format:'DATETIME' default:'-'%][@date_updated@][%/ format%]
 			</td>
-				<td valign="top" nowrap><a href="[%URL page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/ URL%]"><button type="button" class="btn btn-outline-secondary" title="Edit">Edit Store</button></a></td>
+				<td valign="top" nowrap><a href="[%url page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/ url%]"><button type="button" class="btn btn-outline-secondary" title="Edit">Edit Store</button></a></td>
 			 </tr>
-			[%/ PARAM%]
-			[%PARAM *ifempty%]
+			[%/ param%]
+			[%param *ifempty%]
 			<tr>
 				<td colspan="5" align="center">
-					<a href="[%URL page:'account' type:'mystore' fn:'create'%][%/ URL%]"><button type="button" class="btn btn-success" title="Add">Add Store</button></a>
+					<a href="[%url page:'account' type:'mystore' fn:'create'%][%/ url%]"><button type="button" class="btn btn-success" title="Add">Add Store</button></a>
 				</td>
 			</tr>
-			[%/ PARAM%]
+			[%/ param%]
 		[%/ thumb_list%]
 	</table>
 </div>

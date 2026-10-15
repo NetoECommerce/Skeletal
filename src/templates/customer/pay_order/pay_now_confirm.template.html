@@ -2,13 +2,13 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
 		</ol>
 	</nav>
 	<div class="page-header"><h1>Pay Now</h1></div>
-	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>[%/ DATA%]
-	[%DATA id:'msg' if:'ne' value:''%]<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>[%/ DATA%]
-	<form action="[%URL page:'account' type:'pay_order'%][%/ URL%]" method="post" name="itemForm">
+	[%data id:'error' if:'ne' value:''%]<div class="alert alert-danger"> <a class="close" data-dismiss="alert">×</a> [@error@] </div>[%/ data%]
+	[%data id:'msg' if:'ne' value:''%]<div class="alert alert-success"> <a class="close" data-dismiss="alert">×</a> [@msg@] </div>[%/ data%]
+	<form action="[%url page:'account' type:'pay_order'%][%/ url%]" method="post" name="itemForm">
 		<input type="hidden" name="id" value="[@order_id@]">
 		<input type="hidden" name="order_email" value="[@order_email@]">
 		<input type="hidden" name="fn" value="confirm">
@@ -23,9 +23,9 @@
 					<select class="form-control" name="card_type" onChange="showPD()">
 						<option value="" selected>Select an option</option>
 						[%payment_methods charge_type:'cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' payment_amount:'[@amount_owed@]'%]
-						[%PARAM *body%]
+						[%param *body%]
 						<option value="[@id@]:[@charge_type@]">[@name@]</option>
-						[%/ PARAM%]
+						[%/ param%]
 						[%/ payment_methods%]
 					</select>
 				</div>
@@ -50,18 +50,18 @@
 							<label>Month</label>
 								<select name="card_exp_month" class="form-control">
 									<option value=""></option>
-									[%months%][%PARAM *body%]
+									[%months%][%param *body%]
 									<option value="[@month@]">[@month@]</option>
-									[%/ PARAM%][%/ months%]
+									[%/ param%][%/ months%]
 								</select>
 							</div>
 							<div class="col-12 col-md-4">
 							<label>Year</label>
 								<select name="card_exp_year" class="form-control">
 									<option value=""></option>
-									[%years from:'+0' to:'+10'%][%PARAM *body%]
+									[%years from:'+0' to:'+10'%][%param *body%]
 									<option value="[@year@]">[@year@]</option>
-									[%/ PARAM%][%/ years%]
+									[%/ param%][%/ years%]
 								</select>
 							</div>
 							<div class="col-12 col-md-4">

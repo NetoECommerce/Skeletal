@@ -3,7 +3,7 @@
 		<h2 class="card-title mb-0 h4">Shipping Calculator</h2>
 	</div>
 	<div class="card-body">
-		<form method="post" action="[%URL page:'checkout'/%]">
+		<form method="post" action="[%url page:'checkout'/%]">
 			[%if [@config:shipping_calculator_type@] eq 'suburb_selector'%]
 				<!-- suburb selector -->
 				<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
@@ -74,7 +74,7 @@
 				<div class="form-group">
 					<select class="form-control" name="ship_country">
 					[%countries%]
-						[%PARAM *body%]
+						[%param *body%]
 							<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
 						[%/param%]
 					[%/countries%]
@@ -87,7 +87,7 @@
 				<div class="form-group">
 					<select class="form-control" name="ship_country">
 					[%countries%]
-						[%PARAM *body%]
+						[%param *body%]
 							<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
 						[%/param%]
 					[%/countries%]
