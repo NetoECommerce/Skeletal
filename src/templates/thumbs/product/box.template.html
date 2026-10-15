@@ -3,30 +3,30 @@
 	<div class="row">
 		<div class="col-12 col-lg-5">
 			<a href="[@URL@]" title="[%escape%][@model@][%/escape%]">
-				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/ asset_url%]" class="product-image img-fluid" width="100%" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
+				<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="product-image img-fluid" width="100%" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
 			</a>
 			[%if [@inpromo@]%]
 				<div class="savings-container"><span class="badge badge-danger">On Sale</span></div>
-			[%/ if%]
+			[%/if%]
 		</div>
 		<div class="col-12 col-lg-7">
 			<p class="title mb-1">
-				<a href="[@URL@]">[%escape%][%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/ format%][%/escape%]</a>
+				<a href="[@URL@]">[%escape%][%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/format%][%/escape%]</a>
 			</p>
 			<p class="price" itemprop="offers">
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
-				[%if [@has_child@]%]From [%/ if%]
+				[%if [@has_child@]%]From [%/if%]
 				[%if [@inpromo@]%]
-					[%format type:'currency'%][@promo_price@][%/ format%]
+					[%format type:'currency'%][@promo_price@][%/format%]
 				[%else%]
-					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/ format%]</span>
-				[%/ if%]
+					<span itemprop="price" content="[@store_price@]">[%format type:'currency'%][@store_price@][%/format%]</span>
+				[%/if%]
 				[%if [@save@] > 0 AND ![@has_child@]%]
-					<span class="small text-danger d-block">[%format type:'percent'%][@save@][%/ format%] OFF</span>
-				[%/ if%]
+					<span class="small text-danger d-block">[%format type:'percent'%][@save@][%/format%] OFF</span>
+				[%/if%]
 				[%if [@save@] > 0%]
-					<span class="small text-muted d-block">RRP [%format type:'currency'%][@retail@][%/ format%]</span>
-				[%/ if%]
+					<span class="small text-muted d-block">RRP [%format type:'currency'%][@retail@][%/format%]</span>
+				[%/if%]
 			</p>
 		</div>
 	</div>

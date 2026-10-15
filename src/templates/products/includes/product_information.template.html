@@ -261,7 +261,7 @@
 								[%param *body%]
 									<div itemprop="review" itemscope itemtype="http://schema.org/Review">
 										<meta itemprop="itemReviewed" content="[@name@]">
-										<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/asset_url%]">
+										<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]">
 										<blockquote>
 											<h4 itemprop="name">[%escape%][@title@][%/escape%]</h4>
 											<div>
@@ -269,7 +269,7 @@
 													[%if [@reviewname@]%]
 														By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[%escape%][@reviewname@][%/escape%]</span></span> on
 													[%/if%]
-													<meta itemprop="datePublished" content="[%format type:'date'%][@insert_date@][%/FORMAT%]">[%format type:'date'%][@insert_date@][%/FORMAT%]
+													<meta itemprop="datePublished" content="[%format type:'date'%][@insert_date@][%/format%]">[%format type:'date'%][@insert_date@][%/format%]
 												</strong>
 											</div>
 											<span itemprop="description">[%escape%][@review@][%/escape%]</span><br />
@@ -302,12 +302,12 @@
 							[%/thumb_list%]
 							[%if [@reviews@] > 0%]
 								<p>
-									<a class="btn btn-default" href="[%url page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]"><i class="far fa-edit"></i> Write a product review</a>
+									<a class="btn btn-default" href="[%url page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/url%]"><i class="far fa-edit"></i> Write a product review</a>
 								</p>
 							[%else%]
 								<h4>Be The First To Review This Product!</h4>
 								<p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
-								<p><a class="btn btn-default" href="[%url page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]"><i class="far fa-edit"></i> Write a product review</a></p>
+								<p><a class="btn btn-default" href="[%url page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/url%]"><i class="far fa-edit"></i> Write a product review</a></p>
 							[%/if%]
 						</div>
 					</div>

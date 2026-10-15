@@ -2,16 +2,16 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-			<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
-			<li class="breadcrumb-item"><a href="[%url page:'account' type:'mystore'%][%/ url%]">My Stores</a></li>
+			<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
+			<li class="breadcrumb-item"><a href="[%url page:'account' type:'mystore'%][%/url%]">My Stores</a></li>
 		</ol>
 	</nav>
 	[%data id:'msg' if:'ne' value:''%]
 		<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a> [@msg@]</div>
-	[%/ data%]
+	[%/data%]
 	[%data id:'error' if:'ne' value:''%]
 		<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a> [@error@]</div>
-	[%/ data%]
+	[%/data%]
 
     [%site_value id:'footer_javascript'%]
     	<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
@@ -75,9 +75,9 @@
 			})
 		});
 		</script>
-	[%/ site_value%]
+	[%/site_value%]
 
-	<form enctype="multipart/form-data" action="[%url page:'account' type:'mystore'%][%/ url%]" method="post" name="itemForm">
+	<form enctype="multipart/form-data" action="[%url page:'account' type:'mystore'%][%/url%]" method="post" name="itemForm">
 		<input name="id" type="hidden" value="[@stloc_id@]"/>
 		<input name="proc" type="hidden" value="edit"/>
 		<input name="fn" type="hidden" value="edit"/>
@@ -89,13 +89,13 @@
 				<div class="content">
 				<div class="form-group">
 					<label for="stloc_name">Store Name <span class="required text-danger">*</span></label>
-					<input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%escape%][@stloc_name@][%/ escape%]" />
+					<input name="stloc_name" class="form-control" type="text" size="50" maxlength="50" value="[%escape%][@stloc_name@][%/escape%]" />
 				</div>
 				<div class="form-group">
 					<label for="stloc_name">Status</label>
 					<select name="active" class="form-control">
-						<option value="y" [%data id:'active' if:'eq' value:'y'%]selected[%/ data%]>Active</option>
-						<option value="n" [%data id:'active' if:'eq' value:'n'%]selected[%/ data%]>Inactive</option>
+						<option value="y" [%data id:'active' if:'eq' value:'y'%]selected[%/data%]>Active</option>
+						<option value="n" [%data id:'active' if:'eq' value:'n'%]selected[%/data%]>Inactive</option>
 					</select>
 				</div>
 				</div>
@@ -104,77 +104,77 @@
 		<hr />
 		<div class="row">
 			[%extra_store_fields%]
-				[%param *header%][%/ param%]
+				[%param *header%][%/param%]
 				[%param *integer_option%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
-							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@default_value@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
+							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@default_value@][%/escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 						</div>
 					</div>
-				[%/ param%]
+				[%/param%]
 				[%param *text_option%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
-							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@field_default@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
+							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@field_default@][%/escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 						</div>
 					</div>
-				[%/ param%]
+				[%/param%]
 				[%param *short_text_option%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
-							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@field_default@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
+							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@field_default@][%/escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 						</div>
 					</div>
-				[%/ param%]
+				[%/param%]
 				[%param *descimal_option%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
-							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@default_value@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
+							<input type="text" class="form-control" id="[@field_id@]" name="[@field_id@]" value="[%escape%][@default_value@][%/escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 						</div>
 					</div>
-				[%/ param%]
+				[%/param%]
 				[%param *boolean_option%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
-							<input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%data id:'default_value' if:'eq' value:'y'%]checked[%/ data%] [%if [@required_field@]%]required="true"[%/if%]>
+							<input type="checkbox" class="form-control" id="[@field_id@]" name="[@field_id@]" value="y" [%data id:'default_value' if:'eq' value:'y'%]checked[%/data%] [%if [@required_field@]%]required="true"[%/if%]>
 						</div>
 					</div>
-				[%/ param%]
+				[%/param%]
 				[%param *date_option%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
-							<input class="datepicker" class="form-control" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%escape%][@default_value@][%/ escape%]" [%if [@required_field@]%]required="true"[%/if%]>
+							<input class="datepicker" class="form-control" id="[@field_id@]" name="[@field_id@]" id="[@field_id@]" type="text" value="[%escape%][@default_value@][%/escape%]" [%if [@required_field@]%]required="true"[%/if%]>
 						</div>
 					</div>
-				[%/ param%]
+				[%/param%]
 				[%param *selection_header%]
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="[@field_id@]">[@field_name@]</label>
 							[%if [@required_field@]%]<span class="required text-danger">*</span>[%/if%]
 							<select id="[@field_id@]" name="[@field_id@]" class="form-control" [%if [@required_field@]%]required="true"[%/if%]>
-				[%/ param%]
+				[%/param%]
 				[%param *selection_body%]
 							<option value="[@option_value@]">[@option_value@]</option>
-				[%/ param%]
+				[%/param%]
 				[%param *selection_footer%]
 							</select>
 						</div>
 					</div>
-				[%/ param%]
-			[%/ extra_store_fields%]
+				[%/param%]
+			[%/extra_store_fields%]
 		</div>
 		<hr />
 		<div class="row">
@@ -185,32 +185,32 @@
 					<select id="stloc_country" name="stloc_country" class="form-control">
 						[%countries%]
 							[%param *body%]
-								<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@stloc_country@]'%]selected[%/ data%]>[@country_name@]</option>
-							[%/ param%]
-						[%/ countries%]
+								<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@stloc_country@]'%]selected[%/data%]>[@country_name@]</option>
+							[%/param%]
+						[%/countries%]
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="stloc_street1">Address line 1 <span class="required text-danger">*</span></label>
-					<input type="text" class="form-control" name="stloc_street1" size="50" maxlength="50" value="[%escape%][@stloc_street1@][%/ escape%]" />
+					<input type="text" class="form-control" name="stloc_street1" size="50" maxlength="50" value="[%escape%][@stloc_street1@][%/escape%]" />
 				</div>
 				<div class="form-group">
 					<label for="stloc_street1">Address line 2</label>
-					<input type="text" class="form-control" name="stloc_street2" size="50" maxlength="50" value="[%escape%][@stloc_street2@][%/ escape%]" />
+					<input type="text" class="form-control" name="stloc_street2" size="50" maxlength="50" value="[%escape%][@stloc_street2@][%/escape%]" />
 				</div>
 				<div class="form-group">
 					<label for="stloc_zip">Postal Code <span class="required text-danger">*</span></label>
-					<input type="text" class="form-control" id="stloc_zip" name="stloc_zip" size="50" value="[%escape%][@stloc_zip@][%/ escape%]" maxlength="10" />
+					<input type="text" class="form-control" id="stloc_zip" name="stloc_zip" size="50" value="[%escape%][@stloc_zip@][%/escape%]" maxlength="10" />
 				</div>
 				<div class="form-group">
 					<label for="stloc_city">Suburb / City <span class="required text-danger">*</span></label><br/>
 					<span id="stloc_selector"></span>
-					<input type="text" class="form-control" id="stloc_city" name="stloc_city" value="[%escape%][@stloc_city@][%/ escape%]" size="50" maxlength="50"/>
+					<input type="text" class="form-control" id="stloc_city" name="stloc_city" value="[%escape%][@stloc_city@][%/escape%]" size="50" maxlength="50"/>
 				</div>
 				<div class="form-group">
 					<label for="stloc_state">State <span class="required text-danger">*</span></label><br/>
 					<div id="stloc_state_pl" style="display:none;"></div>
-					<input type="text" name="stloc_state" class="form-control" id="stloc_state" value="[%escape%][@stloc_state@][%/ escape%]" size="50" maxlength="50" />
+					<input type="text" name="stloc_state" class="form-control" id="stloc_state" value="[%escape%][@stloc_state@][%/escape%]" size="50" maxlength="50" />
 				</div>
 				<div class="form-group">
 					<input id="geo_getloc_btn" type="button" class="btn btn-default" value="Get the Latitude and Longitude for the above address">
@@ -219,27 +219,27 @@
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="stloc_lat">Latitude:</label>
-							<input type="text" name="stloc_lat" class="readonly form-control" readonly value="[%escape%][@stloc_lat@][%/ escape%]" size="15" />
+							<input type="text" name="stloc_lat" class="readonly form-control" readonly value="[%escape%][@stloc_lat@][%/escape%]" size="15" />
 						</div>
 					</div>
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="stloc_lng">Longitude:</label>
-							<input type="text" name="stloc_lng" class="readonly form-control" readonly value="[%escape%][@stloc_lng@][%/ escape%]" size="15" />
+							<input type="text" name="stloc_lng" class="readonly form-control" readonly value="[%escape%][@stloc_lng@][%/escape%]" size="15" />
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="stloc_phone">Phone Number</label>
-					<input type="text" class="form-control" name="stloc_phone" size="30" maxlength="30" value="[%escape%][@stloc_phone@][%/ escape%]" />
+					<input type="text" class="form-control" name="stloc_phone" size="30" maxlength="30" value="[%escape%][@stloc_phone@][%/escape%]" />
 				</div>
 				<div class="form-group">
 					<label for="stloc_fax">Fax Number</label>
-					<input type="text" class="form-control" name="stloc_fax" size="30" maxlength="30" value="[%escape%][@stloc_fax@][%/ escape%]" />
+					<input type="text" class="form-control" name="stloc_fax" size="30" maxlength="30" value="[%escape%][@stloc_fax@][%/escape%]" />
 				</div>
 				<div class="form-group">
 					<label for="stloc_email">Contact Email</label>
-					<input type="text" class="form-control" name="stloc_email" size="30" maxlength="50" value="[%escape%][@stloc_email@][%/ escape%]" />
+					<input type="text" class="form-control" name="stloc_email" size="30" maxlength="50" value="[%escape%][@stloc_email@][%/escape%]" />
 				</div>
 			</div>
 			<div class="col-12 col-md-6">
@@ -254,20 +254,20 @@
 					[%param header%]
 						<div class="categorysel">
 							<ul class="categorylist list-unstyled">
-					[%/ param%]
+					[%/param%]
 					[%param *level_1%]
-						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/ data%]/> [@name@][%data id:'next_level' if:'ne' value:''%]<ul id="catsel[@allcount@]">[@next_level@]</ul>[%/ data%]</li>[%/ param%]
+						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/data%]/> [@name@][%data id:'next_level' if:'ne' value:''%]<ul id="catsel[@allcount@]">[@next_level@]</ul>[%/data%]</li>[%/param%]
 					[%param *level_2%]
-						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/ data%]/> [@name@][%data id:'next_level' if:'ne' value:''%]<ul id="catsel[@allcount@]">[@next_level@]</ul>[%/ data%]</li>[%/ param%]
+						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/data%]/> [@name@][%data id:'next_level' if:'ne' value:''%]<ul id="catsel[@allcount@]">[@next_level@]</ul>[%/data%]</li>[%/param%]
 					[%param *level_3%]
-						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/ data%]/> [@name@][%data id:'next_level' if:'ne' value:''%]<ul id="catsel[@allcount@]">[@next_level@]</ul>[%/ data%]</li>[%/ param%]
+						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/data%]/> [@name@][%data id:'next_level' if:'ne' value:''%]<ul id="catsel[@allcount@]">[@next_level@]</ul>[%/data%]</li>[%/param%]
 					[%param *level_4%]
-						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/ data%]/> [@name@]</li>[%/ param%]
+						<li><input type="checkbox" value="[@id@]" ref="[@allcount@]" name="updcat[@allcount@]" [%data id:'category[@id@]' if:'eq' value:'1'%]checked[%/data%]/> [@name@]</li>[%/param%]
 					[%param footer%]
 							</ul>
 						</div>
-					[%/ param%]
-				[%/ categorymenu%]
+					[%/param%]
+				[%/categorymenu%]
 			</div>
 			<div class="col-12 col-md-6">
 				<h4>Images</h4>
@@ -279,15 +279,15 @@
 								<div class="imagethumb">
 						[%data id:'full_image' if:'eq' value:''%][%param if_true%]
 								 <img src="[@config:ASSETS_URL@]/pixel.gif" border="0" width="80" height="80">
-						[%/ param%][%param if_false%]
+						[%/param%][%param if_false%]
 								<a target="_blank" href="[@full_image@]"><img src="[@thumb_image@]" border="0" width="80" height="80"></a>
 								<div>Remove Image On Save? <input type="checkbox" name="stloc_logodel[@type@]" value="y"></div>
-						[%/ param%][%/ data%]
+						[%/param%][%/data%]
 								</div>
 								<div><input type="file" class="form-control" name="stloc_logo[@type@]"></div>
 							</li>
-						[%/ param%]
-					[%/ thumbnails%]
+						[%/param%]
+					[%/thumbnails%]
 				</ul>
 			</div>
 		</div>
@@ -295,7 +295,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="form-actions">
-					<input type="button" class="btn btn-default" value="Reset" onclick="location.href='[%url page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/ url%]'"> &nbsp;
+					<input type="button" class="btn btn-default" value="Reset" onclick="location.href='[%url page:'account' type:'mystore' fn:'edit' id:'[@stloc_id@]'%][%/url%]'"> &nbsp;
 					<input type="submit" class="btn btn-success" value="Save Changes">
 				</div>
 			</div>

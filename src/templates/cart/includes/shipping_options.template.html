@@ -2,20 +2,20 @@
 [%param *body%]
 <div class="card card-body">
 	<h4>Shipping Options For [%escape%][@ship_title@][%/escape%]
-		[%escape%][%trim%][@ship_state@][@ship_zip@][%/TRIM%][%/escape%]</h4>
+		[%escape%][%trim%][@ship_state@][@ship_zip@][%/trim%][%/escape%]</h4>
 		<hr>
 	[%shipping_methods ship_mode:'[@ship_mode@]' addr_id:'[@addr_id@]'%]
 	[%param header%]
 	<table width="100%" cellpadding="4" cellspacing="0" border="0">
-		[%/PARAM%]
+		[%/param%]
 	[%param *body%]
 		<tr class="ship-[@id@]">
 			<td class="radio">
 			<label>
-			<input type="radio" name="ship[@addr_id@]" value="[@id@]" [%data id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%/DATA%] />
+			<input type="radio" name="ship[@addr_id@]" value="[@id@]" [%data id:'id' if:'=' value:'[@shipping_method_id@]' %]checked[%/data%] />
 				<input type="hidden" id="delivery_time[@addr_id@]_[@id@]" value="[@delivery_time@]" />
 				<input type="hidden" id="delivery_days[@addr_id@]_[@id@]" value="[@delivery_days@]" />
-				<input type="hidden" id="delivery_on[@addr_id@]_[@id@]" value="[%format type:'date' format:'DATEINPUT'%][@delivery_date@][%/FORMAT%]" />
+				<input type="hidden" id="delivery_on[@addr_id@]_[@id@]" value="[%format type:'date' format:'DATEINPUT'%][@delivery_date@][%/format%]" />
 				<input type="hidden" id="delivery_exc[@addr_id@]_[@id@]" value="[@exclude_delivery_days@]" />
 				<input type="hidden" id="delivery_only[@addr_id@]_[@id@]" value="[@only_delivery_days@]" />
 				<h4 class="d-inline">
@@ -35,14 +35,14 @@
 	<p class="help-block">[@shipping_description@]</p>
 	</td>
 		</tr>
-		[%/PARAM%]
+		[%/param%]
 	[%param footer%]
 	</table>
-	[%/PARAM%]
+	[%/param%]
 	[%param ifempty%]
 	Please enter your post code above to see available shipping options. No Shipping methods are available for the selected location.
 	<input type="hidden" name="ship[@addr_id@]" value="" />
-	[%/PARAM%]
+	[%/param%]
 [%/shipping_methods%]
 	<div class="_cpy_comment_pl">
 		<div class="_cpy_comment" ref="[@addr_id@]">
@@ -53,7 +53,7 @@
 				<div class="col-md-6">
 					[%if [@username@] eq '' || [@username@] eq 'noreg' %]
 					<div class="checkbox"><label><input type="checkbox" name="user_order_comment_fld" value="comment[@addr_id@]"> Save for future orders</label></div>
-					[%/ if%]
+					[%/if%]
 				</div>
 				<div class="col-md-6">
 					<p class="help-block small text-muted" id="_cpy_comment_ct[@addr_id@]">&nbsp;</p>
@@ -71,10 +71,10 @@
 			<div class="col-12 col-lg-5">
 			<div class="_delivery_select">
 				<label>Your selected date</label>
-					<input type="text" class="form-control" readonly id="delivery_date[@addr_id@]" name="delivery_date[@addr_id@]" value="[%format type:'date' format:'DATEINPUT' default:''%][@order_delivery_date@][%/FORMAT%]" placeholder="Select Date" />
+					<input type="text" class="form-control" readonly id="delivery_date[@addr_id@]" name="delivery_date[@addr_id@]" value="[%format type:'date' format:'DATEINPUT' default:''%][@order_delivery_date@][%/format%]" placeholder="Select Date" />
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" id="add_reminder[@addr_id@]" name="add_reminder[@addr_id@]" value="y" [%data id:'add_reminder' if:'eq' value:'y'%]checked[%/DATA%]>
+							<input type="checkbox" id="add_reminder[@addr_id@]" name="add_reminder[@addr_id@]" value="y" [%data id:'add_reminder' if:'eq' value:'y'%]checked[%/data%]>
 							<span class="small"><b>Set future reminder for this event?</b></span>
 						</label>
 					</div>

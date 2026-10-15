@@ -3,32 +3,32 @@
 		<div class="card card-body my-2">
 			<h4><i class="fa fa-gift"></i>  Gift Voucher Details</h4>
 			<table cellpadding="4" cellspacing="0" width="100%" border="0">
-	[%/ param%]
+	[%/param%]
 	[%param *body%]
 		<tr><td><b>#[@item_count@] &nbsp; [@vprogram_title@] -
 			[%data id:'show_points' if:'==' value:'1'%][%param if_true%]
-				[%format type:'number' dp:'0' sp:','%][@reward_points@][%/ format%]pts
-			[%/ param%][%param if_false%]
-				[%format type:'currency'%][@reward_amount@][%/ format%]
-			[%/ param%][%/ data%]
+				[%format type:'number' dp:'0' sp:','%][@reward_points@][%/format%]pts
+			[%/param%][%param if_false%]
+				[%format type:'currency'%][@reward_amount@][%/format%]
+			[%/param%][%/data%]
 			</b></td>
 		</tr>
 		<tr><td> <!-- <a class="_cpy_vouchermsgshow" ref="[@reward_id@]" href="javascript:void(0);">+</a> -->
 			<div class="_cpy_vouchermsg" ref="[@reward_id@]">
 				<table cellpadding="2" cellspacing="0" border="0">
-					<tr><td>Your Name:</td><td>[%escape%][@sender_name@][%/ escape%]</td></tr>
-					<tr><td>Recipient Name:</td><td>[%escape%][@recipient_name@][%/ escape%]</td></tr>
-					<tr><td>Recipient Email:</td><td>[%escape%][@recipient_email@][%/ escape%]</td></tr>
-					<tr><td>Delivery Date:</td><td>[%format type:'date' format:'DATETIME' default:'Today'%][@required_date@][%/ format%]</td></tr>
+					<tr><td>Your Name:</td><td>[%escape%][@sender_name@][%/escape%]</td></tr>
+					<tr><td>Recipient Name:</td><td>[%escape%][@recipient_name@][%/escape%]</td></tr>
+					<tr><td>Recipient Email:</td><td>[%escape%][@recipient_email@][%/escape%]</td></tr>
+					<tr><td>Delivery Date:</td><td>[%format type:'date' format:'DATETIME' default:'Today'%][@required_date@][%/format%]</td></tr>
 				</table>
 				Gift Message:<br />
-				[%format type:'text' escape:'1' addbr:'1'%][@gift_message@][%/ format%] <a href="[%url page:'checkout' fn:'voucher'%][%/ url%]#voucher[@reward_id@]" title="Edit" rel="no-follow"><i class="fa fa-pencil-alt"></i> Edit</a>
+				[%format type:'text' escape:'1' addbr:'1'%][@gift_message@][%/format%] <a href="[%url page:'checkout' fn:'voucher'%][%/url%]#voucher[@reward_id@]" title="Edit" rel="no-follow"><i class="fa fa-pencil-alt"></i> Edit</a>
 			</div>
 			</td>
 		</tr>
-	[%/ param%]
+	[%/param%]
 	[%param footer%]
 			</table>
 		</div>
-	[%/ param%]
-[%/ cart_vouchers%]
+	[%/param%]
+[%/cart_vouchers%]

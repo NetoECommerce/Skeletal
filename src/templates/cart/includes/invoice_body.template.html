@@ -139,7 +139,7 @@
 					<div class="col-12 col-sm-6">
 						<h4>Shipping address</h4>
 						[@ship_first_name@] [@ship_last_name@]<br/>
-						[%if [@ship_company@] ne ''%][@ship_company@]<br/>[%/ if%]
+						[%if [@ship_company@] ne ''%][@ship_company@]<br/>[%/if%]
 						[@ship_street1@] [@ship_street2@]<br/>
 						[@ship_city@], [@ship_state@] [@ship_zip@]<br/>
 						[@ship_country@]
@@ -192,10 +192,10 @@
 				<div class="media mb-2">
 					<div class="product-img">
 						<span class="badge badge-pill badge-light">[@qty@]</span>
-						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/ asset_url%]" width="50px" height="50px" alt="[%escape%][@model@][%/escape%] image" />
+						<img class="mr-3 rounded" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" width="50px" height="50px" alt="[%escape%][@model@][%/escape%] image" />
 					</div>
 					<div class="media-body">
-						<span class="float-right">[%format type:'currency'%][@subtotal@][%/ format%]</span>
+						<span class="float-right">[%format type:'currency'%][@subtotal@][%/format%]</span>
 						<p class="m-0">[%escape%][@model@][%/escape%]</p>
 						<small class="text-muted text-break">[@extra@]</small>
 						[%if [@aff_id@] eq '[@config:aff_rental_id@]'%]&nbsp; <b>Rental</b>[%/if%]
@@ -203,11 +203,11 @@
 						[%if [@aff_id@] eq '[@config:aff_free_id@]'%]&nbsp; <b>Free Gift</b>[%/if%]
 						[%if [@has_components@] == 1%]
 						[%cart_item_components counter:'[@counter@]'%]
-							[%param header%]<small class="text-muted">[%/ param%]
-							[%param *body%][@qty@] x [%escape%][@model@][%/escape%]<br/>[%/ param%]
-							[%param footer%]</small>[%/ param%]
-						[%/ cart_item_components%]
-						[%/ if%]
+							[%param header%]<small class="text-muted">[%/param%]
+							[%param *body%][@qty@] x [%escape%][@model@][%/escape%]<br/>[%/param%]
+							[%param footer%]</small>[%/param%]
+						[%/cart_item_components%]
+						[%/if%]
 					</div>
 				</div>
 			[%/param%]
@@ -253,7 +253,7 @@
 					<li class="list-group-item">Grand total
 						<span class="float-right">
 							<span class="small text-muted _order_total">[@CONFIG:DEFAULTCURRENCY@]</span>
-							<span class="h2">[%format type:'currency'%][@total_cart_price@][%/ format%]</span>
+							<span class="h2">[%format type:'currency'%][@total_cart_price@][%/format%]</span>
 						</span>
 					</li>
 				</ul>
@@ -269,7 +269,7 @@
 				</span>
 				<span class="float-right">
 					<span class="small text-muted">[@CONFIG:DEFAULTCURRENCY@]</span>
-					<span class="text-dark h4">[%format type:'currency'%][@total_cart_price@][%/ format%]</span>
+					<span class="text-dark h4">[%format type:'currency'%][@total_cart_price@][%/format%]</span>
 				</span>
 			</a>
 		</div>

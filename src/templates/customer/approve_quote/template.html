@@ -2,24 +2,24 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
 		</ol>
 	</nav>
 	<h1>Approve Quotes</h1>
 	<!-- Search Quotes
-	<form method="get" action="[%url page:'account' type:'search_orders'%][%/ url%]">
+	<form method="get" action="[%url page:'account' type:'search_orders'%][%/url%]">
 	<label>Invoice/Quote #</label>
-	<input type="text" name="ord" value="[%escape%][%form id:'ord'%][%/ form%][%/ escape%]"/>
+	<input type="text" name="ord" value="[%escape%][%form id:'ord'%][%/form%][%/escape%]"/>
 	<label>Email</label>
-	<input type="text" name="email" value="[%escape%][%form id:'email'%][%/ form%][%/ escape%]" />
+	<input type="text" name="email" value="[%escape%][%form id:'email'%][%/form%][%/escape%]" />
 	<input type="submit" value="Search" class="btn">
 	</form>
 	-->
 	[%thumb_list limit:'10' type:'quotes'+%]
-		[%param filter_1%][%form id:'ord'%][%/ form%][%/ param%]
-		[%param filter_2%][%/ param%]
-		[%param filter_3%][%form id:'email'%][%/ form%][%/ param%]
-		[%param filter_4%]y[%/ param%]
+		[%param filter_1%][%form id:'ord'%][%/form%][%/param%]
+		[%param filter_2%][%/param%]
+		[%param filter_3%][%form id:'email'%][%/form%][%/param%]
+		[%param filter_4%]y[%/param%]
 		[%param header%]
 			<table class="table table-bordered table-striped" cellpadding="2" cellspacing="0" width="100%" border="0">
 			<thead>
@@ -32,11 +32,11 @@
 				</tr>
 			</thead>
 			<tbody>
-		[%/ param%]
+		[%/param%]
 		[%param *body%]
 			<tr>
 				<td><a href="[%url page:'account' type:'view_order' id:'[@order_id@]' /%]">[@order_id@]</a></td>
-				<td>[%format type:"date" default:"-" format:"DATE"%][@date_placed@][%/ format%]</td>
+				<td>[%format type:"date" default:"-" format:"DATE"%][@date_placed@][%/format%]</td>
 				<td>[%escape%][@email@][%/escape%]</td>
 				<td>
 					<form action="[%url page:'account' type:'approve_quote'/%]" method="post">
@@ -55,11 +55,11 @@
 					</form>
 				</td>
 			</tr>
-		[%/ param%]
+		[%/param%]
 		[%param *footer%]
 				</tbody>
 			</table>
-		[%/ param%]
-		[%param ifempty%]No quotes found.[%/ param%]
-	[%/ thumb_list%]
+		[%/param%]
+		[%param ifempty%]No quotes found.[%/param%]
+	[%/thumb_list%]
 </div>

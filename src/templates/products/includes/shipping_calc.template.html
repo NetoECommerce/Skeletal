@@ -8,7 +8,7 @@
 				<input type="hidden" id="ship_state" name="ship_state" value="[%session id:'ship_state'/%]"/>
 				<input type="hidden" id="ship_country" value="AU"/>
 				<div class="col-12 col-md-3">
-					<input type="text" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty">
+					<input type="text" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/data%]" class="form-control" placeholder="Qty">
 				</div>
 				<div class="col-12 col-md-3">
 					<input type="text" id="ship_zip" name="ship_zip" value="[%session id:'ship_zip'/%]" class="form-control" placeholder="Post Code">
@@ -32,7 +32,7 @@
 				<input type="hidden" id="ship_country" value="AU"/>
 				<div class="col-12 col-md-3">
 					<label for="n_qty">Qty</label>
-					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty">
+					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/data%]" class="form-control" placeholder="Qty">
 				</div>
 				<div class="col-12 col-sm-6">
 					<label for="ship_selector">Suburb/Postal Code</label>
@@ -52,7 +52,7 @@
 				<input type="hidden" id="ship_state" name="ship_state" value="" />
 				<div class="col-12 col-md-3">
 					<label for="n_qty">Qty</label>
-					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty" aria-label="qty">
+					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/data%]" class="form-control" placeholder="Qty" aria-label="qty">
 				</div>
 				<div class="col-12 col-md-6">
 					<label for="ship_country">Country</label>
@@ -60,8 +60,8 @@
 						[%countries%]
 							[%param *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
-							[%/ param%]
-						[%/ countries%]
+							[%/param%]
+						[%/countries%]
 					</select>
 				</div>
 				<div class="col-12 col-md-3">
@@ -74,15 +74,15 @@
 			[%else%]
 				<!-- postcode search -->
 				<div class="col-12 col-md-3">
-					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/ data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/ data%]" class="form-control" placeholder="Qty" aria-label="qty">
+					<input type="number" id="n_qty" name="n_qty" value="[@qty@]" min="[%data id:'min_qty' if:'ne' value:'0' %][@min_qty@][%/data%][%data id:'min_qty' if:'eq' value:'0' %]1[%/data%]" class="form-control" placeholder="Qty" aria-label="qty">
 				</div>
 				<div class="col-12 col-md-3">
 					<select id="ship_country" class="form-control" aria-label="Country">
 						[%countries%]
 							[%param *body%]
 								<option value="[@country_code@]" [%if [@country_code@] eq [@ship_country@]%]selected[%/if%]>[@country_name@]</option>
-							[%/ param%]
-						[%/ countries%]
+							[%/param%]
+						[%/countries%]
 					</select>
 				</div>
 				<div class="col-12 col-md-3">
@@ -100,22 +100,22 @@
 			[%param *header%]
 				<br />
 				<div role="alert" aria-atomic="true" aria-label="Shipping results">
-			[%/ param%]
+			[%/param%]
 			[%param *body%]
 				<div role="group" aria-label="Shipping method option">
 				<hr aria-hidden="true"/>
-				<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%if [@delivery_time@]%](ETA: [@delivery_time@] days)[%/ if%]<br />
+				<strong>[@shipping_method@]</strong> - [%if [@cost@] == 0%] [%if [@na@] == 0%] [%if [@config:free_shipping_label_for_webstore@]%] [@config:free_shipping_label_for_webstore@] [%else%] Free [%/if%] [%else%] Not Applicable [%/if%] [%else%] [%format type:'currency'%][@cost@][%/format%] [%/if%] [%if [@delivery_time@]%](ETA: [@delivery_time@] days)[%/if%]<br />
 				<i class="text-muted">[@shipping_description@]</i>
 				</div>
-			[%/ param%]
+			[%/param%]
 			[%param *footer%]
 				</div>
-			[%/ param%]
+			[%/param%]
 			[%param *ifempty%]
 				[%if [@ship_zip@]%]
 					<br /><p class="alert alert-danger alert-shipping-error" aria-label="alert" role="alert" aria-atomic="true">Shipping not available to [%if [@ship_zip@]%][@ship_zip@] [%/if%][@ship_country@], please try another location.</p>
 				[%/if%]
-			[%/ param%]
-		[%/ shipping_methods%]
+			[%/param%]
+		[%/shipping_methods%]
 	</div>
 </section>

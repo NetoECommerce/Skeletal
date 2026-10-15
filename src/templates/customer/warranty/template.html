@@ -2,7 +2,7 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
 		<li class="breadcrumb-item"><a href="#">Resolution Centre</a></li>
 		</ol>
 	</nav>
@@ -10,15 +10,15 @@
 	<p>Need to return an item, make a warranty claim or have been over charged for an order? Please open a dispute so that we can resolve your problem as quickly as possible.</p>
 	<p>Most disputes can be resolved through communication and it's best to contact us as soon as you recognise a potential problem. Once lodged you can also track the progress of your dispute online at any time. </p>
 	<p>
-		<a class="btn btn-success" href="[%url page:'account' type:'warranty' fn:'create'%][%/ url%]"><i class="fa fa-plus icon-white"></i> Open A New Dispute</a>
+		<a class="btn btn-success" href="[%url page:'account' type:'warranty' fn:'create'%][%/url%]"><i class="fa fa-plus icon-white"></i> Open A New Dispute</a>
 	</p>
 
 	<hr />
 	<h3><i class="fa fa-folder-open"></i> Open Disputes</h3>
 	<br />
 	[%thumb_list type:'disputes' limit:'5'%]
-	[%param filter_1%][%form id:'dispute'%][%/ form%][%/ param%]
-	[%param filter_2%][%form id:'dstatus'%][%/ form%][%/ param%]
+	[%param filter_1%][%form id:'dispute'%][%/form%][%/param%]
+	[%param filter_2%][%form id:'dstatus'%][%/form%][%/param%]
 	[%param header%]
 	<p>Below is list of all open disputes and their current status. To see past or closed disputes use the "show" filter below.</p>
 	<table class="table table-striped table-bordered table-condensed">
@@ -32,43 +32,43 @@
 				<th>Filed On / Replied On</th>
 			</tr>
 		</thead>
-		[%/ param%]
+		[%/param%]
 		[%param *body%]
 		<tr>
-			<td><a href="[%url page:'account' type:'warranty' id:'[@dispute_id@]'%][%/ url%]">[@dispute_id@]</a> [@dispute_status@]
+			<td><a href="[%url page:'account' type:'warranty' id:'[@dispute_id@]'%][%/url%]">[@dispute_id@]</a> [@dispute_status@]
 				[%data id:'response_repuired' if:'=' value:'1'%]
 				<p class="text-danger">Response Required</p>
-				[%/ data%]
+				[%/data%]
 			</td>
 			<td>
 				[%format type:"date" default:"-" format:"DATE"%][@date_disputed@]
-				[%/ format%]
+				[%/format%]
 			</td>
 			<td>[@dispute_type@]</td>
 			<td>[@dispute_reason@]</td>
-			<td><a href="[%url page:'account' type:'view_order' id:'[@order_id@]'%][%/ url%]">[@order_id@]</a></td>
+			<td><a href="[%url page:'account' type:'view_order' id:'[@order_id@]'%][%/url%]">[@order_id@]</a></td>
 			<td>
 				[%format type:'date' default:'-' format:'DATE'%][@date_filed@]
-				[%/ format%]/
+				[%/format%]/
 				[%format type:'date' default:'-' format:'DATE'%][@company_reply@]
-				[%/ format%]
+				[%/format%]
 			</td>
 		</tr>
-		[%/ param%]
+		[%/param%]
 		[%param *footer%]
 	</table>
 	<nav aria-label="Orders page navigation">
 		<ul class="pagination justify-content-center mt-3">
 			[%paging limit:'3'%]
-			[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go back one page">Previous Page</a></li>[%/ param%]
-			[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/ param%]
-			[%param *gonext_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *next_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go forward one page">Next Page</a></li>[%/ param%]
-			[%/ paging%]
+			[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go back one page">Previous Page</a></li>[%/param%]
+			[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+			[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/param%]
+			[%param *gonext_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+			[%param *next_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go forward one page">Next Page</a></li>[%/param%]
+			[%/paging%]
 		</ul>
 	</nav>
-	[%/ param%]
-	[%param ifempty%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a> No disputes have been raised on this account. </div>[%/ param%]
-	[%/ thumb_list%]
+	[%/param%]
+	[%param ifempty%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a> No disputes have been raised on this account. </div>[%/param%]
+	[%/thumb_list%]
 </div>

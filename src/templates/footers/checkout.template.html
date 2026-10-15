@@ -5,8 +5,8 @@
 	[%if [@config:show_platform_branding@] %]
 		E-commerce software by <a href="https://www.netohq.com" target="_blank" rel="nofollow noopener">Maropost</a> <br/>
 	[%/if%]
-	[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@] [%/ if%]
-	[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
+	[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@] [%/if%]
+	[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/if%]
 </footer>
 <!-- Required Maropost Commerce Cloud Scripts - DO NOT REMOVE -->
 [%load_template file:'footers/includes/scripts.template.html'/%]

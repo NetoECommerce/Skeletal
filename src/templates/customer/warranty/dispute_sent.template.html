@@ -7,14 +7,14 @@
 		</ol>
 	</nav>
 	<div class="page-header"><h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1></div>
-	[%data id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/ data%]
-	[%data id:'warning' if:'ne' value:''%]<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/ data%]
+	[%data id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/data%]
+	[%data id:'warning' if:'ne' value:''%]<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/data%]
 	<script>
 		function cancalAction() {
-			window.location.href = '[%url page:"account" type:"warranty"%][%/ url%]';
+			window.location.href = '[%url page:"account" type:"warranty"%][%/url%]';
 		}
 	</script>
-	<p>Your <a href="[%url page:'account' type:'warranty' id:'[@dispute_id@]'%][%/ url%]">dispute #[@dispute_id@]</a> has been sent to [@config:company_name@]. You can track the progress of your dispute at any time from within your account.</p>
+	<p>Your <a href="[%url page:'account' type:'warranty' id:'[@dispute_id@]'%][%/url%]">dispute #[@dispute_id@]</a> has been sent to [@config:company_name@]. You can track the progress of your dispute at any time from within your account.</p>
 	<div class="row btn-stack">
 		<div class="col-12 col-md-3">
 			<button type="button" value="Go Back To Start" class="btn btn-outline-secondary btn-block" onClick="cancalAction()"> Create Another Dispute <i class="fa fa-sync icon-white"></i></button>

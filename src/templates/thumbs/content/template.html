@@ -10,15 +10,15 @@
 		<span itemprop="author" itemscope itemtype="https://schema.org/Person">
 			Author: <span itemprop="name">[@content_author@]</span>
 		</span>&nbsp;
-		[%/ if%]
+		[%/if%]
 		[%if [@date_posted@] != 0000-00-00 00:00:00%]
 		<meta itemprop="datePublished" content="[%format type:'date' format:'#Y-#M-#d'%][@date_posted@][%/format%]"/>
-		Date Posted: [%format type:'date'%][@date_posted@][%/ format%]
-		[%/ if%]
+		Date Posted: [%format type:'date'%][@date_posted@][%/format%]
+		[%/if%]
 	</p>
 	<p class="clearfix" itemprop="description">[@content_short_description2@]</p>
 	<p>
-		[%if [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="badge badge-pill badge-secondary">[@reviews@]</span>[%/ if%]
+		[%if [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="badge badge-pill badge-secondary">[@reviews@]</span>[%/if%]
 		<div class="dropdown">
 			<button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu[@content_id@]" data-toggle="dropdown" aria-controls="dropdownMenu[@content_id@]" aria-label="Share content">
 				Share: <i class="fab fa-facebook text-facebook" aria-hidden="true"></i>

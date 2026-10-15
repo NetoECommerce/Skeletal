@@ -14,7 +14,7 @@
 				[%/if%]
 				<div class="card-body">
 					<div class="row">
-		[%/PARAM%]
+		[%/param%]
 		[%param *body%]
 			[%if ![@has_variation@]%]
 				<div class="col-12 col-md-6 col-lg-4 pb-2 wrapper-components-thumbnail">
@@ -22,10 +22,10 @@
 					<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
 						<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
 						<div class="caption card-body">
-							<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
+							<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/format%]</p>
 							<p class="price">
 								[%if [@itm_price@] AND [@itm_price@] >= 0 %]
-									[%format type:'currency'%][@itm_price@][%/ format%]
+									[%format type:'currency'%][@itm_price@][%/format%]
 								[%else%]
 									[%if [@inpromo@]%]
 										<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
@@ -51,10 +51,10 @@
 					<div class="card components-thumbnail thumbnail border-0 component[@group_count@]">
 						<img class="component-var-thumb card-img-top" component-id="[@component_count@]" src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumb'%][%/asset_url%]" alt="[@model@]" border="0" id="main-image">
 						<div class="caption card-body">
-							<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/FORMAT%]</p>
+							<p class="card-title h5">[%format type:'text' maxlength:'50' rmhtml:'1'%][@model@][%/format%]</p>
 							<p class="price">
 								[%if [@itm_price@] AND [@itm_price@] >= 0 %]
-									[%format type:'currency'%][@itm_price@][%/ format%]
+									[%format type:'currency'%][@itm_price@][%/format%]
 								[%else%]
 									[%if [@inpromo@]%]
 										<strong>Now</strong> [%format type:'currency'%][@promo_price@][%/format%]
@@ -72,13 +72,13 @@
 								[%param *variation_header%]
 										<select class="component-var-opt form-control component-config-input" component-id="[@component_count@]" ref="[@specific_id@]">
 											<option value="" disabled selected>[@specific_name@]</option>
-								[%/PARAM%]
+								[%/param%]
 								[%param *variation_body%]
-											<option value="[@value_id@]">[@value_name@] [%if ![@variation_qty@]%](Out of Stock)[%/IF%]</option>
-								[%/PARAM%]
+											<option value="[@value_id@]">[@value_name@] [%if ![@variation_qty@]%](Out of Stock)[%/if%]</option>
+								[%/param%]
 								[%param *variation_footer%]
 											</select>
-								[%/PARAM%]
+								[%/param%]
 							[%/list_item_variations%]
 							<div class="input-group">
 								<div class="input-group-prepend"><span class="input-group-text">QTY</span></div>
@@ -96,32 +96,32 @@
 					</div>
 				</div>
 			[%/if%]
-		[%/PARAM%]
+		[%/param%]
 		[%param *group_footer%]
 					</div>
 				</div>
 			</div>
-		[%/PARAM%]
-	[%/ITEM_KITTING%]
+		[%/param%]
+	[%/item_kitting%]
 	[%extra_options id:'[@SKU@]'%]
 		[%param *header%]
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th colspan="2">Available Options</th>
 				</tr>
-				[%/ param%]
+				[%/param%]
 				[%param *number_option%]
 					<tr>
 						<td><label>[@name@]</label></td>
 						<td><input name="extra[@count@]" class="form-control" id="productextra[@count@]" rel="[@SKU@]" value=""></td>
 					</tr>
-				[%/ param%]
+				[%/param%]
 				[%param *text_option%]
 					<tr>
 						<td><label>[@name@]</label></td>
 						<td><textarea name="extra[@count@]" [%if [@length@]%]maxlength="[@length@]"[%/if%]class="form-control" id="productextra[@count@]" rel="[@SKU@]" cols="20"></textarea></td>
 					</tr>
-				[%/ param%]
+				[%/param%]
 				[%param *select_option%]
 					<tr>
 						<td><label>[@name@]</label></td>
@@ -131,20 +131,20 @@
 							</select>
 						</td>
 					</tr>
-				[%/ param%]
+				[%/param%]
 				[%param *choices%]
-					<option type="text" class="form-control" value="[@option_id@]">[%escape%][@text@][%/ escape%]
+					<option type="text" class="form-control" value="[@option_id@]">[%escape%][@text@][%/escape%]
 					[%data id:'price' if:'!=' value:'0'%]
-						(+ [%format type:'currency'%][@price@][%/ format%])
-					[%/ data%]
+						(+ [%format type:'currency'%][@price@][%/format%])
+					[%/data%]
 					</option>
-				[%/ param%]
+				[%/param%]
 				[%param *footer%]
 				<input type="hidden" name="extras" value="[@total_options@]"/>
 			</table>
 			<hr />
-		[%/ param%]
-	[%/ extra_options%]
+		[%/param%]
+	[%/extra_options%]
 </div>
 <div class="row">
 	<div class="col-12 col-md-5">

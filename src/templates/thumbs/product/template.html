@@ -4,13 +4,13 @@
 		<meta itemprop="brand" content="[@brand@]"/>
 		<meta itemprop="mpn" content="[@sku@]"/>
 		<a href="[@URL@]" class="thumbnail-image pb-2">
-			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/ param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
+			<img src="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" itemprop="image" class="product-image img-fluid" alt="[%escape%][@model@][%/escape%]" rel="itmimg[@SKU@]">
 		</a>
 		<p class="card-title h4" itemprop="name"><a href="[@URL@]">[%escape%][%format type:'text' truemaxlength:'50' rmhtml:'1'%][@model@][%/format%][%/escape%]</a></p>
 		<p class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" aria-label="[%escape%][@model@][%/escape%] price">
 			[%if [@inpromo@]%]
 				Now&nbsp;[%if [@has_child@]%]from&nbsp;[%/if%]
-				<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%/ format%]"/>
+				<meta itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%/format%]"/>
 				<span itemprop="price" content="[@promo_price@]">[%format type:'currency'%][@promo_price@][%/format%]</span>
 			[%else%]
 				[%if [@has_child@]%]From&nbsp;[%/if%]

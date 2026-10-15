@@ -44,7 +44,7 @@
 	[%/filter%]
 	[%filter ID:'keywords' if:'ne' value:' '%]
 		[%thumb_list type:'products' limit:'[@config:THUMB_LIMIT@]'%]
-			[%param template%][%viewby type:'products' default:'[@templatethumb@]'%][%/VIEWBY%][%/param%]
+			[%param template%][%viewby type:'products' default:'[@templatethumb@]'%][%/viewby%][%/param%]
 				[%param *header%]
 					<hr aria-hidden="true"/>
 					<div class="row sort_container">
@@ -61,8 +61,8 @@
 								<input name="viewby" type="hidden" value="" />
 							</form>
 							<div class="viewby btn-group">
-								<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%viewby type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
-								<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%viewby type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/VIEWBY%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
+								<a href="javascript:viewtype('');" class="btn btn-outline-secondary [%viewby type:'products' if:'ne' value:'list' if_true:'active' if_false:''%][%/viewby%]" rel="nofollow" aria-label="Thumbnail view"><i class="fa fa-th"></i></a>
+								<a href="javascript:viewtype('list');" class="btn btn-outline-secondary [%viewby type:'products' if:'eq' value:'list' if_true:'active' if_false:''%][%/viewby%]" rel="nofollow" aria-label="List view"><i class="fa fa-th-list"></i></a>
 							</div>
 						</div>
 						<div class="col-4 d-none d-lg-block">
@@ -75,11 +75,11 @@
 									<label class="col-2 col-form-label" for="sortby">Sort</label>
 									<div class="col-10">
 										<select name="sortby" onChange="return this.form.submit();" class="form-control" aria-label="Sort products by">
-											<option value="popular" [%sortby type:'products' if:'eq' value:'popular'%]selected[%/SORTBY%]>Most Popular</option>
-											<option value="name" [%sortby type:'products' if:'eq' value:'name'%]selected[%/SORTBY%]>Name</option>
-											<option value="SKU" [%sortby type:'products' if:'eq' value:'SKU'%]selected[%/SORTBY%]>SKU</option>
-											<option value="lowest_price" [%sortby type:'products' if:'eq' value:'lowest_price'%]selected[%/SORTBY%]>Lowest Price</option>
-											<option value="highest_price" [%sortby type:'products' if:'eq' value:'highest_price'%]selected[%/SORTBY%]>Highest Price</option>
+											<option value="popular" [%sortby type:'products' if:'eq' value:'popular'%]selected[%/sortby%]>Most Popular</option>
+											<option value="name" [%sortby type:'products' if:'eq' value:'name'%]selected[%/sortby%]>Name</option>
+											<option value="SKU" [%sortby type:'products' if:'eq' value:'SKU'%]selected[%/sortby%]>SKU</option>
+											<option value="lowest_price" [%sortby type:'products' if:'eq' value:'lowest_price'%]selected[%/sortby%]>Lowest Price</option>
+											<option value="highest_price" [%sortby type:'products' if:'eq' value:'highest_price'%]selected[%/sortby%]>Highest Price</option>
 										</select>
 									</div>
 								</div>
@@ -89,7 +89,7 @@
 					<div class="row">
 						<div class="col-12"><hr></div>
 					</div>
-					<div class="[%viewby type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/VIEWBY%]">
+					<div class="[%viewby type:'products' if:'eq' value:'list' if_true:'thumb_list' if_false:'thumb'%][%/viewby%]">
 						<div class="row products-row">
 					[%/param%]
 					[%param *footer%]
@@ -113,7 +113,7 @@
 								<hr aria-hidden="true"/>
 							</div>
 						</div>
-					[%/IF%]
+					[%/if%]
 				[%/param%]
 				[%param *ifempty%]
 					<div class="row">

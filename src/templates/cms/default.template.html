@@ -24,7 +24,7 @@
 </h1>
 <p class="text-muted">
 	[%if [@content_author@]%]Author: [@content_author@] &nbsp;[%/if%]
-	[%if [@date_posted@] != 0000-00-00 00:00:00%]Date Posted:[%format type:'date'%][@date_posted@][%/FORMAT%]&nbsp;[%/if%]
+	[%if [@date_posted@] != 0000-00-00 00:00:00%]Date Posted:[%format type:'date'%][@date_posted@][%/format%]&nbsp;[%/if%]
 </p>
 [%advert type:'text' template:'carousel' limit:'10' ad_group:''%]
 	[%param *header%]
@@ -125,7 +125,7 @@
 				<blockquote>
 					<h4 itemprop="name"><i>[%format type:'text' rmhtml:'1'%][@title@][%/format%]</i></h4>
 					<div>
-						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/ if%]<meta itemprop="datePublished" content="[%format type:'date'%][@insert_date@][%/FORMAT%]">[%format type:'date'%][@insert_date@][%/FORMAT%]</strong>
+						<strong>[%if [@reviewname@]%]By: <span itemprop="author">[@reviewname@]</span> on [%/if%]<meta itemprop="datePublished" content="[%format type:'date'%][@insert_date@][%/format%]">[%format type:'date'%][@insert_date@][%/format%]</strong>
 					</div>
 					<span itemprop="description">[%format type:'text' rmhtml:'1'%][@review@][%/format%]</span>
 					[%if [@review_response@]%]
@@ -139,7 +139,7 @@
 		[%/param%]
 	[%/thumb_list%]
 	<h3>Leave a comment</h3>
-	<form name="edit_review" method="post" role="form" action="[%url page:'account' type:'write_contentreview'%][%/URL%]">
+	<form name="edit_review" method="post" role="form" action="[%url page:'account' type:'write_contentreview'%][%/url%]">
 		<fieldset>
 			<input type="hidden" name="fn" value="confirm">
 			<input type="hidden" name="item" value="[@content_id@]">

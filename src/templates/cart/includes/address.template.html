@@ -7,13 +7,13 @@
 				<option value=""></option>
 				[%address_book%]
 					[%param *body%]
-						<option value="[@id@]" [%data id:'id' if:'eq' value:'[@address_book@]'%]selected[%/ data%]>[@ship_title@] ([@ship_zip@])</option>
-					[%/ param%]
-				[%/ address_book%]
+						<option value="[@id@]" [%data id:'id' if:'eq' value:'[@address_book@]'%]selected[%/data%]>[@ship_title@] ([@ship_zip@])</option>
+					[%/param%]
+				[%/address_book%]
 			</select>
 		</div>
 	</div>
-	[%/ user%]
+	[%/user%]
 	<div class="form-group row modal-row">
 		<label class="control-label col-12 col-sm-4">First Name<div class="small text-danger">Required</div></label>
 		<div class="col-12 col-sm-8">
@@ -36,9 +36,9 @@
 			<select id="_addr_country" class="form-control">
 				[%countries%]
 					[%param *body%]
-						<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/ data%]>[@country_name@]</option>
-					[%/ param%]
-				[%/ countries%]
+						<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@ship_country@]'%]selected[%/data%]>[@country_name@]</option>
+					[%/param%]
+				[%/countries%]
 			</select>
 		</div>
 	</div>

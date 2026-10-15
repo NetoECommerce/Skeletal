@@ -1,21 +1,21 @@
 <div class="col-12">
 	<script>
 		function print_invoice() {
-			var win = window.open('[%url page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/ url%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+			var win = window.open('[%url page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/url%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}
 	</script>
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/ url%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="[%url page:'account' type:'approve_quote'%][%/ url%]">Approve Quotes</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account' type:'approve_quote'%][%/url%]">Approve Quotes</a></li>
 		</ol>
 	</nav>
 	<h1>Approve Quote</h1>
 	<p>Congratulations! Quote #[@order_id@] has been approved and changed to an order. You can pay for this order now by clicking on the pay now button below.</p>
 	<div>
 		<input class="btn btn-default float-right" type="button" value="Print Invoice" onClick="print_invoice()">
-		<button onclick="location.href='[%url page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%/ url%]'" class="btn btn-success float-left">Pay Now</button>
+		<button onclick="location.href='[%url page:'account' type:'pay_order' qs:'action=paynow' id:'[@order_id@]'%][%/url%]'" class="btn btn-success float-left">Pay Now</button>
 	</div>
-	[%print_order id:'[@order_id@]'%][%/ print_order%]
+	[%print_order id:'[@order_id@]'%][%/print_order%]
 </div>

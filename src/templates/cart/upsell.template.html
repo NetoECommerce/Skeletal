@@ -34,13 +34,13 @@
 										[%extra_options id:'[@SKU@]' currentextra:'[@currentextras@]'%]
 											[%param *header%]
 												<table class="productoptions table table-striped table-bordered" border="0" cellspacing="0" cellpadding="4">
-											[%/PARAM%]
+											[%/param%]
 											[%param *number_option%]
 												<tr>
 													<td valign="top"><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
 													<td valign="top" width="70%"><input type="text" class="form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" value="[@currentextra@]"></td>
 												</tr>
-											[%/PARAM%]
+											[%/param%]
 											[%param *text_option%]
 												<tr>
 													<td valign="top"><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
@@ -52,7 +52,7 @@
 														[%/if%]
 													</td>
 												</tr>
-											[%/PARAM%]
+											[%/param%]
 											[%param *select_option%]
 												<tr>
 													<td><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
@@ -62,25 +62,25 @@
 														</select>
 													</td>
 												</tr>
-											[%/PARAM%]
+											[%/param%]
 											[%param *choices%]
 												<option type="text" value="[@option_id@]" [%if [@option_id@] eq [@currentextra@]%]selected[%/if%]>
 													[%escape%][@text@][%/escape%]
 													[%if [@price@] ne '0'%]([%format type:'currency'%][@price@][%/format%])[%/if%]
 												</option>
-											[%/PARAM%]
+											[%/param%]
 											[%param *footer%]
 												</table>
 												<input type="hidden" name="extras[@line@]" id="extras[@line@]" value="[@total_options@]">
-											[%/PARAM%]
+											[%/param%]
 										[%/extra_options%]
 									</div>
 								</div>
 							</div>
 						</div>
-					[%/PARAM%]
+					[%/param%]
 					[%param footer%]
-					[%/PARAM%]
+					[%/param%]
 				[%/cart_items%]
 			</div>
 			<div class="row">
