@@ -1,4 +1,4 @@
-[%SITE_VALUE id:'footer_javascript'%]
+[%site_value id:'footer_javascript'%]
 	<script>
 		function proc_pay() {
 			var f = document.itemForm;
@@ -164,12 +164,12 @@
 		showPD();
 		updAmt();
 	</script>
-[%/SITE_VALUE%]
+[%/site_value%]
 <div class="col-12">
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
 		<li class="breadcrumb-item"><a href="#">Pay Outstanding Orders and Invoices</a></li>
 		</ol>
 	</nav>
@@ -184,7 +184,7 @@
 	<h2>Payment Processing</h2>
 	<h2>Please do not refresh or close this page</h2>
 	<img src="[@config:ASSETS_URL@]/loading.gif" alt="Loading"/></div>
-	<form action="[%URL page:'account' type:'payrec'%][%/URL%]" method="post" name="itemForm">
+	<form action="[%url page:'account' type:'payrec'%][%/url%]" method="post" name="itemForm">
 		<input type="hidden" name="action" value="pay">
 		<input type="hidden" name="ts" value="[@ts@]">
 		<h3>My Account Details</h3>
@@ -203,9 +203,9 @@
 				<select class="form-control" name="card_type" onChange="showPD()">
 					<option value="">Select an option</option>
 					[%payment_methods charge_type:'acc,cc' sortby:'sortorder,name' show_account:'1' no_surcharge:'[@config:NO_BULK_PAY_SURCHARGE@]' %]
-						[%PARAM *body%]
+						[%param *body%]
 							<option value="[@id@]:[@charge_type@]">[@name@]</option>
-						[%/PARAM%]
+						[%/param%]
 					[%/payment_methods%]
 				</select>
 			</div>
@@ -234,9 +234,9 @@
 									<select class="input-small form-control " name="card_exp_month">
 										<option value=""></option>
 										[%months%]
-											[%PARAM *body%]
+											[%param *body%]
 												<option value="[@month@]">[@month@]</option>
-											[%/PARAM%]
+											[%/param%]
 										[%/months%]
 									</select>
 								</div>
@@ -247,9 +247,9 @@
 									<select class="input-small form-control" name="card_exp_year">
 										<option value=""></option>
 										[%years from:'+0' to:'+10'%]
-											[%PARAM *body%]
+											[%param *body%]
 												<option value="[@year@]">[@year@]</option>
-											[%/PARAM%]
+											[%/param%]
 										[%/years%]
 									</select>
 								</div>
@@ -276,9 +276,9 @@
 		<hr />
 		<h3>Unpaid Orders</h3>
 		[%thumb_list type:'orders' limit:'100'%]
-			[%PARAM filter_1%][%/PARAM%]
-			[%PARAM filter_2%]y[%/PARAM%]
-			[%PARAM *header%]
+			[%param filter_1%][%/param%]
+			[%param filter_2%]y[%/param%]
+			[%param *header%]
 				<table class="table">
 					<thead>
 						<tr>
@@ -292,8 +292,8 @@
 						</tr>
 					</thead>
 					<tbody>
-			[%/PARAM%]
-			[%PARAM *body%]
+			[%/param%]
+			[%param *body%]
 						<tr>
 							<td class="small" nowrap>[@order_id@]
 								<input type="hidden" name="oid[@count@]" value="[@order_id@]">
@@ -306,27 +306,27 @@
 							<td class="small" nowrap>[%format type:'date' default:'[@date_due_text@]' format:'DATE'%][@date_due@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@grand_total@][%/format%]</td>
 							<td class="small" nowrap>[%format type:"currency"%][@amount_owed@][%/format%]</td>
-							<td nowrap>[@config:currency_symbol@]<input type="text" class="input-small" name="pay[@count@]" value="[%DATA id:'apply[@order_id@]'%][%/DATA%]" size="7" onChange="updAmt(this)"></td>
+							<td nowrap>[@config:currency_symbol@]<input type="text" class="input-small" name="pay[@count@]" value="[%data id:'apply[@order_id@]'%][%/data%]" size="7" onChange="updAmt(this)"></td>
 							<td nowrap><input class="btn btn-outline-secondary" type="button" value="Apply" onClick="appAmt([@count@])"></td>
 						</tr>
-					[%/PARAM%]
-					[%PARAM *footer%]
+					[%/param%]
+					[%param *footer%]
 						<tr><td align="right" colspan="7" class="small">Total Applied</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_app">0.00</span></td></tr>
 						<tr><td align="right"	colspan="7" class="small">Payment Amount</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_rec">0.00</span></td></tr>
 						<tr><td align="right" colspan="7" class="small">Out of Balance</td><td align="right" class="small" nowrap>[@config:currency_symbol@]<span id="total_more">0.00</span></td></tr>
 					</tbody>
 				</table>
-					[%/PARAM%]
-					[%PARAM ifempty%]
+					[%/param%]
+					[%param ifempty%]
 						No outstanding orders on this account.
-					[%/PARAM%]
+					[%/param%]
 				[%/thumb_list%]
 				<div class="clear"></div>
 				<div class="form-actions"></div>
 				<div class="row"><div class="col-12"><hr></div></div>
 				<div class="row">
 					<div class="col-12 col-md-3">
-						<input type="button" value="Reset" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%URL page:'account' type:'payrec'%][%/URL%]'"><br>
+						<input type="button" value="Reset" class="btn btn-lg btn-warning btn-block" onclick="location.href='[%url page:'account' type:'payrec'%][%/url%]'"><br>
 					</div>
 					<div class="col-12 col-md-3 offset-md-6">
 						<input type="button" onclick="proc_pay()" value="Process Payment" class="btn btn-success btn-lg btn-block">

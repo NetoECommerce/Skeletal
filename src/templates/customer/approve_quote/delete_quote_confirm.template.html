@@ -1,18 +1,18 @@
 <div class="col-12">
 	<script>
 		function print_quote() {
-			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/ URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+			var win = window.open('[%url page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/url%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}
 	</script>
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account' type:'approve_quote'%][%/url%]">Approve Quotes</a></li>
 		</ol>
 	</nav>
 	<h1>Dismiss Quote</h1>
-	<form name="dismissForm" method="post" action="[%URL page:'account' type:'approve_quote'  id:'[@order_id@]' fn:'confirm'%][%END URL%]">
+	<form name="dismissForm" method="post" action="[%url page:'account' type:'approve_quote'  id:'[@order_id@]' fn:'confirm'%][%/url%]">
 		<input type="hidden" name="order_email" value="[%escape%][@order_email@][%/escape%]" />
 		<input type="hidden" name="action"value="dismiss" />
 		<div class="row">
@@ -26,5 +26,5 @@
 			</div>
 		</div>
 	</form>
-	[%print_order id:'[@order_id@]'%][%/ print_order%]
+	[%print_order id:'[@order_id@]'%][%/print_order%]
 </div>

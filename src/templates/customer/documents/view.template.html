@@ -2,8 +2,8 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'documents'%][%/ URL%]">Files</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account' type:'documents'%][%/url%]">Files</a></li>
 	</ol>
 	</nav>
 	<div class="page-header"><h1>My Files</h1></div>
@@ -17,17 +17,17 @@
 			</tr>
 		</thead>
 		<tbody>
-		[%/ param%]
+		[%/param%]
 		[%param *body%]
 			<tr>
 			<td nowrap>[@filename@]</td>
 			<td nowrap><a href="[@uri@]"><button type="button" class="btn btn-default" title="Download"><i class="fa fa-folder-open"></i> Download</button></a></td>
 		 </tr>
-		[%/ param%]
+		[%/param%]
 		[%param *footer%]
 		</tbody>
 		</table>
-		[%/ param%]
-		[%param *ifempty%]We do not have any files stored on your account.[%/ param%]
-	[%/ customer_filelist%]
+		[%/param%]
+		[%param *ifempty%]We do not have any files stored on your account.[%/param%]
+	[%/customer_filelist%]
 </div>

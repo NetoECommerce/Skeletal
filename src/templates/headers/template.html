@@ -22,7 +22,7 @@
 			</button>
 			<a class="navbar-toggler d-sm-inline-block d-md-none" href="[%url page:'checkout' type:'cart'/%]" aria-label="Shopping cart">
 				<i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-				<span class="badge badge-pill badge-secondary" rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span>
+				<span class="badge badge-pill badge-secondary" rel="a2c_item_count">[%format type:'number' dp:'0'%][%cart id:'total_items'%][%/cart%][%/format%]</span>
 			</a>
 		</div>
 		<div class="d-none d-md-block col-12 col-sm-8 col-md-4 col-lg-4">
@@ -30,7 +30,7 @@
 				<form name="productsearch" method="get" action="/" role="search" aria-label="Product search">
 					<input type="hidden" name="rf" value="kw"/>
 					<div class="input-group">
-						<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
+						<input class="form-control ajax_search" value="[%escape%][%filter ID:'keywords'%][%/filter%][%/escape%]" id="name_search" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
 						<div class="input-group-append">
 							<button type="submit" value="Search" class="btn btn-outline-secondary" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
 						</div>
@@ -41,7 +41,7 @@
 		<div class="d-none d-md-block col-md-4 col-lg-4 text-right">
 			<div id="header-cart" class="btn-group" role="group">
 				<a href="[%url page:'checkout' type:'cart'/%]" class="btn btn-outline-secondary" id="cartcontentsheader">
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="d-none d-lg-inline">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%CART id:'total_items'%][%/CART%][%/format%]</span> Items
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="d-none d-lg-inline">Shopping Cart</span> - <span rel="a2c_item_count">[%format type:'number' dp:'0'%][%cart id:'total_items'%][%/cart%][%/format%]</span> Items
 				</a>
 				<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Shopping cart dropdown">
 					<span class="sr-only">Toggle Dropdown</span>
@@ -60,7 +60,7 @@
 			<form class="d-block d-md-none" name="productsearch" method="get" action="/" role="search" aria-label="Product search">
 				<input type="hidden" name="rf" value="kw"/>
 				<div class="input-group">
-					<input class="form-control ajax_search" value="[%nohtml%][%filter ID:'keywords'%][%/filter%][%/nohtml%]" id="name_search-xs" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
+					<input class="form-control ajax_search" value="[%escape%][%filter ID:'keywords'%][%/filter%][%/escape%]" id="name_search-xs" autocomplete="off" name="kw" type="search" aria-label="Input search"/>
 					<div class="input-group-append">
 						<button type="submit" value="Search" class="btn btn-outline-secondary" aria-label="Search site"><i class="fa fa-search" aria-hidden="true"></i></button>
 					</div>
@@ -104,7 +104,7 @@
 					<li><a class="dropdown-item" href="[%url page:'account'/%]#orders">Orders</a></li>
 					[%if [@config:allow_user_quote@]%]
 					<li><a class="dropdown-item" href="[%url page:'account'/%]#quotes">Quotes</a></li>
-					[%/ if%]
+					[%/if%]
 					<li><a class="dropdown-item" href="[%url page:'account' type:'payrec'/%]">Pay Invoices</a></li>
 					<li><a class="dropdown-item" href="[%url page:'account' type:'favourites'/%]">Reorder</a></li>
 					[%if [@config:show_wishlist@]%]

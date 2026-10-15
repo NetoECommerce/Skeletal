@@ -30,28 +30,28 @@
 			<h3 class="card-title">Product Review</h3>
 		</div>
 		<div class="card-body">
-			<form name="edit_review" method="post" action="[%URL page:'account' type:'write_review'%][%end url%]">
+			<form name="edit_review" method="post" action="[%url page:'account' type:'write_review'%][%/url%]">
 				<input type="hidden" name="fn" value="preview"/>
-				<input type="hidden" name="item" value="[%nohtml%][@form:item@][%/nohtml%]"/>
+				<input type="hidden" name="item" value="[%escape%][@form:item@][%/escape%]"/>
 				[%if [@username@]%]
-					<input type="hidden" name="customername" id="customername" value="[%nohtml%][@bill_first_name@][%/nohtml%]"/>
+					<input type="hidden" name="customername" id="customername" value="[%escape%][@bill_first_name@][%/escape%]"/>
 				[%else%]
 					<div class="form-group">
 						<label>Enter your name:</label>
-						<input type="text" name="customername" class="form-control" id="customername" value="[%nohtml%][@form:customername@][%/nohtml%]" required/>
+						<input type="text" name="customername" class="form-control" id="customername" value="[%escape%][@form:customername@][%/escape%]" required/>
 					</div>
 					<div class="form-group">
 						<label>Enter your e-mail address:</label>
-						<input type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%nohtml%][@form:emailaddress@][%/nohtml%]" required/>
+						<input type="text" name="emailaddress" class="form-control" id="emailaddress" value="[%escape%][@form:emailaddress@][%/escape%]" required/>
 					</div>
 				[%/if%]
 				<div class="form-group">
 					<label>Title For Review</label>
-					<input type="text" name="review_title" class="form-control" value="[%nohtml%][@form:review_title@][%/nohtml%]" required/>
+					<input type="text" name="review_title" class="form-control" value="[%escape%][@form:review_title@][%/escape%]" required/>
 				</div>
 				<div class="form-group">
 					<label>Review</label>
-					<textarea name="review_text" style="width:100%" class="form-control" required>[%nohtml%][@form:review_text@][%/nohtml%]</textarea>
+					<textarea name="review_text" style="width:100%" class="form-control" required>[%escape%][@form:review_text@][%/escape%]</textarea>
 					<span id="rating_status"></span>
 					<span id="rating_saved"></span>
 				</div>

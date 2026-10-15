@@ -2,38 +2,38 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
 		<li class="breadcrumb-item"><a href="#">Re-Order</a></li>
 		</ol>
 	</nav>
 	<div class="page-header"><h1>Reorder Your Favourite Items</h1></div>
-	[%THUMB_LIST type:'favourites' template:'' show_child_products:'1' limit:'28'%]
+	[%thumb_list type:'favourites' template:'' show_child_products:'1' limit:'28'%]
 	[%param *header%]
 	<p>Thanks for checking back [@bill_first_name@]. We've made it even easier for you to order from us.  Use this quick list to access all the items you have purchased from us in the past for quick reordering!</p>
 	<div class="row">
-	[%/ param%]
+	[%/param%]
 	[%param *footer%]
 	</div>
 	<!-- Start Pagination -->
 	<nav aria-label="Orders page navigation">
 		<ul class="pagination justify-content-center mt-3">
 			[%paging limit:'3'%]
-			[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go back one page">Previous Page</a></li>[%/ param%]
-			[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/ param%]
-			[%param *gonext_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/ param%]
-			[%param *next_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go forward one page">Next Page</a></li>[%/ param%]
-			[%/ paging%]
+			[%param *previous_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go back one page">Previous Page</a></li>[%/param%]
+			[%param *goback_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+			[%param *current_page%]<li class="page-item active"><a class="page-link" href="[@URL@]" aria-label="Current page">[@PAGE@]</a></li>[%/param%]
+			[%param *gonext_pages%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go to page [@PAGE@]">[@PAGE@]</a></li>[%/param%]
+			[%param *next_page%]<li class="page-item"><a class="page-link" href="[@URL@]" aria-label="Go forward one page">Next Page</a></li>[%/param%]
+			[%/paging%]
 		</ul>
 	</nav>
 	<!-- End Pagination -->
-	[%/ param%]
+	[%/param%]
 	[%param *ifempty%]
 		<p>
 		It appears that you have not purchased from
 		this website before. Once you have made some purchases from this website, come back to this
 		page for a quick listing of all your past purchases for easy reordering!
 		</p>
-	[%/ param%]
-	[%/ thumb_list%]
+	[%/param%]
+	[%/thumb_list%]
 </div>
