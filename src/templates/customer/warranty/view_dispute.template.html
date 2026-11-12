@@ -18,14 +18,14 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'/%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'warranty'/%]">Resolution Centre</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'/%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account' type:'warranty'/%]">Resolution Centre</a></li>
 		</ol>
 	</nav>
 	<div class="page-header"><h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1></div>
 	[%if [@error@]%]<div class="alert alert-danger" role="alert"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/if%]
 	[%if [@warning@]%]<div class="alert alert-warning" role="alert"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/if%]
-	<form name="disputeForm" action="[%URL page:'account' type:'warranty'/%]" method="post" enctype="multipart/form-data">
+	<form name="disputeForm" action="[%url page:'account' type:'warranty'/%]" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="[@dispute_id@]">
 		<input type="hidden" name="action" value="proc">
 		<input type="hidden" name="closedispute" value="">
@@ -44,17 +44,17 @@
 							[%param *header%]
 								<tr>
 									<th>Order #</th>
-									<td><a href="[%URL page:'account' type:'view_order' id:'[@order_id@]'%][%/URL%]">[@order_id@]</a></td>
+									<td><a href="[%url page:'account' type:'view_order' id:'[@order_id@]'%][%/url%]">[@order_id@]</a></td>
 								</tr>
 								[%if [@customer_po@]%]
 									<tr>
 										<th>PO#</th>
-										<td>[%nohtml%][@customer_po@][%/nohtml%]</td>
+										<td>[%escape%][@customer_po@][%/escape%]</td>
 									</tr>
 								[%/if%]
 								<tr>
 									<th>Shipped To</th>
-									<td>[%nohtml%][@bill_first_name@] [@bill_last_name@][%/nohtml%]</td>
+									<td>[%escape%][@bill_first_name@] [@bill_last_name@][%/escape%]</td>
 								</tr>
 								<tr>
 									<th>Date Placed</th>
@@ -62,7 +62,7 @@
 								</tr>
 								<tr>
 									<th>Order Status</th>
-									<td>[%nohtml%][@order_status@][%/nohtml%]</td>
+									<td>[%escape%][@order_status@][%/escape%]</td>
 								</tr>
 							[%/param%]
 						[%/show_order%]
@@ -97,11 +97,11 @@
 						[%/if%]
 						<tr>
 							<th>Contact Email</th>
-							<td>[%nohtml%][@email@][%/nohtml%]</td>
+							<td>[%escape%][@email@][%/escape%]</td>
 						</tr>
 						<tr>
 							<th>Contact Phone</th>
-							<td>[%nohtml%][@phone@][%/nohtml%]</td>
+							<td>[%escape%][@phone@][%/escape%]</td>
 						</tr>
 					</table>
 				</div>
@@ -158,7 +158,7 @@
 						<div class="card-footer">
 							<div class="row">
 								<div class="col-sm-9  col-md-10">
-									<textarea name="message" class="form-control" rows="1">[%nohtml%][@message@][%/nohtml%]</textarea>
+									<textarea name="message" class="form-control" rows="1">[%escape%][@message@][%/escape%]</textarea>
 									<br/>
 									<label><b>Upload Image</b></label>
 									<p>Choose file to select and upload.</p>

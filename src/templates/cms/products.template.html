@@ -30,23 +30,23 @@
 		[@content_description1@]
 		[@content_description2@]
 		[@content_description3@]
-	[%/ parse%]
+	[%/parse%]
 </section>
 <hr aria-hidden="true"/>
 [%content_menu content_type:'category' sortby:'sortorder,name' show_empty:'1' limit:''%]
 	[%param header%]
 		<section class="row" aria-label="Categories">
-	[%/ param%]
+	[%/param%]
 	[%param *level_1%]
 		<div class="col-6 col-sm-4 category-thumbnail" role="article" aria-label="[%escape%][@name@][%/escape%] category">
 			<p class="h2"><a href="[@url@]">[%escape%][@name@][%/escape%]</a></p>
 			<a href="[@url@]">
-				<img src="[%asset_url type:'category' id:'[@id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%END asset_url%]" class="img-fluid" alt="[%escape%][@name@][%/escape%]" />
+				<img src="[%asset_url type:'category' id:'[@id@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="img-fluid" alt="[%escape%][@name@][%/escape%]" />
 			</a>
 		</div>
-	[%/ param%]
+	[%/param%]
 	[%param footer%]
 		</section>
-	[%/ param%]
-[%/ content_menu%]
+	[%/param%]
+[%/content_menu%]
 </div>

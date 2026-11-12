@@ -1,5 +1,5 @@
 <aside class="col-12 col-md-3" id="left-sidebar">
-	[%IF [@page_type@] eq 'category' and [@config:show_filters@]%]
+	[%if [@page_type@] eq 'category' and [@config:show_filters@]%]
 		<div class="card mb-2">
 			<div class="card-header border-bottom">
 				<h3 class="h4 mb-0">
@@ -88,7 +88,7 @@
 							<div class="list-group-item filter-title hidden-sm d-none d-sm-block"><h3 class="h4 mb-0">Filter By Price Range</h3></div>
 						[%/param%]
 						[%param *body%]
-							[%SITE_VALUE id:'footer_javascript'%]
+							[%site_value id:'footer_javascript'%]
 								<script>
 									$(function() {
 										var vals = ['[@min@]','[@max@]'];
@@ -109,11 +109,11 @@
 										});
 									});
 								</script>
-							[%/SITE_VALUE%]
+							[%/site_value%]
 							<div class="list-group-item filter-title hidden-sm d-none d-sm-block">
 								<p id="price-range"></p><p id="price-range-text" class="price_range"></p>
 								<form id="pricesearch" method="get" action="[@config:current_url@]">
-									<input type="hidden" name="rf" value="[%FILTER_CODE id:'price'%][%/FILTER_CODE%]">
+									<input type="hidden" name="rf" value="[%filter_code id:'price'%][%/filter_code%]">
 									<input  name="pr" type="hidden" value="">
 									<input type="submit" value="Filter Price" class="btn btn-outline-secondary btn-sm" />
 									[%if [@selected@]%]<a href="[@remove_url@]" class="btn btn-outline-secondary btn-sm" rel="nofollow"> Clear</a>[%/if%]
@@ -142,9 +142,9 @@
 				</div>
 			</div>
 		</div>
-	[%/IF%]
+	[%/if%]
 	[%cache type:'cmenu' id:'sidebar-category' ttl:'86400'%]
-	[%CATEGORYMENU sortby:'sortorder,selected,name' show_empty:'1'%]
+	[%categorymenu sortby:'sortorder,selected,name' show_empty:'1'%]
 		[%param header%]
 			<div class="card d-none d-md-block mb-2">
 				<div class="card-header"><h3 class="h4 mb-0">Categories</h3></div>
@@ -173,10 +173,10 @@
 				</div>
 			</div>
 		[%/param%]
-	[%/CATEGORYMENU%]
+	[%/categorymenu%]
 	[%/cache%]
-	[%CONFIG id:'phistory_limit' if:'ne' value:'0'%]
-		[%PRODUCT_HISTORY limit:'[@config:phistory_limit@]' template:'box'%]
+	[%config id:'phistory_limit' if:'ne' value:'0'%]
+		[%product_history limit:'[@config:phistory_limit@]' template:'box'%]
 			[%param header%]
 				<section class="card d-none d-md-block my-2" role="contentinfo" aria-label="Browsing history">
 					<div class="card-header"><h3 class="h4 mb-0">Browsing History</h3></div>
@@ -186,10 +186,10 @@
 					</ul>
 				</section>
 			[%/param%]
-		[%/PRODUCT_HISTORY%]
-	[%/CONFIG%]
+		[%/product_history%]
+	[%/config%]
 	[%cache type:'menu' id:'sidebar-info' ttl:'86400'%]
-	[%MENU id:'web_information'%]
+	[%menu id:'web_information'%]
 		[%param header%]
 			<div class="card d-none d-md-block my-2">
 				<div class="card-header"><h3 class="h4 mb-0">Information</h3></div>
@@ -218,7 +218,7 @@
 			</div>
 		</div>
 		[%/param%]
-	[%/MENU%]
+	[%/menu%]
 	[%/cache%]
 </aside>
 <div class="col-12 col-md-9">

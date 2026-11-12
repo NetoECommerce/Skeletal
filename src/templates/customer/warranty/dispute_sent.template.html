@@ -2,19 +2,19 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'/%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'/%]">My Account</a></li>
 		<li class="breadcrumb-item"><a href="#">Resolution Centre</a></li>
 		</ol>
 	</nav>
 	<div class="page-header"><h1>Resolution Centre - Warranty, Payment &amp; Return Disputes</h1></div>
-	[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/ DATA%]
-	[%DATA id:'warning' if:'ne' value:''%]<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/ DATA%]
+	[%data id:'error' if:'ne' value:''%]<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>[@error@]</div>[%/data%]
+	[%data id:'warning' if:'ne' value:''%]<div class="alert alert-warning"><a class="close" data-dismiss="alert">×</a>[@warning@]</div>[%/data%]
 	<script>
 		function cancalAction() {
-			window.location.href = '[%URL page:"account" type:"warranty"%][%END URL%]';
+			window.location.href = '[%url page:"account" type:"warranty"%][%/url%]';
 		}
 	</script>
-	<p>Your <a href="[%URL page:'account' type:'warranty' id:'[@dispute_id@]'%][%END URL%]">dispute #[@dispute_id@]</a> has been sent to [@config:company_name@]. You can track the progress of your dispute at any time from within your account.</p>
+	<p>Your <a href="[%url page:'account' type:'warranty' id:'[@dispute_id@]'%][%/url%]">dispute #[@dispute_id@]</a> has been sent to [@config:company_name@]. You can track the progress of your dispute at any time from within your account.</p>
 	<div class="row btn-stack">
 		<div class="col-12 col-md-3">
 			<button type="button" value="Go Back To Start" class="btn btn-outline-secondary btn-block" onClick="cancalAction()"> Create Another Dispute <i class="fa fa-sync icon-white"></i></button>

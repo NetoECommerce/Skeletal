@@ -32,16 +32,16 @@
 									</div>
 									<div class="options-form-container col-12 col-sm-8">
 										[%extra_options id:'[@SKU@]' currentextra:'[@currentextras@]'%]
-											[%PARAM *header%]
+											[%param *header%]
 												<table class="productoptions table table-striped table-bordered" border="0" cellspacing="0" cellpadding="4">
-											[%/PARAM%]
-											[%PARAM *number_option%]
+											[%/param%]
+											[%param *number_option%]
 												<tr>
 													<td valign="top"><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
 													<td valign="top" width="70%"><input type="text" class="form-control" name="extra[@line@]_[@count@]" id="extra[@line@]_[@count@]" value="[@currentextra@]"></td>
 												</tr>
-											[%/PARAM%]
-											[%PARAM *text_option%]
+											[%/param%]
+											[%param *text_option%]
 												<tr>
 													<td valign="top"><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
 													<td valign="top" width="70%">
@@ -52,8 +52,8 @@
 														[%/if%]
 													</td>
 												</tr>
-											[%/PARAM%]
-											[%PARAM *select_option%]
+											[%/param%]
+											[%param *select_option%]
 												<tr>
 													<td><span id="exname[@line@]_[@count@]">[@name@]</span>:</td>
 													<td width="70%">
@@ -62,25 +62,25 @@
 														</select>
 													</td>
 												</tr>
-											[%/PARAM%]
-											[%PARAM *choices%]
+											[%/param%]
+											[%param *choices%]
 												<option type="text" value="[@option_id@]" [%if [@option_id@] eq [@currentextra@]%]selected[%/if%]>
-													[%nohtml%][@text@][%/nohtml%]
+													[%escape%][@text@][%/escape%]
 													[%if [@price@] ne '0'%]([%format type:'currency'%][@price@][%/format%])[%/if%]
 												</option>
-											[%/PARAM%]
-											[%PARAM *footer%]
+											[%/param%]
+											[%param *footer%]
 												</table>
 												<input type="hidden" name="extras[@line@]" id="extras[@line@]" value="[@total_options@]">
-											[%/PARAM%]
+											[%/param%]
 										[%/extra_options%]
 									</div>
 								</div>
 							</div>
 						</div>
-					[%/PARAM%]
-					[%PARAM footer%]
-					[%/PARAM%]
+					[%/param%]
+					[%param footer%]
+					[%/param%]
 				[%/cart_items%]
 			</div>
 			<div class="row">

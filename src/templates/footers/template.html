@@ -27,13 +27,13 @@
 				<h4>Stay In Touch</h4>
 				[%if [@config:show_newsletter_subscribe@]%]
 					<p>Subscribe to our newsletter and we'll keep you up to date on our products and services.</p>
-					<form method="post" action="[%URL type:'page' id:'subscribe' https:'1'%][%END URL%]" aria-label="Newsletter subscribe form">
+					<form method="post" action="[%url type:'page' id:'subscribe' https:'1'%][%/url%]" aria-label="Newsletter subscribe form">
 						<input type="hidden" name="list_id" value="1">
 						<input type="hidden" name="opt_in" value="y">
 						<input type="hidden" name="inp-submit" value="y" />
 						<input type="hidden" name="inp-opt_in" value="y" />
 						<div class="input-group">
-							<input name="inp-email" class="form-control" type="email" value="[%nohtml%][@inp-email@][%/nohtml%]" placeholder="Email Address" required aria-label="Email Address"/>
+							<input name="inp-email" class="form-control" type="email" value="[%escape%][@inp-email@][%/escape%]" placeholder="Email Address" required aria-label="Email Address"/>
 							<div class="input-group-append"><input class="btn btn-outline-secondary" type="submit" value="Subscribe" data-loading-text="<i class='fa fa-spinner fa-spin' style='font-size: 14px'></i>"/></div>
 						</div>
 						<div class="checkbox">
@@ -101,8 +101,8 @@
 				<p class="small" data-test-id="address">
 					<strong>Copyright &copy; [%format type:'date' format:'#Y'%]today[%/format%] [@config:company_name@].</strong>
 					[%if [@config:show_platform_branding@]%]E-commerce software by <a href="https://www.netohq.com" target="_blank" rel="nofollow noopener">Maropost</a>[%/if%]<br/>
-					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/ if%]
-					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/ if%]
+					[%if [@config:company_abn@]%]<strong>[%if [@config:PRIMARY_ABN_LABEL@]%][@config:PRIMARY_ABN_LABEL@][%else%]ABN[%/if%]:</strong> [@config:company_abn@]<br>[%/if%]
+					[%if [@config:company_poaddr@]%]<strong>Address:</strong> [@config:company_poaddr@][%/if%]
 				</p>
 			</div>
 		</div>

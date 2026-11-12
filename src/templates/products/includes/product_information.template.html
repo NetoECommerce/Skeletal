@@ -261,18 +261,18 @@
 								[%param *body%]
 									<div itemprop="review" itemscope itemtype="http://schema.org/Review">
 										<meta itemprop="itemReviewed" content="[@name@]">
-										<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%end param%][%/asset_url%]">
+										<meta itemprop="image" content="[%asset_url type:'product' thumb:'thumb' id:'[@SKU@]'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]">
 										<blockquote>
-											<h4 itemprop="name">[%nohtml%][@title@][%/nohtml%]</h4>
+											<h4 itemprop="name">[%escape%][@title@][%/escape%]</h4>
 											<div>
 												<strong>
 													[%if [@reviewname@]%]
-														By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[%nohtml%][@reviewname@][%/nohtml%]</span></span> on
+														By: <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">[%escape%][@reviewname@][%/escape%]</span></span> on
 													[%/if%]
-													<meta itemprop="datePublished" content="[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]">[%FORMAT type:'date'%][@insert_date@][%/FORMAT%]
+													<meta itemprop="datePublished" content="[%format type:'date'%][@insert_date@][%/format%]">[%format type:'date'%][@insert_date@][%/format%]
 												</strong>
 											</div>
-											<span itemprop="description">[%nohtml%][@review@][%/nohtml%]</span><br />
+											<span itemprop="description">[%escape%][@review@][%/escape%]</span><br />
 											<div itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
 												<meta itemprop="worstRating" content = "1">
 												<meta itemprop="ratingValue" content = "[@score@]">
@@ -291,7 +291,7 @@
 											[%if [@review_response@]%]
 												<br /><br />
 												<blockquote>
-													<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%nohtml%][@review_response@][%/nohtml%]</span>
+													<span class="review_response text-muted"><strong><i>[@config:website_name@] Response</i></strong><br /> [%escape%][@review_response@][%/escape%]</span>
 												</blockquote>
 											[%/if%]
 										</blockquote>
@@ -302,12 +302,12 @@
 							[%/thumb_list%]
 							[%if [@reviews@] > 0%]
 								<p>
-									<a class="btn btn-default" href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]"><i class="far fa-edit"></i> Write a product review</a>
+									<a class="btn btn-default" href="[%url page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/url%]"><i class="far fa-edit"></i> Write a product review</a>
 								</p>
 							[%else%]
 								<h4>Be The First To Review This Product!</h4>
 								<p>Help other [@config:company_name@] users shop smarter by writing reviews for products you have purchased.</p>
-								<p><a class="btn btn-default" href="[%URL page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/URL%]"><i class="far fa-edit"></i> Write a product review</a></p>
+								<p><a class="btn btn-default" href="[%url page:'account' type:'write_review' qs:'item=[@SKU@]'%][%/url%]"><i class="far fa-edit"></i> Write a product review</a></p>
 							[%/if%]
 						</div>
 					</div>
