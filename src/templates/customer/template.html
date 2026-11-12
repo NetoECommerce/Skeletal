@@ -224,7 +224,7 @@
 								</div>
 							[%/if%]
 							<div class="col-12 col-md-4">
-								<button type="button" title="Print Order Number [@order_id@]" class="btn btn-outline-secondary btn-block" onclick="window.location='[%url page:'account' type:'print'/%]/invoice/[@order_id@]'">
+								<button type="button" title="Print Order Number [@order_id@]" class="btn btn-outline-secondary btn-block" onclick="window.location='[%url page:'account' type:'print' fn:'invoice' id:'[@order_id@]'/%]'">
 									<i class="fa fa-print" aria-hidden="true"></i> Print
 								</button>
 							</div>
@@ -296,7 +296,7 @@
 						[%if [@config:allow_quote_approval@]%]
 							<td><a href="[%url page:'account' type:'approve_quote'/%]" class="btn btn-success"><i class="fa fa-check icon-white" aria-hidden="true"></i> Approve Quote</a></td>
 						[%/if%]
-						<td><button type="button" class="btn btn-outline-secondary" onclick="window.location='[%url page:'account' type:'print'/%]/invoice/[@order_id@]'"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
+						<td><button type="button" class="btn btn-outline-secondary" onclick="window.location='[%url page:'account' type:'print' fn:'invoice' id:'[@order_id@]'/%]'"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
 							</a></td>
 					</tr>
 		[%/param%]
