@@ -1,14 +1,14 @@
 <div class="col-12">
 	<script>
 		function print_quote() {
-			var win = window.open('[%URL page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%END URL%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
+			var win = window.open('[%url page:"account" type:"print" fn:"invoice" id:"[@order_id@]"%][%/url%]', 'print_invoice', 'width=740,height=400,scrollbars=yes,resizeable=yes');
 		}
 	</script>
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account'%][%END URL%]">My Account</a></li>
-		<li class="breadcrumb-item"><a href="[%URL page:'account' type:'approve_quote'%][%END URL%]">Approve Quotes</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My Account</a></li>
+		<li class="breadcrumb-item"><a href="[%url page:'account' type:'approve_quote'%][%/url%]">Approve Quotes</a></li>
 		</ol>
 	</nav>
 	<h1>Approve Quote</h1>
@@ -23,5 +23,5 @@
 			<a class="btn btn-danger float-left ml-1" href="[%url page:'account' type:'approve_quote'/%]">Cancel</a>
 		</div>
 	</div>
-	[%print_order id:'[@order_id@]'%][%/ print_order%]
+	[%print_order id:'[@order_id@]'%][%/print_order%]
 </div>

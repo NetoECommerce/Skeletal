@@ -1,5 +1,5 @@
 <div class="col-12">
-	[%SITE_VALUE id:'footer_javascript'%]
+	[%site_value id:'footer_javascript'%]
 	<script>
 		$(document).ready(function() {
 			$.extend({
@@ -90,7 +90,7 @@
 			$.init_text_count('inputtext');
 		});
 	</script>
-	[%/ SITE_VALUE%]
+	[%/site_value%]
 	<style>
 		.inputtext_count {
 			display: none;
@@ -107,7 +107,7 @@
 		}
 	</style>
 	[%load_template file:"cart/cart.error.html"/%]
-	<form method="post" enctype="multipart/form-data" action="[%URL page:'checkout'%][%/ URL%]" id="upsellcartform">
+	<form method="post" enctype="multipart/form-data" action="[%url page:'checkout'%][%/url%]" id="upsellcartform">
 		<input type="hidden" name="fn" id="fn" value="payment" />
 		<input type="hidden" name="voucher" value="y" />
 		<h1>Personalise Your Gift Vouchers</h1>
@@ -119,11 +119,11 @@
 				<div>
 					<a name="voucher[@reward_id@]"></a>
 					<h4>#[@item_count@] &nbsp; [@vprogram_title@] -
-						[%DATA id:'show_points' if:'==' value:'1'%][%param if_true%]
-						[%format type:'number' dp:'0' sp:','%][@reward_points@][%/ format%]pts
-						[%/ param%][%param if_false%]
-						[%format type:'currency'%][@reward_amount@][%/ format%]
-						[%/ param%][%/ DATA%]
+						[%data id:'show_points' if:'==' value:'1'%][%param if_true%]
+						[%format type:'number' dp:'0' sp:','%][@reward_points@][%/format%]pts
+						[%/param%][%param if_false%]
+						[%format type:'currency'%][@reward_amount@][%/format%]
+						[%/param%][%/data%]
 					</h4>
 					<div class="form-group row">
 						<div class="col-12 col-sm-6">
@@ -131,7 +131,7 @@
 							<p class="text-muted small">The name of the person sending the voucher</p>
 						</div>
 						<div class="col-12 col-sm-6">
-							<input type="text" class="form-control" id="voucher_sender[@reward_id@]" name="voucher_sender[@reward_id@]" value="[%NOHTML%][@sender_name@][%/ NOHTML%]">
+							<input type="text" class="form-control" id="voucher_sender[@reward_id@]" name="voucher_sender[@reward_id@]" value="[%escape%][@sender_name@][%/escape%]">
 							<span class="sherror small" ref="voucher_sender[@reward_id@]">* Required</span>
 						</div>
 					</div>
@@ -141,7 +141,7 @@
 							<p class="text-muted small">The name of the person receiving the voucher</p>
 						</div>
 						<div class="col-12 col-sm-6">
-							<input type="text" class="form-control" id="voucher_name[@reward_id@]" name="voucher_name[@reward_id@]" value="[%NOHTML%][@recipient_name@][%/ NOHTML%]">
+							<input type="text" class="form-control" id="voucher_name[@reward_id@]" name="voucher_name[@reward_id@]" value="[%escape%][@recipient_name@][%/escape%]">
 							<span class="sherror small" ref="voucher_name[@reward_id@]">* Required</span>
 						</div>
 					</div>
@@ -151,7 +151,7 @@
 							<p class="text-muted small">The e-voucher will be sent to this email address</p>
 						</div>
 						<div class="col-12 col-sm-6">
-							<input type="text" class="form-control" id="voucher_email[@reward_id@]" name="voucher_email[@reward_id@]" value="[%NOHTML%][@recipient_email@][%/ NOHTML%]">
+							<input type="text" class="form-control" id="voucher_email[@reward_id@]" name="voucher_email[@reward_id@]" value="[%escape%][@recipient_email@][%/escape%]">
 							<span class="sherror small" ref="voucher_email[@reward_id@]">* Required</span>
 							<span class="sherror small" ref="invalid_voucher_email[@reward_id@]">* Invalid</span>
 						</div>
@@ -164,30 +164,30 @@
 						<div class="col-12 col-sm-6">
 							<div class="row btn-stack">
 								<div class="col-12 col-md-4">
-									<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%NOHTML%][@required_date_day@][%/ NOHTML%]" placeholder="Select Date">
+									<input type="text" class="datepicker form-control" name="voucher_rdate[@reward_id@]" value="[%escape%][@required_date_day@][%/escape%]" placeholder="Select Date">
 								</div>
 								<div class="col-12 col-md-4">
 									<select class="form-control" name="voucher_rdate[@reward_id@]_hr">
 										<option value=""></option>
-										<option value="1" [%DATA id:'required_date_12hr' if:'=' value:'1'%]selected[%/ DATA%]>1</option>
-										<option value="2" [%DATA id:'required_date_12hr' if:'=' value:'2'%]selected[%/ DATA%]>2</option>
-										<option value="3" [%DATA id:'required_date_12hr' if:'=' value:'3'%]selected[%/ DATA%]>3</option>
-										<option value="4" [%DATA id:'required_date_12hr' if:'=' value:'4'%]selected[%/ DATA%]>4</option>
-										<option value="5" [%DATA id:'required_date_12hr' if:'=' value:'5'%]selected[%/ DATA%]>5</option>
-										<option value="6" [%DATA id:'required_date_12hr' if:'=' value:'6'%]selected[%/ DATA%]>6</option>
-										<option value="7" [%DATA id:'required_date_12hr' if:'=' value:'7'%]selected[%/ DATA%]>7</option>
-										<option value="8" [%DATA id:'required_date_12hr' if:'=' value:'8'%]selected[%/ DATA%]>8</option>
-										<option value="9" [%DATA id:'required_date_12hr' if:'=' value:'9'%]selected[%/ DATA%]>9</option>
-										<option value="10" [%DATA id:'required_date_12hr' if:'=' value:'10'%]selected[%/ DATA%]>10</option>
-										<option value="11" [%DATA id:'required_date_12hr' if:'=' value:'11'%]selected[%/ DATA%]>11</option>
-										<option value="12" [%DATA id:'required_date_12hr' if:'=' value:'12'%]selected[%/ DATA%]>12</option>
+										<option value="1" [%data id:'required_date_12hr' if:'=' value:'1'%]selected[%/data%]>1</option>
+										<option value="2" [%data id:'required_date_12hr' if:'=' value:'2'%]selected[%/data%]>2</option>
+										<option value="3" [%data id:'required_date_12hr' if:'=' value:'3'%]selected[%/data%]>3</option>
+										<option value="4" [%data id:'required_date_12hr' if:'=' value:'4'%]selected[%/data%]>4</option>
+										<option value="5" [%data id:'required_date_12hr' if:'=' value:'5'%]selected[%/data%]>5</option>
+										<option value="6" [%data id:'required_date_12hr' if:'=' value:'6'%]selected[%/data%]>6</option>
+										<option value="7" [%data id:'required_date_12hr' if:'=' value:'7'%]selected[%/data%]>7</option>
+										<option value="8" [%data id:'required_date_12hr' if:'=' value:'8'%]selected[%/data%]>8</option>
+										<option value="9" [%data id:'required_date_12hr' if:'=' value:'9'%]selected[%/data%]>9</option>
+										<option value="10" [%data id:'required_date_12hr' if:'=' value:'10'%]selected[%/data%]>10</option>
+										<option value="11" [%data id:'required_date_12hr' if:'=' value:'11'%]selected[%/data%]>11</option>
+										<option value="12" [%data id:'required_date_12hr' if:'=' value:'12'%]selected[%/data%]>12</option>
 									</select>
 								</div>
 								<div class="col-12 col-md-4">
 									<select class="form-control" name="voucher_rdate[@reward_id@]_am">
 										<option value=""></option>
-										<option value="am" [%DATA id:'required_date_am' if:'eq' value:'am'%]selected[%/ DATA%]>am</option>
-										<option value="pm" [%DATA id:'required_date_am' if:'eq' value:'pm'%]selected[%/ DATA%]>pm</option>
+										<option value="am" [%data id:'required_date_am' if:'eq' value:'am'%]selected[%/data%]>am</option>
+										<option value="pm" [%data id:'required_date_am' if:'eq' value:'pm'%]selected[%/data%]>pm</option>
 									</select>
 								</div>
 							</div>
@@ -199,19 +199,19 @@
 							<p class="text-muted small">The message that appears on the gift voucher email</p>
 						</div>
 						<div class="col-12 col-sm-6">
-							<textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft">[%NOHTML%][@gift_message@][%/ NOHTML%]</textarea>
+							<textarea name="voucher_msg[@reward_id@]" class="inputtext form-control" id="voucher_msg[@reward_id@]" wrap="soft">[%escape%][@gift_message@][%/escape%]</textarea>
 							<div class="small inputtext_count"><span id="voucher_msg[@reward_id@]ctr" ref="[@config:VOUCHER_MSG_LENGTH@]">[@config:VOUCHER_MSG_LENGTH@]</span> Character(s) Left</div>
 							<span class="sherror small" ref="voucher_msg[@reward_id@]">*Required</span>
 						</div>
 					</div>
-					[%DATA id:'count' if:'eq' value:'0'%]
+					[%data id:'count' if:'eq' value:'0'%]
 						<!--<div><a href="javascript:void(0);" class="copy_btn btn" ref="[@reward_id@]">Copy details from this voucher to all vouchers</a><br></div>-->
-					[%/ DATA%]
+					[%/data%]
 				</div>
-			[%/ param%]
-		[%/ cart_vouchers%]
+			[%/param%]
+		[%/cart_vouchers%]
 		</div>
 		<input class="submit_btn btn btn-success btn-lg float-right" type="button" value="Continue To Checkout" />
 	</form>
 </div>
-[%GA_FUNNEL%]/purchase/voucher.html[%/ GA_FUNNEL%]
+[%ga_funnel%]/purchase/voucher.html[%/ga_funnel%]

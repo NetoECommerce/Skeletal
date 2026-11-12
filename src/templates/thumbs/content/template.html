@@ -6,19 +6,19 @@
 	</span>
 	<h4 itemprop="headline" content="[@content_name@]"><a href="[@url@]" itemprop="url">[@content_name@]</a></h4>
 	<p class="text-muted">
-		[%IF [@content_author@]%]
+		[%if [@content_author@]%]
 		<span itemprop="author" itemscope itemtype="https://schema.org/Person">
 			Author: <span itemprop="name">[@content_author@]</span>
 		</span>&nbsp;
-		[%/ IF%]
-		[%IF [@date_posted@] != 0000-00-00 00:00:00%]
+		[%/if%]
+		[%if [@date_posted@] != 0000-00-00 00:00:00%]
 		<meta itemprop="datePublished" content="[%format type:'date' format:'#Y-#M-#d'%][@date_posted@][%/format%]"/>
-		Date Posted: [%FORMAT type:'date'%][@date_posted@][%/ FORMAT%]
-		[%/ IF%]
+		Date Posted: [%format type:'date'%][@date_posted@][%/format%]
+		[%/if%]
 	</p>
 	<p class="clearfix" itemprop="description">[@content_short_description2@]</p>
 	<p>
-		[%IF [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="badge badge-pill badge-secondary">[@reviews@]</span>[%/ IF%]
+		[%if [@content_allow_reviews@] and [@reviews@] > 0%]<a href="[@URL@]#comments">Comment</a> <span class="badge badge-pill badge-secondary">[@reviews@]</span>[%/if%]
 		<div class="dropdown">
 			<button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenu[@content_id@]" data-toggle="dropdown" aria-controls="dropdownMenu[@content_id@]" aria-label="Share content">
 				Share: <i class="fab fa-facebook text-facebook" aria-hidden="true"></i>

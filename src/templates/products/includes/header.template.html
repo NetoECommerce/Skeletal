@@ -33,11 +33,11 @@
 			<meta itemprop="priceCurrency" content="[@config:defaultcurrency@]">
 			[%if ![@inpromo@]%]
 				<div class="h1" itemprop="price" content="[@store_price@]" aria-label="Store Price">
-					[%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
+					[%format type:'currency'%][@store_price@][%/format%]
 				</div>
 				[%if [@save@] > 0%]
 					<div class="productrrp text-muted small" aria-label="RRP Price">
-						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
+						<s>RRP [%format type:'currency'%][@retail@][%/format%]</s>
 					</div>
 					<div class="productsave small" aria-label="Save Price">
 						SAVE [%format type:'currency'%][@save_price@][%/format%] ([%format type:'percent'%][@save@][%/format%])
@@ -45,15 +45,15 @@
 				[%/if%]
 			[%else%]
 				<div class="productwasprice h3" aria-label="Was price">
-					WAS [%FORMAT type:'currency'%][@store_price@][%/FORMAT%]
+					WAS [%format type:'currency'%][@store_price@][%/format%]
 				</div>
 				[%if [@save@] > 0%]
 					<div class="productrrp text-muted small" aria-label="RRP Price">
-						<s>RRP [%FORMAT type:'currency'%][@retail@][%/FORMAT%]</s>
+						<s>RRP [%format type:'currency'%][@retail@][%/format%]</s>
 					</div>
 				[%/if%]
 				<div class="productpromo h1" itemprop="price" content="[@promo_price@]" aria-label="Promo Price">
-					NOW [%FORMAT type:'currency'%][@promo_price@][%/FORMAT%]
+					NOW [%format type:'currency'%][@promo_price@][%/format%]
 				</div>
 				[%if [@save@] > 0%]
 					<div class="productsave small" aria-label="Save Price">
@@ -63,7 +63,7 @@
 				<div class="productsavetext text-danger font-weight-bold">
 					Sale Ends in <span id="sale-end" class="time"></span>
 				</div>
-				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%END format%]">
+				<div class="time-text" itemprop="priceValidUntil" content="[%format type:'date' format:'#Y-#M-#d'%][@promo_end@][%/format%]">
 					[%format type:'date' format:'DATETIME'%][@promo_end@][%/format%]
 				</div>
 			[%/if%]

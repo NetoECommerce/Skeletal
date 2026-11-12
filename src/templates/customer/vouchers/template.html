@@ -16,20 +16,20 @@
 			</tr>
 		</thead>
 		<tbody>
-	[%/ param%]
+	[%/param%]
 	[%param *body%]
 		<tr>
 			<td width="90%"><b>[@vprogram_title@]</b><br />
-			[%DATA id:'vprogram_subtitle' if:'ne' value:''%][@vprogram_subtitle@]<br />[%/ DATA%]([@voucher_code@])</td>
+			[%data id:'vprogram_subtitle' if:'ne' value:''%][@vprogram_subtitle@]<br />[%/data%]([@voucher_code@])</td>
 			<td nowrap>
-				[%format type:'currency'%][@reward_amount@][%/ format%]
-				[%DATA id:'show_points' if:'==' value:'1'%]([%format type:'number' dp:'0' sp:','%][@reward_points@][%/ format%] pts)[%/ DATA%]
+				[%format type:'currency'%][@reward_amount@][%/format%]
+				[%data id:'show_points' if:'==' value:'1'%]([%format type:'number' dp:'0' sp:','%][@reward_points@][%/format%] pts)[%/data%]
 			</td>
 		</tr>
-	[%/ param%]
+	[%/param%]
 	[%param *footer%]
 		</table>
-	[%/ param%]
-	[%param ifempty%]No vouchers or rewards are available.[%/ param%]
-	[%/ active_vouchers%]
+	[%/param%]
+	[%param ifempty%]No vouchers or rewards are available.[%/param%]
+	[%/active_vouchers%]
 </div>

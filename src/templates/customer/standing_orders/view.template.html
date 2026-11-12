@@ -14,7 +14,7 @@
 			<div class="col-12">
 				<h1>Standing Order #[@storder_id@]</h1>
 				[%if [@customer_po@]%]
-					<h3>Purchase Order Number: [%nohtml%][@customer_po@][%/nohtml%]</h3><br/>
+					<h3>Purchase Order Number: [%escape%][@customer_po@][%/escape%]</h3><br/>
 				[%/if%]
 			</div>
 		</div>

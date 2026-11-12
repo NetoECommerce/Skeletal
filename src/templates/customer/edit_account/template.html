@@ -2,19 +2,19 @@
 	<nav aria-label="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="[@config:home_url@]">Home</a></li>
-			<li class="breadcrumb-item"><a href="[%URL page:'account'%][%/ URL%]">My account</a></li>
+			<li class="breadcrumb-item"><a href="[%url page:'account'%][%/url%]">My account</a></li>
 			<li class="breadcrumb-item"><a href="#">Edit my account</a></li>
 		</ol>
 	</nav>
-	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%URL page:'account' type:'edit_account'%][%/ URL%]">
+	<form enctype="multipart/form-data" method="POST" name="UPDATEINFO" action="[%url page:'account' type:'edit_account'%][%/url%]">
 		<div class="page-header">
 			<h1>Edit Your [@config:company_name@] Account Details</h1>
 			<!-- This block will give them a description on what fields are missing -->
-			[%DATA id:'updated' if:'=' value:'0'%]
+			[%data id:'updated' if:'=' value:'0'%]
 				<p>Please complete all the required fields below before continuing.</p>
-			[%/ DATA%]
+			[%/data%]
 		</div>
-		[%DATA id:'error' if:'ne' value:''%]<div class="alert alert-danger" role="alert">[@error@]</div>[%/ DATA%]
+		[%data id:'error' if:'ne' value:''%]<div class="alert alert-danger" role="alert">[@error@]</div>[%/data%]
 		<div class="row">
 			<div class="col-12 col-md-6">
 				<h2 name="billing" id="billing">Billing Information</h2>
@@ -34,10 +34,10 @@
 					<label for="bill_country">Country</label><span class="text-danger">*</span>
 					<select class="form-control" id="bill_country" name="bill_country">
 						[%countries sortby:'sortorder,name' %]
-						[%PARAM *body%]
-						<option value="[@country_code@]" [%DATA id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%/ DATA%]>[@country_name@]</option>
-						[%/ PARAM%]
-						[%/ countries%]
+						[%param *body%]
+						<option value="[@country_code@]" [%data id:'country_code' if:'eq' value:'[@bill_country@]'%]selected[%/data%]>[@country_name@]</option>
+						[%/param%]
+						[%/countries%]
 					</select>
 				</div>
 				<div class="form-group">
@@ -75,15 +75,15 @@
 					<select class="form-control" name="card_type" id="card_type">
 						<option value="">Select Payment Type</option>
 						[%payment_methods sortby:'sortorder,name' ignore_balance:'1' %]
-						[%PARAM *body%]
-						<option value="[@id@]" [%DATA id:'id' if:'==' value:'[@card_type@]'%]selected[%/ DATA%]>[@name@]</option>
-						[%/ PARAM%]
-						[%/ payment_methods%]
+						[%param *body%]
+						<option value="[@id@]" [%data id:'id' if:'==' value:'[@card_type@]'%]selected[%/data%]>[@name@]</option>
+						[%/param%]
+						[%/payment_methods%]
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="order_comment">Default Order Instructions</label>
-					<textarea class="form-control" cols="40" rows="4" name="order_comment" id="order_comment">[%NOHTML%][@order_comment@][%/ NOHTML%]</textarea>
+					<textarea class="form-control" cols="40" rows="4" name="order_comment" id="order_comment">[%escape%][@order_comment@][%/escape%]</textarea>
 				</div>
 			</div>
 			<div class="col-12 col-md-6">
@@ -119,7 +119,7 @@
 					<label for="usercustom3">Web site url</label>
 					<input class="form-control"  type="text" name="usercustom3" id="usercustom3" size="100" maxlength="255" value="[@usercustom3@]">
 				</div>
-				[%CONFIG id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]
+				[%config id:'ALLOW_DROPSHIP_CHECKOUT' if:'=' value:'1'%]
 					<!-- Dropshipping Information -->
 					<h2>Dropshipping Information</h2>
 					<p>Customise the documentation we send out with your drop shipped orders.<br/>Ignore this section if you do not drop ship orders.</p>
@@ -129,12 +129,12 @@
 					<br/>
 					<label><b>Dropshipping company logo</b></label>
 					<p>Click browse to select and upload your company logo. Your logo should be in .JPG or .GIF format. Your logo will be displayed on header of packing slips, labels etc.</p>
-					<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/ asset_url%]?[@config:current_timestamp@]">
+					<img src="[%asset_url type:'user' id:'[@username@]' default:'[@config:ASSETS_URL@]/pixel.gif'%][%/asset_url%]?[@config:current_timestamp@]">
 					<input type="file" name="logo">
 					<br/><br/>
 					<label>Delete logo?</label>
 					<input type="checkbox" name="dellogo" value="1">
-				[%/ CONFIG%]
+				[%/config%]
 			</div>
 		</div>
 		<div class="row">
@@ -147,7 +147,7 @@
 	</form>
 </div>
 
-[%SITE_VALUE id:'footer_javascript'%]
+[%site_value id:'footer_javascript'%]
 <script>
 	var editAccount = {
 		vars:{
@@ -316,4 +316,4 @@
 	$('#bill_zip').on('change keyup', editAccount.getLocation);
 	$('#suburb_sl').on('change', editAccount.selectSuburb);
 </script>
-[%/ SITE_VALUE%]
+[%/site_value%]

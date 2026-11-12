@@ -1,25 +1,25 @@
 <div class="main-image text-center mb-3">
-	<a href="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" data-lightbox="product-lightbox" data-title="Product main image" rel="product_images">
+	<a href="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" data-lightbox="product-lightbox" data-title="Product main image" rel="product_images">
 		<div class="zoom">
-			<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" class="d-none" aria-hidden="true">
-			<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%END asset_url%]" rel="itmimg[@SKU@]" alt="Product main image" border="0" id="main-image" itemprop="image">
+			<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'full' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" class="d-none" aria-hidden="true">
+			<img src="[%asset_url type:'product' id:'[@SKU@]' thumb:'thumbL' check_parent:'y'%][%param default%][%cdn_asset html:'0' library:'images'%]default_product.gif[%/cdn_asset%][%/param%][%/asset_url%]" rel="itmimg[@SKU@]" alt="Product main image" border="0" id="main-image" itemprop="image">
 		</div>
 	</a>
 </div>
 
 <div class="row align-items-center">
-	[%THUMBNAILS id:'[@SKU@]' check_parent:'y'%]
+	[%thumbnails id:'[@SKU@]' check_parent:'y'%]
 		[%param *body%]
 			<div class="col-6 col-md-3 mb-3">
 				<a href="[@full_image@]" data-lightbox="product-lightbox" data-title="Product image" rel="product_images">
 					<img src="[@thumb_image@]" class="img-fluid product-image-small">
 				</a>
 			</div>
-		[%/ param%]
+		[%/param%]
 		[%param *brochure%]
 			<div class="col-6 col-md-3 mb-3">
 				<a class="display-4" href="[@file@]" target="_blank" rel="noopener"><i class="far fa-file-pdf"></i></a>
 			</div>
-		[%/ param%]
-	[%/ THUMBNAILS%]
+		[%/param%]
+	[%/thumbnails%]
 </div>
